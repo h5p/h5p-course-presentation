@@ -1,0 +1,76 @@
+[
+  {
+    "name": "slides",
+    "type": "list",
+    "widget": "coursepresentation",
+    "field": {
+      "name": "slide",
+      "type": "group",
+      "fields": [
+        {
+          "name": "elements",
+          "type": "list",
+          "field": {
+            "name": "element",
+            "type": "group",
+            "fields": [
+              {
+                "name": "action",
+                "type": "library",
+                "options": [
+                  "H5P.CPText 1.0"
+                ]
+              },
+              {
+                "name": "x",
+                "type": "number"
+              },
+              {
+                "name": "y",
+                "type": "number"
+              },
+              {
+                "name": "width",
+                "type": "number"
+              },
+              {
+                "name": "height",
+                "type": "number"
+              },
+              {
+                "name": "title",
+                "type": "text"
+              },
+              {
+                "name": "copyright",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        {
+          "name": "keywords",
+          "type": "list",
+          "field": {
+            "name": "keyword",
+            "type": "group",
+            "fields": [
+              {
+                "name": "main",
+                "type": "text"
+              },
+              {
+                "name": "subs",
+                "type": "list",
+                "field": {
+                  "name": "keyword",
+                  "type": "text"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

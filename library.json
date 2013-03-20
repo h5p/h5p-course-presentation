@@ -1,0 +1,34 @@
+{
+  "title": "H5P.CoursePresentation",
+  "contentType": "H5P.CoursePresentation",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 1,
+  "machineName": "H5P.CoursePresentation",
+  "author": "Frode Petterson",
+  "preloadedJs": [
+    {
+      "path": "scripts/cp.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/cp.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.cpText",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.CoursePresentation",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+.h5p-content .wrapper {
+  width: 640px;
+  height: 360px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #fff;
+  box-shadow: 0 0 10px 0 #888;
+}
+.h5p-content .slide {
+  width: 640px;
+  height: 360px;
+  position: absolute;
+  top: 0;
+  left: 640px;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+}
+.h5p-content .current {
+  left: 0;
+}
+.h5p-content .previous {
+  left: -640px;
+}
