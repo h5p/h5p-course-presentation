@@ -7,9 +7,20 @@
   box-shadow: 0 0 10px 0 #888;
   background: #f9f9f9;
 }
-.h5p-content .slide {
+.h5p-content .keywords {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 340px;
+  background: rgba(255, 230, 230, 0.8);
+  border-radius: 0 10px 10px 0;
   padding: 10px;
-  width: 620px;
+  box-shadow: 0 0 10px 0 #b9b9b9;
+}
+.h5p-content .slide {
+  padding: 10px 10px 10px 210px;
+  width: 420px;
   height: 340px;
   position: absolute;
   top: 0;
@@ -20,7 +31,7 @@
   background: #efe;
 }
 .h5p-content .slide:last-child {
-  background: #fee;
+  background: #ffe;
 }
 .h5p-content .animate .slide {
   -webkit-transition: all 0.25s ease-in-out;
