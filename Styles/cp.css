@@ -11,12 +11,39 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 180px;
-  height: 340px;
+  width: 200px;
+  height: 360px;
   background: rgba(255, 230, 230, 0.8);
   border-radius: 0 10px 10px 0;
-  padding: 10px;
   box-shadow: 0 0 10px 0 #b9b9b9;
+  overflow: hidden;
+  -webkit-transition: all 0.25s ease-in;
+  -moz-transition: all 0.25s ease-in;
+  -o-transition: all 0.25s ease-in;
+  transition: all 0.25s ease-in;
+}
+.h5p-content .keywords ol {
+  margin: 0;
+  padding: 0;
+}
+.h5p-content .keywords li {
+  margin: 2px 0 2px 24px;
+  padding: 0 0 4px 0;
+}
+.h5p-content .keywords > ol {
+  width: 250px;
+  height: 360px;
+  overflow: auto;
+  margin: 6px 0;
+}
+.h5p-content .keywords > ol > li {
+  padding: 0 10px 4px 10px;
+  width: 180px;
+  margin: 0;
+  opacity: 0.5;
+}
+.h5p-content .keywords > ol > li.current {
+  opacity: 1;
 }
 .h5p-content .slide {
   padding: 10px 10px 10px 210px;
@@ -37,6 +64,7 @@
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 .h5p-content .current {
   left: 0;

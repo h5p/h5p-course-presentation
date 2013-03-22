@@ -10,7 +10,7 @@ H5P.CoursePresentation = function (params, id) {
   console.log(params, id);
   
   this.slides = params.slides;
-  this.contentPath = H5P.getContentPath(10);
+  this.contentPath = H5P.getContentPath(id);
 };
 
 /**
@@ -28,26 +28,21 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
     var $slide = H5P.jQuery('<div class="slide"></div>').appendTo(this.$slidesWrapper);
+    var first = i === 0;
     
-    if (i === 0) {
+    if (first) {
       this.$current = $slide.addClass('current');
     }
     
-    if (slide.elements !== undefined && slide.elements.length) {
-      for (var j = 0; j < slide.elements.length; j++) {
-        var element = slide.elements[j];
-        var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params);
-        elementInstance.appendTo($slide, element.width, element.height, element.x, element.y);
-      }
-    }
-    
-    keywords += this.keywordsHtml(slide.keywords);
+    this.addElements($slide, slide.elements);
+    keywords += this.keywordsHtml(slide.keywords, first);
   }
   
   this.$slides = this.$slidesWrapper.children();
   if (keywords) {
     this.$keywords.html('<ol>' + keywords + '</ol>');
   }
+  this.$currentKeyword = this.$keywords.find('.current');
 
   // Initialize key events
   this.initKeyEvents();
@@ -57,22 +52,44 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 };
 
 /**
+ * Add elements to slide.
+ * 
+ * @param {type} $slide
+ * @param {type} elements
+ * @returns {unresolved}
+ */
+H5P.CoursePresentation.prototype.addElements = function ($slide, elements) {
+  if (elements === undefined || !elements.length) {
+    return;
+  }
+  
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
+    elementInstance.appendTo($slide, element.width, element.height, element.x + 210, element.y);
+  }  
+};
+
+/**
  * Generate html for keywords.
  * 
  * @param {type} keywords
+ * @param {type} first
  * @returns {String}
  */
-H5P.CoursePresentation.prototype.keywordsHtml = function (keywords) {
+H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
   var html = '';
-  
+
   if (keywords !== undefined && keywords.length) {
     for (var i = 0; i < keywords.length; i++) {
       var keyword = keywords[i];
+      
       html += '<li><span>' + keyword.main + '</span>';
+      
       if (keyword.subs !== undefined && keyword.subs.length) {
         html += '<ol>';
-        for (var k = 0; k < keyword.subs.length; k++) {
-          html += '<li>' + keyword.subs[k] + '</li>';
+        for (var j = 0; j < keyword.subs.length; j++) {
+          html += '<li>' + keyword.subs[j] + '</li>';
         }
         html += '</ol>';
       }
@@ -83,7 +100,7 @@ H5P.CoursePresentation.prototype.keywordsHtml = function (keywords) {
     }
   }
   
-  return '<li>' + html + '</li>';
+  return '<li' + (first ? ' class="current"' : '') + '>' + html + '</li>';
 };
 
 /**
@@ -206,6 +223,14 @@ H5P.CoursePresentation.prototype.previousSlide = function () {
   
   this.$current.removeClass('current');
   this.$current = $prev.addClass('current').removeClass('previous');
+  
+  // Change keyword
+  $prev = this.$currentKeyword.prev();
+  this.$currentKeyword.removeClass('current');
+  this.$currentKeyword = $prev.addClass('current');
+  
+  this.$currentKeyword.parent().animate({scrollTop: '+=' + (this.$currentKeyword.position().top - 8)}, 250);
+  
   return true;
 };
 
@@ -222,5 +247,13 @@ H5P.CoursePresentation.prototype.nextSlide = function () {
   
   this.$current.removeClass('current').addClass('previous');
   this.$current = $next.addClass('current');
+  
+  // Change keyword
+  $next = this.$currentKeyword.next();
+  this.$currentKeyword.removeClass('current');
+  this.$currentKeyword = $next.addClass('current');
+  
+  this.$currentKeyword.parent().animate({scrollTop: this.$currentKeyword.position().top - 8}, 250);
+  
   return true;
 };
