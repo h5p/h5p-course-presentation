@@ -31,6 +31,11 @@
   ],
   "editorDependencies": [
     {
+      "machineName": "H5P.CoursePresentation",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
       "minorVersion": 0

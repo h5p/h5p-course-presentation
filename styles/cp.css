@@ -3,6 +3,7 @@
   width: 640px;
   height: 410px;
   text-align: center;
+  font-size: 16px;
 }
 .h5p-course-presentation .h5p-presentation-wrapper {
   text-align: left;
@@ -15,6 +16,7 @@
   background: #f9f9f9;
 }
 .h5p-course-presentation .h5p-keywords-wrapper {
+  font-size: 12px;
   position: absolute;
   top: 0;
   left: 0;
@@ -119,6 +121,7 @@
   float: left;
   padding: 10px;
   background: #f0f0f0;
+  font-size: 12px;
 }
 .h5p-course-presentation .h5p-slideination > a:hover {
   background: #e4e4e4;
