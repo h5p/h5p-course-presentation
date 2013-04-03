@@ -28,6 +28,10 @@
   -moz-transition: all 0.25s ease-in;
   -o-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
+  
+  /* Transparet background for IE */
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ccFFE6E6,endColorstr=#ccFFE6E6); 
+  zoom: 1;
 }
 .h5p-course-presentation .h5p-keywords-wrapper ol {
   margin: 0;
@@ -48,9 +52,11 @@
   width: 180px;
   margin: 0;
   opacity: 0.5;
+  filter: alpha(opacity = 50);
 }
 .h5p-course-presentation .h5p-keywords-wrapper > ol > li.h5p-current {
   opacity: 1;
+  filter: alpha(opacity = 100);
 }
 .h5p-course-presentation .h5p-slide {
   padding: 10px 10px 10px 210px;
@@ -121,7 +127,9 @@
   margin: 0;
   padding: 10px;
   opacity: 0.5;
+  filter: alpha(opacity = 50);
 }
 .h5p-course-presentation .h5p-slideination li.h5p-current {
   opacity: 1;
+  filter: alpha(opacity = 100);
 }
