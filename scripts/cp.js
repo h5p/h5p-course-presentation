@@ -1,22 +1,22 @@
 var H5P = H5P || {};
 
 /**
+ * Constructor.
  * 
- * @param {type} params
- * @param {type} id
- * @returns {undefined}
+ * @param {object} params Start paramteres.
+ * @param {int} id Content identifier
+ * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation = function (params, id) {
-  console.log(params, id);
-  
   this.slides = params.slides;
   this.contentPath = H5P.getContentPath(id);
 };
 
 /**
+ * Render the presentation inside the given container.
  * 
- * @param {type} $container
- * @returns {undefined}
+ * @param {H5P.jQuery} $container Container for this presentation.
+ * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous">Prev</a><a href="#" class="h5p-scroll-left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right">&gt;</a><a href="#" class="h5p-next">Next</a></div></div>');
@@ -62,11 +62,11 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 };
 
 /**
- * Add elements to slide.
+ * Add elements to the given slide.
  * 
- * @param {type} $slide
- * @param {type} elements
- * @returns {unresolved}
+ * @param {H5P.jQuery} $slide The slide.
+ * @param {Array} elements List of elements to add.
+ * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.addElements = function ($slide, elements) {
   if (elements === undefined || !elements.length) {
@@ -81,11 +81,11 @@ H5P.CoursePresentation.prototype.addElements = function ($slide, elements) {
 };
 
 /**
- * Generate html for keywords.
+ * Generate html for the given keywords.
  * 
- * @param {type} keywords
- * @param {type} first
- * @returns {String}
+ * @param {Array} keywords List of keywords.
+ * @param {Boolean} first Indicates if this is the first slide.
+ * @returns {String} HTML.
  */
 H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
   var html = '';
@@ -116,7 +116,7 @@ H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
 /**
  * Initialize key press events.
  * 
- * @returns {undefined}
+ * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.initKeyEvents = function () {
   var that = this;
@@ -149,7 +149,7 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
 /**
  * Initialize touch events
  * 
- * @returns {undefined}
+ * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
@@ -220,6 +220,13 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
   });
 };
 
+/**
+ * Initialize the slide selector.
+ * 
+ * @param {H5P.jQuery} $slideination Wrapper.
+ * @param {String} slideinationSlides HTML.
+ * @returns {undefined} Nothing.
+ */
 H5P.CoursePresentation.prototype.initSlideination = function ($slideination, slideinationSlides) {
   var that = this;
   var $ol = $slideination.children('ol');
@@ -274,7 +281,7 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
 /**
  * Switch to previous slide
  *
- * @returns {Boolean} 
+ * @returns {Boolean} Indicates if the move was made.
  */
 H5P.CoursePresentation.prototype.previousSlide = function () {
   var $prev = this.$current.prev();
@@ -288,7 +295,7 @@ H5P.CoursePresentation.prototype.previousSlide = function () {
 /**
  * Switch to next slide.
  * 
- * @returns {Boolean}
+ * @returns {Boolean} Indicates if the move was made.
  */
 H5P.CoursePresentation.prototype.nextSlide = function () {
   var $next = this.$current.next();
@@ -300,9 +307,10 @@ H5P.CoursePresentation.prototype.nextSlide = function () {
 };
 
 /**
+ * Jump to the given slide.
  * 
- * @param {int} slideNumber
- * @returns {undefined}
+ * @param {type} slideNumber The slide number to jump to.
+ * @returns {Boolean} Always true.
  */
 H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber) {
   var $parent;

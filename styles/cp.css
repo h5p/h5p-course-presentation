@@ -42,11 +42,28 @@
   padding: 0 0 4px 0;
 }
 .h5p-course-presentation .h5p-keywords-wrapper > ol {
-  width: 250px;
-  height: 360px;
+  width: 194px;
+  height: 348px;
   overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
   margin: 6px 0;
 }
+.h5p-course-presentation .h5p-keywords-wrapper > ol::-webkit-scrollbar {
+  width: 6px;
+}
+.h5p-course-presentation .h5p-keywords-wrapper > ol::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(255, 200, 200, 0.8);
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.4);
+}
+.h5p-course-presentation .h5p-keywords-wrapper > ol::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 180, 180, 0.8);
+}
+.h5p-course-presentation .h5p-keywords-wrapper > ol::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0,0,0,0); 
+}
+
 .h5p-course-presentation .h5p-keywords-wrapper > ol > li {
   padding: 0 10px 4px 10px;
   width: 180px;
