@@ -43,12 +43,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     slideinationSlides += '<li' + (first ? ' class="h5p-current"' : '') + '><a href="#">' + (i + 1) + '</a></li>';
   }
   
-  this.$slides = this.$slidesWrapper.children();
-  
   // Initialize keywords
   if (keywords) {
-    this.$keywords = $keywordsWrapper.html('<ol>' + keywords + '</ol>').children('ol').children('li');
-    this.$currentKeyword = this.$keywords.filter('.h5p-current');
+    this.$keywords = $keywordsWrapper.html('<ol>' + keywords + '</ol>').children('ol');
+    this.$currentKeyword = this.$keywords.children('.h5p-current');
   }
 
   // Initialize key events
@@ -216,7 +214,7 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     }
     
     // Remove touch moving.
-    that.$slides.removeAttr('style');
+    that.$slidesWrapper.children().removeAttr('style');
   });
 };
 
@@ -237,8 +235,8 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
     that.jumpToSlide(H5P.jQuery(this).text() - 1);
     
     return false;
-  }).end();
-  this.$currentSlideinationSlide = this.$slideinationSlides.filter('.h5p-current');
+  }).end().end();
+  this.$currentSlideinationSlide = this.$slideinationSlides.children('.h5p-current');
   
   var disableClick = function () {
     return false;
@@ -283,13 +281,13 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
  *
  * @returns {Boolean} Indicates if the move was made.
  */
-H5P.CoursePresentation.prototype.previousSlide = function () {
+H5P.CoursePresentation.prototype.previousSlide = function (noScroll) {
   var $prev = this.$current.prev();
   if (!$prev.length) {
     return false;
   }
   
-  return this.jumpToSlide($prev.index());
+  return this.jumpToSlide($prev.index(), noScroll);
 };
 
 /**
@@ -297,13 +295,13 @@ H5P.CoursePresentation.prototype.previousSlide = function () {
  * 
  * @returns {Boolean} Indicates if the move was made.
  */
-H5P.CoursePresentation.prototype.nextSlide = function () {
+H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
   var $next = this.$current.next();
   if (!$next.length) {
     return false;
   }
 
-  return this.jumpToSlide($next.index());
+  return this.jumpToSlide($next.index(), noScroll);
 };
 
 /**
@@ -312,40 +310,46 @@ H5P.CoursePresentation.prototype.nextSlide = function () {
  * @param {type} slideNumber The slide number to jump to.
  * @returns {Boolean} Always true.
  */
-H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber) {
-  var $parent;
+H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
+  var $parent, move;
   var isiPad = navigator.userAgent.match(/iPad/i) !== null;
   
   // Jump to slide
   this.$current.removeClass('h5p-current');
-  this.$current = this.$slides.removeClass('h5p-previous').filter(':lt(' + slideNumber + ')').addClass('h5p-previous').end().eq(slideNumber).addClass('h5p-current');
+  this.$current = this.$slidesWrapper.children().removeClass('h5p-previous').filter(':lt(' + slideNumber + ')').addClass('h5p-previous').end().eq(slideNumber).addClass('h5p-current');
   
   // Jump keywords
   if (this.$keywords !== undefined) {
     this.$currentKeyword.removeClass('h5p-current');
-    this.$currentKeyword = this.$keywords.eq(slideNumber).addClass('h5p-current');
-    
-    if (isiPad) {
-    // scrollTop animations does not work well on ipad.
-    // TODO: Check on iPhone.
+    this.$currentKeyword = this.$keywords.children(':eq(' + slideNumber + ')').addClass('h5p-current');
+
+    if (!noScroll) {
       $parent = this.$currentKeyword.parent();
-      $parent.scrollTop($parent.scrollTop() + this.$currentKeyword.position().top - 8);
-    }
-    else {
-      this.$currentKeyword.parent().stop().animate({scrollTop: '+=' + (this.$currentKeyword.position().top - 8)}, 250);
+      move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
+      if (isiPad) {
+      // scrollTop animations does not work well on ipad.
+      // TODO: Check on iPhone.  
+        $parent.scrollTop(move);
+      }
+      else {
+        $parent.stop().animate({scrollTop: move}, 250);
+      }
     }
   }
   
   // Jump slideination
   this.$currentSlideinationSlide.removeClass('h5p-current');
-  this.$currentSlideinationSlide = this.$slideinationSlides.eq(slideNumber).addClass('h5p-current');
+  this.$currentSlideinationSlide = this.$slideinationSlides.children(':eq(' + slideNumber + ')').addClass('h5p-current');
   
-  $parent = this.$currentSlideinationSlide.parent();
-  if (isiPad) {
-    $parent.scrollLeft(this.$currentSlideinationSlide.position().left - ($parent.width() / 2) + 17 + $parent.scrollLeft());
-  }
-  else {
-    $parent.animate({scrollLeft: '+=' + (this.$currentSlideinationSlide.position().left - ($parent.width() / 2) + 17)}, 250);
+  if (!noScroll) {
+    $parent = this.$currentSlideinationSlide.parent();
+    move = this.$currentSlideinationSlide.position().left - ($parent.width() / 2) + (this.$currentSlideinationSlide.width() / 2) + 10 + $parent.scrollLeft();
+    if (isiPad) {
+      $parent.scrollLeft(move);
+    }
+    else {
+      $parent.stop().animate({scrollLeft: move}, 250);
+    }
   }
   
   return true;
