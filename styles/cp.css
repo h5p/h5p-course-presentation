@@ -94,13 +94,7 @@
   position: absolute;
   top: 0;
   left: 640px;
-  background: #eef;
-}
-.h5p-course-presentation .h5p-slide:first-child {
-  background: #efe;
-}
-.h5p-course-presentation .h5p-slide:last-child {
-  background: #ffe;
+  background: #fafafe;
 }
 .h5p-course-presentation .h5p-animate .h5p-slide {
   -webkit-transition: all 0.25s ease-in-out;

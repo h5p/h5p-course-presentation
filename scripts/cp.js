@@ -38,7 +38,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
-    var $slide = H5P.jQuery('<div class="h5p-slide"></div>').appendTo(this.$slidesWrapper);
+    var $slide = H5P.jQuery('<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '"></div>').appendTo(this.$slidesWrapper);
     var first = i === 0;
     
     if (first) {
