@@ -20,11 +20,11 @@ H5P.CoursePresentation = function (params, id) {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous">Prev</a><a href="#" class="h5p-scroll-left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right">&gt;</a><a href="#" class="h5p-next">Next</a></div></div>');
-  var $wrapper = $container.children('.h5p-wrapper');
-  var $presentationWrapper = $wrapper.children('.h5p-presentation-wrapper');
-  this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
-  var $keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
-  var $slideination = $wrapper.children('.h5p-slideination');
+  this.$wrapper = $container.children('.h5p-wrapper');
+  this.$presentationWrapper = this.$wrapper.children('.h5p-presentation-wrapper');
+  this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
+  var $keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
+  var $slideination = this.$wrapper.children('.h5p-slideination');
   var keywords = '';
   var slideinationSlides = '';
   
