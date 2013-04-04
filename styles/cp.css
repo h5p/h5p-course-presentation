@@ -1,9 +1,15 @@
+.h5p-course-presentation a:focus {
+  box-shadow: none;
+}
 .h5p-course-presentation .h5p-wrapper {
   position: relative;
   width: 640px;
   height: 410px;
   text-align: center;
   font-size: 16px;
+}
+.h5p-course-presentation .h5p-wrapper:focus {
+  outline: none;
 }
 .h5p-course-presentation .h5p-presentation-wrapper {
   text-align: left;

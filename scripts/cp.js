@@ -19,8 +19,16 @@ H5P.CoursePresentation = function (params, id) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
-  $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous">Prev</a><a href="#" class="h5p-scroll-left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right">&gt;</a><a href="#" class="h5p-next">Next</a></div></div>');
-  this.$wrapper = $container.children('.h5p-wrapper');
+  var that = this;
+  
+  $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper" tabindex="0"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous">Prev</a><a href="#" class="h5p-scroll-left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right">&gt;</a><a href="#" class="h5p-next">Next</a></div></div>');
+  
+  this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
+    that.initKeyEvents();
+  }).blur(function () {
+    H5P.jQuery('body').unbind('keydown');
+  });
+  
   this.$presentationWrapper = this.$wrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
   var $keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
@@ -48,9 +56,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.$keywords = $keywordsWrapper.html('<ol>' + keywords + '</ol>').children('ol');
     this.$currentKeyword = this.$keywords.children('.h5p-current');
   }
-
-  // Initialize key events
-  this.initKeyEvents();
   
   // Initialize touch events
   this.initTouchEvents();
