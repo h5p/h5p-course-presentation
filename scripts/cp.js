@@ -38,7 +38,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
-    var $slide = H5P.jQuery('<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '"></div>').appendTo(this.$slidesWrapper);
+    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
     var first = i === 0;
     
     if (first) {
@@ -48,7 +48,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.addElements($slide, slide.elements);
     keywords += this.keywordsHtml(slide.keywords, first);
     
-    slideinationSlides += '<li' + (first ? ' class="h5p-current"' : '') + '><a href="#">' + (i + 1) + '</a></li>';
+    slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, first);
   }
   
   // Initialize keywords
@@ -358,4 +358,36 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   }
   
   return true;
+};
+
+/**
+ * Create HTML for a slide.
+ * 
+ * @param {object} slide Params.
+ * @returns {String} HTML.
+ */
+H5P.CoursePresentation.createSlide = function (slide) {
+  return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '"></div>';
+};
+
+/**
+ * Create html for a slideination slide.
+ * 
+ * @param {int} index Optional
+ * @param {int} first Optional
+ * @returns {String}
+ */
+H5P.CoursePresentation.createSlideinationSlide = function (index, first) {
+  var html =  '<li';
+  
+  if (first !== undefined && first) {
+    html += ' class="h5p-current"';
+  }
+  html += '><a href="#">';
+  
+  if (index !== undefined) {
+    html += index;
+  }
+  
+  return html + '</a></li>';
 };
