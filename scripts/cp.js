@@ -102,7 +102,7 @@ H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
       if (keyword.subs !== undefined && keyword.subs.length) {
         html += '<ol>';
         for (var j = 0; j < keyword.subs.length; j++) {
-          html += '<li>' + keyword.subs[j] + '</li>';
+          html += '<li><span>' + keyword.subs[j] + '</span></li>';
         }
         html += '</ol>';
       }

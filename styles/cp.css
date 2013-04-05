@@ -48,11 +48,14 @@
 }
 .h5p-course-presentation .h5p-keywords-wrapper li {
   margin: 2px 0 2px 0px;
-  padding: 0 0 4px 0;
+  padding: 0 0 6px 0;
   list-style: none;
 }
 .h5p-course-presentation .h5p-keywords-wrapper li li li {
   margin-left: 20px;
+}
+.h5p-course-presentation .h5p-keywords-wrapper li li li {
+  padding: 0;
 }
 .h5p-course-presentation .h5p-keywords-wrapper > ol {
   width: 194px;
@@ -79,7 +82,6 @@
 
 .h5p-course-presentation .h5p-keywords-wrapper > ol > li {
   padding: 0 10px 4px 10px;
-  width: 180px;
   margin: 0;
   opacity: 0.5;
   filter: alpha(opacity = 50);
