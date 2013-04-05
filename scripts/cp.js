@@ -21,7 +21,7 @@ H5P.CoursePresentation = function (params, id) {
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
   
-  $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper" tabindex="0"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous">Prev</a><a href="#" class="h5p-scroll-left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right">&gt;</a><a href="#" class="h5p-next">Next</a></div></div>');
+  $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper" tabindex="0"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous" title="Previous slide">Prev</a><a href="#" class="h5p-scroll-left" title="Scroll - left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right" title="Scroll - right">&gt;</a><a href="#" class="h5p-next" title="Next slide">Next</a></div></div>');
   
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
@@ -411,7 +411,7 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, first) {
   if (first !== undefined && first) {
     html += ' class="h5p-current"';
   }
-  html += '><a href="#">';
+  html += '><a href="#" title="Jump to slide">';
   
   if (index !== undefined) {
     html += index;
