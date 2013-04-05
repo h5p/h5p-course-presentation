@@ -284,6 +284,7 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
 /**
  * Switch to previous slide
  *
+ * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
 H5P.CoursePresentation.prototype.previousSlide = function (noScroll) {
@@ -298,6 +299,7 @@ H5P.CoursePresentation.prototype.previousSlide = function (noScroll) {
 /**
  * Switch to next slide.
  * 
+ * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
 H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
@@ -313,12 +315,10 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
  * Jump to the given slide.
  * 
  * @param {type} slideNumber The slide number to jump to.
+ * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
 H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
-  var $parent, move;
-  var isiPad = navigator.userAgent.match(/iPad/i) !== null;
-  
   // Jump to slide
   this.$current.removeClass('h5p-current');
   this.$current = this.$slidesWrapper.children().removeClass('h5p-previous').filter(':lt(' + slideNumber + ')').addClass('h5p-previous').end().eq(slideNumber).addClass('h5p-current');
@@ -329,36 +329,64 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     this.$currentKeyword = this.$keywords.children(':eq(' + slideNumber + ')').addClass('h5p-current');
 
     if (!noScroll) {
-      $parent = this.$currentKeyword.parent();
-      move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
-      if (isiPad) {
-      // scrollTop animations does not work well on ipad.
-      // TODO: Check on iPhone.  
-        $parent.scrollTop(move);
-      }
-      else {
-        $parent.stop().animate({scrollTop: move}, 250);
-      }
+      this.scrollToKeywords();
     }
   }
   
-  // Jump slideination
+  this.jumpSlideination(slideNumber, noScroll);
+  
+  return true;
+};
+
+/**
+ * Scroll to current keywords.
+ * 
+ * @returns {undefined} Nothing
+ */
+H5P.CoursePresentation.prototype.scrollToKeywords = function () {
+  var $parent = this.$currentKeyword.parent();
+  var move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
+  
+  if (H5P.CoursePresentation.isiPad) {
+    // scrollTop animations does not work well on ipad.
+    // TODO: Check on iPhone.  
+    $parent.scrollTop(move);
+  }
+  else {
+    $parent.stop().animate({scrollTop: move}, 250);
+  }
+};
+
+/**
+ * Jump slideination.
+ * 
+ * @param {type} slideNumber
+ * @param {type} noScroll
+ * @returns {undefined}
+ */
+H5P.CoursePresentation.prototype.jumpSlideination = function (slideNumber, noScroll) {
   this.$currentSlideinationSlide.removeClass('h5p-current');
   this.$currentSlideinationSlide = this.$slideinationSlides.children(':eq(' + slideNumber + ')').addClass('h5p-current');
   
   if (!noScroll) {
-    $parent = this.$currentSlideinationSlide.parent();
-    move = this.$currentSlideinationSlide.position().left - ($parent.width() / 2) + (this.$currentSlideinationSlide.width() / 2) + 10 + $parent.scrollLeft();
-    if (isiPad) {
+    var $parent = this.$currentSlideinationSlide.parent();
+    var move = this.$currentSlideinationSlide.position().left - ($parent.width() / 2) + (this.$currentSlideinationSlide.width() / 2) + 10 + $parent.scrollLeft();
+    
+    if (H5P.CoursePresentation.isiPad) {
+      // scrollLeft animations does not work well on ipad.
+      // TODO: Check on iPhone.  
       $parent.scrollLeft(move);
     }
     else {
       $parent.stop().animate({scrollLeft: move}, 250);
     }
   }
-  
-  return true;
 };
+
+/**
+ * @type Boolean Indicate if this is an ipad user.
+ */
+H5P.CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
 
 /**
  * Create HTML for a slide.
