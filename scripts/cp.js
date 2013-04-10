@@ -10,6 +10,8 @@ var H5P = H5P || {};
 H5P.CoursePresentation = function (params, id) {
   this.slides = params.slides;
   this.contentPath = H5P.getContentPath(id);
+  
+  this.ratio = 640 / 400;
 };
 
 /**
@@ -23,6 +25,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   
   $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper" tabindex="0"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous" title="Previous slide">Prev</a><a href="#" class="h5p-scroll-left" title="Scroll - left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right" title="Scroll - right">&gt;</a><a href="#" class="h5p-next" title="Next slide">Next</a></div></div>');
   
+  this.$container = $container;
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
@@ -62,6 +65,36 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   
   // Slideination
   this.initSlideination($slideination, slideinationSlides);
+
+  H5P.$window.resize(function() {
+    that.resize(false); 
+ });
+  this.resize(false);
+};
+
+H5P.CoursePresentation.prototype.resize = function (fullscreen) {
+  var width = this.$container.width();
+  var height = this.$container.height();
+  
+  if (width / height >= this.ratio) {
+    // Wider
+    width = height * this.ratio;
+    
+  }
+  else {
+    // Narrower
+    height = width / this.ratio;
+  }
+  
+  this.$wrapper.css({
+    width: width + 'px',
+    height: height + 'px',
+    fontSize: (16 * (width / 640)) + 'px'
+  });
+  
+  if (fullscreen) {
+    this.$wrapper.focus();
+  }
 };
 
 /**
@@ -79,7 +112,7 @@ H5P.CoursePresentation.prototype.addElements = function ($slide, elements) {
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-    elementInstance.appendTo($slide, element.width, element.height, element.x + 210, element.y);
+    elementInstance.appendTo($slide, element.width, element.height, element.x + 32.8125, element.y);
   }  
 };
 
@@ -191,12 +224,12 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     
     if (movedX < 0) {
       // Move previous slide
-      that.$current.next().removeAttr('style');
+      that.$current.next().css('left', '');
       that.$current.prev().css('left', prevX - movedX);
     }
     else {
       // Move next slide
-      that.$current.prev().removeAttr('style');
+      that.$current.prev().css('left', '');
       that.$current.next().css('left', nextX - movedX);
     }
     
@@ -219,7 +252,7 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     }
     
     // Remove touch moving.
-    that.$slidesWrapper.children().removeAttr('style');
+    that.$slidesWrapper.children().css('left', '');
   });
 };
 

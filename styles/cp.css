@@ -2,36 +2,40 @@
   box-shadow: none;
 }
 .h5p-course-presentation .h5p-wrapper {
+  margin: 0 auto;
   position: relative;
   width: 640px;
+  height: 640px;
   text-align: center;
   font-size: 16px;
+  line-height: 125%;
 }
 .h5p-course-presentation .h5p-wrapper:focus {
   outline: none;
 }
 .h5p-course-presentation .h5p-presentation-wrapper {
   text-align: left;
-  width: 640px;
-  height: 360px;
+  width: 100%;
+  height: 90%;
   position: relative;
   overflow: hidden;
-  border: 1px solid #fff;
-  box-shadow: 0 0 10px 0 #888;
+  border: 0.0625em solid #fff;
+  box-shadow: 0 0 0.625em 0 #888;
   background: #f9f9f9;
+  z-index: 1;
 }
 .h5p-course-presentation .h5p-keywords-wrapper {
   color: #393939;
-  font-size: 12px;
+  font-size: 75%;
   position: absolute;
   z-index: 3;
   top: 0;
   left: 0;
-  width: 200px;
-  height: 360px;
+  width: 31.25%;
+  height: 100%;
   background: rgba(255, 230, 230, 0.8);
-  border-radius: 0 10px 10px 0;
-  box-shadow: 0 0 10px 0 #b9b9b9;
+  border-radius: 0 0.83em 0.83em 0;
+  box-shadow: 0 0 0.83em 0 #b9b9b9;
   overflow: hidden;
   -webkit-transition: all 0.25s ease-in;
   -moz-transition: all 0.25s ease-in;
@@ -47,31 +51,32 @@
   padding: 0;
 }
 .h5p-course-presentation .h5p-keywords-wrapper li {
-  margin: 2px 0 2px 0px;
-  padding: 0 0 6px 0;
+  margin: 0.1667em 0 0.1667em 0;
+  padding: 0 0 0.5em 0;
+  line-height: 125%;
   list-style: none;
 }
 .h5p-course-presentation .h5p-keywords-wrapper li li li {
-  margin-left: 20px;
+  margin-left: 1.67em;
 }
 .h5p-course-presentation .h5p-keywords-wrapper li li li {
   padding: 0;
 }
 .h5p-course-presentation .h5p-keywords-wrapper > ol {
-  width: 194px;
-  height: 348px;
+  width: 97%;
+  height: 97%;
   overflow: auto;
   overflow-x: hidden;
   overflow-y: scroll;
-  margin: 6px 0;
+  margin: 0.5em 0;
 }
 .h5p-course-presentation .h5p-keywords-wrapper > ol::-webkit-scrollbar {
-  width: 6px;
+  width: 0.5em;
 }
 .h5p-course-presentation .h5p-keywords-wrapper > ol::-webkit-scrollbar-thumb {
-  border-radius: 3px;
+  border-radius: 0.25em;
   background: rgba(255, 200, 200, 0.8);
-  box-shadow: inset 0 0 3px rgba(0,0,0,0.4);
+  box-shadow: inset 0 0 0.25em rgba(0,0,0,0.4);
 }
 .h5p-course-presentation .h5p-keywords-wrapper > ol::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 180, 180, 0.8);
@@ -81,7 +86,7 @@
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > ol > li {
-  padding: 0 10px 4px 10px;
+  padding: 0 0.833em 0.333em 0.833em;
   margin: 0;
   opacity: 0.5;
   filter: alpha(opacity = 50);
@@ -91,12 +96,12 @@
   filter: alpha(opacity = 100);
 }
 .h5p-course-presentation .h5p-slide {
-  padding: 10px 10px 10px 210px;
-  width: 420px;
-  height: 340px;
+  padding: 0.625em 0.625em 0.625em 32.8125%;
+  width: 65.625%;
+  height: 100%;
   position: absolute;
   top: 0;
-  left: 640px;
+  left: 100%;
   background: #fafafe;
   z-index: 1;
 }
@@ -111,13 +116,12 @@
   z-index: 2;
 }
 .h5p-course-presentation .h5p-previous {
-  left: -640px;
+  left: -100%;
 }
 .h5p-course-presentation .h5p-slideination {
   display: inline-block;
-  height: 40px;
+  height: 10%;
   overflow: hidden;
-  background: #fafafa;
 }
 .h5p-course-presentation .h5p-slideination a {
   color: #000;
@@ -128,16 +132,18 @@
 .h5p-course-presentation .h5p-slideination > a {
   display: block;
   float: left;
-  padding: 10px;
+  font-size: 75%;
+  padding: 0.833em;
   background: #f0f0f0;
-  font-size: 12px;
+  height: 100%;
+  line-height: 150%;
 }
 .h5p-course-presentation .h5p-slideination > a:hover {
   background: #e4e4e4;
 }
 .h5p-course-presentation .h5p-slideination > .h5p-scroll-left, .h5p-course-presentation .h5p-slideination > .h5p-scroll-right {
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-left: 0.0625em solid #fff;
+  border-right: 0.0625em solid #fff;
 }
 .h5p-course-presentation .h5p-slideination ol {
   position: relative;
@@ -145,16 +151,19 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 222px;
-  height: 90px;
+  width: 56%;
+  height: 160%;
   overflow: auto;
-  font-size: 22px;
+  overflow-y: hidden;
+  font-size: 137.5%;
   white-space: nowrap;
+  background: #fafafa;
 }
 .h5p-course-presentation .h5p-slideination li {
   display: inline-block;
   margin: 0;
-  padding: 10px;
+  padding: 0.4535em;
+  line-height: 100%;
   opacity: 0.5;
   filter: alpha(opacity = 50);
 }
