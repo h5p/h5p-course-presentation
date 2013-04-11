@@ -8,10 +8,21 @@ var H5P = H5P || {};
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation = function (params, id) {
-  this.slides = params.slides;
-  this.contentPath = H5P.getContentPath(id);
+  this.swipeThreshold = 100; // px
   
-  this.ratio = 640 / 400;
+  this.slides = params.slides;
+  
+  this.l10n = params.l10n !== undefined ? params.l10n : {
+    // Defaults
+    prev: "Prev",
+    prevSlide: "Previous slide",
+    scrollLeft: "Scroll - left",
+    jumpToSlide: "Jump to slide",
+    scrollRight: "Scroll - right",
+    next: "Next",
+    nextSlide: "Next slide"
+  };
+  this.contentPath = H5P.getContentPath(id);
 };
 
 /**
@@ -23,7 +34,7 @@ H5P.CoursePresentation = function (params, id) {
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
   
-  $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper" tabindex="0"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous" title="Previous slide">Prev</a><a href="#" class="h5p-scroll-left" title="Scroll - left">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right" title="Scroll - right">&gt;</a><a href="#" class="h5p-next" title="Next slide">Next</a></div></div>');
+  $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper" tabindex="0"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a><a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a><a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a></div></div>');
   
   this.$container = $container;
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
@@ -34,10 +45,15 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     that.$wrapper.focus();
   });
   
+  this.width = parseInt(this.$wrapper.css('width'));
+  this.height = parseInt(this.$wrapper.css('height'));
+  this.ratio = this.width / this.height;
+  this.fontSize = parseInt(this.$wrapper.css('fontSize'));
+  
   this.$presentationWrapper = this.$wrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
   var $keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
-  var $slideination = this.$wrapper.children('.h5p-slideination');
+  this.$slideination = this.$wrapper.children('.h5p-slideination');
   var keywords = '';
   var slideinationSlides = '';
   
@@ -53,20 +69,24 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.addElements($slide, slide.elements);
     keywords += this.keywordsHtml(slide.keywords, first);
     
-    slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, first);
+    slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, this.l10n.jumpToSlide, first);
   }
   
   // Initialize keywords
   if (keywords) {
     this.$keywords = $keywordsWrapper.html('<ol>' + keywords + '</ol>').children('ol');
     this.$currentKeyword = this.$keywords.children('.h5p-current');
+    this.keywordsWidth = $keywordsWrapper.width() / (this.width / 100); // %
+  }
+  else {
+    this.keywordsWidth = 0;
   }
   
   // Initialize touch events
   this.initTouchEvents();
   
   // Slideination
-  this.initSlideination($slideination, slideinationSlides);
+  this.initSlideination(this.$slideination, slideinationSlides);
 
   H5P.$window.resize(function() {
     that.resize(false); 
@@ -91,7 +111,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   this.$wrapper.css({
     width: width + 'px',
     height: height + 'px',
-    fontSize: (16 * (width / 640)) + 'px'
+    fontSize: (this.fontSize * (width / this.width)) + 'px'
   });
   
   if (fullscreen) {
@@ -114,7 +134,7 @@ H5P.CoursePresentation.prototype.addElements = function ($slide, elements) {
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-    elementInstance.appendTo($slide, element.width, element.height, element.x + 32.8125, element.y);
+    elementInstance.appendTo($slide, element.width, element.height, element.x + this.keywordsWidth, element.y);
   }  
 };
 
@@ -245,10 +265,10 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     if (!scroll) {
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
-      if (moved > 100) {
+      if (moved > that.swipeThreshold) {
         that.nextSlide();
       }
-      else if (moved < -100) {
+      else if (moved < -that.swipeThreshold) {
         that.previousSlide();
       }
     }
@@ -440,13 +460,13 @@ H5P.CoursePresentation.createSlide = function (slide) {
  * @param {int} first Optional
  * @returns {String}
  */
-H5P.CoursePresentation.createSlideinationSlide = function (index, first) {
+H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) {
   var html =  '<li';
   
   if (first !== undefined && first) {
     html += ' class="h5p-current"';
   }
-  html += '><a href="#" title="Jump to slide">';
+  html += '><a href="#" title="' + title + '">';
   
   if (index !== undefined) {
     html += index;

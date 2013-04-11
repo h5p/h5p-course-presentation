@@ -72,5 +72,67 @@
         }
       ]
     }
+  },
+    {
+    "name": "image",
+    "type": "image"
+  },
+  {
+    "name": "audio",
+    "type": "audio"
+  },
+  {
+    "name": "video",
+    "type": "video"
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "Localize",
+    "common": true,
+    "fields": [
+      {
+        "name": "prev",
+        "type": "text",
+        "label": "Prev button",
+        "default": "Prev"
+      },
+      {
+        "name": "prevSlide",
+        "type": "text",
+        "label": "Prev button title",
+        "default": "Previous slide"
+      },
+      {
+        "name": "scrollLeft",
+        "type": "text",
+        "label": "Scroll left button title",
+        "default": "Scroll - left"
+      },
+      {
+        "name": "jumpToSlide",
+        "type": "text",
+        "label": "Slide button title",
+        "default": "Jump to slide"
+      },
+      {
+        "name": "scrollRight",
+        "type": "text",
+        "label": "Scroll right button title",
+        "default": "Scroll - right"
+      },
+      {
+        "name": "next",
+        "type": "text",
+        "label": "Next button",
+        "default": "Next"
+      },
+      {
+        "name": "nextSlide",
+        "type": "text",
+        "label": "Next button title",
+        "default": "Next slide"
+      }
+    ]
   }
 ]
