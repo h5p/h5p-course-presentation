@@ -73,18 +73,6 @@
       ]
     }
   },
-    {
-    "name": "image",
-    "type": "image"
-  },
-  {
-    "name": "audio",
-    "type": "audio"
-  },
-  {
-    "name": "video",
-    "type": "video"
-  },
   {
     "name": "l10n",
     "type": "group",
