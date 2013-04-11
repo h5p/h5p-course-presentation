@@ -171,3 +171,13 @@
   opacity: 1;
   filter: alpha(opacity = 100);
 }
+
+.h5p-course-presentation .h5p-show-solutions {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.h5p-course-presentation .h5p-has-solutions a {
+  text-decoration: underline;
+}
