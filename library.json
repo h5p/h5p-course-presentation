@@ -5,6 +5,7 @@
   "minorVersion": 0,
   "patchVersion": 0,
   "runnable": 1,
+  "fullscreen": 1,
   "machineName": "H5P.CoursePresentation",
   "author": "Frode Petterson",
   "preloadedJs": [

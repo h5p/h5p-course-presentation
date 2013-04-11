@@ -71,6 +71,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.ratio = this.width / this.height;
   this.fontSize = parseInt(this.$wrapper.css('fontSize'));
 
+
   this.$presentationWrapper = this.$wrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
   var $keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
@@ -91,6 +92,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
     this.addElements(i, $slide, slide.elements);
     keywords += this.keywordsHtml(slide.keywords, first);
+
     slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, this.l10n.jumpToSlide, first);
   }
 
@@ -530,6 +532,7 @@ H5P.CoursePresentation.createSlide = function (slide) {
  */
 H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) {
   var html =  '<li class="h5p-slide-button';
+
   if (first !== undefined && first) {
     html += ' h5p-current';
   }
