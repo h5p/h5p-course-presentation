@@ -33,6 +33,21 @@ H5P.CoursePresentation = function (params, id) {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
+
+  var html = '' +
+'<div class="h5p-wrapper" tabindex="0">' +
+  '<div class="h5p-presentation-wrapper">' +
+    '<div class="h5p-slides-wrapper h5p-animate"></div>' +
+    '<div class="h5p-keywords-wrapper"></div>' +
+  '</div>' +
+  '<div class="h5p-slideination">' +
+    '<a href="#" class="h5p-previous" title="Previous slide">Prev</a>' +
+    '<a href="#" class="h5p-scroll-left" title="Scroll - left">&lt;</a>' +
+    '<ol></ol>' +
+    '<a href="#" class="h5p-scroll-right" title="Scroll - right">&gt;</a>' +
+    '<a href="#" class="h5p-next" title="Next slide">Next</a>' +
+  '</div>' +
+'</div>';
   
   $container.addClass('h5p-course-presentation').html('<div class="h5p-wrapper" tabindex="0"><div class="h5p-presentation-wrapper"><div class="h5p-slides-wrapper h5p-animate"></div><div class="h5p-keywords-wrapper"></div></div><div class="h5p-slideination"><a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a><a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a><ol></ol><a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a><a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a></div></div>');
   
