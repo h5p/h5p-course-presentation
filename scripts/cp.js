@@ -95,6 +95,11 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 };
 
 H5P.CoursePresentation.prototype.resize = function (fullscreen) {
+  var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
+  if (!fullscreenOn) {
+    this.$container.css('height', '99999px');
+  }
+  
   var width = this.$container.width();
   var height = this.$container.height();
   
@@ -116,6 +121,9 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   
   if (fullscreen) {
     this.$wrapper.focus();
+  }
+  if (!fullscreenOn) {
+    this.$container.css('height', '100%');
   }
 };
 
