@@ -30,6 +30,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     that.initKeyEvents();
   }).blur(function () {
     H5P.jQuery('body').unbind('keydown');
+  }).click(function () {
+    that.$wrapper.focus();
   });
   
   this.$presentationWrapper = this.$wrapper.children('.h5p-presentation-wrapper');
