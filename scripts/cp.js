@@ -40,7 +40,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
-    H5P.jQuery('body').unbind('keydown');
+    H5P.jQuery('body').unbind('keydown', that.keydown);
+    delete that.keydown;
   }).click(function () {
     that.$wrapper.focus();
   });
@@ -123,7 +124,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     this.$wrapper.focus();
   }
   if (!fullscreenOn) {
-    this.$container.css('height', '100%');
+    this.$container.css('height', '');
   }
 };
 
@@ -185,10 +186,14 @@ H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.initKeyEvents = function () {
+  if (this.keydown !== undefined) {
+    return;
+  }
+  
   var that = this;
   var wait = false;
   
-  H5P.jQuery('body').keydown(function (event) {
+  this.keydown = function (event) {
     if (wait) {
       return;
     }
@@ -209,7 +214,9 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
         wait = false;
       }, 300);
     }
-  });
+  };
+  
+  H5P.jQuery('body').keydown(this.keydown);
 };
 
 /**
@@ -482,3 +489,4 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
   
   return html + '</a></li>';
 };
+ 

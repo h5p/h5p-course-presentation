@@ -37,10 +37,6 @@
   border-radius: 0 0.83em 0.83em 0;
   box-shadow: 0 0 0.83em 0 #b9b9b9;
   overflow: hidden;
-  -webkit-transition: all 0.25s ease-in;
-  -moz-transition: all 0.25s ease-in;
-  -o-transition: all 0.25s ease-in;
-  transition: all 0.25s ease-in;
 
   /* Transparet background for IE */
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ccFFE6E6,endColorstr=#ccFFE6E6);
@@ -106,10 +102,10 @@
   z-index: 1;
 }
 .h5p-course-presentation .h5p-animate .h5p-slide {
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
+  -webkit-transition: left 0.25s ease-in-out;
+  -moz-transition: left 0.25s ease-in-out;
+  -o-transition: left 0.25s ease-in-out;
+  transition: left 0.25s ease-in-out;
 }
 .h5p-course-presentation .h5p-current {
   left: 0;
