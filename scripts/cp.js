@@ -34,7 +34,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     '<a href="#" class="h5p-scroll-left" title="Scroll - left">&lt;</a>' +
     '<ol></ol>' +
     '<a href="#" class="h5p-scroll-right" title="Scroll - right">&gt;</a>' +
-    '<a href="#" class="h5p-next" title="Next slide">Next</a>'
+    '<a href="#" class="h5p-next" title="Next slide">Next</a>' +
   '</div>' +
 '</div>';
   
