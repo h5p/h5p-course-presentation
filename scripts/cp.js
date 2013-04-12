@@ -48,7 +48,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 '    <ol></ol>' +
 '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
 '    <a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>' +
-'    <a href="#" class="h5p-show-solutions" style="display: none;">' + /*this.l10n.showSolutions*/'Show solutions' + '</a>' +
+'    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
 '  </div>' +
 '</div>';
 
