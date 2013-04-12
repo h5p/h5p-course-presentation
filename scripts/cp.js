@@ -181,7 +181,7 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-    var $h5pElementContainer = $('<div class="h5p-element" style="left: ' + (parseFloat(element.x) + 31.25) + '%; top: ' + element.y + '%; width: ' + (parseFloat(element.width) * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+    var $h5pElementContainer = $('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
     elementInstance.attach($h5pElementContainer);
     if (this.hasSolutions(elementInstance)) {
       if (this.slidesWithSolutions[slideIndex] === undefined) {
