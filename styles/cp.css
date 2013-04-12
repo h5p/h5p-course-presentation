@@ -177,3 +177,11 @@
 .h5p-course-presentation .h5p-has-solutions a {
   text-decoration: underline;
 }
+
+.h5p-course-presentation .h5p-element {
+  position: absolute;
+}
+
+.h5p-sourse-presentation .h5p-element .h5p-hidden-solution-btn {
+  display: none;
+}
