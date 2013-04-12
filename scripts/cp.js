@@ -175,6 +175,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, elements) {
+  var that = this;
   if (elements === undefined || !elements.length) {
     return;
   }
@@ -183,6 +184,18 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
     var $h5pElementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+    if (element.solution) {
+      elementInstance.showSolutions = function() {
+        if ($h5pElementContainer.children('.h5p-element-solution').length === 0) {
+          var $elementSolutionButton = H5P.jQuery('<a href="#" class="h5p-element-solution">?</a>')
+            .data('solution', element.solution).click(function(event) {
+              event.preventDefault();
+              that.showPopup(H5P.jQuery(this).data('solution'));
+            });
+          $h5pElementContainer.append($elementSolutionButton);
+        }
+      }
+    }
     elementInstance.attach($h5pElementContainer);
     if (this.hasSolutions(elementInstance)) {
       if (this.slidesWithSolutions[slideIndex] === undefined) {
@@ -191,6 +204,13 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
       this.slidesWithSolutions[slideIndex].push(elementInstance);
     }
   }
+};
+
+H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
+  var html = '<div class="h5p-popup-overlay"><div class="h5p-popup-container">' + popupContent + '</div></div>';
+  H5P.jQuery(html).prependTo(this.$container).click(function() {
+    H5P.jQuery(this).remove();
+  });
 };
 
 /**
@@ -566,6 +586,7 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
 H5P.CoursePresentation.prototype.showSolutions = function () {
   var jumpedToFirst = false;
   var slideScores = [];
+  var hasScores = false;
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
     if (this.slidesWithSolutions[i] !== undefined) {
       this.$slideinationSlides.children(':eq(' + i + ')').addClass('h5p-has-solutions');
@@ -578,8 +599,11 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
         var elementInstance = this.slidesWithSolutions[i][j];
         elementInstance.showSolutions();
-        slideMaxScore += elementInstance.getMaxScore();
-        slideScore += elementInstance.getScore();
+        if (elementInstance.getMaxScore !== undefined) {
+          slideMaxScore += elementInstance.getMaxScore();
+          slideScore += elementInstance.getScore();
+          hasScores = true;
+        }
       }
       slideScores.push({
         "slide": (i + 1),
@@ -589,7 +613,9 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
     }
   }
   H5P.jQuery('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show();
-  this.outputScoreStats(slideScores);
+  if (hasScores) {
+    this.outputScoreStats(slideScores);
+  }
 };
 
 H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
@@ -611,29 +637,25 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
     scoreMessage = this.l10n.badScore;
   }
   var html = '' +
-'<div class="h5p-score-overlay"><div class="h5p-score-container">' +
-'  <div class="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</div>' +
-'  <table>' +
-'    <thead>' +
-'      <tr>' +
-'        <th>' + this.l10n.slide + '</th>' +
-'        <th>' + this.l10n.yourScore + '</th>' +
-'        <th>' + this.l10n.maxScore + '</th>' +
-'      </tr>' +
-'    </thead>' +
-'    <tbody>' + tds + '</tbody>' +
-'    <tfoot>' +
-'      <tr>' +
-'        <td>' + this.l10n.total + '</td>' +
-'        <td>' + totalScore + '</td>' +
-'        <td>' + totalMaxScore + '</td>' +
-'      </tr>' +
-'    </tfoot>' +
-'  </table>' +
-'</div></div>';
-  H5P.jQuery(html).prependTo(this.$container).click(function() {
-    H5P.jQuery(this).remove();
-  });
+'<div class="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</div>' +
+'<table>' +
+'  <thead>' +
+'    <tr>' +
+'      <th>' + this.l10n.slide + '</th>' +
+'      <th>' + this.l10n.yourScore + '</th>' +
+'      <th>' + this.l10n.maxScore + '</th>' +
+'    </tr>' +
+'  </thead>' +
+'  <tbody>' + tds + '</tbody>' +
+'  <tfoot>' +
+'    <tr>' +
+'      <td>' + this.l10n.total + '</td>' +
+'      <td>' + totalScore + '</td>' +
+'      <td>' + totalMaxScore + '</td>' +
+'    </tr>' +
+'  </tfoot>' +
+'</table>';
+  this.showPopup(html);
   var that = this;
   this.$container.find('.h5p-slide-link').click(function(event) {
     event.preventDefault();

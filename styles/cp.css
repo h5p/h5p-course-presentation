@@ -182,7 +182,7 @@
   display: none;
 }
 
-.h5p-course-presentation .h5p-score-overlay {
+.h5p-course-presentation .h5p-popup-overlay {
   background-color: rgba(255, 255, 255, 0.8);
   height: 100%;
   position: absolute;
@@ -190,7 +190,7 @@
   z-index: 200;
 }
 
-.h5p-course-presentation .h5p-score-container {
+.h5p-course-presentation .h5p-popup-container {
   background-color: #FFFFFF;
   border: 2px solid #777799;
   border-radius: 6px 6px 6px 6px;
@@ -200,14 +200,28 @@
   position: absolute;
   top: 20%;
   width: 50%;
-  padding: 1em 1em 0;
+  padding: 1em;
   margin-left: -1em;
+  font-size: 1.3em;
 }
 
-.h5p-course-presentation .h5p-score-container tfoot {
+.h5p-course-presentation .h5p-popup-container tfoot {
   font-weight: bold;
 }
 
 .h5p-course-presentation .h5p-score-message {
   font-size: 1.2em;
+}
+
+.h5p-course-presentation .h5p-element-solution {
+  background: none repeat scroll 0 0 #EEEEEE;
+  border: 2px solid;
+  border-radius: 6px 6px 6px 6px;
+  display: block;
+  font-size: 2em;
+  padding: 0.2em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 199;
 }
