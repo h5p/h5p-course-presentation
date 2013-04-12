@@ -137,7 +137,8 @@
 .h5p-course-presentation .h5p-slideination > a:hover {
   background: #e4e4e4;
 }
-.h5p-course-presentation .h5p-slideination > .h5p-scroll-left, .h5p-course-presentation .h5p-slideination > .h5p-scroll-right {
+.h5p-course-presentation .h5p-slideination > .h5p-scroll-left, .h5p-course-presentation .h5p-slideination > .h5p-scroll-right,
+.h5p-course-presentation .h5p-slideination > .h5p-show-solutions {
   border-left: 0.0625em solid #fff;
   border-right: 0.0625em solid #fff;
 }
@@ -147,7 +148,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 56%;
+  width: 11em;
   height: 160%;
   overflow: auto;
   overflow-y: hidden;
@@ -166,12 +167,6 @@
 .h5p-course-presentation .h5p-slideination li.h5p-current {
   opacity: 1;
   filter: alpha(opacity = 100);
-}
-
-.h5p-course-presentation .h5p-show-solutions {
-  position: absolute;
-  right: 0;
-  bottom: 0;
 }
 
 .h5p-course-presentation .h5p-has-solutions a {

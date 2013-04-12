@@ -167,6 +167,12 @@
         "type": "text",
         "label": "Translation for \"TOTAL\"",
         "default": "TOTAL"
+      },
+      {
+        "name": "showSolutions",
+        "type": "text",
+        "label": "Text for the show solutions button",
+        "default": "Show solutions"
       }
     ]
   }

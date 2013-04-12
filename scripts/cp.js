@@ -48,8 +48,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 '    <ol></ol>' +
 '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
 '    <a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>' +
+'    <a href="#" class="h5p-show-solutions" style="display: none;">' + /*this.l10n.showSolutions*/'Show solutions' + '</a>' +
 '  </div>' +
-'  <a href="#" class="h5p-show-solutions" style="display: none;" title="">Show solutions</a>' +
 '</div>';
 
   $container.addClass('h5p-course-presentation').html(html);
@@ -77,8 +77,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
-  var $solutionsButton = this.$wrapper.children('.h5p-show-solutions');
-  
+  var $solutionsButton = this.$slideination.children('.h5p-show-solutions');
+
   // Detemine if there are any keywords.
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
@@ -91,7 +91,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.keywordsWidth = 0;
     this.$keywordsWrapper.remove();
   }
-  
+
   var keywords = '';
   var slideinationSlides = '';
   for (var i = 0; i < this.slides.length; i++) {
@@ -182,7 +182,7 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-    var $h5pElementContainer = $('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+    var $h5pElementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
     elementInstance.attach($h5pElementContainer);
     if (this.hasSolutions(elementInstance)) {
       if (this.slidesWithSolutions[slideIndex] === undefined) {
@@ -469,7 +469,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
   // Show show solutions button on last slide
   if (slideNumber === this.slides.length - 1) {
-    $('.h5p-show-solutions', this.$container).show();
+    H5P.jQuery('.h5p-show-solutions', this.$container).show();
   }
 
   return true;
@@ -588,7 +588,7 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       });
     }
   }
-  $('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show();
+  H5P.jQuery('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show();
   this.outputScoreStats(slideScores);
 };
 
@@ -597,8 +597,8 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
   var totalMaxScore = 0;
   var tds = ''; // For saving the main table rows...
   for (var i = 0; i < slideScores.length; i++) {
-    tds += '<TR><TD>' + slideScores[i].slide + '</TD><TD>' + slideScores[i].score + '</TD>';
-    tds += '<TD>' + slideScores[i].maxScore + '</TD></TR>'
+    tds += '<tr><td><a href="#" CLASS="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>';
+    tds += '<td>' + slideScores[i].score + '</td><td>' + slideScores[i].maxScore + '</td></tr>'
     totalScore += slideScores[i].score;
     totalMaxScore += slideScores[i].maxScore;
   }
@@ -611,27 +611,32 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
     scoreMessage = this.l10n.badScore;
   }
   var html = '' +
-'<DIV CLASS="h5p-score-overlay"><DIV CLASS="h5p-score-container">' +
-'  <DIV CLASS="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</DIV>' +
-'  <TABLE>' +
-'    <THEAD>' +
-'      <TR>' +
-'        <TH>' + this.l10n.slide + '</TH>' +
-'        <TH>' + this.l10n.yourScore + '</TH>' +
-'        <TH>' + this.l10n.maxScore + '</TH>' +
-'      </TR>' +
-'    </THEAD>' +
-'    <TBODY>' + tds + '</TBODY>' +
-'    <TFOOT>' +
-'      <TR>' +
-'        <TD>' + this.l10n.total + '</TD>' +
-'        <TD>' + totalScore + '</TD>' +
-'        <TD>' + totalMaxScore + '</TD>' +
-'      </TR>' +
-'    </TFOOT>' +
-'  </TABLE>' +
-'</DIV></DIV>';
-  $(html).prependTo(this.$container).click(function() {
-    $(this).remove();
+'<div class="h5p-score-overlay"><div class="h5p-score-container">' +
+'  <div class="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</div>' +
+'  <table>' +
+'    <thead>' +
+'      <tr>' +
+'        <th>' + this.l10n.slide + '</th>' +
+'        <th>' + this.l10n.yourScore + '</th>' +
+'        <th>' + this.l10n.maxScore + '</th>' +
+'      </tr>' +
+'    </thead>' +
+'    <tbody>' + tds + '</tbody>' +
+'    <tfoot>' +
+'      <tr>' +
+'        <td>' + this.l10n.total + '</td>' +
+'        <td>' + totalScore + '</td>' +
+'        <td>' + totalMaxScore + '</td>' +
+'      </tr>' +
+'    </tfoot>' +
+'  </table>' +
+'</div></div>';
+  H5P.jQuery(html).prependTo(this.$container).click(function() {
+    H5P.jQuery(this).remove();
+  });
+  var that = this;
+  this.$container.find('.h5p-slide-link').click(function(event) {
+    event.preventDefault();
+    that.jumpToSlide(H5P.jQuery(this).data('slide') - 1);
   });
 }
