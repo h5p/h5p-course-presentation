@@ -9,10 +9,11 @@ var H5P = H5P || {};
  */
 H5P.CoursePresentation = function (params, id) {
   this.swipeThreshold = 100; // px
-  
+  this.slideWidthRatio = (100 - 31.25) / 100; // Since the slides have empty space under the keywords list.
+
   this.slides = params.slides;
   this.slidesWithSolutions = [];
-  
+
   this.l10n = params.l10n !== undefined ? params.l10n : {
     // Defaults
     prev: "Prev",
@@ -59,7 +60,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     H5P.jQuery('body').unbind('keydown', that.keydown);
     delete that.keydown;
   }).click(function (event) {
-    var $target = $(event.target);  // TODO: Use H5P.jQuery? Also jQuery selector are very slow and should be avoided if possible.
+    var $target = H5P.jQuery(event.target);
     if (!$target.is("input, textarea")) {
       // Add focus to the wrapper so that it may capture keyboard events
       that.$wrapper.focus();
@@ -137,7 +138,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   if (!fullscreenOn) {
     this.$container.css('height', '99999px');
   }
-  
+
   var width = this.$container.width();
   var height = this.$container.height();
 
@@ -180,13 +181,13 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-    var $h5pElementContainer = $('<div class="h5p-element" style="left: ' + parseInt(element.x) + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+    var $h5pElementContainer = $('<div class="h5p-element" style="left: ' + (parseFloat(element.x) + 31.25) + '%; top: ' + element.y + '%; width: ' + (parseFloat(element.width) * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
     elementInstance.attach($h5pElementContainer);
     if (this.hasSolutions(elementInstance)) {
-      if (typeof this.slidesWithSolutions[slideIndex] === 'undefined') { // TODO: this.slidesWithSolutions[slideIndex] === undefined  MUCH FASTER!
+      if (this.slidesWithSolutions[slideIndex] === undefined) {
         this.slidesWithSolutions[slideIndex] = [];
       }
-      this.slidesWithSolutions[slideIndex].push(elementInstance) // TODO: Use semicolon on line endings.
+      this.slidesWithSolutions[slideIndex].push(elementInstance);
     }
   }
 };
@@ -200,8 +201,7 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
  *  false otherwise
  */
 H5P.CoursePresentation.prototype.hasSolutions = function (elementInstance) {
-  // TODO: Checking again undefined is MUCH faster and consumes less memory since you don't have to do a type lookup and declare a string.
-  if (typeof elementInstance.showSolutions === 'function') {
+  if (elementInstance.showSolutions !== undefined) {
     return true;
   }
   else {
@@ -250,10 +250,10 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
   if (this.keydown !== undefined) {
     return;
   }
-  
+
   var that = this;
   var wait = false;
-  
+
   this.keydown = function (event) {
     if (wait) {
       return;
@@ -276,7 +276,7 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
       }, 300);
     }
   };
-  
+
   H5P.jQuery('body').keydown(this.keydown);
 };
 
@@ -545,7 +545,7 @@ H5P.CoursePresentation.createSlide = function (slide) {
  * @returns {String}
  */
 H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) {
-  var html =  '<li class="h5p-slide-button'; // TODO: Adding unnecessary classes weighs the DOM down.
+  var html =  '<li class="h5p-slide-button';
 
   if (first !== undefined && first) {
     html += ' h5p-current';
@@ -568,8 +568,8 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
 H5P.CoursePresentation.prototype.showSolutions = function () {
   var jumpedToFirst = false;
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    if (typeof this.slidesWithSolutions[i] === 'object') { // TODO: even instanceof is faster!
-      $('.h5p-slideination .h5p-slide-button', this.$container).eq(i).addClass('h5p-has-solutions'); // TODO: Use this.$slideinationSlides.children(':eq(' + i + ')'); Much faster!
+    if (this.slidesWithSolutions[i] !== undefined) {
+      this.$slideinationSlides.children(':eq(' + i + ')').addClass('h5p-has-solutions');
       if (!jumpedToFirst) {
         this.jumpToSlide(i, false);
         jumpedToFirst = true;
