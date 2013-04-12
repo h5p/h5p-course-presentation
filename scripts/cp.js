@@ -75,13 +75,25 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   this.$presentationWrapper = this.$wrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
-  var $keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
+  this.$keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
   var $solutionsButton = this.$wrapper.children('.h5p-show-solutions');
-
+  
+  // Detemine if there are any keywords.
+  for (var i = 0; i < this.slides.length; i++) {
+    var slide = this.slides[i];
+    if (slide.keywords !== undefined && slide.keywords.length) {
+      this.keywordsWidth = this.$keywordsWrapper.width() / (this.width / 100);
+      break;
+    }
+  }
+  if (this.keywordsWidth === undefined) {
+    this.keywordsWidth = 0;
+    this.$keywordsWrapper.remove();
+  }
+  
   var keywords = '';
   var slideinationSlides = '';
-
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
     var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
@@ -92,19 +104,17 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
 
     this.addElements(i, $slide, slide.elements);
-    keywords += this.keywordsHtml(slide.keywords, first);
+    if (this.keywordsWidth && slide.keywords !== undefined) {
+      keywords += this.keywordsHtml(slide.keywords, first);
+    }
 
     slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, this.l10n.jumpToSlide, first);
   }
 
   // Initialize keywords
   if (keywords) {
-    this.$keywords = $keywordsWrapper.html('<ol>' + keywords + '</ol>').children('ol');
+    this.$keywords = this.$keywordsWrapper.html('<ol>' + keywords + '</ol>').children('ol');
     this.$currentKeyword = this.$keywords.children('.h5p-current');
-    this.keywordsWidth = $keywordsWrapper.width() / (this.width / 100); // %
-  }
-  else {
-    this.keywordsWidth = 0;
   }
 
   // Initialize touch events
@@ -172,7 +182,7 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-    var $h5pElementContainer = $('<div class="h5p-element" style="left: ' + (parseFloat(element.x) + 31.25) + '%; top: ' + element.y + '%; width: ' + (parseFloat(element.width) * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+    var $h5pElementContainer = $('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
     elementInstance.attach($h5pElementContainer);
     if (this.hasSolutions(elementInstance)) {
       if (this.slidesWithSolutions[slideIndex] === undefined) {
@@ -211,24 +221,22 @@ H5P.CoursePresentation.prototype.hasSolutions = function (elementInstance) {
 H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
   var html = '';
 
-  if (keywords !== undefined && keywords.length) {
-    for (var i = 0; i < keywords.length; i++) {
-      var keyword = keywords[i];
+  for (var i = 0; i < keywords.length; i++) {
+    var keyword = keywords[i];
 
-      html += '<li><span>' + keyword.main + '</span>';
+    html += '<li><span>' + keyword.main + '</span>';
 
-      if (keyword.subs !== undefined && keyword.subs.length) {
-        html += '<ol>';
-        for (var j = 0; j < keyword.subs.length; j++) {
-          html += '<li><span>' + keyword.subs[j] + '</span></li>';
-        }
-        html += '</ol>';
+    if (keyword.subs !== undefined && keyword.subs.length) {
+      html += '<ol>';
+      for (var j = 0; j < keyword.subs.length; j++) {
+        html += '<li><span>' + keyword.subs[j] + '</span></li>';
       }
-      html += '</li>';
+      html += '</ol>';
     }
-    if (html) {
-      html = '<ol>' + html + '</ol>';
-    }
+    html += '</li>';
+  }
+  if (html) {
+    html = '<ol>' + html + '</ol>';
   }
 
   return '<li' + (first ? ' class="h5p-current"' : '') + '>' + html + '</li>';
