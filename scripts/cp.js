@@ -572,4 +572,5 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       }
     }
   }
+  $('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show();
 };

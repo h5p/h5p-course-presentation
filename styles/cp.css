@@ -180,8 +180,9 @@
 
 .h5p-course-presentation .h5p-element {
   position: absolute;
+  overflow: hidden;
 }
 
-.h5p-sourse-presentation .h5p-element .h5p-hidden-solution-btn {
+.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn {
   display: none;
 }
