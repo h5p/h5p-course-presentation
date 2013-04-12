@@ -205,4 +205,6 @@
   position: absolute;
   top: 20%;
   width: 50%;
+  padding: 0 1em;
+  margin-left: -1em;
 }
