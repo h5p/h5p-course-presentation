@@ -18,18 +18,6 @@
       "path": "styles/cp.css"
     }
   ],
-  "preloadedDependencies": [
-    {
-      "machineName": "H5P.cpText",
-      "majorVersion": 1,
-      "minorVersion": 0
-    },
-    {
-      "machineName": "H5P.cpImage",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ],
   "editorDependencies": [
     {
       "machineName": "H5P.CoursePresentation",
