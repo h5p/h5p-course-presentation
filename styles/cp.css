@@ -205,6 +205,14 @@
   position: absolute;
   top: 20%;
   width: 50%;
-  padding: 0 1em;
+  padding: 1em 1em 0;
   margin-left: -1em;
+}
+
+.h5p-course-presentation .h5p-score-container tfoot {
+  font-weight: bold;
+}
+
+.h5p-course-presentation .h5p-score-message {
+  font-size: 1.2em;
 }

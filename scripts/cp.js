@@ -595,24 +595,39 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
 H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
   var totalScore = 0;
   var totalMaxScore = 0;
-  var html = '' +
-'<DIV CLASS="h5p-score-overlay"><DIV CLASS="h5p-score-container">' +
-'  <TABLE>' +
-'    <THEAD>' +
-'      <TR>' +
-'        <TH>' + 'Slide' + '</TH>' +
-'        <TH>' + 'Score' + '</TH>' +
-'        <TH>' + 'Max score' + '</TH>' +
-'      </TR>' +
-'    </THEAD>' +
-'    <TBODY>';
+  var tds = ''; // For saving the main table rows...
   for (var i = 0; i < slideScores.length; i++) {
-    html += '<TR><TD>' + slideScores[i].slide + '</TD><TD>' + slideScores[i].score + '</TD>';
-    html += '<TD>' + slideScores[i].maxScore + '</TD></TR>'
+    tds += '<TR><TD>' + slideScores[i].slide + '</TD><TD>' + slideScores[i].score + '</TD>';
+    tds += '<TD>' + slideScores[i].maxScore + '</TD></TR>'
     totalScore += slideScores[i].score;
     totalMaxScore += slideScores[i].maxScore;
   }
-  html += '</TBODY><TFOOT><TR><TD>' + 'TOTAL' + '</TD><TD>' + totalScore + '</TD><TD>' + totalMaxScore + '</TD></TR>' +
+  var percentScore = Math.round(totalScore / totalMaxScore * 100);
+  var scoreMessage = this.l10n.goodScore;
+  if (percentScore < 80) {
+    scoreMessage = this.l10n.okScore;
+  }
+  if (percentScore < 40) {
+    scoreMessage = this.l10n.badScore;
+  }
+  var html = '' +
+'<DIV CLASS="h5p-score-overlay"><DIV CLASS="h5p-score-container">' +
+'  <DIV CLASS="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</DIV>' +
+'  <TABLE>' +
+'    <THEAD>' +
+'      <TR>' +
+'        <TH>' + this.l10n.slide + '</TH>' +
+'        <TH>' + this.l10n.yourScore + '</TH>' +
+'        <TH>' + this.l10n.maxScore + '</TH>' +
+'      </TR>' +
+'    </THEAD>' +
+'    <TBODY>' + tds + '</TBODY>' +
+'    <TFOOT>' +
+'      <TR>' +
+'        <TD>' + this.l10n.total + '</TD>' +
+'        <TD>' + totalScore + '</TD>' +
+'        <TD>' + totalMaxScore + '</TD>' +
+'      </TR>' +
 '    </TFOOT>' +
 '  </TABLE>' +
 '</DIV></DIV>';
