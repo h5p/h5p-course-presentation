@@ -36,20 +36,21 @@ H5P.CoursePresentation = function (params, id) {
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
 
-  var html = '<div class="h5p-wrapper" tabindex="0">'
-           + '<div class="h5p-presentation-wrapper">'
-           + '<div class="h5p-slides-wrapper h5p-animate"></div>'
-           + '<div class="h5p-keywords-wrapper"></div>'
-           + '</div>'
-           + '<div class="h5p-slideination">'
-           + '<a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>'
-           + '<a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>'
-           + '<ol></ol>'
-           + '<a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>'
-           + '<a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>'
-           + '</div>'
-           + '<a href="#" class="h5p-show-solutions" style="display: none;" title="">Show solutions</a>'
-           + '</div>';
+  var html = '' +
+'<div class="h5p-wrapper" tabindex="0">' +
+'  <div class="h5p-presentation-wrapper">' +
+'    <div class="h5p-slides-wrapper h5p-animate"></div>' +
+'    <div class="h5p-keywords-wrapper"></div>' +
+'  </div>' +
+'  <div class="h5p-slideination">' +
+'    <a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>' +
+'    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
+'    <ol></ol>' +
+'    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
+'    <a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>' +
+'  </div>' +
+'  <a href="#" class="h5p-show-solutions" style="display: none;" title="">Show solutions</a>' +
+'</div>';
 
   $container.addClass('h5p-course-presentation').html(html);
 
@@ -462,9 +463,6 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   if (slideNumber === this.slides.length - 1) {
     $('.h5p-show-solutions', this.$container).show();
   }
-  else {
-    $('.h5p-show-solutions', this.$container).hide();
-  }
 
   return true;
 };
@@ -559,6 +557,7 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
  */
 H5P.CoursePresentation.prototype.showSolutions = function () {
   var jumpedToFirst = false;
+  var slideScores = [];
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
     if (this.slidesWithSolutions[i] !== undefined) {
       this.$slideinationSlides.children(':eq(' + i + ')').addClass('h5p-has-solutions');
@@ -566,11 +565,50 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
         this.jumpToSlide(i, false);
         jumpedToFirst = true;
       }
+      var slideScore = 0;
+      var slideMaxScore = 0;
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
         var elementInstance = this.slidesWithSolutions[i][j];
         elementInstance.showSolutions();
+        slideMaxScore += elementInstance.getMaxScore();
+        slideScore += elementInstance.getScore();
       }
+      slideScores.push({
+        "slide": (i + 1),
+        "score": slideScore,
+        "maxScore": slideMaxScore
+      });
     }
   }
   $('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show();
+  this.outputScoreStats(slideScores);
 };
+
+H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
+  var totalScore = 0;
+  var totalMaxScore = 0;
+  var html = '' +
+'<DIV CLASS="h5p-score-overlay"><DIV CLASS="h5p-score-container">' +
+'  <TABLE>' +
+'    <THEAD>' +
+'      <TR>' +
+'        <TH>' + 'Slide' + '</TH>' +
+'        <TH>' + 'Score' + '</TH>' +
+'        <TH>' + 'Max score' + '</TH>' +
+'      </TR>' +
+'    </THEAD>' +
+'    <TBODY>';
+  for (var i = 0; i < slideScores.length; i++) {
+    html += '<TR><TD>' + slideScores[i].slide + '</TD><TD>' + slideScores[i].score + '</TD>';
+    html += '<TD>' + slideScores[i].maxScore + '</TD></TR>'
+    totalScore += slideScores[i].score;
+    totalMaxScore += slideScores[i].maxScore;
+  }
+  html += '</TBODY><TFOOT><TR><TD>' + 'TOTAL' + '</TD><TD>' + totalScore + '</TD><TD>' + totalMaxScore + '</TD></TR>' +
+'    </TFOOT>' +
+'  </TABLE>' +
+'</DIV></DIV>';
+  $(html).prependTo(this.$container).click(function() {
+    $(this).remove();
+  });
+}
