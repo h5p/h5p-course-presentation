@@ -18,7 +18,9 @@
                 "name": "action",
                 "type": "library",
                 "options": [
-                  "H5P.CPText 1.0"
+                  "H5P.cpText 1.0",
+                  "H5P.cpImage 1.0",
+                  "H5P.Blanks 1.0"
                 ]
               },
               {
