@@ -46,6 +46,11 @@
               {
                 "name": "copyright",
                 "type": "text"
+              },
+              {
+                "name": "solution",
+                "type": "text",
+                "widget": "html"
               }
             ]
           }
