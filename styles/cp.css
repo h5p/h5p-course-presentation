@@ -218,10 +218,14 @@
   border: 2px solid;
   border-radius: 6px 6px 6px 6px;
   display: block;
-  font-size: 2em;
+  font-size: 1.2em;
   padding: 0.2em;
   position: absolute;
   right: 0;
   top: 0;
   z-index: 199;
+}
+
+.h5p-course-presentation .h5p-no-solution {
+  color: #888888;
 }
