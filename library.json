@@ -1,6 +1,6 @@
 {
-  "title": "H5P.CoursePresentation",
-  "contentType": "H5P.CoursePresentation",
+  "title": "Course Presentation",
+  "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 0,
   "patchVersion": 0,
