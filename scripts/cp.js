@@ -175,7 +175,6 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, elements) {
-  var that = this;
   if (elements === undefined || !elements.length) {
     return;
   }
@@ -183,20 +182,15 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-    var $h5pElementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
-    if (element.solution) {
-      elementInstance.showSolutions = function() {
-        if ($h5pElementContainer.children('.h5p-element-solution').length === 0) {
-          var $elementSolutionButton = H5P.jQuery('<a href="#" class="h5p-element-solution">?</a>')
-            .data('solution', element.solution).click(function(event) {
-              event.preventDefault();
-              that.showPopup(H5P.jQuery(this).data('solution'));
-            });
-          $h5pElementContainer.append($elementSolutionButton);
-        }
-      }
+    var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+    elementInstance.attach($elementContainer);
+    if (this.editor !== undefined) {
+      // If we're in the H5P editor, allow it to manipulate the elements
+      this.editor.processElement(slideIndex, element, elementInstance, $elementContainer);
     }
-    elementInstance.attach($h5pElementContainer);
+    else if (element.solution) {
+      this.addElementSolutionButton(element, elementInstance, $elementContainer);
+    }
     if (this.hasSolutions(elementInstance)) {
       if (this.slidesWithSolutions[slideIndex] === undefined) {
         this.slidesWithSolutions[slideIndex] = [];
@@ -205,6 +199,19 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
     }
   }
 };
+H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
+  var that = this;
+  elementInstance.showSolutions = function() {
+    if ($elementContainer.children('.h5p-element-solution').length === 0) {
+      var $elementSolutionButton = H5P.jQuery('<a href="#" class="h5p-element-solution">?</a>')
+      .data('solution', element.solution).click(function(event) {
+        event.preventDefault();
+        that.showPopup(H5P.jQuery(this).data('solution'));
+      });
+      $elementContainer.append($elementSolutionButton);
+    }
+  }
+}
 
 H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
   var html = '<div class="h5p-popup-overlay"><div class="h5p-popup-container">' + popupContent + '</div></div>';
