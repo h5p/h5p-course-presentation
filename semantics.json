@@ -48,7 +48,7 @@
               {
                 "name": "metadata",
                 "type": "group",
-                "label": "Metadata"
+                "label": "Metadata",
                 "fields": [
                   {
                     "name": "title",
