@@ -27,32 +27,51 @@
               },
               {
                 "name": "x",
-                "type": "number"
+                "type": "number",
+                "widget": "none"
               },
               {
                 "name": "y",
-                "type": "number"
+                "type": "number",
+                "widget": "none"
               },
               {
                 "name": "width",
-                "type": "number"
+                "type": "number",
+                "widget": "none"
               },
               {
                 "name": "height",
-                "type": "number"
+                "type": "number",
+                "widget": "none"
               },
               {
-                "name": "title",
-                "type": "text"
-              },
-              {
-                "name": "copyright",
-                "type": "text"
+                "name": "metadata",
+                "type": "group",
+                "label": "Metadata"
+                "fields": [
+                  {
+                    "name": "title",
+                    "type": "text",
+                    "label": "Title"
+                  },
+                  {
+                    "name": "author",
+                    "type": "text",
+                    "label": "Author"
+                  },
+                  {
+                    "name": "lisence",
+                    "type": "text",
+                    "label": "Lisence"
+                  }
+                ]
               },
               {
                 "name": "solution",
                 "type": "text",
-                "widget": "html"
+                "widget": "none",
+                "label": "Solution"
               }
             ]
           }
