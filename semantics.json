@@ -18,8 +18,10 @@
                 "name": "action",
                 "type": "library",
                 "options": [
-                  "H5P.cpText 1.0",
-                  "H5P.cpImage 1.0",
+                  "H5P.Text 1.0",
+                  "H5P.Image 1.0",
+                  "H5P.Video 1.0",
+                  "H5P.Audio 1.0",
                   "H5P.Blanks 1.0"
                 ]
               },
