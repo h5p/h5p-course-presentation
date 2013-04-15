@@ -205,7 +205,7 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
       this.addElementSolutionButton(element, elementInstance, $elementContainer);
     }
     
-    if (this.hasSolutions(elementInstance)) {
+    if (this.checkForSolutions(elementInstance)) {
       if (this.slidesWithSolutions[slideIndex] === undefined) {
         this.slidesWithSolutions[slideIndex] = [];
       }
@@ -257,12 +257,11 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
  *  true if the element has a solution
  *  false otherwise
  */
-H5P.CoursePresentation.prototype.hasSolutions = function (elementInstance) {
+H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
   if (elementInstance.showSolutions !== undefined) {
     return true;
   }
   else {
-    // TODO: Add check for solutionText when the solution text issue is closed
     return false;
   }
 };
@@ -641,13 +640,13 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
         }
       }
       slideScores.push({
-        "slide": (i + 1), // TODO: Double quotes are for HTML and JSON, not JS. Also I belive object properties are faster if they're not defined as strings.
-        "score": slideScore,
-        "maxScore": slideMaxScore
+        slide: (i + 1),
+        score: slideScore,
+        maxScore: slideMaxScore
       });
     }
   }
-  H5P.jQuery('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show(); // TODO: Rewrite! This selector will select buttons in all of the CPs on this page. Also this is a very slow selector.
+  this.$container.find('.h5p-hidden-solution-btn').show();
   if (hasScores) {
     this.outputScoreStats(slideScores);
   }
