@@ -9,7 +9,6 @@ var H5P = H5P || {};
  */
 H5P.CoursePresentation = function (params, id) {
   this.swipeThreshold = 100; // px
-  this.slideWidthRatio = (100 - 31.25) / 100; // Since the slides have empty space under the keywords list.
 
   this.slides = params.slides;
   this.slidesWithSolutions = [];
@@ -37,20 +36,20 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
 
   var html = '' +
-'<div class="h5p-wrapper" tabindex="0">' +
-'  <div class="h5p-presentation-wrapper">' +
-'    <div class="h5p-slides-wrapper h5p-animate"></div>' +
-'    <div class="h5p-keywords-wrapper"></div>' +
-'  </div>' +
-'  <div class="h5p-slideination">' +
-'    <a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>' +
-'    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
-'    <ol></ol>' +
-'    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
-'    <a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>' +
-'    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
-'  </div>' +
-'</div>';
+          '<div class="h5p-wrapper" tabindex="0">' +
+          '  <div class="h5p-presentation-wrapper">' +
+          '    <div class="h5p-slides-wrapper h5p-animate"></div>' +
+          '    <div class="h5p-keywords-wrapper"></div>' +
+          '  </div>' +
+          '  <div class="h5p-slideination">' +
+          '    <a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>' +
+          '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
+          '    <ol></ol>' +
+          '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
+          '    <a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>' +
+          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
+          '  </div>' +
+          '</div>';
 
   $container.addClass('h5p-course-presentation').html(html);
 
@@ -91,6 +90,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.keywordsWidth = 0;
     this.$keywordsWrapper.remove();
   }
+  this.slideWidthRatio = (100 - this.keywordsWidth) / 100; // Since the slides have empty space under the keywords list.
 
   var keywords = '';
   var slideinationSlides = '';
@@ -137,6 +137,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
   if (!fullscreenOn) {
+    // Make sure we use all the height we can get. Needed to scale up.
     this.$container.css('height', '99999px');
   }
 
@@ -168,11 +169,12 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 };
 
 /**
- * Add elements to the given slide and stores elements with solutions
+ * * Add elements to the given slide and stores elements with solutions
  *
- * @param {H5P.jQuery} $slide The slide.
+ * @param {int} slideIndex The index of the slide we're adding elements to.
+ * @param {jQuery} $slide The slide.
  * @param {Array} elements List of elements to add.
- * @returns {undefined} Nothing.
+ * @returns {unresolved} Nothing.
  */
 H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, elements) {
   if (elements === undefined || !elements.length) {
@@ -181,9 +183,12 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
 
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
+    
     var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
+    
     var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
     elementInstance.attach($elementContainer);
+    
     if (this.editor !== undefined) {
       // If we're in the H5P editor, allow it to manipulate the elements
       this.editor.processElement(slideIndex, element, elementInstance, $elementContainer);
@@ -191,6 +196,7 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
     else if (element.solution) {
       this.addElementSolutionButton(element, elementInstance, $elementContainer);
     }
+    
     if (this.hasSolutions(elementInstance)) {
       if (this.slidesWithSolutions[slideIndex] === undefined) {
         this.slidesWithSolutions[slideIndex] = [];
@@ -199,6 +205,15 @@ H5P.CoursePresentation.prototype.addElements = function (slideIndex, $slide, ele
     }
   }
 };
+
+/**
+ * Adds a solution button?
+ * 
+ * @param {Object} element Properties from params.
+ * @param {Object} elementInstance Instance of the element.
+ * @param {jQuery} $elementContainer Wrapper for the element.
+ * @returns {undefined}
+ */
 H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
   elementInstance.showSolutions = function() {
@@ -210,9 +225,15 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
       });
       $elementContainer.append($elementSolutionButton);
     }
-  }
-}
+  };
+};
 
+/**
+ * Displays a popup.
+ * 
+ * @param {String} popupContent
+ * @returns {undefined}
+ */
 H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
   var html = '<div class="h5p-popup-overlay"><div class="h5p-popup-container">' + popupContent + '</div></div>';
   H5P.jQuery(html).prependTo(this.$container).click(function() {
@@ -586,9 +607,8 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
 
 /**
  * Show solutions for all slides that have solutions
- *
- * @param {jQuery event} event
- *  event object (From the click event)
+ * 
+ * @returns {undefined}
  */
 H5P.CoursePresentation.prototype.showSolutions = function () {
   var jumpedToFirst = false;
@@ -613,13 +633,13 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
         }
       }
       slideScores.push({
-        "slide": (i + 1),
+        "slide": (i + 1), // TODO: Double quotes are for HTML and JSON, not JS. Also I belive object properties are faster if they're not defined as strings.
         "score": slideScore,
         "maxScore": slideMaxScore
       });
     }
   }
-  H5P.jQuery('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show();
+  H5P.jQuery('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show(); // TODO: Rewrite! This selector will select buttons in all of the CPs on this page. Also this is a very slow selector.
   if (hasScores) {
     this.outputScoreStats(slideScores);
   }
@@ -630,8 +650,8 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
   var totalMaxScore = 0;
   var tds = ''; // For saving the main table rows...
   for (var i = 0; i < slideScores.length; i++) {
-    tds += '<tr><td><a href="#" CLASS="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>';
-    tds += '<td>' + slideScores[i].score + '</td><td>' + slideScores[i].maxScore + '</td></tr>'
+    tds += '<tr><td><a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>'
+            + '<td>' + slideScores[i].score + '</td><td>' + slideScores[i].maxScore + '</td></tr>';
     totalScore += slideScores[i].score;
     totalMaxScore += slideScores[i].maxScore;
   }
@@ -644,28 +664,28 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
     scoreMessage = this.l10n.badScore;
   }
   var html = '' +
-'<div class="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</div>' +
-'<table>' +
-'  <thead>' +
-'    <tr>' +
-'      <th>' + this.l10n.slide + '</th>' +
-'      <th>' + this.l10n.yourScore + '</th>' +
-'      <th>' + this.l10n.maxScore + '</th>' +
-'    </tr>' +
-'  </thead>' +
-'  <tbody>' + tds + '</tbody>' +
-'  <tfoot>' +
-'    <tr>' +
-'      <td>' + this.l10n.total + '</td>' +
-'      <td>' + totalScore + '</td>' +
-'      <td>' + totalMaxScore + '</td>' +
-'    </tr>' +
-'  </tfoot>' +
-'</table>';
+          '<div class="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</div>' +
+          '<table>' +
+          '  <thead>' +
+          '    <tr>' +
+          '      <th>' + this.l10n.slide + '</th>' +
+          '      <th>' + this.l10n.yourScore + '</th>' +
+          '      <th>' + this.l10n.maxScore + '</th>' +
+          '    </tr>' +
+          '  </thead>' +
+          '  <tbody>' + tds + '</tbody>' +
+          '  <tfoot>' +
+          '    <tr>' +
+          '      <td>' + this.l10n.total + '</td>' +
+          '      <td>' + totalScore + '</td>' +
+          '      <td>' + totalMaxScore + '</td>' +
+          '    </tr>' +
+          '  </tfoot>' +
+          '</table>';
   this.showPopup(html);
   var that = this;
   this.$container.find('.h5p-slide-link').click(function(event) {
     event.preventDefault();
     that.jumpToSlide(H5P.jQuery(this).data('slide') - 1);
   });
-}
+};
