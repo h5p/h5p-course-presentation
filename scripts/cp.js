@@ -583,10 +583,11 @@ H5P.CoursePresentation.createSlide = function (slide) {
   return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '"></div>';
 };
 
-/**
+/** 
  * Create html for a slideination slide.
  *
  * @param {int} index Optional
+ * @param {String} title
  * @param {int} first Optional
  * @returns {String}
  */
