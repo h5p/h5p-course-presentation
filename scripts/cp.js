@@ -21,7 +21,15 @@ H5P.CoursePresentation = function (params, id) {
     jumpToSlide: "Jump to slide",
     scrollRight: "Scroll - right",
     next: "Next",
-    nextSlide: "Next slide"
+    nextSlide: "Next slide",
+    slide: "Slide",
+    yourScore: "Your score",
+    maxScore: "Max score",
+    goodScore: "Congratulations! You got @percent correct!",
+    okScore: "Nice effort! You got @percent correct!",
+    badScore: "You need to work more on this. You only got @percent correct...",
+    total: "TOTAL",
+    showSolutions: "Show solutions"
   };
   this.contentPath = H5P.getContentPath(id);
 };
