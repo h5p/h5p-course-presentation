@@ -188,6 +188,8 @@
   position: absolute;
   width: 100%;
   z-index: 200;
+  margin: -10px 0 0 -10px;
+  padding: 10px;
 }
 
 .h5p-course-presentation .h5p-popup-container {
@@ -202,7 +204,7 @@
   width: 50%;
   padding: 1em;
   margin-left: -1em;
-  font-size: 1.3em;
+  font-size: 0.9em;
 }
 
 .h5p-course-presentation .h5p-popup-container tfoot {
@@ -210,8 +212,12 @@
 }
 
 .h5p-course-presentation .h5p-score-message {
-  font-size: 1.2em;
-  line-height: 1.3em;
+  font-size: 0.8em;
+}
+
+.h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
+  padding: 0.1em;
+  text-align: center;
 }
 
 .h5p-course-presentation .h5p-element-solution {
@@ -219,12 +225,11 @@
   border: 2px solid;
   border-radius: 6px 6px 6px 6px;
   display: block;
-  font-size: 1.2em;
   padding: 0.2em;
+  font-weight: bold;
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 199;
 }
 
 .h5p-course-presentation .h5p-no-solution {

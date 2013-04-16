@@ -263,7 +263,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
 H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
   var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container">' + popupContent +
            '<a href="#" class="h5p-button h5p-close-popup">' + this.l10n.close + '</a></div></div>')
-  .prependTo(this.$container).find('.h5p-close-popup').click(function(event) {
+  .prependTo(this.$wrapper).find('.h5p-close-popup').click(function(event) {
     event.preventDefault();
     $popup.remove();
   }).end();
@@ -543,7 +543,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   this.jumpSlideination(slideNumber, noScroll);
 
   // Show show solutions button on last slide
-  if (slideNumber === this.slides.length - 1) {
+  if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
     H5P.jQuery('.h5p-show-solutions', this.$container).show();
   }
   
@@ -683,8 +683,8 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
   var totalMaxScore = 0;
   var tds = ''; // For saving the main table rows...
   for (var i = 0; i < slideScores.length; i++) {
-    tds += '<tr><td><a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>'
-            + '<td>' + slideScores[i].score + '</td><td>' + slideScores[i].maxScore + '</td></tr>';
+    tds += '<tr><td class="h5p-td"><a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>'
+            + '<td class="h5p-td">' + slideScores[i].score + '</td><td class="h5p-td">' + slideScores[i].maxScore + '</td></tr>';
     totalScore += slideScores[i].score;
     totalMaxScore += slideScores[i].maxScore;
   }
@@ -701,17 +701,17 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
           '<table>' +
           '  <thead>' +
           '    <tr>' +
-          '      <th>' + this.l10n.slide + '</th>' +
-          '      <th>' + this.l10n.yourScore + '</th>' +
-          '      <th>' + this.l10n.maxScore + '</th>' +
+          '      <th class="h5p-th">' + this.l10n.slide + '</th>' +
+          '      <th class="h5p-th">' + this.l10n.yourScore + '</th>' +
+          '      <th class="h5p-th">' + this.l10n.maxScore + '</th>' +
           '    </tr>' +
           '  </thead>' +
           '  <tbody>' + tds + '</tbody>' +
           '  <tfoot>' +
           '    <tr>' +
-          '      <td>' + this.l10n.total + '</td>' +
-          '      <td>' + totalScore + '</td>' +
-          '      <td>' + totalMaxScore + '</td>' +
+          '      <td class="h5p-td">' + this.l10n.total + '</td>' +
+          '      <td class="h5p-td">' + totalScore + '</td>' +
+          '      <td class="h5p-td">' + totalMaxScore + '</td>' +
           '    </tr>' +
           '  </tfoot>' +
           '</table>';
