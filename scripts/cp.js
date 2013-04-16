@@ -116,7 +116,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     
     if (slide.elements !== undefined) {
       for (var j = 0; j < slide.elements.length; j++) {
-        this.addElement(slide.elements[j], $slide, j);
+        this.addElement(slide.elements[j], $slide, i);
       }
     } 
 
