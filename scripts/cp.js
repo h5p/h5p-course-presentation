@@ -113,12 +113,12 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (first) {
       this.$current = $slide.addClass('h5p-current');
     }
-    
+
     if (slide.elements !== undefined) {
       for (var j = 0; j < slide.elements.length; j++) {
         this.addElement(slide.elements[j], $slide, i);
       }
-    } 
+    }
 
     if (this.keywordsWidth && slide.keywords !== undefined) {
       keywords += this.keywordsHtml(slide.keywords, first);
@@ -187,7 +187,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 /**
  * * Add elements to the given slide and stores elements with solutions
  *
- * @param {int} slideIndex 
+ * @param {int} slideIndex
  * @param {jQuery} $slide The slide.
  * @param {Array} elements List of elements to add.
  * @returns {unresolved} Nothing.
@@ -195,7 +195,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 
 /**
  * Add element to the given slide and stores elements with solutions.
- * 
+ *
  * @param {Object} element The Element to add.
  * @param {jQuery} $slide Optional, the slide. Defaults to current.
  * @param {int} index Optional, the index of the slide we're adding elements to.
@@ -208,12 +208,12 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   if (index === undefined) {
     index = $slide.index();
   }
-  
+
   var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
-  
+
   var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   elementInstance.attach($elementContainer);
-  
+
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elements
     this.editor.processElement(index, element, elementInstance, $elementContainer);
@@ -221,14 +221,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   else if (element.solution) {
     this.addElementSolutionButton(element, elementInstance, $elementContainer);
   }
-    
+
   if (this.checkForSolutions(elementInstance)) {
     if (this.slidesWithSolutions[index] === undefined) {
       this.slidesWithSolutions[index] = [];
     }
     this.slidesWithSolutions[index].push(elementInstance);
   }
-   
+
   return $elementContainer;
 };
 
@@ -546,7 +546,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
     H5P.jQuery('.h5p-show-solutions', this.$container).show();
   }
-  
+
   if (this.editor !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
