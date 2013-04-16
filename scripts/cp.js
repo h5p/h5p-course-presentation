@@ -546,6 +546,11 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   if (slideNumber === this.slides.length - 1) {
     H5P.jQuery('.h5p-show-solutions', this.$container).show();
   }
+  
+  if (this.editor !== undefined) {
+    // Update drag and drop menu bar container
+    this.editor.dnb.setContainer(this.$current);
+  }
 
   return true;
 };
