@@ -92,8 +92,8 @@
   filter: alpha(opacity = 100);
 }
 .h5p-course-presentation .h5p-slide {
-  padding: 0.625em 0.625em 0.625em 32.8125%;
-  width: 65.625%;
+  padding: 0 0 0 12.5em;
+  width: 68.75%;
   height: 100%;
   position: absolute;
   top: 0;
