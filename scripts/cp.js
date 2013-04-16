@@ -5,24 +5,35 @@ var H5P = H5P || {};
  *
  * @param {object} params Start paramteres.
  * @param {int} id Content identifier
+ * @param {function} editor
+ *  Set if an editor is initiating this library
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation = function (params, id) {
+H5P.CoursePresentation = function (params, id, editor) {
   this.swipeThreshold = 100; // px
 
   this.slides = params.slides;
   this.slidesWithSolutions = [];
+  this.editor = editor;
 
-  this.l10n = params.l10n !== undefined ? params.l10n : {
-    // Defaults
+  this.l10n = H5P.jQuery.extend({}, params.l10n !== undefined ? params.l10n : {}, {
     prev: "Prev",
     prevSlide: "Previous slide",
     scrollLeft: "Scroll - left",
     jumpToSlide: "Jump to slide",
     scrollRight: "Scroll - right",
     next: "Next",
-    nextSlide: "Next slide"
-  };
+    nextSlide: "Next slide",
+    slide: "Slide",
+    yourScore: "Your score",
+    maxScore: "Max score",
+    goodScore: "Congratulations! You got @percent correct!",
+    okScore: "Nice effort! You got @percent correct!",
+    badScore: "You need to work more on this. You only got @percent correct...",
+    total: "TOTAL",
+    showSolutions: "Show solutions",
+    close: "Close"
+  });
   this.contentPath = H5P.getContentPath(id);
 };
 
@@ -211,7 +222,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     this.addElementSolutionButton(element, elementInstance, $elementContainer);
   }
     
-  if (this.hasSolutions(elementInstance)) {
+  if (this.checkForSolutions(elementInstance)) {
     if (this.slidesWithSolutions[index] === undefined) {
       this.slidesWithSolutions[index] = [];
     }
@@ -223,7 +234,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
 /**
  * Adds a solution button?
- * 
+ *
  * @param {Object} element Properties from params.
  * @param {Object} elementInstance Instance of the element.
  * @param {jQuery} $elementContainer Wrapper for the element.
@@ -245,15 +256,17 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
 
 /**
  * Displays a popup.
- * 
+ *
  * @param {String} popupContent
  * @returns {undefined}
  */
 H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
-  var html = '<div class="h5p-popup-overlay"><div class="h5p-popup-container">' + popupContent + '</div></div>';
-  H5P.jQuery(html).prependTo(this.$container).click(function() {
-    H5P.jQuery(this).remove();
-  });
+  var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container">' + popupContent +
+           '<a href="#" class="h5p-button h5p-close-popup">' + this.l10n.close + '</a></div></div>')
+  .prependTo(this.$container).find('.h5p-close-popup').click(function(event) {
+    event.preventDefault();
+    $popup.remove();
+  }).end();
 };
 
 /**
@@ -264,12 +277,11 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
  *  true if the element has a solution
  *  false otherwise
  */
-H5P.CoursePresentation.prototype.hasSolutions = function (elementInstance) {
+H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
   if (elementInstance.showSolutions !== undefined) {
     return true;
   }
   else {
-    // TODO: Add check for solutionText when the solution text issue is closed
     return false;
   }
 };
@@ -598,7 +610,7 @@ H5P.CoursePresentation.createSlide = function (slide) {
   return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '"></div>';
 };
 
-/** 
+/**
  * Create html for a slideination slide.
  *
  * @param {int} index Optional
@@ -623,7 +635,7 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
 
 /**
  * Show solutions for all slides that have solutions
- * 
+ *
  * @returns {undefined}
  */
 H5P.CoursePresentation.prototype.showSolutions = function () {
@@ -649,13 +661,13 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
         }
       }
       slideScores.push({
-        "slide": (i + 1), // TODO: Double quotes are for HTML and JSON, not JS. Also I belive object properties are faster if they're not defined as strings.
-        "score": slideScore,
-        "maxScore": slideMaxScore
+        slide: (i + 1),
+        score: slideScore,
+        maxScore: slideMaxScore
       });
     }
   }
-  H5P.jQuery('.h5p-course-presentation .h5p-element .h5p-hidden-solution-btn').show(); // TODO: Rewrite! This selector will select buttons in all of the CPs on this page. Also this is a very slow selector.
+  this.$container.find('.h5p-hidden-solution-btn').show();
   if (hasScores) {
     this.outputScoreStats(slideScores);
   }

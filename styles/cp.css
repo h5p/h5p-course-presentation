@@ -211,6 +211,7 @@
 
 .h5p-course-presentation .h5p-score-message {
   font-size: 1.2em;
+  line-height: 1.3em;
 }
 
 .h5p-course-presentation .h5p-element-solution {
@@ -228,4 +229,26 @@
 
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
+}
+
+.h5p-course-presentation .h5p-close-popup {
+  color: #2d2c28;
+
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+
+  border: 1px solid #808080;
+  border-radius: 4px;
+
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffffff 0%,#e0e0e0 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
+
+  float: right;
 }
