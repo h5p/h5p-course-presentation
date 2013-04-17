@@ -53,16 +53,19 @@
                   {
                     "name": "title",
                     "type": "text",
+                    "optional": true,
                     "label": "Title"
                   },
                   {
                     "name": "author",
                     "type": "text",
+                    "optional": true,
                     "label": "Author"
                   },
                   {
                     "name": "lisence",
                     "type": "text",
+                    "optional": true,
                     "label": "Lisence"
                   }
                 ]
