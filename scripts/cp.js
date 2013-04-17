@@ -32,7 +32,10 @@ H5P.CoursePresentation = function (params, id, editor) {
     badScore: "You need to work more on this. You only got @percent correct...",
     total: "TOTAL",
     showSolutions: "Show solutions",
-    close: "Close"
+    close: "Close",
+    title: "Title",
+    author: "Author",
+    lisence: "Lisence"
   });
   this.contentPath = H5P.getContentPath(id);
 };
@@ -185,15 +188,6 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 };
 
 /**
- * * Add elements to the given slide and stores elements with solutions
- *
- * @param {int} slideIndex 
- * @param {jQuery} $slide The slide.
- * @param {Array} elements List of elements to add.
- * @returns {unresolved} Nothing.
- */
-
-/**
  * Add element to the given slide and stores elements with solutions.
  * 
  * @param {Object} element The Element to add.
@@ -218,8 +212,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     // If we're in the H5P editor, allow it to manipulate the elements
     this.editor.processElement(element, $elementContainer);
   }
-  else if (element.solution) {
-    this.addElementSolutionButton(element, elementInstance, $elementContainer);
+  else {
+    if (element.solution) {
+      this.addElementSolutionButton(element, elementInstance, $elementContainer);
+    }
+    var info = this.getElementInfo(element);
+    if (info) {
+      this.addElementInfoButton(info, $elementContainer);
+    }
   }
     
   if (this.checkForSolutions(elementInstance)) {
@@ -233,7 +233,49 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 };
 
 /**
- * Adds a solution button?
+ * Adds a solution button
+ *
+ * @param {string} info Info in html format.
+ * @param {jQuery} $elementContainer Wrapper for the element.
+ * @returns {undefined}
+ */
+H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $elementContainer) {
+  var that = this;
+  var $elementInfoButton = H5P.jQuery('<a href="#" class="h5p-element-info">i</a>')
+  .click(function(event) {
+    event.preventDefault();
+    that.showPopup(info);
+  });
+  $elementContainer.append($elementInfoButton);
+};
+
+/**
+ * Extract info from element Params and convert to html
+ * 
+ * @param {object} elementParams
+ * @returns
+ *  false if no info is found
+ *  info as html string if info is found
+ */
+H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
+  var infoKeys = ['title', 'author', 'lisence'];
+  var listContent = '';
+  if (elementParams.metadata !== undefined) {
+    for (var i = 0; i < infoKeys.length; i++) {
+      var info = elementParams.metadata[infoKeys[i]]
+      if (info !== undefined && info.length > 0) {
+        listContent += '<dt>' + this.l10n[infoKeys[i]] + ':</dt><dd>' + info + '</dd>';
+      }
+    }
+  }
+  if (listContent === '') {
+    return false;
+  }
+  return '<dl>' + listContent + '</dl>';
+}
+
+/**
+ * Adds a info button
  *
  * @param {Object} element Properties from params.
  * @param {Object} elementInstance Instance of the element.
@@ -720,5 +762,6 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
   this.$container.find('.h5p-slide-link').click(function(event) {
     event.preventDefault();
     that.jumpToSlide(H5P.jQuery(this).data('slide') - 1);
+    that.$container.find('.h5p-popup-overlay').remove();
   });
 };

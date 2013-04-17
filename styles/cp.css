@@ -232,6 +232,18 @@
   top: 0;
 }
 
+.h5p-course-presentation .h5p-element-info {
+  background: none repeat scroll 0 0 #EEEEEE;
+  border: 2px solid;
+  border-radius: 6px 6px 6px 6px;
+  display: block;
+  padding: 0.2em;
+  font-weight: bold;
+  position: absolute;
+  right: 1.2em;
+  top: 0;
+}
+
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
 }
@@ -260,4 +272,13 @@
 
 .h5p-course-presentation .h5p-video {
   background-color: #000;
+}
+
+.h5p-course-presentation .h5p-popup-container dl {
+  text-align: left;
+}
+
+.h5p-course-presentation .h5p-popup-container dt {
+  float: left;
+  padding-right: 0.2em;
 }

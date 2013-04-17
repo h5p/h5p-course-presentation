@@ -199,6 +199,24 @@
         "type": "text",
         "label": "Text for the show solutions button",
         "default": "Show solutions"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "label": "Translation for \"Title\"",
+        "default": "Title"
+      },
+      {
+        "name": "author",
+        "type": "text",
+        "label": "Translation for \"Author\"",
+        "default": "Author"
+      },
+      {
+        "name": "lisence",
+        "type": "text",
+        "label": "Translation for \"Lisence\"",
+        "default": "Lisence"
       }
     ]
   }
