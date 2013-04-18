@@ -603,6 +603,9 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   if (this.editor !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
+    if (this.editor.dnb.dnd.$coordinates !== undefined) {
+      this.editor.dnb.dnd.$coordinates.remove();
+    }
   }
 
   return true;
