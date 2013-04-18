@@ -57,7 +57,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    <div class="h5p-slides-wrapper h5p-keyword-slides h5p-animate"></div>' +
           '    <div class="h5p-keywords-wrapper"></div>' +
           '  </div>' +
-          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
+          '  <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  <div class="h5p-slideination">' +
           '    <a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>' +
           '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
