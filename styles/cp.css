@@ -97,18 +97,24 @@
   left: 100%;
   background: #fafafe;
   z-index: 1;
+  display: none;
 }
 .h5p-course-presentation .h5p-keyword-slides .h5p-slide {
   padding: 0 0 0 12.5em;
   width: 68.75%;
 }
-.h5p-course-presentation .h5p-animate .h5p-slide {
+.h5p-course-presentation .h5p-slide.h5p-animate {
+  display: block;
   -webkit-transition: left 0.25s ease-in-out;
   -moz-transition: left 0.25s ease-in-out;
   -o-transition: left 0.25s ease-in-out;
   transition: left 0.25s ease-in-out;
 }
+.h5p-course-presentation .h5p-slide.h5p-touch-move {
+  display: block;
+}
 .h5p-course-presentation .h5p-current {
+  display: block;
   left: 0;
   z-index: 2;
 }

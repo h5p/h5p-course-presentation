@@ -16,7 +16,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.slidesWithSolutions = [];
   this.editor = editor;
 
-  this.l10n = H5P.jQuery.extend({}, {
+  this.l10n = H5P.jQuery.extend({}, params.l10n !== undefined ? params.l10n : {}, {
     prev: 'Prev',
     prevSlide: 'Previous slide',
     scrollLeft: 'Scroll - left',
@@ -38,7 +38,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     lisence: 'Lisence',
     infoButtonTitle: 'View metadata',
     solutionsButtonTitle: 'View solution'
-  }, params.l10n !== undefined ? params.l10n : {});
+  });
   this.contentPath = H5P.getContentPath(id);
 };
 
@@ -54,10 +54,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var html = '' +
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-presentation-wrapper">' +
-          '    <div class="h5p-slides-wrapper h5p-keyword-slides h5p-animate"></div>' +
+          '    <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
           '    <div class="h5p-keywords-wrapper"></div>' +
           '  </div>' +
-          '  <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
+          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  <div class="h5p-slideination">' +
           '    <a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>' +
           '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
@@ -119,12 +119,12 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (first) {
       this.$current = $slide.addClass('h5p-current');
     }
-
+    
     if (slide.elements !== undefined) {
       for (var j = 0; j < slide.elements.length; j++) {
         this.addElement(slide.elements[j], $slide, i);
       }
-    }
+    } 
 
     if (this.keywordsWidth && slide.keywords !== undefined) {
       keywords += this.keywordsHtml(slide.keywords, first);
@@ -192,7 +192,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 
 /**
  * Add element to the given slide and stores elements with solutions.
- *
+ * 
  * @param {Object} element The Element to add.
  * @param {jQuery} $slide Optional, the slide. Defaults to current.
  * @param {int} index Optional, the index of the slide we're adding elements to.
@@ -205,12 +205,12 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   if (index === undefined) {
     index = $slide.index();
   }
-
+  
   var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   elementInstance.attach($elementContainer);
-
+  
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elements
     this.editor.processElement(element, $elementContainer);
@@ -224,14 +224,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
       this.addElementInfoButton(info, $elementContainer);
     }
   }
-
+    
   if (this.checkForSolutions(elementInstance)) {
     if (this.slidesWithSolutions[index] === undefined) {
       this.slidesWithSolutions[index] = [];
     }
     this.slidesWithSolutions[index].push(elementInstance);
   }
-
+   
   return $elementContainer;
 };
 
@@ -254,7 +254,7 @@ H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $element
 
 /**
  * Extract info from element Params and convert to html
- *
+ * 
  * @param {object} elementParams
  * @returns
  *  false if no info is found
@@ -411,14 +411,11 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
   var startX, startY, lastX, prevX, nextX, scroll;
 
   this.$slidesWrapper.bind('touchstart', function (event) {
-    // Disable animations when touching
-    that.$slidesWrapper.removeClass('h5p-animate');
-
     // Set start positions
     startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
-    prevX = parseInt(that.$current.prev().css('left'));
-    nextX = parseInt(that.$current.next().css('left'));
+    prevX = parseInt(that.$current.addClass('h5p-touch-move').prev().addClass('h5p-touch-move').css('left'));
+    nextX = parseInt(that.$current.next().addClass('h5p-touch-move').css('left'));
 
     scroll = null;
 
@@ -456,22 +453,15 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     that.$current.css('left', -movedX);
 
   }).bind('touchend', function () {
-    // Enable animations again
-    that.$slidesWrapper.addClass('h5p-animate');
-
     if (!scroll) {
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
-      if (moved > that.swipeThreshold) {
-        that.nextSlide();
-      }
-      else if (moved < -that.swipeThreshold) {
-        that.previousSlide();
+      if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
+        return;
       }
     }
-
-    // Remove touch moving.
-    that.$slidesWrapper.children().css('left', '');
+    // Reset.
+    that.$slidesWrapper.children().css('left', '').removeClass('h5p-touch-move');
   });
 };
 
@@ -571,9 +561,27 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
  * @returns {Boolean} Always true.
  */
 H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
-  // Jump to slide
-  this.$current.removeClass('h5p-current');
-  this.$current = this.$slidesWrapper.children().removeClass('h5p-previous').filter(':lt(' + slideNumber + ')').addClass('h5p-previous').end().eq(slideNumber).addClass('h5p-current');
+  var that = this;
+  
+  if (this.$current.hasClass('h5p-animate')) {
+    return;
+  }
+  
+  // Jump to given slide and enable animation.
+  var $old = this.$current.addClass('h5p-animate');
+  this.$current = this.$slidesWrapper.children(':eq(' + slideNumber + ')').addClass('h5p-animate');
+  
+  setTimeout(function () {
+    // Play animations
+    $old.removeClass('h5p-current');
+    that.$slidesWrapper.children().css('left', '').removeClass('h5p-touch-move').removeClass('h5p-previous').filter(':lt(' + slideNumber + ')').addClass('h5p-previous');
+    that.$current.addClass('h5p-current');
+  }, 1);
+  
+  setTimeout(function () {
+    // Done animating
+    that.$slidesWrapper.children().removeClass('h5p-animate');
+  }, 250);
 
   // Jump keywords
   if (this.$keywords !== undefined) {
@@ -588,10 +596,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   this.jumpSlideination(slideNumber, noScroll);
 
   // Show show solutions button on last slide
-  if (slideNumber === this.slides.length - 1 && this.editor === undefined && this.slidesWithSolutions.length > 0) {
+  if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
     H5P.jQuery('.h5p-show-solutions', this.$container).show();
   }
-
+  
   if (this.editor !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
