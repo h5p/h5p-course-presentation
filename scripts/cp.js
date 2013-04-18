@@ -17,25 +17,27 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.editor = editor;
 
   this.l10n = H5P.jQuery.extend({}, params.l10n !== undefined ? params.l10n : {}, {
-    prev: "Prev",
-    prevSlide: "Previous slide",
-    scrollLeft: "Scroll - left",
-    jumpToSlide: "Jump to slide",
-    scrollRight: "Scroll - right",
-    next: "Next",
-    nextSlide: "Next slide",
-    slide: "Slide",
-    yourScore: "Your score",
-    maxScore: "Max score",
-    goodScore: "Congratulations! You got @percent correct!",
-    okScore: "Nice effort! You got @percent correct!",
-    badScore: "You need to work more on this. You only got @percent correct...",
-    total: "TOTAL",
-    showSolutions: "Show solutions",
-    close: "Close",
-    title: "Title",
-    author: "Author",
-    lisence: "Lisence"
+    prev: 'Prev',
+    prevSlide: 'Previous slide',
+    scrollLeft: 'Scroll - left',
+    jumpToSlide: 'Jump to slide',
+    scrollRight: 'Scroll - right',
+    next: 'Next',
+    nextSlide: 'Next slide',
+    slide: 'Slide',
+    yourScore: 'Your score',
+    maxScore: 'Max score',
+    goodScore: 'Congratulations! You got @percent correct!',
+    okScore: 'Nice effort! You got @percent correct!',
+    badScore: 'You need to work more on this. You only got @percent correct...',
+    total: 'TOTAL',
+    showSolutions: 'Show solutions',
+    close: 'Close',
+    title: 'Title',
+    author: 'Author',
+    lisence: 'Lisence',
+    infoButtonTitle: 'View metadata',
+    solutionsButtonTitle: 'View solution'
   });
   this.contentPath = H5P.getContentPath(id);
 };
@@ -55,13 +57,13 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    <div class="h5p-slides-wrapper h5p-animate"></div>' +
           '    <div class="h5p-keywords-wrapper"></div>' +
           '  </div>' +
+          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  <div class="h5p-slideination">' +
           '    <a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>' +
           '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
           '    <ol></ol>' +
           '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
           '    <a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>' +
-          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  </div>' +
           '</div>';
 
@@ -90,7 +92,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
-  var $solutionsButton = this.$slideination.children('.h5p-show-solutions');
+  var $solutionsButton = this.$wrapper.children('.h5p-show-solutions');
 
   // Detemine if there are any keywords.
   for (var i = 0; i < this.slides.length; i++) {
@@ -241,7 +243,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
  */
 H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $elementContainer) {
   var that = this;
-  var $elementInfoButton = H5P.jQuery('<a href="#" class="h5p-element-info">i</a>')
+  var $elementInfoButton = H5P.jQuery('<a href="#" class="h5p-element-info" title="' + this.l10n.infoButtonTitle +'"></a>')
   .click(function(event) {
     event.preventDefault();
     that.showPopup(info);
@@ -262,7 +264,7 @@ H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
   var listContent = '';
   if (elementParams.metadata !== undefined) {
     for (var i = 0; i < infoKeys.length; i++) {
-      var info = elementParams.metadata[infoKeys[i]]
+      var info = elementParams.metadata[infoKeys[i]];
       if (info !== undefined && info.length > 0) {
         listContent += '<dt>' + this.l10n[infoKeys[i]] + ':</dt><dd>' + info + '</dd>';
       }
@@ -272,7 +274,7 @@ H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
     return false;
   }
   return '<dl>' + listContent + '</dl>';
-}
+};
 
 /**
  * Adds a info button
@@ -286,7 +288,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
   var that = this;
   elementInstance.showSolutions = function() {
     if ($elementContainer.children('.h5p-element-solution').length === 0) {
-      var $elementSolutionButton = H5P.jQuery('<a href="#" class="h5p-element-solution">?</a>')
+      var $elementSolutionButton = H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
       .data('solution', element.solution).click(function(event) {
         event.preventDefault();
         that.showPopup(H5P.jQuery(this).data('solution'));
