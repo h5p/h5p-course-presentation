@@ -54,7 +54,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var html = '' +
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-presentation-wrapper">' +
-          '    <div class="h5p-slides-wrapper h5p-animate"></div>' +
+          '    <div class="h5p-slides-wrapper h5p-keyword-slides h5p-animate"></div>' +
           '    <div class="h5p-keywords-wrapper"></div>' +
           '  </div>' +
           '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
@@ -105,6 +105,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   if (this.keywordsWidth === undefined) {
     this.keywordsWidth = 0;
     this.$keywordsWrapper.remove();
+    this.$slidesWrapper.removeClass('h5p-keyword-slides');
   }
   this.slideWidthRatio = (100 - this.keywordsWidth) / 100; // Since the slides have empty space under the keywords list.
 
