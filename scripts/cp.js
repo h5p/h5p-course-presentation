@@ -564,7 +564,7 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
   if (!$next.length) {
     return false;
   }
-
+  
   return this.jumpToSlide($next.index(), noScroll);
 };
 
@@ -584,12 +584,15 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   
   // Jump to given slide and enable animation.
   var $old = this.$current.addClass('h5p-animate');
-  this.$current = this.$slidesWrapper.children(':eq(' + slideNumber + ')').addClass('h5p-animate');
+  var $slides = that.$slidesWrapper.children();
+  var $prevs = $slides.filter(':lt(' + slideNumber + ')');
+  this.$current = $slides.eq(slideNumber).addClass('h5p-animate');
   
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
-    that.$slidesWrapper.children().css('left', '').removeClass('h5p-touch-move').removeClass('h5p-previous').filter(':lt(' + slideNumber + ')').addClass('h5p-previous');
+    $slides.css('left', '').removeClass('h5p-touch-move').removeClass('h5p-previous');
+    $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
   }, 1);
   

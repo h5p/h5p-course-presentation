@@ -23,7 +23,9 @@
                   "H5P.Image 1.0",
                   "H5P.Video 1.0",
                   "H5P.Audio 1.0",
-                  "H5P.Blanks 1.0"
+                  "H5P.Blanks 1.0",
+                  "H5P.MultiChoice 1.0",
+                  "H5P.Summary 1.0"
                 ]
               },
               {
