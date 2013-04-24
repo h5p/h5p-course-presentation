@@ -97,10 +97,9 @@
   background: #fafafe;
   z-index: 1;
   display: none;
-  font-size: 0.75em;
 }
 .h5p-course-presentation .h5p-keyword-slides .h5p-slide {
-  padding: 0 0 0 16.75em;
+  padding: 0 0 0 12.5625em;
   width: 68.75%;
 }
 .h5p-course-presentation .h5p-slide.h5p-animate {
@@ -120,14 +119,6 @@
 }
 .h5p-course-presentation .h5p-previous {
   left: -100%;
-}
-.h5p-course-presentation .h5p-slide h2 {
-  font-size: 1.667em;
-  font-weight: bold;
-}
-.h5p-course-presentation .h5p-slide h3 {
-  font-size: 1.333em;
-  font-weight: bold;
 }
 
 .h5p-course-presentation .h5p-show-solutions {
@@ -369,4 +360,16 @@
 .h5p-course-presentation .h5p-popup-container dt {
   float: left;
   padding-right: 0.2em;
+}
+
+.h5p-text {
+  font-size: 0.75em;
+}
+.h5p-text > h2 {
+  font-size: 1.667em;
+  font-weight: bold;
+}
+.h5p-text > h3 {
+  font-size: 1.333em;
+  font-weight: bold;
 }
