@@ -75,7 +75,7 @@
                 "name": "solution",
                 "type": "text",
                 "widget": "html",
-                "label": "Solution"
+                "label": "Suggested answer"
               }
             ]
           }
@@ -112,22 +112,10 @@
     "common": true,
     "fields": [
       {
-        "name": "prev",
-        "type": "text",
-        "label": "Prev button",
-        "default": "Prev"
-      },
-      {
-        "name": "prevSlide",
-        "type": "text",
-        "label": "Prev button title",
-        "default": "Previous slide"
-      },
-      {
         "name": "scrollLeft",
         "type": "text",
         "label": "Scroll left button title",
-        "default": "Scroll - left"
+        "default": "Hold to scroll left"
       },
       {
         "name": "jumpToSlide",
@@ -139,19 +127,7 @@
         "name": "scrollRight",
         "type": "text",
         "label": "Scroll right button title",
-        "default": "Scroll - right"
-      },
-      {
-        "name": "next",
-        "type": "text",
-        "label": "Next button",
-        "default": "Next"
-      },
-      {
-        "name": "nextSlide",
-        "type": "text",
-        "label": "Next button title",
-        "default": "Next slide"
+        "default": "Hold to scroll right"
       },
       {
         "name": "slide",

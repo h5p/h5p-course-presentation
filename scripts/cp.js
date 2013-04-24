@@ -17,13 +17,9 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.editor = editor;
 
   this.l10n = H5P.jQuery.extend({}, params.l10n !== undefined ? params.l10n : {}, {
-    prev: 'Prev',
-    prevSlide: 'Previous slide',
-    scrollLeft: 'Scroll - left',
+    scrollLeft: 'Hold to scroll left',
     jumpToSlide: 'Jump to slide',
-    scrollRight: 'Scroll - right',
-    next: 'Next',
-    nextSlide: 'Next slide',
+    scrollRight: 'Hold to scroll right',
     slide: 'Slide',
     yourScore: 'Your score',
     maxScore: 'Max score',
@@ -51,7 +47,7 @@ H5P.CoursePresentation = function (params, id, editor) {
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
 
-  var html = '' +
+  var html =
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-presentation-wrapper">' +
           '    <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
@@ -59,11 +55,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '  </div>' +
           '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  <div class="h5p-slideination">' +
-          '    <a href="#" class="h5p-previous" title="' + this.l10n.prevSlide + '">' + this.l10n.prev + '</a>' +
           '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
           '    <ol></ol>' +
           '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
-          '    <a href="#" class="h5p-next" title="' + this.l10n.nextSlide + '">' + this.l10n.next + '</a>' +
           '  </div>' +
           '</div>';
 
@@ -97,7 +91,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Detemine if there are any keywords.
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
-    if (slide.keywords !== undefined && slide.keywords.length) {
+    if (slide.keywords !== undefined) {
       this.keywordsWidth = this.$keywordsWrapper.width() / (this.width / 100);
       break;
     }
@@ -135,7 +129,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   // Initialize keywords
   if (keywords) {
-    this.$keywords = this.$keywordsWrapper.html('<ol>' + keywords + '</ol>').children('ol');
+    this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
     this.$currentKeyword = this.$keywords.children('.h5p-current');
   }
 
@@ -344,22 +338,22 @@ H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
   for (var i = 0; i < keywords.length; i++) {
     var keyword = keywords[i];
 
-    html += '<li><span>' + keyword.main + '</span>';
+    html += '<li class="h5p-keywords-li"><span>' + keyword.main + '</span>';
 
     if (keyword.subs !== undefined && keyword.subs.length) {
-      html += '<ol>';
+      html += '<ol class="h5p-keywords-ol">';
       for (var j = 0; j < keyword.subs.length; j++) {
-        html += '<li><span>' + keyword.subs[j] + '</span></li>';
+        html += '<li class="h5p-keywords-li h5p-sub-keyword"><span>' + keyword.subs[j] + '</span></li>';
       }
       html += '</ol>';
     }
     html += '</li>';
   }
   if (html) {
-    html = '<ol>' + html + '</ol>';
+    html = '<ol class="h5p-keywords-ol">' + html + '</ol>';
   }
 
-  return '<li' + (first ? ' class="h5p-current"' : '') + '>' + html + '</li>';
+  return '<li class="h5p-keywords-li' + (first ? ' h5p-current' : '') + '">' + html + '</li>';
 };
 
 /**
@@ -475,6 +469,8 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
 H5P.CoursePresentation.prototype.initSlideination = function ($slideination, slideinationSlides) {
   var that = this;
   var $ol = $slideination.children('ol');
+  var $left = $slideination.children('.h5p-scroll-left');
+  var $right = $slideination.children('.h5p-scroll-right');
   var timer;
 
   // Slide selector
@@ -485,42 +481,61 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
   }).end().end();
   this.$currentSlideinationSlide = this.$slideinationSlides.children('.h5p-current');
 
+  var toggleScroll = function () {
+    if ($ol.scrollLeft() === 0)  {
+      // Disable left scroll
+      $left.removeClass('h5p-scroll-enabled');
+    }
+    else {
+      // Enable left scroll
+      $left.addClass('h5p-scroll-enabled');
+    }
+    
+    if ($ol.scrollLeft() + $ol.width() === $ol[0].scrollWidth)  {
+      // Disable right scroll
+      $right.removeClass('h5p-scroll-enabled');
+    }
+    else {
+      // Enable right scroll
+      $right.addClass('h5p-scroll-enabled');
+    }
+  };
+  
   var disableClick = function () {
     return false;
   };
+  
   var scrollLeft = function (event) {
     event.preventDefault();
+    H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
+    
     timer = setInterval(function () {
       $ol.scrollLeft($ol.scrollLeft() - 1);
     }, 1);
   };
+  
   var scrollRight = function (event) {
     event.preventDefault();
+    H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
+
     timer = setInterval(function () {
       $ol.scrollLeft($ol.scrollLeft() + 1);
     }, 1);
   };
+  
   var stopScroll = function () {
     clearInterval(timer);
+    H5P.$body.unbind('mouseup', stopScroll).unbind('mouseleave', stopScroll).unbind('touchend', stopScroll);
+    toggleScroll();
   };
 
   // Scroll slide selector to the left
-  $slideination.children('.h5p-scroll-left').click(disableClick).mousedown(scrollLeft).mouseup(stopScroll).bind('touchstart', scrollLeft).bind('touchend', stopScroll);
+  $left.click(disableClick).mousedown(scrollLeft).bind('touchstart', scrollLeft);
 
   // Scroll slide selector to the right
-  $slideination.children('.h5p-scroll-right').click(disableClick).mousedown(scrollRight).mouseup(stopScroll).bind('touchstart', scrollRight).bind('touchend', stopScroll);
-
-  // Previous slide button
-  $slideination.children('.h5p-previous').click(function () {
-    that.previousSlide();
-    return false;
-  });
-
-  // Next slide button
-  $slideination.children('.h5p-next').click(function () {
-    that.nextSlide();
-    return false;
-  });
+  $right.click(disableClick).mousedown(scrollRight).bind('touchstart', scrollRight);
+  
+  toggleScroll();
 };
 
 /**
