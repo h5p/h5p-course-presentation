@@ -77,6 +77,7 @@
                 "name": "solution",
                 "type": "text",
                 "widget": "html",
+                "optional": true,
                 "label": "Suggested answer"
               }
             ]
