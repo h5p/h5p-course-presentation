@@ -265,6 +265,10 @@
   display: none;
 }
 
+.h5p-course-presentation .h5p-blanks, .h5p-course-presentation .summary-content, .h5p-course-presentation .h5p-multichoice {
+  font-size: 0.75em;
+}
+
 .h5p-course-presentation .h5p-popup-overlay {
   background-color: rgba(255, 255, 255, 0.8);
   height: 100%;
