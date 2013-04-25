@@ -131,6 +131,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   if (keywords) {
     this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
     this.$currentKeyword = this.$keywords.children('.h5p-current');
+    
+    this.$keywords.children('li').click(function () {
+      that.keywordClick(H5P.jQuery(this));
+    });
   }
 
   // Initialize touch events
@@ -182,6 +186,19 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   if (!fullscreenOn) {
     this.$container.css('height', '');
   }
+};
+
+/**
+ * 
+ * @param {jQuery} $keyword
+ * @returns {undefined}
+ */
+H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
+  if ($keyword.hasClass('h5p-current')) {
+    return;
+  }
+  
+  this.jumpToSlide($keyword.index());
 };
 
 /**

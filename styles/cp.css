@@ -81,10 +81,12 @@
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li {
   padding: 0 0.833em 0.333em 0.833em;
   margin: 0;
+  cursor: pointer;
   opacity: 0.5;
   filter: alpha(opacity = 50);
 }
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li.h5p-current {
+  cursor: default;
   opacity: 1;
   filter: alpha(opacity = 100);
 }
