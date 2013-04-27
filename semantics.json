@@ -78,7 +78,8 @@
                 "type": "text",
                 "widget": "html",
                 "optional": true,
-                "label": "Suggested answer"
+                "label": "Comments",
+                "description": "The comments are shown when the user displays the suggested answers for all slides."
               }
             ]
           }
