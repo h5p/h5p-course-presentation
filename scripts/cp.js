@@ -113,12 +113,12 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (first) {
       this.$current = $slide.addClass('h5p-current');
     }
-    
+
     if (slide.elements !== undefined) {
       for (var j = 0; j < slide.elements.length; j++) {
         this.addElement(slide.elements[j], $slide, i);
       }
-    } 
+    }
 
     if (this.keywordsWidth && slide.keywords !== undefined) {
       keywords += this.keywordsHtml(slide.keywords, first);
@@ -131,7 +131,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   if (keywords) {
     this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
     this.$currentKeyword = this.$keywords.children('.h5p-current');
-    
+
     this.$keywords.children('li').click(function () {
       that.keywordClick(H5P.jQuery(this));
     });
@@ -189,7 +189,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 };
 
 /**
- * 
+ *
  * @param {jQuery} $keyword
  * @returns {undefined}
  */
@@ -197,13 +197,13 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
   if ($keyword.hasClass('h5p-current')) {
     return;
   }
-  
+
   this.jumpToSlide($keyword.index());
 };
 
 /**
  * Add element to the given slide and stores elements with solutions.
- * 
+ *
  * @param {Object} element The Element to add.
  * @param {jQuery} $slide Optional, the slide. Defaults to current.
  * @param {int} index Optional, the index of the slide we're adding elements to.
@@ -216,15 +216,15 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   if (index === undefined) {
     index = $slide.index();
   }
-  
+
   var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   elementInstance.attach($elementContainer);
-  
+
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elements
-    this.editor.processElement(element, $elementContainer);
+    this.editor.processElement(element, $elementContainer, index);
   }
   else {
     if (element.solution) {
@@ -235,14 +235,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
       this.addElementInfoButton(info, $elementContainer);
     }
   }
-    
+
   if (this.checkForSolutions(elementInstance)) {
     if (this.slidesWithSolutions[index] === undefined) {
       this.slidesWithSolutions[index] = [];
     }
     this.slidesWithSolutions[index].push(elementInstance);
   }
-   
+
   return $elementContainer;
 };
 
@@ -265,7 +265,7 @@ H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $element
 
 /**
  * Extract info from element Params and convert to html
- * 
+ *
  * @param {object} elementParams
  * @returns
  *  false if no info is found
@@ -507,7 +507,7 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
       // Enable left scroll
       $left.addClass('h5p-scroll-enabled');
     }
-    
+
     if ($ol.scrollLeft() + $ol.width() === $ol[0].scrollWidth)  {
       // Disable right scroll
       $right.removeClass('h5p-scroll-enabled');
@@ -517,20 +517,20 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
       $right.addClass('h5p-scroll-enabled');
     }
   };
-  
+
   var disableClick = function () {
     return false;
   };
-  
+
   var scrollLeft = function (event) {
     event.preventDefault();
     H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
-    
+
     timer = setInterval(function () {
       $ol.scrollLeft($ol.scrollLeft() - 1);
     }, 1);
   };
-  
+
   var scrollRight = function (event) {
     event.preventDefault();
     H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
@@ -539,7 +539,7 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
       $ol.scrollLeft($ol.scrollLeft() + 1);
     }, 1);
   };
-  
+
   var stopScroll = function () {
     clearInterval(timer);
     H5P.$body.unbind('mouseup', stopScroll).unbind('mouseleave', stopScroll).unbind('touchend', stopScroll);
@@ -551,7 +551,7 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
 
   // Scroll slide selector to the right
   $right.click(disableClick).mousedown(scrollRight).bind('touchstart', scrollRight);
-  
+
   toggleScroll();
 };
 
@@ -581,7 +581,7 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
   if (!$next.length) {
     return false;
   }
-  
+
   return this.jumpToSlide($next.index(), noScroll);
 };
 
@@ -594,17 +594,17 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
  */
 H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   var that = this;
-  
+
   if (this.$current.hasClass('h5p-animate')) {
     return;
   }
-  
+
   // Jump to given slide and enable animation.
   var $old = this.$current.addClass('h5p-animate');
   var $slides = that.$slidesWrapper.children();
   var $prevs = $slides.filter(':lt(' + slideNumber + ')');
   this.$current = $slides.eq(slideNumber).addClass('h5p-animate');
-  
+
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
@@ -612,7 +612,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
   }, 1);
-  
+
   setTimeout(function () {
     // Done animating
     that.$slidesWrapper.children().removeClass('h5p-animate');
@@ -634,7 +634,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
     H5P.jQuery('.h5p-show-solutions', this.$container).show();
   }
-  
+
   if (this.editor !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
