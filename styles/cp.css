@@ -225,7 +225,7 @@
   margin: 0;
   padding: 0.4535em;
   line-height: 100%;
-  
+
 }
 .h5p-course-presentation .h5p-slide-button a {
   color: #898989;
@@ -355,7 +355,7 @@
   float: right;
 }
 
-.h5p-course-presentation .h5p-video {
+.h5p-course-presentation .h5p-video, .h5p-course-presentation .h5p-audio {
   background-color: #000;
 }
 
