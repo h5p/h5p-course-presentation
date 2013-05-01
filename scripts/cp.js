@@ -16,7 +16,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.slidesWithSolutions = [];
   this.editor = editor;
 
-  this.l10n = H5P.jQuery.extend({}, params.l10n !== undefined ? params.l10n : {}, {
+  this.l10n = H5P.jQuery.extend({}, {
     scrollLeft: 'Hold to scroll left',
     jumpToSlide: 'Jump to slide',
     scrollRight: 'Hold to scroll right',
@@ -34,7 +34,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     lisence: 'Lisence',
     infoButtonTitle: 'View metadata',
     solutionsButtonTitle: 'View solution'
-  });
+  }, params.l10n !== undefined ? params.l10n : {});
   this.contentPath = H5P.getContentPath(id);
 };
 
