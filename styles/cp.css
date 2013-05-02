@@ -379,3 +379,7 @@
   font-size: 1.333em;
   font-weight: bold;
 }
+
+.h5p-course-presentation .h5p-multichoice > .h5p-show-solution {
+  display: none;
+}
