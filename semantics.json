@@ -193,7 +193,7 @@
       {
         "name": "author",
         "type": "text",
-        "label": "Translation for \"Author\"",
+        "label": "Translation for \"Author/supplier\"",
         "default": "Author"
       },
       {
