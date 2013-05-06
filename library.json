@@ -3,11 +3,11 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 6,
+  "patchVersion": 7,
   "runnable": 1,
   "fullscreen": 1,
   "machineName": "H5P.CoursePresentation",
-  "author": "Frode Petterson",
+  "author": "Amendor AS",
   "preloadedJs": [
     {
       "path": "scripts/cp.js"
