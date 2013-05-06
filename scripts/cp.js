@@ -147,7 +147,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     that.showSolutions();
     event.preventDefault();
   });
-  if (this.slides.length === 1) {
+  if (this.slides.length === 1 && this.editor === undefined) {
     $solutionsButton.show();
   }
 
