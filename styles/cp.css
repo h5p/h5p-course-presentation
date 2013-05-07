@@ -259,14 +259,11 @@
 .h5p-course-presentation .h5p-element {
   position: absolute;
   overflow: hidden;
+  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-element .h5p-hidden-solution-btn {
   display: none;
-}
-
-.h5p-course-presentation .h5p-blanks, .h5p-course-presentation .summary-content, .h5p-course-presentation .h5p-multichoice {
-  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-popup-overlay {
