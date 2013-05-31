@@ -29,9 +29,21 @@ H5P.CoursePresentation = function (params, id, editor) {
     close: 'Close',
     title: 'Title',
     author: 'Author',
-    lisence: 'Lisence',
+    license: 'License',
     infoButtonTitle: 'View metadata',
-    solutionsButtonTitle: 'View solution'
+    solutionsButtonTitle: 'View solution',
+    source: 'Source',
+    "U": "Undisclosed",
+    "CC BY": "Attribution",
+    "CC BY-SA": "Attribution-ShareAlike",
+    "CC BY-ND": "Attribution-NoDerivs",
+    "CC BY-NC": "Attribution-NonCommercial",
+    "CC BY-NC-SA": "Attribution-NonCommercial-ShareAlike",
+    "CC BY-NC-ND": "Attribution-NonCommercial-NoDerivs",
+    "PD": "Public Domain",
+    "ODC PDDL": "Public Domain Dedication and Licence",
+    "CC PDM": "Public Domain Mark",
+    "C": "Copyright"
   }, params.l10n !== undefined ? params.l10n : {});
   this.contentPath = H5P.getContentPath(id);
 };
@@ -278,20 +290,44 @@ H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $element
  *  info as html string if info is found
  */
 H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
-  var infoKeys = ['title', 'author', 'lisence'];
-  var listContent = '';
+  var info = '';
+
+  var copyright = elementParams.action.params.copyright;
+  if (copyright === undefined) {
+    copyright = {};
+  }
+
+  // TODO: Remove when update hook is added.
   if (elementParams.metadata !== undefined) {
-    for (var i = 0; i < infoKeys.length; i++) {
-      var info = elementParams.metadata[infoKeys[i]];
-      if (info !== undefined && info.length > 0) {
-        listContent += '<dt>' + this.l10n[infoKeys[i]] + ':</dt><dd>' + info + '</dd>';
+    // Add old meta data
+    if (elementParams.metadata.title !== undefined && copyright.title === undefined) {
+      copyright.title = elementParams.metadata.title;
+    }
+    if (elementParams.metadata.author !== undefined && copyright.author === undefined) {
+      copyright.author = elementParams.metadata.author;
+    }
+    if (elementParams.metadata.lisence !== undefined  && (copyright.license === undefined || copyright.license === 'U')) {
+      copyright.oldLicense = elementParams.metadata.lisence;
+      if (copyright.license !== undefined) {
+        delete copyright.license;
       }
     }
   }
-  if (listContent === '') {
-    return false;
+
+  var attrs = ['title', 'author', 'source', 'license', 'oldLicense'];
+  for (var i = 0; i < attrs.length; i++) {
+    var attr = attrs[i];
+    if (copyright[attr] === undefined || copyright[attr] === '') {
+      continue;
+    }
+
+    var dd = attr === 'license' ? this.l10n[copyright[attr]] + ' (' + copyright[attr] + ')' : copyright[attr];
+    var dt = attr === 'oldLicense' ?  this.l10n.license : this.l10n[attr];
+
+    info += '<dt>' + dt + ':</dt><dd>' + dd + '</dd>';
   }
-  return '<dl>' + listContent + '</dl>';
+
+  return info === '' ? false : '<dl>' + info + '</dl>';
 };
 
 /**

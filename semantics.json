@@ -52,6 +52,7 @@
                 "name": "metadata",
                 "type": "group",
                 "label": "Metadata",
+                "deprecated": true,
                 "fields": [
                   {
                     "name": "title",
