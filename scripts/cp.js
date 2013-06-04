@@ -29,21 +29,9 @@ H5P.CoursePresentation = function (params, id, editor) {
     close: 'Close',
     title: 'Title',
     author: 'Author',
-    license: 'License',
+    lisence: 'Lisence',
     infoButtonTitle: 'View metadata',
-    solutionsButtonTitle: 'View solution',
-    source: 'Source',
-    "U": "Undisclosed",
-    "CC BY": "Attribution",
-    "CC BY-SA": "Attribution-ShareAlike",
-    "CC BY-ND": "Attribution-NoDerivs",
-    "CC BY-NC": "Attribution-NonCommercial",
-    "CC BY-NC-SA": "Attribution-NonCommercial-ShareAlike",
-    "CC BY-NC-ND": "Attribution-NonCommercial-NoDerivs",
-    "PD": "Public Domain",
-    "ODC PDDL": "Public Domain Dedication and Licence",
-    "CC PDM": "Public Domain Mark",
-    "C": "Copyright"
+    solutionsButtonTitle: 'View solution'
   }, params.l10n !== undefined ? params.l10n : {});
   this.contentPath = H5P.getContentPath(id);
 };
@@ -160,7 +148,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     that.showSolutions();
     event.preventDefault();
   });
-  if (this.slides.length === 1 && this.editor === undefined) {
+  if (this.slides.length === 1 && this.editor === undefined && this.slidesWithSolutions.length) {
     $solutionsButton.show();
   }
 
@@ -290,44 +278,20 @@ H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $element
  *  info as html string if info is found
  */
 H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
-  var info = '';
-
-  var copyright = elementParams.action.params.copyright;
-  if (copyright === undefined) {
-    copyright = {};
-  }
-
-  // TODO: Remove when update hook is added.
+  var infoKeys = ['title', 'author', 'lisence'];
+  var listContent = '';
   if (elementParams.metadata !== undefined) {
-    // Add old meta data
-    if (elementParams.metadata.title !== undefined && copyright.title === undefined) {
-      copyright.title = elementParams.metadata.title;
-    }
-    if (elementParams.metadata.author !== undefined && copyright.author === undefined) {
-      copyright.author = elementParams.metadata.author;
-    }
-    if (elementParams.metadata.lisence !== undefined  && (copyright.license === undefined || copyright.license === 'U')) {
-      copyright.oldLicense = elementParams.metadata.lisence;
-      if (copyright.license !== undefined) {
-        delete copyright.license;
+    for (var i = 0; i < infoKeys.length; i++) {
+      var info = elementParams.metadata[infoKeys[i]];
+      if (info !== undefined && info.length > 0) {
+        listContent += '<dt>' + this.l10n[infoKeys[i]] + ':</dt><dd>' + info + '</dd>';
       }
     }
   }
-
-  var attrs = ['title', 'author', 'source', 'license', 'oldLicense'];
-  for (var i = 0; i < attrs.length; i++) {
-    var attr = attrs[i];
-    if (copyright[attr] === undefined || copyright[attr] === '') {
-      continue;
-    }
-
-    var dd = attr === 'license' ? this.l10n[copyright[attr]] + ' (' + copyright[attr] + ')' : copyright[attr];
-    var dt = attr === 'oldLicense' ?  this.l10n.license : this.l10n[attr];
-
-    info += '<dt>' + dt + ':</dt><dd>' + dd + '</dd>';
+  if (listContent === '') {
+    return false;
   }
-
-  return info === '' ? false : '<dl>' + info + '</dl>';
+  return '<dl>' + listContent + '</dl>';
 };
 
 /**
@@ -673,7 +637,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   this.jumpSlideination(slideNumber, noScroll);
 
   // Show show solutions button on last slide
-  if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
+  if (slideNumber === this.slides.length - 1 && this.editor === undefined && this.slidesWithSolutions.length) {
     H5P.jQuery('.h5p-show-solutions', this.$container).show();
   }
 
