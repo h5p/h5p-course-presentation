@@ -388,3 +388,19 @@
 .h5p-course-presentation .h5p-multichoice > .h5p-show-solution {
   display: none;
 }
+
+.h5p-course-presentation .h5p-table {
+  border-collapse: collapse;
+}
+.h5p-course-presentation .h5p-table th {
+  border-bottom: 0.167em solid #494949;
+}
+.h5p-course-presentation .h5p-table td {
+  border-bottom: 0.083em solid #494949;
+}
+.h5p-course-presentation .h5p-table tr:last-child td {
+  border-bottom: 0;
+}
+.h5p-course-presentation .cke_editable .h5p-table, .h5p-course-presentation .cke_editable .h5p-table th, .h5p-course-presentation .cke_editable .h5p-table td {
+  border: 0.083em dashed #999;
+}
