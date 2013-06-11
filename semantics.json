@@ -19,6 +19,7 @@
                 "type": "library",
                 "options": [
                   "H5P.Text 1.0",
+                  "H5P.ContinuousText 1.0",
                   "H5P.Table 1.0",
                   "H5P.Image 1.0",
                   "H5P.Video 1.0",
@@ -47,7 +48,7 @@
                 "name": "height",
                 "type": "number",
                 "widget": "none"
-              },
+              },              
               {
                 "name": "metadata",
                 "type": "group",
@@ -106,6 +107,11 @@
               }
             ]
           }
+        },
+        {
+          "name": "ct",
+          "type": "text",
+          "widget": "none"
         }
       ]
     }
