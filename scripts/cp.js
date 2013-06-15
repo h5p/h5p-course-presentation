@@ -152,9 +152,26 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     $solutionsButton.show();
   }
 
+  // In view mode, make continuous text smaller if it 
+  // does not fit inside container 
+  if (this.editor === undefined) {
+    H5P.jQuery('.h5p-ct > .ct').each(function (index, element){
+      console.log('asdasdasd');
+      var percent = 100;
+      while($(this).height() > $(this).parent().height()) {
+        // Just in case. Makes no sense going further.
+        if(percent < 50) {
+          break;
+        }
+        percent = percent - 2;
+        $(this).css('font-size', percent + '%');
+      }
+    });
+  }
+  
   H5P.$window.resize(function() {
     that.resize(false);
- });
+  });
   this.resize(false);
 };
 
