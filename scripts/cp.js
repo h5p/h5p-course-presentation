@@ -157,30 +157,48 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     that.resize(false);
   });
   this.resize(false);
-
-  // In view mode, make continuous text smaller if it
-  // does not fit inside container
-  if (this.editor === undefined) {
-    H5P.jQuery('.h5p-ct > .ct', $container).each(function (){
-      var percent = 100;
-      var $ct = $(this);
-      var parentHeight = $ct.parent().height();
-
-      while ($ct.height() > parentHeight) {
-        percent = percent - 2;
-        $ct.css({
-          fontSize: percent + '%',
-          lineHeight: (percent + 65) + '%'
-        });
-
-        if (percent < 50) {
-          break; // Just in case. Makes no sense going further.
-        }
-      }
-    });
-  }
 };
 
+/**
+ * Makes continuous text smaller if it does not fit inside its container.
+ * Only works in view mode.
+ *
+ * @returns {undefined}
+ */
+H5P.CoursePresentation.prototype.fitCT = function () {
+  if (this.editor !== undefined) {
+    return;
+  }
+
+  this.$current.find('.h5p-ct').each(function () {
+    var percent = 100;
+    var $parent = $(this);
+    var $ct = $parent.children('.ct').css({
+      fontSize: '',
+      lineHeight: ''
+    });
+    var parentHeight = $parent.height();
+
+    while ($ct.height() > parentHeight) {
+      percent--;
+      $ct.css({
+        fontSize: percent + '%',
+        lineHeight: (percent + 65) + '%'
+      });
+
+      if (percent < 0) {
+        break; // Just in case.
+      }
+    }
+  });
+};
+
+/**
+ * Resize handling.
+ *
+ * @param {Boolean} fullscreen
+ * @returns {undefined}
+ */
 H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
   if (!fullscreenOn) {
@@ -223,6 +241,8 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
       elements[i].resize();
     }
   }
+
+  this.fitCT();
 };
 
 /**
@@ -688,6 +708,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
+  this.fitCT();
   return true;
 };
 

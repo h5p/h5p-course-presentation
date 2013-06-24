@@ -404,3 +404,8 @@
 .h5p-course-presentation .cke_editable .h5p-table, .h5p-course-presentation .cke_editable .h5p-table th, .h5p-course-presentation .cke_editable .h5p-table td {
   border: 0.083em dashed #999;
 }
+
+.h5p-course-presentation .h5p-ct > .ct {
+  font-size: 100%;
+  line-height: 165%;
+}
