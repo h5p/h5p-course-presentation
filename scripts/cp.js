@@ -11,6 +11,8 @@ var H5P = H5P || {};
  */
 H5P.CoursePresentation = function (params, id, editor) {
   this.slides = params.slides;
+  this.contentId = id;
+  this.elements = [];
   this.slidesWithSolutions = [];
   this.editor = editor;
 
@@ -33,7 +35,6 @@ H5P.CoursePresentation = function (params, id, editor) {
     infoButtonTitle: 'View metadata',
     solutionsButtonTitle: 'View solution'
   }, params.l10n !== undefined ? params.l10n : {});
-  this.contentPath = H5P.getContentPath(id);
 };
 
 /**
@@ -214,6 +215,14 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   if (!fullscreenOn) {
     this.$container.css('height', '');
   }
+
+  // Resize elements
+  var elements = this.elements[this.$current.index()];
+  for (var i = 0; i < elements.length; i++) {
+    if (elements[i].resize !== undefined) {
+      elements[i].resize();
+    }
+  }
 };
 
 /**
@@ -245,10 +254,18 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     index = $slide.index();
   }
 
-  var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentPath);
+  var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentId);
+  if (elementInstance.preventResize !== undefined) {
+    elementInstance.preventResize = true;
+  }
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   elementInstance.attach($elementContainer);
+
+  if (this.elements[index] === undefined) {
+    this.elements[index] = [];
+  }
+  this.elements[index].push(elementInstance);
 
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elements

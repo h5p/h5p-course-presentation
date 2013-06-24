@@ -26,6 +26,7 @@
                   "H5P.Audio 1.0",
                   "H5P.Blanks 1.0",
                   "H5P.MultiChoice 1.0",
+                  "H5P.DragQuestion 1.0",
                   "H5P.Summary 1.0"
                 ]
               },
@@ -48,7 +49,7 @@
                 "name": "height",
                 "type": "number",
                 "widget": "none"
-              },              
+              },
               {
                 "name": "metadata",
                 "type": "group",
