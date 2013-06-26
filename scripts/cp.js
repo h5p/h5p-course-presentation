@@ -236,9 +236,11 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 
   // Resize elements
   var elements = this.elements[this.$current.index()];
-  for (var i = 0; i < elements.length; i++) {
-    if (elements[i].resize !== undefined) {
-      elements[i].resize();
+  if (elements !== undefined) {
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].resize !== undefined) {
+        elements[i].resize();
+      }
     }
   }
 
