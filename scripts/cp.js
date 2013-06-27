@@ -31,7 +31,8 @@ H5P.CoursePresentation = function (params, id, editor) {
     close: 'Close',
     title: 'Title',
     author: 'Author',
-    lisence: 'Lisence',
+    source: 'Source',
+    license: 'License',
     infoButtonTitle: 'View metadata',
     solutionsButtonTitle: 'View solution'
   }, params.l10n !== undefined ? params.l10n : {});
@@ -297,7 +298,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     if (element.solution) {
       this.addElementSolutionButton(element, elementInstance, $elementContainer);
     }
-    var info = this.getElementInfo(element);
+    var info = this.getElementInfo(element.action.params);
     if (info) {
       this.addElementInfoButton(info, $elementContainer);
     }
@@ -339,11 +340,11 @@ H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $element
  *  info as html string if info is found
  */
 H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
-  var infoKeys = ['title', 'author', 'lisence'];
+  var infoKeys = ['title', 'author', 'source', 'license'];
   var listContent = '';
-  if (elementParams.metadata !== undefined) {
+  if (elementParams.copyright !== undefined) {
     for (var i = 0; i < infoKeys.length; i++) {
-      var info = elementParams.metadata[infoKeys[i]];
+      var info = elementParams.copyright[infoKeys[i]];
       if (info !== undefined && info.length > 0) {
         listContent += '<dt>' + this.l10n[infoKeys[i]] + ':</dt><dd>' + info + '</dd>';
       }
