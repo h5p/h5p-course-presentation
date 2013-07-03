@@ -49,15 +49,18 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
-          '  <div class="h5p-presentation-wrapper">' +
-          '    <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
-          '    <div class="h5p-keywords-wrapper"></div>' +
+          '  <div class="h5p-box-wrapper">' +
+          '    <div class="h5p-presentation-wrapper">' +
+          '      <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
+          '      <div class="h5p-keywords-wrapper"></div>' +
+          '    </div>' +
+          '    <ol class="h5p-progressbar"></ol>' +
           '  </div>' +
           '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  <div class="h5p-slideination">' +
-          '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
+          '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '"></a>' +
           '    <ol></ol>' +
-          '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '">&gt;</a>' +
+          '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '"></a>' +
           '  </div>' +
           '</div>';
 
@@ -82,9 +85,11 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.ratio = this.width / this.height;
   this.fontSize = parseInt(this.$wrapper.css('fontSize'));
 
-  this.$presentationWrapper = this.$wrapper.children('.h5p-presentation-wrapper');
-  this.$slidesWrapper = this.$presentationWrapper.children('.h5p-slides-wrapper');
-  this.$keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
+  this.$boxWrapper = this.$wrapper.children('.h5p-box-wrapper');
+  this.$progressbar = this.$boxWrapper.children('.h5p-progressbar');
+  var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
+  this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
+  this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
   var $solutionsButton = this.$wrapper.children('.h5p-show-solutions');
 
@@ -104,7 +109,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.slideWidthRatio = (100 - this.keywordsWidth) / 100; // Since the slides have empty space under the keywords list.
 
   // Needed for images etc. to get correct aspect ratio.
-  this.slideRatio = (this.$presentationWrapper.width() / this.$presentationWrapper.height());
+  this.slideRatio = ($presentationWrapper.width() / $presentationWrapper.height());
 
   var keywords = '';
   var slideinationSlides = '';
@@ -126,6 +131,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (this.keywordsWidth && slide.keywords !== undefined) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
+
+    H5P.jQuery('<li class="h5p-progress' + (first ? ' h5p-completed' : '') + '"></li>').appendTo(this.$progressbar);
 
     slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, this.l10n.jumpToSlide, first);
   }
@@ -488,13 +495,31 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
 H5P.CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
+  var transform = function (value) {
+    return {
+      '-webkit-transform': value,
+      '-moz-transform': value,
+      '-ms-transform': value,
+      'transform': value
+    };
+  };
+  var reset = transform('');
+  var getTranslateX = function ($element) {
+    var prefixes = ['', '-webkit-', '-moz-', '-ms-'];
+    for (var i = 0; i < prefixes.length; i++) {
+      var matrix = $element.css(prefixes[i] + 'transform');
+      if (matrix !== undefined) {
+        return parseInt(matrix.match(/\d+/g)[4]);
+      }
+    }
+  };
 
   this.$slidesWrapper.bind('touchstart', function (event) {
     // Set start positions
     lastX = startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
-    prevX = parseInt(that.$current.addClass('h5p-touch-move').prev().addClass('h5p-touch-move').css('left'));
-    nextX = parseInt(that.$current.next().addClass('h5p-touch-move').css('left'));
+    prevX = getTranslateX(that.$current.addClass('h5p-touch-move').prev().addClass('h5p-touch-move'));
+    nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
 
     scroll = null;
 
@@ -519,17 +544,17 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
 
     if (movedX < 0) {
       // Move previous slide
-      that.$current.next().css('left', '');
-      that.$current.prev().css('left', prevX - movedX);
+      that.$current.next().css(reset);
+      that.$current.prev().css(transform('translateX(' + (prevX - movedX) + 'px'));
     }
     else {
       // Move next slide
-      that.$current.prev().css('left', '');
-      that.$current.next().css('left', nextX - movedX);
+      that.$current.prev().css(reset);
+      that.$current.next().css(transform('translateX(' + (nextX - movedX) + 'px)'));
     }
 
     // Move current slide
-    that.$current.css('left', -movedX);
+    that.$current.css(transform('translateX(' + (-movedX) + 'px)'));
 
   }).bind('touchend', function () {
     if (!scroll) {
@@ -540,7 +565,7 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
       }
     }
     // Reset.
-    that.$slidesWrapper.children().css('left', '').removeClass('h5p-touch-move');
+    that.$slidesWrapper.children().css(reset).removeClass('h5p-touch-move');
   });
 };
 
@@ -676,7 +701,12 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
-    $slides.css('left', '').removeClass('h5p-touch-move').removeClass('h5p-previous');
+    $slides.css({
+      '-webkit-transform': '',
+      '-moz-transform': '',
+      '-ms-transform': '',
+      'transform': ''
+    }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
   }, 1);

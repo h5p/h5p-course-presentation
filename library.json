@@ -18,6 +18,13 @@
       "path": "styles/cp.css"
     }
   ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 3,
+      "minorVersion": 1
+    }
+  ],
   "editorDependencies": [
     {
       "machineName": "H5P.CoursePresentation",
