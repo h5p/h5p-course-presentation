@@ -73,7 +73,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '      <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
           '      <div class="h5p-keywords-wrapper"></div>' +
           '    </div>' +
-          '    <ol class="h5p-progressbar"></ol>' +
+          '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
           '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  <div class="h5p-slideination">' +
@@ -105,7 +105,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.fontSize = parseInt(this.$wrapper.css('fontSize'));
 
   this.$boxWrapper = this.$wrapper.children('.h5p-box-wrapper');
-  this.$progressbar = this.$boxWrapper.children('.h5p-progressbar');
   var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
@@ -151,10 +150,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
 
-    H5P.jQuery('<li class="h5p-progress' + (first ? ' h5p-completed' : '') + '"></li>').appendTo(this.$progressbar);
-
     slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, this.l10n.jumpToSlide, first);
   }
+
+  this.$progressbar = this.$boxWrapper.children('.h5p-progressbar').children().css('width', ((1 / i) * 100) + '%');
 
   // Initialize keywords
   if (keywords) {
@@ -233,8 +232,9 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     this.$container.css('height', '99999px');
   }
 
-  var width = this.$container.width();
-  var height = this.$container.height();
+  var margin = parseInt(this.$boxWrapper.css('fontSize'));
+  var width = this.$container.width() - margin;
+  var height = this.$container.height() - margin;
 
   if (width / height >= this.ratio) {
     // Wider
@@ -252,7 +252,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     fontSize: (this.fontSize * (width / this.width)) + 'px'
   });
 
-  this.swipeThreshold = (width / this.width) * 100; // Default swipe threshold is 100px.
+  this.swipeThreshold = (width / this.width) * 50; // Default swipe threshold is 50px.
 
   if (fullscreen) {
     this.$wrapper.focus();
@@ -744,6 +744,9 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
       this.scrollToKeywords();
     }
   }
+
+  // Update progress.
+  this.$progressbar.css('width', (((slideNumber + 1) / $slides.length) * 100) + '%');
 
   this.jumpSlideination(slideNumber, noScroll);
 
