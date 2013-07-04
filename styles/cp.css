@@ -440,14 +440,14 @@
   padding-right: 0.2em;
 }
 
-.h5p-content .h5p-text {
+.h5p-content .h5p-text, .h5p-content .ct {
   font-size: 0.75em;
 }
-.h5p-content .h5p-text > h2 {
+.h5p-content .h5p-text > h2, .h5p-content .ct > h2 {
   font-size: 1.667em;
   font-weight: bold;
 }
-.h5p-content .h5p-text > h3 {
+.h5p-content .h5p-text > h3, .h5p-content .ct > h3 {
   font-size: 1.333em;
   font-weight: bold;
 }
