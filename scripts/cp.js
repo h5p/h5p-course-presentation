@@ -1,5 +1,24 @@
 var H5P = H5P || {};
 
+if (H5P.getPath === undefined) {
+  /**
+   * Find the path to the content files based on the id of the content
+   *
+   * Also identifies and returns absolute paths
+   *
+   * @param {String} path Absolute path to a file, or relative path to a file in the content folder
+   * @param {Number} contentId Identifier of the content requesting the path
+   * @returns {String} The path to use.
+   */
+  H5P.getPath = function (path, contentId) {
+    if (path.substr(0, 7) === 'http://' || path.substr(0, 8) === 'https://') {
+      return path;
+    }
+
+    return H5PIntegration.getContentPath(contentId) + path;
+  };
+}
+
 /**
  * Constructor.
  *
