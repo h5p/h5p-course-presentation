@@ -371,7 +371,7 @@ H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
   if (elementParams.copyright !== undefined) {
     for (var i = 0; i < infoKeys.length; i++) {
       var info = elementParams.copyright[infoKeys[i]];
-      if (info !== undefined && info.length > 0 && !(infoKeys[i] == 'license' && info == 'U')) {
+      if (info !== undefined && info.length !== 0 && !(infoKeys[i] === 'license' && info === 'U')) {
         listContent += '<dt>' + this.l10n[infoKeys[i]] + ':</dt><dd>' + info + '</dd>';
       }
     }
