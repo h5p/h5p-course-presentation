@@ -196,8 +196,8 @@
       {
         "name": "exportAnswers",
         "type": "text",
-        "label": "Text for the export answers button",
-        "default": "Export answers"
+        "label": "Text for the export text button",
+        "default": "Export text"
       },
       {
         "name": "title",

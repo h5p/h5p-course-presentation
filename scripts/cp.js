@@ -48,7 +48,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     badScore: 'You need to work more on this. You only got @percent correct...',
     total: 'TOTAL',
     showSolutions: 'Show solutions',
-    exportAnswers: 'Export answers',
+    exportAnswers: 'Export text',
     close: 'Close',
     title: 'Title',
     author: 'Author',
@@ -77,8 +77,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    </div>' +
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
-               H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers)  +
-          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
+          '  <div class="h5p-action-bar">' +
+          (typeof H5P.ExportableTextArea !== 'undefined' ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
+          '    <a href="javascript:void(0);" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
+          '  </div>' +
           '  <div class="h5p-slideination">' +
           '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '"></a>' +
           '    <ol></ol>' +
@@ -112,8 +114,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
-  var $solutionsButton = this.$wrapper.children('.h5p-show-solutions');
-  var $exportAnswerButton = this.$wrapper.children('.h5p-eta-export');
+  var $solutionsButton = $('.h5p-show-solutions', this.$wrapper);
+  var $exportAnswerButton = $('.h5p-eta-export', this.$wrapper);
 
   // Detemine if there are any keywords.
   for (var i = 0; i < this.slides.length; i++) {
@@ -180,7 +182,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     event.preventDefault();
   });
   $exportAnswerButton.click(function(event) {
-    H5P.ExportableTextArea.Exporter.export();
+    H5P.ExportableTextArea.Exporter.run();
     event.preventDefault();
   });
   if (this.slides.length === 1 && this.editor === undefined) {

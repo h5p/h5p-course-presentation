@@ -170,19 +170,23 @@
   transform: translateX(-100%);
 }
 
-.h5p-course-presentation .h5p-show-solutions,
-.h5p-course-presentation .h5p-eta-export {
-  margin-left: 0.4em; /* Spacing between buttons*/
+.h5p-course-presentation .h5p-action-bar {
   position: absolute;
   right: 0;
+}
+
+.h5p-course-presentation .h5p-show-solutions,
+.h5p-course-presentation .h5p-eta-export {  
+  float: right;
   display: block;
-  font-size: 0.75em;
-  line-height: 1.5em;
+  font-size: 0.6em;
   padding: 0.25em 0.75em;
   color: #323232;
   border: 1px solid #d9d9d9;
   border-radius: 0.5em;
-  margin: 0.15em 0;
+  margin: 0.15em;
+  height: 2em;
+  line-height: 2em;
 
   background: #dfdfdf;
   background-image: -webkit-linear-gradient(top, #efefef, #cccccc);
@@ -190,6 +194,24 @@
   background-image: linear-gradient(to bottom, #efefef, #cccccc);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#cccccc', GradientType=0);
 }
+
+.h5p-course-presentation .h5p-eta-export.flash {
+  padding: 0 0.75em;
+  line-height:0;
+  height: 2em;
+}
+
+.h5p-course-presentation .h5p-eta-export:before { 
+  font-family: 'H5PFontAwesome';
+  content: "\f0f6";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-eta-export.flash:before {
+  position: relative;  
+  top: -1.5em;
+}
+
 .h5p-course-presentation .h5p-show-solutions:before {
   font-family: 'H5PFontAwesome';
   content: "\f06e";
