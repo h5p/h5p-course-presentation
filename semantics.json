@@ -20,6 +20,7 @@
                 "options": [
                   "H5P.Text 1.0",
                   "H5P.ContinuousText 1.0",
+                  "H5P.ExportableTextArea 1.0",
                   "H5P.Table 1.0",
                   "H5P.Image 1.0",
                   "H5P.Video 1.0",
@@ -191,6 +192,12 @@
         "type": "text",
         "label": "Text for the show solutions button",
         "default": "Show solutions"
+      },
+      {
+        "name": "exportAnswers",
+        "type": "text",
+        "label": "Text for the export answers button",
+        "default": "Export answers"
       },
       {
         "name": "title",

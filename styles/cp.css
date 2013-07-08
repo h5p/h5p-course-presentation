@@ -123,7 +123,9 @@
   left: -100%;
 }
 
-.h5p-course-presentation .h5p-show-solutions {
+.h5p-course-presentation .h5p-show-solutions,
+.h5p-course-presentation .h5p-eta-export {
+  margin-left: 0.4em; /* Spacing between buttons*/
   float: right;
   display: block;
   font-size: 0.75em;
@@ -142,7 +144,8 @@
   border-top: 0;
   text-shadow: 0 0 1em #fff;
 }
-.h5p-course-presentation .h5p-show-solutions:hover {
+.h5p-course-presentation .h5p-show-solutions:hover,
+.h5p-course-presentation .h5p-eta-export:hover {
   text-decoration: none;
   background: #d4d4e7;
   background-image: -webkit-linear-gradient(bottom, #c7c7de, #d9d9ea);

@@ -14,6 +14,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.contentId = id;
   this.elements = [];
   this.slidesWithSolutions = [];
+  this.hasAnswerElements = false;
   this.editor = editor;
 
   this.l10n = H5P.jQuery.extend({}, {
@@ -28,6 +29,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     badScore: 'You need to work more on this. You only got @percent correct...',
     total: 'TOTAL',
     showSolutions: 'Show solutions',
+    exportAnswers: 'Export answers',
     close: 'Close',
     title: 'Title',
     author: 'Author',
@@ -53,6 +55,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
           '    <div class="h5p-keywords-wrapper"></div>' +
           '  </div>' +
+               H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers)  +
           '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  <div class="h5p-slideination">' +
           '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '">&lt;</a>' +
@@ -87,6 +90,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$keywordsWrapper = this.$presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
   var $solutionsButton = this.$wrapper.children('.h5p-show-solutions');
+  var $exportAnswerButton = this.$wrapper.children('.h5p-eta-export');
 
   // Detemine if there are any keywords.
   for (var i = 0; i < this.slides.length; i++) {
@@ -150,8 +154,17 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     that.showSolutions();
     event.preventDefault();
   });
-  if (this.slides.length === 1 && this.editor === undefined && this.slidesWithSolutions.length) {
-    $solutionsButton.show();
+  $exportAnswerButton.click(function(event) {
+    H5P.ExportableTextArea.Exporter.export();
+    event.preventDefault();
+  });
+  if (this.slides.length === 1 && this.editor === undefined) {
+    if(this.slidesWithSolutions.length) {
+      $solutionsButton.show();
+    }
+    if(this.hasAnswerElements) {
+      $exportAnswerButton.show();
+    }
   }
 
   H5P.$window.resize(function() {
@@ -292,7 +305,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elements
-    this.editor.processElement(element, $elementContainer, index);
+    this.editor.processElement(element, $elementContainer, index, elementInstance);
   }
   else {
     if (element.solution) {
@@ -302,6 +315,10 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     if (info) {
       this.addElementInfoButton(info, $elementContainer);
     }
+
+    /* When in view mode, we need to know if there are any answer elements,
+     * so that we can display the export answers button on the last slide */
+    this.hasAnswerElements = this.hasAnswerElements || elementInstance.exportAnswers !== undefined;
   }
 
   if (this.checkForSolutions(elementInstance)) {
@@ -698,9 +715,14 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
   this.jumpSlideination(slideNumber, noScroll);
 
-  // Show show solutions button on last slide
-  if (slideNumber === this.slides.length - 1 && this.editor === undefined && this.slidesWithSolutions.length) {
-    H5P.jQuery('.h5p-show-solutions', this.$container).show();
+  // Show show solutions button and export answers on last slide
+  if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
+    if(this.slidesWithSolutions.length) {
+      H5P.jQuery('.h5p-show-solutions', this.$container).show();
+    }
+    if(this.hasAnswerElements) {
+      H5P.jQuery('.h5p-eta-export', this.$container).show();
+    }
   }
 
   if (this.editor !== undefined) {
