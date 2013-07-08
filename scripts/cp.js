@@ -37,6 +37,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.editor = editor;
 
   this.l10n = H5P.jQuery.extend({}, {
+    goHome: 'Go to first slide',
     scrollLeft: 'Hold to scroll left',
     jumpToSlide: 'Jump to slide',
     scrollRight: 'Hold to scroll right',
@@ -79,9 +80,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '  </div>' +
           '  <div class="h5p-action-bar">' +
           (typeof H5P.ExportableTextArea !== 'undefined' ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
-          '    <a href="javascript:void(0);" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
+          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
           '  </div>' +
           '  <div class="h5p-slideination">' +
+          '    <a href="#" class="h5p-go-home" title="' + this.l10n.goHome + '"></a>' +
           '    <a href="#" class="h5p-scroll-left" title="' + this.l10n.scrollLeft + '"></a>' +
           '    <ol></ol>' +
           '    <a href="#" class="h5p-scroll-right" title="' + this.l10n.scrollRight + '"></a>' +
@@ -617,6 +619,7 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
 H5P.CoursePresentation.prototype.initSlideination = function ($slideination, slideinationSlides) {
   var that = this;
   var $ol = $slideination.children('ol');
+  var $home = $slideination.children('.h5p-go-home');
   var $left = $slideination.children('.h5p-scroll-left');
   var $right = $slideination.children('.h5p-scroll-right');
   var timer;
@@ -670,6 +673,11 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
       $ol.scrollLeft($ol.scrollLeft() + 1);
     }, 1);
   };
+  
+  var goHome = function (event) {
+    event.preventDefault();
+    that.jumpToSlide(0);
+  };
 
   var stopScroll = function () {
     clearInterval(timer);
@@ -682,6 +690,9 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
 
   // Scroll slide selector to the right
   $right.click(disableClick).mousedown(scrollRight).bind('touchstart', scrollRight);
+  
+  // Goto first slide
+  $home.click(disableClick).mousedown(goHome).bind('touchstart', goHome);
 
   toggleScroll();
 };

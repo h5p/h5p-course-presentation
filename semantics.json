@@ -125,6 +125,12 @@
     "common": true,
     "fields": [
       {
+        "name": "goHome",
+        "type": "text",
+        "label": "Go home button title",
+        "default": "Go to first slide"
+      },
+      {
         "name": "scrollLeft",
         "type": "text",
         "label": "Scroll left button title",
