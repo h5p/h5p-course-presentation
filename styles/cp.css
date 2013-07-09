@@ -176,9 +176,9 @@
 }
 
 .h5p-course-presentation .h5p-show-solutions,
-.h5p-course-presentation .h5p-eta-export {  
+.h5p-course-presentation .h5p-eta-export {
   float: right;
-  display: block;
+  display: none;
   font-size: 0.6em;
   padding: 0.25em 0.75em;
   color: #323232;

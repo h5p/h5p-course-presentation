@@ -39,6 +39,10 @@
       "label": "Leietekstar",
       "fields": [
         {
+          "label": "Leietekst til \"Gå heim\" knapp",
+          "default": "Heim"
+        },
+        {
           "label": "Leietekst til \"Bla til venstre\" knapp",
           "default": "Hald inne for å rulle til venstre"
         },
@@ -59,7 +63,7 @@
           "default": "Din poengsum"
         },
         {
-          "label": "Translation for \"Topp poengsum\"",
+          "label": "Oversetting for \"Topp poengsum\"",
           "default": "Topp poengsum"
         },
         {
@@ -90,12 +94,16 @@
           "default": "Tittel"
         },
         {
-          "label": "Oversettelse for \"Forfattar/leverandør\"",
+          "label": "Oversetting for \"Forfattar/leverandør\"",
           "default": "Forfattar/leverandør"
         },
         {
           "label": "Oversetting for \"Lisens\"",
           "default": "Lisens"
+        },
+        {
+          "label": "Oversetting for \"Eksporter tekst\"",
+          "default": "Eksporter tekst"
         }
       ]
     }

@@ -39,6 +39,10 @@
       "label": "Ledetekster",
       "fields": [
         {
+          "label": "Ledetekst til \"Gå hjem\" knapp",
+          "default": "Hjem"
+        },
+        {
           "label": "Ledetekst til \"Bla til venstre\" knapp",
           "default": "Hold inne for å rulle til venstre"
         },
@@ -59,7 +63,7 @@
           "default": "Din poengsum"
         },
         {
-          "label": "Translation for \"Topp poengsum\"",
+          "label": "Oversettelse for \"Topp poengsum\"",
           "default": "Topp poengsum"
         },
         {
@@ -96,6 +100,10 @@
         {
           "label": "Oversettelse for \"Lisens\"",
           "default": "Lisens"
+        },
+        {
+          "label": "Oversettelse for \"Eksporter tekst\"",
+          "default": "Eksporter tekst"
         }
       ]
     }

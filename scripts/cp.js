@@ -79,8 +79,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
           '  <div class="h5p-action-bar">' +
-          (typeof H5P.ExportableTextArea !== 'undefined' ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
-          '    <a href="#" class="h5p-show-solutions" style="display: none;">' + this.l10n.showSolutions + '</a>' +
+          ((typeof that.editor === 'undefined' && typeof H5P.ExportableTextArea !== 'undefined') ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
+          '    <a href="#" class="h5p-show-solutions">' + this.l10n.showSolutions + '</a>' +
           '  </div>' +
           '  <div class="h5p-slideination">' +
           '    <a href="#" class="h5p-go-home" title="' + this.l10n.goHome + '"></a>' +

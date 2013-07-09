@@ -200,12 +200,6 @@
         "default": "Show solutions"
       },
       {
-        "name": "exportAnswers",
-        "type": "text",
-        "label": "Text for the export text button",
-        "default": "Export text"
-      },
-      {
         "name": "title",
         "type": "text",
         "label": "Translation for \"Title\"",
@@ -222,6 +216,12 @@
         "type": "text",
         "label": "Translation for \"Lisence\"",
         "default": "Lisence"
+      },
+      {
+        "name": "exportAnswers",
+        "type": "text",
+        "label": "Text for the export text button",
+        "default": "Export text"
       }
     ]
   }
