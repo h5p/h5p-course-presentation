@@ -55,6 +55,7 @@
                 "name": "metadata",
                 "type": "group",
                 "label": "Metadata",
+                "optional": true,
                 "deprecated": true,
                 "fields": [
                   {
@@ -91,17 +92,21 @@
         {
           "name": "keywords",
           "type": "list",
+          "optional": true,
           "field": {
             "name": "keyword",
             "type": "group",
+            "optional": true,
             "fields": [
               {
                 "name": "main",
-                "type": "text"
+                "type": "text",
+                "optional": true
               },
               {
                 "name": "subs",
                 "type": "list",
+                "optional": true,
                 "field": {
                   "name": "keyword",
                   "type": "text"
@@ -113,7 +118,8 @@
         {
           "name": "ct",
           "type": "text",
-          "widget": "none"
+          "widget": "none",
+          "optional": true
         }
       ]
     }
