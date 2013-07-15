@@ -31,7 +31,8 @@ if (H5P.getPath === undefined) {
 H5P.CoursePresentation = function (params, id, editor) {
   this.slides = params.slides;
   this.contentId = id;
-  this.elements = [];
+  // elementInstances holds the element instances
+  this.elementInstances = [];
   this.slidesWithSolutions = [];
   this.hasAnswerElements = false;
   this.editor = editor;
@@ -279,11 +280,11 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   }
 
   // Resize elements
-  var elements = this.elements[this.$current.index()];
-  if (elements !== undefined) {
-    for (var i = 0; i < elements.length; i++) {
-      if (elements[i].resize !== undefined) {
-        elements[i].resize();
+  var elementInstances = this.elementInstances[this.$current.index()];
+  if (elementInstances !== undefined) {
+    for (var i = 0; i < elementInstances.length; i++) {
+      if (elementInstances[i].resize !== undefined) {
+        elementInstances[i].resize();
       }
     }
   }
@@ -328,13 +329,13 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   elementInstance.attach($elementContainer);
 
-  if (this.elements[index] === undefined) {
-    this.elements[index] = [];
+  if (this.elementInstances[index] === undefined) {
+    this.elementInstances[index] = [];
   }
-  this.elements[index].push(elementInstance);
+  this.elementInstances[index].push(elementInstance);
 
   if (this.editor !== undefined) {
-    // If we're in the H5P editor, allow it to manipulate the elements
+    // If we're in the H5P editor, allow it to manipulate the elementInstances
     this.editor.processElement(element, $elementContainer, index, elementInstance);
   }
   else {
@@ -673,7 +674,7 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
       $ol.scrollLeft($ol.scrollLeft() + 1);
     }, 1);
   };
-  
+
   var goHome = function (event) {
     event.preventDefault();
     that.jumpToSlide(0);
@@ -690,7 +691,7 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
 
   // Scroll slide selector to the right
   $right.click(disableClick).mousedown(scrollRight).bind('touchstart', scrollRight);
-  
+
   // Goto first slide
   $home.click(disableClick).mousedown(goHome).bind('touchstart', goHome);
 
