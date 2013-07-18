@@ -253,9 +253,8 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     this.$container.css('height', '99999px');
   }
 
-  var margin = parseInt(this.$boxWrapper.css('fontSize'));
-  var width = this.$container.width() - margin;
-  var height = this.$container.height() - margin;
+  var width = this.$container.innerWidth();
+  var height = this.$container.innerHeight();
 
   if (width / height >= this.ratio) {
     // Wider

@@ -142,7 +142,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
 }
 .h5p-course-presentation .h5p-keyword-slides .h5p-slide {
-  padding: 0 0 0 12.5625em;
+  padding: 0 0 0 32.25%;
   width: 68.75%;
 }
 .h5p-course-presentation .h5p-slide.h5p-animate {
@@ -201,14 +201,14 @@
   height: 2em;
 }
 
-.h5p-course-presentation .h5p-eta-export:before { 
+.h5p-course-presentation .h5p-eta-export:before {
   font-family: 'H5PFontAwesome';
   content: "\f0f6";
   margin-right: 0.5em;
 }
 
 .h5p-course-presentation .h5p-eta-export.flash:before {
-  position: relative;  
+  position: relative;
   top: -1.5em;
 }
 
@@ -304,7 +304,7 @@
   cursor: pointer;
 }
 .h5p-course-presentation .h5p-slideination > .h5p-go-home:before {
-  font-family: 'H5PFontAwesome';  
+  font-family: 'H5PFontAwesome';
   content: "\f015";
 }
 .h5p-course-presentation .h5p-slideination > .h5p-scroll-right {
