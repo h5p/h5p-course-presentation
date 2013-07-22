@@ -85,6 +85,12 @@
                 "optional": true,
                 "label": "Comments",
                 "description": "The comments are shown when the user displays the suggested answers for all slides."
+              },
+              {
+                "name": "index",
+                "type": "number",
+                "widget": "none",
+                "optional": true
               }
             ]
           }
@@ -119,7 +125,17 @@
           "name": "ct",
           "type": "text",
           "widget": "none",
-          "optional": true
+          "optional": true,
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "br",
+            "p",
+            "a",
+            "h2",
+            "h3"
+          ]
         }
       ]
     }
