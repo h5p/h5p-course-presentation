@@ -142,7 +142,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
 }
 .h5p-course-presentation .h5p-keyword-slides .h5p-slide {
-  padding: 0 0 0 32.25%;
+  left: 31.25%;
   width: 68.75%;
 }
 .h5p-course-presentation .h5p-slide.h5p-animate {

@@ -74,8 +74,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
-          '      <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
           '      <div class="h5p-keywords-wrapper"></div>' +
+          '      <div class="h5p-slides-wrapper h5p-keyword-slides"></div>' +
           '    </div>' +
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
@@ -136,6 +136,25 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.$keywordsWrapper.remove();
     this.$slidesWrapper.removeClass('h5p-keyword-slides');
   }
+
+  /* TODO: Remove this once we're able to update excisting data.
+   * TODO: Recalculate x values for all elements in the database where keyword list is enabled
+   *
+   * Explanation:
+   *
+   * In the beginning each slide had empty space below the keywords list. Because of this
+   * the origin of the slide wasn't the upper left corner of the slide, but the upper left
+   * corner of the keywords list.
+   *
+   * We decided not to fix this because we didn't have the time to test an altered solution.
+   * Instead we tried to make sure that the data we saved was recalculated so that we could
+   * move the origin later without changing the data. Our recalculation of the width was done
+   * correctly, but not the recalculation of x.
+   *
+   * Now the origin is in the right place, but we still need to recalculate our data because of
+   * our previous mistake in recalculating x. All excisting data for content with the keywords list
+   * enabled has x-values that are incorrect.
+   */
   this.slideWidthRatio = (100 - this.keywordsWidth) / 100; // Since the slides have empty space under the keywords list.
 
   // Needed for images etc. to get correct aspect ratio.
@@ -328,7 +347,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     elementInstance.preventResize = true;
   }
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + (element.x + this.keywordsWidth) + '%; top: ' + element.y + '%; width: ' + (element.width * this.slideWidthRatio) + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+  var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   elementInstance.attach($elementContainer);
 
   if (this.elementInstances[index] === undefined) {
