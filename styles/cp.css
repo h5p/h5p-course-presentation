@@ -100,7 +100,7 @@
   height: 96%;
   overflow: auto;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: 0.5em 0;
 }
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar {
