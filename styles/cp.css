@@ -466,6 +466,7 @@
 
 .h5p-course-presentation .h5p-video, .h5p-course-presentation .h5p-audio {
   background-color: #000;
+  width: 100%;
 }
 
 .h5p-course-presentation .h5p-popup-container dl {
