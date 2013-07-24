@@ -110,7 +110,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Get intended base width from CSS.
   this.width = parseInt(this.$wrapper.css('width'));
   this.height = parseInt(this.$wrapper.css('height'));
-  this.ratio = this.width / this.height;
+  this.ratio = 16/9;
   // Intended base font size cannot be read from CSS, as it might be modified
   // by mobile browsers already. (The Android native browser does this.)
   this.fontSize = 16;
@@ -127,7 +127,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
     if (slide.keywords !== undefined) {
-      this.keywordsWidth = this.$keywordsWrapper.width() / (this.width / 100);
+      this.keywordsWidth = 31.25;
       break;
     }
   }
@@ -158,7 +158,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.slideWidthRatio = (100 - this.keywordsWidth) / 100; // Since the slides have empty space under the keywords list.
 
   // Needed for images etc. to get correct aspect ratio.
-  this.slideRatio = ($presentationWrapper.width() / $presentationWrapper.height());
+  this.slideRatio = 16/9;
 
   var keywords = '';
   var slideinationSlides = '';
