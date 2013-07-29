@@ -481,6 +481,11 @@
 .h5p-content .h5p-text, .h5p-content .ct {
   font-size: 0.75em;
 }
+
+.h5p-content .dragndrop .h5p-text {
+  font-size: 1em;
+}
+
 .h5p-content .h5p-text > h2, .h5p-content .ct > h2 {
   font-size: 1.667em;
   font-weight: bold;
