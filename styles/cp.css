@@ -471,19 +471,19 @@
   padding-right: 0.2em;
 }
 
-.h5p-content .h5p-text, .h5p-content .ct {
+.h5p-course-presentation .h5p-text, .h5p-course-presentation .ct {
   font-size: 0.75em;
 }
 
-.h5p-content .dragndrop .h5p-text {
+.h5p-course-presentation .dragndrop .h5p-text {
   font-size: 1em;
 }
 
-.h5p-content .h5p-text > h2, .h5p-content .ct > h2 {
+.h5p-course-presentation .h5p-text > h2, .h5p-course-presentation .ct > h2 {
   font-size: 1.667em;
   font-weight: bold;
 }
-.h5p-content .h5p-text > h3, .h5p-content .ct > h3 {
+.h5p-course-presentation .h5p-text > h3, .h5p-course-presentation .ct > h3 {
   font-size: 1.333em;
   font-weight: bold;
 }
