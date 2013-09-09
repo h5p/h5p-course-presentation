@@ -31,11 +31,12 @@ if (H5P.getPath === undefined) {
 H5P.CoursePresentation = function (params, id, editor) {
   this.slides = params.slides;
   this.contentId = id;
-  // elementInstances holds the element instances
+  // elementInstances holds the instances for elements in an array.
   this.elementInstances = [];
   this.slidesWithSolutions = [];
   this.hasAnswerElements = false;
   this.editor = editor;
+  this.showSolutionButtons = (params.showSolutions === undefined ? true : params.showSolutions);
 
   this.l10n = H5P.jQuery.extend({}, {
     goHome: 'Go to first slide',
@@ -120,8 +121,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
-  var $solutionsButton = H5P.jQuery('.h5p-show-solutions', this.$wrapper);
-  var $exportAnswerButton = H5P.jQuery('.h5p-eta-export', this.$wrapper);
+  var $solutionsButton = $('.h5p-show-solutions', this.$wrapper);
+  var $exportAnswerButton = $('.h5p-eta-export', this.$wrapper);
 
   // Detemine if there are any keywords.
   for (var i = 0; i < this.slides.length; i++) {
@@ -235,7 +236,7 @@ H5P.CoursePresentation.prototype.fitCT = function () {
 
   this.$current.find('.h5p-ct').each(function () {
     var percent = 100;
-    var $parent = H5P.jQuery(this);
+    var $parent = $(this);
     var $ct = $parent.children('.ct').css({
       fontSize: '',
       lineHeight: ''
@@ -368,6 +369,11 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     /* When in view mode, we need to know if there are any answer elements,
      * so that we can display the export answers button on the last slide */
     this.hasAnswerElements = this.hasAnswerElements || elementInstance.exportAnswers !== undefined;
+
+    // Check if we should hide solution buttons.
+    if (elementInstance.$solutionButton !== undefined && !this.showSolutionButtons) {
+      elementInstance.$solutionButton.hide();
+    }
   }
 
   if (this.checkForSolutions(elementInstance)) {
@@ -926,6 +932,9 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
         var elementInstance = this.slidesWithSolutions[i][j];
         elementInstance.showSolutions();
+        if (elementInstance.$solutionButton !== undefined) {
+          elementInstance.$solutionButton.show();
+        }
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
@@ -939,7 +948,6 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       });
     }
   }
-  this.$container.find('.h5p-hidden-solution-btn').show();
   if (hasScores) {
     this.outputScoreStats(slideScores);
   }
