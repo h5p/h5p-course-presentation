@@ -140,9 +140,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
-  var $copyrightButton = $('.h5p-copyright', this.$wrapper);
-  var $solutionsButton = $('.h5p-show-solutions', this.$wrapper);
-  var $exportAnswerButton = $('.h5p-eta-export', this.$wrapper);
+  var $copyrightButton = H5P.jQuery('.h5p-copyright', this.$wrapper);
+  var $solutionsButton = H5P.jQuery('.h5p-show-solutions', this.$wrapper);
+  var $exportAnswerButton = H5P.jQuery('.h5p-eta-export', this.$wrapper);
 
   // Detemine if there are any keywords.
   for (var i = 0; i < this.slides.length; i++) {
@@ -264,7 +264,7 @@ H5P.CoursePresentation.prototype.fitCT = function () {
 
   this.$current.find('.h5p-ct').each(function () {
     var percent = 100;
-    var $parent = $(this);
+    var $parent = H5P.jQuery(this);
     var $ct = $parent.children('.ct').css({
       fontSize: '',
       lineHeight: ''
