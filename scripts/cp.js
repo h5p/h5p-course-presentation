@@ -58,8 +58,29 @@ H5P.CoursePresentation = function (params, id, editor) {
     source: 'Source',
     license: 'License',
     infoButtonTitle: 'View metadata',
-    solutionsButtonTitle: 'View solution'
+    solutionsButtonTitle: 'View solution',
+    copyright: 'View copyright information',
+    contentType: 'Content type',
+    title: 'Title',
+    author: 'Author',
+    source: 'Source',
+    license: 'License',
+    time: 'Time',
+    interactionsCopyright: 'Copyright information regarding interactions used in this interactive video',
+    "U": "Undisclosed",
+    "CC BY": "Attribution",
+    "CC BY-SA": "Attribution-ShareAlike",
+    "CC BY-ND": "Attribution-NoDerivs",
+    "CC BY-NC": "Attribution-NonCommercial",
+    "CC BY-NC-SA": "Attribution-NonCommercial-ShareAlike",
+    "CC BY-NC-ND": "Attribution-NonCommercial-NoDerivs",
+    "PD": "Public Domain",
+    "ODC PDDL": "Public Domain Dedication and Licence",
+    "CC PDM": "Public Domain Mark",
+    "C": "Copyright"
   }, params.l10n !== undefined ? params.l10n : {});
+
+  this.displayCopyright = false;
 };
 
 /**
@@ -80,6 +101,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    </div>' +
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
+          '  <div class="h5p-action-foo"><a href="#" class="h5p-copyright" title="View copyright information"></a></div>' +
           '  <div class="h5p-action-bar">' +
           ((typeof that.editor === 'undefined' && typeof H5P.ExportableTextArea !== 'undefined') ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
           '    <a href="#" class="h5p-show-solutions">' + this.l10n.showSolutions + '</a>' +
@@ -121,6 +143,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
+  var $copyrightButton = $('.h5p-copyright', this.$wrapper);
   var $solutionsButton = $('.h5p-show-solutions', this.$wrapper);
   var $exportAnswerButton = $('.h5p-eta-export', this.$wrapper);
 
@@ -200,11 +223,19 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Slideination
   this.initSlideination(this.$slideination, slideinationSlides);
 
-  $solutionsButton.click(function(event) {
+  if (this.displayCopyright) {
+    $copyrightButton
+      .click(function (event) {
+        that.showCopyright();
+        event.preventDefault();
+      })
+      .show();
+  }
+  $solutionsButton.click(function (event) {
     that.showSolutions();
     event.preventDefault();
   });
-  $exportAnswerButton.click(function(event) {
+  $exportAnswerButton.click(function (event) {
     H5P.ExportableTextArea.Exporter.run();
     event.preventDefault();
   });
@@ -217,7 +248,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
   }
 
-  H5P.$window.resize(function() {
+  H5P.$window.resize(function () {
     that.resize(false);
   });
   this.resize(false);
@@ -361,9 +392,8 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     if (element.solution) {
       this.addElementSolutionButton(element, elementInstance, $elementContainer);
     }
-    var info = this.getElementInfo(element.action.params);
-    if (info) {
-      this.addElementInfoButton(info, $elementContainer);
+    if (element.action.params.copyright !== undefined && !this.displayCopyright) {
+      this.displayCopyright = true;
     }
 
     /* When in view mode, we need to know if there are any answer elements,
@@ -384,48 +414,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   }
 
   return $elementContainer;
-};
-
-/**
- * Adds a solution button
- *
- * @param {string} info Info in html format.
- * @param {jQuery} $elementContainer Wrapper for the element.
- * @returns {undefined}
- */
-H5P.CoursePresentation.prototype.addElementInfoButton = function (info, $elementContainer) {
-  var that = this;
-  var $elementInfoButton = H5P.jQuery('<a href="#" class="h5p-element-info" title="' + this.l10n.infoButtonTitle +'"></a>')
-  .click(function(event) {
-    event.preventDefault();
-    that.showPopup(info);
-  });
-  $elementContainer.append($elementInfoButton);
-};
-
-/**
- * Extract info from element Params and convert to html
- *
- * @param {object} elementParams
- * @returns
- *  false if no info is found
- *  info as html string if info is found
- */
-H5P.CoursePresentation.prototype.getElementInfo = function (elementParams) {
-  var infoKeys = ['title', 'author', 'source', 'license'];
-  var listContent = '';
-  if (elementParams.copyright !== undefined) {
-    for (var i = 0; i < infoKeys.length; i++) {
-      var info = elementParams.copyright[infoKeys[i]];
-      if (info !== undefined && info.length !== 0 && !(infoKeys[i] === 'license' && info === 'U')) {
-        listContent += '<dt>' + this.l10n[infoKeys[i]] + ':</dt><dd>' + info + '</dd>';
-      }
-    }
-  }
-  if (listContent === '') {
-    return false;
-  }
-  return '<dl>' + listContent + '</dl>';
 };
 
 /**
@@ -915,6 +903,43 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
   }
 
   return html + '</a></li>';
+};
+
+/**
+ * Displays copyright information for elements in slides.
+ *
+ * @returns {undefined}
+ */
+H5P.CoursePresentation.prototype.showCopyright = function () {
+  var html = '';
+
+  for (var i = 0; i < this.slides.length; i++) {
+    var slide = this.slides[i];
+
+    for (var j = 0; j < slide.elements.length; j++) {
+      var element = slide.elements[j];
+      var params = element.action.params;
+
+      if (params.copyright !== undefined) {
+        html += '<dl class="h5p-copyinfo"><dt>' + this.l10n.contentType + '</dt><dd>' + params.contentName + '</dd>';
+        if (params.copyright.title !== undefined) {
+          html += '<dt>' + this.l10n.title + '</dt><dd>' + params.copyright.title + '</dd>';
+        }
+        if (params.copyright.author !== undefined) {
+          html += '<dt>' + this.l10n.author + '</dt><dd>' + params.copyright.author + '</dd>';
+        }
+        if (params.copyright.license !== undefined) {
+          html += '<dt>' + this.l10n.license + '</dt><dd>' + this.l10n[params.copyright.license] + ' (' + params.copyright.license + ')</dd>';
+        }
+        if (params.copyright.source !== undefined) {
+          html += '<dt>' + this.l10n.source + '</dt><dd><a target="_blank" href="' + params.copyright.source + '">' + params.copyright.source + '</a></dd>';
+        }
+        html += '<dt>' + this.l10n.slide + '</dt><dd>' + (i + 1) + '</dd></dl>';
+      }
+    }
+  }
+
+  this.showPopup(html);
 };
 
 /**
