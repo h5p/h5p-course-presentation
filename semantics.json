@@ -84,12 +84,30 @@
                 "widget": "html",
                 "optional": true,
                 "label": "Comments",
-                "description": "The comments are shown when the user displays the suggested answers for all slides."
+                "description": "The comments are shown when the user displays the suggested answers for all slides.",
+                "enterMode": "p",
+                "tags": [
+                  "strong",
+                  "em",
+                  "del",
+                  "a",
+                  "ul",
+                  "ol",
+                  "h2",
+                  "h3",
+                  "hr"
+                ]
               },
               {
                 "name": "index",
                 "type": "number",
                 "widget": "none",
+                "optional": true
+              },
+              {
+                "name": "alwaysDisplayComments",
+                "type": "boolean",
+                "label": "Always display comments",
                 "optional": true
               }
             ]
@@ -139,6 +157,13 @@
         }
       ]
     }
+  },
+  {
+    "name": "showSolutions",
+    "type": "boolean",
+    "label": "Enable show solution buttons",
+    "default": true,
+    "optional": true
   },
   {
     "name": "l10n",

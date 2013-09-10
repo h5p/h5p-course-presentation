@@ -391,6 +391,7 @@
   padding: 1em;
   max-height: 75%;
   overflow: auto;
+  text-align: left;
 }
 
 .h5p-course-presentation .h5p-popup-container tfoot {

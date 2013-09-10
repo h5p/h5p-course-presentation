@@ -440,14 +440,17 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
   var that = this;
   elementInstance.showSolutions = function() {
     if ($elementContainer.children('.h5p-element-solution').length === 0) {
-      var $elementSolutionButton = H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
-      .data('solution', element.solution).click(function(event) {
-        event.preventDefault();
-        that.showPopup(H5P.jQuery(this).data('solution'));
-      });
-      $elementContainer.append($elementSolutionButton);
+      H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
+        .click(function(event) {
+          event.preventDefault();
+          that.showPopup(element.solution);
+        })
+        .appendTo($elementContainer);
     }
   };
+  if (element.alwaysDisplayComments !== undefined && element.alwaysDisplayComments) {
+    elementInstance.showSolutions();
+  }
 };
 
 /**
@@ -458,11 +461,14 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  */
 H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
   var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
-           '</div><a href="#" class="h5p-button h5p-close-popup">' + this.l10n.close + '</a></div></div>')
-  .prependTo(this.$wrapper).find('.h5p-close-popup').click(function(event) {
-    event.preventDefault();
-    $popup.remove();
-  }).end();
+          '</div><a href="#" class="h5p-button h5p-close-popup">' + this.l10n.close + '</a></div></div>')
+    .prependTo(this.$wrapper)
+    .find('.h5p-close-popup')
+      .click(function(event) {
+        event.preventDefault();
+        $popup.remove();
+      })
+      .end();
 };
 
 /**
