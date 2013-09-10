@@ -109,6 +109,16 @@
                 "type": "boolean",
                 "label": "Always display comments",
                 "optional": true
+              },
+              {
+                "name": "backgroundOpacity",
+                "type": "number",
+                "label": "BackgroundOpacity",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "default": 0,
+                "optional": true
               }
             ]
           }

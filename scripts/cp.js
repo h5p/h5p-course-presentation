@@ -373,7 +373,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     elementInstance.preventResize = true;
   }
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+  var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
   elementInstance.attach($elementContainer);
 
   if (this.elementInstances[index] === undefined) {
