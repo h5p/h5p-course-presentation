@@ -78,6 +78,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   }, params.l10n !== undefined ? params.l10n : {});
 
   this.displayCopyright = false;
+  this.buttonElements = [];
 };
 
 /**
@@ -361,6 +362,8 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
  * @returns {unresolved}
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
+  var that = this;
+
   if ($slide === undefined) {
     $slide = this.$current;
   }
@@ -368,13 +371,26 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     index = $slide.index();
   }
 
+  var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
   var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentId);
   if (elementInstance.preventResize !== undefined) {
     elementInstance.preventResize = true;
   }
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
-  elementInstance.attach($elementContainer);
+  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
+  if (displayAsButton) {
+    var $buttonElement = this.buttonElements[index] = $('<div class="h5p-button-element"></div>');
+    elementInstance.attach($buttonElement);
+    $('<a href="#" class="h5p-element-button"></a>').appendTo($elementContainer).click(function () {
+      if (that.editor === undefined) {
+        $buttonElement.appendTo(that.showPopup('').find('.h5p-popup-wrapper'));
+      }
+      return false;
+    });
+  }
+  else {
+    elementInstance.attach($elementContainer);
+  }
 
   if (this.elementInstances[index] === undefined) {
     this.elementInstances[index] = [];
@@ -454,6 +470,8 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
         $popup.remove();
       })
       .end();
+
+  return $popup;
 };
 
 /**
