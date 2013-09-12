@@ -233,7 +233,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     event.preventDefault();
   });
   $exportAnswerButton.click(function (event) {
-    H5P.ExportableTextArea.Exporter.run();
+    H5P.ExportableTextArea.Exporter.run(that.slides, that.elementInstances);
     event.preventDefault();
   });
   if (this.slides.length === 1 && this.editor === undefined) {
