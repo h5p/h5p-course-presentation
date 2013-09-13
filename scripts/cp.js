@@ -379,9 +379,9 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
   if (displayAsButton) {
-    var $buttonElement = this.buttonElements[index] = $('<div class="h5p-button-element"></div>');
+    var $buttonElement = this.buttonElements[index] = H5P.jQuery('<div class="h5p-button-element"></div>');
     elementInstance.attach($buttonElement);
-    $('<a href="#" class="h5p-element-button"></a>').appendTo($elementContainer).click(function () {
+    H5P.jQuery('<a href="#" class="h5p-element-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
         $buttonElement.appendTo(that.showPopup('').find('.h5p-popup-wrapper'));
       }
