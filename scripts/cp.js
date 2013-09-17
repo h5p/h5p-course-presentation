@@ -377,7 +377,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     elementInstance.preventResize = true;
   }
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
+  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
   if (displayAsButton) {
     var $buttonElement = this.buttonElements[index] = H5P.jQuery('<div class="h5p-button-element"></div>');
     elementInstance.attach($buttonElement);
