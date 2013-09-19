@@ -77,6 +77,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     "C": "Copyright"
   }, params.l10n !== undefined ? params.l10n : {});
 
+  this.postUserStatistics = (H5P.postUserStatistics === true);
   this.displayCopyright = false;
   this.buttonElements = [];
 };
@@ -372,7 +373,11 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   }
 
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(element.action.params, this.contentId);
+  var elementParams = H5P.jQuery.extend({}, element.action.params, {
+    displaySolutionsButton: this.showSolutionButtons,
+    postUserStatistics: false
+  });
+  var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(elementParams, this.contentId);
   if (elementInstance.preventResize !== undefined) {
     elementInstance.preventResize = true;
   }
@@ -412,11 +417,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     /* When in view mode, we need to know if there are any answer elements,
      * so that we can display the export answers button on the last slide */
     this.hasAnswerElements = this.hasAnswerElements || elementInstance.exportAnswers !== undefined;
-
-    // Check if we should hide solution buttons.
-    if (elementInstance.$solutionButton !== undefined && !this.showSolutionButtons) {
-      elementInstance.$solutionButton.hide();
-    }
   }
 
   if (this.checkForSolutions(elementInstance)) {
@@ -816,10 +816,13 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
   // Show show solutions button and export answers on last slide
   if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
-    if(this.slidesWithSolutions.length) {
+    if (this.slidesWithSolutions.length) {
       H5P.jQuery('.h5p-show-solutions', this.$container).show();
     }
-    if(this.hasAnswerElements) {
+    else if (this.postUserStatistics === true) {
+      H5P.setFinished(this.contentId, 0, 0);
+    }
+    if (this.hasAnswerElements) {
       H5P.jQuery('.h5p-eta-export', this.$container).show();
     }
   }
@@ -978,8 +981,8 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
         var elementInstance = this.slidesWithSolutions[i][j];
         elementInstance.showSolutions();
-        if (elementInstance.$solutionButton !== undefined) {
-          elementInstance.$solutionButton.show();
+        if (elementInstance.addSolutionButton !== undefined) {
+          elementInstance.addSolutionButton();
         }
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
@@ -999,7 +1002,7 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
   }
 };
 
-H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
+H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
   var totalScore = 0;
   var totalMaxScore = 0;
   var tds = ''; // For saving the main table rows...
@@ -1009,6 +1012,11 @@ H5P.CoursePresentation.prototype.outputScoreStats = function(slideScores) {
     totalScore += slideScores[i].score;
     totalMaxScore += slideScores[i].maxScore;
   }
+
+  if (this.postUserStatistics === true) {
+    H5P.setFinished(this.contentId, totalScore, totalMaxScore);
+  }
+
   var percentScore = Math.round(totalScore / totalMaxScore * 100);
   var scoreMessage = this.l10n.goodScore;
   if (percentScore < 80) {
