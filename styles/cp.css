@@ -14,6 +14,7 @@
   color: #323232;
   font-family: H5PDroidSans, sans-serif;
   line-height: 150%;
+  padding: 0.5em;
 }
 
 .h5p-course-presentation a:focus {
@@ -174,6 +175,11 @@
 .h5p-course-presentation .h5p-action-bar {
   position: absolute;
   right: 0;
+}
+.h5p-course-presentation .h5p-action-bar a,
+.h5p-course-presentation .h5p-slideination a,
+.h5p-course-presentation .h5p-action-foo a {
+  text-decoration: none;
 }
 
 .h5p-course-presentation .h5p-show-solutions,
