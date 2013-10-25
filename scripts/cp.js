@@ -312,6 +312,8 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     // Narrower
     height = width / this.ratio;
   }
+  
+  width -= 16; // Remove padding; if not stuff will grow infinitely...
 
   this.$wrapper.css({
     width: width + 'px',
@@ -338,7 +340,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     }
   }
 
-  this.fitCT();
+//  this.fitCT();
 };
 
 /**
