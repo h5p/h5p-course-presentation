@@ -56,9 +56,8 @@
   background-image: -moz-linear-gradient(top, #f0f0f0, #e8e6e7);
   background-image: linear-gradient(to bottom, #f0f0f0, #e8e6e7);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
-
-  border: 1px solid #a9a9a9\9; /* IE8 */
 }
+
 .h5p-course-presentation .h5p-keywords-wrapper {
   font-weight: bold;
   position: absolute;

@@ -115,6 +115,13 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   $container.addClass('h5p-course-presentation').html(html);
 
+  if (window.navigator.userAgent.indexOf('MSIE 8.0') !== -1) {
+    $container.find('.h5p-box-wrapper').css({
+      border: '1px solid #a9a9a9',
+      boxSizing: 'border-box'
+    });
+  }
+
   this.$container = $container;
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
@@ -312,7 +319,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     // Narrower
     height = width / this.ratio;
   }
-  
+
   width -= 16; // Remove padding; if not stuff will grow infinitely...
 
   this.$wrapper.css({
