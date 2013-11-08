@@ -202,10 +202,6 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#cccccc', GradientType=0);
 }
 
-.h5p-course-presentation .h5p-copyright:before {
-  content: "\00A9";
-}
-
 .h5p-course-presentation .h5p-eta-export.flash {
   padding: 0 0.75em;
   line-height:0;
@@ -499,7 +495,6 @@
 
 .h5p-course-presentation .h5p-text, .h5p-course-presentation .ct {
   font-size: 0.75em;
-  padding: 0.375em 0.5em;
 }
 
 .h5p-course-presentation .dragndrop .h5p-text {

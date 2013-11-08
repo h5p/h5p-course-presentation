@@ -286,6 +286,12 @@
         "type": "text",
         "label": "Text for the export text button",
         "default": "Export text"
+      },
+      {
+        "name": "copyright",
+        "type": "text",
+        "label": "Text for the \"Right of use\" button",
+        "default": "Right of use"
       }
     ]
   }

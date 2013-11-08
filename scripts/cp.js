@@ -58,7 +58,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     source: 'Source',
     license: 'License',
     solutionsButtonTitle: 'View solution',
-    copyright: 'View copyright information',
+    copyright: 'Right of use',
     contentType: 'Content type',
     title: 'Title',
     author: 'Author',
@@ -100,7 +100,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    </div>' +
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
-          '  <div class="h5p-action-foo"><a href="#" class="h5p-copyright" title="' + this.l10n.copyright + '"></a></div>' +
+          '  <div class="h5p-action-foo"><a href="#" class="h5p-copyright">' + this.l10n.copyright + '</a></div>' +
           '  <div class="h5p-action-bar">' +
           ((typeof that.editor === 'undefined' && typeof H5P.ExportableTextArea !== 'undefined') ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
           '    <a href="#" class="h5p-show-solutions">' + this.l10n.showSolutions + '</a>' +
