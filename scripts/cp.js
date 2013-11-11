@@ -989,10 +989,10 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       var slideMaxScore = 0;
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
         var elementInstance = this.slidesWithSolutions[i][j];
-        elementInstance.showSolutions();
         if (elementInstance.addSolutionButton !== undefined) {
           elementInstance.addSolutionButton();
         }
+        elementInstance.showSolutions();
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
