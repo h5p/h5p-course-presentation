@@ -495,6 +495,7 @@
 
 .h5p-course-presentation .h5p-text, .h5p-course-presentation .ct {
   font-size: 0.75em;
+  padding: 0.375em 0.5em;
 }
 
 .h5p-course-presentation .dragndrop .h5p-text {
