@@ -324,7 +324,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     fontSize: (this.fontSize * (width / this.width)) + 'px'
   });
 
-  this.swipeThreshold = (width / this.width) * 50; // Default swipe threshold is 50px.
+  this.swipeThreshold = (width / this.width) * 100; // Default swipe threshold is 50px.
 
   if (fullscreen) {
     this.$wrapper.focus();
