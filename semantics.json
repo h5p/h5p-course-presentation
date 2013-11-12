@@ -279,7 +279,15 @@
         "name": "lisence",
         "type": "text",
         "label": "Translation for \"Lisence\"",
-        "default": "Lisence"
+        "default": "Lisence",
+        "deprecated": true,
+        "optional": true
+      },
+      {
+        "name": "license",
+        "type": "text",
+        "label": "Translation for \"License\"",
+        "default": "License"
       },
       {
         "name": "exportAnswers",
