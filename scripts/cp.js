@@ -444,7 +444,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
  */
 H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
-  elementInstance.showSolutions = function() {
+  elementInstance.showCPComments = function() {
     if ($elementContainer.children('.h5p-element-solution').length === 0) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
         .click(function(event) {
@@ -455,7 +455,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
     }
   };
   if (element.alwaysDisplayComments !== undefined && element.alwaysDisplayComments) {
-    elementInstance.showSolutions();
+    elementInstance.showCPComments();
   }
 };
 
@@ -488,12 +488,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
  *  false otherwise
  */
 H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
-  if (elementInstance.showSolutions !== undefined) {
-    return true;
-  }
-  else {
-    return false;
-  }
+  return (elementInstance.showSolutions !== undefined || elementInstance.showCPComments !== undefined);
 };
 
 /**
@@ -988,7 +983,12 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
         if (elementInstance.addSolutionButton !== undefined) {
           elementInstance.addSolutionButton();
         }
-        elementInstance.showSolutions();
+        if (elementInstance.showSolutions) {
+          elementInstance.showSolutions();
+        }
+        if (elementInstance.showCPComments) {
+          elementInstance.showCPComments();
+        }
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
