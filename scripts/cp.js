@@ -54,7 +54,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     exportAnswers: 'Export text',
     close: 'Close',
     solutionsButtonTitle: 'View solution',
-    copyright: 'Right of use',
+    copyright: 'Rights of use',
     contentType: 'Content type',
     title: 'Title',
     author: 'Author',
@@ -96,7 +96,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    </div>' +
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
-          '  <div class="h5p-action-foo"><a href="#" class="h5p-copyright">' + this.l10n.copyright + '</a></div>' +
+          '  <div class="h5p-action-foo"><div role="button" tabindex="1" class="h5p-copyright">' + this.l10n.copyright + '</div></div>' +
           '  <div class="h5p-action-bar">' +
           ((typeof that.editor === 'undefined' && typeof H5P.ExportableTextArea !== 'undefined') ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
           '    <a href="#" class="h5p-show-solutions">' + this.l10n.showSolutions + '</a>' +
@@ -467,7 +467,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  */
 H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
   var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
-          '</div><a href="#" class="h5p-button h5p-close-popup">' + this.l10n.close + '</a></div></div>')
+          '</div><div role="button" tabindex="1" class="h5p-button h5p-close-popup">' + this.l10n.close + '</div></div></div>')
     .prependTo(this.$wrapper)
     .find('.h5p-close-popup')
       .click(function(event) {

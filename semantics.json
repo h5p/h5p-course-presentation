@@ -298,8 +298,8 @@
       {
         "name": "copyright",
         "type": "text",
-        "label": "Text for the \"Right of use\" button",
-        "default": "Right of use"
+        "label": "Text for the \"Rights of use\" button",
+        "default": "Rights of use"
       }
     ]
   }
