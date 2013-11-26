@@ -397,11 +397,8 @@
 
 .h5p-course-presentation .h5p-element {
   position: absolute;
-  overflow: hidden;
-  font-size: 0.75em;
-}
-.h5p-course-presentation .h5p-element.summary-content {
   overflow: auto;
+  font-size: 0.75em;
 }
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
   border: 0;
