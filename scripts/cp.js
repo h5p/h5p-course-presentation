@@ -694,17 +694,21 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
     event.preventDefault();
     H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
 
+    var currentScrollLeft = $ol.scrollLeft();
     timer = setInterval(function () {
-      $ol.scrollLeft($ol.scrollLeft() - 1);
+      currentScrollLeft -= 2;
+      $ol.scrollLeft(currentScrollLeft);
     }, 1);
   };
 
   var scrollRight = function (event) {
     event.preventDefault();
     H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
-
+    
+    var currentScrollLeft = $ol.scrollLeft();
     timer = setInterval(function () {
-      $ol.scrollLeft($ol.scrollLeft() + 1);
+      currentScrollLeft += 2;
+      $ol.scrollLeft(currentScrollLeft);
     }, 1);
   };
 
