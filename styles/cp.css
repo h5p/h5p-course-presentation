@@ -368,6 +368,11 @@
   background-image: linear-gradient(to bottom, #dfdfdf, #f9f9f9);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#f9f9f9', GradientType=0);
 }
+
+.h5p-course-presentation .h5p-slideination ol::-webkit-scrollbar {
+  -webkit-appearance: none; /* For safari */
+}
+
 .h5p-course-presentation .h5p-slide-button {
   display: inline-block;
   padding: 0;
