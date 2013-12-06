@@ -276,7 +276,7 @@ H5P.CoursePresentation.prototype.fitCT = function () {
     });
     var parentHeight = $parent.height();
 
-    while ($ct.height() > parentHeight) {
+    while ($ct.outerHeight() > parentHeight) {
       percent--;
       $ct.css({
         fontSize: percent + '%',
@@ -343,7 +343,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     }
   }
 
-//  this.fitCT();
+  this.fitCT();
 };
 
 /**

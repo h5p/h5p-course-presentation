@@ -402,7 +402,7 @@
 
 .h5p-course-presentation .h5p-element {
   position: absolute;
-  overflow: auto;
+  overflow: hidden;
   font-size: 0.75em;
 }
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
@@ -411,6 +411,9 @@
   width: 1.02em !important;
   height: 1.02em !important;
   z-index: 2;
+}
+.h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content {
+  overflow: auto;
 }
 
 .h5p-course-presentation .h5p-blanks-evaluation-container {
@@ -586,6 +589,10 @@
 .h5p-course-presentation .h5p-ct > .ct {
   font-size: 100%;
   line-height: 165%;
+
+}
+.h5p-course-presentation .ct > p:last-child {
+  margin: 0;
 }
 
 .h5p-course-presentation .h5p-copyinfo {
