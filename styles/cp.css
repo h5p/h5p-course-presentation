@@ -15,12 +15,19 @@
   src:url('../fonts/cc.eot?#iefix') format('embedded-opentype'),
     url('../fonts/cc.svg#cc') format('svg'),
     url('../fonts/cc.woff') format('woff'),
-    url('../fonts/cc.ttf') format('truetype');    
+    url('../fonts/cc.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-.h5p-course-presentation {
+.h5p-course-presentation,
+.h5p-course-presentation h1,
+.h5p-course-presentation h2,
+.h5p-course-presentation h3,
+.h5p-course-presentation h4,
+.h5p-course-presentation h5,
+.h5p-course-presentation h6,
+.h5p-course-presentation p {
   color: #323232;
   font-family: H5PDroidSans, sans-serif;
   line-height: 150%;
@@ -414,7 +421,7 @@
 }
 
 .h5p-course-presentation .h5p-blanks-evaluation-container {
-  display: none;  
+  display: none;
 }
 .h5p-course-presentation .h5p-blanks-footer {
   margin-bottom: 0.8em;
