@@ -15,12 +15,19 @@
   src:url('../fonts/cc.eot?#iefix') format('embedded-opentype'),
     url('../fonts/cc.svg#cc') format('svg'),
     url('../fonts/cc.woff') format('woff'),
-    url('../fonts/cc.ttf') format('truetype');    
+    url('../fonts/cc.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-.h5p-course-presentation {
+.h5p-course-presentation,
+.h5p-course-presentation h1,
+.h5p-course-presentation h2,
+.h5p-course-presentation h3,
+.h5p-course-presentation h4,
+.h5p-course-presentation h5,
+.h5p-course-presentation h6,
+.h5p-course-presentation p {
   color: #323232;
   font-family: H5PDroidSans, sans-serif;
   line-height: 150%;
@@ -417,7 +424,7 @@
 }
 
 .h5p-course-presentation .h5p-blanks-evaluation-container {
-  display: none;  
+  display: none;
 }
 .h5p-course-presentation .h5p-blanks-footer {
   margin-bottom: 0.8em;
@@ -548,26 +555,33 @@
   font-size: 1em;
 }
 
-.h5p-course-presentation .h5p-text > h2, .h5p-course-presentation .ct > h2, .h5p-course-presentation .h5p-eta-label > h2 {
+.h5p-course-presentation h2 {
   font-size: 1.667em;
   font-weight: bold;
   line-height: 1.5em;
   padding: 0;
   margin: 0 0 0.5em;
 }
-.h5p-course-presentation .h5p-text > h3, .h5p-course-presentation .ct > h3, .h5p-course-presentation .h5p-eta-label > h3 {
+.h5p-course-presentation h3 {
   font-size: 1.333em;
   font-weight: bold;
   line-height: 1.5em;
   padding: 0;
   margin: 0 0 0.5em;
 }
-.h5p-course-presentation .h5p-text > p, .h5p-course-presentation .ct > p, .h5p-course-presentation .h5p-eta-label > p {
+.h5p-course-presentation p {
   font-size: 1em;
   font-weight: normal;
   line-height: 1.25em;
   padding: 0;
   margin: 0 0 1em;
+}
+
+/* Last paragraph should not have any bottom margin */
+.h5p-course-presentation .h5p-text > p:last-of-type,
+.h5p-course-presentation .ct > p:last-of-type,
+.h5p-course-presentation .h5p-eta-label > p:last-of-type {
+  margin-bottom: 0;
 }
 
 .h5p-course-presentation .h5p-table {
