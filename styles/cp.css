@@ -564,7 +564,14 @@
   font-weight: normal;
   line-height: 1.25em;
   padding: 0;
-  margin: 0 0;
+  margin: 0 0 1em;
+}
+
+/* Last paragraph should not have any bottom margin */
+.h5p-course-presentation .h5p-text > p:last-of-type,
+.h5p-course-presentation .ct > p:last-of-type,
+.h5p-course-presentation .h5p-eta-label > p:last-of-type {
+  margin-bottom: 0;
 }
 
 .h5p-course-presentation .h5p-table {
