@@ -33,6 +33,28 @@
   line-height: 150%;
   padding: 0.5em;
 }
+.h5p-course-presentation h2 {
+  font-size: 1.667em;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0 0 0.5em;
+}
+.h5p-course-presentation h3 {
+  font-size: 1.333em;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0 0 0.5em;
+}
+.h5p-course-presentation p {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.25em;
+  padding: 0;
+  margin: 0 0 1em;
+}
+
 
 .h5p-course-presentation a:focus {
   box-shadow: none;
@@ -553,28 +575,6 @@
 
 .h5p-course-presentation .dragndrop .h5p-text {
   font-size: 1em;
-}
-
-.h5p-course-presentation h2 {
-  font-size: 1.667em;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0;
-  margin: 0 0 0.5em;
-}
-.h5p-course-presentation h3 {
-  font-size: 1.333em;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0;
-  margin: 0 0 0.5em;
-}
-.h5p-course-presentation p {
-  font-size: 1em;
-  font-weight: normal;
-  line-height: 1.25em;
-  padding: 0;
-  margin: 0 0 1em;
 }
 
 /* Last paragraph should not have any bottom margin */
