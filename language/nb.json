@@ -46,6 +46,9 @@
       }
     },
     {
+      "label": "Slå på \"Vis svar\" knapp"
+    },
+    {
       "label": "Ledetekster",
       "fields": [
         {
