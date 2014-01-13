@@ -170,11 +170,11 @@
   left: 0;
   z-index: 1;
   display: none;
+  background-color: #f4f2fe;
   -webkit-transform: translateX(100%) translate3d(100%, 0, 0);
   -moz-transform: translateX(100%) translate3d(100%, 0, 0);
   -ms-transform: translateX(100%) translate3d(100%, 0, 0);
   transform: translateX(100%) translate3d(100%, 0, 0);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
 }
 .h5p-course-presentation .h5p-keyword-slides .h5p-slide {
   left: 31.25%;
