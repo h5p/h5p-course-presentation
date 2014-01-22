@@ -15,46 +15,17 @@
   src:url('../fonts/cc.eot?#iefix') format('embedded-opentype'),
     url('../fonts/cc.svg#cc') format('svg'),
     url('../fonts/cc.woff') format('woff'),
-    url('../fonts/cc.ttf') format('truetype');
+    url('../fonts/cc.ttf') format('truetype');    
   font-weight: normal;
   font-style: normal;
 }
 
-.h5p-course-presentation,
-.h5p-course-presentation h1,
-.h5p-course-presentation h2,
-.h5p-course-presentation h3,
-.h5p-course-presentation h4,
-.h5p-course-presentation h5,
-.h5p-course-presentation h6,
-.h5p-course-presentation p {
+.h5p-course-presentation {
   color: #323232;
   font-family: H5PDroidSans, sans-serif;
   line-height: 150%;
   padding: 0.5em;
 }
-.h5p-course-presentation h2 {
-  font-size: 1.667em;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0;
-  margin: 0 0 0.5em;
-}
-.h5p-course-presentation h3 {
-  font-size: 1.333em;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0;
-  margin: 0 0 0.5em;
-}
-.h5p-course-presentation p {
-  font-size: 1em;
-  font-weight: normal;
-  line-height: 1.25em;
-  padding: 0;
-  margin: 0 0 1em;
-}
-
 
 .h5p-course-presentation a:focus {
   box-shadow: none;
@@ -174,6 +145,7 @@
   -moz-transform: translateX(100%) translate3d(100%, 0, 0);
   -ms-transform: translateX(100%) translate3d(100%, 0, 0);
   transform: translateX(100%) translate3d(100%, 0, 0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
 }
 .h5p-course-presentation .h5p-keyword-slides .h5p-slide {
   left: 31.25%;
@@ -396,11 +368,6 @@
   background-image: linear-gradient(to bottom, #dfdfdf, #f9f9f9);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#f9f9f9', GradientType=0);
 }
-
-.h5p-course-presentation .h5p-slideination ol::-webkit-scrollbar {
-  -webkit-appearance: none; /* For safari */
-}
-
 .h5p-course-presentation .h5p-slide-button {
   display: inline-block;
   padding: 0;
@@ -430,7 +397,7 @@
 
 .h5p-course-presentation .h5p-element {
   position: absolute;
-  overflow: hidden;
+  overflow: auto;
   font-size: 0.75em;
 }
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
@@ -440,12 +407,9 @@
   height: 1.02em !important;
   z-index: 2;
 }
-.h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content {
-  overflow: auto;
-}
 
 .h5p-course-presentation .h5p-blanks-evaluation-container {
-  display: none;
+  display: none;  
 }
 .h5p-course-presentation .h5p-blanks-footer {
   margin-bottom: 0.8em;
@@ -488,9 +452,20 @@
   font-size: 0.8em;
 }
 
+.h5p-course-presentation .h5p-popup-container table {
+  border-collapse: collapse;  
+}
+
 .h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
-  padding: 0.1em;
-  text-align: center;
+  padding-right: 1.4em; 
+}
+
+.h5p-course-presentation .h5p-th {
+  border-bottom: 1px solid #ccc;
+}
+
+.h5p-course-presentation tfoot .h5p-td {
+  border-top: 1px solid #ccc;  
 }
 
 .h5p-course-presentation .h5p-element-solution {
@@ -513,8 +488,8 @@
   background-size: 1em 1em;
   display: block;
   position: absolute;
-/*  right: 0.1em;
-  top: 0.1em;*/
+  /*  right: 0.1em;
+    top: 0.1em;*/
   width: 1.02em;
   height: 1.02em;
   background-image: none\0/;
@@ -528,29 +503,20 @@
 .h5p-course-presentation .h5p-close-popup {
   text-decoration: none;
   float: right;
-  display: block;
-  padding: 0 1em;
-  border: 0.18em solid #fff;
-  border-radius: 0.3em;
-  margin: 1em 1em;
   cursor: pointer;
-  color: #fff;
-  font-size: 0.7em;
-  box-shadow: 0 0 0.5em #999;
-
-  background: rgb(100,152,254); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(100,152,254,1) 0%, rgba(4,104,206,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,152,254,1)), color-stop(100%,rgba(4,104,206,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 );
 }
 
 .h5p-course-presentation .h5p-close-popup:before {
+  position: absolute;
+  right: 10px;
+  top: 10px;
   font-family: H5PFontAwesome;
   content: "\f00d";
-  margin-right: 0.5em;
+  font-size: 2em;
+}
+
+.h5p-course-presentation .h5p-close-popup:hover:before {
+  color: #555;
 }
 
 .h5p-course-presentation .h5p-video, .h5p-course-presentation .h5p-audio {
@@ -576,21 +542,21 @@
   font-size: 1em;
 }
 
-.h5p-course-presentation h2 {
+.h5p-course-presentation .h5p-text > h2, .h5p-course-presentation .ct > h2, .h5p-course-presentation .h5p-eta-label > h2 {
   font-size: 1.667em;
   font-weight: bold;
   line-height: 1.5em;
   padding: 0;
   margin: 0 0 0.5em;
 }
-.h5p-course-presentation h3 {
+.h5p-course-presentation .h5p-text > h3, .h5p-course-presentation .ct > h3, .h5p-course-presentation .h5p-eta-label > h3 {
   font-size: 1.333em;
   font-weight: bold;
   line-height: 1.5em;
   padding: 0;
   margin: 0 0 0.5em;
 }
-.h5p-course-presentation p {
+.h5p-course-presentation .h5p-text > p, .h5p-course-presentation .ct > p, .h5p-course-presentation .h5p-eta-label > p {
   font-size: 1em;
   font-weight: normal;
   line-height: 1.25em;
@@ -617,10 +583,6 @@
 .h5p-course-presentation .h5p-ct > .ct {
   font-size: 100%;
   line-height: 165%;
-
-}
-.h5p-course-presentation .ct > *:last-child {
-  margin: 0;
 }
 
 .h5p-course-presentation .h5p-copyinfo {
