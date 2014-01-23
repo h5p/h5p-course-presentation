@@ -929,7 +929,7 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
  * @returns {undefined}
  */
 H5P.CoursePresentation.prototype.showCopyright = function () {
-  var html = '';
+  var html = '<div class="h5p-copyinfo-header">'+ this.l10n.copyright + '</div>';
 
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
@@ -1031,6 +1031,7 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
     scoreMessage = this.l10n.badScore;
   }
   var html = '' +
+          '<div class="h5p-score-message-header">' + this.l10n.showSolutions + '</div>' +
           '<div class="h5p-score-message">' + scoreMessage.replace('@percent', '<em>' + percentScore + ' %</em>') + '</div>' +
           '<table>' +
           '  <thead>' +

@@ -218,6 +218,13 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 );
 }
 
+.h5p-course-presentation .h5p-copyinfo-header {
+  font-size: 1.2em;
+  color: #555;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
 .h5p-course-presentation .h5p-copyright:before {
   font-family: 'CC';
   content: "\e666";
@@ -438,8 +445,9 @@
 }
 
 .h5p-course-presentation .h5p-popup-wrapper {
+  box-sizing: border-box;
   padding: 1em;
-  max-height: 75%;
+  max-height: 100%;
   overflow: auto;
   text-align: left;
 }
@@ -448,8 +456,16 @@
   font-weight: bold;
 }
 
+.h5p-course-presentation .h5p-score-message-header {
+  font-size: 1.2em;
+  color: #555;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
 .h5p-course-presentation .h5p-score-message {
   font-size: 0.8em;
+  margin-bottom: 1em;
 }
 
 .h5p-course-presentation .h5p-popup-container table {
@@ -508,7 +524,7 @@
 
 .h5p-course-presentation .h5p-close-popup:before {
   position: absolute;
-  right: 10px;
+  right: 24px;
   top: 10px;
   font-family: H5PFontAwesome;
   content: "\f00d";
@@ -526,6 +542,11 @@
 
 .h5p-course-presentation .h5p-popup-container dl {
   text-align: left;
+  border-top: 1px solid #efefef;
+}
+
+.h5p-course-presentation .h5p-popup-container dl:first-child {
+  border: none;
 }
 
 .h5p-course-presentation .h5p-popup-container dt {
@@ -587,6 +608,7 @@
 
 .h5p-course-presentation .h5p-copyinfo {
   margin: 0 0 1em;
+  padding-top: 1em;
   font-size: 0.75em;
   line-height: 1.25em;
 }
