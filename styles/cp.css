@@ -20,11 +20,39 @@
   font-style: normal;
 }
 
-.h5p-course-presentation {
-  color: #323232;
-  font-family: H5PDroidSans, sans-serif;
-  line-height: 150%;
-  padding: 0.5em;
+.h5p-course-presentation,
+.h5p-course-presentation h1,
+.h5p-course-presentation h2,
+.h5p-course-presentation h3,
+.h5p-course-presentation h4,
+.h5p-course-presentation h5,
+.h5p-course-presentation h6,
+.h5p-course-presentation p {
+   color: #323232;
+   font-family: H5PDroidSans, sans-serif;
+   line-height: 150%;
+   padding: 0.5em;
+ }
+.h5p-course-presentation h2 {
+  font-size: 1.667em;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0 0 0.5em;
+}
+.h5p-course-presentation h3 {
+  font-size: 1.333em;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0 0 0.5em;
+}
+.h5p-course-presentation p {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.25em;
+  padding: 0;
+  margin: 0 0 1em;
 }
 
 .h5p-course-presentation a:focus {
@@ -145,7 +173,6 @@
   -moz-transform: translateX(100%) translate3d(100%, 0, 0);
   -ms-transform: translateX(100%) translate3d(100%, 0, 0);
   transform: translateX(100%) translate3d(100%, 0, 0);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
 }
 .h5p-course-presentation .h5p-keyword-slides .h5p-slide {
   left: 31.25%;
@@ -368,6 +395,11 @@
   background-image: linear-gradient(to bottom, #dfdfdf, #f9f9f9);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#f9f9f9', GradientType=0);
 }
+
+.h5p-course-presentation .h5p-slideination ol::-webkit-scrollbar {
+  -webkit-appearance: none; /* For safari */
+}
+
 .h5p-course-presentation .h5p-slide-button {
   display: inline-block;
   padding: 0;
@@ -406,6 +438,9 @@
   width: 1.02em !important;
   height: 1.02em !important;
   z-index: 2;
+}
+.h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content {
+  overflow: auto;
 }
 
 .h5p-course-presentation .h5p-blanks-evaluation-container {
@@ -542,21 +577,21 @@
   font-size: 1em;
 }
 
-.h5p-course-presentation .h5p-text > h2, .h5p-course-presentation .ct > h2, .h5p-course-presentation .h5p-eta-label > h2 {
+.h5p-course-presentation h2 {
   font-size: 1.667em;
   font-weight: bold;
   line-height: 1.5em;
   padding: 0;
   margin: 0 0 0.5em;
 }
-.h5p-course-presentation .h5p-text > h3, .h5p-course-presentation .ct > h3, .h5p-course-presentation .h5p-eta-label > h3 {
+.h5p-course-presentation h3 {
   font-size: 1.333em;
   font-weight: bold;
   line-height: 1.5em;
   padding: 0;
   margin: 0 0 0.5em;
 }
-.h5p-course-presentation .h5p-text > p, .h5p-course-presentation .ct > p, .h5p-course-presentation .h5p-eta-label > p {
+.h5p-course-presentation p {
   font-size: 1em;
   font-weight: normal;
   line-height: 1.25em;
@@ -584,7 +619,10 @@
   font-size: 100%;
   line-height: 165%;
 }
-
+.h5p-course-presentation .ct > *:last-child {
+  margin: 0;
+}
+ 
 .h5p-course-presentation .h5p-copyinfo {
   margin: 0 0 1em;
   font-size: 0.75em;
