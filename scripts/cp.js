@@ -276,7 +276,7 @@ H5P.CoursePresentation.prototype.fitCT = function () {
     });
     var parentHeight = $parent.height();
 
-    while ($ct.outerHeight() > parentHeight) {
+    while ($ct.height() > parentHeight) {
       percent--;
       $ct.css({
         fontSize: percent + '%',
@@ -343,7 +343,7 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     }
   }
 
-  this.fitCT();
+//  this.fitCT();
 };
 
 /**
@@ -467,7 +467,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  */
 H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
   var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
-          '</div><div role="button" tabindex="1" class="h5p-button h5p-close-popup"></div></div></div>')
+          '</div><div role="button" tabindex="1" class="h5p-button h5p-close-popup" title="' + this.l10n.close + '"></div></div></div>')
     .prependTo(this.$wrapper)
     .find('.h5p-close-popup')
       .click(function(event) {
@@ -694,10 +694,8 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
     event.preventDefault();
     H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
 
-    var currentScrollLeft = $ol.scrollLeft();
     timer = setInterval(function () {
-      currentScrollLeft -= 2;
-      $ol.scrollLeft(currentScrollLeft);
+      $ol.scrollLeft($ol.scrollLeft() - 1);
     }, 1);
   };
 
@@ -705,10 +703,8 @@ H5P.CoursePresentation.prototype.initSlideination = function ($slideination, sli
     event.preventDefault();
     H5P.$body.mouseup(stopScroll).mouseleave(stopScroll).bind('touchend', stopScroll);
 
-    var currentScrollLeft = $ol.scrollLeft();
     timer = setInterval(function () {
-      currentScrollLeft += 2;
-      $ol.scrollLeft(currentScrollLeft);
+      $ol.scrollLeft($ol.scrollLeft() + 1);
     }, 1);
   };
 
