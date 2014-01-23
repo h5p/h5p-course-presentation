@@ -15,7 +15,7 @@
   src:url('../fonts/cc.eot?#iefix') format('embedded-opentype'),
     url('../fonts/cc.svg#cc') format('svg'),
     url('../fonts/cc.woff') format('woff'),
-    url('../fonts/cc.ttf') format('truetype');    
+    url('../fonts/cc.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -28,11 +28,11 @@
 .h5p-course-presentation h5,
 .h5p-course-presentation h6,
 .h5p-course-presentation p {
-   color: #323232;
-   font-family: H5PDroidSans, sans-serif;
-   line-height: 150%;
-   padding: 0.5em;
- }
+  color: #323232;
+  font-family: H5PDroidSans, sans-serif;
+  line-height: 150%;
+  padding: 0.5em;
+}
 .h5p-course-presentation h2 {
   font-size: 1.667em;
   font-weight: bold;
@@ -436,7 +436,7 @@
 
 .h5p-course-presentation .h5p-element {
   position: absolute;
-  overflow: auto;
+  overflow: hidden;
   font-size: 0.75em;
 }
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
@@ -451,7 +451,7 @@
 }
 
 .h5p-course-presentation .h5p-blanks-evaluation-container {
-  display: none;  
+  display: none;
 }
 .h5p-course-presentation .h5p-blanks-footer {
   margin-bottom: 0.8em;
