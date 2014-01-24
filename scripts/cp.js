@@ -940,16 +940,16 @@ H5P.CoursePresentation.prototype.showCopyright = function () {
 
       if (params.copyright !== undefined) {
         html += '<dl class="h5p-copyinfo"><dt>' + this.l10n.contentType + '</dt><dd>' + params.contentName + '</dd>';
-        if (params.copyright.title !== undefined) {
+        if (params.copyright.title) {
           html += '<dt>' + this.l10n.title + '</dt><dd>' + params.copyright.title + '</dd>';
         }
-        if (params.copyright.author !== undefined) {
+        if (params.copyright.author) {
           html += '<dt>' + this.l10n.author + '</dt><dd>' + params.copyright.author + '</dd>';
         }
-        if (params.copyright.license !== undefined) {
+        if (params.copyright.license) {
           html += '<dt>' + this.l10n.license + '</dt><dd>' + this.l10n[params.copyright.license] + ' (' + params.copyright.license + ')</dd>';
         }
-        if (params.copyright.source !== undefined) {
+        if (params.copyright.source) {
           html += '<dt>' + this.l10n.source + '</dt><dd><a target="_blank" href="' + params.copyright.source + '">' + params.copyright.source + '</a></dd>';
         }
         html += '<dt>' + this.l10n.slide + '</dt><dd>' + (i + 1) + '</dd></dl>';
