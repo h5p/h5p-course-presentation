@@ -115,6 +115,10 @@
           "default": "Lisens"
         },
         {
+          "label": "Oversetting for \"Lisens\"",
+          "default": "Lisens"
+        },
+        {
           "label": "Oversetting for \"Eksporter tekst\"",
           "default": "Eksporter tekst"
         },

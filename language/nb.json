@@ -115,6 +115,10 @@
           "default": "Lisens"
         },
         {
+          "label": "Oversettelse for \"Lisens\"",
+          "default": "Lisens"
+        },
+        {
           "label": "Oversettelse for \"Eksporter tekst\"",
           "default": "Eksporter tekst"
         },
