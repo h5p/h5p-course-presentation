@@ -3,12 +3,16 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 46,
+  "patchVersion": 47,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": ["iframe"],
   "machineName": "H5P.CoursePresentation",
   "author": "Amendor AS",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 1
+  },
   "preloadedJs": [
     {
       "path": "scripts/cp.js"
@@ -17,13 +21,6 @@
   "preloadedCss": [
     {
       "path": "styles/cp.css"
-    }
-  ],
-  "preloadedDependencies": [
-    {
-      "machineName": "FontAwesome",
-      "majorVersion": 3,
-      "minorVersion": 1
     }
   ],
   "editorDependencies": [

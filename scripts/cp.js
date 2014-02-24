@@ -1,24 +1,5 @@
 var H5P = H5P || {};
 
-if (H5P.getPath === undefined) {
-  /**
-   * Find the path to the content files based on the id of the content
-   *
-   * Also identifies and returns absolute paths
-   *
-   * @param {String} path Absolute path to a file, or relative path to a file in the content folder
-   * @param {Number} contentId Identifier of the content requesting the path
-   * @returns {String} The path to use.
-   */
-  H5P.getPath = function (path, contentId) {
-    if (path.substr(0, 7) === 'http://' || path.substr(0, 8) === 'https://') {
-      return path;
-    }
-
-    return H5PIntegration.getContentPath(contentId) + path;
-  };
-}
-
 /**
  * Constructor.
  *
@@ -29,6 +10,7 @@ if (H5P.getPath === undefined) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation = function (params, id, editor) {
+  this.$ = H5P.jQuery(this);
   this.slides = params.slides;
   this.contentId = id;
   // elementInstances holds the instances for elements in an array.
@@ -249,11 +231,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       $exportAnswerButton.show();
     }
   }
-
-  H5P.$window.resize(function () {
-    that.resize(false);
+  
+  this.$.on('h5pResize', function (event) {
+    that.resize(event.toggleFullscreen);
   });
-  this.resize(false);
 };
 
 /**
@@ -334,15 +315,16 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   }
 
   // Resize elements
-  var elementInstances = this.elementInstances[this.$current.index()];
-  if (elementInstances !== undefined) {
-    for (var i = 0; i < elementInstances.length; i++) {
-      if (elementInstances[i].resize !== undefined) {
-        elementInstances[i].resize();
+  var instances = this.elementInstances[this.$current.index()];
+  if (instances !== undefined) {
+    for (var i = 0; i < instances.length; i++) {
+      var instance = instances[i];
+      if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined) {
+        instance.$.trigger('h5pResize');
       }
     }
   }
-
+  
   this.fitCT();
 };
 
@@ -378,14 +360,12 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   }
 
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var elementParams = H5P.jQuery.extend({}, element.action.params, {
+  element.action.params = H5P.jQuery.extend({}, element.action.params, {
     displaySolutionsButton: this.showSolutionButtons,
     postUserStatistics: false
   });
-  var elementInstance = new (H5P.classFromName(element.action.library.split(' ')[0]))(elementParams, this.contentId);
-  if (elementInstance.preventResize !== undefined) {
-    elementInstance.preventResize = true;
-  }
+  
+  var elementInstance = H5P.newRunnable(element.action, this.contentId);
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
   if (displayAsButton) {
@@ -839,7 +819,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
-  this.resize(false);
+  this.$.trigger('h5pResize');
   this.fitCT();
   return true;
 };
