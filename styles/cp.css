@@ -255,9 +255,9 @@
   font-family: 'CC';
   content: "\e666";
   display: inline-block;
-  margin-right: 0.2em;
+  margin-right: 0.1em;
   margin-left: 0;
-  font-size: 1.7em;
+  font-size: 2em;
   vertical-align: top;
 }
 
@@ -534,18 +534,19 @@
 }
 
 .h5p-course-presentation .h5p-element-button {
+  text-decoration: none;
   margin-left: 5px;
   margin-top: 5px;
   position: absolute;
   z-index: 2;
   display: block;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.375em;
+  height: 1.375em;
   background: #00f;
   color: #fff;
   font-size: 1em;
   border-radius: 50%;
-  line-height: 1.875em;
+  line-height: 1.375em;
   box-shadow: 0.15em 0.25em 0.25em 0 #191919;
   text-shadow: 0 0 0.3em #191919;
   text-align: center;
@@ -556,7 +557,6 @@
   background: -moz-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
   background: -ms-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
   background: linear-gradient(to top, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
-  background-size: 1.5em 1.5em;
   
     -webkit-transition: -webkit-transform 0.2s;
   -moz-transition: -moz-transform 0.2s;
@@ -573,11 +573,9 @@
   }
 
 .h5p-course-presentation .h5p-element-button:before {
-  position: absolute;
-  content: "\f05a";
+  text-decoration: none;
   font-family: H5PFontAwesome;
-  top: -0.1em;
-  left: 0.35em;
+  content: "\f05a";
 }
 
 .h5p-course-presentation .h5p-element-button:hover {
