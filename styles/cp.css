@@ -223,7 +223,7 @@
   float: right;
   display: none;
   font-size: 0.6em;
-  padding: 0 1em;
+  padding: 0 0.6em;
   color: #323232;
   border: 0.2em solid #fff;
   border-radius: 0.4em;
@@ -255,7 +255,7 @@
   font-family: 'CC';
   content: "\e666";
   display: inline-block;
-  margin-right: 0.1em;
+  margin-right: 0.2em;
   margin-left: 0;
   font-size: 2em;
   vertical-align: top;
