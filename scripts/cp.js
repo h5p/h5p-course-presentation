@@ -1042,3 +1042,35 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
     that.$container.find('.h5p-popup-overlay').remove();
   });
 };
+
+/**
+ * Gather copyright information for the current content.
+ *
+ * @returns {Object} Copyright information
+ */
+H5P.CoursePresentation.prototype.getCopyrights = function () {
+  var self = this;
+  var information = {
+    children: []
+  };
+  
+  for (var slide = 0; slide < this.elementInstances.length; slide++) {
+    var childInfo = {
+      label: 'Slide ' + (slide + 1),
+      children: []
+    }
+    information.children.push(childInfo);
+    
+    for (var element = 0; element < this.elementInstances[slide].length; element++) {
+      var instance = this.elementInstances[slide][element];
+      
+      if (instance.getCopyrights !== undefined) {
+        var elementCopyrights = instance.getCopyrights();
+        //elementCopyrights.label = contentname?
+        childInfo.children.push(elementCopyrights);
+      }
+    }
+  }
+  
+  return information;
+};
