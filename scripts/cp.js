@@ -20,7 +20,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.editor = editor;
   this.showSolutionButtons = (params.showSolutions === undefined ? true : params.showSolutions);
 
-  this.l10n = H5P.jQuery.extend({}, {
+  this.l10n = H5P.jQuery.extend({
     goHome: 'Go to first slide',
     scrollLeft: 'Hold to scroll left',
     jumpToSlide: 'Jump to slide',
@@ -35,28 +35,10 @@ H5P.CoursePresentation = function (params, id, editor) {
     showSolutions: 'Show solutions',
     exportAnswers: 'Export text',
     close: 'Close',
-    solutionsButtonTitle: 'View solution',
-    copyright: 'Rights of use',
-    contentType: 'Content type',
-    title: 'Title',
-    author: 'Author',
-    source: 'Source',
-    license: 'License',
-    "U": "Undisclosed",
-    "CC BY": "Attribution",
-    "CC BY-SA": "Attribution-ShareAlike",
-    "CC BY-ND": "Attribution-NoDerivs",
-    "CC BY-NC": "Attribution-NonCommercial",
-    "CC BY-NC-SA": "Attribution-NonCommercial-ShareAlike",
-    "CC BY-NC-ND": "Attribution-NonCommercial-NoDerivs",
-    "PD": "Public Domain",
-    "ODC PDDL": "Public Domain Dedication and Licence",
-    "CC PDM": "Public Domain Mark",
-    "C": "Copyright"
+    solutionsButtonTitle: 'View solution'
   }, params.l10n !== undefined ? params.l10n : {});
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
-  this.displayCopyright = false;
   this.buttonElements = [];
 };
 
@@ -78,7 +60,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    </div>' +
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
           '  </div>' +
-          '  <div class="h5p-action-foo"><div role="button" tabindex="1" class="h5p-copyright">' + this.l10n.copyright + '</div></div>' +
           '  <div class="h5p-action-bar">' +
           ((typeof that.editor === 'undefined' && typeof H5P.ExportableTextArea !== 'undefined') ? H5P.ExportableTextArea.Exporter.createExportButton(this.l10n.exportAnswers) : '') +
           '    <a href="#" class="h5p-show-solutions">' + this.l10n.showSolutions + '</a>' +
@@ -127,7 +108,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$slideination = this.$wrapper.children('.h5p-slideination');
-  var $copyrightButton = H5P.jQuery('.h5p-copyright', this.$wrapper);
   var $solutionsButton = H5P.jQuery('.h5p-show-solutions', this.$wrapper);
   var $exportAnswerButton = H5P.jQuery('.h5p-eta-export', this.$wrapper);
 
@@ -207,14 +187,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Slideination
   this.initSlideination(this.$slideination, slideinationSlides);
 
-  if (this.displayCopyright) {
-    $copyrightButton
-      .click(function (event) {
-        that.showCopyright();
-        event.preventDefault();
-      })
-      .show();
-  }
   $solutionsButton.click(function (event) {
     that.showSolutions();
     event.preventDefault();
@@ -394,9 +366,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   else {
     if (element.solution) {
       this.addElementSolutionButton(element, elementInstance, $elementContainer);
-    }
-    if (element.action.params.copyright !== undefined && !this.displayCopyright) {
-      this.displayCopyright = true;
     }
 
     /* When in view mode, we need to know if there are any answer elements,
@@ -905,43 +874,6 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
   }
 
   return html + '</a></li>';
-};
-
-/**
- * Displays copyright information for elements in slides.
- *
- * @returns {undefined}
- */
-H5P.CoursePresentation.prototype.showCopyright = function () {
-  var html = '<div class="h5p-copyinfo-header">'+ this.l10n.copyright + '</div>';
-
-  for (var i = 0; i < this.slides.length; i++) {
-    var slide = this.slides[i];
-
-    for (var j = 0; j < slide.elements.length; j++) {
-      var element = slide.elements[j];
-      var params = element.action.params;
-
-      if (params.copyright !== undefined) {
-        html += '<dl class="h5p-copyinfo"><dt>' + this.l10n.contentType + '</dt><dd>' + params.contentName + '</dd>';
-        if (params.copyright.title) {
-          html += '<dt>' + this.l10n.title + '</dt><dd>' + params.copyright.title + '</dd>';
-        }
-        if (params.copyright.author) {
-          html += '<dt>' + this.l10n.author + '</dt><dd>' + params.copyright.author + '</dd>';
-        }
-        if (params.copyright.license) {
-          html += '<dt>' + this.l10n.license + '</dt><dd>' + this.l10n[params.copyright.license] + ' (' + params.copyright.license + ')</dd>';
-        }
-        if (params.copyright.source) {
-          html += '<dt>' + this.l10n.source + '</dt><dd><a target="_blank" href="' + params.copyright.source + '">' + params.copyright.source + '</a></dd>';
-        }
-        html += '<dt>' + this.l10n.slide + '</dt><dd>' + (i + 1) + '</dd></dl>';
-      }
-    }
-  }
-
-  this.showPopup(html);
 };
 
 /**
