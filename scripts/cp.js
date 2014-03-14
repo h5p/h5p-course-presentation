@@ -1066,9 +1066,11 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
       
       if (instance.getCopyrights !== undefined) {
         var elementCopyrights = instance.getCopyrights();
-        var params = this.slides[slide].elements[element].action.params;
-        elementCopyrights.label = (element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : '');
-        childInfo.children.push(elementCopyrights);
+        if (elementCopyrights !== undefined) {
+          var params = this.slides[slide].elements[element].action.params;
+          elementCopyrights.label = (element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : '');
+          childInfo.children.push(elementCopyrights);
+        }
       }
     }
   }
