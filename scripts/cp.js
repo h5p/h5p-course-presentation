@@ -203,10 +203,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       $exportAnswerButton.show();
     }
   }
-  
-  this.$.on('h5pResize', function (event) {
-    that.resize(event.toggleFullscreen);
-  });
 };
 
 /**
@@ -249,7 +245,7 @@ H5P.CoursePresentation.prototype.fitCT = function () {
  * @param {Boolean} fullscreen
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.resize = function (fullscreen) {
+H5P.CoursePresentation.prototype.resize = function () {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
   if (!fullscreenOn) {
     // Make sure we use all the height we can get. Needed to scale up.
@@ -279,9 +275,6 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
 
   this.swipeThreshold = (width / this.width) * 100; // Default swipe threshold is 50px.
 
-  if (fullscreen) {
-    this.$wrapper.focus();
-  }
   if (!fullscreenOn) {
     this.$container.css('height', '');
   }
@@ -292,13 +285,20 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined) {
-        instance.$.trigger('h5pResize');
+        instance.$.trigger('resize');
       }
     }
   }
   
   this.fitCT();
 };
+
+/**
+ * Set focus.
+ */
+H5P.CoursePresentation.prototype.focus = function () {
+  this.$wrapper.focus();
+}
 
 /**
  *
@@ -788,7 +788,6 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
-  this.$.trigger('h5pResize');
   this.fitCT();
   return true;
 };
