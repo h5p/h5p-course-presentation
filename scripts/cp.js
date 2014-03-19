@@ -788,6 +788,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
+  this.$.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
 };
