@@ -231,10 +231,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       $exportAnswerButton.show();
     }
   }
-  
-  this.$.on('h5pResize', function (event) {
-    that.resize(event.toggleFullscreen);
-  });
 };
 
 /**
@@ -319,8 +315,8 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   if (instances !== undefined) {
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
-      if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined) {
-        instance.$.trigger('h5pResize');
+      if ((instance.preventResize === undefined || instance.preventResize === false) && instance.resize !== undefined) {
+        instance.resize();
       }
     }
   }
@@ -819,7 +815,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
-  this.$.trigger('h5pResize');
+  this.resize(false);
   this.fitCT();
   return true;
 };
