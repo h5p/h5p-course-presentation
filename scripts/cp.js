@@ -978,20 +978,14 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
 /**
  * Gather copyright information for the current content.
  *
- * @returns {Object} Copyright information
+ * @returns {H5P.ContentCopyrights}
  */
 H5P.CoursePresentation.prototype.getCopyrights = function () {
-  var self = this;
-  var information = {
-    children: []
-  };
+  var info = new H5P.ContentCopyrights();
   
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
-    var childInfo = {
-      label: 'Slide ' + (slide + 1),
-      children: []
-    }
-    information.children.push(childInfo);
+    var slideInfo = new H5P.ContentCopyrights();
+    slideInfo.setLabel('Slide ' + (slide + 1));
     
     for (var element = 0; element < this.elementInstances[slide].length; element++) {
       var instance = this.elementInstances[slide][element];
@@ -1000,12 +994,14 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
         var elementCopyrights = instance.getCopyrights();
         if (elementCopyrights !== undefined) {
           var params = this.slides[slide].elements[element].action.params;
-          elementCopyrights.label = (element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : '');
-          childInfo.children.push(elementCopyrights);
+          elementCopyrights.setLabel((element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : ''));
+          slideInfo.addContent(elementCopyrights);
         }
       }
     }
+    
+    info.addContent(slideInfo);
   }
   
-  return information;
+  return info;
 };
