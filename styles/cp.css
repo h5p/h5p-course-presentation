@@ -20,6 +20,10 @@
   font-style: normal;
 }
 
+body.h5p-semi-fullscreen .h5p-content-controls {
+  display: none;
+}
+
 .h5p-course-presentation h1,
 .h5p-course-presentation h2,
 .h5p-course-presentation h3,
@@ -58,19 +62,22 @@
   box-shadow: none;
 }
 .h5p-course-presentation .h5p-wrapper {
-  margin: 0 auto 1em;
+  margin: 0 auto;
   position: relative;
   width: 640px;
   height: 440px;
   text-align: center;
   font-size: 16px;
   line-height: 125%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 .h5p-course-presentation .h5p-wrapper:focus {
   outline: none;
 }
 .h5p-course-presentation .h5p-box-wrapper {
-  margin: 0.5em 0;
+  margin: 0 0 0.25em;
   width: 100%;
   height: 90%;
   overflow: hidden;
@@ -208,11 +215,11 @@
 
 .h5p-course-presentation .h5p-action-foo {
   position: absolute;
-  left: 0;
+  left: 0.5em;
 }
 .h5p-course-presentation .h5p-action-bar {
   position: absolute;
-  right: 0;
+  right: 0.5em;
 }
 .h5p-course-presentation .h5p-action-bar a,
 .h5p-course-presentation .h5p-slideination a,
