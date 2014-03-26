@@ -275,39 +275,30 @@ H5P.CoursePresentation.prototype.fitCT = function () {
  */
 H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
-  if (!fullscreenOn) {
-    // Make sure we use all the height we can get. Needed to scale up.
-    this.$container.css('height', '99999px');
+  
+  // Fill up all available width
+  this.$wrapper.css('width', 'auto');
+  var width = this.$container.width();
+  var style = {};
+  
+  if (fullscreenOn) {
+    var maxHeight = this.$container.height();
+    if (width / maxHeight > this.ratio) {
+      // Top and bottom would be cut off so scale down.
+      width = maxHeight * this.ratio;
+      style.width = width + 'px';
+    }
   }
 
-  var width = this.$container.innerWidth();
-  var height = this.$container.innerHeight();
-
-  if (width / height >= this.ratio) {
-    // Wider
-    width = height * this.ratio;
-
-  }
-  else {
-    // Narrower
-    height = width / this.ratio;
-  }
-
-  width -= 16; // Remove padding; if not stuff will grow infinitely...
-
-  this.$wrapper.css({
-    width: width + 'px',
-    height: height + 'px',
-    fontSize: (this.fontSize * (width / this.width)) + 'px'
-  });
-
-  this.swipeThreshold = (width / this.width) * 100; // Default swipe threshold is 50px.
-
+  var widthRatio = width / this.width;
+  style.height = (width / this.ratio) + 'px';
+  style.fontSize = (this.fontSize * widthRatio) + 'px'
+  this.$wrapper.css(style);
+  
+  this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
+  
   if (fullscreen) {
     this.$wrapper.focus();
-  }
-  if (!fullscreenOn) {
-    this.$container.css('height', '');
   }
 
   // Resize elements
