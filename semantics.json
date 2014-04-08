@@ -22,6 +22,7 @@
                   "H5P.ContinuousText 1.0",
                   "H5P.ExportableTextArea 1.0",
                   "H5P.Table 1.0",
+                  "H5P.Link 1.0",
                   "H5P.Image 1.0",
                   "H5P.Video 1.0",
                   "H5P.Audio 1.0",
