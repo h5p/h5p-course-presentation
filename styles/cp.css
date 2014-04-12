@@ -24,6 +24,10 @@ body.h5p-semi-fullscreen .h5p-content-controls {
   display: none;
 }
 
+.h5p-container.h5p-course-presentation {
+  margin-bottom: 0.5em;
+}
+
 .h5p-course-presentation h1,
 .h5p-course-presentation h2,
 .h5p-course-presentation h3,
@@ -69,7 +73,6 @@ body.h5p-semi-fullscreen .h5p-content-controls {
   text-align: center;
   font-size: 16px;
   line-height: 125%;
-  padding: 0.5em;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
