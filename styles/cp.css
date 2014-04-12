@@ -24,6 +24,10 @@ body.h5p-semi-fullscreen .h5p-content-controls {
   display: none;
 }
 
+.h5p-container.h5p-course-presentation {
+  margin-bottom: 0.5em;
+}
+
 .h5p-course-presentation h1,
 .h5p-course-presentation h2,
 .h5p-course-presentation h3,
@@ -82,6 +86,7 @@ body.h5p-semi-fullscreen .h5p-content-controls {
   overflow: hidden;
   padding-bottom: 0.3em;
   background: #666666;
+  box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
 }
 .h5p-course-presentation.h5p-fullscreen .h5p-box-wrapper {
   margin: 0.1em 0;
