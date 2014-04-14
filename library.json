@@ -3,10 +3,12 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 53,
+  "patchVersion": 55,
   "runnable": 1,
   "fullscreen": 1,
-  "embedTypes": ["iframe"],
+  "embedTypes": [
+    "iframe"
+  ],
   "machineName": "H5P.CoursePresentation",
   "author": "Amendor AS",
   "coreApi": {
