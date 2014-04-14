@@ -86,21 +86,21 @@
         },
         {
           "label": "Respons på ok poengsum",
-          "default": "Godt forsøk! Du fikk @percent rett!",
+          "default": " Du fikk @percent rett!",
           "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
         },
         {
           "label": "Respons på lav poengsum",
-          "default": "Du må jobbe mer med dette. Du fikk bare @percent rett...",
+          "default": "Du fikk @percent rett.",
           "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
         },
         {
-          "label": "Oversettelse for \"TOTAL\"",
-          "default": "TOTAL"
+          "label": "Oversettelse for \"Total\"",
+          "default": "Total"
         },
         {
           "label": "Tekst til \"Vis svar\" knappen",
-          "default": "Vis svar"
+          "default": "Oppsummer"
         },
         {
           "label": "Oversettelse for \"Tittel\"",
