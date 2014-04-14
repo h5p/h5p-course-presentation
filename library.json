@@ -29,12 +29,12 @@
     {
       "machineName": "H5P.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 0
+      "minorVersion": 1
     },
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 0
+      "minorVersion": 1
     }
   ]
 }
