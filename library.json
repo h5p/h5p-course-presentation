@@ -6,7 +6,9 @@
   "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 1,
-  "embedTypes": ["iframe"],
+  "embedTypes": [
+    "iframe"
+  ],
   "machineName": "H5P.CoursePresentation",
   "author": "Amendor AS",
   "coreApi": {

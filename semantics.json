@@ -249,20 +249,20 @@
         "name": "badScore",
         "type": "text",
         "label": "Greeting given for BAD score",
-        "default": "You need to work more on this. You only got @percent correct...",
+        "default": "You got @percent correct.",
         "description": "@percent is replaced by the real user score in percent"
       },
       {
-        "name": "total",
+        "name": "Total",
         "type": "text",
-        "label": "Translation for \"TOTAL\"",
-        "default": "TOTAL"
+        "label": "Translation for \"Total\"",
+        "default": "Total"
       },
       {
         "name": "showSolutions",
         "type": "text",
         "label": "Text for the show solutions button",
-        "default": "Show solutions"
+        "default": "Sum up"
       },
       {
         "name": "title",
