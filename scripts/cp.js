@@ -262,7 +262,8 @@ H5P.CoursePresentation.prototype.resize = function () {
     }
   }
 
-  var widthRatio = (width - 16) / this.width; // -16 is to compensate for an old error. Removing it will distort existing content.
+  // TODO: Add support for -16 when content conversion script is created?
+  var widthRatio = width / this.width;
   style.height = (width / this.ratio) + 'px';
   style.fontSize = (this.fontSize * widthRatio) + 'px';
   this.$wrapper.css(style);
