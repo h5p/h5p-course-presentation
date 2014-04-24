@@ -347,7 +347,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   }
 
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  element.action.params = H5P.jQuery.extend({}, element.action.params, {
+  element.action.params = H5P.jQuery.extend(element.action.params, {
     displaySolutionsButton: this.showSolutionButtons,
     postUserStatistics: false
   });
