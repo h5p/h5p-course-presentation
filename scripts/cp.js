@@ -262,9 +262,9 @@ H5P.CoursePresentation.prototype.resize = function () {
     }
   }
 
-  var widthRatio = width / this.width;
+  var widthRatio = (width - 16) / this.width; // -16 is to compensate for an old error. Removing it will distort existing content.
   style.height = (width / this.ratio) + 'px';
-  style.fontSize = (this.fontSize * widthRatio) + 'px'
+  style.fontSize = (this.fontSize * widthRatio) + 'px';
   this.$wrapper.css(style);
   
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
