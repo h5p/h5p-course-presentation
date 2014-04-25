@@ -288,7 +288,7 @@ H5P.CoursePresentation.prototype.resize = function () {
  */
 H5P.CoursePresentation.prototype.focus = function () {
   this.$wrapper.focus();
-}
+};
 
 /**
  *
