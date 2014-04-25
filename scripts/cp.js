@@ -250,10 +250,13 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
   }
 
-  H5P.$window.resize(function () {
-    that.resize(false);
-  });
-  this.resize(false);
+  var resize = function () {
+    if (that.$wrapper.is(':visible')) {
+      that.resize(false);
+    }
+  };
+  H5P.$window.resize(resize);
+  resize();
 };
 
 /**
