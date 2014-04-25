@@ -370,9 +370,13 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   if (index === undefined) {
     index = $slide.index();
   }
+  
+  // A small fix to clean up after an old bug. Removes "no validation exists" errors from old content.
+  if (element.action.params.displaySolutionsButton !== undefined) delete element.action.params.displaySolutionsButton;
+  if (element.action.params.postUserStatistics !== undefined) delete element.action.params.postUserStatistics;
 
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var elementParams = H5P.jQuery.extend(element.action.params, {
+  var elementParams = H5P.jQuery.extend({}, element.action.params, {
     displaySolutionsButton: this.showSolutionButtons,
     postUserStatistics: false
   });
