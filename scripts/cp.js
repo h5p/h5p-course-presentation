@@ -289,7 +289,7 @@ H5P.CoursePresentation.prototype.resize = function () {
  */
 H5P.CoursePresentation.prototype.focus = function () {
   this.$wrapper.focus();
-}
+};
 
 /**
  *
@@ -321,11 +321,13 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   if (index === undefined) {
     index = $slide.index();
   }
-
+  
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  element.action.params = H5P.jQuery.extend(element.action.params, {
-    displaySolutionsButton: this.showSolutionButtons,
-    postUserStatistics: false
+  element.action = H5P.jQuery.extend(true, {}, element.action, {
+    params: {
+      displaySolutionsButton: this.showSolutionButtons,
+      postUserStatistics: false
+    }
   });
   
   var elementInstance = H5P.newRunnable(element.action, this.contentId);
