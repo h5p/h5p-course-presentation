@@ -3,7 +3,7 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 58,
+  "patchVersion": 60,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -23,6 +23,13 @@
   "preloadedCss": [
     {
       "path": "styles/cp.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 1
     }
   ],
   "editorDependencies": [
