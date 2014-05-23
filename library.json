@@ -3,7 +3,7 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 56,
+  "patchVersion": 57,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -24,7 +24,7 @@
   "preloadedDependencies": [
     {
       "machineName": "FontAwesome",
-      "majorVersion": 3,
+      "majorVersion": 4,
       "minorVersion": 1
     }
   ],
