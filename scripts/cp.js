@@ -15,6 +15,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.contentId = id;
   // elementInstances holds the instances for elements in an array.
   this.elementInstances = [];
+  this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
   this.hasAnswerElements = false;
   this.editor = editor;
@@ -39,7 +40,6 @@ H5P.CoursePresentation = function (params, id, editor) {
   }, params.l10n !== undefined ? params.l10n : {});
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
-  this.buttonElements = [];
 };
 
 /**
@@ -155,12 +155,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (first) {
       this.$current = $slide.addClass('h5p-current');
     }
-
-    if (slide.elements !== undefined) {
-      for (var j = 0; j < slide.elements.length; j++) {
-        this.addElement(slide.elements[j], $slide, i);
-      }
-    }
+    
+    this.addElements(slide, $slide, i);
 
     if (this.keywordsWidth && slide.keywords !== undefined) {
       keywords += this.keywordsHtml(slide.keywords, first);
@@ -305,24 +301,41 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
 };
 
 /**
+ * Add all element to the given slide.
+ * 
+ * @param {Object} slide
+ * @param {jQuery} $slide
+ * @param {Number} index
+ */
+H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
+  if (slide.elements === undefined) {
+    return;
+  }
+  var attach = (this.editor !== undefined || index === 0);
+  
+  for (var i = 0; i < slide.elements.length; i++) {
+    var element = slide.elements[i];
+    var instance = this.addElement(element, $slide, index);
+    if (attach) {
+      // The editor requires all fields to be attached/rendered right away
+      this.attachElement(element, instance, $slide, index);
+    }
+  }
+  
+  if (attach) {
+    this.elementsAttached[index] = true;
+  }
+};
+
+/**
  * Add element to the given slide and stores elements with solutions.
  *
  * @param {Object} element The Element to add.
  * @param {jQuery} $slide Optional, the slide. Defaults to current.
- * @param {int} index Optional, the index of the slide we're adding elements to.
+ * @param {Number} index Optional, the index of the slide we're adding elements to.
  * @returns {unresolved}
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
-  var that = this;
-
-  if ($slide === undefined) {
-    $slide = this.$current;
-  }
-  if (index === undefined) {
-    index = $slide.index();
-  }
-  
-  var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
   var library = H5P.jQuery.extend(true, {}, element.action, {
     params: {
       displaySolutionsButton: this.showSolutionButtons,
@@ -330,12 +343,67 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     }
   });
   
-  var elementInstance = H5P.newRunnable(library, this.contentId);
+  var instance = H5P.newRunnable(library, this.contentId);
+  if (instance.preventResize !== undefined) {
+    instance.preventResize = true;
+  }
+
+  if (this.elementInstances[index] === undefined) {
+    this.elementInstances[index] = [];
+  }
+  this.elementInstances[index].push(instance);
+
+
+  if (this.checkForSolutions(instance)) {
+    if (this.slidesWithSolutions[index] === undefined) {
+      this.slidesWithSolutions[index] = [];
+    }
+    this.slidesWithSolutions[index].push(instance);
+  }
+
+  return instance;
+};
+
+/**
+ * Attach all element instances to slide.
+ * 
+ * @param {jQuery} $slide
+ * @param {Number} index
+ */
+H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
+  if (this.elementsAttached[index] !== undefined) {
+    return; // Already attached
+  }
+  
+  var slide = this.slides[index];
+  var instances = this.elementInstances[index];
+  if (slide.elements !== undefined) {
+    for (var i = 0; i < slide.elements.length; i++) {
+      this.attachElement(slide.elements[i], instances[i], $slide, index);
+    }
+  }
+  
+  this.elementsAttached[index] = true;
+};
+
+/**
+ * Attach element to slide container.
+ * 
+ * @param {Object} element
+ * @param {Object} instance
+ * @param {jQuery} $slide
+ * @param {Number} index
+ * @returns {jQuery}
+ */
+H5P.CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
+  var that = this;
+
+  var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x / this.slideWidthRatio + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
   if (displayAsButton) {
-    var $buttonElement = this.buttonElements[index] = H5P.jQuery('<div class="h5p-button-element"></div>');
-    elementInstance.attach($buttonElement);
+    var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
+    instance.attach($buttonElement);
     H5P.jQuery('<a href="#" class="h5p-element-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
         $buttonElement.appendTo(that.showPopup('').find('.h5p-popup-wrapper'));
@@ -344,33 +412,21 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     });
   }
   else {
-    elementInstance.attach($elementContainer);
+    instance.attach($elementContainer);
   }
-
-  if (this.elementInstances[index] === undefined) {
-    this.elementInstances[index] = [];
-  }
-  this.elementInstances[index].push(elementInstance);
 
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elementInstances
-    this.editor.processElement(element, $elementContainer, index, elementInstance);
+    this.editor.processElement(element, $elementContainer, index, instance);
   }
   else {
     if (element.solution) {
-      this.addElementSolutionButton(element, elementInstance, $elementContainer);
+      this.addElementSolutionButton(element, instance, $elementContainer);
     }
 
     /* When in view mode, we need to know if there are any answer elements,
      * so that we can display the export answers button on the last slide */
-    this.hasAnswerElements = this.hasAnswerElements || elementInstance.exportAnswers !== undefined;
-  }
-
-  if (this.checkForSolutions(elementInstance)) {
-    if (this.slidesWithSolutions[index] === undefined) {
-      this.slidesWithSolutions[index] = [];
-    }
-    this.slidesWithSolutions[index].push(elementInstance);
+    this.hasAnswerElements = this.hasAnswerElements || instance.exportAnswers !== undefined;
   }
 
   return $elementContainer;
@@ -726,6 +782,8 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   var $slides = that.$slidesWrapper.children();
   var $prevs = $slides.filter(':lt(' + slideNumber + ')');
   this.$current = $slides.eq(slideNumber).addClass('h5p-animate');
+
+  this.attachElements(this.$current, slideNumber);
 
   setTimeout(function () {
     // Play animations
