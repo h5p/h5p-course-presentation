@@ -311,7 +311,7 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
   if (slide.elements === undefined) {
     return;
   }
-  var attach = (this.editor !== undefined || index === 0);
+  var attach = (this.editor !== undefined || index === 0 || index === 1);
   
   for (var i = 0; i < slide.elements.length; i++) {
     var element = slide.elements[i];
@@ -783,7 +783,14 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   var $prevs = $slides.filter(':lt(' + slideNumber + ')');
   this.$current = $slides.eq(slideNumber).addClass('h5p-animate');
 
+  // Attach elements for this slide
   this.attachElements(this.$current, slideNumber);
+  
+  // Attach elements for next slide
+  var $nextSlide = this.$current.next();
+  if ($nextSlide.length) {
+    this.attachElements($nextSlide, slideNumber + 1);
+  }
 
   setTimeout(function () {
     // Play animations
