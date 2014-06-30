@@ -944,10 +944,14 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
   var hasScores = false;
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
     if (this.slidesWithSolutions[i] !== undefined) {
+      if (!this.elementsAttached[i]) {
+        // Attach elements before showing solutions
+        this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
+      }
       this.$slideinationSlides.children(':eq(' + i + ')').addClass('h5p-has-solutions');
       if (!jumpedToFirst) {
         this.jumpToSlide(i, false);
-        jumpedToFirst = true;
+        jumpedToFirst = true; // TODO: Explain what this really does.
       }
       var slideScore = 0;
       var slideMaxScore = 0;
