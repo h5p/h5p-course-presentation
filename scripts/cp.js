@@ -335,12 +335,22 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  * @returns {unresolved}
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
-  var library = H5P.jQuery.extend(true, {}, element.action, {
+  var defaults = {
     params: {
       displaySolutionsButton: this.showSolutionButtons,
       postUserStatistics: false
     }
-  });
+  };
+  
+  var library;
+  if (this.editor !== undefined) {
+    // Clone the whole tree to avoid libraries accidentally changing params while running.
+    library = H5P.jQuery.extend(true, {}, element.action, defaults);
+  }
+  else {
+    // Add defaults
+    library = H5P.jQuery.extend(true, element.action, defaults);
+  }
   
   var instance = H5P.newRunnable(library, this.contentId);
   if (instance.preventResize !== undefined) {
