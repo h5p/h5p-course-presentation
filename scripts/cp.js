@@ -423,6 +423,9 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   }
   else {
     instance.attach($elementContainer);
+    if (element.action.library === 'H5P.InteractiveVideo 1.2') {
+      $elementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
+    }
   }
 
   if (this.editor !== undefined) {
