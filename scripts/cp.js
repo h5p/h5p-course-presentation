@@ -385,10 +385,21 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  * @returns {unresolved}
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
-  var elementParams = H5P.jQuery.extend({}, element.action.params, {
+  var defaults = {
     displaySolutionsButton: this.showSolutionButtons,
     postUserStatistics: false
-  });
+  };
+  
+  var elementParams;
+  if (this.editor !== undefined) {
+    // Clone the whole tree to avoid libraries accidentally changing params while running.
+    elementParams = H5P.jQuery.extend(true, {}, element.action.params, defaults);
+  }
+  else {
+    // Add defaults
+    elementParams = H5P.jQuery.extend(element.action.params, defaults);
+  }
+  
   var instance = new (H5P.classFromName(element.action.library.split(' ')[0]))(elementParams, this.contentId);
   if (instance.preventResize !== undefined) {
     instance.preventResize = true;
