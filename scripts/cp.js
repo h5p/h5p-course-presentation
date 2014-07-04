@@ -360,31 +360,24 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  * @returns {unresolved}
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
-<<<<<<< HEAD
-  var that = this;
-
-  if ($slide === undefined) {
-    $slide = this.$current;
-  }
-  if (index === undefined) {
-    index = $slide.index();
-  }
-  
-  var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var library = H5P.jQuery.extend(true, {}, element.action, {
+  var defaults = {
     params: {
       displaySolutionsButton: this.showSolutionButtons,
       postUserStatistics: false
     }
-  });
+  };
   
-  var elementInstance = H5P.newRunnable(library, this.contentId);
-=======
-  var elementParams = H5P.jQuery.extend({}, element.action.params, {
-    displaySolutionsButton: this.showSolutionButtons,
-    postUserStatistics: false
-  });
-  var instance = new (H5P.classFromName(element.action.library.split(' ')[0]))(elementParams, this.contentId);
+  var library;
+  if (this.editor !== undefined) {
+    // Clone the whole tree to avoid libraries accidentally changing params while running.
+    library = H5P.jQuery.extend(true, {}, element.action, defaults);
+  }
+  else {
+    // Add defaults
+    library = H5P.jQuery.extend(true, element.action, defaults);
+  }
+  
+  var instance = H5P.newRunnable(library, this.contentId);
   if (instance.preventResize !== undefined) {
     instance.preventResize = true;
   }
@@ -401,7 +394,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     }
     this.slidesWithSolutions[index].push(instance);
   }
->>>>>>> master
 
   return instance;
 };
