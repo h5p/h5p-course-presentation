@@ -851,12 +851,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
-  if (this.editor !== undefined) {
+  if (this.editor !== undefined && this.editor.dnb !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
-    if (this.editor.dnb.dnd.$coordinates !== undefined) {
-      this.editor.dnb.dnd.$coordinates.remove();
-    }
+    this.editor.dnb.blur();
   }
 
   this.$.trigger('resize'); // Triggered to resize elements.
