@@ -20,10 +20,6 @@
   font-style: normal;
 }
 
-body.h5p-semi-fullscreen .h5p-content-controls {
-  display: none;
-}
-
 .h5p-container.h5p-course-presentation {
   margin-bottom: 0.5em;
 }
