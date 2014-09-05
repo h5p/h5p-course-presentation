@@ -13,6 +13,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.$ = H5P.jQuery(this);
   this.slides = params.slides;
   this.contentId = id;
+  this.currentSlideIndex = 0;
   // elementInstances holds the instances for elements in an array.
   this.elementInstances = [];
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
@@ -351,6 +352,12 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   else {
     // Add defaults
     library = H5P.jQuery.extend(true, element.action, defaults);
+  }
+  
+  /* If library allows autoplay, control this from CP */
+  if (library.params.autoplay) {
+    library.params.autoplay = false;
+    library.params.cpAutoplay = true;
   }
   
   var instance = H5P.newRunnable(library, this.contentId);
@@ -795,6 +802,8 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   var $slides = that.$slidesWrapper.children();
   var $prevs = $slides.filter(':lt(' + slideNumber + ')');
   this.$current = $slides.eq(slideNumber).addClass('h5p-animate');
+  var previousSlideIndex = this.currentSlideIndex;
+  this.currentSlideIndex = slideNumber;
 
   // Attach elements for this slide
   this.attachElements(this.$current, slideNumber);
@@ -803,6 +812,15 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   var $nextSlide = this.$current.next();
   if ($nextSlide.length) {
     this.attachElements($nextSlide, slideNumber + 1);
+  }
+  
+  // Stop media on old slide
+  // this is done no mather what autoplay says
+  var instances = this.elementInstances[previousSlideIndex];
+  for (var i=0; i<instances.length; i++) {
+    if (typeof instances[i].stop === 'function') {
+      instances[i].stop();
+    }
   }
 
   setTimeout(function () {
@@ -821,6 +839,14 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   setTimeout(function () {
     // Done animating
     that.$slidesWrapper.children().removeClass('h5p-animate');
+    
+    // Start media on new slide for elements beeing setup with autoplay!
+    var instances = that.elementInstances[that.currentSlideIndex];
+    for (var i=0; i<instances.length; i++) {
+      if (instances[i].params && instances[i].params.cpAutoplay && typeof instances[i].play === 'function') {
+        instances[i].play();
+      }
+    }
   }, 250);
 
   // Jump keywords
@@ -856,7 +882,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     this.editor.dnb.setContainer(this.$current);
     this.editor.dnb.blur();
   }
-
+  
   this.$.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
