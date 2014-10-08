@@ -156,7 +156,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (first) {
       this.$current = $slide.addClass('h5p-current');
     }
-    
+
     this.addElements(slide, $slide, i);
 
     if (this.keywordsWidth && slide.keywords !== undefined) {
@@ -244,12 +244,12 @@ H5P.CoursePresentation.prototype.fitCT = function () {
  */
 H5P.CoursePresentation.prototype.resize = function () {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
-  
+
   // Fill up all available width
   this.$wrapper.css('width', 'auto');
   var width = this.$container.width();
   var style = {};
-  
+
   if (fullscreenOn) {
     var maxHeight = this.$container.height();
     if (width / maxHeight > this.ratio) {
@@ -264,7 +264,7 @@ H5P.CoursePresentation.prototype.resize = function () {
   style.height = (width / this.ratio) + 'px';
   style.fontSize = (this.fontSize * widthRatio) + 'px';
   this.$wrapper.css(style);
-  
+
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
 
   // Resize elements
@@ -277,7 +277,7 @@ H5P.CoursePresentation.prototype.resize = function () {
       }
     }
   }
-  
+
   this.fitCT();
 };
 
@@ -303,7 +303,7 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
 
 /**
  * Add all element to the given slide.
- * 
+ *
  * @param {Object} slide
  * @param {jQuery} $slide
  * @param {Number} index
@@ -313,7 +313,7 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
     return;
   }
   var attach = (this.editor !== undefined || index === 0 || index === 1);
-  
+
   for (var i = 0; i < slide.elements.length; i++) {
     var element = slide.elements[i];
     var instance = this.addElement(element, $slide, index);
@@ -322,7 +322,7 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
       this.attachElement(element, instance, $slide, index);
     }
   }
-  
+
   if (attach) {
     this.elementsAttached[index] = true;
   }
@@ -343,7 +343,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
       postUserStatistics: false
     }
   };
-  
+
   var library;
   if (this.editor !== undefined) {
     // Clone the whole tree to avoid libraries accidentally changing params while running.
@@ -353,13 +353,13 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     // Add defaults
     library = H5P.jQuery.extend(true, element.action, defaults);
   }
-  
+
   /* If library allows autoplay, control this from CP */
   if (library.params.autoplay) {
     library.params.autoplay = false;
     library.params.cpAutoplay = true;
   }
-  
+
   var instance = H5P.newRunnable(library, this.contentId);
   if (instance.preventResize !== undefined) {
     instance.preventResize = true;
@@ -383,7 +383,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
 /**
  * Attach all element instances to slide.
- * 
+ *
  * @param {jQuery} $slide
  * @param {Number} index
  */
@@ -391,7 +391,7 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
   if (this.elementsAttached[index] !== undefined) {
     return; // Already attached
   }
-  
+
   var slide = this.slides[index];
   var instances = this.elementInstances[index];
   if (slide.elements !== undefined) {
@@ -399,13 +399,13 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
       this.attachElement(slide.elements[i], instances[i], $slide, index);
     }
   }
-  
+
   this.elementsAttached[index] = true;
 };
 
 /**
  * Attach element to slide container.
- * 
+ *
  * @param {Object} element
  * @param {Object} instance
  * @param {jQuery} $slide
@@ -807,13 +807,13 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
   // Attach elements for this slide
   this.attachElements(this.$current, slideNumber);
-  
+
   // Attach elements for next slide
   var $nextSlide = this.$current.next();
   if ($nextSlide.length) {
     this.attachElements($nextSlide, slideNumber + 1);
   }
-  
+
   // Stop media on old slide
   // this is done no mather what autoplay says
   var instances = this.elementInstances[previousSlideIndex];
@@ -839,7 +839,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   setTimeout(function () {
     // Done animating
     that.$slidesWrapper.children().removeClass('h5p-animate');
-    
+
     // Start media on new slide for elements beeing setup with autoplay!
     var instances = that.elementInstances[that.currentSlideIndex];
     for (var i=0; i<instances.length; i++) {
@@ -882,7 +882,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     this.editor.dnb.setContainer(this.$current);
     this.editor.dnb.blur();
   }
-  
+
   this.$.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
@@ -1081,14 +1081,14 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
  */
 H5P.CoursePresentation.prototype.getCopyrights = function () {
   var info = new H5P.ContentCopyrights();
-  
+
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
     var slideInfo = new H5P.ContentCopyrights();
     slideInfo.setLabel('Slide ' + (slide + 1));
-    
+
     for (var element = 0; element < this.elementInstances[slide].length; element++) {
       var instance = this.elementInstances[slide][element];
-      
+
       if (instance.getCopyrights !== undefined) {
         var elementCopyrights = instance.getCopyrights();
         if (elementCopyrights !== undefined) {
@@ -1098,9 +1098,9 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
         }
       }
     }
-    
+
     info.addContent(slideInfo);
   }
-  
+
   return info;
 };
