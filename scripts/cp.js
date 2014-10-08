@@ -817,9 +817,12 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   // Stop media on old slide
   // this is done no mather what autoplay says
   var instances = this.elementInstances[previousSlideIndex];
-  for (var i=0; i<instances.length; i++) {
-    if (typeof instances[i].stop === 'function') {
-      instances[i].stop();
+  if (instances !== undefined) {
+    for (var i = 0; i < instances.length; i++) {
+      // TODO: Check instance type instead to avoid accidents?
+      if (typeof instances[i].stop === 'function') {
+        instances[i].stop();
+      }
     }
   }
 
@@ -842,9 +845,12 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
     // Start media on new slide for elements beeing setup with autoplay!
     var instances = that.elementInstances[that.currentSlideIndex];
-    for (var i=0; i<instances.length; i++) {
-      if (instances[i].params && instances[i].params.cpAutoplay && typeof instances[i].play === 'function') {
-        instances[i].play();
+    if (instances !== undefined) {
+      for (var i = 0; i < instances.length; i++) {
+        // TODO: Check instance type instead to avoid accidents?
+        if (instances[i].params && instances[i].params.cpAutoplay && typeof instances[i].play === 'function') {
+          instances[i].play();
+        }
       }
     }
   }, 250);
@@ -1086,15 +1092,17 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
     var slideInfo = new H5P.ContentCopyrights();
     slideInfo.setLabel('Slide ' + (slide + 1));
 
-    for (var element = 0; element < this.elementInstances[slide].length; element++) {
-      var instance = this.elementInstances[slide][element];
+    if (this.elementInstances[slide] !== undefined) {
+      for (var element = 0; element < this.elementInstances[slide].length; element++) {
+        var instance = this.elementInstances[slide][element];
 
-      if (instance.getCopyrights !== undefined) {
-        var elementCopyrights = instance.getCopyrights();
-        if (elementCopyrights !== undefined) {
-          var params = this.slides[slide].elements[element].action.params;
-          elementCopyrights.setLabel((element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : ''));
-          slideInfo.addContent(elementCopyrights);
+        if (instance.getCopyrights !== undefined) {
+          var elementCopyrights = instance.getCopyrights();
+          if (elementCopyrights !== undefined) {
+            var params = this.slides[slide].elements[element].action.params;
+            elementCopyrights.setLabel((element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : ''));
+            slideInfo.addContent(elementCopyrights);
+          }
         }
       }
     }
