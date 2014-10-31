@@ -10,20 +10,6 @@
   font-weight: bold;
 }
 
-@font-face {
-  font-family: 'CC';
-  src:url('../fonts/cc.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/cc.svg#cc') format('svg'),
-    url('../fonts/cc.woff') format('woff'),
-    url('../fonts/cc.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-body.h5p-semi-fullscreen .h5p-content-controls {
-  display: none;
-}
-
 .h5p-container.h5p-course-presentation {
   margin-bottom: 0.5em;
 }
