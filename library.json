@@ -3,7 +3,7 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 63,
+  "patchVersion": 64,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -13,7 +13,7 @@
   "author": "Amendor AS",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 1
+    "minorVersion": 2
   },
   "preloadedJs": [
     {
