@@ -1,24 +1,5 @@
 var H5P = H5P || {};
 
-if (H5P.getPath === undefined) {
-  /**
-   * Find the path to the content files based on the id of the content
-   *
-   * Also identifies and returns absolute paths
-   *
-   * @param {String} path Absolute path to a file, or relative path to a file in the content folder
-   * @param {Number} contentId Identifier of the content requesting the path
-   * @returns {String} The path to use.
-   */
-  H5P.getPath = function (path, contentId) {
-    if (path.substr(0, 7) === 'http://' || path.substr(0, 8) === 'https://') {
-      return path;
-    }
-
-    return H5PIntegration.getContentPath(contentId) + path;
-  };
-}
-
 /**
  * Constructor.
  *
@@ -29,6 +10,7 @@ if (H5P.getPath === undefined) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation = function (params, id, editor) {
+  this.$ = H5P.jQuery(this);
   this.slides = params.slides;
   this.contentId = id;
   // elementInstances holds the instances for elements in an array.
@@ -245,14 +227,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       $exportAnswerButton.show();
     }
   }
-
-  var resize = function () {
-    if (that.$wrapper.is(':visible')) {
-      that.resize(false);
-    }
-  };
-  H5P.$window.resize(resize);
-  resize();
 };
 
 /**
@@ -324,15 +298,16 @@ H5P.CoursePresentation.prototype.resize = function (fullscreen) {
   }
 
   // Resize elements
-  var elementInstances = this.elementInstances[this.$current.index()];
-  if (elementInstances !== undefined) {
-    for (var i = 0; i < elementInstances.length; i++) {
-      if (elementInstances[i].resize !== undefined) {
-        elementInstances[i].resize();
+  var instances = this.elementInstances[this.$current.index()];
+  if (instances !== undefined) {
+    for (var i = 0; i < instances.length; i++) {
+      var instance = instances[i];
+      if ((instance.preventResize === undefined || instance.preventResize === false) && instance.resize !== undefined) {
+        instance.resize();
       }
     }
   }
-
+  
   this.fitCT();
 };
 
@@ -386,21 +361,23 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
   var defaults = {
-    displaySolutionsButton: this.showSolutionButtons,
-    postUserStatistics: false
+    params: {
+      displaySolutionsButton: this.showSolutionButtons,
+      postUserStatistics: false
+    }
   };
   
-  var elementParams;
+  var library;
   if (this.editor !== undefined) {
     // Clone the whole tree to avoid libraries accidentally changing params while running.
-    elementParams = H5P.jQuery.extend(true, {}, element.action.params, defaults);
+    library = H5P.jQuery.extend(true, {}, element.action, defaults);
   }
   else {
     // Add defaults
-    elementParams = H5P.jQuery.extend(element.action.params, defaults);
+    library = H5P.jQuery.extend(true, element.action, defaults);
   }
   
-  var instance = new (H5P.classFromName(element.action.library.split(' ')[0]))(elementParams, this.contentId);
+  var instance = H5P.newRunnable(library, this.contentId);
   if (instance.preventResize !== undefined) {
     instance.preventResize = true;
   }
