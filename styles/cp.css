@@ -10,20 +10,6 @@
   font-weight: bold;
 }
 
-@font-face {
-  font-family: 'CC';
-  src:url('../fonts/cc.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/cc.svg#cc') format('svg'),
-    url('../fonts/cc.woff') format('woff'),
-    url('../fonts/cc.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-body.h5p-semi-fullscreen .h5p-content-controls {
-  display: none;
-}
-
 .h5p-container.h5p-course-presentation {
   margin-bottom: 0.5em;
 }
@@ -231,8 +217,7 @@ body.h5p-semi-fullscreen .h5p-content-controls {
 }
 
 .h5p-course-presentation .h5p-show-solutions,
-.h5p-course-presentation .h5p-eta-export,
-.h5p-course-presentation .h5p-copyright {
+.h5p-course-presentation .h5p-eta-export {
   float: right;
   display: none;
   font-size: 0.6em;
@@ -264,16 +249,6 @@ body.h5p-semi-fullscreen .h5p-content-controls {
   margin-bottom: 0.4em;
 }
 
-.h5p-course-presentation .h5p-copyright:before {
-  font-family: 'CC';
-  content: "\e666";
-  display: inline-block;
-  margin-right: 0.2em;
-  margin-left: 0;
-  font-size: 2em;
-  vertical-align: top;
-}
-
 .h5p-course-presentation .h5p-eta-export.flash {
   padding: 0 0.75em;
   line-height:0;
@@ -298,8 +273,7 @@ body.h5p-semi-fullscreen .h5p-content-controls {
 }
 
 .h5p-course-presentation .h5p-show-solutions:hover,
-.h5p-course-presentation .h5p-eta-export:hover,
-.h5p-course-presentation .h5p-copyright:hover {
+.h5p-course-presentation .h5p-eta-export:hover {
   background: rgb(4,104,206); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(4,104,206,1)), color-stop(100%,rgba(100,152,254,1))); /* Chrome,Safari4+ */
