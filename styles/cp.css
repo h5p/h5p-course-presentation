@@ -168,7 +168,7 @@
   -moz-transform: translateX(100%) translate3d(100%, 0, 0);
   -ms-transform: translateX(100%) translate3d(100%, 0, 0);
   transform: translateX(100%) translate3d(100%, 0, 0);
-  
+
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -425,7 +425,9 @@
   overflow: hidden;
   font-size: 0.75em;
 }
-
+.h5p-course-presentation .h5p-element.has-go-to {
+  cursor: pointer;
+}
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
   border: 0;
   background-color: transparent !important;
@@ -484,11 +486,11 @@
 }
 
 .h5p-course-presentation .h5p-popup-container table {
-  border-collapse: collapse;  
+  border-collapse: collapse;
 }
 
 .h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
-  padding-right: 1.4em; 
+  padding-right: 1.4em;
 }
 
 .h5p-course-presentation .h5p-th {
@@ -496,7 +498,7 @@
 }
 
 .h5p-course-presentation tfoot .h5p-td {
-  border-top: 1px solid #ccc;  
+  border-top: 1px solid #ccc;
 }
 
 .h5p-course-presentation .h5p-element-solution {
@@ -537,17 +539,17 @@
   background: -moz-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
   background: -ms-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
   background: linear-gradient(to top, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
-  
+
     -webkit-transition: -webkit-transform 0.2s;
   -moz-transition: -moz-transform 0.2s;
   -ms-transition: -ms-transform 0.2s;
   -o-transition: -o-transform 0.2s;
   transition: transform 0.2s;
-   
+
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility:    hidden;
   -ms-backface-visibility:     hidden;
-      backface-visibility:     hidden; 
+      backface-visibility:     hidden;
 
   *margin-right: .3em;
   }
@@ -663,7 +665,7 @@
 .h5p-course-presentation .ct > *:last-child {
   margin: 0;
 }
- 
+
 .h5p-course-presentation .h5p-copyinfo {
   margin: 0 0 1em;
   padding-top: 1em;

@@ -37,7 +37,8 @@ H5P.CoursePresentation = function (params, id, editor) {
     showSolutions: 'Show solutions',
     exportAnswers: 'Export text',
     close: 'Close',
-    solutionsButtonTitle: 'View solution'
+    solutionsButtonTitle: 'View solution',
+    goToSlide: 'Go to slide :num'
   }, params.l10n !== undefined ? params.l10n : {});
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
@@ -447,6 +448,14 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     /* When in view mode, we need to know if there are any answer elements,
      * so that we can display the export answers button on the last slide */
     this.hasAnswerElements = this.hasAnswerElements || instance.exportAnswers !== undefined;
+
+    // Some elements can link to other slides
+    if (element.goToSlide && this.slides[element.goToSlide - 1] !== undefined) {
+      var title = this.l10n.goToSlide.replace(':num', element.goToSlide);
+      $elementContainer.addClass('has-go-to').attr('title', title).click(function () {
+        that.jumpToSlide(element.goToSlide - 1);
+      });
+    }
   }
 
   return $elementContainer;
