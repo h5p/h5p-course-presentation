@@ -38,7 +38,9 @@ H5P.CoursePresentation = function (params, id, editor) {
     showSolutions: 'Show solutions',
     exportAnswers: 'Export text',
     close: 'Close',
-    solutionsButtonTitle: 'View solution'
+    solutionsButtonTitle: 'View solution',
+    hideKeywords: 'Hide keywords list',
+    showKeywords: 'Show keywords list'
   }, params.l10n !== undefined ? params.l10n : {});
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
@@ -91,9 +93,16 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     delete that.keydown;
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
-    if (!$target.is("input, textarea")) {
+    if (!$target.is('input, textarea')) {
       // Add focus to the wrapper so that it may capture keyboard events
       that.$wrapper.focus();
+    }
+
+    if (that.keywordsClicked) {
+      that.keywordsClicked = false;
+    }
+    else if (that.presentation.keywordListEnabled && that.presentation.keywordListAutoHide) {
+      that.hideKeywords();
     }
   });
 
@@ -147,8 +156,15 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       title: 'Hide keywords list',
       on: {
         click: function () {
-          that.$keywordsButton.attr('title', that.$keywordsButton.hasClass('h5p-open') ? 'Open keywords list' : 'Hide keywords list'); // TODO: Translate
-          that.$keywordsWrapper.add(that.$keywordsButton).toggleClass('h5p-open');
+          if (that.$keywordsButton.hasClass('h5p-open')) {
+            that.hideKeywords();
+          }
+          else {
+            that.showKeywords();
+          }
+
+          // Log the click to make sure the keywords list isn't closed.
+          that.keywordsClicked = true;
         }
       }
     }).insertBefore(this.$keywordsWrapper);
@@ -165,6 +181,11 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       // Hide in editor when disabled.
       this.$keywordsWrapper.add(this.$keywordsButton).hide();
     }
+
+    this.$keywordsWrapper.click(function () {
+      // Log the click to make sure the keywords list isn't closed.
+      that.keywordsClicked = true;
+    });
   }
   else {
     this.$keywordsWrapper.remove();
@@ -192,6 +213,30 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       $exportAnswerButton.show();
     }
   }
+};
+
+/**
+ * Show keywords list
+ */
+H5P.CoursePresentation.prototype.showKeywords = function () {
+  if (this.$keywordsWrapper.hasClass('h5p-open')) {
+    return; // Already open
+  }
+
+  this.$keywordsButton.attr('title', this.l10n.hideKeywords);
+  this.$keywordsWrapper.add(this.$keywordsButton).addClass('h5p-open');
+};
+
+/**
+ * Hide keywords list
+ */
+H5P.CoursePresentation.prototype.hideKeywords = function () {
+  if (!this.$keywordsWrapper.hasClass('h5p-open')) {
+    return; // Already closed
+  }
+
+  this.$keywordsButton.attr('title', this.l10n.showKeywords);
+  this.$keywordsWrapper.add(this.$keywordsButton).removeClass('h5p-open');
 };
 
 /**
@@ -1041,8 +1086,8 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
   var totalMaxScore = 0;
   var tds = ''; // For saving the main table rows...
   for (var i = 0; i < slideScores.length; i++) {
-    tds += '<tr><td class="h5p-td"><a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>'
-            + '<td class="h5p-td">' + slideScores[i].score + '</td><td class="h5p-td">' + slideScores[i].maxScore + '</td></tr>';
+    tds += '<tr><td class="h5p-td"><a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>' +
+           '<td class="h5p-td">' + slideScores[i].score + '</td><td class="h5p-td">' + slideScores[i].maxScore + '</td></tr>';
     totalScore += slideScores[i].score;
     totalMaxScore += slideScores[i].maxScore;
   }

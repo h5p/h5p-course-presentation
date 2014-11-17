@@ -328,6 +328,18 @@
         "type": "text",
         "label": "Text for the \"Rights of use\" button",
         "default": "Rights of use"
+      },
+      {
+        "name": "hideKeywords",
+        "type": "text",
+        "label": "Hide keywords list button title",
+        "default": "Hide keywords list"
+      },
+      {
+        "name": "showKeywords",
+        "type": "text",
+        "label": "Show keywords list button title",
+        "default": "Show keywords list"
       }
     ]
   }
