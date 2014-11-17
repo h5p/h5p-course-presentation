@@ -23,6 +23,8 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
               slide = parameters.slides[i];
 
               for (j = 0; j < slide.elements.length; j++) {
+                var element = slide.elements[j];
+
                 element.x += 31.25;
                 element.width *= 0.6875;
               }
