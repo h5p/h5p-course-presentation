@@ -5,11 +5,34 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
     1: {
       2: {
         contentUpgrade: function (parameters, finished) {
+          var i, j, slide;
+
+          // Determine if keywords has been removed
+          var keywordsRemoved = true;
+          for (i = 0; i < parameters.slides.length; i++) {
+            slide = parameters.slides[i];
+            if (keywordsRemoved && slide.keywords !== undefined) {
+              keywordsRemoved = false;
+              break;
+            }
+          }
+
+          if (!keywordsRemoved) {
+            // Move and resize elements
+            for (i = 0; i < parameters.slides.length; i++) {
+              slide = parameters.slides[i];
+
+              for (j = 0; j < slide.elements.length; j++) {
+                element.x += 31.25;
+                element.width *= 0.6875;
+              }
+            }
+          }
 
           // Move slides inside presentation wrapper.
           parameters.presentation = {
             slides: parameters.slides,
-            keywordListEnabled: true,
+            keywordListEnabled: !keywordsRemoved,
             keywordListAutoHide: false,
             keywordListOpacity: 90
           };
