@@ -1,49 +1,62 @@
 {
   "semantics": [
     {
-      "field": {
-        "fields": [
-          {
-            "field": {
-              "fields": [
-                {},
-                {},
-                {},
-                {},
-                {},
-                {
-                  "label": "Metadata",
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
                   "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
                     {
-                      "label": "Tittel"
+                      "label": "Metadata",
+                      "fields": [
+                        {
+                          "label": "Tittel"
+                        },
+                        {
+                          "label": "Forfattar"
+                        },
+                        {
+                          "label": "Lisens"
+                        }
+                      ]
                     },
                     {
-                      "label": "Forfattar"
+                      "label": "Kommentarar",
+                      "description": "Kommentarane visast når brukaren ser på fasit."
+                    },
+                    {},
+                    {
+                      "label": "Alltid vis kommentarer"
                     },
                     {
-                      "label": "Lisens"
+                      "label": "Opasitet for bakgrunn"
+                    },
+                    {
+                      "label": "Vis som knapp"
                     }
                   ]
-                },
-                {
-                  "label": "Kommentarar",
-                  "description": "Kommentarane visast når brukaren ser på fasit."
-                },
-                {},
-                {
-                  "label": "Alltid vis kommentarer"
-                },
-                {
-                  "label": "Opasitet for bakgrunn"
-                },
-                {
-                  "label": "Vis som knapp"
                 }
-              ]
-            }
+              }
+            ]
           }
-        ]
-      }
+        },
+        {
+          "label": "Nøkkelordliste"
+        },
+        {
+          "label": "Auto skjul"
+        },
+        {
+          "label": "Opasitet"
+        }
+      ]
     },
     {
       "label": "Slå på \"Vis svar\" knapp"
@@ -125,6 +138,14 @@
         {
           "label": "Tekst for bruksrett-knappen",
           "default": "Bruksrett"
+        },
+        {
+          "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
+          "default": "Skjul nøkkelordliste"
+        },
+        {
+          "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
+          "default": "Vis nøkkelordliste"
         }
       ]
     }
