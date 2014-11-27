@@ -12,6 +12,22 @@
                 {},
                 {},
                 {
+                  "label": "Kommentarar",
+                  "description": "Kommentarane visast når brukaren ser på fasit."
+                },
+                {
+                  "label": "Alltid vis kommentarer"
+                },
+                {
+                  "label": "Opasitet for bakgrunn"
+                },
+                {
+                  "label": "Vis som knapp"
+                },
+                {
+                  "label": "Gå til lysbilete"
+                },
+                {
                   "label": "Metadata",
                   "fields": [
                     {
@@ -24,23 +40,6 @@
                       "label": "Lisens"
                     }
                   ]
-                },
-                {
-                  "label": "Kommentarar",
-                  "description": "Kommentarane visast når brukaren ser på fasit."
-                },
-                {},
-                {
-                  "label": "Alltid vis kommentarer"
-                },
-                {
-                  "label": "Opasitet for bakgrunn"
-                },
-                {
-                  "label": "Vis som knapp"
-                },
-                {
-                  "label": "Gå til lysbilete"
                 }
               ]
             }

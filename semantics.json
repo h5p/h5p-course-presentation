@@ -15,6 +15,28 @@
             "type": "group",
             "fields": [
               {
+                "name": "x",
+                "type": "number",
+                "widget": "none"
+              },
+              {
+                "name": "y",
+                "type": "number",
+                "widget": "none"
+              },
+              {
+                "name": "width",
+                "type": "number",
+                "widget": "none",
+                "optional": true
+              },
+              {
+                "name": "height",
+                "type": "number",
+                "widget": "none",
+                "optional": true
+              },
+              {
                 "name": "action",
                 "type": "library",
                 "options": [
@@ -31,54 +53,8 @@
                   "H5P.DragQuestion 1.0",
                   "H5P.Summary 1.1",
                   "H5P.InteractiveVideo 1.2"
-                ]
-              },
-              {
-                "name": "x",
-                "type": "number",
-                "widget": "none"
-              },
-              {
-                "name": "y",
-                "type": "number",
-                "widget": "none"
-              },
-              {
-                "name": "width",
-                "type": "number",
-                "widget": "none"
-              },
-              {
-                "name": "height",
-                "type": "number",
-                "widget": "none"
-              },
-              {
-                "name": "metadata",
-                "type": "group",
-                "label": "Metadata",
-                "optional": true,
-                "deprecated": true,
-                "fields": [
-                  {
-                    "name": "title",
-                    "type": "text",
-                    "optional": true,
-                    "label": "Title"
-                  },
-                  {
-                    "name": "author",
-                    "type": "text",
-                    "optional": true,
-                    "label": "Author"
-                  },
-                  {
-                    "name": "lisence",
-                    "type": "text",
-                    "optional": true,
-                    "label": "Lisence"
-                  }
-                ]
+                ],
+                "optional": true
               },
               {
                 "name": "solution",
@@ -99,12 +75,6 @@
                   "h3",
                   "hr"
                 ]
-              },
-              {
-                "name": "index",
-                "type": "number",
-                "widget": "none",
-                "optional": true
               },
               {
                 "name": "alwaysDisplayComments",
@@ -133,7 +103,35 @@
                 "name": "goToSlide",
                 "type": "number",
                 "label": "Go To Slide",
+                "min": 1,
                 "optional": true
+              },
+              {
+                "name": "metadata",
+                "type": "group",
+                "label": "Metadata",
+                "optional": true,
+                "deprecated": true,
+                "fields": [
+                  {
+                    "name": "title",
+                    "type": "text",
+                    "optional": true,
+                    "label": "Title"
+                  },
+                  {
+                    "name": "author",
+                    "type": "text",
+                    "optional": true,
+                    "label": "Author"
+                  },
+                  {
+                    "name": "lisence",
+                    "type": "text",
+                    "optional": true,
+                    "label": "Lisence"
+                  }
+                ]
               }
             ]
           }

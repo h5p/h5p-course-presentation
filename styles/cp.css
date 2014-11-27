@@ -425,9 +425,6 @@
   overflow: hidden;
   font-size: 0.75em;
 }
-.h5p-course-presentation .h5p-element.has-go-to {
-  cursor: pointer;
-}
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
   border: 0;
   background-color: transparent !important;
@@ -437,6 +434,23 @@
 }
 .h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content {
   overflow: auto;
+}
+
+.h5p-course-presentation .h5p-go-to-slide {
+  z-index: 2;
+}
+.h5p-course-presentation .h5p-press-to-go {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.h5p-course-presentation .h5p-press-to-go:hover {
+  background: #0580e2;
+  opacity: 0.2;
+}
+.h5p-course-presentation .h5p-press-to-go:active {
+  background: #0580e2;
+  opacity: 0.4;
 }
 
 .h5p-course-presentation .h5p-popup-overlay {
