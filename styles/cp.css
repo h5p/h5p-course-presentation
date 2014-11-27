@@ -441,8 +441,9 @@
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
   border: 0;
   background-color: transparent !important;
-  width: 3em !important;
-  height: 3em !important;
+  width: 1.5em !important;
+  height: 1.5em !important;
+  overflow: visible !important;
   z-index: 2;
 }
 .h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content {
@@ -527,18 +528,16 @@
 
 .h5p-course-presentation .h5p-element-button {
   text-decoration: none;
-  margin-left: 5px;
-  margin-top: 5px;
   position: absolute;
   z-index: 2;
   display: block;
-  width: 1.375em;
-  height: 1.375em;
+  width: 1.5em;
+  height: 1.5em;
   background: #00f;
   color: #fff;
   font-size: 1em;
   border-radius: 50%;
-  line-height: 1.375em;
+  line-height: 1.5em;
   box-shadow: 0.15em 0.25em 0.25em 0 #191919;
   text-shadow: 0 0 0.3em #191919;
   text-align: center;
@@ -550,7 +549,7 @@
   background: -ms-linear-gradient(bottom, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
   background: linear-gradient(to top, #1d5cff 50%, #5ba7ff 50%, #1d5cff 100%);
 
-    -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: -webkit-transform 0.2s;
   -moz-transition: -moz-transform 0.2s;
   -ms-transition: -ms-transform 0.2s;
   -o-transition: -o-transform 0.2s;
@@ -559,9 +558,7 @@
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility:    hidden;
   -ms-backface-visibility:     hidden;
-      backface-visibility:     hidden;
-
-  *margin-right: .3em;
+  backface-visibility:     hidden;
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button,
