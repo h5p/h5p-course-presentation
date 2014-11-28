@@ -347,7 +347,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     defaults = {
       params: {
         enableSolutionsButton: this.overrideShowSolutionsButton,
-        enableRetryButton: this.overrideRetryButton,
+        enableRetry: this.overrideRetryButton,
         postUserStatistics: false
       }
     };
@@ -511,7 +511,6 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
       })
       .end();
 
-  console.log($popup.find('.h5p-popup-container'));
   //Add a retry button.
   var $retryButton = H5P.jQuery('<div/>', {
     text: 'retry',
@@ -1010,11 +1009,7 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
  * @public
  */
 H5P.CoursePresentation.prototype.resetTask = function () {
-  console.log(this.slidesWithSolutions);
-  console.log(this.slidesWithSolutions.length);
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    console.log(i);
-    console.log(this);
     if (this.slidesWithSolutions[i] !== undefined) {
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
         var elementInstance = this.slidesWithSolutions[i][j];
