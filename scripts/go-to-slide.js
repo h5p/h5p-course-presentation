@@ -21,7 +21,10 @@ H5P.CoursePresentationGoToSlide = (function ($) {
       on: {
         click: function () {
           if (cp.editor === undefined) {
-            cp.jumpToSlide(slideNum - 1);
+            var goTo = slideNum - 1;
+            if (cp.slides[goTo] !== undefined) {
+              cp.jumpToSlide(goTo);
+            }
           }
         }
       }
