@@ -432,9 +432,22 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   if (displayAsButton) {
     var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
     instance.attach($buttonElement);
-    H5P.jQuery('<a href="#" class="h5p-element-button"></a>').appendTo($elementContainer).click(function () {
+
+    // Parameterize library name to use as html class.
+    var libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
+    H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
-        $buttonElement.appendTo(that.showPopup('').find('.h5p-popup-wrapper'));
+        $buttonElement.appendTo(that.showPopup('',function () {
+          if (instance.pause !== undefined) {
+            instance.pause();
+          }
+          else if (instance.stop !== undefined) {
+            instance.stop();
+          }
+          $buttonElement.detach();
+        }).find('.h5p-popup-wrapper'));
+        instance.$.trigger('resize'); // Drop on audio and video??
+        // Stop sound??
       }
       return false;
     });
@@ -492,18 +505,41 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  * Displays a popup.
  *
  * @param {String} popupContent
+ * @param {Function} [remove] Gets called before the popup is removed.
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
+H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove) {
+  var doNotClose;
+
+  /** @private */
+  var close = function(event) {
+    if (doNotClose) {
+      // Prevent closing the popup
+      doNotClose = false;
+      return;
+    }
+
+    // Remove popup
+    if (remove !== undefined) {
+      remove();
+    }
+    event.preventDefault();
+    $popup.remove();
+  };
+
   var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
           '</div><div role="button" tabindex="1" class="h5p-button h5p-close-popup" title="' + this.l10n.close + '"></div></div></div>')
     .prependTo(this.$wrapper)
-    .find('.h5p-close-popup')
-      .click(function(event) {
-        event.preventDefault();
-        $popup.remove();
+    .click(close)
+    .find('.h5p-popup-container')
+      .click(function () {
+        doNotClose = true;
       })
+      .end()
+    .find('.h5p-close-popup')
+      .click(close)
       .end();
+
 
   return $popup;
 };
