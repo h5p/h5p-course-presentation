@@ -42,7 +42,7 @@ H5P.CoursePresentation = function (params, id, editor) {
   if (params.override !== undefined) {
     this.overrideButtons = (params.override.overrideButtons === undefined ? false : params.override.overrideButtons);
     this.overrideShowSolutionsButton = (params.override.overrideShowSolutionButton === undefined ? false : params.override.overrideShowSolutionButton);
-    this.overrideRetryButton = (params.override.overrideRetryButton === undefined ? false : params.override.overrideRetryButton);
+    this.overrideRetry = (params.override.overrideRetry === undefined ? false : params.override.overrideRetry);
   }
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
@@ -347,7 +347,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     defaults = {
       params: {
         enableSolutionsButton: this.overrideShowSolutionsButton,
-        enableRetry: this.overrideRetryButton,
+        enableRetry: this.overrideRetry,
         postUserStatistics: false
       }
     };
