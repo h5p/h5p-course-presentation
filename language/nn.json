@@ -12,6 +12,22 @@
                 {},
                 {},
                 {
+                  "label": "Kommentarar",
+                  "description": "Kommentarane visast når brukaren ser på fasit."
+                },
+                {
+                  "label": "Alltid vis kommentarer"
+                },
+                {
+                  "label": "Opasitet for bakgrunn"
+                },
+                {
+                  "label": "Vis som knapp"
+                },
+                {
+                  "label": "Gå til lysbilete"
+                },
+                {
                   "label": "Metadata",
                   "fields": [
                     {
@@ -24,20 +40,6 @@
                       "label": "Lisens"
                     }
                   ]
-                },
-                {
-                  "label": "Kommentarar",
-                  "description": "Kommentarane visast når brukaren ser på fasit."
-                },
-                {},
-                {
-                  "label": "Alltid vis kommentarer"
-                },
-                {
-                  "label": "Opasitet for bakgrunn"
-                },
-                {
-                  "label": "Vis som knapp"
                 }
               ]
             }
@@ -125,6 +127,11 @@
         {
           "label": "Tekst for bruksrett-knappen",
           "default": "Bruksrett"
+        },
+        {
+          "label": "Tittel for element som lenkjar til andre lysbilete",
+          "default": "Gå til lysbilete :num",
+          "description": ":num erstattast med lysbiletenummeret."
         }
       ]
     }

@@ -17,6 +17,9 @@
   },
   "preloadedJs": [
     {
+      "path": "scripts/go-to-slide.js"
+    },
+    {
       "path": "scripts/cp.js"
     }
   ],

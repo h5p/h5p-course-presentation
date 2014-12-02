@@ -37,7 +37,8 @@ H5P.CoursePresentation = function (params, id, editor) {
     showSolutions: 'Show solutions',
     exportAnswers: 'Export text',
     close: 'Close',
-    solutionsButtonTitle: 'View solution'
+    solutionsButtonTitle: 'View solution',
+    goToSlide: 'Go to slide :num'
   }, params.l10n !== undefined ? params.l10n : {});
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
@@ -337,45 +338,55 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  * @returns {unresolved}
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
-  var defaults = {
-    params: {
-      displaySolutionsButton: this.showSolutionButtons,
-      postUserStatistics: false
-    }
-  };
+  var instance;
 
-  var library;
-  if (this.editor !== undefined) {
-    // Clone the whole tree to avoid libraries accidentally changing params while running.
-    library = H5P.jQuery.extend(true, {}, element.action, defaults);
+  if (element.action === undefined) {
+    // goToSlide, internal element
+    instance = new H5P.CoursePresentationGoToSlide(element.goToSlide, this);
   }
   else {
-    // Add defaults
-    library = H5P.jQuery.extend(true, element.action, defaults);
-  }
+    // H5P library
+    var defaults = {
+      params: {
+        displaySolutionsButton: this.showSolutionButtons,
+        postUserStatistics: false
+      }
+    };
 
-  /* If library allows autoplay, control this from CP */
-  if (library.params.autoplay) {
-    library.params.autoplay = false;
-    library.params.cpAutoplay = true;
-  }
+    var library;
+    if (this.editor !== undefined) {
+      // Clone the whole tree to avoid libraries accidentally changing params while running.
+      library = H5P.jQuery.extend(true, {}, element.action, defaults);
+    }
+    else {
+      // Add defaults
+      library = H5P.jQuery.extend(true, element.action, defaults);
+    }
 
-  var instance = H5P.newRunnable(library, this.contentId);
-  if (instance.preventResize !== undefined) {
-    instance.preventResize = true;
+    /* If library allows autoplay, control this from CP */
+    if (library.params.autoplay) {
+      library.params.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
+
+    instance = H5P.newRunnable(library, this.contentId);
+    if (instance.preventResize !== undefined) {
+      instance.preventResize = true;
+    }
+
+    if (this.checkForSolutions(instance)) {
+      if (this.slidesWithSolutions[index] === undefined) {
+        this.slidesWithSolutions[index] = [];
+      }
+      this.slidesWithSolutions[index].push(instance);
+    }
   }
 
   if (this.elementInstances[index] === undefined) {
-    this.elementInstances[index] = [];
+    this.elementInstances[index] = [instance];
   }
-  this.elementInstances[index].push(instance);
-
-
-  if (this.checkForSolutions(instance)) {
-    if (this.slidesWithSolutions[index] === undefined) {
-      this.slidesWithSolutions[index] = [];
-    }
-    this.slidesWithSolutions[index].push(instance);
+  else {
+    this.elementInstances[index].push(instance);
   }
 
   return instance;
@@ -443,7 +454,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   }
   else {
     instance.attach($elementContainer);
-    if (element.action.library === 'H5P.InteractiveVideo 1.2') {
+    if (element.action !== undefined && element.action.library === 'H5P.InteractiveVideo 1.2') {
       $elementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
     }
   }
@@ -1069,8 +1080,8 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
   var totalMaxScore = 0;
   var tds = ''; // For saving the main table rows...
   for (var i = 0; i < slideScores.length; i++) {
-    tds += '<tr><td class="h5p-td"><a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>'
-            + '<td class="h5p-td">' + slideScores[i].score + '</td><td class="h5p-td">' + slideScores[i].maxScore + '</td></tr>';
+    tds += '<tr><td class="h5p-td"><a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + this.l10n.slide + ' ' + slideScores[i].slide + '</a></td>' +
+           '<td class="h5p-td">' + slideScores[i].score + '</td><td class="h5p-td">' + slideScores[i].maxScore + '</td></tr>';
     totalScore += slideScores[i].score;
     totalMaxScore += slideScores[i].maxScore;
   }

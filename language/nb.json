@@ -12,6 +12,22 @@
                 {},
                 {},
                 {
+                  "label": "Kommentarer",
+                  "description": "Kommentarene vises når brukeren ser på fasit."
+                },
+                {
+                  "label": "Alltid vis kommentarer"
+                },
+                {
+                  "label": "Opasitet for bakgrunn"
+                },
+                {
+                  "label": "Vis som knapp"
+                },
+                {
+                  "label": "Gå til lysbilde"
+                },
+                {
                   "label": "Metadata",
                   "fields": [
                     {
@@ -24,20 +40,6 @@
                       "label": "Lisens"
                     }
                   ]
-                },
-                {
-                  "label": "Kommentarer",
-                  "description": "Kommentarene vises når brukeren ser på fasit."
-                },
-                {},
-                {
-                  "label": "Alltid vis kommentarer"
-                },
-                {
-                  "label": "Opasitet for bakgrunn"
-                },
-                {
-                  "label": "Vis som knapp"
                 }
               ]
             }
@@ -125,6 +127,11 @@
         {
           "label": "Tekst for bruksrett-knappen",
           "default": "Bruksrett"
+        },
+        {
+          "label": "Tittel for elementer som lenker til andre lysbilder",
+          "default": "Gå til lysbilde :num",
+          "description": ":num erstattes med lysbildenummeret."
         }
       ]
     }
