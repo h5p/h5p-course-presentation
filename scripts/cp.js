@@ -346,8 +346,10 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   if (this.overrideButtons) {
     defaults = {
       params: {
-        enableSolutionsButton: this.overrideShowSolutionsButton,
-        enableRetry: this.overrideRetry,
+        behaviour: {
+          enableSolutionsButton: this.overrideShowSolutionsButton,
+          enableRetry: this.overrideRetry
+        },
         postUserStatistics: false
       }
     };
