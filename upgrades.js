@@ -6,9 +6,11 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
       2: {
         contentUpgrade: function (parameters, finished) {
           // Allows overriding of buttons for subcontent.
-          parameters.override.overrideButtons = true;
-          parameters.override.overrideShowSolutionButton = parameters.showSolutions;
-          parameters.override.overrideRetry = false;
+          parameters.override = {
+            overrideButtons: true,
+            overrideShowSolutionButton: parameters.showSolutions,
+            overrideRetry: false
+            };
           delete parameters.showSolutions;
           finished(null, parameters);
         }
