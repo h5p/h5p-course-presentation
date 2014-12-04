@@ -1,13 +1,25 @@
 /* DroidSans font by Steve Matteson licensed under Apache License, version 2.0 - See DroidSans/LICENSE.txt */
 @font-face {
   font-family: 'H5PDroidSans';
-  src: url('DroidSans/DroidSans.ttf') format('truetype');
+  src: url('../fonts/DroidSans.ttf') format('truetype');
   font-weight: normal;
 }
 @font-face {
   font-family: 'H5PDroidSans';
-  src: url('DroidSans/DroidSans-Bold.ttf') format('truetype');
+  src: url('../fonts/DroidSans-Bold.ttf') format('truetype');
   font-weight: bold;
+}
+
+/* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
+@font-face {
+  font-family: 'H5PCoursePresentation';
+  src:url('../fonts/h5p.eot');
+  src:url('../fonts/h5p.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/h5p.woff') format('woff'),
+  url('../fonts/h5p.ttf') format('truetype'),
+  url('../fonts/h5p.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .h5p-container.h5p-course-presentation {
@@ -120,8 +132,11 @@
   left: 31.25%;
 }
 .h5p-course-presentation .h5p-keywords-button:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f188";
+  font-family: 'H5PCoursePresentation';
+  content: "\e605";
+}
+.h5p-course-presentation .h5p-keywords-button.h5p-open:before {
+  content: "\e604";
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper {
