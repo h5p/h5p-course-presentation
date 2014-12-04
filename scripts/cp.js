@@ -138,11 +138,15 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
     this.addElements(slide, $slide, i);
 
-    if (initKeywords && slide.keywords !== undefined) {
+    if (initKeywords && slide.keywords !== undefined && slide.keywords.length) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
 
     slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, this.l10n.jumpToSlide, first);
+  }
+
+  if (keywords === '' && this.editor === undefined) {
+    initKeywords = false; // Do not show keywords pane if it's empty!
   }
 
   this.$progressbar = this.$boxWrapper.children('.h5p-progressbar').children().css('width', ((1 / i) * 100) + '%');
