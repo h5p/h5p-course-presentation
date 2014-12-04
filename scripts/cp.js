@@ -101,7 +101,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (that.keywordsClicked) {
       that.keywordsClicked = false;
     }
-    else if (that.presentation.keywordListEnabled && that.presentation.keywordListAutoHide) {
+    else if (that.presentation.keywordListEnabled &&
+            !that.presentation.keywordListAlwaysShow &&
+            that.presentation.keywordListAutoHide) {
       that.hideKeywords();
     }
   });
@@ -126,6 +128,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   // Create keywords html
   var keywords = '';
+  var foundKeywords = false;
   var slideinationSlides = '';
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
@@ -138,14 +141,17 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
     this.addElements(slide, $slide, i);
 
-    if (initKeywords && slide.keywords !== undefined && slide.keywords.length) {
+    if (!foundKeywords && slide.keywords !== undefined && slide.keywords.length) {
+      foundKeywords = true;
+    }
+    if (initKeywords) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
 
     slideinationSlides += H5P.CoursePresentation.createSlideinationSlide(i + 1, this.l10n.jumpToSlide, first);
   }
 
-  if (keywords === '' && this.editor === undefined) {
+  if (!foundKeywords && this.editor === undefined) {
     initKeywords = false; // Do not show keywords pane if it's empty!
   }
 
@@ -172,6 +178,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
         }
       }
     }).insertBefore(this.$keywordsWrapper);
+    if (this.presentation.keywordListAlwaysShow) {
+      this.$keywordsButton.hide();
+    }
 
     this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
     this.$currentKeyword = this.$keywords.children('.h5p-current');

@@ -188,6 +188,12 @@
         "default": true
       },
       {
+        "name": "keywordListAlwaysShow",
+        "type": "boolean",
+        "label": "Auto hide",
+        "default": false
+      },
+      {
         "name": "keywordListAutoHide",
         "type": "boolean",
         "label": "Auto hide",

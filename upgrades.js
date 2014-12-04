@@ -35,6 +35,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
           parameters.presentation = {
             slides: parameters.slides,
             keywordListEnabled: !keywordsRemoved,
+            keywordListAlwaysShow: true,
             keywordListAutoHide: false,
             keywordListOpacity: 90
           };
