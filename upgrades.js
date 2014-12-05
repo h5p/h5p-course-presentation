@@ -9,7 +9,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
           parameters.override = {
             overrideButtons: true,
             overrideShowSolutionButton: parameters.showSolutions,
-            overrideRetry: false
+            overrideRetry: true
             };
           delete parameters.showSolutions;
           finished(null, parameters);
