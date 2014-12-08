@@ -1,51 +1,71 @@
 {
   "semantics": [
     {
-      "field": {
-        "fields": [
-          {
-            "field": {
-              "fields": [
-                {},
-                {},
-                {},
-                {},
-                {},
-                {
-                  "label": "Kommentarer",
-                  "description": "Kommentarene vises når brukeren ser på fasit."
-                },
-                {
-                  "label": "Alltid vis kommentarer"
-                },
-                {
-                  "label": "Opasitet for bakgrunn"
-                },
-                {
-                  "label": "Vis som knapp"
-                },
-                {
-                  "label": "Gå til lysbilde"
-                },
-                {
-                  "label": "Metadata",
-                  "fields": [
-                    {
-                      "label": "Tittel"
-                    },
-                    {
-                      "label": "Forfatter"
-                    },
-                    {
-                      "label": "Lisens"
-                    }
-                  ]
-                }
-              ]
+      "fields": [
+        {
+          "fields": [
+            {
+              "field": {
+                "fields": [
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Kommentarer",
+                    "description": "Kommentarene vises når brukeren ser på fasit."
+                  },
+                  {
+                    "label": "Alltid vis kommentarer"
+                  },
+                  {
+                    "label": "Opasitet for bakgrunn"
+                  },
+                  {
+                    "label": "Vis som knapp"
+                  },
+                  {
+                    "label": "Gå til lysbilde"
+                  },
+                  {
+                    "label": "Metadata",
+                    "fields": [
+                      {
+                        "label": "Tittel"
+                      },
+                      {
+                        "label": "Forfatter"
+                      },
+                      {
+                        "label": "Lisens"
+                      }
+                    ]
+                  },
+                  {},
+                  {}
+                ]
+              }
+            },
+            {
+              "label": "Nøkkelordliste"
             }
-          }
-        ]
-      }
+          ]
+        },
+        {},
+        {
+          "label": "Nøkkelordsliste"  
+        },
+        {
+          "label": "Vis alltid"
+        },
+        {
+          "label": "Auto skjul"
+        },
+        {
+          "label": "Opasitet"
+        }
+      ]
     },
     {
       "label": "Slå på \"Vis svar\" knapp"
@@ -127,6 +147,14 @@
         {
           "label": "Tekst for bruksrett-knappen",
           "default": "Bruksrett"
+        },
+        {
+          "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
+          "default": "Skjul nøkkelordliste"
+        },
+        {
+          "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
+          "default": "Vis nøkkelordliste"
         },
         {
           "label": "Tittel for elementer som lenker til andre lysbilder",
