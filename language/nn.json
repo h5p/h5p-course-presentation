@@ -3,16 +3,31 @@
     {
       "fields": [
         {
-          "field": {
-            "fields": [
-              {
-                "field": {
-                  "fields": [
+          "fields": [
+            {
+              "field": {
+                "fields": [
                     {},
                     {},
                     {},
                     {},
                     {},
+                    {
+                      "label": "Kommentarar",
+                      "description": "Kommentarane visast når brukaren ser på fasit."
+                    },
+                    {
+                      "label": "Alltid vis kommentarer"
+                    },
+                    {
+                      "label": "Opasitet for bakgrunn"
+                    },
+                    {
+                      "label": "Vis som knapp"
+                    },
+                    {
+                      "label": "Gå til lysbilete"
+                    },
                     {
                       "label": "Metadata",
                       "fields": [
@@ -26,29 +41,21 @@
                           "label": "Lisens"
                         }
                       ]
-                    },
-                    {
-                      "label": "Kommentarar",
-                      "description": "Kommentarane visast når brukaren ser på fasit."
-                    },
-                    {},
-                    {
-                      "label": "Alltid vis kommentarer"
-                    },
-                    {
-                      "label": "Opasitet for bakgrunn"
-                    },
-                    {
-                      "label": "Vis som knapp"
                     }
-                  ]
-                }
+                ]
               }
-            ]
-          }
+            },
+            {
+              "label": "Nøkkelordliste"
+            }
+          ]
+        },
+        {},
+        {
+          "label": "Nøkkelordsliste"
         },
         {
-          "label": "Nøkkelordliste"
+          "label": "Vis alltid"
         },
         {
           "label": "Auto skjul"
@@ -146,6 +153,11 @@
         {
           "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
           "default": "Vis nøkkelordliste"
+        },
+        {
+          "label": "Tittel for element som lenkjar til andre lysbilete",
+          "default": "Gå til lysbilete :num",
+          "description": ":num erstattast med lysbiletenummeret."
         }
       ]
     }

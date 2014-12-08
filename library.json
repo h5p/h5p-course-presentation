@@ -3,7 +3,7 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 2,
-  "patchVersion": 2,
+  "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -16,6 +16,9 @@
     "minorVersion": 2
   },
   "preloadedJs": [
+    {
+      "path": "scripts/go-to-slide.js"
+    },
     {
       "path": "scripts/cp.js"
     }

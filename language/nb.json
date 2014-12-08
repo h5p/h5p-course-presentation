@@ -3,52 +3,61 @@
     {
       "fields": [
         {
-          "field": {
-            "fields": [
-              {
-                "field": {
-                  "fields": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Tittel"
-                        },
-                        {
-                          "label": "Forfatter"
-                        },
-                        {
-                          "label": "Lisens"
-                        }
-                      ]
-                    },
-                    {
-                      "label": "Kommentarer",
-                      "description": "Kommentarene vises når brukeren ser på fasit."
-                    },
-                    {},
-                    {
-                      "label": "Alltid vis kommentarer"
-                    },
-                    {
-                      "label": "Opasitet for bakgrunn"
-                    },
-                    {
-                      "label": "Vis som knapp"
-                    }
-                  ]
-                }
+          "fields": [
+            {
+              "field": {
+                "fields": [
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Kommentarer",
+                    "description": "Kommentarene vises når brukeren ser på fasit."
+                  },
+                  {
+                    "label": "Alltid vis kommentarer"
+                  },
+                  {
+                    "label": "Opasitet for bakgrunn"
+                  },
+                  {
+                    "label": "Vis som knapp"
+                  },
+                  {
+                    "label": "Gå til lysbilde"
+                  },
+                  {
+                    "label": "Metadata",
+                    "fields": [
+                      {
+                        "label": "Tittel"
+                      },
+                      {
+                        "label": "Forfatter"
+                      },
+                      {
+                        "label": "Lisens"
+                      }
+                    ]
+                  },
+                  {},
+                  {}
+                ]
               }
-            ]
-          }
+            },
+            {
+              "label": "Nøkkelordliste"
+            }
+          ]
+        },
+        {},
+        {
+          "label": "Nøkkelordsliste"  
         },
         {
-          "label": "Nøkkelordliste"
+          "label": "Vis alltid"
         },
         {
           "label": "Auto skjul"
@@ -146,6 +155,11 @@
         {
           "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
           "default": "Vis nøkkelordliste"
+        },
+        {
+          "label": "Tittel for elementer som lenker til andre lysbilder",
+          "default": "Gå til lysbilde :num",
+          "description": ":num erstattes med lysbildenummeret."
         }
       ]
     }

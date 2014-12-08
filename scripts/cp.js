@@ -40,7 +40,8 @@ H5P.CoursePresentation = function (params, id, editor) {
     close: 'Close',
     solutionsButtonTitle: 'View solution',
     hideKeywords: 'Hide keywords list',
-    showKeywords: 'Show keywords list'
+    showKeywords: 'Show keywords list',
+    goToSlide: 'Go to slide :num'
   }, params.l10n !== undefined ? params.l10n : {});
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
@@ -130,6 +131,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var keywords = '';
   var foundKeywords = false;
   var slideinationSlides = '';
+  console.log(this.slides);
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
     var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
@@ -398,45 +400,55 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  * @returns {unresolved}
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
-  var defaults = {
-    params: {
-      displaySolutionsButton: this.showSolutionButtons,
-      postUserStatistics: false
-    }
-  };
+  var instance;
 
-  var library;
-  if (this.editor !== undefined) {
-    // Clone the whole tree to avoid libraries accidentally changing params while running.
-    library = H5P.jQuery.extend(true, {}, element.action, defaults);
+  if (element.action === undefined) {
+    // goToSlide, internal element
+    instance = new H5P.CoursePresentationGoToSlide(element.goToSlide, this);
   }
   else {
-    // Add defaults
-    library = H5P.jQuery.extend(true, element.action, defaults);
-  }
+    // H5P library
+    var defaults = {
+      params: {
+        displaySolutionsButton: this.showSolutionButtons,
+        postUserStatistics: false
+      }
+    };
 
-  /* If library allows autoplay, control this from CP */
-  if (library.params.autoplay) {
-    library.params.autoplay = false;
-    library.params.cpAutoplay = true;
-  }
+    var library;
+    if (this.editor !== undefined) {
+      // Clone the whole tree to avoid libraries accidentally changing params while running.
+      library = H5P.jQuery.extend(true, {}, element.action, defaults);
+    }
+    else {
+      // Add defaults
+      library = H5P.jQuery.extend(true, element.action, defaults);
+    }
 
-  var instance = H5P.newRunnable(library, this.contentId);
-  if (instance.preventResize !== undefined) {
-    instance.preventResize = true;
+    /* If library allows autoplay, control this from CP */
+    if (library.params.autoplay) {
+      library.params.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
+
+    instance = H5P.newRunnable(library, this.contentId);
+    if (instance.preventResize !== undefined) {
+      instance.preventResize = true;
+    }
+
+    if (this.checkForSolutions(instance)) {
+      if (this.slidesWithSolutions[index] === undefined) {
+        this.slidesWithSolutions[index] = [];
+      }
+      this.slidesWithSolutions[index].push(instance);
+    }
   }
 
   if (this.elementInstances[index] === undefined) {
-    this.elementInstances[index] = [];
+    this.elementInstances[index] = [instance];
   }
-  this.elementInstances[index].push(instance);
-
-
-  if (this.checkForSolutions(instance)) {
-    if (this.slidesWithSolutions[index] === undefined) {
-      this.slidesWithSolutions[index] = [];
-    }
-    this.slidesWithSolutions[index].push(instance);
+  else {
+    this.elementInstances[index].push(instance);
   }
 
   return instance;
@@ -482,16 +494,29 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   if (displayAsButton) {
     var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
     instance.attach($buttonElement);
-    H5P.jQuery('<a href="#" class="h5p-element-button"></a>').appendTo($elementContainer).click(function () {
+
+    // Parameterize library name to use as html class.
+    var libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
+    H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
-        $buttonElement.appendTo(that.showPopup('').find('.h5p-popup-wrapper'));
+        $buttonElement.appendTo(that.showPopup('',function () {
+          if (instance.pause !== undefined) {
+            instance.pause();
+          }
+          else if (instance.stop !== undefined) {
+            instance.stop();
+          }
+          $buttonElement.detach();
+        }).find('.h5p-popup-wrapper'));
+        instance.$.trigger('resize'); // Drop on audio and video??
+        // Stop sound??
       }
       return false;
     });
   }
   else {
     instance.attach($elementContainer);
-    if (element.action.library === 'H5P.InteractiveVideo 1.2') {
+    if (element.action !== undefined && element.action.library === 'H5P.InteractiveVideo 1.2') {
       $elementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
     }
   }
@@ -542,18 +567,41 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  * Displays a popup.
  *
  * @param {String} popupContent
+ * @param {Function} [remove] Gets called before the popup is removed.
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.showPopup = function (popupContent) {
+H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove) {
+  var doNotClose;
+
+  /** @private */
+  var close = function(event) {
+    if (doNotClose) {
+      // Prevent closing the popup
+      doNotClose = false;
+      return;
+    }
+
+    // Remove popup
+    if (remove !== undefined) {
+      remove();
+    }
+    event.preventDefault();
+    $popup.remove();
+  };
+
   var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
           '</div><div role="button" tabindex="1" class="h5p-button h5p-close-popup" title="' + this.l10n.close + '"></div></div></div>')
     .prependTo(this.$wrapper)
-    .find('.h5p-close-popup')
-      .click(function(event) {
-        event.preventDefault();
-        $popup.remove();
+    .click(close)
+    .find('.h5p-popup-container')
+      .click(function () {
+        doNotClose = true;
       })
+      .end()
+    .find('.h5p-close-popup')
+      .click(close)
       .end();
+
 
   return $popup;
 };
