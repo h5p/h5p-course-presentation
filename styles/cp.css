@@ -1,12 +1,12 @@
 /* DroidSans font by Steve Matteson licensed under Apache License, version 2.0 - See DroidSans/LICENSE.txt */
 @font-face {
   font-family: 'H5PDroidSans';
-  src: url('DroidSans/DroidSans.ttf') format('truetype');
+  src: url('../fonts/DroidSans.ttf') format('truetype');
   font-weight: normal;
 }
 @font-face {
   font-family: 'H5PDroidSans';
-  src: url('DroidSans/DroidSans-Bold.ttf') format('truetype');
+  src: url('../fonts/DroidSans-Bold.ttf') format('truetype');
   font-weight: bold;
 }
 
@@ -103,21 +103,67 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
 }
 
+.h5p-course-presentation .h5p-keywords-button {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  color: #eee;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.3);
+  line-height: 1em;
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+  outline: none;
+  padding: 0.125em 0.25em;
+  -webkit-transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
+  -moz-transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
+  transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
+}
+.h5p-course-presentation .h5p-keywords-button:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+.h5p-course-presentation .h5p-keywords-button:active {
+  color: pink;
+}
+.h5p-course-presentation .h5p-keywords-button.h5p-open {
+  left: 31.25%;
+}
+.h5p-course-presentation .h5p-keywords-button:before {
+  font-family: 'H5PCoursePresentation';
+  content: "\e605";
+}
+.h5p-course-presentation .h5p-keywords-button.h5p-open:before {
+  content: "\e604";
+}
+
 .h5p-course-presentation .h5p-keywords-wrapper {
   font-weight: bold;
   position: absolute;
   z-index: 3;
   top: 0;
-  left: 0;
+  right: 84.375%;
   width: 31.25%;
   height: 100%;
   background: #fbfbfb;
+  background: rgba(251,251,251,0.9);
   box-shadow: 0 0 0.15em 0 #d1d1d1;
   overflow: hidden;
-
-  /* Transparet background for IE8 */
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ccFFFFFF,endColorstr=#ccFFFFFF);
-  zoom: 1;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
+  -moz-transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
+  transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
+}
+.h5p-course-presentation .h5p-keywords-wrapper.h5p-open {
+  opacity: 1;
+  right: 68.75%;
+  visibility: visible;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  transition-delay: 0s;
 }
 .h5p-course-presentation .h5p-keywords-ol {
   margin: 0;
@@ -184,10 +230,6 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.h5p-course-presentation .h5p-keyword-slides .h5p-slide {
-  left: 31.25%;
-  width: 68.75%;
-}
 .h5p-course-presentation .h5p-slide.h5p-animate {
   display: block;
   -webkit-transition: -webkit-transform 0.25s ease-in-out;
@@ -229,6 +271,7 @@
 }
 
 .h5p-course-presentation .h5p-show-solutions,
+.h5p-course-presentation .h5p-cp-retry-button,
 .h5p-course-presentation .h5p-eta-export {
   float: right;
   display: none;
@@ -284,7 +327,21 @@
   margin-right: 0.5em;
 }
 
+.h5p-course-presentation .h5p-cp-retry-button:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f06e";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-cp-retry-button {
+  display: inline-block;
+  float: none;
+  top: 1em;
+  font-size: 0.9em;
+}
+
 .h5p-course-presentation .h5p-show-solutions:hover,
+.h5p-course-presentation .h5p-cp-retry-button:hover,
 .h5p-course-presentation .h5p-eta-export:hover {
   background: rgb(4,104,206); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
@@ -484,7 +541,8 @@
   position: absolute;
   top: 10%;
   width: 70%;
-  height: 70%;
+  padding-bottom: 3.5em;
+  height: 65%;
   font-size: 0.9em;
 }
 
@@ -494,6 +552,7 @@
   max-height: 100%;
   overflow: auto;
   text-align: left;
+  border-bottom: 0.1em solid #ddd;
 }
 
 .h5p-course-presentation .h5p-popup-container tfoot {
