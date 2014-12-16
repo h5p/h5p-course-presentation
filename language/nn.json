@@ -1,49 +1,69 @@
 {
   "semantics": [
     {
-      "field": {
-        "fields": [
-          {
-            "field": {
-              "fields": [
-                {},
-                {},
-                {},
-                {},
-                {},
-                {
-                  "label": "Metadata",
-                  "fields": [
+      "fields": [
+        {
+          "fields": [
+            {
+              "field": {
+                "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
                     {
-                      "label": "Tittel"
+                      "label": "Kommentarar",
+                      "description": "Kommentarane visast når brukaren ser på fasit."
                     },
                     {
-                      "label": "Forfattar"
+                      "label": "Alltid vis kommentarer"
                     },
                     {
-                      "label": "Lisens"
+                      "label": "Opasitet for bakgrunn"
+                    },
+                    {
+                      "label": "Vis som knapp"
+                    },
+                    {
+                      "label": "Gå til lysbilete"
+                    },
+                    {
+                      "label": "Metadata",
+                      "fields": [
+                        {
+                          "label": "Tittel"
+                        },
+                        {
+                          "label": "Forfattar"
+                        },
+                        {
+                          "label": "Lisens"
+                        }
+                      ]
                     }
-                  ]
-                },
-                {
-                  "label": "Kommentarar",
-                  "description": "Kommentarane visast når brukaren ser på fasit."
-                },
-                {},
-                {
-                  "label": "Alltid vis kommentarer"
-                },
-                {
-                  "label": "Opasitet for bakgrunn"
-                },
-                {
-                  "label": "Vis som knapp"
-                }
-              ]
+                ]
+              }
+            },
+            {
+              "label": "Nøkkelordliste"
             }
-          }
-        ]
-      }
+          ]
+        },
+        {},
+        {
+          "label": "Nøkkelordsliste"
+        },
+        {
+          "label": "Vis alltid"
+        },
+        {
+          "label": "Auto skjul"
+        },
+        {
+          "label": "Opasitet"
+        }
+      ]
     },
     {
       "label": "Slå på \"Vis svar\" knapp"
@@ -125,6 +145,19 @@
         {
           "label": "Tekst for bruksrett-knappen",
           "default": "Bruksrett"
+        },
+        {
+          "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
+          "default": "Skjul nøkkelordliste"
+        },
+        {
+          "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
+          "default": "Vis nøkkelordliste"
+        },
+        {
+          "label": "Tittel for element som lenkjar til andre lysbilete",
+          "default": "Gå til lysbilete :num",
+          "description": ":num erstattast med lysbiletenummeret."
         }
       ]
     }
