@@ -21,7 +21,6 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.slidesWithSolutions = [];
   this.hasAnswerElements = false;
   this.editor = editor;
-  this.showSolutionButtons = (params.showSolutions === undefined ? true : params.showSolutions);
 
   this.l10n = H5P.jQuery.extend({
     goHome: 'Go to first slide',
@@ -43,6 +42,12 @@ H5P.CoursePresentation = function (params, id, editor) {
     showKeywords: 'Show keywords list',
     goToSlide: 'Go to slide :num'
   }, params.l10n !== undefined ? params.l10n : {});
+
+  if (params.override !== undefined) {
+    this.overrideButtons = (params.override.overrideButtons === undefined ? false : params.override.overrideButtons);
+    this.overrideShowSolutionsButton = (params.override.overrideShowSolutionButton === undefined ? false : params.override.overrideShowSolutionButton);
+    this.overrideRetry = (params.override.overrideRetry === undefined ? false : params.override.overrideRetry);
+  }
 
   this.postUserStatistics = (H5P.postUserStatistics === true);
 };
@@ -131,7 +136,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var keywords = '';
   var foundKeywords = false;
   var slideinationSlides = '';
-  console.log(this.slides);
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
     var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
@@ -401,19 +405,31 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  */
 H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
   var instance;
-
   if (element.action === undefined) {
     // goToSlide, internal element
     instance = new H5P.CoursePresentationGoToSlide(element.goToSlide, this);
   }
   else {
     // H5P library
-    var defaults = {
-      params: {
-        displaySolutionsButton: this.showSolutionButtons,
-        postUserStatistics: false
-      }
-    };
+    var defaults;
+    if (this.overrideButtons) {
+      defaults = {
+        params: {
+          behaviour: {
+            enableSolutionsButton: this.overrideShowSolutionsButton,
+            enableRetry: this.overrideRetry
+          },
+          postUserStatistics: false
+        }
+      };
+    }
+    else {
+      defaults = {
+        params: {
+          postUserStatistics: false
+        }
+      };
+    }
 
     var library;
     if (this.editor !== undefined) {
@@ -572,6 +588,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  */
 H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove) {
   var doNotClose;
+  var self = this;
 
   /** @private */
   var close = function(event) {
@@ -602,6 +619,15 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove) {
       .click(close)
       .end();
 
+  //Add a retry button.
+  var $retryButton = H5P.jQuery('<div/>', {
+    text: 'retry',
+    'class': 'h5p-cp-retry-button'
+  }).appendTo($popup.children())
+    .show()
+    .click(function () {
+      self.resetTask();
+    });
 
   return $popup;
 };
@@ -1089,6 +1115,25 @@ H5P.CoursePresentation.createSlideinationSlide = function (index, title, first) 
   }
 
   return html + '</a></li>';
+};
+
+/**
+ * Reset the content for all slides.
+ * @public
+ */
+H5P.CoursePresentation.prototype.resetTask = function () {
+  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
+    if (this.slidesWithSolutions[i] !== undefined) {
+      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
+        var elementInstance = this.slidesWithSolutions[i][j];
+        if (elementInstance.resetTask) {
+          elementInstance.resetTask();
+        }
+      }
+    }
+  }
+  this.jumpToSlide(0, false);
+  this.$container.find('.h5p-popup-overlay').remove();
 };
 
 /**

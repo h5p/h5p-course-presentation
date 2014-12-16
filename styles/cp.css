@@ -271,6 +271,7 @@
 }
 
 .h5p-course-presentation .h5p-show-solutions,
+.h5p-course-presentation .h5p-cp-retry-button,
 .h5p-course-presentation .h5p-eta-export {
   float: right;
   display: none;
@@ -326,7 +327,21 @@
   margin-right: 0.5em;
 }
 
+.h5p-course-presentation .h5p-cp-retry-button:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f06e";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-cp-retry-button {
+  display: inline-block;
+  float: none;
+  top: 1em;
+  font-size: 0.9em;
+}
+
 .h5p-course-presentation .h5p-show-solutions:hover,
+.h5p-course-presentation .h5p-cp-retry-button:hover,
 .h5p-course-presentation .h5p-eta-export:hover {
   background: rgb(4,104,206); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
@@ -526,7 +541,8 @@
   position: absolute;
   top: 10%;
   width: 70%;
-  height: 70%;
+  padding-bottom: 3.5em;
+  height: 65%;
   font-size: 0.9em;
 }
 
@@ -536,6 +552,7 @@
   max-height: 100%;
   overflow: auto;
   text-align: left;
+  border-bottom: 0.1em solid #ddd;
 }
 
 .h5p-course-presentation .h5p-popup-container tfoot {

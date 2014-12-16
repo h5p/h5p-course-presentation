@@ -5,6 +5,14 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
     1: {
       2: {
         contentUpgrade: function (parameters, finished) {
+          // Allows overriding of buttons for subcontent.
+          parameters.override = {
+            overrideButtons: true,
+            overrideShowSolutionButton: parameters.showSolutions,
+            overrideRetry: true
+            };
+          delete parameters.showSolutions;
+
           var i, j, slide;
 
           // Determine if keywords has been removed
@@ -40,7 +48,6 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
             keywordListOpacity: 90
           };
           delete parameters.slides;
-
           finished(null, parameters);
         }
       }
