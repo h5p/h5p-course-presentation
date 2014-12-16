@@ -136,7 +136,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var keywords = '';
   var foundKeywords = false;
   var slideinationSlides = '';
-  console.log(this.slides);
   for (var i = 0; i < this.slides.length; i++) {
     var slide = this.slides[i];
     var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
