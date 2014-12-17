@@ -68,9 +68,6 @@
       ]
     },
     {
-      "label": "Slå på \"Vis svar\" knapp"
-    },
-    {
       "label": "Ledetekster",
       "fields": [
         {
@@ -160,6 +157,24 @@
           "label": "Tittel for elementer som lenker til andre lysbilder",
           "default": "Gå til lysbilde :num",
           "description": ":num erstattes med lysbildenummeret."
+        }
+      ]
+    },
+    {
+      "label": "Innstillinger for \"Vis svar\" knapp og \"Prøv igjen\".",
+      "description": "Disse instillingene lar deg overstyre når \"Vis svar\" knapp og \"Prøv igjen\" er slått på i integrert h5p innhold.",
+      "fields": [
+        {
+          "label": "Slå på overstyring for \"Vis svar\" og \"Prøv igjen\".",
+          "description": "Aktivering vil overstyre de følgende innstillingene for integrert innhold."
+        },
+        {
+          "label": "Slå på \"Vis svar\" knapp.",
+          "description": "Aktivering vil slå på \"Vis svar\" knappen."
+        },
+        {
+          "label": "Slå på \"Prøv igjen\".",
+          "description": "Aktivering vil slå på \"Prøv igjen\" ."
         }
       ]
     }
