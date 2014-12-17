@@ -503,7 +503,6 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
  */
 H5P.CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
   var that = this;
-
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
@@ -653,7 +652,9 @@ H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) 
  */
 H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
   var html = '';
-
+  if (keywords === undefined) {
+    keywords = [];
+  }
   for (var i = 0; i < keywords.length; i++) {
     var keyword = keywords[i];
 
