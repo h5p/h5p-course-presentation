@@ -8,7 +8,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
           // Allows overriding of buttons for subcontent.
           parameters.override = {
             overrideButtons: true,
-            overrideShowSolutionButton: parameters.showSolutions,
+            overrideShowSolutionButton: parameters.showSolutions === undefined ? true : parameters.showSolutions,
             overrideRetry: true
             };
           delete parameters.showSolutions;
