@@ -365,6 +365,13 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
     return;
   }
 
+  if (this.presentation.keywordListEnabled &&
+      !this.presentation.keywordListAlwaysShow &&
+      this.presentation.keywordListAutoHide) {
+    // Auto-hide keywords list
+    this.hideKeywords();
+  }
+
   this.jumpToSlide($keyword.index());
 };
 
