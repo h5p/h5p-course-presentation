@@ -8,23 +8,43 @@ H5P.CoursePresentationGoToSlide = (function ($) {
    * @param {Number} slideNum
    * @param {CoursePresentation} cp
    */
-  function GoToSlide(slideNum, cp) {
+  function GoToSlide(title, slideNum, invisible, cp) {
     var self = this;
     self.$ = $(self);
 
+    var classes = 'h5p-press-to-go';
+    var tabindex = 1;
+    if (invisible) {
+      title = undefined;
+      tabindex = -1;
+    }
+    else {
+      title = title ? title : cp.l10n.goToSlide.replace(':num', slideNum);
+      classes += ' h5p-visible';
+    }
+
+    slideNum--;
+
+    /**
+     * @private
+     */
+    var go = function () {
+      if (cp.editor === undefined && cp.slides[slideNum] !== undefined) {
+        cp.jumpToSlide(slideNum);
+      }
+    };
+
     // Create button that leads to another slide
     var $button = $('<div/>', {
-      'class': 'h5p-press-to-go',
+      'class': classes,
       role: 'button',
-      tabindex: 1,
-      title: cp.l10n.goToSlide.replace(':num', slideNum),
+      tabindex: tabindex,
+      title: title,
       on: {
-        click: function () {
-          if (cp.editor === undefined) {
-            var goTo = slideNum - 1;
-            if (cp.slides[goTo] !== undefined) {
-              cp.jumpToSlide(goTo);
-            }
+        click: go,
+        keypress: function (event) {
+          if (event.which === 13) {
+            go();
           }
         }
       }
