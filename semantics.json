@@ -106,11 +106,24 @@
                     "optional": true
                   },
                   {
+                    "name": "title",
+                    "type": "text",
+                    "optional": true,
+                    "label": "Title"
+                  },
+                  {
                     "name": "goToSlide",
                     "type": "number",
                     "label": "Go To Slide",
                     "min": 1,
                     "optional": true
+                  },
+                  {
+                    "name": "invisible",
+                    "type": "boolean",
+                    "label": "Invisible",
+                    "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
+                    "default": false
                   },
                   {
                     "name": "metadata",

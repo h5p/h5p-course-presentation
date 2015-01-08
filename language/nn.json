@@ -7,41 +7,48 @@
             {
               "field": {
                 "fields": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {
-                      "label": "Kommentarar",
-                      "description": "Kommentarane visast når brukaren ser på fasit."
-                    },
-                    {
-                      "label": "Alltid vis kommentarer"
-                    },
-                    {
-                      "label": "Opasitet for bakgrunn"
-                    },
-                    {
-                      "label": "Vis som knapp"
-                    },
-                    {
-                      "label": "Gå til lysbilete"
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Tittel"
-                        },
-                        {
-                          "label": "Forfattar"
-                        },
-                        {
-                          "label": "Lisens"
-                        }
-                      ]
-                    }
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {
+                    "label": "Kommentarar",
+                    "description": "Kommentarane visast når brukaren ser på fasit."
+                  },
+                  {
+                    "label": "Alltid vis kommentarer"
+                  },
+                  {
+                    "label": "Opasitet for bakgrunn"
+                  },
+                  {
+                    "label": "Vis som knapp"
+                  },
+                  {
+                    "label": "Tittel"
+                  },
+                  {
+                    "label": "Gå til lysbilete"
+                  },
+                  {
+                    "label": "Usynlig",
+                    "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukarar med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                  },
+                  {
+                    "label": "Metadata",
+                    "fields": [
+                      {
+                        "label": "Tittel"
+                      },
+                      {
+                        "label": "Forfattar"
+                      },
+                      {
+                        "label": "Lisens"
+                      }
+                    ]
+                  }
                 ]
               }
             },

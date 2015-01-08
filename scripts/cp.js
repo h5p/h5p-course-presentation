@@ -65,7 +65,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
-          '      <div class="h5p-keywords-wrapper h5p-open"></div>' +
+          '      <div class="h5p-keywords-wrapper"></div>' +
           '      <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
           '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
@@ -166,10 +166,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Initialize keywords
   if (initKeywords) {
     this.$keywordsButton = H5P.jQuery('<div/>', {
-      'class': 'h5p-keywords-button h5p-open',
+      'class': 'h5p-keywords-button',
       role: 'button',
       tabindex: 1,
-      title: 'Hide keywords list',
+      title: this.l10n.showKeywords,
       on: {
         click: function () {
           if (that.$keywordsButton.hasClass('h5p-open')) {
@@ -365,6 +365,13 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
     return;
   }
 
+  if (this.presentation.keywordListEnabled &&
+      !this.presentation.keywordListAlwaysShow &&
+      this.presentation.keywordListAutoHide) {
+    // Auto-hide keywords list
+    this.hideKeywords();
+  }
+
   this.jumpToSlide($keyword.index());
 };
 
@@ -407,7 +414,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   var instance;
   if (element.action === undefined) {
     // goToSlide, internal element
-    instance = new H5P.CoursePresentationGoToSlide(element.goToSlide, this);
+    instance = new H5P.CoursePresentationGoToSlide(element.title, element.goToSlide, element.invisible, this);
   }
   else {
     // H5P library
