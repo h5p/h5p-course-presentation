@@ -510,15 +510,19 @@
   z-index: 2;
 }
 .h5p-course-presentation .h5p-press-to-go {
-  cursor: pointer;
+  cursor: default;
   width: 100%;
   height: 100%;
+  outline: none;
 }
-.h5p-course-presentation .h5p-press-to-go:hover {
+.h5p-course-presentation .h5p-press-to-go.h5p-visible {
+  cursor: pointer;
+}
+.h5p-course-presentation .h5p-press-to-go.h5p-visible:hover {
   background: #0580e2;
   opacity: 0.2;
 }
-.h5p-course-presentation .h5p-press-to-go:active {
+.h5p-course-presentation .h5p-press-to-go.h5p-visible:active {
   background: #0580e2;
   opacity: 0.4;
 }

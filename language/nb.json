@@ -26,7 +26,14 @@
                     "label": "Vis som knapp"
                   },
                   {
+                    "label": "Tittel"
+                  },
+                  {
                     "label": "Gå til lysbilde"
+                  },
+                  {
+                    "label": "Usynlig",
+                    "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
                   },
                   {
                     "label": "Metadata",
@@ -54,7 +61,7 @@
         },
         {},
         {
-          "label": "Nøkkelordsliste"  
+          "label": "Nøkkelordsliste"
         },
         {
           "label": "Vis alltid"
