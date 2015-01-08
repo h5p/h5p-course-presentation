@@ -771,28 +771,6 @@
   font-size: 1em;
 }
 
-.h5p-course-presentation h2 {
-  font-size: 1.667em;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0;
-  margin: 0 0 0.5em;
-}
-.h5p-course-presentation h3 {
-  font-size: 1.333em;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0;
-  margin: 0 0 0.5em;
-}
-.h5p-course-presentation p {
-  font-size: 1em;
-  font-weight: normal;
-  line-height: 1.25em;
-  padding: 0;
-  margin: 0 0 1em;
-}
-
 .h5p-course-presentation .h5p-table {
   border-collapse: collapse;
 }
