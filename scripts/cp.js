@@ -625,16 +625,6 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove) {
       .click(close)
       .end();
 
-  //Add a retry button.
-  var $retryButton = H5P.jQuery('<div/>', {
-    text: 'retry',
-    'class': 'h5p-cp-retry-button'
-  }).appendTo($popup.children())
-    .show()
-    .click(function () {
-      self.resetTask();
-    });
-
   return $popup;
 };
 
@@ -1238,8 +1228,20 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
           '    </tr>' +
           '  </tfoot>' +
           '</table>';
-  this.showPopup(html);
+
+  var $solutionPopUp = this.showPopup(html);
   var that = this;
+
+  //Add a retry button.
+  H5P.jQuery('<div/>', {
+    'text': 'Retry',
+    'class': 'h5p-cp-retry-button'
+  }).appendTo($solutionPopUp.children())
+    .show()
+    .click(function () {
+      that.resetTask();
+    });
+
   this.$container.find('.h5p-slide-link').click(function(event) {
     event.preventDefault();
     that.jumpToSlide(H5P.jQuery(this).data('slide') - 1);
