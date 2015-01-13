@@ -336,7 +336,8 @@
 .h5p-course-presentation .h5p-cp-retry-button {
   display: inline-block;
   float: none;
-  top: 1em;
+  position: static;
+  margin-bottom: 1em;
   font-size: 0.9em;
 }
 
