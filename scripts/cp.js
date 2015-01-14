@@ -529,7 +529,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
             instance.stop();
           }
           $buttonElement.detach();
-        }).find('.h5p-popup-wrapper'));
+        }, libTypePmz).find('.h5p-popup-wrapper'));
         instance.$.trigger('resize'); // Drop on audio and video??
         // Stop sound??
       }
@@ -592,7 +592,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  * @param {Function} [remove] Gets called before the popup is removed.
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove) {
+H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
   var doNotClose;
   var self = this;
 
@@ -611,8 +611,8 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove) {
     event.preventDefault();
     $popup.remove();
   };
-
-  var $popup = H5P.jQuery('<div class="h5p-popup-overlay"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
+  
+  var $popup = H5P.jQuery('<div class="h5p-popup-overlay ' + (classes || '') + '"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
           '</div><div role="button" tabindex="1" class="h5p-button h5p-close-popup" title="' + this.l10n.close + '"></div></div></div>')
     .prependTo(this.$wrapper)
     .click(close)
