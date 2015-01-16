@@ -528,17 +528,19 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
           else if (instance.stop !== undefined) {
             instance.stop();
           }
+          else if (instance.video) {
+            instance.video.pause();
+          }
           $buttonElement.detach();
         }).find('.h5p-popup-wrapper'));
         instance.$.trigger('resize'); // Drop on audio and video??
-        // Stop sound??
       }
       return false;
     });
   }
   else {
     instance.attach($elementContainer);
-    if (element.action !== undefined && element.action.library === 'H5P.InteractiveVideo 1.2') {
+    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
       $elementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
     }
   }
@@ -955,6 +957,9 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
       // TODO: Check instance type instead to avoid accidents?
       if (typeof instances[i].stop === 'function') {
         instances[i].stop();
+      }
+      if (instances[i].video) {
+        instances[i].video.pause();
       }
     }
   }
