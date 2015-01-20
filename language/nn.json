@@ -127,6 +127,10 @@
           "default": "Oppsummer"
         },
         {
+          "label": "Tekst til \"Prøv igjen\" knappen",
+          "default": "Prøv igjen"
+        },
+        {
           "label": "Oversetting for \"Tittel\"",
           "default": "Tittel"
         },

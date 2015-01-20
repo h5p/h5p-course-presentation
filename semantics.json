@@ -310,6 +310,13 @@
         "default": "Sum up"
       },
       {
+        "name": "retry",
+        "type": "text",
+        "label": "Text for the retry button",
+        "default": "Retry",
+        "optional": true
+      },
+      {
         "name": "title",
         "type": "text",
         "label": "Translation for \"Title\"",
