@@ -68,7 +68,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '      <div class="h5p-keywords-wrapper"></div>' +
           '      <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
-          '    <div class="h5p-progressbar"><div class="h5p-completed"></div></div>' +
+          '    <div class="h5p-progressbar"></div>' +
           '  </div>' +
           '  <div class="h5p-slideination">' +
           '    <a href="#" class="h5p-go-home" title="' + this.l10n.goHome + '"></a>' +
@@ -126,9 +126,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   var initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
 
+  var $summarySlide;
+
   // Create summary slide if not an editor
   if (this.editor === undefined) {
-    var $summarySlide;
     var summarySlideData = {
       elements: new Array(),
       keywords: new Array()
@@ -177,8 +178,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     initKeywords = false; // Do not show keywords pane if it's empty!
   }
 
-  this.$progressbar = this.$boxWrapper.children('.h5p-progressbar').children().css('width', ((1 / i) * 100) + '%');
-
   // Initialize keywords
   if (initKeywords) {
     this.$keywordsButton = H5P.jQuery('<div/>', {
@@ -226,6 +225,50 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.$keywordsWrapper.remove();
   }
 
+  // Initialize progress bar
+  var progressbarPercentage = (1/i)*100;
+  this.$progressbar = this.$progressbar = this.$boxWrapper.children('.h5p-progressbar');
+
+  that.progressbarParts = new Array();
+
+  for (var i = 0; i<this.slides.length; i++) {
+    var slide = this.slides[i];
+    var slideNumber = Number(i);
+
+    var $progressbarPart = H5P.jQuery('<div>', {
+      'width': progressbarPercentage+'%',
+      'class': 'h5p-progressbar-part'
+    }).data('slideNumber', i)
+      .click( function () {
+        that.jumpToSlide(H5P.jQuery(this).data('slideNumber'));
+      }).appendTo(that.$progressbar);
+
+    // Generate tooltip for progress bar slides
+    var progressbarPartTitle = 'Slide '+(i+1);
+    if(slide.keywords !== undefined && slide.keywords.length) {
+      progressbarPartTitle = slide.keywords[0].main;
+    }
+
+    $progressbarPart.attr('Title', progressbarPartTitle);
+
+    // Set tooltip for summary slide
+    if (that.editor === undefined && i>=this.slides.length-1) {
+      $progressbarPart.attr('Title', that.l10n.showSolutions);
+    }
+
+    if (i === 0) {
+      $progressbarPart.addClass('h5p-progressbar-part-show');
+    }
+
+    if (slide.elements !== undefined && slide.elements.length) {
+      H5P.jQuery('<span>', {
+        'class': 'h5p-progressbar-part-has-task'
+      }).appendTo($progressbarPart);
+    }
+
+    that.progressbarParts.push($progressbarPart);
+  }
+
   // Initialize touch events
   this.initTouchEvents();
 
@@ -237,9 +280,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Update summary slide whenever it is pressed.
   H5P.jQuery('.h5p-slideination-summary-button').click(function (event) {
     that.updateSummarySlide($summarySlide);
-
     event.preventDefault();
   });
+  this.$summarySlide = $summarySlide;
+
 };
 
 /**
@@ -1130,11 +1174,25 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   }
 
   // Update progress.
-  this.$progressbar.css('width', (((slideNumber + 1) / $slides.length) * 100) + '%');
+  for (var i = 0; i < that.progressbarParts.length; i++) {
+    if (slideNumber+1 > i) {
+      that.progressbarParts[i].addClass('h5p-progressbar-part-show');
+    }
+    else {
+      that.progressbarParts[i].removeClass('h5p-progressbar-part-show');
+    }
+  }
+
+  // Update summary slide if on last slide
+  if (this.editor === undefined && this.$summarySlide !== undefined && slideNumber >= this.slides.length-1) {
+    that.updateSummarySlide(this.$summarySlide);
+  }
+
+  //this.$progressbar.css('width', (((slideNumber + 1) / $slides.length) * 100) + '%');
 
   this.jumpSlideination(slideNumber, noScroll);
 
-  // Show show solutions button and export answers on last slide
+  // Export answers on last slide
   if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
     if (this.postUserStatistics === true) {
       H5P.setFinished(this.contentId, 0, 0);
