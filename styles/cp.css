@@ -101,42 +101,6 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
 }
 
-.h5p-course-presentation .h5p-keywords-button {
-  position: absolute;
-  z-index: 4;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  color: #eee;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.3);
-  line-height: 1em;
-  font-size: 1em;
-  width: 1em;
-  height: 1em;
-  outline: none;
-  padding: 0.125em 0.25em;
-  -webkit-transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
-  -moz-transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
-  transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
-}
-.h5p-course-presentation .h5p-keywords-button:hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-.h5p-course-presentation .h5p-keywords-button:active {
-  color: pink;
-}
-.h5p-course-presentation .h5p-keywords-button.h5p-open {
-  left: 31.25%;
-}
-.h5p-course-presentation .h5p-keywords-button:before {
-  font-family: 'H5PCoursePresentation';
-  content: "\e605";
-}
-.h5p-course-presentation .h5p-keywords-button.h5p-open:before {
-  content: "\e604";
-}
-
 .h5p-course-presentation .h5p-keywords-wrapper {
   font-weight: bold;
   position: absolute;
@@ -896,17 +860,42 @@ border-collapse: collapse;
 
 /* Footer */
 .h5p-course-presentation .h5p-footer {
-  display: inline-block;
-  font-size: 0.8em;
+  display: block;
+  font-size: 0.65em;
   -webkit-user-select: none;
+  width: 100%;
 }
 
+/* Footer in solution mode */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
+  background-color: #111111;
+  color: #aeaeae;
+}
+
+/* Footer elements */
+
+/* Footer keyword button */
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
   display: inline-block;
   position: absolute;
+  width: 40%;
   left: 0em;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+
+  cursor: pointer;
 }
 
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0c9";
+  padding: 0em 1em;
+}
+
+/* Footer slide information buttons */
 .h5p-course-presentation .h5p-footer .h5p-footer-previous-slide {
   display: inline-block;
   cursor: pointer;
@@ -929,12 +918,50 @@ border-collapse: collapse;
   content: "\f0da";
 }
 
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count {
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current {
+   display: inline-block;
+ }
+
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter {
+  display: inline-block;
+  padding: 0em 0.5em;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
   display: inline-block;
 }
 
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
+  display: inline-block;
+  position: absolute;
+  right: 0em;
+  margin-right: 3em;
+  cursor: pointer;
+}
+
+/* Footer solution mode button */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-exit-text {
+  display: inline-block;
+ text-decoration: underline;
+}
+
+/* Footer full screen button */
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen {
   display: inline-block;
   position: absolute;
   right: 0em;
+  cursor: pointer;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
+  font-family: 'H5P';
+  content: "\e88c";
+  font-size: 2em;
+}
+
+/* Hides full screen button like in IV, uses own full screen button */
+.h5p-course-presentation .h5p-content-controls {
+  visibility:hidden;
+  position: absolute;
+  top:0;
 }

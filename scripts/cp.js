@@ -40,7 +40,9 @@ H5P.CoursePresentation = function (params, id, editor) {
     close: 'Close',
     hideKeywords: 'Hide keywords list',
     showKeywords: 'Show keywords list',
-    goToSlide: 'Go to slide :num'
+    goToSlide: 'Go to slide :num',
+    fullscreen: 'Fullscreen',
+    exitFullscreen: 'Exit fullscreen'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (params.override !== undefined) {
@@ -119,7 +121,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$progressbar = this.$wrapper.children('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
-  console.log(this.$footer);
+
+  // Initialize solution mode as off.
+  this.solutionMode = false;
 
   var initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
 
@@ -249,6 +253,9 @@ H5P.CoursePresentation.prototype.updateSummarySlide = function ($summarySlide) {
   // Remove old content
   $summarySlide.children().remove();
 
+  // Enable solution mode
+  that.toggleSolutionMode(true);
+
   // Get scores and updated html for summary slide
   var slideScores = that.showSolutions();
   var htmlText = that.outputScoreStats(slideScores);
@@ -299,6 +306,45 @@ H5P.CoursePresentation.prototype.updateSummarySlide = function ($summarySlide) {
 };
 
 /**
+ * Sets the solution mode button text in footer.
+ *
+ * @param solutionModeText
+ * @param underlinedText
+ */
+H5P.CoursePresentation.prototype.setFooterSolutionModeText = function (solutionModeText, underlinedText) {
+  console.log(solutionModeText);
+  console.log(underlinedText);
+  if (solutionModeText !== undefined && solutionModeText) {
+    this.$exitSolutionModeText.html(solutionModeText);
+  }
+  else {
+    this.$exitSolutionModeButton.html('');
+  }
+  if (underlinedText !== undefined && underlinedText) {
+    this.$exitSolutionModeUnderlined.html(underlinedText);
+  }
+  else {
+    this.$exitSolutionModeUnderlined.html('');
+  }
+};
+
+/**
+ * Toggles solution mode on/off.
+ *
+ * @params {Boolean} enableSolutionMode Enable/disable solution mode
+ */
+H5P.CoursePresentation.prototype.toggleSolutionMode = function (enableSolutionMode) {
+  if (enableSolutionMode) {
+    this.$footer.addClass('h5p-footer-solution-mode');
+    this.setFooterSolutionModeText('Solution Mode:','Close')
+  }
+  else {
+    this.$footer.removeClass('h5p-footer-solution-mode');
+    this.setFooterSolutionModeText();
+  }
+};
+
+/**
  * Create html for a summary slideination slide.
  *
  */
@@ -309,27 +355,20 @@ H5P.CoursePresentation.createSummarySlideinationSlide = function (title) {
 };
 
 /**
- * Show keywords list
+ * Toggle keywords list on/off depending on current state
  */
-H5P.CoursePresentation.prototype.showKeywords = function () {
+H5P.CoursePresentation.prototype.toggleKeywords = function () {
+  // Check state of keywords
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
-    return; // Already open
+    // Already open, remove keywords
+    this.$keywordsButton.attr('title', this.l10n.showKeywords);
+    this.$keywordsWrapper.add(this.$keywordsButton).removeClass('h5p-open');
   }
-
-  this.$keywordsButton.attr('title', this.l10n.hideKeywords);
-  this.$keywordsWrapper.add(this.$keywordsButton).addClass('h5p-open');
-};
-
-/**
- * Hide keywords list
- */
-H5P.CoursePresentation.prototype.hideKeywords = function () {
-  if (!this.$keywordsWrapper.hasClass('h5p-open')) {
-    return; // Already closed
+  else {
+    // Open keywords
+    this.$keywordsButton.attr('title', this.l10n.hideKeywords);
+    this.$keywordsWrapper.add(this.$keywordsButton).addClass('h5p-open');
   }
-
-  this.$keywordsButton.attr('title', this.l10n.showKeywords);
-  this.$keywordsWrapper.add(this.$keywordsButton).removeClass('h5p-open');
 };
 
 /**
@@ -420,6 +459,38 @@ H5P.CoursePresentation.prototype.resize = function () {
   }
 
   this.fitCT();
+};
+
+/**
+ * Enter/exit full screen mode.
+ */
+H5P.CoursePresentation.prototype.toggleFullScreen = function () {
+  if (this.$fullScreenButton.hasClass('h5p-exit')) {
+    this.$fullScreenButton.removeClass('h5p-exit').attr('title', this.l10n.fullscreen);
+    if (H5P.fullScreenBrowserPrefix === undefined) {
+      // Click button to disable fullscreen
+      $('.h5p-disable-fullscreen').click();
+    }
+    else {
+      if (H5P.fullScreenBrowserPrefix === '') {
+        window.top.document.exitFullScreen();
+      }
+      else if (H5P.fullScreenBrowserPrefix === 'ms') {
+        window.top.document.msExitFullscreen();
+      }
+      else {
+        window.top.document[H5P.fullScreenBrowserPrefix + 'CancelFullScreen']();
+      }
+    }
+  }
+  else {
+    this.$fullScreenButton.addClass('h5p-exit').attr('title', this.l10n.exitFullscreen);
+    H5P.fullScreen(this.$container, this);
+    if (H5P.fullScreenBrowserPrefix === undefined) {
+      // Hide disable full screen button. We have our own!
+      $('.h5p-disable-fullscreen').hide();
+    }
+  }
 };
 
 /**
@@ -754,28 +825,6 @@ H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
  */
 H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
   var that = this;
-  this.$keywordsButton = H5P.jQuery('<div/>', {
-    'class': 'h5p-keywords-button',
-    role: 'button',
-    tabindex: 1,
-    title: this.l10n.showKeywords,
-    on: {
-      click: function () {
-        if (that.$keywordsButton.hasClass('h5p-open')) {
-          that.hideKeywords();
-        }
-        else {
-          that.showKeywords();
-        }
-
-        // Log the click to make sure the keywords list isn't closed.
-        that.keywordsClicked = true;
-      }
-    }
-  }).insertBefore(this.$keywordsWrapper);
-  if (this.presentation.keywordListAlwaysShow) {
-    this.$keywordsButton.hide();
-  }
 
   this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
   this.$currentKeyword = this.$keywords.children('.h5p-current');
@@ -785,15 +834,7 @@ H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
   });
 
   this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
-  if (this.presentation.keywordListEnabled === false) {
-    // Hide in editor when disabled.
-    this.$keywordsWrapper.add(this.$keywordsButton).hide();
-  }
 
-  this.$keywordsWrapper.click(function () {
-    // Log the click to make sure the keywords list isn't closed.
-    that.keywordsClicked = true;
-  });
 };
 
 /**
@@ -973,54 +1014,86 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   var $footer = this.$footer;
 
   // Toggle keywords menu
-  H5P.jQuery('<div/>', {
-    'html': 'keywords',
-    'class': "h5p-footer-toggle-keywords"
+  this.$keywordsButton = H5P.jQuery('<div/>', {
+    'html': '',
+    'class': "h5p-footer-toggle-keywords",
+    role: 'button',
+    'title': this.l10n.showKeywords
+  }).click(function () {
+    that.toggleKeywords();
   }).appendTo($footer);
+
+  if (this.presentation.keywordListAlwaysShow) {
+    this.$keywordsButton.hide();
+  }
+
+  if (!this.presentation.keywordListEnabled) {
+    // Hide in editor when disabled.
+    this.$keywordsWrapper.add(this.$keywordsButton).hide();
+  }
+
+  // Update keyword for first slide.
+  this.updateFooterKeyword(0);
 
   // Previous slide
   H5P.jQuery('<div/>', {
-    'class': "h5p-footer-previous-slide"
-  }).click(function (event) {
+    'class': 'h5p-footer-previous-slide',
+    'role': 'button'
+  }).click(function () {
     that.previousSlide();
   })
     .appendTo($footer);
 
-  // Current slide
-  this.footSlideCounter = {
-    'currentSlide': 1,
-    'maxSlide': this.slides.length
-  };
+  // Current slide count
+  this.$footerCurrentSlide = H5P.jQuery('<div/>', {
+    'html': '1',
+    'class': 'h5p-footer-slide-count-current'
+  }).appendTo($footer);
 
+  // Count delimiter, content configurable in css
   H5P.jQuery('<div/>', {
-    'html': this.footSlideCounter.currentSlide + ' / ' + this.footSlideCounter.maxSlide,
-    'class': "h5p-footer-slide-count"
+    'html': '/',
+    'class': 'h5p-footer-slide-count-delimiter'
+  }).appendTo($footer);
+
+  // Max slide count
+  H5P.jQuery('<div/>', {
+    'html': this.slides.length,
+    'class': 'h5p-footer-slide-count-max'
   }).appendTo($footer);
 
   // Next slide
   H5P.jQuery('<div/>', {
-    'class': "h5p-footer-next-slide"
+    'class': 'h5p-footer-next-slide',
+    'role': 'button'
   }).click(function (event) {
     that.nextSlide();
   })
     .appendTo($footer);
 
+  this.$exitSolutionModeButton = H5P.jQuery('<div/>', {
+    'class': 'h5p-footer-exit-solution-mode'
+  }).click(function () {
+    that.jumpToSlide(that.slides.length-1);
+  });
+
+  this.$exitSolutionModeText = H5P.jQuery('<div/>', {
+    'html': '',
+    'class': 'h5p-footer-exit-solution-mode-text'
+  }).appendTo(this.$exitSolutionModeButton);
+
+  this.$exitSolutionModeUnderlined = H5P.jQuery('<span/>', {
+    'html': '',
+    'class': 'h5p-footer-exit-solution-mode-underlined'
+  }).appendTo(this.$exitSolutionModeButton);
+
   // Toggle full screen
-  H5P.jQuery('<div/>', {
-    'html': 'fullscreen',
-    'class': "h5p-footer-toggle-full-screen"
+  this.$fullScreenButton = H5P.jQuery('<div/>', {
+    'class': 'h5p-footer-toggle-full-screen',
+    'role': 'button'
+  }).click(function () {
+    that.toggleFullScreen();
   }).appendTo($footer);
-
-};
-
-/**
- * Set slide count on footer
- *
- * @param {Number} currentSlide Current slide of course presentation
- */
-H5P.CoursePresentation.prototype.setFooterSlide = function(currentSlide) {
-  var $currentSlide = H5P.jQuery('.h5p-slide-count', this.$footer);
-
 
 };
 
@@ -1141,7 +1214,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
-  // Update progress.
+  // Update progressbar
   for (var i = 0; i < that.progressbarParts.length; i++) {
     if (slideNumber+1 > i) {
       that.progressbarParts[i].addClass('h5p-progressbar-part-show');
@@ -1150,6 +1223,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
       that.progressbarParts[i].removeClass('h5p-progressbar-part-show');
     }
   }
+
+  // Update footer
+  this.updateFooter(slideNumber);
+
 
   // Update summary slide if on last slide
   if (this.editor === undefined && this.$summarySlide !== undefined && slideNumber >= this.slides.length-1) {
@@ -1163,6 +1240,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
+  // Editor specific settings
   if (this.editor !== undefined && this.editor.dnb !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
@@ -1172,6 +1250,43 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   this.$.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
+};
+
+/**
+ * Update footer with current slide data
+ *
+ * @param {Number} slideNumber Current slide number
+ */
+H5P.CoursePresentation.prototype.updateFooter = function (slideNumber) {
+
+  // Update current slide number in footer
+  this.$footerCurrentSlide.html(slideNumber+1);
+
+  // Update keyword in footer
+  this.updateFooterKeyword(slideNumber);
+};
+
+/**
+ * Update keyword in footer with current slide data
+ *
+ * @param {Number} slideNumber Current slide number
+ */
+H5P.CoursePresentation.prototype.updateFooterKeyword = function (slideNumber) {
+  // Get current keyword
+  var keywordString = this.$currentKeyword.find('span').html();
+
+  // Empty string if no keyword defined
+  if (keywordString === undefined) {
+    keywordString = '';
+  }
+
+  // Summary slide keyword
+  if (slideNumber >= this.slides.length-1) {
+    keywordString = this.l10n.showSolutions;
+  }
+
+  // Set footer keyword
+  this.$keywordsButton.html(keywordString);
 };
 
 /**
@@ -1213,6 +1328,7 @@ H5P.CoursePresentation.createSlide = function (slide) {
  * @public
  */
 H5P.CoursePresentation.prototype.resetTask = function () {
+  this.toggleSolutionMode(false);
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
     if (this.slidesWithSolutions[i] !== undefined) {
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
