@@ -321,7 +321,7 @@
 
 .h5p-course-presentation .h5p-progressbar {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   height: 0.5em;
   display: flex;
   background: #cecece;
@@ -354,7 +354,8 @@
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
-  box-shadow: 0 0 0.25em 0 #fff;
+  position: relative;
+
   background: #0097fd;
   background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
   background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
@@ -365,6 +366,26 @@
   -moz-transition: width 0.25s ease-in-out;
   -ms-transition: width 0.25s ease-in-out;
   transition: width 0.25s ease-in-out;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part:before {
+  position: absolute;
+  top: -1.2em;
+  z-index: 1;
+
+  font-family: 'H5PFontAwesome4';
+  cursor: auto;
+}
+
+/* Feedback figures for solution mode of progress bar */
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-is-correct:before {
+  content: "\f00c";
+  color: #6aa81b;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-is-wrong:before {
+  content: "\f00d";
+  color: #c33f62;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-has-task {
@@ -378,6 +399,23 @@
 
   background: #cecece;
 }
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
+  background: transparent;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-answered {
+  background: transparent;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task {
+  background: #096bcb;
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task {
+  background: #cecece;
+}
+
 
 .h5p-course-presentation .h5p-slide-button {
   display: inline-block;
@@ -872,13 +910,26 @@ border-collapse: collapse;
   color: #aeaeae;
 }
 
+/* Footer containers */
+.h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
+  float: left;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-right-adjusted {
+  float: right;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
+  text-align: center;
+}
+
 /* Footer elements */
 
 /* Footer keyword button */
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
   display: inline-block;
   position: absolute;
-  width: 40%;
+  max-width: 40%;
   left: 0em;
 
   overflow: hidden;
@@ -896,6 +947,8 @@ border-collapse: collapse;
 }
 
 /* Footer slide information buttons */
+
+/* Prev slide */
 .h5p-course-presentation .h5p-footer .h5p-footer-previous-slide {
   display: inline-block;
   cursor: pointer;
@@ -907,6 +960,7 @@ border-collapse: collapse;
   content: "\f0d9";
 }
 
+/* Next slide */
 .h5p-course-presentation .h5p-footer .h5p-footer-next-slide {
   display: inline-block;
   cursor: pointer;
@@ -918,19 +972,23 @@ border-collapse: collapse;
   content: "\f0da";
 }
 
+/* Current slide */
 .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current {
    display: inline-block;
  }
 
+/* Slide delimiter */
 .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter {
   display: inline-block;
   padding: 0em 0.5em;
 }
 
+/* Max slides */
 .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
   display: inline-block;
 }
 
+/* Solution mode container */
 .h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
   display: inline-block;
   position: absolute;
@@ -939,8 +997,13 @@ border-collapse: collapse;
   cursor: pointer;
 }
 
-/* Footer solution mode button */
-.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-exit-text {
+/* Footer solution mode text */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-text {
+  display: inline-block;
+}
+
+/* Footer solution mode underlined */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-underlined {
   display: inline-block;
  text-decoration: underline;
 }
@@ -954,9 +1017,14 @@ border-collapse: collapse;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
-  font-family: 'H5P';
-  content: "\e88c";
-  font-size: 2em;
+  font-family: 'H5PFontAwesome4';
+  content: "\f065";
+  font-size: 1.2em;
+  padding: 0em 0.25em;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen.h5p-exit:before {
+  content: "\f066";
 }
 
 /* Hides full screen button like in IV, uses own full screen button */

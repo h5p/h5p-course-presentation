@@ -243,6 +243,34 @@ H5P.CoursePresentation.prototype.addTwitterScoreLinkTo = function ($twitterConta
 };
 
 /**
+ * Updates the feedback icons for the progres bar.
+ *
+ * @param slideScores
+ */
+H5P.CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
+  var that = this;
+
+  if (slideScores !== undefined && slideScores) {
+    // Set feedback icons for progress bar.
+    slideScores.forEach(function (singleSlide) {
+      if (that.progressbarParts[singleSlide.slide-1].children('span').hasClass('h5p-answered')) {
+        if (singleSlide.score >= singleSlide.maxScore) {
+          that.progressbarParts[singleSlide.slide-1].addClass('h5p-is-correct');
+        } else {
+          that.progressbarParts[singleSlide.slide-1].addClass('h5p-is-wrong');
+        }
+      }
+    });
+  } else {
+    // Remove all feedback icons.
+    that.progressbarParts.forEach(function (pbPart) {
+      pbPart.removeClass('h5p-is-correct');
+      pbPart.removeClass('h5p-is-wrong');
+    });
+  }
+};
+
+/**
  * Updates the provided summary slide with current values.
  *
  * @param {jQuery} $summarySlide Summary slide that will be updated
@@ -260,6 +288,9 @@ H5P.CoursePresentation.prototype.updateSummarySlide = function ($summarySlide) {
   var slideScores = that.showSolutions();
   var htmlText = that.outputScoreStats(slideScores);
   H5P.jQuery(htmlText).appendTo($summarySlide);
+
+  // Update feedback icons in solution mode
+  that.setProgressBarFeedback(slideScores);
 
   // Get total scores and construct progress circle
   var totalScores = that.totalScores(slideScores);
@@ -312,13 +343,11 @@ H5P.CoursePresentation.prototype.updateSummarySlide = function ($summarySlide) {
  * @param underlinedText
  */
 H5P.CoursePresentation.prototype.setFooterSolutionModeText = function (solutionModeText, underlinedText) {
-  console.log(solutionModeText);
-  console.log(underlinedText);
   if (solutionModeText !== undefined && solutionModeText) {
     this.$exitSolutionModeText.html(solutionModeText);
   }
   else {
-    this.$exitSolutionModeButton.html('');
+    this.$exitSolutionModeText.html('');
   }
   if (underlinedText !== undefined && underlinedText) {
     this.$exitSolutionModeUnderlined.html(underlinedText);
@@ -341,6 +370,7 @@ H5P.CoursePresentation.prototype.toggleSolutionMode = function (enableSolutionMo
   else {
     this.$footer.removeClass('h5p-footer-solution-mode');
     this.setFooterSolutionModeText();
+    this.setProgressBarFeedback();
   }
 };
 
@@ -880,8 +910,16 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
  * Initialize progress bar
  */
 H5P.CoursePresentation.prototype.initProgressbar = function () {
+
   var that = this;
   var progressbarPercentage = (1/this.slides.length)*100;
+
+  // Remove existing progressbar
+  if (this.progressbarParts !== undefined && this.progressbarParts) {
+    this.progressbarParts.forEach(function (pbPart) {
+      pbPart.remove();
+    });
+  }
 
   that.progressbarParts = new Array();
 
@@ -915,13 +953,20 @@ H5P.CoursePresentation.prototype.initProgressbar = function () {
     }
 
     if (slide.elements !== undefined && slide.elements.length) {
-      H5P.jQuery('<span>', {
+      H5P.jQuery('<div>', {
         'class': 'h5p-progressbar-part-has-task'
       }).appendTo($progressbarPart);
     }
 
     that.progressbarParts.push($progressbarPart);
   }
+};
+
+H5P.CoursePresentation.prototype.updateProgressbarSlides = function () {
+  var that = this;
+  var progressbarPercentage = (1/this.slides.length)*100;
+
+
 };
 
 /**
@@ -1013,6 +1058,21 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   var that = this;
   var $footer = this.$footer;
 
+  // Inner footer adjustment containers
+  var $leftFooter = H5P.jQuery('<div/>', {
+    'class': 'h5p-footer-left-adjusted'
+  }).appendTo($footer);
+
+  var $rightFooter = H5P.jQuery('<div/>', {
+    'class': 'h5p-footer-right-adjusted'
+  }).appendTo($footer);
+
+  var $centerFooter = H5P.jQuery('<div/>', {
+    'class': 'h5p-footer-center-adjusted'
+  }).appendTo($footer);
+
+  // Left footer elements
+
   // Toggle keywords menu
   this.$keywordsButton = H5P.jQuery('<div/>', {
     'html': '',
@@ -1021,7 +1081,7 @@ H5P.CoursePresentation.prototype.initFooter = function () {
     'title': this.l10n.showKeywords
   }).click(function () {
     that.toggleKeywords();
-  }).appendTo($footer);
+  }).appendTo($leftFooter);
 
   if (this.presentation.keywordListAlwaysShow) {
     this.$keywordsButton.hide();
@@ -1035,6 +1095,8 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   // Update keyword for first slide.
   this.updateFooterKeyword(0);
 
+  // Center footer elements
+
   // Previous slide
   H5P.jQuery('<div/>', {
     'class': 'h5p-footer-previous-slide',
@@ -1042,25 +1104,25 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   }).click(function () {
     that.previousSlide();
   })
-    .appendTo($footer);
+    .appendTo($centerFooter);
 
   // Current slide count
   this.$footerCurrentSlide = H5P.jQuery('<div/>', {
     'html': '1',
     'class': 'h5p-footer-slide-count-current'
-  }).appendTo($footer);
+  }).appendTo($centerFooter);
 
   // Count delimiter, content configurable in css
   H5P.jQuery('<div/>', {
     'html': '/',
     'class': 'h5p-footer-slide-count-delimiter'
-  }).appendTo($footer);
+  }).appendTo($centerFooter);
 
   // Max slide count
-  H5P.jQuery('<div/>', {
+  this.$footerMaxSlide = H5P.jQuery('<div/>', {
     'html': this.slides.length,
     'class': 'h5p-footer-slide-count-max'
-  }).appendTo($footer);
+  }).appendTo($centerFooter);
 
   // Next slide
   H5P.jQuery('<div/>', {
@@ -1069,31 +1131,37 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   }).click(function (event) {
     that.nextSlide();
   })
-    .appendTo($footer);
+    .appendTo($centerFooter);
 
-  this.$exitSolutionModeButton = H5P.jQuery('<div/>', {
-    'class': 'h5p-footer-exit-solution-mode'
-  }).click(function () {
-    that.jumpToSlide(that.slides.length-1);
-  });
+  // Right footer elements
 
-  this.$exitSolutionModeText = H5P.jQuery('<div/>', {
-    'html': '',
-    'class': 'h5p-footer-exit-solution-mode-text'
-  }).appendTo(this.$exitSolutionModeButton);
-
-  this.$exitSolutionModeUnderlined = H5P.jQuery('<span/>', {
-    'html': '',
-    'class': 'h5p-footer-exit-solution-mode-underlined'
-  }).appendTo(this.$exitSolutionModeButton);
-
-  // Toggle full screen
+  // Toggle full screen button
   this.$fullScreenButton = H5P.jQuery('<div/>', {
     'class': 'h5p-footer-toggle-full-screen',
     'role': 'button'
   }).click(function () {
     that.toggleFullScreen();
-  }).appendTo($footer);
+  }).appendTo($rightFooter);
+
+  // Exit solution mode button
+  this.$exitSolutionModeButton = H5P.jQuery('<div/>', {
+    'class': 'h5p-footer-exit-solution-mode'
+  }).click(function () {
+    that.jumpToSlide(that.slides.length-1);
+  }).appendTo($rightFooter);
+
+  // Solution mode elements
+  this.$exitSolutionModeText = H5P.jQuery('<div/>', {
+    'html': '',
+    'class': 'h5p-footer-exit-solution-mode-text'
+  }).appendTo(this.$exitSolutionModeButton);
+
+  this.$exitSolutionModeUnderlined = H5P.jQuery('<div/>', {
+    'html': '',
+    'class': 'h5p-footer-exit-solution-mode-underlined'
+  }).appendTo(this.$exitSolutionModeButton);
+
+
 
 };
 
@@ -1214,19 +1282,11 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
-  // Update progressbar
-  for (var i = 0; i < that.progressbarParts.length; i++) {
-    if (slideNumber+1 > i) {
-      that.progressbarParts[i].addClass('h5p-progressbar-part-show');
-    }
-    else {
-      that.progressbarParts[i].removeClass('h5p-progressbar-part-show');
-    }
-  }
+  // Update progress bar
+  this.updateProgressBar(slideNumber, previousSlideIndex);
 
   // Update footer
   this.updateFooter(slideNumber);
-
 
   // Update summary slide if on last slide
   if (this.editor === undefined && this.$summarySlide !== undefined && slideNumber >= this.slides.length-1) {
@@ -1253,6 +1313,47 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 };
 
 /**
+ * Updates progress bar.
+ */
+H5P.CoursePresentation.prototype.updateProgressBar = function (slideNumber, prevSlideNumber) {
+  var that = this;
+
+  // Updates progress bar progress (blue line)
+  for (var i = 0; i < that.progressbarParts.length; i++) {
+    if (slideNumber+1 > i) {
+      that.progressbarParts[i].addClass('h5p-progressbar-part-show');
+    }
+    else {
+      that.progressbarParts[i].removeClass('h5p-progressbar-part-show');
+    }
+  }
+
+  if (prevSlideNumber === undefined) {
+    that.progressbarParts.forEach(function (pbPart) {
+      pbPart.children('span').removeClass('h5p-answered');
+    });
+    return;
+  }
+
+  // Updates previous slide answer.
+  var answered = true;
+  if (this.slidesWithSolutions[prevSlideNumber] !== undefined && this.slidesWithSolutions[prevSlideNumber]) {
+    this.slidesWithSolutions[prevSlideNumber].forEach(function (slideTask) {
+      if (slideTask.getAnswerGiven !== undefined) {
+        if (!slideTask.getAnswerGiven()) {
+          answered = false;
+        }
+      }
+    });
+  }
+
+  if (answered) {
+    that.progressbarParts[prevSlideNumber].children('span').addClass('h5p-answered');
+  }
+
+};
+
+/**
  * Update footer with current slide data
  *
  * @param {Number} slideNumber Current slide number
@@ -1261,6 +1362,7 @@ H5P.CoursePresentation.prototype.updateFooter = function (slideNumber) {
 
   // Update current slide number in footer
   this.$footerCurrentSlide.html(slideNumber+1);
+  this.$footerMaxSlide.html(this.slides.length);
 
   // Update keyword in footer
   this.updateFooterKeyword(slideNumber);
@@ -1272,8 +1374,11 @@ H5P.CoursePresentation.prototype.updateFooter = function (slideNumber) {
  * @param {Number} slideNumber Current slide number
  */
 H5P.CoursePresentation.prototype.updateFooterKeyword = function (slideNumber) {
+  var keywordString = '';
   // Get current keyword
-  var keywordString = this.$currentKeyword.find('span').html();
+  if (this.$currentKeyword !== undefined && this.$currentKeyword) {
+    keywordString = this.$currentKeyword.find('span').html();
+  }
 
   // Empty string if no keyword defined
   if (keywordString === undefined) {
