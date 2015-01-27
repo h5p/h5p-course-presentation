@@ -561,7 +561,7 @@
   text-align: left;
 }
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
-  overflow: hidden;  
+  overflow: hidden;
 }
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
   right: 1.2em;
@@ -768,6 +768,9 @@
 }
 .h5p-course-presentation .h5p-button-element.h5p-audio-wrapper .h5p-audio {
   min-height: 30px;
+}
+.h5p-course-presentation .h5p-button-element {
+  margin: 0 auto;
 }
 
 .h5p-course-presentation .h5p-popup-container dl {

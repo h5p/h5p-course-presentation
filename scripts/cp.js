@@ -532,6 +532,11 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
         }, libTypePmz).find('.h5p-popup-wrapper'));
         instance.$.trigger('resize'); // Drop on audio and video??
         // Stop sound??
+
+        // Resize images to fit popup dialog
+        if (instance instanceof H5P.Image) {
+          that.resizePopupImage($buttonElement);
+        }
       }
       return false;
     });
@@ -558,6 +563,49 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   }
 
   return $elementContainer;
+};
+
+/**
+ * Resize image inside popup dialog.
+ *
+ * @public
+ * @param {H5P.jQuery} $wrapper
+ */
+H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
+  // Get fontsize, needed for scale
+  var fontSize = Number($wrapper.css('fontSize').replace('px', ''));
+  var $img = $wrapper.find('img');
+
+  /**
+   * Resize image to fit inside popup.
+   *
+   * @private
+   * @param {Number} width
+   * @param {Number} height
+   */
+  var resize = function (width, height) {
+    if ((height / fontSize) < 18.5) {
+      return;
+    }
+
+    var ratio = (width / height);
+    height = 18.5 * fontSize;
+    $wrapper.css({
+      width: height * ratio,
+      height: height
+    });
+  };
+
+  if (!$img.height()) {
+    // Wait for image to load
+    $img.one('load', function () {
+      resize(this.width, this.height);
+    });
+  }
+  else {
+    // Image already loaded, resize!
+    resize($img.width(), $img.height());
+  }
 };
 
 /**
