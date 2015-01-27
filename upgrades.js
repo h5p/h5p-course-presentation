@@ -23,6 +23,8 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
           parameters.l10n.scoreMessage = 'You achieved:';
           parameters.l10n.shareFacebook = 'Share on Facebook';
           parameters.l10n.shareTwitter = 'Share on Twitter';
+
+          finished(null, parameters);
         }
       }
     }
