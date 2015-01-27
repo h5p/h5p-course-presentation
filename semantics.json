@@ -235,30 +235,6 @@
     "common": true,
     "fields": [
       {
-        "name": "goHome",
-        "type": "text",
-        "label": "Go home button title",
-        "default": "Go to first slide"
-      },
-      {
-        "name": "scrollLeft",
-        "type": "text",
-        "label": "Scroll left button title",
-        "default": "Hold to scroll left"
-      },
-      {
-        "name": "jumpToSlide",
-        "type": "text",
-        "label": "Slide button title",
-        "default": "Jump to slide"
-      },
-      {
-        "name": "scrollRight",
-        "type": "text",
-        "label": "Scroll right button title",
-        "default": "Hold to scroll right"
-      },
-      {
         "name": "slide",
         "type": "text",
         "label": "Translation for \"Slide\"",
@@ -367,11 +343,76 @@
         "default": "Show keywords list"
       },
       {
-        "name": "goToSlide",
+        "name": "fullscreen",
         "type": "text",
-        "label": "Title for elements linking to slides",
-        "default": "Go to slide :num",
-        "description": ":num is replaced by the slide number."
+        "label": "Fullscreen label",
+        "default": "Fullscreen"
+      },
+      {
+        "name": "exitFullscreen",
+        "type": "text",
+        "label": "Exit fullscreen label",
+        "default": "Exit fullscreen"
+      },
+      {
+        "name": "prevSlide",
+        "type": "text",
+        "label": "Previous slide label",
+        "default": "Previous slide"
+      },
+      {
+        "name": "nextSlide",
+        "type": "text",
+        "label": "Next slide label",
+        "default": "Next slide"
+      },
+      {
+        "name": "currentSlide",
+        "type": "text",
+        "label": "Current slide label",
+        "default": "Current slide"
+      },
+      {
+        "name": "lastSlide",
+        "type": "text",
+        "label": "Last slide label",
+        "default": "Last slide"
+      },
+      {
+        "name": "solutionModeTitle",
+        "type": "text",
+        "label": "Exit solution mode text",
+        "default": "Exit solution mode"
+      },
+      {
+        "name": "solutionModeText",
+        "type": "text",
+        "label": "Solution mode text",
+        "default": "Solution Mode:"
+      },
+      {
+        "name": "solutionModeUnderlined",
+        "type": "text",
+        "label": "Underlined solution mode text",
+        "default": "Close"
+      },
+      {
+        "name": "scoreMessage",
+        "type": "text",
+        "label": "Score message text",
+        "default": "You achieved:"
+      },
+      {
+        "name": "shareFacebook",
+        "type": "text",
+        "label": "Share to Facebook text",
+        "default": "Share on Facebook"
+      },
+      {
+        "name": "shareTwitter",
+        "type": "text",
+        "label": "Share to Twitter text",
+        "default": "Share on Twitter"
       }
     ]
   },

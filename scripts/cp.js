@@ -23,10 +23,6 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.editor = editor;
 
   this.l10n = H5P.jQuery.extend({
-    goHome: 'Go to first slide',
-    scrollLeft: 'Hold to scroll left',
-    jumpToSlide: 'Jump to slide',
-    scrollRight: 'Hold to scroll right',
     slide: 'Slide',
     yourScore: 'Your score',
     maxScore: 'Max score',
@@ -40,9 +36,18 @@ H5P.CoursePresentation = function (params, id, editor) {
     close: 'Close',
     hideKeywords: 'Hide keywords list',
     showKeywords: 'Show keywords list',
-    goToSlide: 'Go to slide :num',
     fullscreen: 'Fullscreen',
-    exitFullscreen: 'Exit fullscreen'
+    exitFullscreen: 'Exit fullscreen',
+    prevSlide: 'Previous slide',
+    nextSlide: 'Next slide',
+    currentSlide: 'Current slide',
+    lastSlide: 'Last slide',
+    solutionModeTitle: 'Exit solution mode',
+    solutionModeText: 'Solution Mode:',
+    solutionModeUnderlined: 'Close',
+    scoreMessage: 'You achieved:',
+    shareFacebook: 'Share on Facebook',
+    shareTwitter: 'Share on Twitter'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (params.override !== undefined) {
@@ -208,8 +213,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
  * @param {Number} percentageScore Percentage score that should be linked.
  */
 H5P.CoursePresentation.prototype.addFacebookScoreLinkTo = function ($facebookContainer, percentageScore) {
-  //TODO: l10n variables for facebook and twitter buttons and messages, and improve share content.
-  H5P.jQuery('<span class="show-facebook-icon">Share on Facebook</span>')
+  H5P.jQuery('<span class="show-facebook-icon">' + this.l10n.shareFacebook + '</span>')
     .appendTo($facebookContainer);
 
   var facebookString = 'http://www.facebook.com/dialog/feed?' +
@@ -232,13 +236,12 @@ H5P.CoursePresentation.prototype.addFacebookScoreLinkTo = function ($facebookCon
  * @param {Number} percentageScore Percentage score that should be linked.
  */
 H5P.CoursePresentation.prototype.addTwitterScoreLinkTo = function ($twitterContainer, percentageScore) {
-  //TODO: l10n variables for facebook and twitter buttons and messages, and improve shared content.
   var twitterString = 'http://twitter.com/share?text=I%20got%20' + percentageScore + '%25%20on%20this%20task:';
   $twitterContainer.click(function () {
     window.open(twitterString);
   });
 
-  H5P.jQuery('<span class="show-twitter-icon">Share on Twitter</span>')
+  H5P.jQuery('<span class="show-twitter-icon">' + this.l10n.shareTwitter + '</span>')
     .appendTo($twitterContainer);
 };
 
@@ -253,19 +256,23 @@ H5P.CoursePresentation.prototype.setProgressBarFeedback = function (slideScores)
   if (slideScores !== undefined && slideScores) {
     // Set feedback icons for progress bar.
     slideScores.forEach(function (singleSlide) {
-      if (that.progressbarParts[singleSlide.slide-1].children('span').hasClass('h5p-answered')) {
+      if (that.progressbarParts[singleSlide.slide-1].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered')) {
         if (singleSlide.score >= singleSlide.maxScore) {
-          that.progressbarParts[singleSlide.slide-1].addClass('h5p-is-correct');
+          that.progressbarParts[singleSlide.slide-1]
+            .children('.h5p-progressbar-part-has-task')
+            .addClass('h5p-is-correct');
         } else {
-          that.progressbarParts[singleSlide.slide-1].addClass('h5p-is-wrong');
+          that.progressbarParts[singleSlide.slide-1]
+            .children('.h5p-progressbar-part-has-task')
+            .addClass('h5p-is-wrong');
         }
       }
     });
   } else {
     // Remove all feedback icons.
     that.progressbarParts.forEach(function (pbPart) {
-      pbPart.removeClass('h5p-is-correct');
-      pbPart.removeClass('h5p-is-wrong');
+      pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-is-correct');
+      pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-is-wrong');
     });
   }
 };
@@ -365,7 +372,7 @@ H5P.CoursePresentation.prototype.setFooterSolutionModeText = function (solutionM
 H5P.CoursePresentation.prototype.toggleSolutionMode = function (enableSolutionMode) {
   if (enableSolutionMode) {
     this.$footer.addClass('h5p-footer-solution-mode');
-    this.setFooterSolutionModeText('Solution Mode:','Close')
+    this.setFooterSolutionModeText(this.l10n.solutionModeText, this.l10n.solutionModeUnderlined)
   }
   else {
     this.$footer.removeClass('h5p-footer-solution-mode');
@@ -952,10 +959,13 @@ H5P.CoursePresentation.prototype.initProgressbar = function () {
       $progressbarPart.addClass('h5p-progressbar-part-show');
     }
 
-    if (slide.elements !== undefined && slide.elements.length) {
-      H5P.jQuery('<div>', {
-        'class': 'h5p-progressbar-part-has-task'
-      }).appendTo($progressbarPart);
+    // Create task indicator if less than 60 slides and not in editor
+    if ((this.slides.length <= 60) && this.editor === undefined) {
+      if (slide.elements !== undefined && slide.elements.length) {
+        H5P.jQuery('<div>', {
+          'class': 'h5p-progressbar-part-has-task'
+        }).appendTo($progressbarPart);
+      }
     }
 
     that.progressbarParts.push($progressbarPart);
@@ -1100,7 +1110,8 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   // Previous slide
   H5P.jQuery('<div/>', {
     'class': 'h5p-footer-previous-slide',
-    'role': 'button'
+    'role': 'button',
+    'title': this.l10n.prevSlide
   }).click(function () {
     that.previousSlide();
   })
@@ -1109,7 +1120,8 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   // Current slide count
   this.$footerCurrentSlide = H5P.jQuery('<div/>', {
     'html': '1',
-    'class': 'h5p-footer-slide-count-current'
+    'class': 'h5p-footer-slide-count-current',
+    'title': this.l10n.currentSlide
   }).appendTo($centerFooter);
 
   // Count delimiter, content configurable in css
@@ -1121,31 +1133,39 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   // Max slide count
   this.$footerMaxSlide = H5P.jQuery('<div/>', {
     'html': this.slides.length,
-    'class': 'h5p-footer-slide-count-max'
+    'class': 'h5p-footer-slide-count-max',
+    'title': this.l10n.lastSlide
   }).appendTo($centerFooter);
 
   // Next slide
   H5P.jQuery('<div/>', {
     'class': 'h5p-footer-next-slide',
-    'role': 'button'
+    'role': 'button',
+    'title': this.l10n.nextSlide
   }).click(function (event) {
     that.nextSlide();
-  })
-    .appendTo($centerFooter);
+  }).appendTo($centerFooter);
 
   // Right footer elements
 
   // Toggle full screen button
-  this.$fullScreenButton = H5P.jQuery('<div/>', {
+  var $fullScreenButton = this.$fullScreenButton = H5P.jQuery('<div/>', {
     'class': 'h5p-footer-toggle-full-screen',
-    'role': 'button'
+    'role': 'button',
+    'title': this.l10n.fullscreen
   }).click(function () {
     that.toggleFullScreen();
-  }).appendTo($rightFooter);
+  });
+
+  // Do not allow fullscreen in editor mode
+  if (this.editor === undefined) {
+    $fullScreenButton.appendTo($rightFooter);
+  }
 
   // Exit solution mode button
   this.$exitSolutionModeButton = H5P.jQuery('<div/>', {
-    'class': 'h5p-footer-exit-solution-mode'
+    'class': 'h5p-footer-exit-solution-mode',
+    'title': this.l10n.solutionModeTitle
   }).click(function () {
     that.jumpToSlide(that.slides.length-1);
   }).appendTo($rightFooter);
@@ -1348,7 +1368,9 @@ H5P.CoursePresentation.prototype.updateProgressBar = function (slideNumber, prev
   }
 
   if (answered) {
-    that.progressbarParts[prevSlideNumber].children('span').addClass('h5p-answered');
+    that.progressbarParts[prevSlideNumber]
+      .children('.h5p-progressbar-part-has-task')
+      .addClass('h5p-answered');
   }
 
 };
@@ -1386,8 +1408,10 @@ H5P.CoursePresentation.prototype.updateFooterKeyword = function (slideNumber) {
   }
 
   // Summary slide keyword
-  if (slideNumber >= this.slides.length-1) {
-    keywordString = this.l10n.showSolutions;
+  if (this.editor === undefined) {
+    if (slideNumber >= this.slides.length-1) {
+      keywordString = this.l10n.showSolutions;
+    }
   }
 
   // Set footer keyword
@@ -1562,16 +1586,15 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
     totalMaxScore += slideScores[i].maxScore;
   }
 
-  //TODO: move this somewhere else ?
-/*  if (this.postUserStatistics === true) {
+  if (this.postUserStatistics === true) {
     H5P.setFinished(this.contentId, totalScore, totalMaxScore);
-  }*/
+  }
 
   var percentScore = Math.round((totalScore / totalMaxScore) * 100);
 
   var html = '' +
           '<div class="h5p-score-message">' +
-            '<div class="h5p-score-message-percentage">You achieved:</div>' +
+            '<div class="h5p-score-message-percentage">' + this.l10n.scoreMessage + '</div>' +
             '<div class="h5p-summary-facebook-message"></div>' +
             '<div class="h5p-summary-twitter-message"></div>' +
           '</div>' +

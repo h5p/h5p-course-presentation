@@ -76,22 +76,6 @@
       "label": "Leietekstar",
       "fields": [
         {
-          "label": "Leietekst til \"Gå heim\" knapp",
-          "default": "Heim"
-        },
-        {
-          "label": "Leietekst til \"Bla til venstre\" knapp",
-          "default": "Hald inne for å rulle til venstre"
-        },
-        {
-          "label": "Leietekst til lysbileteknappane",
-          "default": "Hopp til lysbilete"
-        },
-        {
-          "label": "Leietekst til \"Bla til høyre\" knapp",
-          "default": "Hald inne for å rulle til høyre"
-        },
-        {
           "label": "Oversetting for \"Lysbilete\"",
           "default": "Lysbilete"
         },
@@ -163,10 +147,54 @@
           "default": "Vis nøkkelordliste"
         },
         {
-          "label": "Tittel for element som lenkjar til andre lysbilete",
-          "default": "Gå til lysbilete :num",
-          "description": ":num erstattast med lysbiletenummeret."
+          "label": "Tittel for \"Full skjerm\"-knapp",
+          "default": "Fullskjerm"
+        },
+        {
+          "label": "Tittel for \"Avslutt fullskjerm\"-knapp",
+          "default": "Avslutt fullskjerm"
+        },
+        {
+          "label": "Tittel for \"Forrige side\"-knapp",
+          "default": "Forrige side"
+        },
+        {
+          "label": "Tittel for \"Neste side\"-knapp",
+          "default": "Neste side"
+        },
+        {
+          "label": "Tittel for \"Denne side\"-knapp",
+          "default": "Denne side"
+        },
+        {
+          "label": "Tittel for \"Siste side\"-knapp",
+          "default": "Siste side"
+        },
+        {
+          "label": "Tittel for \"Avslutt fasit modus\"-knapp",
+          "default": "Avslutt fasit modus"
+        },
+        {
+          "label": "Avslutt fasit modus tekst",
+          "default": "Fasitmodus:"
+        },
+        {
+          "label": "Understreket avslutt fasit modus tekst",
+          "default": "Avslutt"
+        },
+        {
+          "label": "poengTekst",
+          "default": "Du klarte:"
+        },
+        {
+          "label": "Del på Facebook tekst",
+          "default": "Del på Facebook"
+        },
+        {
+          "label": "Del på Twitter tekst",
+          "default": "Del på Twitter"
         }
+
       ]
     },
     {
