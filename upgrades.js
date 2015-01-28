@@ -3,7 +3,7 @@ var H5PUpgrades = H5PUpgrades || {};
 H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
   return {
     1: {
-      2: {
+      3: {
         contentUpgrade: function (parameters, finished) {
           delete parameters.l10n.goHome;
           delete parameters.l10n.scrollLeft;
