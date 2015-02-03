@@ -528,6 +528,8 @@
   opacity: 0.4;
 }
 
+
+
 .h5p-course-presentation .h5p-popup-overlay {
   background-color: rgba(255, 255, 255, 0.8);
   height: 100%;
@@ -548,18 +550,24 @@
   width: 70%;
   min-height: 65%;
   max-height: 80%;
-  font-size: 0.9em;
   overflow: auto;
 }
 
 .h5p-course-presentation .h5p-popup-wrapper {
   box-sizing: border-box;
-  padding: 1em;
   max-height: 100%;
   overflow: auto;
   text-align: left;
 }
-
+.h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
+  overflow: hidden;
+}
+.h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
+  right: 1.2em;
+}
+.h5p-button-element.h5p-sc-set-wrapper {
+  overflow: hidden;
+}
 .h5p-course-presentation .h5p-popup-container tfoot {
   font-weight: bold;
 }
@@ -644,6 +652,9 @@
 .h5p-course-presentation .h5p-exportabletextarea-button,
 .h5p-course-presentation .h5p-blanks-button,
 .h5p-course-presentation .h5p-multichoice-button,
+.h5p-course-presentation .h5p-singlechoiceset-button,
+.h5p-course-presentation .h5p-dragtext-button,
+.h5p-course-presentation .h5p-markthewords-button,
 .h5p-course-presentation .h5p-dragquestion-button,
 .h5p-course-presentation .h5p-summary-button,
 .h5p-course-presentation .h5p-interactivevideo-button {
@@ -674,8 +685,10 @@
 .h5p-course-presentation .h5p-blanks-button:before,
 .h5p-course-presentation .h5p-multichoice-button:before,
 .h5p-course-presentation .h5p-dragquestion-button:before,
-.h5p-course-presentation .h5p-summary-button:before
-{
+.h5p-course-presentation .h5p-summary-button:before,
+.h5p-course-presentation .h5p-singlechoiceset-button:before,
+.h5p-course-presentation .h5p-dragtext-button:before,
+.h5p-course-presentation .h5p-markthewords-button:before {
   font-family: 'H5PCoursePresentation';
 }
 
@@ -715,8 +728,15 @@
 .h5p-course-presentation .h5p-interactivevideo-button:before {
   content: "\f03d";
 }
-
-
+.h5p-course-presentation .h5p-singlechoiceset-button:before {
+  content: "\e603";
+}
+.h5p-course-presentation .h5p-dragtext-button:before {
+  content: "\e600";
+}
+.h5p-course-presentation .h5p-markthewords-button:before {
+  content: "\e601";
+}
 
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
@@ -730,8 +750,8 @@
 
 .h5p-course-presentation .h5p-close-popup:before {
   position: absolute;
-  right: 24px;
-  top: 10px;
+  right: 0.2em;
+  top: 0.2em;
   font-family: 'H5PFontAwesome4';
   content: "\f00d";
   font-size: 2em;
@@ -747,6 +767,9 @@
 }
 .h5p-course-presentation .h5p-button-element.h5p-audio-wrapper .h5p-audio {
   min-height: 30px;
+}
+.h5p-course-presentation .h5p-button-element {
+  margin: 0 auto;
 }
 
 .h5p-course-presentation .h5p-popup-container dl {
