@@ -45,6 +45,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     solutionModeTitle: 'Exit solution mode',
     solutionModeText: 'Solution Mode:',
     solutionModeUnderlined: 'Close',
+    summaryMultipleTaskText: 'Text when multiple tasks on a page',
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter'

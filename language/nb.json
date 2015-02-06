@@ -185,6 +185,10 @@
           "default": "Avslutt"
         },
         {
+          "label": "Tekst ved flere oppgaver på en side",
+          "default": "Flere oppgaver"
+        },
+        {
           "label": "poengTekst",
           "default": "Du klarte:"
         },

@@ -410,7 +410,7 @@
   background: #cecece;
 }
 
-/*.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
   background: transparent;
 }
 
@@ -424,7 +424,7 @@
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task {
   background: #cecece;
-}*/
+}
 
 
 .h5p-course-presentation .h5p-slide-button {

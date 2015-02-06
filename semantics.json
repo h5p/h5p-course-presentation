@@ -397,6 +397,12 @@
         "default": "Close"
       },
       {
+        "name": "summaryMultipleTaskText",
+        "type": "text",
+        "label": "Text when multiple tasks on a page",
+        "default": "Multiple tasks"
+      },
+      {
         "name": "scoreMessage",
         "type": "text",
         "label": "Score message text",
