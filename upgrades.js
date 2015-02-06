@@ -20,6 +20,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
           parameters.l10n.solutionModeTitle = 'Exit solution mode';
           parameters.l10n.solutionModeText = 'Solution Mode:';
           parameters.l10n.solutionModeUnderlined = 'Close';
+          parameters.l10n.summaryMultipleTaskText = 'Text when multiple tasks on a page';
           parameters.l10n.scoreMessage = 'You achieved:';
           parameters.l10n.shareFacebook = 'Share on Facebook';
           parameters.l10n.shareTwitter = 'Share on Twitter';

@@ -1088,8 +1088,9 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   this.$keywordsButton = H5P.jQuery('<div/>', {
     'html': '',
     'class': "h5p-footer-toggle-keywords",
-    role: 'button',
-    'title': this.l10n.showKeywords
+    'role': 'button',
+    'title': this.l10n.showKeywords,
+    'tabindex': '2'
   }).click(function () {
     that.toggleKeywords();
   }).appendTo($leftFooter);
@@ -1112,7 +1113,8 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   H5P.jQuery('<div/>', {
     'class': 'h5p-footer-previous-slide',
     'role': 'button',
-    'title': this.l10n.prevSlide
+    'title': this.l10n.prevSlide,
+    'tabIndex': '3'
   }).click(function () {
     that.previousSlide();
   })
@@ -1142,7 +1144,8 @@ H5P.CoursePresentation.prototype.initFooter = function () {
   H5P.jQuery('<div/>', {
     'class': 'h5p-footer-next-slide',
     'role': 'button',
-    'title': this.l10n.nextSlide
+    'title': this.l10n.nextSlide,
+    'tabIndex': '4'
   }).click(function (event) {
     that.nextSlide();
   }).appendTo($centerFooter);
@@ -1565,7 +1568,7 @@ H5P.CoursePresentation.prototype.outputScoreStats = function (slideScores) {
     var slideDescription = '';
     var slideElements = this.slides[slideScores[i].slide-1].elements;
     if (slideElements.length > 1) {
-      slideDescription = 'Multiple tasks';
+      slideDescription = that.params.l10n.summaryMultipleTaskText;
     } else if (slideElements[0] !== undefined && slideElements[0]) {
       var action = slideElements[0].action;
       if (action.params.taskDescription !== undefined && action.params.taskDescription) {
