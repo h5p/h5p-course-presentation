@@ -580,10 +580,14 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-blanks-button:before,
 .h5p-course-presentation .h5p-multichoice-button:before,
 .h5p-course-presentation .h5p-dragquestion-button:before,
+<<<<<<< HEAD
+.h5p-course-presentation .h5p-summary-button:before {
+=======
 .h5p-course-presentation .h5p-summary-button:before,
 .h5p-course-presentation .h5p-singlechoiceset-button:before,
 .h5p-course-presentation .h5p-dragtext-button:before,
 .h5p-course-presentation .h5p-markthewords-button:before {
+>>>>>>> origin/stable
   font-family: 'H5PCoursePresentation';
 }
 
@@ -634,6 +638,8 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-interactivevideo-button:before {
   content: "\f03d";
 }
+<<<<<<< HEAD
+=======
 .h5p-course-presentation .h5p-singlechoiceset-button:before {
   content: "\e603";
 }
@@ -643,6 +649,8 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
 }
+>>>>>>> origin/stable
+
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
 }
