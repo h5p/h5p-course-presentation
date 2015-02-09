@@ -231,60 +231,11 @@
   text-decoration: none;
 }
 
-.h5p-course-presentation .h5p-show-solutions,
-.h5p-course-presentation .h5p-cp-retry-button,
-.h5p-course-presentation .h5p-eta-export {
-  display: inline-block;
-  font-size: 0.6em;
-  padding: 0 0.6em;
-  color: #323232;
-  border: 0.2em solid #fff;
-  border-radius: 0.4em;
-  margin: 0.15em;
-  height: 2em;
-  line-height: 2em;
-  cursor: pointer;
-  color: #fff;
-  box-shadow: 0 0 0.5em #999;
-  position: relative;
-
-  background: rgb(100,152,254); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(100,152,254,1) 0%, rgba(4,104,206,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,152,254,1)), color-stop(100%,rgba(4,104,206,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 );
-}
-
 .h5p-course-presentation .h5p-copyinfo-header {
   font-size: 1.2em;
   color: #555;
   font-weight: bold;
   margin-bottom: 0.4em;
-}
-
-.h5p-course-presentation .h5p-eta-export.flash {
-  padding: 0 0.75em;
-  line-height:0;
-  height: 2em;
-}
-
-.h5p-course-presentation .h5p-eta-export:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f0f6";
-  margin-right: 0.5em;
-}
-
-.h5p-course-presentation .h5p-eta-export.flash:before {
-  position: relative;
-  top: -1.5em;
-}
-
-.h5p-course-presentation .h5p-show-solutions:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f06e";
-  margin-right: 0.5em;
 }
 
 .h5p-course-presentation .h5p-cp-show-solutions:before {
@@ -295,28 +246,6 @@
 
 .h5p-course-presentation .h5p-cp-show-solutions {
   display: inline-block;
-}
-
-.h5p-course-presentation .h5p-cp-retry-button:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f021";
-  margin-right: 0.5em;
-}
-
-.h5p-course-presentation .h5p-cp-retry-button {
-  display: inline-block;
-}
-
-.h5p-course-presentation .h5p-show-solutions:hover,
-.h5p-course-presentation .h5p-cp-retry-button:hover,
-.h5p-course-presentation .h5p-eta-export:hover {
-  background: rgb(4,104,206); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(4,104,206,1)), color-stop(100%,rgba(100,152,254,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0468ce', endColorstr='#6498fe',GradientType=0 ); /* IE6-9 */
 }
 
 .h5p-course-presentation .h5p-progressbar {
@@ -529,110 +458,10 @@
   font-weight: bold;
 }
 
-/* Summary slide styling */
-.h5p-course-presentation .h5p-summary-slide {
-  background: #fff;
-  text-align: center;
-}
-
-.h5p-course-presentation .h5p-score-message-header {
-  font-size: 1.2em;
-  color: #555;
-  font-weight: bold;
-  margin-bottom: 0.4em;
-  padding: 0.5em 0em;
-}
-/* Header */
-
-.h5p-course-presentation .h5p-score-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: -webkit-center;
-  padding: 0.3em 0em 1em;
-  font-size: 0.8em;
-  margin-bottom: 1em;
-  text-align: -webkit-center;
-}
-
-.h5p-course-presentation .h5p-score-message-percentage {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Facebook and Twitter link styling */
-.h5p-course-presentation .h5p-summary-twitter-message,
-.h5p-course-presentation .h5p-summary-facebook-message {
-  cursor: pointer;
-  font-size: 0.7em;
-  padding: 0em 0.5em;
-  color: #096bcb;
-}
-
-.h5p-course-presentation .h5p-summary-twitter-message > span,
-.h5p-course-presentation .h5p-summary-facebook-message > span {
-  text-decoration: underline;
-}
-
-.h5p-course-presentation .h5p-summary-twitter-message:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f099";
-  padding-right: 0.5em;
-}
-
-.h5p-course-presentation .h5p-summary-facebook-message:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f09a";
-  padding-right: 0.5em;
-}
-
-
-/* Rectangular task summary score */
-.h5p-course-presentation .h5p-summary-score-meter {
-  height: 0.2em;
-  margin: 0em 0.2em;
-  position: relative;
-  background: #e0e0e0;
-  width: 100%;
-}
-
-.h5p-course-presentation .h5p-summary-score-meter > span {
-  display: block;
-  height: 100%;
-
-  background-color: #096bcb;
-
-  position: relative;
-  overflow: hidden;
-}
-
 .h5p-course-presentation .h5p-score-table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0px;
-}
-
-.h5p-course-presentation .h5p-summary-total-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0px;
-}
-
-/* Summary table style */
-.h5p-course-presentation .h5p-summary-table-holder {
-  height: 65%;
-  margin: 0em 1em;
-}
-
-.h5p-course-presentation .h5p-summary-table-pages {
-  overflow: auto;
-  max-height: 85%;
-}
-.h5p-course-presentation .h5p-summary-footer {
-  position: absolute;
-  bottom: 1em;
-  width: 100%;
 }
 
 .h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
@@ -651,16 +480,6 @@
   display: inline;
   color: -webkit-link;
   text-decoration: underline;
-}
-
-.h5p-course-presentation .h5p-summary-task-title {
-  width: 60%;
-  text-align: left;
-  font-size: 0.6em;
-}
-
-.h5p-course-presentation .h5p-summary-score-bar {
-
 }
 
 /* Popup style */
@@ -914,15 +733,16 @@ border-collapse: collapse;
   width: 100%;
 }
 
-/* Footer in solution mode */
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
-  background-color: #111111;
-  color: #aeaeae;
+/* Footer buttons */
+.h5p-course-presentation .h5p-footer .h5p-footer-button {
+  background: transparent;
+  border: 0px;
 }
 
 /* Footer containers */
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
   float: left;
+  max-width: 40%;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-right-adjusted {
@@ -938,9 +758,6 @@ border-collapse: collapse;
 /* Footer keyword button */
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
   display: inline-block;
-  position: absolute;
-  max-width: 40%;
-  left: 0em;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1021,8 +838,6 @@ border-collapse: collapse;
 /* Footer full screen button */
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen {
   display: inline-block;
-  position: absolute;
-  right: 0em;
   cursor: pointer;
 }
 
