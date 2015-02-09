@@ -248,6 +248,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * @params {Boolean} enableSolutionMode Enable/disable solution mode
    */
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
+    this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
       this.cp.$footer.addClass('h5p-footer-solution-mode');
       this.setFooterSolutionModeText(this.cp.l10n.solutionModeText, this.cp.l10n.solutionModeUnderlined);

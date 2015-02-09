@@ -128,6 +128,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$footer = this.$wrapper.children('.h5p-footer');
 
   this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
+  this.isSolutionMode = false;
 
   var $summarySlide;
 
@@ -1002,7 +1003,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   }
 
   // Update progress bar
-  that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex);
+  that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex, this.isSolutionMode);
 
   // Update footer
   that.navigationLine.updateFooter(slideNumber);
@@ -1079,6 +1080,7 @@ H5P.CoursePresentation.prototype.resetTask = function () {
       }
     }
   }
+  this.navigationLine.updateProgressBar(0);
   this.jumpToSlide(0, false);
   this.$container.find('.h5p-popup-overlay').remove();
 };

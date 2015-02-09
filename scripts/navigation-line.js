@@ -58,13 +58,14 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       if (i === 0) {
         $progressbarPart.addClass('h5p-progressbar-part-show');
       }
-
       // Create task indicator if less than 60 slides and not in editor
       if ((this.cp.slides.length <= 60) && this.cp.editor === undefined) {
         if (slide.elements !== undefined && slide.elements.length) {
-          $('<div>', {
-            'class': 'h5p-progressbar-part-has-task'
-          }).appendTo($progressbarPart);
+          if (that.cp.slidesWithSolutions[i] !== undefined && that.cp.slidesWithSolutions[i].length) {
+            $('<div>', {
+              'class': 'h5p-progressbar-part-has-task'
+            }).appendTo($progressbarPart);
+          }
         }
       }
       that.cp.progressbarParts.push($progressbarPart);
@@ -194,7 +195,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
   /**
    * Updates progress bar.
    */
-  NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber) {
+  NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber, solutionMode) {
     var that = this;
 
     // Updates progress bar progress (blue line)
@@ -209,8 +210,12 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
 
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (pbPart) {
-        pbPart.children('span').removeClass('h5p-answered');
+        pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-answered');
       });
+      return;
+    }
+    // Don't mark answers as answered if in solution mode.
+    if (solutionMode) {
       return;
     }
 
