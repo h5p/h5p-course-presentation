@@ -14,7 +14,6 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
    * Initialize progress bar
    */
   NavigationLine.prototype.initProgressbar = function () {
-    debugger;
     var that = this;
     var progressbarPercentage = (1 / this.cp.slides.length) * 100;
 
@@ -39,8 +38,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         'class': 'h5p-progressbar-part'
       }).data('slideNumber', i)
         .click(function () {
-          that.jumpToSlide($(this).data('slideNumber'));
-        }).appendTo(that.$progressbar);
+          that.cp.jumpToSlide($(this).data('slideNumber'));
+        }).appendTo(that.cp.$progressbar);
 
       // Generate tooltip for progress bar slides
       progressbarPartTitle = 'Slide ' + (i + 1);

@@ -25,8 +25,8 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     var that = this;
 
     // Validate update.
-    var isInvalidUpdate = (this.cp.editor === undefined) || (this.$summarySlide !== undefined) || (slideNumber >= this.cp.slides.length - 1);
-    if (isInvalidUpdate) {
+    var isValidUpdate = (this.cp.editor === undefined) && (this.$summarySlide !== undefined) && (slideNumber >= this.cp.slides.length - 1);
+    if (!isValidUpdate) {
       return;
     }
 
