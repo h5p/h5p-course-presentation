@@ -127,7 +127,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$progressbar = this.$wrapper.children('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
 
-  var initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
+  this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
 
   var $summarySlide;
 
@@ -163,7 +163,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (!foundKeywords && slide.keywords !== undefined && slide.keywords.length) {
       foundKeywords = true;
     }
-    if (initKeywords) {
+    if (this.initKeywords) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
 
@@ -174,11 +174,11 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   }
 
   if (!foundKeywords && this.editor === undefined) {
-    initKeywords = false; // Do not show keywords pane if it's empty!
+    this.initKeywords = false; // Do not show keywords pane if it's empty!
   }
 
   // Initialize keywords
-  if (initKeywords) {
+  if (this.initKeywords) {
     this.initKeywordsList(keywords);
   }
   else {
@@ -338,6 +338,9 @@ H5P.CoursePresentation.prototype.resize = function () {
  */
 H5P.CoursePresentation.prototype.toggleFullScreen = function () {
   if (this.$fullScreenButton.hasClass('h5p-exit')) {
+    // Downscale fullscreen font size
+    this.$footer.removeClass('footer-full-screen');
+
     this.$fullScreenButton.removeClass('h5p-exit').attr('title', this.l10n.fullscreen);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Click button to disable fullscreen
@@ -356,6 +359,9 @@ H5P.CoursePresentation.prototype.toggleFullScreen = function () {
     }
   }
   else {
+    // Rescale footer buttons
+    this.$footer.addClass('footer-full-screen');
+
     this.$fullScreenButton.addClass('h5p-exit').attr('title', this.l10n.exitFullscreen);
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {

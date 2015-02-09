@@ -37,8 +37,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         'width': progressbarPercentage + '%',
         'class': 'h5p-progressbar-part'
       }).data('slideNumber', i)
-        .click(function () {
+        .click(function (event) {
           that.cp.jumpToSlide($(this).data('slideNumber'));
+          event.preventDefault();
         }).appendTo(that.cp.$progressbar);
 
       // Generate tooltip for progress bar slides
@@ -75,7 +76,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
    */
   NavigationLine.prototype.initFooter = function () {
     var that = this;
-    var $footer = this.$footer;
+    var $footer = this.cp.$footer;
 
     // Inner footer adjustment containers
     var $leftFooter = $('<div/>', {
@@ -96,11 +97,12 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.cp.$keywordsButton = $('<button/>', {
       'class': "h5p-footer-button h5p-footer-toggle-keywords",
       'title': this.cp.l10n.showKeywords
-    }).click(function () {
-      that.toggleKeywords();
+    }).click(function (event) {
+      that.cp.toggleKeywords();
+      event.preventDefault();
     }).appendTo($leftFooter);
 
-    if (this.cp.presentation.keywordListAlwaysShow) {
+    if (this.cp.presentation.keywordListAlwaysShow || !this.cp.initKeywords) {
       this.cp.$keywordsButton.hide();
     }
 
@@ -118,8 +120,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     $('<button/>', {
       'class': 'h5p-footer-button h5p-footer-previous-slide',
       'title': this.cp.l10n.prevSlide
-    }).click(function () {
-      that.previousSlide();
+    }).click(function (event) {
+      that.cp.previousSlide();
+      event.preventDefault();
     }).appendTo($centerFooter);
 
     // Current slide count
@@ -146,8 +149,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     $('<button/>', {
       'class': 'h5p-footer-button h5p-footer-next-slide',
       'title': this.cp.l10n.nextSlide
-    }).click(function () {
+    }).click(function (event) {
       that.cp.nextSlide();
+      event.preventDefault();
     }).appendTo($centerFooter);
 
     // Right footer elements
@@ -156,8 +160,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.cp.$fullScreenButton = $('<button/>', {
       'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
       'title': this.cp.l10n.fullscreen
-    }).click(function () {
+    }).click(function (event) {
       that.cp.toggleFullScreen();
+      event.preventDefault();
     });
 
     // Do not allow fullscreen in editor mode
@@ -169,8 +174,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.cp.$exitSolutionModeButton = $('<div/>', {
       'class': 'h5p-footer-exit-solution-mode',
       'title': this.cp.l10n.solutionModeTitle
-    }).click(function () {
+    }).click(function (event) {
       that.cp.jumpToSlide(that.cp.slides.length - 1);
+      event.preventDefault();
     }).appendTo($rightFooter);
 
     // Solution mode elements

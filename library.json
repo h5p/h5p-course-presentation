@@ -35,6 +35,9 @@
     },
     {
       "path": "styles/summary-slide.css"
+    },
+    {
+      "path": "styles/navigation-line.css"
     }
   ],
   "preloadedDependencies": [

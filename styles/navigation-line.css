@@ -1,0 +1,154 @@
+/* --------------------------------------- Footer -------------------------------- */
+
+/* Footer buttons */
+.h5p-course-presentation .h5p-footer .h5p-footer-button {
+  background: transparent;
+  border: 0px;
+}
+
+/* Footer containers */
+.h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
+  float: left;
+  max-width: 40%;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-right-adjusted {
+  float: right;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
+  text-align: center;
+}
+
+/* ---------------------------- Footer slide information buttons ----------------------- */
+
+/* Prev slide */
+.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0em 1em;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0d9";
+}
+
+/* Next slide */
+.h5p-course-presentation .h5p-footer .h5p-footer-next-slide {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0em 1em;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:after {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0da";
+}
+
+/* Current slide */
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current {
+  display: inline-block;
+}
+
+/* Slide delimiter */
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter {
+  display: inline-block;
+  padding: 0em 0.5em;
+}
+
+/* Max slides */
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
+  display: inline-block;
+}
+
+/* Solution mode text changes to footer elements */
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:after,
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
+  color: #000;
+}
+
+/* ---------------------------------------------- Solution Mode ---------------------------------- */
+
+/* Footer in solution mode */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
+  background-color: #111111;
+  color: #aeaeae;
+}
+
+/* Solution mode container */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
+  display: inline-block;
+  position: absolute;
+  right: 0em;
+  margin-right: 3em;
+  cursor: pointer;
+}
+
+/* Footer solution mode text */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-text {
+  display: inline-block;
+}
+
+/* Footer solution mode underlined */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-underlined {
+  display: inline-block;
+  text-decoration: underline;
+}
+
+/* Solution mode text changes to footer elements */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-full-screen:before,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-previous-slide:before,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-next-slide:after,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-keywords:before {
+  color: #aeaeae;
+}
+
+/* --------------------------------------------- Footer elements ---------------------------------------- */
+
+/* Footer keyword button */
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
+  display: inline-block;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
+  font-family: 'H5PFontAwesome4';
+  font-size: 1.3em;
+  content: "\f0c9";
+  padding: 0em 0.25em;
+  margin-right: 0.5em;
+}
+
+/* Footer full screen button */
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f065";
+  font-size: 1.2em;
+  padding: 0 0.25em;
+  margin-left: 0.5em;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen.h5p-exit:before {
+  content: "\f066";
+}
+
+/* ------------------------------------------ Full Screen scaling ------------------------------------- */
+
+/* Solution mode text changes to footer elements */
+.h5p-course-presentation .h5p-footer.footer-full-screen button.h5p-footer-button {
+  font-size: 1.0em;
+}

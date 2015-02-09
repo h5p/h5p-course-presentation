@@ -61,21 +61,6 @@
   width: 100%;
 }
 
-/* ------------------------------ Show solution mode ------------------------------------------ */
-
-/* Footer in solution mode */
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
-  background-color: #111111;
-  color: #aeaeae;
-}
-
-/* Solution mode button colors */
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-eta-export:before,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-show-solutions:before,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-cp-retry-button:before {
-  color: #aeaeae;
-}
-
 /* ---------------------------- Social media styles ---------------------------------------------- */
 
 /* Facebook and Twitter link styling */
