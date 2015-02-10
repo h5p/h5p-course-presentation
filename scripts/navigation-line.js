@@ -42,6 +42,10 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
           event.preventDefault();
         }).appendTo(that.cp.$progressbar);
 
+      if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1)) {
+        $progressbarPart.addClass('progressbar-part-summary-slide');
+      }
+
       // Generate tooltip for progress bar slides
       progressbarPartTitle = 'Slide ' + (i + 1);
       if (slide.keywords !== undefined && slide.keywords.length) {

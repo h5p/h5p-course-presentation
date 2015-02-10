@@ -21,6 +21,8 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.hasAnswerElements = false;
   this.editor = editor;
 
+  this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
+
   this.l10n = H5P.jQuery.extend({
     slide: 'Slide',
     yourScore: 'Your score',
