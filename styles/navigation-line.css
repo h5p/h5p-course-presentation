@@ -1,6 +1,11 @@
 /* --------------------------------------- Footer -------------------------------- */
 
+/* Footer */
 .h5p-course-presentation .h5p-footer {
+  display: block;
+  font-size: 0.75em;
+  -webkit-user-select: none;
+  width: 100%;
   height: 6.5%;
 }
 
@@ -13,34 +18,30 @@
 /* Footer containers */
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
   position: absolute;
-  left: 0em;
+  left: 0.25em;
   max-width: 40%;
   height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-right-adjusted {
   position: absolute;
   text-align: right;
-  right: 0em;
+  right: 0.25em;
   width: 40%;
   height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
   text-align: center;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ---------------------------- Footer slide information buttons ----------------------- */
+
+.h5p-course-presentation .h5p-footer a {
+  text-decoration: none;
+  color: #000;
+}
 
 /* Prev slide */
 .h5p-course-presentation .h5p-footer .h5p-footer-previous-slide {
@@ -100,11 +101,7 @@
 
 /* Solution mode container */
 .h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-
+  display: inline-block;
   position: absolute;
   right: 0em;
   margin-right: 3em;
@@ -163,7 +160,6 @@
   display: inline-block;
   cursor: pointer;
   text-align: right;
-  width: 100%;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {

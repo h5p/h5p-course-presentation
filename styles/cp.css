@@ -642,14 +642,6 @@ border-collapse: collapse;
   margin: 0;
 }
 
-/* Footer */
-.h5p-course-presentation .h5p-footer {
-  display: block;
-  font-size: 0.65em;
-  -webkit-user-select: none;
-  width: 100%;
-}
-
 /* Hides full screen button like in IV, uses own full screen button */
 .h5p-course-presentation .h5p-content-controls {
   visibility:hidden;

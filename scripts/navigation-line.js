@@ -99,7 +99,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Left footer elements
 
     // Toggle keywords menu
-    this.cp.$keywordsButton = $('<button/>', {
+    this.cp.$keywordsButton = $('<a/>', {
+      'href': '#',
       'class': "h5p-footer-button h5p-footer-toggle-keywords",
       'title': this.cp.l10n.showKeywords
     }).click(function (event) {
@@ -122,7 +123,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Center footer elements
 
     // Previous slide
-    $('<button/>', {
+    $('<a/>', {
+      'href': '#',
       'class': 'h5p-footer-button h5p-footer-previous-slide',
       'title': this.cp.l10n.prevSlide
     }).click(function (event) {
@@ -151,7 +153,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }).appendTo($centerFooter);
 
     // Next slide
-    $('<button/>', {
+    $('<a/>', {
+      'href': '#',
       'class': 'h5p-footer-button h5p-footer-next-slide',
       'title': this.cp.l10n.nextSlide
     }).click(function (event) {
@@ -162,7 +165,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Right footer elements
 
     // Toggle full screen button
-    this.cp.$fullScreenButton = $('<button/>', {
+    this.cp.$fullScreenButton = $('<a/>', {
+      'href': '#',
       'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
       'title': this.cp.l10n.fullscreen
     }).click(function (event) {
