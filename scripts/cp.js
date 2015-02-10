@@ -185,6 +185,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       }
     }).insertBefore(this.$keywordsWrapper);
     if (this.presentation.keywordListAlwaysShow) {
+      this.showKeywords();
       this.$keywordsButton.hide();
     }
 
