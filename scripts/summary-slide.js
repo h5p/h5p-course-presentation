@@ -78,7 +78,12 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       .click(function (event) {
         H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
         event.preventDefault();
-      });
+      }).hide();
+
+    // Only make export button if there is an export area in CP
+    if (that.cp.hasAnswerElements) {
+      $('.h5p-eta-export', that.$summarySlide).show();
+    }
 
     $('.h5p-cp-retry-button', that.$summarySlide)
       .click(function (event) {
