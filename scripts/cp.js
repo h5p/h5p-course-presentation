@@ -966,7 +966,6 @@ H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideN
   }
 
   // Adjust yPos above finger.
-  console.log($container.parent().height());
   if ((yPos - ($container.parent().height() * yPosAdjustment)) < 0) {
     yPos = 0;
   } else {
