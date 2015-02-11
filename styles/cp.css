@@ -648,3 +648,19 @@ border-collapse: collapse;
   position: absolute;
   top:0;
 }
+
+.h5p-course-presentation .h5p-presentation-wrapper .h5p-touch-popup {
+  display: block;
+  position: absolute;
+  z-index: 2;
+
+  padding: 0.5em;
+  border-radius: 0.5em;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  background: #000;
+  color: #FFF;
+}

@@ -813,6 +813,15 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
 H5P.CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
+  var containerWidth = this.$slidesWrapper.width();
+  var containerPercentageForScrolling = 0.6; // 60% of container width used to reach endpoints with touch
+  var slidesNumbers = this.slides.length;
+  var pixelsPerSlide = (containerWidth * containerPercentageForScrolling) / slidesNumbers;
+  var startTime;
+  var currentTime;
+  var navigateTimer = 500; // 500ms before navigation popup starts.
+  var isTouchJump = false;
+  var nextSlide;
   var transform = function (value) {
     return {
       '-webkit-transform': value,
@@ -833,11 +842,14 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
   };
 
   this.$slidesWrapper.bind('touchstart', function (event) {
+    isTouchJump = false;
     // Set start positions
     lastX = startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
     prevX = getTranslateX(that.$current.addClass('h5p-touch-move').prev().addClass('h5p-touch-move'));
     nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
+    containerWidth = H5P.jQuery(this).width();
+    startTime = new Date().getTime();
 
     scroll = null;
 
@@ -860,22 +872,48 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     // Disable horizontal scrolling when changing slide
     event.preventDefault();
 
-    if (movedX < 0) {
-      // Move previous slide
-      that.$current.next().css(reset);
-      that.$current.prev().css(transform('translateX(' + (prevX - movedX) + 'px'));
-    }
-    else {
-      // Move next slide
-      that.$current.prev().css(reset);
-      that.$current.next().css(transform('translateX(' + (nextX - movedX) + 'px)'));
-    }
+    // Create popup longer time than navigateTimer has passed
+    if (!isTouchJump) {
+      currentTime = new Date().getTime();
+      var timeLapsed = currentTime - startTime;
+      if (timeLapsed > navigateTimer) {
+        isTouchJump = true;
+      }
 
-    // Move current slide
-    that.$current.css(transform('translateX(' + (-movedX) + 'px)'));
+      // Fast swipe to next slide
+      if (movedX < 0) {
+        // Move previous slide
+        that.$current.next().css(reset);
+        that.$current.prev().css(transform('translateX(' + (prevX - movedX) + 'px'));
+      }
+      else {
+        // Move next slide
+        that.$current.prev().css(reset);
+        that.$current.next().css(transform('translateX(' + (nextX - movedX) + 'px)'));
+      }
+
+      // Move current slide
+      that.$current.css(transform('translateX(' + (-movedX) + 'px)'));
+    } else {
+      that.$current.css(reset);
+      // Update slider popup.
+      nextSlide = parseInt(that.currentSlideIndex + (movedX / pixelsPerSlide), 10);
+      if (nextSlide >= that.slides.length -1) {
+        nextSlide = that.slides.length -1;
+      } else if (nextSlide < 0) {
+        nextSlide = 0;
+      }
+      // Create popup at initial touch point
+      that.updateTouchPopup(that.$slidesWrapper, nextSlide, startX, startY);
+    }
 
   }).bind('touchend', function () {
     if (!scroll) {
+      if (isTouchJump) {
+        that.jumpToSlide(nextSlide);
+        that.updateTouchPopup();
+        return;
+      }
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
       if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
@@ -885,6 +923,62 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     // Reset.
     that.$slidesWrapper.children().css(reset).removeClass('h5p-touch-move');
   });
+};
+
+/**
+ *
+ * @param $container
+ * @param slideNumber
+ * @param xPos
+ * @param yPos
+ */
+H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
+  // Remove popup on no arguments
+  if (arguments.length <= 0) {
+    if(this.touchPopup !== undefined) {
+      this.touchPopup.remove();
+    }
+    return;
+  }
+
+  var keyword = '';
+  var yPosAdjustment = 0.15; // Adjust y-position 15% higher for visibility
+
+  if ((this.$keywords !== undefined) && (this.$keywords.children(':eq(' + slideNumber + ')').find('span').html() !== undefined)) {
+    keyword += this.$keywords.children(':eq(' + slideNumber + ')').find('span').html();
+  } else {
+    keyword += this.l10n.slide + slideNumber;
+  }
+
+  // Summary slide keyword
+  if (this.editor === undefined) {
+    if (slideNumber >= this.slides.length - 1) {
+      keyword = this.l10n.showSolutions;
+    }
+  }
+
+  if (this.touchPopup === undefined) {
+    this.touchPopup = H5P.jQuery('<div/>', {
+      'class': 'h5p-touch-popup'
+    }).insertAfter($container);
+  } else {
+    this.touchPopup.insertAfter($container);
+  }
+
+  // Adjust yPos above finger.
+  console.log($container.parent().height());
+  if ((yPos - ($container.parent().height() * yPosAdjustment)) < 0) {
+    yPos = 0;
+  } else {
+    yPos -= ($container.parent().height() * yPosAdjustment);
+  }
+
+  this.touchPopup.css({
+    'max-width': $container.width() - xPos,
+    'left': xPos,
+    'top': yPos
+  });
+  this.touchPopup.html(keyword);
 };
 
 /**

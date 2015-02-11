@@ -6,14 +6,14 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
   function NavigationLine(coursePresentation) {
     this.$ = $;
     this.cp = coursePresentation;
-    this.initProgressbar();
+    this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
   }
 
   /**
    * Initialize progress bar
    */
-  NavigationLine.prototype.initProgressbar = function () {
+  NavigationLine.prototype.initProgressbar = function (slidesWithSolutions) {
     var that = this;
     var progressbarPercentage = (1 / this.cp.slides.length) * 100;
 
@@ -63,9 +63,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         $progressbarPart.addClass('h5p-progressbar-part-show');
       }
       // Create task indicator if less than 60 slides and not in editor
-      if ((this.cp.slides.length <= 60) && this.cp.editor === undefined) {
+      if (this.cp.slides.length <= 60) {
         if (slide.elements !== undefined && slide.elements.length) {
-          if (that.cp.slidesWithSolutions[i] !== undefined && that.cp.slidesWithSolutions[i].length) {
+          if (slidesWithSolutions[i] !== undefined && slidesWithSolutions[i].length) {
             $('<div>', {
               'class': 'h5p-progressbar-part-has-task'
             }).appendTo($progressbarPart);
@@ -222,8 +222,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       });
       return;
     }
-    // Don't mark answers as answered if in solution mode.
-    if (solutionMode) {
+    // Don't mark answers as answered if in solution mode or editor mode.
+    if (solutionMode || (that.cp.editor !== undefined)) {
       return;
     }
 
