@@ -183,6 +183,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Initialize keywords
   if (this.initKeywords) {
     this.initKeywordsList(keywords);
+    if (this.presentation.keywordListAlwaysShow) {
+      this.showKeywords();
+    }
   }
   else {
     this.$keywordsWrapper.remove();
@@ -236,14 +239,32 @@ H5P.CoursePresentation.prototype.toggleKeywords = function () {
   // Check state of keywords
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     // Already open, remove keywords
-    this.$keywordsButton.attr('title', this.l10n.showKeywords);
-    this.$keywordsWrapper.add(this.$keywordsButton).removeClass('h5p-open');
+    this.hideKeywords();
   }
   else {
     // Open keywords
-    this.$keywordsButton.attr('title', this.l10n.hideKeywords);
-    this.$keywordsWrapper.add(this.$keywordsButton).addClass('h5p-open');
+    this.showKeywords();
   }
+};
+
+/**
+ * Hide keywords
+ */
+H5P.CoursePresentation.prototype.hideKeywords = function () {
+  if (this.$keywordsButton !== undefined) {
+    this.$keywordsButton.attr('title', this.l10n.showKeywords);
+  }
+  this.$keywordsWrapper.add(this.$keywordsButton).removeClass('h5p-open');
+};
+
+/**
+ * Show keywords
+ */
+H5P.CoursePresentation.prototype.showKeywords = function () {
+  if (this.$keywordsButton !== undefined) {
+    this.$keywordsButton.attr('title', this.l10n.hideKeywords);
+  }
+  this.$keywordsWrapper.add(this.$keywordsButton).addClass('h5p-open');
 };
 
 /**
