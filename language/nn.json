@@ -108,7 +108,7 @@
         },
         {
           "label": "Tekst til \"Vis svar\" knappen",
-          "default": "Oppsummer"
+          "default": "Vis svar"
         },
         {
           "label": "Tekst til \"Prøv igjen\" knappen",

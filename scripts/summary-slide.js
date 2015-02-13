@@ -140,7 +140,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
       tds += '<tr>' +
               '<td class="h5p-td h5p-summary-task-title">' +
-                '<a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + slideDescription + '</a>' +
+                '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + slideDescription + '</a>' +
               '</td>' +
               '<td class="h5p-td h5p-summary-score-bar">' +
                 '<div class="h5p-summary-score-meter">' +
