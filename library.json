@@ -17,10 +17,10 @@
   },
   "preloadedJs": [
     {
-      "path": "scripts/go-to-slide.js"
+      "path": "scripts/cp.js"
     },
     {
-      "path": "scripts/cp.js"
+      "path": "scripts/go-to-slide.js"
     },
     {
       "path": "scripts/summary-slide.js"

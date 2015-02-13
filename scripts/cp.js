@@ -464,7 +464,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   var instance;
   if (element.action === undefined) {
     // goToSlide, internal element
-    instance = new H5P.CoursePresentationGoToSlide(element.title, element.goToSlide, element.invisible, this);
+    instance = new H5P.CoursePresentation.GoToSlide(element.title, element.goToSlide, element.invisible, this);
   }
   else {
     // H5P library
@@ -1153,6 +1153,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
  * @returns {undefined} Nothing
  */
 H5P.CoursePresentation.prototype.scrollToKeywords = function () {
+  console.log(this.$currentKeyword);
   var $parent = this.$currentKeyword.parent();
   var move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
 

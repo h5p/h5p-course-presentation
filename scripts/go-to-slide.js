@@ -1,5 +1,5 @@
 /** @namespace H5P */
-H5P.CoursePresentationGoToSlide = (function ($) {
+H5P.CoursePresentation.GoToSlide = (function ($) {
 
   /**
    * Element for linking between slides in presentations.
