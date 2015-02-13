@@ -45,12 +45,19 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
 
     // Get total scores and construct progress circle
     var totalScores = that.totalScores(slideScores);
-    H5P.JoubelUI.createProgressCircle(totalScores.totalPercentage)
-      .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
+    if (isNaN(totalScores.totalPercentage)) {
+      H5P.JoubelUI.createProgressCircle(0)
+        .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
+    } else {
+      H5P.JoubelUI.createProgressCircle(totalScores.totalPercentage)
+        .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
+    }
 
+    // TEMP DISABLED! - APP-ID NEEDS TO BE APPROVED
     // Construct facebook share score link
-    var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide);
-    this.addFacebookScoreLinkTo($facebookContainer, totalScores.totalPercentage);
+    //var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide).remove();
+    //this.addFacebookScoreLinkTo($facebookContainer, totalScores.totalPercentage);
+    $('.h5p-summary-facebook-message', that.$summarySlide).remove();
 
     // Construct twitter share score link
     var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
@@ -200,9 +207,22 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       'description=I%20got%20' + percentageScore + '%25%20at:%20' + window.location.href + '&' +
       'redirect_uri=http://h5p.org/';
 
-    $facebookContainer.click(function () {
-      window.open(facebookString);
-    });
+    var popupWidth = 800;
+    var popupHeight = 500;
+    var leftPos = (window.innerWidth / 2);
+    var topPos = (window.innerHeight / 2);
+
+    $facebookContainer.attr('tabindex', '0')
+      .attr('role', 'button')
+      .click(function () {
+        window.open(facebookString,
+          that.cp.l10n.shareFacebook,
+          'width=' + popupWidth +
+          ',height=' + popupHeight +
+          ',left=' + leftPos +
+          ',top=' + topPos);
+        return false;
+      });
   };
 
   /**
@@ -214,9 +234,23 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
   SummarySlide.prototype.addTwitterScoreLinkTo = function ($twitterContainer, percentageScore) {
     var that = this;
     var twitterString = 'http://twitter.com/share?text=I%20got%20' + percentageScore + '%25%20on%20this%20task:';
-    $twitterContainer.click(function () {
-      window.open(twitterString);
-    });
+
+    var popupWidth = 800;
+    var popupHeight = 250;
+    var leftPos = (window.innerWidth / 2);
+    var topPos = (window.innerHeight / 2);
+
+    $twitterContainer.attr('tabindex', '0')
+      .attr('role', 'button')
+      .click(function () {
+        window.open(twitterString,
+          that.cp.l10n.shareTwitter,
+          'width=' + popupWidth +
+          ',height=' + popupHeight +
+          ',left=' + leftPos +
+          ',top=' + topPos);
+        return false;
+      });
 
     $('<span class="show-twitter-icon">' + that.cp.l10n.shareTwitter + '</span>')
       .appendTo($twitterContainer);
@@ -237,10 +271,15 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       totalMaxScore += slideScores[i].maxScore;
     }
 
+    var totalPercentage = Math.round((totalScore / totalMaxScore) * 100);
+    if (isNaN(totalPercentage)) {
+      totalPercentage = 0;
+    }
+
     return {
       totalScore: totalScore,
       totalMaxScore: totalMaxScore,
-      totalPercentage: Math.round((totalScore / totalMaxScore) * 100)
+      totalPercentage: totalPercentage
     };
   };
 
@@ -258,6 +297,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       this.cp.$footer.removeClass('h5p-footer-solution-mode');
       this.setFooterSolutionModeText();
       this.cp.setProgressBarFeedback();
+      this.cp.$exitSolutionModeButton.detach();
     }
   };
 

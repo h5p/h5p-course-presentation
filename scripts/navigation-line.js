@@ -7,6 +7,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.cp = coursePresentation;
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
+    this.$progressbarPopup;
   }
 
   /**
@@ -29,34 +30,47 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     var slide;
     var $progressbarPart;
     var progressbarPartTitle;
+
+    var clickProgressbar = function (event) {
+      that.cp.jumpToSlide($(this).data('slideNumber'));
+      event.preventDefault();
+    };
+
+    var mouseenterProgressbar = function (event) {
+      that.createProgressbarPopup(event, $(this));
+    };
+
+    var mouseleaveProgressbar = function () {
+      that.removeProgressbarPopup();
+    };
+
     for (i = 0; i < this.cp.slides.length; i += 1) {
       slide = this.cp.slides[i];
+
+      // Generate tooltip for progress bar slides
+      progressbarPartTitle = String(that.cp.l10n.slide) + (i + 1);
+      if (slide.keywords !== undefined && slide.keywords.length) {
+        progressbarPartTitle = slide.keywords[0].main;
+      } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1) {
+        progressbarPartTitle = that.cp.l10n.showSolutions;
+      }
 
       $progressbarPart = $('<div>', {
         'width': progressbarPercentage + '%',
         'class': 'h5p-progressbar-part'
       }).data('slideNumber', i)
-        .click(function (event) {
-          that.cp.jumpToSlide($(this).data('slideNumber'));
-          event.preventDefault();
-        }).appendTo(that.cp.$progressbar);
+        .data('keyword', progressbarPartTitle)
+        .data('percentageWidth', progressbarPercentage)
+        .mouseenter(mouseenterProgressbar)
+        .mouseleave(mouseleaveProgressbar)
+        .click(clickProgressbar)
+        .appendTo(that.cp.$progressbar);
 
       if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1)) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
       }
 
-      // Generate tooltip for progress bar slides
-      progressbarPartTitle = 'Slide ' + (i + 1);
-      if (slide.keywords !== undefined && slide.keywords.length) {
-        progressbarPartTitle = slide.keywords[0].main;
-      }
-
       $progressbarPart.attr('Title', progressbarPartTitle);
-
-      // Set tooltip for summary slide
-      if (that.cp.editor === undefined && i >= this.cp.slides.length - 1) {
-        $progressbarPart.attr('Title', that.cp.l10n.showSolutions);
-      }
 
       if (i === 0) {
         $progressbarPart.addClass('h5p-progressbar-part-show');
@@ -72,6 +86,36 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         }
       }
       that.cp.progressbarParts.push($progressbarPart);
+    }
+  };
+
+  NavigationLine.prototype.createProgressbarPopup = function (event, $parent) {
+    var that = this;
+    var progressbarTitle = $parent.data('keyword');
+
+    if (this.$progressbarPopup === undefined) {
+      this.$progressbarPopup = H5P.jQuery('<div/>', {
+        'class': 'h5p-progressbar-popup',
+        'html': progressbarTitle
+      }).appendTo(that.cp.$wrapper);
+    } else {
+      this.$progressbarPopup.appendTo(that.cp.$wrapper);
+      this.$progressbarPopup.html(progressbarTitle);
+    }
+    var leftPos = $parent.data('percentageWidth') * $parent.data('slideNumber');
+    var width = $parent.data('percentageWidth');
+    var height = '10%';
+
+    this.$progressbarPopup.css({
+      'left': leftPos + '%',
+      'width': width + '%',
+      'bottom': height
+    });
+  };
+
+  NavigationLine.prototype.removeProgressbarPopup = function () {
+    if (this.$progressbarPopup !== undefined) {
+      this.$progressbarPopup.remove();
     }
   };
 
@@ -98,12 +142,15 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Left footer elements
 
     // Toggle keywords menu
-    this.cp.$keywordsButton = $('<a/>', {
-      'href': '#',
+    this.cp.$keywordsButton = $('<div/>', {
       'class': "h5p-footer-button h5p-footer-toggle-keywords",
-      'title': this.cp.l10n.showKeywords
+      'title': this.cp.l10n.showKeywords,
+      'role': 'button',
+      'tabindex': '0'
     }).click(function (event) {
-      that.cp.toggleKeywords();
+      if (!that.cp.presentation.keywordListAlwaysShow) {
+        that.cp.toggleKeywords();
+      }
       event.preventDefault();
     }).appendTo($leftFooter);
 
@@ -122,10 +169,11 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Center footer elements
 
     // Previous slide
-    $('<a/>', {
-      'href': '#',
+    $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-previous-slide',
-      'title': this.cp.l10n.prevSlide
+      'title': this.cp.l10n.prevSlide,
+      'role': 'button',
+      'tabindex': '0'
     }).click(function (event) {
       that.cp.previousSlide();
       event.preventDefault();
@@ -152,10 +200,11 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }).appendTo($centerFooter);
 
     // Next slide
-    $('<a/>', {
-      'href': '#',
+    $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-next-slide',
-      'title': this.cp.l10n.nextSlide
+      'title': this.cp.l10n.nextSlide,
+      'role': 'button',
+      'tabindex': '0'
     }).click(function (event) {
       that.cp.nextSlide();
       event.preventDefault();
@@ -164,10 +213,11 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Right footer elements
 
     // Toggle full screen button
-    this.cp.$fullScreenButton = $('<a/>', {
-      'href': '#',
+    this.cp.$fullScreenButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
-      'title': this.cp.l10n.fullscreen
+      'title': this.cp.l10n.fullscreen,
+      'role': 'button',
+      'tabindex': '0'
     }).click(function (event) {
       that.cp.toggleFullScreen();
       event.preventDefault();
@@ -181,11 +231,12 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Exit solution mode button
     this.cp.$exitSolutionModeButton = $('<div/>', {
       'class': 'h5p-footer-exit-solution-mode',
-      'title': this.cp.l10n.solutionModeTitle
+      'title': this.cp.l10n.solutionModeTitle,
+      'tabindex': '0'
     }).click(function (event) {
       that.cp.jumpToSlide(that.cp.slides.length - 1);
       event.preventDefault();
-    }).appendTo($rightFooter);
+    });
 
     // Solution mode elements
     this.cp.$exitSolutionModeText = $('<div/>', {
@@ -255,6 +306,14 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Update current slide number in footer
     this.cp.$footerCurrentSlide.html(slideNumber + 1);
     this.cp.$footerMaxSlide.html(this.cp.slides.length);
+
+    // Hide exit solution mode button on summary slide
+    if (this.cp.isSolutionMode) {
+      this.cp.$exitSolutionModeButton.detach();
+      if (slideNumber + 1 !== this.cp.slides.length) {
+        this.cp.$exitSolutionModeButton.insertBefore(this.cp.$fullScreenButton);
+      }
+    }
 
     // Update keyword in footer
     this.updateFooterKeyword(slideNumber);
