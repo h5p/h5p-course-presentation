@@ -51,7 +51,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       progressbarPartTitle = String(that.cp.l10n.slide) + (i + 1);
       if (slide.keywords !== undefined && slide.keywords.length) {
         progressbarPartTitle = slide.keywords[0].main;
-      } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1) {
+      } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.hasSlidesWithSolutions) {
         progressbarPartTitle = that.cp.l10n.showSolutions;
       }
 
@@ -66,7 +66,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         .click(clickProgressbar)
         .appendTo(that.cp.$progressbar);
 
-      if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1)) {
+      if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.hasSlidesWithSolutions) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
       }
 

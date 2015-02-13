@@ -134,17 +134,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
   this.isSolutionMode = false;
 
-  var $summarySlide;
-
-  var summarySlideData = [];
-  if (this.editor === undefined) {
-    summarySlideData = {
-      elements: [],
-      keywords: []
-    };
-    this.slides.push(summarySlideData);
-  }
-
   // Create keywords html
   var keywords = '';
   var foundKeywords = false;
@@ -152,12 +141,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     var slide = this.slides[i];
     var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
     var first = i === 0;
-    var last = false;
-
-    //Add summary slide if not in editor
-    if (this.editor === undefined) {
-      last = i === this.slides.length - 1;
-    }
 
     if (first) {
       this.$current = $slide.addClass('h5p-current');
@@ -171,11 +154,29 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     if (this.initKeywords) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
+  }
 
-    if (last) {
-      $slide.addClass('h5p-summary-slide');
-      $summarySlide = H5P.jQuery('.h5p-summary-slide');
+  var $summarySlide;
+  that.hasSlidesWithSolutions = false;
+  this.slidesWithSolutions.forEach(function (slide) {
+    if (slide.length) {
+      that.hasSlidesWithSolutions = true;
     }
+  });
+
+  var summarySlideData = [];
+  if ((this.editor === undefined) && (this.hasSlidesWithSolutions)) {
+    summarySlideData = {
+      elements: [],
+      keywords: []
+    };
+    this.slides.push(summarySlideData);
+
+    var slide = this.slides[this.slides.length - 1];
+    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
+
+    $slide.addClass('h5p-summary-slide');
+    $summarySlide = H5P.jQuery('.h5p-summary-slide');
   }
 
   if (!foundKeywords && this.editor === undefined) {
