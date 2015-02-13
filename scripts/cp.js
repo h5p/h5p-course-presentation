@@ -46,7 +46,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     solutionModeTitle: 'Exit solution mode',
     solutionModeText: 'Solution Mode:',
     solutionModeUnderlined: 'Close',
-    summaryMultipleTaskText: 'Text when multiple tasks on a page',
+    summaryMultipleTaskText: 'Multiple tasks',
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
@@ -1234,6 +1234,7 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       var slideScore = 0;
       var slideMaxScore = 0;
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
+        var indexes = [];
         var elementInstance = this.slidesWithSolutions[i][j];
         if (elementInstance.addSolutionButton !== undefined) {
           elementInstance.addSolutionButton();
@@ -1248,9 +1249,11 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
           hasScores = true;
+          indexes.push(j);
         }
       }
       slideScores.push({
+        indexes: indexes,
         slide: (i + 1),
         score: slideScore,
         maxScore: slideMaxScore

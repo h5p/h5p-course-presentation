@@ -25,6 +25,10 @@
   font-size: 0.7em;
 }
 
+.h5p-course-presentation .h5p-summary-task-title .h5p-slide-link {
+  cursor: pointer;
+}
+
 /* Rectangular summary score meter */
 .h5p-course-presentation .h5p-summary-score-meter {
   height: 0.4em;
