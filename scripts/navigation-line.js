@@ -102,13 +102,17 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       this.$progressbarPopup.appendTo(that.cp.$wrapper);
       this.$progressbarPopup.html(progressbarTitle);
     }
-    var leftPos = $parent.data('percentageWidth') * $parent.data('slideNumber');
-    var width = $parent.data('percentageWidth');
+    var pbpartPercentWidth = $parent.data('percentageWidth');
+    var leftPos = (pbpartPercentWidth * $parent.data('slideNumber')) + (pbpartPercentWidth / 2);
+    var width = this.$progressbarPopup.width();
     var height = '10%';
+
+    if ((((leftPos / 100) * this.cp.$container.width()) + width) >= this.cp.$container.width()) {
+      leftPos -= (width / (this.cp.$container.width() / 100));
+    }
 
     this.$progressbarPopup.css({
       'left': leftPos + '%',
-      'width': width + '%',
       'bottom': height
     });
   };
