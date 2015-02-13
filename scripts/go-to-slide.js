@@ -10,7 +10,6 @@ H5P.CoursePresentationGoToSlide = (function ($) {
    */
   function GoToSlide(title, slideNum, invisible, cp) {
     var self = this;
-    self.$ = $(self);
 
     var classes = 'h5p-press-to-go';
     var tabindex = 1;

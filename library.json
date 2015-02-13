@@ -13,7 +13,7 @@
   "author": "Amendor AS",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 2
+    "minorVersion": 4
   },
   "preloadedJs": [
     {

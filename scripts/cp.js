@@ -10,7 +10,7 @@ var H5P = H5P || {};
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation = function (params, id, editor) {
-  this.$ = H5P.jQuery(this);
+  H5P.EventDispatcher.call(this);
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
   this.contentId = id;
@@ -57,9 +57,11 @@ H5P.CoursePresentation = function (params, id, editor) {
     this.overrideShowSolutionsButton = (params.override.overrideShowSolutionButton === undefined ? false : params.override.overrideShowSolutionButton);
     this.overrideRetry = (params.override.overrideRetry === undefined ? false : params.override.overrideRetry);
   }
-
-  this.postUserStatistics = (H5P.postUserStatistics === true);
+  this.on('resize', this.resize, this);
 };
+
+H5P.CoursePresentation.prototype = Object.create(H5P.EventDispatcher.prototype);
+H5P.CoursePresentation.prototype.constructor = H5P.CoursePresentation;
 
 /**
  * Render the presentation inside the given container.
@@ -328,7 +330,7 @@ H5P.CoursePresentation.prototype.resize = function () {
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined) {
-        instance.$.trigger('resize');
+        H5P.trigger(instance, 'resize');
       }
     }
   }
@@ -451,15 +453,13 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
           behaviour: {
             enableSolutionsButton: this.overrideShowSolutionsButton,
             enableRetry: this.overrideRetry
-          },
-          postUserStatistics: false
+          }
         }
       };
     }
     else {
       defaults = {
         params: {
-          postUserStatistics: false
         }
       };
     }
@@ -556,7 +556,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
           }
           $buttonElement.detach();
         }, libTypePmz).find('.h5p-popup-wrapper'));
-        instance.$.trigger('resize'); // Drop on audio and video??
+        H5P.trigger(instance, 'resize');
         // Stop sound??
 
         // Resize images to fit popup dialog
@@ -1106,13 +1106,6 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   // Update summary slide if on last slide
   that.summarySlideObject.updateSummarySlide(slideNumber);
 
-  // Export answers on last slide
-  if (slideNumber === this.slides.length - 1 && this.editor === undefined) {
-    if (this.postUserStatistics === true) {
-      H5P.setFinished(this.contentId, 0, 0);
-    }
-  }
-
   // Editor specific settings
   if (this.editor !== undefined && this.editor.dnb !== undefined) {
     // Update drag and drop menu bar container
@@ -1120,7 +1113,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     this.editor.dnb.blur();
   }
 
-  this.$.trigger('resize'); // Triggered to resize elements.
+  this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
 };

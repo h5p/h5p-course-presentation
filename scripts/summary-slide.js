@@ -13,7 +13,6 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     // Create summary slide if not an editor
     this.$summarySlide = $summarySlide;
     this.cp = coursePresentation;
-    this.$ = $;
   }
 
   /**
@@ -146,9 +145,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       totalMaxScore += slideScores[i].maxScore;
     }
 
-    if (that.cp.postUserStatistics === true) {
-      H5P.setFinished(that.cp.contentId, totalScore, totalMaxScore);
-    }
+    that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
 
     var percentScore = Math.round((totalScore / totalMaxScore) * 100);
 
