@@ -968,7 +968,8 @@ H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideN
   if ((this.$keywords !== undefined) && (this.$keywords.children(':eq(' + slideNumber + ')').find('span').html() !== undefined)) {
     keyword += this.$keywords.children(':eq(' + slideNumber + ')').find('span').html();
   } else {
-    keyword += this.l10n.slide + slideNumber;
+    var slideIndexToNumber = slideNumber+1;
+    keyword += this.l10n.slide + slideIndexToNumber;
   }
 
   // Summary slide keyword
