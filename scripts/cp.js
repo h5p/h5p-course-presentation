@@ -1162,7 +1162,6 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
  * @returns {undefined} Nothing
  */
 H5P.CoursePresentation.prototype.scrollToKeywords = function () {
-  console.log(this.$currentKeyword);
   var $parent = this.$currentKeyword.parent();
   var move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
 
