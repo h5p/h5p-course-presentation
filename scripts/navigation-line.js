@@ -147,11 +147,18 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       'title': this.cp.l10n.showKeywords,
       'role': 'button',
       'tabindex': '0'
-    }).click(function (event) {
+    }).click(function () {
       if (!that.cp.presentation.keywordListAlwaysShow) {
         that.cp.toggleKeywords();
       }
-      event.preventDefault();
+    }).keydown(function (e) { // Trigger the click event from the keyboard
+      var code = e.which;
+      // 32 = Space
+      if (code === 32) {
+        $(this).click();
+        e.preventDefault();
+      }
+      $(this).focus();
     }).appendTo($leftFooter);
 
     if (this.cp.presentation.keywordListAlwaysShow || !this.cp.initKeywords) {
@@ -174,9 +181,16 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       'title': this.cp.l10n.prevSlide,
       'role': 'button',
       'tabindex': '0'
-    }).click(function (event) {
+    }).click(function () {
       that.cp.previousSlide();
-      event.preventDefault();
+    }).keydown(function (e) { // Trigger the click event from the keyboard
+      var code = e.which;
+      // 32 = Space
+      if (code === 32) {
+        $(this).click();
+        e.preventDefault();
+      }
+      $(this).focus();
     }).appendTo($centerFooter);
 
     // Current slide count
@@ -205,9 +219,16 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       'title': this.cp.l10n.nextSlide,
       'role': 'button',
       'tabindex': '0'
-    }).click(function (event) {
+    }).click(function () {
       that.cp.nextSlide();
-      event.preventDefault();
+    }).keydown(function (e) { // Trigger the click event from the keyboard
+      var code = e.which;
+      // 32 = Space
+      if (code === 32) {
+        $(this).click();
+        e.preventDefault();
+      }
+      $(this).focus();
     }).appendTo($centerFooter);
 
     // Right footer elements
@@ -218,9 +239,16 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       'title': this.cp.l10n.fullscreen,
       'role': 'button',
       'tabindex': '0'
-    }).click(function (event) {
+    }).click(function () {
       that.cp.toggleFullScreen();
-      event.preventDefault();
+    }).keydown(function (e) { // Trigger the click event from the keyboard
+      var code = e.which;
+      // 32 = Space
+      if (code === 32) {
+        $(this).click();
+        e.preventDefault();
+      }
+      $(this).focus();
     });
 
     // Do not allow fullscreen in editor mode
@@ -236,6 +264,14 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }).click(function (event) {
       that.cp.jumpToSlide(that.cp.slides.length - 1);
       event.preventDefault();
+    }).keydown(function (e) { // Trigger the click event from the keyboard
+      var code = e.which;
+      // 32 = Space
+      if (code === 32) {
+        $(this).click();
+        e.preventDefault();
+      }
+      $(this).focus();
     });
 
     // Solution mode elements
