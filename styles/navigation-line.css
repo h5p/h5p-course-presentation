@@ -301,6 +301,7 @@
   font-size: 0.75em;
 
   max-width: 50%;
+  padding: 0 0.3em;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -175,6 +175,15 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     var slide = this.slides[this.slides.length - 1];
     var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
 
+    this.addElements(slide, $slide, i);
+
+    if (!foundKeywords && slide.keywords !== undefined && slide.keywords.length) {
+      foundKeywords = true;
+    }
+    if (this.initKeywords) {
+      keywords += this.keywordsHtml(slide.keywords, first);
+    }
+
     $slide.addClass('h5p-summary-slide');
     $summarySlide = H5P.jQuery('.h5p-summary-slide');
   }
