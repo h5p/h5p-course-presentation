@@ -49,7 +49,8 @@ H5P.CoursePresentation = function (params, id, editor) {
     summaryMultipleTaskText: 'Text when multiple tasks on a page',
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
-    shareTwitter: 'Share on Twitter'
+    shareTwitter: 'Share on Twitter',
+    goToSlide: 'Go to slide :num'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (params.override !== undefined) {
