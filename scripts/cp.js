@@ -364,11 +364,11 @@ H5P.CoursePresentation.prototype.resize = function () {
  * Enter/exit full screen mode.
  */
 H5P.CoursePresentation.prototype.toggleFullScreen = function () {
-  if (this.$fullScreenButton.hasClass('h5p-exit')) {
+  if (this.$container.hasClass('h5p-fullscreen')) {
     // Downscale fullscreen font size
     this.$footer.removeClass('footer-full-screen');
 
-    this.$fullScreenButton.removeClass('h5p-exit').attr('title', this.l10n.fullscreen);
+    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Click button to disable fullscreen
       $('.h5p-disable-fullscreen').click();
@@ -389,7 +389,7 @@ H5P.CoursePresentation.prototype.toggleFullScreen = function () {
     // Rescale footer buttons
     this.$footer.addClass('footer-full-screen');
 
-    this.$fullScreenButton.addClass('h5p-exit').attr('title', this.l10n.exitFullscreen);
+    this.$fullScreenButton.attr('title', this.l10n.exitFullscreen);
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
