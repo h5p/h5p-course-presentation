@@ -46,10 +46,11 @@ H5P.CoursePresentation = function (params, id, editor) {
     solutionModeTitle: 'Exit solution mode',
     solutionModeText: 'Solution Mode:',
     solutionModeUnderlined: 'Close',
-    summaryMultipleTaskText: 'Text when multiple tasks on a page',
+    summaryMultipleTaskText: 'Multiple tasks',
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
-    shareTwitter: 'Share on Twitter'
+    shareTwitter: 'Share on Twitter',
+    goToSlide: 'Go to slide :num'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (params.override !== undefined) {
@@ -473,7 +474,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   var instance;
   if (element.action === undefined) {
     // goToSlide, internal element
-    instance = new H5P.CoursePresentationGoToSlide(element.title, element.goToSlide, element.invisible, this);
+    instance = new H5P.CoursePresentation.GoToSlide(element.title, element.goToSlide, element.invisible, this);
   }
   else {
     // H5P library
@@ -1233,6 +1234,7 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       var slideScore = 0;
       var slideMaxScore = 0;
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
+        var indexes = [];
         var elementInstance = this.slidesWithSolutions[i][j];
         if (elementInstance.addSolutionButton !== undefined) {
           elementInstance.addSolutionButton();
@@ -1247,9 +1249,11 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
           hasScores = true;
+          indexes.push(j);
         }
       }
       slideScores.push({
+        indexes: indexes,
         slide: (i + 1),
         score: slideScore,
         maxScore: slideMaxScore

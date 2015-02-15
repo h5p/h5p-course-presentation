@@ -64,7 +64,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     this.addTwitterScoreLinkTo($twitterContainer, totalScores.totalPercentage);
 
     // Update slide links
-    var links = that.$summarySlide.find('.h5p-td > a');
+    var links = that.$summarySlide.find('.h5p-td > .h5p-slide-link');
     links.each(function () {
       var slideLink = $(this);
       slideLink.click(function (event) {
@@ -122,10 +122,10 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       }
       // Get task description, task name or identify multiple tasks:
       slideElements = that.cp.slides[slideScores[i].slide - 1].elements;
-      if (slideElements.length > 1) {
+      if (slideScores[i].indexes.length > 1) {
         slideDescription = that.cp.l10n.summaryMultipleTaskText;
-      } else if (slideElements[0] !== undefined && slideElements[0]) {
-        action = slideElements[0].action;
+      } else if (slideElements[slideScores[i].indexes[0]] !== undefined && slideElements[0]) {
+        action = slideElements[slideScores[i].indexes[0]].action;
         if (action.params.taskDescription !== undefined && action.params.taskDescription) {
           slideDescription = action.params.taskDescription;
         } else if (action.params.text !== undefined && action.params.text) {
@@ -140,7 +140,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
       tds += '<tr>' +
               '<td class="h5p-td h5p-summary-task-title">' +
-                '<a href="#" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + slideDescription + '</a>' +
+                '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig,"")) + '</span>' +
               '</td>' +
               '<td class="h5p-td h5p-summary-score-bar">' +
                 '<div class="h5p-summary-score-meter">' +

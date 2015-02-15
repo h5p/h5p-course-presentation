@@ -22,12 +22,16 @@
 .h5p-course-presentation .h5p-summary-task-title {
   width: 60%;
   text-align: left;
-  font-size: 0.6em;
+  font-size: 0.7em;
+}
+
+.h5p-course-presentation .h5p-summary-task-title .h5p-slide-link {
+  cursor: pointer;
 }
 
 /* Rectangular summary score meter */
 .h5p-course-presentation .h5p-summary-score-meter {
-  height: 0.2em;
+  height: 0.4em;
   background: #e0e0e0;
 }
 
