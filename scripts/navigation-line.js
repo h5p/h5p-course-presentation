@@ -7,8 +7,28 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.cp = coursePresentation;
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
+    this.initTaskAnsweredListener();
     this.$progressbarPopup;
   }
+
+  /**
+   * Initializes xAPI event listener, updates progressbar when a task is changed.
+   */
+  NavigationLine.prototype.initTaskAnsweredListener = function () {
+    var that = this;
+
+    this.cp.elementInstances.forEach(function (element) {
+      element.forEach(function (elementInstance) {
+        if (elementInstance.on !== undefined) {
+          elementInstance.on('xAPI', function (event) {
+            if (event.getVerb() === 'attempted') {
+              that.updateProgressBar(that.cp.currentSlideIndex, that.cp.currentSlideIndex);
+            }
+          });
+        }
+      })
+    });
+  };
 
   /**
    * Initialize progress bar
