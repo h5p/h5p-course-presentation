@@ -171,9 +171,10 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       'title': this.cp.l10n.showKeywords,
       'role': 'button',
       'tabindex': '0'
-    }).click(function () {
+    }).click(function (event) {
       if (!that.cp.presentation.keywordListAlwaysShow) {
         that.cp.toggleKeywords();
+        event.stopPropagation();
       }
     }).keydown(function (e) { // Trigger the click event from the keyboard
       var code = e.which;
