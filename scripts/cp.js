@@ -516,13 +516,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     if (instance.preventResize !== undefined) {
       instance.preventResize = true;
     }
-
-    if (this.checkForSolutions(instance)) {
-      if (this.slidesWithSolutions[index] === undefined) {
-        this.slidesWithSolutions[index] = [];
-      }
-      this.slidesWithSolutions[index].push(instance);
-    }
   }
 
   if (this.elementInstances[index] === undefined) {
@@ -530,6 +523,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   }
   else {
     this.elementInstances[index].push(instance);
+  }
+  
+  if (this.checkForSolutions(instance)) {
+    instance.coursePresentationIndexOnSlide = this.elementInstances[index].length - 1;
+    if (this.slidesWithSolutions[index] === undefined) {
+      this.slidesWithSolutions[index] = [];
+    }
+    this.slidesWithSolutions[index].push(instance);
   }
 
   return instance;
@@ -1249,7 +1250,7 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
           hasScores = true;
-          indexes.push(j);
+          indexes.push(elementInstance.coursePresentationIndexOnSlide);
         }
       }
       slideScores.push({
