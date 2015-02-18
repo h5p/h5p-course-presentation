@@ -1233,8 +1233,8 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
       }
       var slideScore = 0;
       var slideMaxScore = 0;
+      var indexes = [];
       for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var indexes = [];
         var elementInstance = this.slidesWithSolutions[i][j];
         if (elementInstance.addSolutionButton !== undefined) {
           elementInstance.addSolutionButton();
