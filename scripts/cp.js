@@ -1090,6 +1090,9 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
       if (instances[i].video) {
         instances[i].video.pause();
       }
+      if (typeof instances[i].pause === 'function') {
+        instances[i].pause();
+      }
     }
   }
 
