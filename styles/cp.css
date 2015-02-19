@@ -23,7 +23,7 @@
 }
 
 .h5p-container.h5p-course-presentation {
-  margin-bottom: 0.5em;
+  margin-bottom: 0em;
 }
 
 .h5p-course-presentation h1,
@@ -78,11 +78,9 @@
   outline: none;
 }
 .h5p-course-presentation .h5p-box-wrapper {
-  margin: 0 0 0.25em;
   width: 100%;
   height: 90%;
   overflow: hidden;
-  padding-bottom: 0.3em;
   background: #666666;
   box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
 }
@@ -101,42 +99,6 @@
   background-image: -moz-linear-gradient(top, #f0f0f0, #e8e6e7);
   background-image: linear-gradient(to bottom, #f0f0f0, #e8e6e7);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e6e7', GradientType=0);
-}
-
-.h5p-course-presentation .h5p-keywords-button {
-  position: absolute;
-  z-index: 4;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  color: #eee;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.3);
-  line-height: 1em;
-  font-size: 1em;
-  width: 1em;
-  height: 1em;
-  outline: none;
-  padding: 0.125em 0.25em;
-  -webkit-transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
-  -moz-transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
-  transition: left 0.1s linear, background 0.05s linear, color 0.05s linear;
-}
-.h5p-course-presentation .h5p-keywords-button:hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-.h5p-course-presentation .h5p-keywords-button:active {
-  color: pink;
-}
-.h5p-course-presentation .h5p-keywords-button.h5p-open {
-  left: 31.25%;
-}
-.h5p-course-presentation .h5p-keywords-button:before {
-  font-family: 'H5PCoursePresentation';
-  content: "\e605";
-}
-.h5p-course-presentation .h5p-keywords-button.h5p-open:before {
-  content: "\e604";
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper {
@@ -265,36 +227,8 @@
   right: 0.5em;
 }
 .h5p-course-presentation .h5p-action-bar a,
-.h5p-course-presentation .h5p-slideination a,
 .h5p-course-presentation .h5p-action-foo a {
   text-decoration: none;
-}
-
-.h5p-course-presentation .h5p-show-solutions,
-.h5p-course-presentation .h5p-cp-retry-button,
-.h5p-course-presentation .h5p-eta-export {
-  float: right;
-  display: none;
-  font-size: 0.6em;
-  padding: 0 0.6em;
-  color: #323232;
-  border: 0.2em solid #fff;
-  border-radius: 0.4em;
-  margin: 0.15em;
-  height: 2em;
-  line-height: 2em;
-  cursor: pointer;
-  color: #fff;
-  box-shadow: 0 0 0.5em #999;
-  position: relative;
-
-  background: rgb(100,152,254); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(100,152,254,1) 0%, rgba(4,104,206,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,152,254,1)), color-stop(100%,rgba(4,104,206,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 );
 }
 
 .h5p-course-presentation .h5p-copyinfo-header {
@@ -304,163 +238,14 @@
   margin-bottom: 0.4em;
 }
 
-.h5p-course-presentation .h5p-eta-export.flash {
-  padding: 0 0.75em;
-  line-height:0;
-  height: 2em;
-}
-
-.h5p-course-presentation .h5p-eta-export:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f0f6";
-  margin-right: 0.5em;
-}
-
-.h5p-course-presentation .h5p-eta-export.flash:before {
-  position: relative;
-  top: -1.5em;
-}
-
-.h5p-course-presentation .h5p-show-solutions:before {
+.h5p-course-presentation .h5p-cp-show-solutions:before {
   font-family: 'H5PFontAwesome4';
   content: "\f06e";
   margin-right: 0.5em;
 }
 
-.h5p-course-presentation .h5p-cp-retry-button:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f021";
-  margin-right: 0.5em;
-}
-
-.h5p-course-presentation .h5p-cp-retry-button {
+.h5p-course-presentation .h5p-cp-show-solutions {
   display: inline-block;
-  float: none;
-  position: static;
-  margin-bottom: 1em;
-  font-size: 0.9em;
-}
-
-.h5p-course-presentation .h5p-show-solutions:hover,
-.h5p-course-presentation .h5p-cp-retry-button:hover,
-.h5p-course-presentation .h5p-eta-export:hover {
-  background: rgb(4,104,206); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(4,104,206,1)), color-stop(100%,rgba(100,152,254,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0468ce', endColorstr='#6498fe',GradientType=0 ); /* IE6-9 */
-}
-
-.h5p-course-presentation .h5p-progressbar {
-  width: 100%;
-  overflow: hidden;
-}
-.h5p-course-presentation .h5p-progressbar .h5p-completed {
-  height: 0.25em;
-  width: 0;
-  box-shadow: 0 0 0.25em 0 #fff;
-  background: #0097fd;
-  background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
-  background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
-  background-image: linear-gradient(to bottom, #0097fd, #096bcb);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0097fd', endColorstr='#096bcb', GradientType=0);
-  -webkit-transition: width 0.25s ease-in-out;
-  -moz-transition: width 0.25s ease-in-out;
-  -ms-transition: width 0.25s ease-in-out;
-  transition: width 0.25s ease-in-out;
-}
-
-.h5p-course-presentation .h5p-slideination {
-  height: 2em;
-  margin: 0.15em;
-  display: inline-block;
-  overflow: hidden;
-  border: 1px solid #d9d9d9;
-  font-size: 0.75em;
-  border-radius: 0.5em;
-}
-.h5p-course-presentation .h5p-slideination a {
-  color: #323232;
-}
-.h5p-course-presentation .h5p-slideination a:hover {
-  text-decoration: none;
-}
-.h5p-course-presentation .h5p-slideination > a {
-  display: block;
-  float: left;
-  padding: 0.25em 0.5em;
-  line-height: 1.5em;
-  opacity: 0.45;
-  filter: alpha(opacity = 45);
-  cursor: default;
-  background: #dfdfdf;
-  background-image: -webkit-linear-gradient(top, #efefef, #cccccc);
-  background-image: -moz-linear-gradient(top, #efefef, #cccccc);
-  background-image: linear-gradient(to bottom, #efefef, #cccccc);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#cccccc', GradientType=0);
-}
-.h5p-course-presentation .h5p-slideination > a.h5p-scroll-enabled {
-  opacity: 1;
-  filter: alpha(opacity = 100);
-  cursor: pointer;
-}
-.h5p-course-presentation .h5p-slideination > a.h5p-scroll-enabled:hover,
-.h5p-course-presentation .h5p-slideination > .h5p-go-home:hover {
-  background: #e9e9e9;
-  background-image: -webkit-linear-gradient(top, #f9f9f9, #d9d9d9);
-  background-image: -moz-linear-gradient(top, #f9f9f9, #d9d9d9);
-  background-image: linear-gradient(to bottom, #f9f9f9, #d9d9d9);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#d9d9d9', GradientType=0);
-}
-.h5p-course-presentation .h5p-slideination > .h5p-scroll-left {
-  border-right: 0.0833em solid #d9d9d9;
-  border-left: 0.0833em solid #d9d9d9;
-}
-.h5p-course-presentation .h5p-slideination > .h5p-scroll-left:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f04a";
-}
-.h5p-course-presentation .h5p-slideination > .h5p-go-home {
-  border-right: 0.0833em solid #d9d9d9;
-  opacity: 1;
-  filter: alpha(opacity = 100);
-  cursor: pointer;
-}
-.h5p-course-presentation .h5p-slideination > .h5p-go-home:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f015";
-}
-.h5p-course-presentation .h5p-slideination > .h5p-scroll-right {
-  border-left: 0.0833em solid #d9d9d9;
-}
-.h5p-course-presentation .h5p-slideination > .h5p-scroll-right:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f04e";
-}
-
-.h5p-course-presentation .h5p-slideination ol {
-  position: relative;
-  float: left;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  width: 11.75em;
-  overflow: auto;
-  overflow-y: hidden;
-  font-size: 1.25em;
-  line-height: 1.62em;
-  white-space: nowrap;
-  background: #f9f9f9;
-  background-image: -webkit-linear-gradient(top, #dfdfdf, #f9f9f9);
-  background-image: -moz-linear-gradient(top, #dfdfdf, #f9f9f9);
-  background-image: linear-gradient(to bottom, #dfdfdf, #f9f9f9);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#f9f9f9', GradientType=0);
-}
-
-.h5p-course-presentation .h5p-slideination ol::-webkit-scrollbar {
-  -webkit-appearance: none; /* For safari */
 }
 
 .h5p-course-presentation .h5p-slide-button {
@@ -486,6 +271,7 @@
 .h5p-course-presentation .h5p-slide-button.h5p-current a:hover {
   color: #ffffff;
 }
+
 .h5p-course-presentation .h5p-has-solutions a, .h5p-course-presentation .h5p-has-solutions a:hover {
   text-decoration: underline;
 }
@@ -503,7 +289,7 @@
   overflow: visible !important;
   z-index: 2;
 }
-.h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content {
+.h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content, .h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
   overflow: auto;
 }
 
@@ -572,32 +358,33 @@
   font-weight: bold;
 }
 
-.h5p-course-presentation .h5p-score-message-header {
-  font-size: 1.2em;
-  color: #555;
-  font-weight: bold;
-  margin-bottom: 0.4em;
-}
-
-.h5p-course-presentation .h5p-score-message {
-  font-size: 0.8em;
-  margin-bottom: 1em;
-}
-
-.h5p-course-presentation .h5p-popup-container table {
+.h5p-course-presentation .h5p-score-table {
+  width: 100%;
   border-collapse: collapse;
+  border-spacing: 0px;
 }
 
 .h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
-  padding-right: 1.4em;
+  padding-right: 0.3em;
 }
 
 .h5p-course-presentation .h5p-th {
   border-bottom: 1px solid #ccc;
 }
 
-.h5p-course-presentation tfoot .h5p-td {
+.h5p-course-presentation .h5p-td {
   border-top: 1px solid #ccc;
+}
+
+.h5p-course-presentation .h5p-td p {
+  display: inline;
+  color: -webkit-link;
+  text-decoration: underline;
+}
+
+/* Popup style */
+.h5p-course-presentation .h5p-popup-container table {
+border-collapse: collapse;
 }
 
 .h5p-course-presentation .h5p-element-solution {
@@ -610,8 +397,8 @@
   bottom: 0.1em;
   width: 1.27em;
   height: 1.25em;
-  background-image: none\0/;
-  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src='data:image/png;base64,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', sizingMethod='scale');
+  background-image: none \0/;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='data:image/png;base64,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', sizingMethod='scale');
 }
 
 .h5p-course-presentation .h5p-element-button {
@@ -644,9 +431,9 @@
   transition: transform 0.2s;
 
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility:    hidden;
-  -ms-backface-visibility:     hidden;
-  backface-visibility:     hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button,
@@ -661,7 +448,7 @@
   background: #981d99;
   background-image: -webkit-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
   background: -moz-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
-  background: -ms-linear-gradient(bottom, #981d99 50% ,#ce6cd8 50%, #981d99 100%);
+  background: -ms-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
   background: linear-gradient(to top, #981d99 50%, #ce6cd8 50%, #981d99 100%);
 }
 
@@ -674,11 +461,11 @@
 
 .h5p-course-presentation .h5p-element-button:hover {
   text-decoration: none;
-  -webkit-transform: scale(1.1,1.1);
-  -moz-transform: scale(1.1,1.1);
-  -ms-transform: scale(1.1,1.1);
-  -o-transform: scale(1.1,1.1);
-  transform: scale(1.1,1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button:before,
@@ -695,36 +482,47 @@
 .h5p-course-presentation .h5p-text-button:before {
   content: "\f05a";
 }
+
 .h5p-course-presentation .h5p-exportabletextarea-button:before {
   content: "\e995";
 }
+
 .h5p-course-presentation .h5p-table-button:before {
   content: "\f0ce";
 }
+
 .h5p-course-presentation .h5p-link-button:before {
   content: "\f0c1";
 }
+
 .h5p-course-presentation .h5p-image-button:before {
   content: "\f03e";
 }
+
 .h5p-course-presentation .h5p-video-button:before {
   content: "\f008";
 }
+
 .h5p-course-presentation .h5p-audio-button:before {
   content: "\f028";
 }
+
 .h5p-course-presentation .h5p-blanks-button:before {
   content: "\e994";
 }
+
 .h5p-course-presentation .h5p-multichoice-button:before {
   content: "\e993";
 }
+
 .h5p-course-presentation .h5p-dragquestion-button:before {
   content: "\e991";
 }
+
 .h5p-course-presentation .h5p-summary-button:before {
   content: "\e992";
 }
+
 .h5p-course-presentation .h5p-interactivevideo-button:before {
   content: "\f03d";
 }
@@ -737,7 +535,6 @@
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
 }
-
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
 }
@@ -765,6 +562,7 @@
   background-color: #000;
   width: 100%;
 }
+
 .h5p-course-presentation .h5p-button-element.h5p-audio-wrapper .h5p-audio {
   min-height: 30px;
 }
@@ -798,15 +596,19 @@
 .h5p-course-presentation .h5p-table {
   border-collapse: collapse;
 }
+
 .h5p-course-presentation .h5p-table th {
   border-bottom: 0.167em solid #494949;
 }
+
 .h5p-course-presentation .h5p-table td {
   border-bottom: 0.083em solid #494949;
 }
+
 .h5p-course-presentation .h5p-table tr:last-child td {
   border-bottom: 0;
 }
+
 .h5p-course-presentation .cke_editable .h5p-table, .h5p-course-presentation .cke_editable .h5p-table th, .h5p-course-presentation .cke_editable .h5p-table td {
   border: 0.083em dashed #999;
 }
@@ -815,6 +617,7 @@
   font-size: 100%;
   line-height: 165%;
 }
+
 .h5p-course-presentation .ct > *:last-child {
   margin: 0;
 }
@@ -825,13 +628,39 @@
   font-size: 0.75em;
   line-height: 1.25em;
 }
+
 .h5p-course-presentation .h5p-copyinfo > dt {
   float: left;
   margin: 0 0.75em 0 0;
 }
+
 .h5p-course-presentation .h5p-copyinfo > dt:after {
   content: ":";
 }
+
 .h5p-course-presentation .h5p-copyinfo > dd {
   margin: 0;
+}
+
+/* Hides full screen button like in IV, uses own full screen button */
+.h5p-course-presentation .h5p-content-controls {
+  visibility:hidden;
+  position: absolute;
+  top:0;
+}
+
+.h5p-course-presentation .h5p-presentation-wrapper .h5p-touch-popup {
+  display: block;
+  position: absolute;
+  z-index: 2;
+
+  padding: 0.5em;
+  border-radius: 0.5em;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  background: #000;
+  color: #FFF;
 }

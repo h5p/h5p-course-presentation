@@ -1,0 +1,139 @@
+/* --------------------------------------- Summary slide styling ---------------------------- */
+.h5p-course-presentation .h5p-summary-slide {
+  background: #fff;
+  text-align: center;
+}
+
+/* Summary header */
+.h5p-course-presentation .h5p-score-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3em 0 1em;
+  font-size: 0.8em;
+}
+
+.h5p-course-presentation .h5p-score-message-percentage {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Summary task table */
+.h5p-course-presentation .h5p-summary-task-title {
+  width: 60%;
+  text-align: left;
+  font-size: 0.7em;
+}
+
+.h5p-course-presentation .h5p-summary-task-title .h5p-slide-link {
+  cursor: pointer;
+}
+
+/* Rectangular summary score meter */
+.h5p-course-presentation .h5p-summary-score-meter {
+  height: 0.4em;
+  background: #e0e0e0;
+}
+
+.h5p-course-presentation .h5p-summary-score-meter > span {
+  display: block;
+  height: 100%;
+  background-color: #096bcb;
+}
+
+/* ------------------------------- Summary table style -----------------------------------  */
+.h5p-course-presentation .h5p-summary-table-holder {
+  height: 65%;
+  margin: 0 1em;
+}
+
+.h5p-course-presentation .h5p-summary-table-pages {
+  overflow: auto;
+  max-height: 85%;
+}
+
+.h5p-course-presentation .h5p-summary-total-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ---------------------------- Social media styles ---------------------------------------------- */
+
+/* Facebook and Twitter link styling */
+.h5p-course-presentation .h5p-summary-twitter-message,
+.h5p-course-presentation .h5p-summary-facebook-message {
+  cursor: pointer;
+  font-size: 0.7em;
+  padding: 0 0.5em;
+  color: #096bcb;
+}
+
+.h5p-course-presentation .h5p-summary-twitter-message > span,
+.h5p-course-presentation .h5p-summary-facebook-message > span {
+  text-decoration: underline;
+}
+
+.h5p-course-presentation .h5p-summary-twitter-message:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f099";
+  padding-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-facebook-message:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f09a";
+  padding-right: 0.5em;
+}
+
+/* --------------------------------- Button styling ----------------------------------------------- */
+
+/* Summary slide button styling */
+.h5p-course-presentation .h5p-summary-slide button {
+  font-size: 0.6em;
+  padding: 0 0.6em;
+  border: 0.2em solid #fff;
+  border-radius: 0.4em;
+  margin: 0.15em;
+  line-height: 2em;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 0 0.5em #999;
+  position: relative;
+
+  background: rgb(100,152,254); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(100,152,254,1) 0%, rgba(4,104,206,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,152,254,1)), color-stop(100%,rgba(4,104,206,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 );
+}
+
+.h5p-course-presentation .h5p-summary-slide button {
+  background: rgb(4,104,206); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(4,104,206,1)), color-stop(100%,rgba(100,152,254,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0468ce', endColorstr='#6498fe',GradientType=0 ); /* IE6-9 */
+}
+
+.h5p-course-presentation .h5p-summary-slide .h5p-eta-export:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0f6";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-slide .h5p-show-solutions:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f06e";
+  margin-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-slide .h5p-cp-retry-button:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f021";
+  margin-right: 0.5em;
+}

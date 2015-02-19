@@ -78,22 +78,6 @@
       "label": "Ledetekster",
       "fields": [
         {
-          "label": "Ledetekst til \"Gå hjem\" knapp",
-          "default": "Hjem"
-        },
-        {
-          "label": "Ledetekst til \"Bla til venstre\" knapp",
-          "default": "Hold inne for å rulle til venstre"
-        },
-        {
-          "label": "Ledetekst til slide knappene",
-          "default": "Hopp til slide"
-        },
-        {
-          "label": "Ledetekst til \"Bla til høyre\" knapp",
-          "default": "Hold inne for å rulle til høyre"
-        },
-        {
           "label": "Oversettelse for \"Slide\"",
           "default": "Slide"
         },
@@ -126,7 +110,11 @@
         },
         {
           "label": "Tekst til \"Vis svar\" knappen",
-          "default": "Oppsummer"
+          "default": "Vis svar"
+        },
+        {
+          "label": "Tekst til \"Prøv igjen\" knappen",
+          "default": "Prøv igjen"
         },
         {
           "label": "Oversettelse for \"Tittel\"",
@@ -161,9 +149,56 @@
           "default": "Vis nøkkelordliste"
         },
         {
-          "label": "Tittel for elementer som lenker til andre lysbilder",
-          "default": "Gå til lysbilde :num",
-          "description": ":num erstattes med lysbildenummeret."
+          "label": "Tittel for \"Full skjerm\"-knapp",
+          "default": "Fullskjerm"
+        },
+        {
+          "label": "Tittel for \"Avslutt fullskjerm\"-knapp",
+          "default": "Avslutt fullskjerm"
+        },
+        {
+          "label": "Tittel for \"Forrige side\"-knapp",
+          "default": "Forrige side"
+        },
+        {
+          "label": "Tittel for \"Neste side\"-knapp",
+          "default": "Neste side"
+        },
+        {
+          "label": "Tittel for \"Denne side\"-knapp",
+          "default": "Denne side"
+        },
+        {
+          "label": "Tittel for \"Siste side\"-knapp",
+          "default": "Siste side"
+        },
+        {
+          "label": "Tittel for \"Avslutt fasit modus\"-knapp",
+          "default": "Avslutt fasit modus"
+        },
+        {
+          "label": "Avslutt fasit modus tekst",
+          "default": "Fasitmodus:"
+        },
+        {
+          "label": "Understreket avslutt fasit modus tekst",
+          "default": "Avslutt"
+        },
+        {
+          "label": "Tekst ved flere oppgaver på en side",
+          "default": "Flere oppgaver"
+        },
+        {
+          "label": "poengTekst",
+          "default": "Du klarte:"
+        },
+        {
+          "label": "Del på Facebook tekst",
+          "default": "Del på Facebook"
+        },
+        {
+          "label": "Del på Twitter tekst",
+          "default": "Del på Twitter"
         }
       ]
     },

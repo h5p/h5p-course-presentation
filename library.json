@@ -2,30 +2,42 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 4,
+  "minorVersion": 3,
+  "patchVersion": 1,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
     "iframe"
   ],
   "machineName": "H5P.CoursePresentation",
-  "author": "Amendor AS",
+  "author": "Joubel AS",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 2
+    "minorVersion": 4
   },
   "preloadedJs": [
+    {
+      "path": "scripts/cp.js"
+    },
     {
       "path": "scripts/go-to-slide.js"
     },
     {
-      "path": "scripts/cp.js"
+      "path": "scripts/summary-slide.js"
+    },
+    {
+      "path": "scripts/navigation-line.js"
     }
   ],
   "preloadedCss": [
     {
       "path": "styles/cp.css"
+    },
+    {
+      "path": "styles/summary-slide.css"
+    },
+    {
+      "path": "styles/navigation-line.css"
     }
   ],
   "preloadedDependencies": [
@@ -39,7 +51,7 @@
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 2
+      "minorVersion": 3
     }
   ]
 }
