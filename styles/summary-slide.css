@@ -6,15 +6,34 @@
 
 /* Summary header */
 .h5p-course-presentation .h5p-score-message {
-  display: flex;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+
+  -webkit-justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+
   padding: 0.3em 0 1em;
   font-size: 0.8em;
 }
 
 .h5p-course-presentation .h5p-score-message-percentage {
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
   display: inline-flex;
+
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -98,8 +117,11 @@
   line-height: 2em;
   cursor: pointer;
   color: #fff;
-  box-shadow: 0 0 0.5em #999;
   position: relative;
+
+  -webkit-box-shadow: 0 0 0.5em #999;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0 0 0.5em #999;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0 0 0.5em #999;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 
   background: rgb(100,152,254); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(100,152,254,1) 0%, rgba(4,104,206,1) 100%); /* FF3.6+ */
