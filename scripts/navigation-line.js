@@ -26,7 +26,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
             }
           });
         }
-      })
+      });
     });
   };
 
