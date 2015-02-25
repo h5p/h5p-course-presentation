@@ -22,9 +22,9 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    */
   SummarySlide.prototype.updateSummarySlide = function (slideNumber) {
     var that = this;
-
     // Validate update.
     var isValidUpdate = (this.cp.editor === undefined) && (this.$summarySlide !== undefined) && (slideNumber >= this.cp.slides.length - 1);
+    var isExportSlide = (!this.cp.hasSlidesWithSolutions && this.cp.hasAnswerElements);
     if (!isValidUpdate) {
       return;
     }
@@ -43,35 +43,37 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     // Update feedback icons in solution mode
     this.cp.setProgressBarFeedback(slideScores);
 
-    // Get total scores and construct progress circle
-    var totalScores = that.totalScores(slideScores);
-    if (isNaN(totalScores.totalPercentage)) {
-      H5P.JoubelUI.createProgressCircle(0)
-        .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
-    } else {
-      H5P.JoubelUI.createProgressCircle(totalScores.totalPercentage)
-        .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
-    }
+    if (!isExportSlide) {
+      // Get total scores and construct progress circle
+      var totalScores = that.totalScores(slideScores);
+      if (isNaN(totalScores.totalPercentage)) {
+        H5P.JoubelUI.createProgressCircle(0)
+          .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
+      } else {
+        H5P.JoubelUI.createProgressCircle(totalScores.totalPercentage)
+          .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
+      }
 
-    // TEMP DISABLED! - APP-ID NEEDS TO BE APPROVED
-    // Construct facebook share score link
-    //var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide).remove();
-    //this.addFacebookScoreLinkTo($facebookContainer, totalScores.totalPercentage);
-    $('.h5p-summary-facebook-message', that.$summarySlide).remove();
+      // TEMP DISABLED! - APP-ID NEEDS TO BE APPROVED
+      // Construct facebook share score link
+      //var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide).remove();
+      //this.addFacebookScoreLinkTo($facebookContainer, totalScores.totalPercentage);
+      $('.h5p-summary-facebook-message', that.$summarySlide).remove();
 
-    // Construct twitter share score link
-    var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
-    this.addTwitterScoreLinkTo($twitterContainer, totalScores.totalPercentage);
+      // Construct twitter share score link
+      var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
+      this.addTwitterScoreLinkTo($twitterContainer, totalScores.totalPercentage);
 
-    // Update slide links
-    var links = that.$summarySlide.find('.h5p-td > .h5p-slide-link');
-    links.each(function () {
-      var slideLink = $(this);
-      slideLink.click(function (event) {
-        that.cp.jumpToSlide(parseInt(slideLink.data('slide'), 10) - 1);
-        event.preventDefault();
+      // Update slide links
+      var links = that.$summarySlide.find('.h5p-td > .h5p-slide-link');
+      links.each(function () {
+        var slideLink = $(this);
+        slideLink.click(function (event) {
+          that.cp.jumpToSlide(parseInt(slideLink.data('slide'), 10) - 1);
+          event.preventDefault();
+        });
       });
-    });
+    }
 
     // Add button click events
     $('.h5p-show-solutions', that.$summarySlide)
@@ -105,11 +107,20 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * @returns {string} html
    */
   SummarySlide.prototype.outputScoreStats = function (slideScores) {
+    if (slideScores === undefined) {
+      this.$summarySlide.addClass('h5p-summary-only-export');
+      var html =
+        '<div class="h5p-summary-footer">' +
+        ' <button class="h5p-eta-export">' + this.cp.l10n.exportAnswers + '</button>' +
+        ' <button class="h5p-cp-retry-button">' + this.cp.l10n.retry + '</button>' +
+        '</div>';
+      return html;
+    }
     var that = this;
     var totalScore = 0;
     var totalMaxScore = 0;
     var tds = ''; // For saving the main table rows
-    var i = 0;
+    var i;
     var slidePercentageScore = 0;
     var slideDescription = '';
     var slideElements;
@@ -262,6 +273,13 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * @returns {{totalScore: number, totalMaxScore: number, totalPercentage: number}} totalScores Total scores object
    */
   SummarySlide.prototype.totalScores = function (slideScores) {
+    if (slideScores === undefined) {
+      return {
+        totalScore: 0,
+        totalMaxScore: 0,
+        totalPercentage: 0
+      };
+    }
     var totalScore = 0;
     var totalMaxScore = 0;
     var i;

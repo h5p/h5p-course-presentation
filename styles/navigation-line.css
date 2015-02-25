@@ -350,23 +350,28 @@
   -webkit-transform: scale(1.025);
   -moz-transform: scale(1.025);
   transform: scale(1.025);
+  line-height: 1.8em;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:hover {
   -webkit-transform: scale(1.025);
   -moz-transform: scale(1.025);
   transform: scale(1.025);
+  top: 0.15em;
+  line-height: 1.7em;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:hover {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   transform: scale(1.2);
+  line-height: 1.35em;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:hover,
 .h5p-course-presentation .h5p-footer .h5p-footer-next-slide:hover {
-  -webkit-transform: scale(1.6);
-  -moz-transform: scale(1.6);
-  transform: scale(1.6);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  transform: scale(1.5);
+  line-height: 1em
 }

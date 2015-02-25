@@ -157,8 +157,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
   }
 
+  // Determine if summary slide should be added
   var $summarySlide;
   that.hasSlidesWithSolutions = false;
+  // Check for task
   this.slidesWithSolutions.forEach(function (slide) {
     if (slide.length) {
       that.hasSlidesWithSolutions = true;
@@ -166,7 +168,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   });
 
   var summarySlideData = [];
-  if ((this.editor === undefined) && (this.hasSlidesWithSolutions)) {
+  if ((this.editor === undefined) && (this.hasSlidesWithSolutions || this.hasAnswerElements)) {
     summarySlideData = {
       elements: [],
       keywords: []
@@ -524,13 +526,18 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   else {
     this.elementInstances[index].push(instance);
   }
-  
+
   if (this.checkForSolutions(instance)) {
     instance.coursePresentationIndexOnSlide = this.elementInstances[index].length - 1;
     if (this.slidesWithSolutions[index] === undefined) {
       this.slidesWithSolutions[index] = [];
     }
     this.slidesWithSolutions[index].push(instance);
+  }
+
+  //Check if it is a exportable text area
+  if (instance.exportAnswers !== undefined && instance.exportAnswers) {
+    this.hasAnswerElements = true;
   }
 
   return instance;
