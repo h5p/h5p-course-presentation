@@ -34,6 +34,12 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
    * Initialize progress bar
    */
   NavigationLine.prototype.initProgressbar = function (slidesWithSolutions) {
+    var supportsHover = true;
+    if (navigator.userAgent.match(/iPad/i) !== null
+        || navigator.userAgent.match(/iPhone/i) !== null) {
+      supportsHover = false;
+    }
+
     var that = this;
     var progressbarPercentage = (1 / this.cp.slides.length) * 100;
 
@@ -53,7 +59,6 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
 
     var clickProgressbar = function (event) {
       that.cp.jumpToSlide($(this).data('slideNumber'));
-      event.preventDefault();
     };
 
     var mouseenterProgressbar = function (event) {
@@ -81,10 +86,15 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       }).data('slideNumber', i)
         .data('keyword', progressbarPartTitle)
         .data('percentageWidth', progressbarPercentage)
-        .mouseenter(mouseenterProgressbar)
-        .mouseleave(mouseleaveProgressbar)
         .click(clickProgressbar)
         .appendTo(that.cp.$progressbar);
+
+      // Add hover effect if not an ipad or iphone.
+      if (supportsHover) {
+        $progressbarPart
+          .mouseenter(mouseenterProgressbar)
+          .mouseleave(mouseleaveProgressbar);
+      }
 
       if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.hasSlidesWithSolutions) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
