@@ -196,6 +196,8 @@
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
+
+  box-shadow: 0 0 0.5em 0em rgba(105, 105, 105, 0.4);
 }
 
 .h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide:before {
