@@ -35,8 +35,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
    */
   NavigationLine.prototype.initProgressbar = function (slidesWithSolutions) {
     var supportsHover = true;
-    if (navigator.userAgent.match(/iPad/i) !== null
-        || navigator.userAgent.match(/iPhone/i) !== null) {
+    if (navigator.userAgent.match(/iPad|iPod|iPhone/i) !== null) {
       supportsHover = false;
     }
 
