@@ -83,11 +83,11 @@
 }
 
 /* Solution mode text changes to footer elements */
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before,
-.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:before,
-.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:after,
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
-  color: #000;
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen,
+.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide,
+.h5p-course-presentation .h5p-footer .h5p-footer-next-slide,
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
+  color: #555;
 }
 
 /* ---------------------------------------------- Solution Mode ---------------------------------- */
@@ -95,7 +95,7 @@
 /* Footer in solution mode */
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
   background-color: #2b2c30;;
-  color: #b8b8b8;
+  color: #fbfbfb;
 }
 
 /* Solution mode container */
@@ -120,13 +120,11 @@
   padding: 0 0.25em;
 }
 
-/* Solution mode text changes to footer elements */
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-full-screen:before,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-previous-slide:before,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-next-slide:after,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-keywords:before,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-full-screen,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-previous-slide,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-next-slide,
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-keywords {
-  color: #aeaeae;
+  color: #fbfbfb;
 }
 
 
@@ -202,15 +200,26 @@
 
 .h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide:before {
   font-family: 'H5PFontAwesome4';
-  content: '\f080';
+  content: '\f00c';
   position: relative;
   top: 0.05em;
   font-size: 0.55em;
   padding: 0 0.1em;
-  color: #000;
+  color: #555;
 }
 
-.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:before {
+.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide:after {
+  font-family: 'H5PFontAwesome4';
+  content: '\f0c9';
+  font-size: 0.55em;
+  padding: 0 0.1em;
+  position: relative;
+  top: 0.05em;
+  color: #555;
+}
+
+.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:before,
+.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:after {
   color: #FFF;
 }
 
@@ -241,8 +250,6 @@
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
-  position: relative;
-
   background: #0097fd;
   background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
   background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
@@ -322,7 +329,7 @@
 .h5p-course-presentation .h5p-progressbar-popup {
   display: block;
   position: absolute;
-  z-index: 2;
+  z-index: 3; /* Must be above feedback, which is 2 */
 
   font-size: 0.75em;
 
@@ -343,39 +350,25 @@
 .h5p-course-presentation .h5p-footer .h5p-footer-next-slide,
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen,
 .h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
-  -webkit-transition: -webkit-transform 0.5s ease;
-  -moz-transition: -moz-transform 0.5s ease;
-  transition: transform .2s ease-in-out;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all .2s ease-in-out;
 }
 
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:hover {
-  -webkit-transform: scale(1.025);
-  -moz-transform: scale(1.025);
-  transform: scale(1.025);
-  line-height: 1.8em;
-}
-
-.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:hover {
-  -webkit-transform: scale(1.025);
-  -moz-transform: scale(1.025);
-  transform: scale(1.025);
-  top: 0.15em;
-  line-height: 1.7em;
-}
-
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:hover {
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  transform: scale(1.2);
-  line-height: 1.35em;
-}
-
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:hover,
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:hover,
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:hover,
 .h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:hover,
 .h5p-course-presentation .h5p-footer .h5p-footer-next-slide:hover {
-  -webkit-transform: scale(1.5);
-  -moz-transform: scale(1.5);
-  transform: scale(1.5);
-  line-height: 1em
+  color: #aeaeae;
+}
+
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-keywords:hover,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode:hover,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-full-screen:hover,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-previous-slide:hover,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-next-slide:hover {
+  color: #dbd7d1;
 }
 
 /* ----------------------------------- Old IE <= 9 browser fallback for flexbox ------------------------------------ */

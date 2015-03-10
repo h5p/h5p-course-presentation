@@ -99,8 +99,6 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
       }
 
-      $progressbarPart.attr('Title', progressbarPartTitle);
-
       if (i === 0) {
         $progressbarPart.addClass('h5p-progressbar-part-show');
       }
@@ -126,9 +124,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       this.$progressbarPopup = H5P.jQuery('<div/>', {
         'class': 'h5p-progressbar-popup',
         'html': progressbarTitle
-      }).appendTo(that.cp.$wrapper);
+      }).appendTo($parent);
     } else {
-      this.$progressbarPopup.appendTo(that.cp.$wrapper);
+      this.$progressbarPopup.appendTo($parent);
       this.$progressbarPopup.html(progressbarTitle);
     }
     var pbpartPercentWidth = $parent.data('percentageWidth');
