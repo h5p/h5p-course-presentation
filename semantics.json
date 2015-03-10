@@ -285,8 +285,8 @@
       {
         "name": "showSolutions",
         "type": "text",
-        "label": "Text for the show solutions button",
-        "default": "Show solutions"
+        "label": "Title for Summary slide",
+        "default": "Summary"
       },
       {
         "name": "retry",

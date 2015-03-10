@@ -31,7 +31,7 @@ H5P.CoursePresentation = function (params, id, editor) {
     okScore: 'Nice effort! You got @percent correct!',
     badScore: 'You need to work more on this. You only got @percent correct...',
     total: 'TOTAL',
-    showSolutions: 'Show solutions',
+    showSolutions: 'Summary',
     retry: 'Retry',
     exportAnswers: 'Export text',
     close: 'Close',

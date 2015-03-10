@@ -109,8 +109,8 @@
           "default": "Total"
         },
         {
-          "label": "Tekst til \"Vis svar\" knappen",
-          "default": "Vis svar"
+          "label": "Tekst til \"Oppsummerings\"-siden",
+          "default": "Oppsummering"
         },
         {
           "label": "Tekst til \"Prøv igjen\" knappen",
