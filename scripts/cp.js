@@ -1297,6 +1297,49 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
 };
 
 /**
+ * Gets slides scores for whole cp
+ * @returns {Array} slideScores Array containing scores for all slides.
+ */
+H5P.CoursePresentation.prototype.getSlideScores = function () {
+  var jumpedToFirst = false;
+  var slideScores = [];
+  var hasScores = false;
+  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
+    if (this.slidesWithSolutions[i] !== undefined) {
+      if (!this.elementsAttached[i]) {
+        // Attach elements before showing solutions
+        this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
+      }
+      if (!jumpedToFirst) {
+        this.jumpToSlide(i, false);
+        jumpedToFirst = true; // TODO: Explain what this really does.
+      }
+      var slideScore = 0;
+      var slideMaxScore = 0;
+      var indexes = [];
+      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
+        var elementInstance = this.slidesWithSolutions[i][j];
+        if (elementInstance.getMaxScore !== undefined) {
+          slideMaxScore += elementInstance.getMaxScore();
+          slideScore += elementInstance.getScore();
+          hasScores = true;
+          indexes.push(elementInstance.coursePresentationIndexOnSlide);
+        }
+      }
+      slideScores.push({
+        indexes: indexes,
+        slide: (i + 1),
+        score: slideScore,
+        maxScore: slideMaxScore
+      });
+    }
+  }
+  if (hasScores) {
+    return slideScores;
+  }
+};
+
+/**
  * Gather copyright information for the current content.
  *
  * @returns {H5P.ContentCopyrights}

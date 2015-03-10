@@ -184,7 +184,7 @@
   width: 100%;
   overflow: visible;
   height: 3.5%;
-  background: #cecece;
+  background: #999;
 
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -ms-flexbox;      /* TWEENER - IE 10 */
@@ -303,26 +303,26 @@
   -moz-border-radius: 50%;
   border-radius: 50%;
 
-  border: 1px solid #000;
+  border: 2px solid #BABABC;
   cursor: pointer;
 
-  background: #cecece;
+  background: #BABABC;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task {
-  background: #096bcb;
+  background: #BABABC;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-answered {
-  background: transparent;
+  background: #096bcb;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task {
-  background: #cecece;
+  background: #BABABC;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
-  background: transparent;
+  background: #096bcb;
 }
 
 /* ----------------------------------------- Progressbar popup ------------------------------------ */

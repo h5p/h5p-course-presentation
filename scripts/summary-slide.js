@@ -32,16 +32,10 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     // Remove old content
     this.$summarySlide.children().remove();
 
-    // Enable solution mode
-    this.toggleSolutionMode(true);
-
     // Get scores and updated html for summary slide
-    var slideScores = that.cp.showSolutions();
+    var slideScores = that.cp.getSlideScores();
     var htmlText = that.outputScoreStats(slideScores);
     $(htmlText).appendTo(that.$summarySlide);
-
-    // Update feedback icons in solution mode
-    this.cp.setProgressBarFeedback(slideScores);
 
     if (!isExportSlide) {
       // Get total scores and construct progress circle
@@ -54,7 +48,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
           .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
       }
 
-      // TEMP DISABLED! - APP-ID NEEDS TO BE APPROVED
+      // TODO: Get approved App-id for posting to facebook.
       // Construct facebook share score link
       //var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide).remove();
       //this.addFacebookScoreLinkTo($facebookContainer, totalScores.totalPercentage);
@@ -78,6 +72,8 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     // Add button click events
     $('.h5p-show-solutions', that.$summarySlide)
       .click(function (event) {
+        // Enable solution mode
+        that.toggleSolutionMode(true);
         that.cp.jumpToSlide(0);
         event.preventDefault();
       });
@@ -307,6 +303,14 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * @params {Boolean} enableSolutionMode Enable/disable solution mode
    */
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
+    var that = this;
+
+    // Get scores for summary slide
+    var slideScores = that.cp.showSolutions();
+
+    // Update feedback icons in solution mode
+    this.cp.setProgressBarFeedback(slideScores);
+
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
       this.cp.$footer.addClass('h5p-footer-solution-mode');

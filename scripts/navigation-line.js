@@ -8,7 +8,6 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
     this.initTaskAnsweredListener();
-    this.$progressbarPopup;
   }
 
   /**
@@ -22,7 +21,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         if (elementInstance.on !== undefined) {
           elementInstance.on('xAPI', function (event) {
             if (event.getVerb() === 'attempted') {
-              that.updateProgressBar(that.cp.currentSlideIndex, that.cp.currentSlideIndex);
+              that.updateProgressBarTasksAtSlideNumber(that.cp.currentSlideIndex);
             }
           });
         }
@@ -56,7 +55,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     var $progressbarPart;
     var progressbarPartTitle;
 
-    var clickProgressbar = function (event) {
+    var clickProgressbar = function () {
       that.cp.jumpToSlide($(this).data('slideNumber'));
     };
 
@@ -117,7 +116,6 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
   };
 
   NavigationLine.prototype.createProgressbarPopup = function (event, $parent) {
-    var that = this;
     var progressbarTitle = $parent.data('keyword');
 
     if (this.$progressbarPopup === undefined) {
@@ -344,11 +342,19 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     if (solutionMode || (that.cp.editor !== undefined)) {
       return;
     }
+  };
+
+  /**
+   * Update progress bar task at provided slide number
+   * @param {Number} slideNumber Slide number which will be updated
+   */
+  NavigationLine.prototype.updateProgressBarTasksAtSlideNumber = function (slideNumber) {
+    var that = this;
 
     // Updates previous slide answer.
     var answered = true;
-    if (this.cp.slidesWithSolutions[prevSlideNumber] !== undefined && this.cp.slidesWithSolutions[prevSlideNumber]) {
-      this.cp.slidesWithSolutions[prevSlideNumber].forEach(function (slideTask) {
+    if (this.cp.slidesWithSolutions[slideNumber] !== undefined && this.cp.slidesWithSolutions[slideNumber]) {
+      this.cp.slidesWithSolutions[slideNumber].forEach(function (slideTask) {
         if (slideTask.getAnswerGiven !== undefined) {
           if (!slideTask.getAnswerGiven()) {
             answered = false;
@@ -358,7 +364,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }
 
     if (answered) {
-      that.cp.progressbarParts[prevSlideNumber]
+      that.cp.progressbarParts[slideNumber]
         .children('.h5p-progressbar-part-has-task')
         .addClass('h5p-answered');
     }
