@@ -304,15 +304,10 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       $(this).focus();
     });
 
-    // Solution mode elements
+    // Solution mode text
     this.cp.$exitSolutionModeText = $('<div/>', {
       'html': '',
       'class': 'h5p-footer-exit-solution-mode-text'
-    }).appendTo(this.cp.$exitSolutionModeButton);
-
-    this.cp.$exitSolutionModeUnderlined = $('<div/>', {
-      'html': '',
-      'class': 'h5p-footer-exit-solution-mode-underlined'
     }).appendTo(this.cp.$exitSolutionModeButton);
   };
 

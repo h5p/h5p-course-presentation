@@ -113,13 +113,6 @@
   padding: 0 0.25em;
 }
 
-/* Footer solution mode underlined */
-.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode-underlined {
-  display: inline-block;
-  text-decoration: underline;
-  padding: 0 0.25em;
-}
-
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-full-screen,
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-previous-slide,
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-next-slide,

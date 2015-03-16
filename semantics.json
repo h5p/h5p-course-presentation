@@ -391,13 +391,7 @@
         "name": "solutionModeText",
         "type": "text",
         "label": "Solution mode text",
-        "default": "Solution Mode:"
-      },
-      {
-        "name": "solutionModeUnderlined",
-        "type": "text",
-        "label": "Underlined solution mode text",
-        "default": "Close"
+        "default": "Solution Mode"
       },
       {
         "name": "summaryMultipleTaskText",

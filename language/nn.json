@@ -176,11 +176,7 @@
         },
         {
           "label": "Avslutt fasit modus tekst",
-          "default": "Fasitmodus:"
-        },
-        {
-          "label": "Understreket avslutt fasit modus tekst",
-          "default": "Avslutt"
+          "default": "Fasitmodus"
         },
         {
           "label": "Tekst ved flere oppgaver på en side",
