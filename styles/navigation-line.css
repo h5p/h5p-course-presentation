@@ -191,26 +191,6 @@
   box-shadow: 0 0 0.5em 0em rgba(105, 105, 105, 0.4);
 }
 
-.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide:before {
-  font-family: 'H5PFontAwesome4';
-  content: '\f00c';
-  position: relative;
-  top: 0.05em;
-  font-size: 0.55em;
-  padding: 0 0.1em;
-  color: #555;
-}
-
-.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide:after {
-  font-family: 'H5PFontAwesome4';
-  content: '\f0c9';
-  font-size: 0.55em;
-  padding: 0 0.1em;
-  position: relative;
-  top: 0.05em;
-  color: #555;
-}
-
 .h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:before,
 .h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:after {
   color: #FFF;
@@ -316,6 +296,22 @@
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
   background: #096bcb;
+}
+
+/* ----------------------- Summary slide svgs --------------------------------- */
+
+.h5p-course-presentation .summary-slide-right-svg {
+  background-image: url(../fonts/summari_right_scale_horisontal.svg);
+  width: calc(100% - 1em);
+  height: 0.5em;
+}
+
+.h5p-course-presentation .summary-slide-left-svg {
+  background-image: url(../fonts/summary_left_constrain.svg);
+  width: 0.6em;
+  background-size: cover;
+  height: 0.5em;
+  margin-right: 0.2em;
 }
 
 /* ----------------------------------------- Progressbar popup ------------------------------------ */
