@@ -315,7 +315,8 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     if (enableSolutionMode) {
       this.cp.$footer.addClass('h5p-footer-solution-mode');
       this.setFooterSolutionModeText(this.cp.l10n.solutionModeText, this.cp.l10n.solutionModeUnderlined);
-    } else {
+    }
+    else {
       this.cp.$footer.removeClass('h5p-footer-solution-mode');
       this.setFooterSolutionModeText();
       this.cp.setProgressBarFeedback();
@@ -332,12 +333,14 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
   SummarySlide.prototype.setFooterSolutionModeText = function (solutionModeText, underlinedText) {
     if (solutionModeText !== undefined && solutionModeText) {
       this.cp.$exitSolutionModeText.html(solutionModeText);
-    } else {
+    }
+    else if (this.cp.$exitSolutionModeText) {
       this.cp.$exitSolutionModeText.html('');
     }
     if (underlinedText !== undefined && underlinedText) {
       this.cp.$exitSolutionModeUnderlined.html(underlinedText);
-    } else {
+    }
+    else if (this.cp.$exitSolutionModeUnderlined) {
       this.cp.$exitSolutionModeUnderlined.html('');
     }
   };
