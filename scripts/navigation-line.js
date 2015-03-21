@@ -96,6 +96,14 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
 
       if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.hasSlidesWithSolutions) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
+
+        // Add svg icons to summary slide
+        $('<div>', {
+          'class': 'summary-slide-left-svg'
+        }).appendTo($progressbarPart);
+        $('<div>', {
+          'class': 'summary-slide-right-svg'
+        }).appendTo($progressbarPart);
       }
 
       if (i === 0) {
