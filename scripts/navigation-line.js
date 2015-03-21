@@ -75,7 +75,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       if (slide.keywords !== undefined && slide.keywords.length) {
         progressbarPartTitle = slide.keywords[0].main;
       } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.hasSlidesWithSolutions) {
-        progressbarPartTitle = that.cp.l10n.showSolutions;
+        progressbarPartTitle = that.cp.l10n.summary;
       }
 
       $progressbarPart = $('<div>', {
@@ -416,7 +416,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     // Summary slide keyword
     if (this.cp.editor === undefined) {
       if (slideNumber >= this.cp.slides.length - 1) {
-        keywordString = this.cp.l10n.showSolutions;
+        keywordString = this.cp.l10n.summary;
       }
     }
 

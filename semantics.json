@@ -285,8 +285,8 @@
       {
         "name": "showSolutions",
         "type": "text",
-        "label": "Title for Summary slide",
-        "default": "Summary"
+        "label": "Title for show solutions button",
+        "default": "Show solutions"
       },
       {
         "name": "retry",
@@ -416,6 +416,12 @@
         "type": "text",
         "label": "Share to Twitter text",
         "default": "Share on Twitter"
+      },
+      {
+        "name": "summary",
+        "type": "text",
+        "label": "Title for summary slide",
+        "default": "Summary"
       }
     ]
   },

@@ -107,8 +107,8 @@
           "default": "Total"
         },
         {
-          "label": "Tekst til \"Oppsummerings\"-siden",
-          "default": "Oppsummering"
+          "label": "Tittel på \"Vis fasit\" knappen",
+          "default": "Vis fasit"
         },
         {
           "label": "Tekst til \"Prøv igjen\" knappen",
@@ -193,8 +193,11 @@
         {
           "label": "Del på Twitter tekst",
           "default": "Del på Twitter"
+        },
+        {
+          "label": "Tittel for \"Oppsummering\" siden",
+          "default": "Oppsummering"
         }
-
       ]
     },
     {
