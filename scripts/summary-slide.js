@@ -129,16 +129,13 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       }
       // Get task description, task name or identify multiple tasks:
       slideElements = that.cp.slides[slideScores[i].slide - 1].elements;
+      console.log(that.cp);
       if (slideScores[i].indexes.length > 1) {
         slideDescription = that.cp.l10n.summaryMultipleTaskText;
       } else if (slideElements[slideScores[i].indexes[0]] !== undefined && slideElements[0]) {
         action = slideElements[slideScores[i].indexes[0]].action;
-        if (action.params.taskDescription !== undefined && action.params.taskDescription) {
-          slideDescription = action.params.taskDescription;
-        } else if (action.params.text !== undefined && action.params.text) {
-          slideDescription = action.params.text;
-        } else if (action.params.intro !== undefined && action.params.intro) {
-          slideDescription = action.params.intro;
+        if (typeof that.cp.elementInstances[i][slideScores[i].indexes[0]].getH5PTitle === 'function') {
+          slideDescription = that.cp.elementInstances[i][slideScores[i].indexes[0]].getH5PTitle();
         } else if (action.library !== undefined && action.library) {
           slideDescription = action.library;
         }

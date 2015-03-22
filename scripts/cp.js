@@ -9,7 +9,7 @@ var H5P = H5P || {};
  *  Set if an editor is initiating this library
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation = function (params, id, editor) {
+H5P.CoursePresentation = function (params, id, extras) {
   H5P.EventDispatcher.call(this);
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
@@ -19,7 +19,9 @@ H5P.CoursePresentation = function (params, id, editor) {
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
   this.hasAnswerElements = false;
-  this.editor = editor;
+  if (extras.cpEditor) {
+    this.editor = extras.cpEditor;
+  }
 
   this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
 
@@ -534,7 +536,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
       library.params.cpAutoplay = true;
     }
 
-    instance = H5P.newRunnable(library, this.contentId);
+    instance = H5P.newRunnable(library, this.contentId, undefined, undefined, {parent: this});
     if (instance.preventResize !== undefined) {
       instance.preventResize = true;
     }
@@ -1083,6 +1085,9 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
  */
 H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   var that = this;
+  var progressedEvent = this.createXAPIEventTemplate('progressed');
+  progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = slideNumber + 1;
+  this.trigger(progressedEvent);
 
   if (this.$current.hasClass('h5p-animate')) {
     return;
