@@ -285,7 +285,7 @@
       {
         "name": "showSolutions",
         "type": "text",
-        "label": "Text for the show solutions button",
+        "label": "Title for show solutions button",
         "default": "Show solutions"
       },
       {
@@ -391,13 +391,7 @@
         "name": "solutionModeText",
         "type": "text",
         "label": "Solution mode text",
-        "default": "Solution Mode:"
-      },
-      {
-        "name": "solutionModeUnderlined",
-        "type": "text",
-        "label": "Underlined solution mode text",
-        "default": "Close"
+        "default": "Solution Mode"
       },
       {
         "name": "summaryMultipleTaskText",
@@ -422,6 +416,12 @@
         "type": "text",
         "label": "Share to Twitter text",
         "default": "Share on Twitter"
+      },
+      {
+        "name": "summary",
+        "type": "text",
+        "label": "Title for summary slide",
+        "default": "Summary"
       }
     ]
   },
