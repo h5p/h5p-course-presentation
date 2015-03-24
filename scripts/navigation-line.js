@@ -310,7 +310,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         e.preventDefault();
       }
       $(this).focus();
-    });
+    }).appendTo($rightFooter);
 
     // Solution mode text
     this.cp.$exitSolutionModeText = $('<div/>', {
@@ -385,11 +385,10 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.cp.$footerMaxSlide.html(this.cp.slides.length);
 
     // Hide exit solution mode button on summary slide
-    if (this.cp.isSolutionMode) {
-      this.cp.$exitSolutionModeButton.detach();
-      if (slideNumber + 1 !== this.cp.slides.length) {
-        this.cp.$exitSolutionModeButton.insertBefore(this.cp.$fullScreenButton);
-      }
+    if (this.cp.isSolutionMode && slideNumber === this.cp.slides.length - 1) {
+      this.cp.$footer.addClass('summary-slide');
+    } else {
+      this.cp.$footer.removeClass('summary-slide');
     }
 
     // Update keyword in footer

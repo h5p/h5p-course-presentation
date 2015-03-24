@@ -314,13 +314,12 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
       this.cp.$footer.addClass('h5p-footer-solution-mode');
-      this.setFooterSolutionModeText(this.cp.l10n.solutionModeText, this.cp.l10n.solutionModeUnderlined);
+      this.setFooterSolutionModeText(this.cp.l10n.solutionModeText);
     }
     else {
       this.cp.$footer.removeClass('h5p-footer-solution-mode');
       this.setFooterSolutionModeText();
       this.cp.setProgressBarFeedback();
-      this.cp.$exitSolutionModeButton.detach();
     }
   };
 
@@ -328,20 +327,13 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * Sets the solution mode button text in footer.
    *
    * @param solutionModeText
-   * @param underlinedText
    */
-  SummarySlide.prototype.setFooterSolutionModeText = function (solutionModeText, underlinedText) {
+  SummarySlide.prototype.setFooterSolutionModeText = function (solutionModeText) {
     if (solutionModeText !== undefined && solutionModeText) {
       this.cp.$exitSolutionModeText.html(solutionModeText);
     }
     else if (this.cp.$exitSolutionModeText) {
       this.cp.$exitSolutionModeText.html('');
-    }
-    if (underlinedText !== undefined && underlinedText) {
-      this.cp.$exitSolutionModeUnderlined.html(underlinedText);
-    }
-    else if (this.cp.$exitSolutionModeUnderlined) {
-      this.cp.$exitSolutionModeUnderlined.html('');
     }
   };
 
