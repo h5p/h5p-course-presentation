@@ -73,7 +73,7 @@ H5P.CoursePresentation.prototype.constructor = H5P.CoursePresentation;
  * @public
  */
 H5P.CoursePresentation.prototype.getCurrentState = function () {
-  var state = this.previousState;
+  var state = this.previousState ? this.previousState : {};
   state.progress = this.$current.index();
   if (!state.answers) {
     state.answers = [];
