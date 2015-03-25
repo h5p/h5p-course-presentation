@@ -23,8 +23,8 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.editor = extras.cpEditor;
   }
 
-  if (contentData) {
-    this.previousState = contentData.previousState;
+  if (extras) {
+    this.previousState = extras.previousState;
   }
 
 
