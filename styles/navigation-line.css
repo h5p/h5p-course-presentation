@@ -98,13 +98,23 @@
   color: #fbfbfb;
 }
 
-/* Solution mode container */
-.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
+/* Only show exit solultion mode button in solution mode */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode {
   display: inline-block;
   position: absolute;
   right: 0em;
   margin-right: 3em;
   cursor: pointer;
+}
+
+/* Hide exit solution mode button initially */
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
+  display: none;
+}
+
+/* Hide exit solution mode button on summary slide */
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode.summary-slide .h5p-footer-exit-solution-mode {
+  display: none;
 }
 
 /* Footer solution mode text */

@@ -23,6 +23,11 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.editor = extras.cpEditor;
   }
 
+  if (contentData) {
+    this.previousState = contentData.previousState;
+  }
+
+
   this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
 
   this.l10n = H5P.jQuery.extend({
@@ -65,6 +70,35 @@ H5P.CoursePresentation = function (params, id, extras) {
 
 H5P.CoursePresentation.prototype = Object.create(H5P.EventDispatcher.prototype);
 H5P.CoursePresentation.prototype.constructor = H5P.CoursePresentation;
+
+/**
+ * @public
+ */
+H5P.CoursePresentation.prototype.getCurrentState = function () {
+  var state = this.previousState ? this.previousState : {};
+  state.progress = this.$current.index();
+  if (!state.answers) {
+    state.answers = [];
+  }
+
+  // Get answers
+  for (var slide = 0; slide < this.elementInstances.length; slide++) {
+    if (this.elementInstances[slide]) {
+      for (var element = 0; element < this.elementInstances[slide].length; element++) {
+        var instance = this.elementInstances[slide][element];
+        if (instance.getCurrentState instanceof Function ||
+            typeof instance.getCurrentState === 'function') {
+          if (!state.answers[slide]) {
+            state.answers[slide] = [];
+          }
+          state.answers[slide][element] = instance.getCurrentState();
+        }
+      }
+    }
+  }
+
+  return state;
+};
 
 /**
  * Render the presentation inside the given container.
@@ -235,6 +269,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
 
   this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
+
+  if (this.previousState) {
+    this.jumpToSlide(this.previousState.progress);
+  }
 };
 
 /**
@@ -534,6 +572,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     if (library.params.autoplay) {
       library.params.autoplay = false;
       library.params.cpAutoplay = true;
+    }
+
+    var internalSlideId = this.elementInstances[index] ? this.elementInstances[index].length : 0;
+    if (this.previousState && this.previousState.answers[index] && this.previousState.answers[index][internalSlideId]) {
+      // Restore previous state
+      library.userDatas = {
+        state: this.previousState.answers[index][internalSlideId]
+      };
     }
 
     instance = H5P.newRunnable(library, this.contentId, undefined, undefined, {parent: this});
