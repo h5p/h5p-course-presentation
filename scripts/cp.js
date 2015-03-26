@@ -521,6 +521,11 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
 
   if (attach) {
     this.elementsAttached[index] = true;
+    this.trigger('domChanged', {
+      '$target': $slide,
+      'library': 'H5P.CoursePresentation',
+      'key': 'newSlide'
+    }, {'bubbles': true, 'external': true});
   }
 };
 
@@ -629,6 +634,11 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
       this.attachElement(slide.elements[i], instances[i], $slide, index);
     }
   }
+  this.trigger('domChanged', {
+      '$target': $slide,
+      'library': 'H5P.CoursePresentation',
+      'key': 'newSlide'
+    }, {'bubbles': true, 'external': true});
 
   this.elementsAttached[index] = true;
 };
