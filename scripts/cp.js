@@ -1141,9 +1141,11 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
  */
 H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   var that = this;
-  var progressedEvent = this.createXAPIEventTemplate('progressed');
-  progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = slideNumber + 1;
-  this.trigger(progressedEvent);
+  if (this.editor === undefined) {
+    var progressedEvent = this.createXAPIEventTemplate('progressed');
+    progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = slideNumber + 1;
+    this.trigger(progressedEvent);
+  }
 
   if (this.$current.hasClass('h5p-animate')) {
     return;
