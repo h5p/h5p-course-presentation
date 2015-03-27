@@ -113,9 +113,15 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       if (this.cp.slides.length <= 60) {
         if (slide.elements !== undefined && slide.elements.length) {
           if (slidesWithSolutions[i] !== undefined && slidesWithSolutions[i].length) {
-            $('<div>', {
+            var elementOptions = {
               'class': 'h5p-progressbar-part-has-task'
-            }).appendTo($progressbarPart);
+            };
+
+            if (that.cp.previousState && that.cp.previousState.answers[i] && that.cp.previousState.answers[i].length) {
+              elementOptions.class += ' h5p-answered';
+            }
+
+            $('<div>', elementOptions).appendTo($progressbarPart);
           }
         }
       }
