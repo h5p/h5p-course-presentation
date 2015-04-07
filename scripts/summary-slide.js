@@ -134,8 +134,8 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
         slideDescription = that.cp.l10n.summaryMultipleTaskText;
       } else if (slideElements[slideScores[i].indexes[0]] !== undefined && slideElements[0]) {
         action = slideElements[slideScores[i].indexes[0]].action;
-        if (typeof that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getH5PTitle === 'function') {
-          slideDescription = that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getH5PTitle();
+        if (typeof that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getTitle === 'function') {
+          slideDescription = that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getTitle();
         } else if (action.library !== undefined && action.library) {
           slideDescription = action.library;
         }
