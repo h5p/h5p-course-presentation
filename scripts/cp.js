@@ -80,9 +80,13 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
   if (!state.answers) {
     state.answers = [];
   }
+  if (!state.answered) {
+    state.answered = [];
+  }
 
-  // Get answers
+  // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
+    state.answered[slide] = this.progressbarParts[slide].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered');
     if (this.elementInstances[slide]) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];

@@ -116,8 +116,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
             var elementOptions = {
               'class': 'h5p-progressbar-part-has-task'
             };
-
-            if (that.cp.previousState && that.cp.previousState.answers[i] && that.cp.previousState.answers[i].length) {
+            if (that.cp.previousState && that.cp.previousState.answered && that.cp.previousState.answered[i]) {
               elementOptions.class += ' h5p-answered';
             }
 
