@@ -29,6 +29,11 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       return;
     }
 
+    // Hide keywordlist on summary slide
+    if (that.cp.presentation.keywordListEnabled && that.cp.presentation.keywordListAlwaysShow) {
+      that.cp.hideKeywords();
+    }
+
     // Remove old content
     this.$summarySlide.children().remove();
 
@@ -129,7 +134,6 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       }
       // Get task description, task name or identify multiple tasks:
       slideElements = that.cp.slides[slideScores[i].slide - 1].elements;
-      console.log(that.cp);
       if (slideScores[i].indexes.length > 1) {
         slideDescription = that.cp.l10n.summaryMultipleTaskText;
       } else if (slideElements[slideScores[i].indexes[0]] !== undefined && slideElements[0]) {
@@ -142,16 +146,17 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       }
 
       slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
-      tds += '<tr>' +
-              '<td class="h5p-td h5p-summary-task-title">' +
-                '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig,"")) + '</span>' +
-              '</td>' +
-              '<td class="h5p-td h5p-summary-score-bar">' +
-                '<div class="h5p-summary-score-meter">' +
-                  '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
-                '</div>' +
-              '</td>' +
-            '</tr>';
+      tds +=
+        '<tr>' +
+          '<td class="h5p-td h5p-summary-task-title">' +
+            '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + '</span>' +
+          '</td>' +
+          '<td class="h5p-td h5p-summary-score-bar">' +
+            '<div class="h5p-summary-score-meter">' +
+              '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
+            '</div>' +
+          '</td>' +
+        '</tr>';
       totalScore += slideScores[i].score;
       totalMaxScore += slideScores[i].maxScore;
     }

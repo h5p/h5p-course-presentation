@@ -1234,6 +1234,11 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }
   }
 
+  // Show keywords if they should always show
+  if (that.presentation.keywordListEnabled && that.presentation.keywordListAlwaysShow) {
+    that.showKeywords();
+  }
+
   // Update progress bar
   that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex, this.isSolutionMode);
 

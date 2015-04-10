@@ -412,16 +412,16 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       keywordString = this.cp.$currentKeyword.find('span').html();
     }
 
-    // Empty string if no keyword defined
-    if (keywordString === undefined) {
-      keywordString = '';
-    }
-
     // Summary slide keyword
-    if (this.cp.editor === undefined) {
+    if (this.cp.editor === undefined && this.cp.hasSlidesWithSolutions) {
       if (slideNumber >= this.cp.slides.length - 1) {
         keywordString = this.cp.l10n.summary;
       }
+    }
+
+    // Empty string if no keyword defined
+    if (keywordString === undefined) {
+      keywordString = '';
     }
 
     // Set footer keyword
