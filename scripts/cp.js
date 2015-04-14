@@ -440,14 +440,14 @@ H5P.CoursePresentation.prototype.resize = function () {
  * Enter/exit full screen mode.
  */
 H5P.CoursePresentation.prototype.toggleFullScreen = function () {
-  if (this.$container.hasClass('h5p-fullscreen')) {
+  if (this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
     // Downscale fullscreen font size
     this.$footer.removeClass('footer-full-screen');
 
     this.$fullScreenButton.attr('title', this.l10n.fullscreen);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Click button to disable fullscreen
-      $('.h5p-disable-fullscreen').click();
+      H5P.jQuery('.h5p-disable-fullscreen').click();
     }
     else {
       if (H5P.fullScreenBrowserPrefix === '') {
@@ -469,7 +469,7 @@ H5P.CoursePresentation.prototype.toggleFullScreen = function () {
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
-      $('.h5p-disable-fullscreen').hide();
+      H5P.jQuery('.h5p-disable-fullscreen').hide();
     }
   }
 };

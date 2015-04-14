@@ -170,7 +170,8 @@
   margin-left: 0.5em;
 }
 
-.h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before {
+.h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before,
+.h5p-course-presentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before {
   content: "\f066";
 }
 
