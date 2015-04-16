@@ -999,11 +999,11 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
 
     // Create popup longer time than navigateTimer has passed
     if (!isTouchJump) {
-      currentTime = new Date().getTime();
+/*      currentTime = new Date().getTime();
       var timeLapsed = currentTime - startTime;
       if (timeLapsed > navigateTimer) {
         isTouchJump = true;
-      }
+      }*/
 
       // Fast swipe to next slide
       if (movedX < 0) {
@@ -1019,7 +1019,10 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
 
       // Move current slide
       that.$current.css(transform('translateX(' + (-movedX) + 'px)'));
-    } else {
+    }
+    // TODO: Jumping over multiple slides disabled until redesigned.
+
+    /* else {
       that.$current.css(reset);
       // Update slider popup.
       nextSlide = parseInt(that.currentSlideIndex + (movedX / pixelsPerSlide), 10);
@@ -1030,15 +1033,15 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
       }
       // Create popup at initial touch point
       that.updateTouchPopup(that.$slidesWrapper, nextSlide, startX, startY);
-    }
+    }*/
 
   }).bind('touchend', function () {
     if (!scroll) {
-      if (isTouchJump) {
+/*      if (isTouchJump) {
         that.jumpToSlide(nextSlide);
         that.updateTouchPopup();
         return;
-      }
+      }*/
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
       if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
