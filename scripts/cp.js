@@ -440,24 +440,30 @@ H5P.CoursePresentation.prototype.resize = function () {
  * Enter/exit full screen mode.
  */
 H5P.CoursePresentation.prototype.toggleFullScreen = function () {
-  if (this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
+  if (H5P.isFullscreen || this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
     // Downscale fullscreen font size
     this.$footer.removeClass('footer-full-screen');
-
     this.$fullScreenButton.attr('title', this.l10n.fullscreen);
-    if (H5P.fullScreenBrowserPrefix === undefined) {
-      // Click button to disable fullscreen
-      H5P.jQuery('.h5p-disable-fullscreen').click();
-    }
-    else {
-      if (H5P.fullScreenBrowserPrefix === '') {
-        window.top.document.exitFullScreen();
-      }
-      else if (H5P.fullScreenBrowserPrefix === 'ms') {
-        window.top.document.msExitFullscreen();
+
+    // Cancel fullscreen
+    if (H5P.exitFullScreen !== undefined) {
+      H5P.exitFullScreen();
+    } else {
+      // Use old system
+      if (H5P.fullScreenBrowserPrefix === undefined) {
+        // Click button to disable fullscreen
+        H5P.jQuery('.h5p-disable-fullscreen').click();
       }
       else {
-        window.top.document[H5P.fullScreenBrowserPrefix + 'CancelFullScreen']();
+        if (H5P.fullScreenBrowserPrefix === '') {
+          window.top.document.exitFullScreen();
+        }
+        else if (H5P.fullScreenBrowserPrefix === 'ms') {
+          window.top.document.msExitFullscreen();
+        }
+        else {
+          window.top.document[H5P.fullScreenBrowserPrefix + 'CancelFullScreen']();
+        }
       }
     }
   }
