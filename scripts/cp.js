@@ -446,7 +446,7 @@ H5P.CoursePresentation.prototype.toggleFullScreen = function () {
     this.$fullScreenButton.attr('title', this.l10n.fullscreen);
 
     // Cancel fullscreen
-    if (H5P.exitFullScreen !== undefined) {
+    if (H5P.exitFullScreen !== undefined && H5P.fullScreenBrowserPrefix !== undefined) {
       H5P.exitFullScreen();
     } else {
       // Use old system
