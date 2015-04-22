@@ -347,6 +347,11 @@
   overflow: auto;
   text-align: left;
 }
+
+.h5p-course-presentation .h5p-popup-wrapper .h5p-popup-comment-field {
+  font-size: 0.75em;
+}
+
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
   overflow: hidden;
 }

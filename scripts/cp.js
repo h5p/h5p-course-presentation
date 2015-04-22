@@ -817,8 +817,15 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     $popup.remove();
   };
 
-  var $popup = H5P.jQuery('<div class="h5p-popup-overlay ' + (classes || '') + '"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
-          '</div><div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div></div></div>')
+  var $popup = H5P.jQuery(
+    '<div class="h5p-popup-overlay ' + (classes || '') + '">' +
+      '<div class="h5p-popup-container">' +
+        '<div class="h5p-popup-wrapper">' +
+          '<div class="h5p-popup-comment-field">' + popupContent + '</div>' +
+        '</div>' +
+        '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+      '</div>' +
+    '</div>')
     .prependTo(this.$wrapper)
     .click(close)
     .find('.h5p-popup-container')
