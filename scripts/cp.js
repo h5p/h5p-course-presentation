@@ -402,11 +402,11 @@ H5P.CoursePresentation.prototype.resize = function () {
 
   // Fill up all available width
   this.$wrapper.css('width', 'auto');
-  var width = this.$container[0].clientWidth;
+  var width = this.$container.width();
   var style = {};
 
   if (fullscreenOn) {
-    var maxHeight = this.$container[0].clientHeight;
+    var maxHeight = this.$container.height();
     if (width / maxHeight > this.ratio) {
       // Top and bottom would be cut off so scale down.
       width = maxHeight * this.ratio;
