@@ -337,6 +337,8 @@
   min-height: 65%;
   max-height: 80%;
   overflow: auto;
+
+  padding: 2em;
 }
 
 .h5p-course-presentation .h5p-popup-wrapper {
