@@ -107,8 +107,8 @@
           "default": "Total"
         },
         {
-          "label": "Tekst til \"Vis svar\" knappen",
-          "default": "Vis svar"
+          "label": "Tittel på \"Vis fasit\" knappen",
+          "default": "Vis fasit"
         },
         {
           "label": "Tekst til \"Prøv igjen\" knappen",
@@ -176,11 +176,7 @@
         },
         {
           "label": "Avslutt fasit modus tekst",
-          "default": "Fasitmodus:"
-        },
-        {
-          "label": "Understreket avslutt fasit modus tekst",
-          "default": "Avslutt"
+          "default": "Fasitmodus"
         },
         {
           "label": "Tekst ved flere oppgaver på en side",
@@ -197,8 +193,11 @@
         {
           "label": "Del på Twitter tekst",
           "default": "Del på Twitter"
+        },
+        {
+          "label": "Tittel for \"Oppsummering\" siden",
+          "default": "Oppsummering"
         }
-
       ]
     },
     {

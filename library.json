@@ -2,8 +2,8 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 3,
-  "patchVersion": 3,
+  "minorVersion": 4,
+  "patchVersion": 1,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -13,7 +13,7 @@
   "author": "Joubel AS",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 4
+    "minorVersion": 5
   },
   "preloadedJs": [
     {
@@ -51,7 +51,7 @@
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 3
+      "minorVersion": 4
     }
   ]
 }

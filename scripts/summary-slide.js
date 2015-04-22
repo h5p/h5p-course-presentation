@@ -29,19 +29,18 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       return;
     }
 
+    // Hide keywordlist on summary slide
+    if (that.cp.presentation.keywordListEnabled && that.cp.presentation.keywordListAlwaysShow) {
+      that.cp.hideKeywords();
+    }
+
     // Remove old content
     this.$summarySlide.children().remove();
 
-    // Enable solution mode
-    this.toggleSolutionMode(true);
-
     // Get scores and updated html for summary slide
-    var slideScores = that.cp.showSolutions();
+    var slideScores = that.cp.getSlideScores();
     var htmlText = that.outputScoreStats(slideScores);
     $(htmlText).appendTo(that.$summarySlide);
-
-    // Update feedback icons in solution mode
-    this.cp.setProgressBarFeedback(slideScores);
 
     if (!isExportSlide) {
       // Get total scores and construct progress circle
@@ -54,7 +53,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
           .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
       }
 
-      // TEMP DISABLED! - APP-ID NEEDS TO BE APPROVED
+      // TODO: Get approved App-id for posting to facebook.
       // Construct facebook share score link
       //var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide).remove();
       //this.addFacebookScoreLinkTo($facebookContainer, totalScores.totalPercentage);
@@ -78,6 +77,8 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     // Add button click events
     $('.h5p-show-solutions', that.$summarySlide)
       .click(function (event) {
+        // Enable solution mode
+        that.toggleSolutionMode(true);
         that.cp.jumpToSlide(0);
         event.preventDefault();
       });
@@ -137,28 +138,25 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
         slideDescription = that.cp.l10n.summaryMultipleTaskText;
       } else if (slideElements[slideScores[i].indexes[0]] !== undefined && slideElements[0]) {
         action = slideElements[slideScores[i].indexes[0]].action;
-        if (action.params.taskDescription !== undefined && action.params.taskDescription) {
-          slideDescription = action.params.taskDescription;
-        } else if (action.params.text !== undefined && action.params.text) {
-          slideDescription = action.params.text;
-        } else if (action.params.intro !== undefined && action.params.intro) {
-          slideDescription = action.params.intro;
+        if (typeof that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getTitle === 'function') {
+          slideDescription = that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getTitle();
         } else if (action.library !== undefined && action.library) {
           slideDescription = action.library;
         }
       }
 
       slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
-      tds += '<tr>' +
-              '<td class="h5p-td h5p-summary-task-title">' +
-                '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig,"")) + '</span>' +
-              '</td>' +
-              '<td class="h5p-td h5p-summary-score-bar">' +
-                '<div class="h5p-summary-score-meter">' +
-                  '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
-                '</div>' +
-              '</td>' +
-            '</tr>';
+      tds +=
+        '<tr>' +
+          '<td class="h5p-td h5p-summary-task-title">' +
+            '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + '</span>' +
+          '</td>' +
+          '<td class="h5p-td h5p-summary-score-bar">' +
+            '<div class="h5p-summary-score-meter">' +
+              '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
+            '</div>' +
+          '</td>' +
+        '</tr>';
       totalScore += slideScores[i].score;
       totalMaxScore += slideScores[i].maxScore;
     }
@@ -307,15 +305,23 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * @params {Boolean} enableSolutionMode Enable/disable solution mode
    */
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
+    var that = this;
+
+    // Get scores for summary slide
+    var slideScores = that.cp.showSolutions();
+
+    // Update feedback icons in solution mode
+    this.cp.setProgressBarFeedback(slideScores);
+
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
       this.cp.$footer.addClass('h5p-footer-solution-mode');
-      this.setFooterSolutionModeText(this.cp.l10n.solutionModeText, this.cp.l10n.solutionModeUnderlined);
-    } else {
+      this.setFooterSolutionModeText(this.cp.l10n.solutionModeText);
+    }
+    else {
       this.cp.$footer.removeClass('h5p-footer-solution-mode');
       this.setFooterSolutionModeText();
       this.cp.setProgressBarFeedback();
-      this.cp.$exitSolutionModeButton.detach();
     }
   };
 
@@ -323,18 +329,13 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * Sets the solution mode button text in footer.
    *
    * @param solutionModeText
-   * @param underlinedText
    */
-  SummarySlide.prototype.setFooterSolutionModeText = function (solutionModeText, underlinedText) {
+  SummarySlide.prototype.setFooterSolutionModeText = function (solutionModeText) {
     if (solutionModeText !== undefined && solutionModeText) {
       this.cp.$exitSolutionModeText.html(solutionModeText);
-    } else {
-      this.cp.$exitSolutionModeText.html('');
     }
-    if (underlinedText !== undefined && underlinedText) {
-      this.cp.$exitSolutionModeUnderlined.html(underlinedText);
-    } else {
-      this.cp.$exitSolutionModeUnderlined.html('');
+    else if (this.cp.$exitSolutionModeText) {
+      this.cp.$exitSolutionModeText.html('');
     }
   };
 

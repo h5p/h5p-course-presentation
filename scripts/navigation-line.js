@@ -8,7 +8,6 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
     this.initTaskAnsweredListener();
-    this.$progressbarPopup;
   }
 
   /**
@@ -22,7 +21,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         if (elementInstance.on !== undefined) {
           elementInstance.on('xAPI', function (event) {
             if (event.getVerb() === 'attempted') {
-              that.updateProgressBar(that.cp.currentSlideIndex, that.cp.currentSlideIndex);
+              that.updateProgressBarTasksAtSlideNumber(that.cp.currentSlideIndex);
             }
           });
         }
@@ -56,7 +55,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     var $progressbarPart;
     var progressbarPartTitle;
 
-    var clickProgressbar = function (event) {
+    var clickProgressbar = function () {
       that.cp.jumpToSlide($(this).data('slideNumber'));
     };
 
@@ -76,7 +75,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       if (slide.keywords !== undefined && slide.keywords.length) {
         progressbarPartTitle = slide.keywords[0].main;
       } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.hasSlidesWithSolutions) {
-        progressbarPartTitle = that.cp.l10n.showSolutions;
+        progressbarPartTitle = that.cp.l10n.summary;
       }
 
       $progressbarPart = $('<div>', {
@@ -97,9 +96,15 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
 
       if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.hasSlidesWithSolutions) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
-      }
 
-      $progressbarPart.attr('Title', progressbarPartTitle);
+        // Add svg icons to summary slide
+        $('<div>', {
+          'class': 'summary-slide-left-svg'
+        }).appendTo($progressbarPart);
+        $('<div>', {
+          'class': 'summary-slide-right-svg'
+        }).appendTo($progressbarPart);
+      }
 
       if (i === 0) {
         $progressbarPart.addClass('h5p-progressbar-part-show');
@@ -108,9 +113,14 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       if (this.cp.slides.length <= 60) {
         if (slide.elements !== undefined && slide.elements.length) {
           if (slidesWithSolutions[i] !== undefined && slidesWithSolutions[i].length) {
-            $('<div>', {
+            var elementOptions = {
               'class': 'h5p-progressbar-part-has-task'
-            }).appendTo($progressbarPart);
+            };
+            if (that.cp.previousState && that.cp.previousState.answered && that.cp.previousState.answered[i]) {
+              elementOptions.class += ' h5p-answered';
+            }
+
+            $('<div>', elementOptions).appendTo($progressbarPart);
           }
         }
       }
@@ -119,16 +129,15 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
   };
 
   NavigationLine.prototype.createProgressbarPopup = function (event, $parent) {
-    var that = this;
     var progressbarTitle = $parent.data('keyword');
 
     if (this.$progressbarPopup === undefined) {
       this.$progressbarPopup = H5P.jQuery('<div/>', {
         'class': 'h5p-progressbar-popup',
         'html': progressbarTitle
-      }).appendTo(that.cp.$wrapper);
+      }).appendTo($parent);
     } else {
-      this.$progressbarPopup.appendTo(that.cp.$wrapper);
+      this.$progressbarPopup.appendTo($parent);
       this.$progressbarPopup.html(progressbarTitle);
     }
     var pbpartPercentWidth = $parent.data('percentageWidth');
@@ -286,7 +295,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     });
 
     // Do not allow fullscreen in editor mode
-    if (this.cp.editor === undefined) {
+    if (this.cp.editor === undefined && H5P.canHasFullScreen) {
       this.cp.$fullScreenButton.appendTo($rightFooter);
     }
 
@@ -306,17 +315,12 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         e.preventDefault();
       }
       $(this).focus();
-    });
+    }).appendTo($rightFooter);
 
-    // Solution mode elements
+    // Solution mode text
     this.cp.$exitSolutionModeText = $('<div/>', {
       'html': '',
       'class': 'h5p-footer-exit-solution-mode-text'
-    }).appendTo(this.cp.$exitSolutionModeButton);
-
-    this.cp.$exitSolutionModeUnderlined = $('<div/>', {
-      'html': '',
-      'class': 'h5p-footer-exit-solution-mode-underlined'
     }).appendTo(this.cp.$exitSolutionModeButton);
   };
 
@@ -346,11 +350,19 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     if (solutionMode || (that.cp.editor !== undefined)) {
       return;
     }
+  };
+
+  /**
+   * Update progress bar task at provided slide number
+   * @param {Number} slideNumber Slide number which will be updated
+   */
+  NavigationLine.prototype.updateProgressBarTasksAtSlideNumber = function (slideNumber) {
+    var that = this;
 
     // Updates previous slide answer.
     var answered = true;
-    if (this.cp.slidesWithSolutions[prevSlideNumber] !== undefined && this.cp.slidesWithSolutions[prevSlideNumber]) {
-      this.cp.slidesWithSolutions[prevSlideNumber].forEach(function (slideTask) {
+    if (this.cp.slidesWithSolutions[slideNumber] !== undefined && this.cp.slidesWithSolutions[slideNumber]) {
+      this.cp.slidesWithSolutions[slideNumber].forEach(function (slideTask) {
         if (slideTask.getAnswerGiven !== undefined) {
           if (!slideTask.getAnswerGiven()) {
             answered = false;
@@ -360,7 +372,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }
 
     if (answered) {
-      that.cp.progressbarParts[prevSlideNumber]
+      that.cp.progressbarParts[slideNumber]
         .children('.h5p-progressbar-part-has-task')
         .addClass('h5p-answered');
     }
@@ -378,11 +390,10 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     this.cp.$footerMaxSlide.html(this.cp.slides.length);
 
     // Hide exit solution mode button on summary slide
-    if (this.cp.isSolutionMode) {
-      this.cp.$exitSolutionModeButton.detach();
-      if (slideNumber + 1 !== this.cp.slides.length) {
-        this.cp.$exitSolutionModeButton.insertBefore(this.cp.$fullScreenButton);
-      }
+    if (this.cp.isSolutionMode && slideNumber === this.cp.slides.length - 1) {
+      this.cp.$footer.addClass('summary-slide');
+    } else {
+      this.cp.$footer.removeClass('summary-slide');
     }
 
     // Update keyword in footer
@@ -401,16 +412,16 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       keywordString = this.cp.$currentKeyword.find('span').html();
     }
 
+    // Summary slide keyword
+    if (this.cp.editor === undefined && this.cp.hasSlidesWithSolutions) {
+      if (slideNumber >= this.cp.slides.length - 1) {
+        keywordString = this.cp.l10n.summary;
+      }
+    }
+
     // Empty string if no keyword defined
     if (keywordString === undefined) {
       keywordString = '';
-    }
-
-    // Summary slide keyword
-    if (this.cp.editor === undefined) {
-      if (slideNumber >= this.cp.slides.length - 1) {
-        keywordString = this.cp.l10n.showSolutions;
-      }
     }
 
     // Set footer keyword

@@ -147,7 +147,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 );
 }
 
-.h5p-course-presentation .h5p-summary-slide button {
+.h5p-course-presentation .h5p-summary-slide button:hover {
   background: rgb(4,104,206); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(4,104,206,1)), color-stop(100%,rgba(100,152,254,1))); /* Chrome,Safari4+ */
