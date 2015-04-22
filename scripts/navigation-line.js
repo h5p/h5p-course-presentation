@@ -295,7 +295,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     });
 
     // Do not allow fullscreen in editor mode
-    if (this.cp.editor === undefined) {
+    if (this.cp.editor === undefined && H5P.canHasFullScreen) {
       this.cp.$fullScreenButton.appendTo($rightFooter);
     }
 
