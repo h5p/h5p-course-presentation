@@ -402,11 +402,11 @@ H5P.CoursePresentation.prototype.resize = function () {
 
   // Fill up all available width
   this.$wrapper.css('width', 'auto');
-  var width = this.$container[0].clientWidth;
+  var width = this.$container.width();
   var style = {};
 
   if (fullscreenOn) {
-    var maxHeight = this.$container[0].clientHeight;
+    var maxHeight = this.$container.height();
     if (width / maxHeight > this.ratio) {
       // Top and bottom would be cut off so scale down.
       width = maxHeight * this.ratio;
@@ -446,7 +446,7 @@ H5P.CoursePresentation.prototype.toggleFullScreen = function () {
     this.$fullScreenButton.attr('title', this.l10n.fullscreen);
 
     // Cancel fullscreen
-    if (H5P.exitFullScreen !== undefined) {
+    if (H5P.exitFullScreen !== undefined && H5P.fullScreenBrowserPrefix !== undefined) {
       H5P.exitFullScreen();
     } else {
       // Use old system
@@ -817,8 +817,13 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     $popup.remove();
   };
 
-  var $popup = H5P.jQuery('<div class="h5p-popup-overlay ' + (classes || '') + '"><div class="h5p-popup-container"><div class="h5p-popup-wrapper">' + popupContent +
-          '</div><div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div></div></div>')
+  var $popup = H5P.jQuery(
+    '<div class="h5p-popup-overlay ' + (classes || 'h5p-popup-comment-field') + '">' +
+      '<div class="h5p-popup-container">' +
+        '<div class="h5p-popup-wrapper">' + popupContent + '</div>' +
+        '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+      '</div>' +
+    '</div>')
     .prependTo(this.$wrapper)
     .click(close)
     .find('.h5p-popup-container')
