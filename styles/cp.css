@@ -336,20 +336,27 @@
   width: 70%;
   min-height: 65%;
   max-height: 80%;
-  overflow: auto;
 
-  padding: 2em;
+  overflow: auto;
 }
 
-.h5p-course-presentation .h5p-popup-wrapper {
+.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field {
+  font-size: 0.75em;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-text .h5p-popup-container,
+.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container {
+  padding: 2em 0;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-text .h5p-popup-container .h5p-popup-wrapper,
+.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container .h5p-popup-wrapper {
+  position: absolute;
   box-sizing: border-box;
-  max-height: 100%;
+  max-height: calc(100% - 4em);
+  padding: 0 2em;
   overflow: auto;
   text-align: left;
-}
-
-.h5p-course-presentation .h5p-popup-wrapper .h5p-popup-comment-field {
-  font-size: 0.75em;
 }
 
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
