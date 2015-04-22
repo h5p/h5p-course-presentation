@@ -351,6 +351,10 @@
   font-size: 0.75em;
 }
 
+.h5p-course-presentation .h5p-popup-overlay .h5p-text {
+  font-size: 1em;
+}
+
 .h5p-course-presentation .h5p-popup-overlay.h5p-text .h5p-popup-container,
 .h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container {
   padding: 2em 0;
