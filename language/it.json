@@ -176,6 +176,14 @@
         },
         {
           "label": "Testo condividi su Twitter"
+        },
+        {
+          "label": "Title for summary slide",
+          "default": "Summary"
+        },
+        {
+          "label": "Title for the comments icon",
+          "default": "Show comments"
         }
       ]
     },
