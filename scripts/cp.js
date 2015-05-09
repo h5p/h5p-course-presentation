@@ -232,7 +232,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   }
 
   var summarySlideData = [];
-  if ((this.editor === undefined) && (that.showSummarySlide || this.hasAnswerElements)) {
+  if ((this.editor === undefined) && (this.showSummarySlide || this.hasAnswerElements)) {
     summarySlideData = {
       elements: [],
       keywords: []
