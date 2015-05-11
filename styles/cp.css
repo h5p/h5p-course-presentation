@@ -351,16 +351,16 @@
   font-size: 0.75em;
 }
 
-.h5p-course-presentation .h5p-popup-overlay .h5p-text {
+.h5p-course-presentation .h5p-popup-overlay .h5p-advanced-text {
   font-size: 1em;
 }
 
-.h5p-course-presentation .h5p-popup-overlay.h5p-text .h5p-popup-container,
+.h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container,
 .h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container {
   padding: 2em 0;
 }
 
-.h5p-course-presentation .h5p-popup-overlay.h5p-text .h5p-popup-container .h5p-popup-wrapper,
+.h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container .h5p-popup-wrapper,
 .h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container .h5p-popup-wrapper {
   position: absolute;
   box-sizing: border-box;
@@ -504,7 +504,7 @@ border-collapse: collapse;
   font-family: 'H5PCoursePresentation';
 }
 
-.h5p-course-presentation .h5p-text-button:before {
+.h5p-course-presentation .h5p-advanced-text-button:before {
   content: "\f05a";
 }
 
@@ -609,9 +609,12 @@ border-collapse: collapse;
   padding-right: 0.2em;
 }
 
-.h5p-course-presentation .h5p-text, .h5p-course-presentation .ct {
+.h5p-course-presentation .h5p-advanced-text, .h5p-course-presentation .ct {
   font-size: 0.75em;
   padding: 0.375em 0.5em;
+}
+.h5p-course-presentation .h5p-advanced-text p span {
+  line-height: 1.25em;
 }
 
 .h5p-course-presentation .dragndrop .h5p-text {

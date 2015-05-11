@@ -79,13 +79,42 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
             if (slides[i].elements[j].action && slides[i].elements[j].action.subContentId === undefined) {
               // NOTE: We avoid using H5P.createUUID since this is an upgrade script and H5P function may change in the
               // future
-              slides[i].elements[j].action.subContentId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(char) {
+              slides[i].elements[j].action.subContentId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
                 var random = Math.random()*16|0, newChar = char === 'x' ? random : (random&0x3|0x8);
                 return newChar.toString(16);
               });
             }
           }
         }
+        finished(null, parameters);
+      },
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.5.
+       *
+       * Converts H5P.Text elements into H5P.AdvancedText. This is to support
+       * more styling options for text.
+       *
+       * @params {Object} parameters
+       * @params {function} finished
+       */
+      5: function (parameters, finished) {
+        var slides = parameters.presentation.slides;
+
+        // Go through slides and elements
+        for (var i = 0; i < slides.length; i++) {
+          for (var j = 0; j < slides[i].elements.length; j++) {
+            var element = slides[i].elements[j];
+
+            // Check if element type is text
+            if (element.action && element.action.library &&
+                element.action.library.split(' ')[0] === 'H5P.Text') {
+              element.action.library = 'H5P.AdvancedText 1.0';
+            }
+          }
+        }
+
+        // Done
         finished(null, parameters);
       }
     }
