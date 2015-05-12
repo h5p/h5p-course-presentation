@@ -2,6 +2,7 @@
 .h5p-course-presentation .h5p-summary-slide {
   background: #fff;
   text-align: center;
+  color: #333;
 }
 
 .h5p-course-presentation .h5p-summary-slide.h5p-summary-only-export {
@@ -36,7 +37,7 @@
   -ms-flex-pack: center;
   justify-content: center;
 
-  padding: 0.3em 0 1em;
+  padding: 1.5em 0;
   font-size: 0.8em;
 }
 
@@ -100,6 +101,11 @@
   cursor: pointer;
   font-size: 0.7em;
   padding: 0 0.5em;
+  color: #333;
+}
+
+.h5p-course-presentation .h5p-summary-twitter-message:hover,
+.h5p-course-presentation .h5p-summary-facebook-message:hover {
   color: #096bcb;
 }
 

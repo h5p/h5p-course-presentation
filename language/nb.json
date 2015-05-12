@@ -199,6 +199,10 @@
         {
           "label": "Tittel for \"Oppsummering\" siden",
           "default": "Oppsummering"
+        },
+        {
+          "label": "Tittel for kommentarikonet",
+          "default": "Vis kommentarer"
         }
       ]
     },

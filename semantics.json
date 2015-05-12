@@ -422,6 +422,12 @@
         "type": "text",
         "label": "Title for summary slide",
         "default": "Summary"
+      },
+      {
+        "name": "solutionsButtonTitle",
+        "type": "text",
+        "label": "Title for the comments icon",
+        "default": "Show comments"
       }
     ]
   },
