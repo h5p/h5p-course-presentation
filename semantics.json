@@ -44,7 +44,7 @@
                     "name": "action",
                     "type": "library",
                     "options": [
-                      "H5P.Text 1.0",
+                      "H5P.AdvancedText 1.0",
                       "H5P.ContinuousText 1.1",
                       "H5P.Link 1.0",
                       "H5P.Image 1.0",
