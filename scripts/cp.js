@@ -65,6 +65,7 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.overrideButtons = !!params.override.overrideButtons;
     this.overrideShowSolutionsButton = !!params.override.overrideShowSolutionButton;
     this.overrideRetry = !!params.override.overrideRetry;
+    this.hideSummarySlide = !!params.override.hideSummarySlide;
   }
   this.on('resize', this.resize, this);
 };
@@ -223,8 +224,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.showSummarySlide = true;
 
   if (this.overrideButtons) {
-    this.showSummarySlide = this.overrideShowSolutionsButton;
-  } else  {
+    this.showSummarySlide = !this.hideSummarySlide;
+  } else {
     // Check for task
     this.slidesWithSolutions.forEach(function (slide) {
       this.showSummarySlide = slide.length;

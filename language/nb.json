@@ -208,10 +208,10 @@
     },
     {
       "label": "Innstillinger for \"Vis svar\" knapp og \"Prøv igjen\".",
-      "description": "Disse instillingene lar deg overstyre når \"Vis svar\" knapp og \"Prøv igjen\" er slått på i integrert h5p innhold.",
+      "description": "Disse muligheder vil lade du tilsidesætte indstillinger.",
       "fields": [
         {
-          "label": "Slå på overstyring for \"Vis svar\" og \"Prøv igjen\".",
+          "label": "Aktiver adfærd overstyring.",
           "description": "Aktivering vil overstyre de følgende innstillingene for integrert innhold."
         },
         {
@@ -221,6 +221,10 @@
         {
           "label": "Slå på \"Prøv igjen\".",
           "description": "Aktivering vil slå på \"Prøv igjen\" ."
+        },
+        {
+          "label": "Adfærd",
+          "description": "Skjuler resumé slide"
         }
       ]
     }
