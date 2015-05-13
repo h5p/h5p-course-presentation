@@ -504,7 +504,7 @@ border-collapse: collapse;
   font-family: 'H5PCoursePresentation';
 }
 
-.h5p-course-presentation .h5p-advanced-text-button:before {
+.h5p-course-presentation .h5p-advancedtext-button:before {
   content: "\f05a";
 }
 
