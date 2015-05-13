@@ -103,13 +103,15 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 
         // Go through slides and elements
         for (var i = 0; i < slides.length; i++) {
-          for (var j = 0; j < slides[i].elements.length; j++) {
-            var element = slides[i].elements[j];
+          if (slides[i].elements) {
+            for (var j = 0; j < slides[i].elements.length; j++) {
+              var element = slides[i].elements[j];
 
-            // Check if element type is text
-            if (element.action && element.action.library &&
-                element.action.library.split(' ')[0] === 'H5P.Text') {
-              element.action.library = 'H5P.AdvancedText 1.0';
+              // Check if element type is text
+              if (element.action && element.action.library &&
+                  element.action.library.split(' ')[0] === 'H5P.Text') {
+                element.action.library = 'H5P.AdvancedText 1.0';
+              }
             }
           }
         }
