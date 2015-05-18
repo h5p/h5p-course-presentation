@@ -61,10 +61,11 @@ H5P.CoursePresentation = function (params, id, extras) {
     solutionsButtonTitle: 'Show comments'
   }, params.l10n !== undefined ? params.l10n : {});
 
-  if (params.override !== undefined) {
-    this.overrideButtons = (params.override.overrideButtons === undefined ? false : params.override.overrideButtons);
-    this.overrideShowSolutionsButton = (params.override.overrideShowSolutionButton === undefined ? false : params.override.overrideShowSolutionButton);
-    this.overrideRetry = (params.override.overrideRetry === undefined ? false : params.override.overrideRetry);
+  if (!!params.override) {
+    this.overrideButtons = !!params.override.overrideButtons;
+    this.overrideShowSolutionsButton = !!params.override.overrideShowSolutionButton;
+    this.overrideRetry = !!params.override.overrideRetry;
+    this.hideSummarySlide = !!params.override.hideSummarySlide;
   }
   this.on('resize', this.resize, this);
 };
@@ -220,16 +221,19 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   // Determine if summary slide should be added
   var $summarySlide;
-  that.hasSlidesWithSolutions = false;
-  // Check for task
-  this.slidesWithSolutions.forEach(function (slide) {
-    if (slide.length) {
-      that.hasSlidesWithSolutions = true;
-    }
-  });
+  this.showSummarySlide = false;
+
+  if (this.overrideButtons && this.hideSummarySlide) {
+    this.showSummarySlide = !this.hideSummarySlide;
+  } else {
+    // Check for task
+    this.slidesWithSolutions.forEach(function (slide) {
+      that.showSummarySlide = slide.length;
+    });
+  }
 
   var summarySlideData = [];
-  if ((this.editor === undefined) && (this.hasSlidesWithSolutions || this.hasAnswerElements)) {
+  if ((this.editor === undefined) && (this.showSummarySlide || this.hasAnswerElements)) {
     summarySlideData = {
       elements: [],
       keywords: []

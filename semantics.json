@@ -441,7 +441,7 @@
       {
         "name": "overrideButtons",
         "type": "boolean",
-        "label": "Enable override for \"Show solution\" and \"Retry\" settings.",
+        "label": "Enable behaviour override.",
         "description": "If this is enabled the questions own settings will be ignored and the below settings will be used instead.",
         "default": false
       },
@@ -457,6 +457,13 @@
         "type": "boolean",
         "label": "Enable \"Retry\".",
         "description": "Enabling this option will make the user able to \"Retry\" .",
+        "default": false
+      },
+      {
+        "name": "hideSummarySlide",
+        "type": "boolean",
+        "label": "Hide Summary Slide",
+        "description": "Hides the summary slide.",
         "default": false
       }
     ]

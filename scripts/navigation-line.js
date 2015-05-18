@@ -74,7 +74,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       progressbarPartTitle = String(that.cp.l10n.slide) + (i + 1);
       if (slide.keywords !== undefined && slide.keywords.length) {
         progressbarPartTitle = slide.keywords[0].main;
-      } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.hasSlidesWithSolutions) {
+      } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.showSummarySlide) {
         progressbarPartTitle = that.cp.l10n.summary;
       }
 
@@ -94,7 +94,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
           .mouseleave(mouseleaveProgressbar);
       }
 
-      if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.hasSlidesWithSolutions) {
+      if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.showSummarySlide) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
 
         // Add svg icons to summary slide
@@ -413,7 +413,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }
 
     // Summary slide keyword
-    if (this.cp.editor === undefined && this.cp.hasSlidesWithSolutions) {
+    if (this.cp.editor === undefined && this.cp.showSummarySlide) {
       if (slideNumber >= this.cp.slides.length - 1) {
         keywordString = this.cp.l10n.summary;
       }
