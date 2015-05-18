@@ -24,7 +24,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     var that = this;
     // Validate update.
     var isValidUpdate = (this.cp.editor === undefined) && (this.$summarySlide !== undefined) && (slideNumber >= this.cp.slides.length - 1);
-    var isExportSlide = (!this.cp.hasSlidesWithSolutions && this.cp.hasAnswerElements);
+    var isExportSlide = (!this.cp.showSummarySlide && this.cp.hasAnswerElements);
     if (!isValidUpdate) {
       return;
     }

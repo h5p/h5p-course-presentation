@@ -209,7 +209,7 @@
       "description": "Disse alternativene vil la deg overstyre innstillinger.",
       "fields": [
         {
-          "label": "Aktiver oppførsel overstyring",
+          "label": "Aktiver overstyring av oppførsel",
           "description": "Aktivering vil overstyre dei følgjande innstillingene for integrert innhald."
         },
         {
@@ -221,8 +221,8 @@
           "description": "Aktivering vil slå på \"Prøv igjen\" ."
         },
         {
-          "label": "Atferd",
-          "description": "Skjuler sammendraget lysbilde"
+          "label": "Skjul sammendrag.",
+          "description": "Aktivering vil føre til at sammendrag siden ikke vises."
         }
       ]
     }

@@ -221,14 +221,14 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   // Determine if summary slide should be added
   var $summarySlide;
-  this.showSummarySlide = true;
+  this.showSummarySlide = false;
 
-  if (this.overrideButtons) {
+  if (this.overrideButtons && this.hideSummarySlide) {
     this.showSummarySlide = !this.hideSummarySlide;
   } else {
     // Check for task
     this.slidesWithSolutions.forEach(function (slide) {
-      this.showSummarySlide = slide.length;
+      that.showSummarySlide = slide.length;
     });
   }
 
