@@ -693,7 +693,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
         // Stop sound??
 
         // Resize images to fit popup dialog
-        if (instance instanceof H5P.Image) {
+        if (H5P.Image !== undefined && instance instanceof H5P.Image) {
           that.resizePopupImage($buttonElement);
         }
       }
