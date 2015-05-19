@@ -426,9 +426,10 @@ H5P.CoursePresentation.prototype.resize = function () {
   // Resize elements
   var instances = this.elementInstances[this.$current.index()];
   if (instances !== undefined) {
+    var slideElements = this.slides[this.$current.index()].elements;
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
-      if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined) {
+      if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
         H5P.trigger(instance, 'resize');
       }
     }
