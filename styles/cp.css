@@ -344,7 +344,7 @@
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper {
   box-sizing: border-box;
   max-height: 100%;
-  overflow: auto;
+  overflow: hidden;
   text-align: left;
 }
 
