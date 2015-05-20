@@ -681,20 +681,11 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     var libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
     H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
-        $buttonElement.appendTo(that.showPopup('',function () {
-          if (instance.pause !== undefined) {
-            instance.pause();
-          }
-          else if (instance.stop !== undefined) {
-            instance.stop();
-          }
-          else if (instance.video) {
-            instance.video.pause();
-          }
+        $buttonElement.appendTo(that.showPopup('', function () {
+          that.pauseMedia(instance);
           $buttonElement.detach();
         }, libTypePmz).find('.h5p-popup-wrapper'));
         H5P.trigger(instance, 'resize');
-        // Stop sound??
 
         // Resize images to fit popup dialog
         if (H5P.Image !== undefined && instance instanceof H5P.Image) {
@@ -1197,15 +1188,9 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   var instances = this.elementInstances[previousSlideIndex];
   if (instances !== undefined) {
     for (var i = 0; i < instances.length; i++) {
-      // TODO: Check instance type instead to avoid accidents?
-      if (typeof instances[i].stop === 'function') {
-        instances[i].stop();
-      }
-      if (instances[i].video) {
-        instances[i].video.pause();
-      }
-      if (typeof instances[i].pause === 'function') {
-        instances[i].pause();
+      if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
+        // Only pause media elements displayed as posters.
+        that.pauseMedia(instances[i]);
       }
     }
   }
@@ -1462,4 +1447,34 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
   }
 
   return info;
+};
+
+/**
+ * Stop the given element's playback if any.
+ *
+ * @param {object} instance
+ */
+H5P.CoursePresentation.prototype.pauseMedia = function (instance) {
+  try {
+    if (instance.pause !== undefined &&
+        (instance.pause instanceof Function ||
+          typeof instance.pause === 'function')) {
+      instance.pause();
+    }
+    else if (instance.video !== undefined &&
+             instance.video.pause !== undefined &&
+             (instance.video.pause instanceof Function ||
+               typeof instance.video.pause === 'function')) {
+      instance.video.pause();
+    }
+    else if (instance.stop !== undefined &&
+             (instance.stop instanceof Function ||
+               typeof instance.stop === 'function')) {
+      instance.stop();
+    }
+  }
+  catch (err) {
+    // Prevent crashing, but tell developers there's something wrong.
+    H5P.error(err);
+  }
 };
