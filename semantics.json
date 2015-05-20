@@ -434,8 +434,8 @@
   {
     "name": "override",
     "type": "group",
-    "label": "Settings for \"Show solution\" button and \"Retry\".",
-    "description": "These options will let you override when to display \"Show solution\" button and \"Retry\" in integrated h5p content.",
+    "label": "Behaviour settings.",
+    "description": "These options will let you override behaviour settings.",
     "optional": true,
     "fields": [
       {
