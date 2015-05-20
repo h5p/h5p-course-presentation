@@ -223,7 +223,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var $summarySlide;
   this.showSummarySlide = false;
 
-  if (this.overrideButtons && this.hideSummarySlide) {
+  if (this.hideSummarySlide) {
     this.showSummarySlide = !this.hideSummarySlide;
   } else {
     // Check for task
