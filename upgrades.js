@@ -29,11 +29,13 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
           for (i = 0; i < parameters.slides.length; i++) {
             slide = parameters.slides[i];
 
-            for (j = 0; j < slide.elements.length; j++) {
-              var element = slide.elements[j];
+            if (slide.elements !== undefined) {
+              for (j = 0; j < slide.elements.length; j++) {
+                var element = slide.elements[j];
 
-              element.x += 31.25;
-              element.width *= 0.6875;
+                element.x += 31.25;
+                element.width *= 0.6875;
+              }
             }
           }
         }
@@ -75,14 +77,16 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
       4: function (parameters, finished) {
         var slides = parameters.presentation.slides;
         for (var i = 0; i < slides.length; i++) {
-          for (var j = 0; j < slides[i].elements.length; j++) {
-            if (slides[i].elements[j].action && slides[i].elements[j].action.subContentId === undefined) {
-              // NOTE: We avoid using H5P.createUUID since this is an upgrade script and H5P function may change in the
-              // future
-              slides[i].elements[j].action.subContentId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
-                var random = Math.random()*16|0, newChar = char === 'x' ? random : (random&0x3|0x8);
-                return newChar.toString(16);
-              });
+          if (slides[i].elements !== undefined) {
+            for (var j = 0; j < slides[i].elements.length; j++) {
+              if (slides[i].elements[j].action && slides[i].elements[j].action.subContentId === undefined) {
+                // NOTE: We avoid using H5P.createUUID since this is an upgrade script and H5P function may change in the
+                // future
+                slides[i].elements[j].action.subContentId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
+                  var random = Math.random()*16|0, newChar = char === 'x' ? random : (random&0x3|0x8);
+                  return newChar.toString(16);
+                });
+              }
             }
           }
         }
@@ -103,7 +107,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 
         // Go through slides and elements
         for (var i = 0; i < slides.length; i++) {
-          if (slides[i].elements) {
+          if (slides[i].elements !== undefined) {
             for (var j = 0; j < slides[i].elements.length; j++) {
               var element = slides[i].elements[j];
 
