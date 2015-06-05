@@ -205,7 +205,7 @@
       ]
     },
     {
-      "label": "Innstillinger for \"Vis svar\" knapp og \"Prøv igjen\".",
+      "label": "Innstillinger for oppførsel.",
       "description": "Disse alternativene vil la deg overstyre innstillinger.",
       "fields": [
         {
