@@ -176,15 +176,23 @@
         },
         {
           "label": "Testo condividi su Twitter"
+        },
+        {
+          "label": "Title for summary slide",
+          "default": "Summary"
+        },
+        {
+          "label": "Title for the comments icon",
+          "default": "Show comments"
         }
       ]
     },
     {
-      "label": "Impostazioni per i pulsanti \"Mostra soluzioni\" e \"Riprova\".",
-      "description": "Queste opzioni consentono di ignorare quando visualizzare i pulsanti \"Mostra soluzione\" e \"Riprova\" nel contenuto H5P integrato.",
+      "label": "Impostazioni.",
+      "description": "Queste opzioni ti consente di ignorare le impostazioni.",
       "fields": [
         {
-          "label": "Abilita ignora impostazioni per \"Mostra soluzione\" e \"Riprova\".",
+          "label": "Attiva il comportamento di esclusione.",
           "description": "Se questa opzione � abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
         },
         {
@@ -194,6 +202,10 @@
         {
           "label": "Abilita \"Riprova\".",
           "description": "L'attivazione di questa opzione far� in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
+        },
+        {
+          "label": "Comportamento",
+          "description": "Nasconde la diapositiva sommario"
         }
       ]
     }

@@ -24,7 +24,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     var that = this;
     // Validate update.
     var isValidUpdate = (this.cp.editor === undefined) && (this.$summarySlide !== undefined) && (slideNumber >= this.cp.slides.length - 1);
-    var isExportSlide = (!this.cp.hasSlidesWithSolutions && this.cp.hasAnswerElements);
+    var isExportSlide = (!this.cp.showSummarySlide && this.cp.hasAnswerElements);
     if (!isValidUpdate) {
       return;
     }
@@ -108,6 +108,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    * @returns {string} html
    */
   SummarySlide.prototype.outputScoreStats = function (slideScores) {
+    var self = this;
     if (slideScores === undefined) {
       this.$summarySlide.addClass('h5p-summary-only-export');
       var html =
@@ -132,18 +133,8 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       if (slideScores[i].score === 0) {
         slidePercentageScore = 0;
       }
-      // Get task description, task name or identify multiple tasks:
-      slideElements = that.cp.slides[slideScores[i].slide - 1].elements;
-      if (slideScores[i].indexes.length > 1) {
-        slideDescription = that.cp.l10n.summaryMultipleTaskText;
-      } else if (slideElements[slideScores[i].indexes[0]] !== undefined && slideElements[0]) {
-        action = slideElements[slideScores[i].indexes[0]].action;
-        if (typeof that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getTitle === 'function') {
-          slideDescription = that.cp.elementInstances[slideScores[i].slide - 1][slideScores[i].indexes[0]].getTitle();
-        } else if (action.library !== undefined && action.library) {
-          slideDescription = action.library;
-        }
-      }
+
+      slideDescription = self.getSlideDescription(slideScores[i]);
 
       slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
       tds +=
@@ -195,6 +186,46 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       '</div>';
 
     return html;
+  };
+
+  SummarySlide.prototype.getSlideDescription = function (slideScoresSlide) {
+    var self = this;
+    // Get task description, task name or identify multiple tasks:
+    var slideDescription, action;
+    var slideElements = self.cp.slides[slideScoresSlide.slide - 1].elements;
+    if (slideScoresSlide.indexes.length > 1) {
+      slideDescription = self.cp.l10n.summaryMultipleTaskText;
+    } else if (slideElements[slideScoresSlide.indexes[0]] !== undefined && slideElements[0]) {
+      action = slideElements[slideScoresSlide.indexes[0]].action;
+      if (typeof self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle === 'function') {
+        slideDescription = self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle();
+      } else if (action.library !== undefined && action.library) {
+
+        // Remove major, minor version and h5p prefix, Split on uppercase
+        var humanReadableLibrary = action.library
+          .split(' ')[0]
+          .split('.')[1]
+          .split(/(?=[A-Z])/);
+        var humanReadableString = '';
+
+        // Make library human readable
+        humanReadableLibrary.forEach(function (readableWord, index) {
+
+          // Make sequential words lowercase
+          if (index !== 0) {
+            readableWord = readableWord.toLowerCase();
+          }
+          humanReadableString += readableWord;
+
+          // Add space between words
+          if (index <= humanReadableLibrary.length - 1) {
+            humanReadableString += ' ';
+          }
+        });
+        slideDescription = humanReadableString;
+      }
+    }
+    return slideDescription;
   };
 
   /**
