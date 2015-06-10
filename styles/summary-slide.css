@@ -93,6 +93,40 @@
   border-spacing: 0;
 }
 
+.h5p-course-presentation .h5p-score-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+.h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
+  padding-right: 0.3em;
+}
+
+.h5p-course-presentation .h5p-th {
+  border-bottom: 1px solid #ddd;
+}
+
+.h5p-course-presentation .h5p-td {
+  border-top: 1px solid #ddd;
+}
+
+/* No top border for first score entry */
+.h5p-course-presentation .h5p-score-table tr:first-child .h5p-td {
+  border-top: 0;
+}
+
+/* Total score top border */
+.h5p-course-presentation .h5p-summary-total-table .h5p-td.h5p-summary-task-title {
+  border-top: 2px solid #ddd;
+}
+
+.h5p-course-presentation .h5p-td p {
+  display: inline;
+  color: -webkit-link;
+  text-decoration: underline;
+}
+
 /* ---------------------------- Social media styles ---------------------------------------------- */
 
 /* Facebook and Twitter link styling */
@@ -101,7 +135,7 @@
   cursor: pointer;
   font-size: 0.7em;
   padding: 0 0.5em;
-  color: #333;
+  color: #999;
 }
 
 .h5p-course-presentation .h5p-summary-twitter-message:hover,
@@ -111,7 +145,7 @@
 
 .h5p-course-presentation .h5p-summary-twitter-message > span,
 .h5p-course-presentation .h5p-summary-facebook-message > span {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .h5p-course-presentation .h5p-summary-twitter-message:before {
