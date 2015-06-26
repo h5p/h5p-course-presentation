@@ -1435,10 +1435,11 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
         if (instance.getCopyrights !== undefined) {
           var elementCopyrights = instance.getCopyrights();
           if (elementCopyrights !== undefined) {
-            var params = this.slides[slide].elements[element].action.params;
-            elementCopyrights.setLabel((element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : ''));
             slideInfo.addContent(elementCopyrights);
           }
+        } else {
+          var nativeCopyrights = H5P.getCopyrights(instance, instance.params, instance.contentId);
+          slideInfo.addContent(nativeCopyrights);
         }
       }
     }
