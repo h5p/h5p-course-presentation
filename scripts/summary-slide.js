@@ -338,11 +338,13 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
     var that = this;
 
-    // Get scores for summary slide
-    var slideScores = that.cp.showSolutions();
+    if (enableSolutionMode) {
+      // Get scores for summary slide
+      var slideScores = that.cp.showSolutions();
 
-    // Update feedback icons in solution mode
-    this.cp.setProgressBarFeedback(slideScores);
+      // Update feedback icons in solution mode
+      this.cp.setProgressBarFeedback(slideScores);
+    }
 
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
