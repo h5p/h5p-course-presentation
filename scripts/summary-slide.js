@@ -345,9 +345,13 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       // Update feedback icons in solution mode
       this.cp.setProgressBarFeedback(slideScores);
     }
-
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
+      // Get scores for summary slide
+      var slideScores = that.cp.showSolutions();
+
+      // Update feedback icons in solution mode
+      this.cp.setProgressBarFeedback(slideScores);
       this.cp.$footer.addClass('h5p-footer-solution-mode');
       this.setFooterSolutionModeText(this.cp.l10n.solutionModeText);
     }
