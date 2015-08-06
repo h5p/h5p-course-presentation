@@ -27,6 +27,9 @@
     },
     {
       "path": "scripts/navigation-line.js"
+    },
+    {
+      "path": "scripts/printer.js"
     }
   ],
   "preloadedCss": [
@@ -38,12 +41,20 @@
     },
     {
       "path": "styles/navigation-line.css"
+    },
+    {
+      "path": "styles/print.css"
     }
   ],
   "preloadedDependencies": [
     {
       "machineName": "FontAwesome",
       "majorVersion": 4,
+      "minorVersion": 1
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
       "minorVersion": 1
     }
   ],

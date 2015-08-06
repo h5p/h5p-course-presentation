@@ -65,6 +65,9 @@
 }
 
 /* Rectangular summary score meter */
+.h5p-course-presentation .h5p-summary-score-bar {
+  position: relative;
+}
 .h5p-course-presentation .h5p-summary-score-meter {
   height: 0.4em;
   background: #e0e0e0;
@@ -180,4 +183,3 @@
   content: "\f021";
   margin-right: 0.5em;
 }
-

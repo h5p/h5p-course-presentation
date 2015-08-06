@@ -274,48 +274,70 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       $(this).focus();
     }).appendTo($centerFooter);
 
+    // *********************
     // Right footer elements
+    // *********************
 
-    // Toggle full screen button
-    this.cp.$fullScreenButton = $('<div/>', {
-      'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
-      'title': this.cp.l10n.fullscreen,
-      'role': 'button',
-      'tabindex': '0'
-    }).click(function () {
-      that.cp.toggleFullScreen();
-    }).keydown(function (e) { // Trigger the click event from the keyboard
-      var code = e.which;
-      // 32 = Space
-      if (code === 32) {
-        $(this).click();
-        e.preventDefault();
+    // Do not add these buttons in editor mode
+    if (this.cp.editor === undefined) {
+
+      // Exit solution mode button
+      this.cp.$exitSolutionModeButton = $('<div/>', {
+        'class': 'h5p-footer-exit-solution-mode',
+        'title': this.cp.l10n.solutionModeTitle,
+        'tabindex': '0'
+      }).click(function (event) {
+        that.cp.jumpToSlide(that.cp.slides.length - 1);
+        event.preventDefault();
+      }).keydown(function (e) { // Trigger the click event from the keyboard
+        var code = e.which;
+        // 32 = Space
+        if (code === 32) {
+          $(this).click();
+          e.preventDefault();
+        }
+        $(this).focus();
+      }).appendTo($rightFooter);
+
+      // Print button
+      if (H5P.CoursePresentation.Printer.supported()) {
+        this.cp.$printButton = $('<div/>', {
+          'class': 'h5p-footer-button h5p-footer-print',
+          'title': this.cp.l10n.printTitle,
+          'role': 'button',
+          'tabindex': '0'
+        }).click(function () {
+          var $h5pWrapper = $('.h5p-wrapper');
+
+          H5P.CoursePresentation.Printer.showDialog(that.cp.l10n, $h5pWrapper, function (printAllslides) {
+            H5P.CoursePresentation.Printer.print(that.cp, $h5pWrapper, printAllslides);
+          });
+        });
+        this.cp.$printButton.appendTo($rightFooter);
       }
-      $(this).focus();
-    });
 
-    // Do not allow fullscreen in editor mode
-    if (this.cp.editor === undefined && H5P.canHasFullScreen) {
-      this.cp.$fullScreenButton.appendTo($rightFooter);
+      if (H5P.canHasFullScreen) {
+        // Toggle full screen button
+        this.cp.$fullScreenButton = $('<div/>', {
+          'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
+          'title': this.cp.l10n.fullscreen,
+          'role': 'button',
+          'tabindex': '0'
+        }).click(function () {
+          that.cp.toggleFullScreen();
+        }).keydown(function (e) { // Trigger the click event from the keyboard
+          var code = e.which;
+          // 32 = Space
+          if (code === 32) {
+            $(this).click();
+            e.preventDefault();
+          }
+          $(this).focus();
+        });
+
+        this.cp.$fullScreenButton.appendTo($rightFooter);
+      }
     }
-
-    // Exit solution mode button
-    this.cp.$exitSolutionModeButton = $('<div/>', {
-      'class': 'h5p-footer-exit-solution-mode',
-      'title': this.cp.l10n.solutionModeTitle,
-      'tabindex': '0'
-    }).click(function (event) {
-      that.cp.jumpToSlide(that.cp.slides.length - 1);
-      event.preventDefault();
-    }).keydown(function (e) { // Trigger the click event from the keyboard
-      var code = e.which;
-      // 32 = Space
-      if (code === 32) {
-        $(this).click();
-        e.preventDefault();
-      }
-      $(this).focus();
-    }).appendTo($rightFooter);
 
     // Solution mode text
     this.cp.$exitSolutionModeText = $('<div/>', {
