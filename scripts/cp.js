@@ -115,7 +115,7 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
   this.setActivityStarted();
-  
+
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-box-wrapper">' +
