@@ -82,10 +82,30 @@
     display: none;
   }
   /* Summary content type - avoiding black background */
-  .summary-container li {
+  .h5p-course-presentation .summary-container li {
     background: #fff;
   }
+  /* Styling for videos */
+  .h5p-course-presentation .h5p-element.h5p-video {
+    background-color: #fff;
+    text-align: center;
+    min-height: 10em;
+  }
+  .h5p-course-presentation .h5p-element.h5p-video:before {
+    font-family: 'H5PFontAwesome4';
+    font-size: 4em;
+    color: #666;
+    content: '\f03d';
+
+    display: inline-block;
+    position: relative;
+    top: 1.5em;
+  }
+  .h5p-course-presentation .h5p-element.h5p-video * {
+    width: 0;
+  }
 }
+
 /* Print dialog */
 .h5p-print-dialog {
   text-align: center;
