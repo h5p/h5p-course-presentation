@@ -8,7 +8,9 @@
   /* Hide progressbar */
   .h5p-course-presentation .h5p-progressbar,
   /* Hide footer */
-  .h5p-course-presentation .h5p-footer {
+  .h5p-course-presentation .h5p-footer,
+  /* Hide keywords */
+  .h5p-course-presentation .h5p-keywords-wrapper {
     display:none;
   }
   /* Make a border on bottom */
@@ -78,6 +80,10 @@
   /* Hide twitter on summary slide */
   .h5p-course-presentation .h5p-summary-twitter-message {
     display: none;
+  }
+  /* Summary content type - avoiding black background */
+  .summary-container li {
+    background: #fff;
   }
 }
 /* Print dialog */
