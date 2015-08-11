@@ -217,10 +217,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Create keywords html
   var keywords = '';
   var foundKeywords = false;
-  var first;
+  var first, slide, $slide;
   for (var i = 0; i < this.slides.length; i++) {
-    var slide = this.slides[i];
-    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
+    slide = this.slides[i];
+    $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
     first = i === 0;
 
     if (first) {
@@ -258,8 +258,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     };
     this.slides.push(summarySlideData);
 
-    var slide = this.slides[this.slides.length - 1];
-    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
+    slide = this.slides[this.slides.length - 1];
+    $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
 
     this.addElements(slide, $slide, i);
 
