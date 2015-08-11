@@ -33,11 +33,15 @@
 .h5p-course-presentation h5,
 .h5p-course-presentation h6,
 .h5p-course-presentation p {
-  color: #323232;
-  font-family: H5PDroidSans, sans-serif;
   line-height: 150%;
   padding: 0.5em;
 }
+
+.h5p-course-presentation {
+  font-family: H5PDroidSans, sans-serif;
+  color: #323232;
+}
+
 .h5p-course-presentation h2 {
   font-size: 1.667em;
   font-weight: bold;
