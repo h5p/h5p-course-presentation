@@ -184,6 +184,22 @@
         {
           "label": "Title for the comments icon",
           "default": "Show comments"
+        },
+        {
+          "label": "Title for print button",
+          "default": "Print"
+        },
+        {
+          "label": "Print dialog ingress",
+          "default": "How would you like to print this presentation?"
+        },
+        {
+          "label": "Label for \"Print all slides\" button",
+          "default": "Print all slides"
+        },
+        {
+          "label": "Label for \"Print current slide\" button",
+          "default": "Print current slide"
         }
       ]
     },
