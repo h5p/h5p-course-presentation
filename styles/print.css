@@ -84,6 +84,9 @@
   /* Summary content type - avoiding black background */
   .h5p-course-presentation .summary-container li {
     background: #fff;
+
+    /* Need to reset transition for Chrome */
+    transition: none;
   }
   /* Styling for videos */
   .h5p-course-presentation .h5p-element.h5p-video {
