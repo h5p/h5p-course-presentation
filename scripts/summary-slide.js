@@ -20,7 +20,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
    *
    * @param {$} $summarySlide Summary slide that will be updated
    */
-  SummarySlide.prototype.updateSummarySlide = function (slideNumber) {
+  SummarySlide.prototype.updateSummarySlide = function (slideNumber, noJump) {
     var that = this;
     // Validate update.
     var isValidUpdate = (this.cp.editor === undefined) && (this.$summarySlide !== undefined) && (slideNumber >= this.cp.slides.length - 1);
@@ -38,7 +38,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     this.$summarySlide.children().remove();
 
     // Get scores and updated html for summary slide
-    var slideScores = that.cp.getSlideScores();
+    var slideScores = that.cp.getSlideScores(noJump);
     var htmlText = that.outputScoreStats(slideScores);
     $(htmlText).appendTo(that.$summarySlide);
 
@@ -111,12 +111,10 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     var self = this;
     if (slideScores === undefined) {
       this.$summarySlide.addClass('h5p-summary-only-export');
-      var html =
-        '<div class="h5p-summary-footer">' +
+      return '<div class="h5p-summary-footer">' +
         ' <button class="h5p-eta-export">' + this.cp.l10n.exportAnswers + '</button>' +
         ' <button class="h5p-cp-retry-button">' + this.cp.l10n.retry + '</button>' +
         '</div>';
-      return html;
     }
     var that = this;
     var totalScore = 0;
@@ -143,7 +141,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
             '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + '</span>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
-            '<div class="h5p-summary-score-meter">' +
+            '<div title="' + slidePercentageScore + '%" class="h5p-summary-score-meter">' +
               '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
             '</div>' +
           '</td>' +
@@ -172,7 +170,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       '    <tr>' +
       '     <td class="h5p-td h5p-summary-task-title">' + that.cp.l10n.total + '</td>' +
       '     <td class="h5p-td h5p-summary-score-bar">' +
-      '       <div class="h5p-summary-score-meter">' +
+      '       <div title="' + percentScore + '%" class="h5p-summary-score-meter">' +
       '         <span style="width: ' + percentScore + '%; opacity: ' + (percentScore / 100) + '"></span>' +
       '       </div>' +
       '     </td>' +

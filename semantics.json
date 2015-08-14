@@ -428,6 +428,30 @@
         "type": "text",
         "label": "Title for the comments icon",
         "default": "Show comments"
+      },
+      {
+        "name": "printTitle",
+        "type": "text",
+        "label": "Title for print button",
+        "default": "Print"
+      },
+      {
+        "name": "printIngress",
+        "type": "text",
+        "label": "Print dialog ingress",
+        "default": "How would you like to print this presentation?"
+      },
+      {
+        "name": "printAllSlides",
+        "type": "text",
+        "label": "Label for \"Print all slides\" button",
+        "default": "Print all slides"
+      },
+      {
+        "name": "printCurrentSlide",
+        "type": "text",
+        "label": "Label for \"Print current slide\" button",
+        "default": "Print current slide"
       }
     ]
   },

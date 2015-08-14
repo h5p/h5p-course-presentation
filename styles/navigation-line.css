@@ -17,6 +17,12 @@
 .h5p-course-presentation .h5p-footer .h5p-footer-button {
   background: transparent;
   border: 0px;
+  color: #555;
+  cursor: pointer;
+
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 /* Footer containers */
@@ -82,14 +88,6 @@
   display: inline-block;
 }
 
-/* Solution mode text changes to footer elements */
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen,
-.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide,
-.h5p-course-presentation .h5p-footer .h5p-footer-next-slide,
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
-  color: #555;
-}
-
 /* ---------------------------------------------- Solution Mode ---------------------------------- */
 
 /* Footer in solution mode */
@@ -123,13 +121,9 @@
   padding: 0 0.25em;
 }
 
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-full-screen,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-previous-slide,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-next-slide,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-keywords {
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
   color: #fbfbfb;
 }
-
 
 
 /* --------------------------------------------- Footer elements ---------------------------------------- */
@@ -143,8 +137,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
-
-  cursor: pointer;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
@@ -155,19 +147,37 @@
   margin-right: 0.5em;
 }
 
-/* Footer full screen button */
+/* Print button and full screen button (in footer) */
+.h5p-course-presentation .h5p-footer .h5p-footer-print,
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen {
   display: inline-block;
-  cursor: pointer;
   text-align: right;
 }
-
+.h5p-course-presentation .h5p-footer .h5p-footer-print:before,
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
-  font-family: 'H5PFontAwesome4';
+    font-family: 'H5PFontAwesome4';
+    content: "\f065";
+    font-size: 1.2em;
+    padding: 0 0.25em;
+    margin-left: 0.5em;
+}
+.h5p-course-presentation .h5p-footer .h5p-footer-print:before {
+  content: "\f02f";
+}
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
   content: "\f065";
-  font-size: 1.2em;
-  padding: 0 0.25em;
-  margin-left: 0.5em;
+}
+
+/* Hide print button on small screens */
+@media screen and (max-device-width: 400px) {
+  .h5p-course-presentation .h5p-footer .h5p-footer-print {
+    display: none;
+  }
+}
+/* Hide print button in fullscreen */
+.h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-print,
+.h5p-course-presentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-print {
+  display: none;
 }
 
 .h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before,
@@ -337,29 +347,11 @@
 
 /* -------------------------------------- Footer hover effects ---------------------------------- */
 
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords,
-.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide,
-.h5p-course-presentation .h5p-footer .h5p-footer-next-slide,
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen,
-.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode {
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:hover,
-.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:hover,
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:hover,
-.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:hover,
-.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:hover {
+.h5p-course-presentation .h5p-footer .h5p-footer-button:hover {
   color: #aeaeae;
 }
 
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-keywords:hover,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode:hover,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-toggle-full-screen:hover,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-previous-slide:hover,
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-next-slide:hover {
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
   color: #dbd7d1;
 }
 
