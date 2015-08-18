@@ -293,8 +293,13 @@
   overflow: visible !important;
   z-index: 2;
 }
-.h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content, .h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
+.h5p-course-presentation .h5p-element.h5p-blanks,
+.h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
   overflow: auto;
+}
+
+.h5p-course-presentation .h5p-element.h5p-summary {
+  overflow: visible;
 }
 
 .h5p-course-presentation .h5p-go-to-slide {
