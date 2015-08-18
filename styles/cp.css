@@ -299,7 +299,7 @@
 }
 
 .h5p-course-presentation .h5p-element.h5p-summary {
-  overflow: visible;
+  overflow-x: visible;
 }
 
 .h5p-course-presentation .h5p-go-to-slide {
