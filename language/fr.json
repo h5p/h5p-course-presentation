@@ -1,0 +1,233 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Commentaires",
+                      "description": "Les commentaires sont affichés pour aider le utilisateurs pendant le diaporama."
+                    },
+                    {
+                      "label": "Toujours afficher les commentaires"
+                    },
+                    {
+                      "label": "Opacité de l'arrière-plan"
+                    },
+                    {
+                      "label": "Montrer comme bouton"
+                    },
+                    {
+                      "label": "Titre"
+                    },
+                    {
+                      "label": "Aller à la diapositive"
+                    },
+                    {
+                      "label": "Invisible",
+                      "description": "Curseur par défaut, pas de titre, pas d'index. Attention: Les utilisateurs mal à l'aise avec le clavier auront des difficultés à réaliser cette activité."
+                    },
+                    {
+                      "label": "Metadata",
+                      "fields": [
+                        {
+                          "label": "Titre"
+                        },
+                        {
+                          "label": "Auteur"
+                        },
+                        {
+                          "label": "Licence"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Liste des mots-clés"
+        },
+        {
+          "label": "Toujours montrer"
+        },
+        {
+          "label": "Cacher automatiquement"
+        },
+        {
+          "label": "Opacité"
+        }
+      ]
+    },
+    {
+      "label": "Localisation",
+      "fields": [
+        {
+          "label": "Traduction pour \"Diapositive\"",
+          "default": "Diapositive"
+        },
+        {
+          "label": "Traduction pour \"Score\"",
+          "default": "Votre Score"
+        },
+        {
+          "label": "Traduction pour \"Score maximum\"",
+          "default": "Score maximum"
+        },
+        {
+          "label": "Félicitations pour ce très bon score",
+          "default": "Félicitations! Vous avez @percent de bonnes réponses!",
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+        },
+        {
+          "label": "Bravo pour ce bon score",
+          "default": "Bel effort! Vous avez @percent de bonnes réponses!",
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+        },
+        {
+          "label": "Mauvais score",
+          "default": "Vous avez @percent de bonnes réponses.",
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+        },
+        {
+          "label": "Traduction pour \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Texte pour le bouton Montrer la solution",
+          "default": "Montrer la solution"
+        },
+        {
+          "label": "Texte pour le bouton Réessayer",
+          "default": "Réessayer"
+        },
+        {
+          "label": "Traduction pour \"titre\"",
+          "default": "titre"
+        },
+        {
+          "label": "Traduction pour \"Auteur/créateur\"",
+          "default": "Auteur"
+        },
+        {
+          "label": "Traduction pour \"Licence\"",
+          "default": "Licence"
+        },
+        {
+          "label": "Traduction pour \"License\"",
+          "default": "License"
+        },
+        {
+          "label": "Texte du bouton d'exportation",
+          "default": "Exporter"
+        },
+        {
+          "label": "Texte pour le bouton \"Droits d'utilisation\" ",
+          "default": "Droits d'utilisation"
+        },
+        {
+          "label": "Cacher le bouton d'affichage de la liste des mots-clés",
+          "default": "Cacher la liste des mots-clés"
+        },
+        {
+          "label": "Montrer le bouton d'affichage de la liste des mots-clés",
+          "default": "Montrer la liste des mots-clés"
+        },
+        {
+          "label": "Texte de mise en plein écran",
+          "default": "Plein écran"
+        },
+        {
+          "label": "Texte de sortie du plein écran",
+          "default": "Sortir du plein écran"
+        },
+        {
+          "label": "Texte d'accès à la diapositive précédente",
+          "default": "Diapositive précédente"
+        },
+        {
+          "label": "Texte d'accès à la diapositive suivante",
+          "default": "Diapositive suivante"
+        },
+        {
+          "label": "Texte pour la diapositive affichée",
+          "default": "Diapositive affichée"
+        },
+        {
+          "label": "Texte de la dernière diapositive",
+          "default": "Dernière diapositive"
+        },
+        {
+          "label": "Texte de sortie du mode de solution",
+          "default": "Sortie du mode de solution"
+        },
+        {
+          "label": "Texte du mode de solution",
+          "default": "Mode de solution"
+        },
+        {
+          "label": "Texte affiché lors de taches multiples",
+          "default": "Taches multiples"
+        },
+        {
+          "label": "Texte d'affichage du score",
+          "default": "Vous avez:"
+        },
+        {
+          "label": "Texte de partage sur Facebook",
+          "default": "Partager sur Facebook"
+        },
+        {
+          "label": "Texte de partage sur Twitter",
+          "default": "Partager sur Twitter"
+        },
+	      {
+	      },
+	      {
+        },
+	      {
+        },
+	      {
+        },
+	      {
+        },
+	      {
+        }
+      ]
+    },
+    {
+      "label": "Options pour les boutons \"Montrer la solution\" et \"Réessayer\".",
+      "description": "Ces options vous permettent de choisir quand afficher les boutons \"Solutions\" et \"Réessayer\" dans votre acivité h5p..",
+      "fields": [
+        {
+          "label": "Activer les réglages par défaut pour les boutons \"Solution\" et \"Réessayer\".",
+          "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."
+        },
+        {
+          "label": "Afficher le bouton \"Solution\".",
+          "description": "Affiche le bouton \"Solution\"."
+        },
+        {
+          "label": "Afficher le bouton \"Réessayer\".",
+          "description": "Affiche le bouton \"Réessayer\"."
+        },
+	      {
+	      }
+      ]
+    }
+  ]
+}
