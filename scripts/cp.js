@@ -11,6 +11,7 @@ var H5P = H5P || {};
  */
 H5P.CoursePresentation = function (params, id, extras) {
   H5P.EventDispatcher.call(this);
+  var that = this;
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
   this.contentId = id;
@@ -19,6 +20,8 @@ H5P.CoursePresentation = function (params, id, extras) {
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
   this.hasAnswerElements = false;
+  this.ignoreResize = false;
+
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
   }
@@ -26,7 +29,6 @@ H5P.CoursePresentation = function (params, id, extras) {
   if (extras) {
     this.previousState = extras.previousState;
   }
-
 
   this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
 
@@ -58,7 +60,11 @@ H5P.CoursePresentation = function (params, id, extras) {
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
     goToSlide: 'Go to slide :num',
-    solutionsButtonTitle: 'Show comments'
+    solutionsButtonTitle: 'Show comments',
+    printTitle: 'Print',
+    printIngress: 'How would you like to print this presentation?',
+    printAllSlides: 'Print all slides',
+    printCurrentSlide: 'Print current slide'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -68,6 +74,17 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.hideSummarySlide = !!params.override.hideSummarySlide;
   }
   this.on('resize', this.resize, this);
+
+  this.on('printing', function (event) {
+    that.ignoreResize = !event.data.finished;
+
+    if (event.data.finished) {
+      that.resize();
+    }
+    else if (event.data.allSlides) {
+      that.attachAllElements();
+    }
+  });
 };
 
 H5P.CoursePresentation.prototype = Object.create(H5P.EventDispatcher.prototype);
@@ -114,7 +131,8 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
-
+  this.setActivityStarted();
+  
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-box-wrapper">' +
@@ -200,10 +218,11 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Create keywords html
   var keywords = '';
   var foundKeywords = false;
+  var first, slide, $slide;
   for (var i = 0; i < this.slides.length; i++) {
-    var slide = this.slides[i];
-    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
-    var first = i === 0;
+    slide = this.slides[i];
+    $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
+    first = i === 0;
 
     if (first) {
       this.$current = $slide.addClass('h5p-current');
@@ -240,8 +259,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     };
     this.slides.push(summarySlideData);
 
-    var slide = this.slides[this.slides.length - 1];
-    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
+    slide = this.slides[this.slides.length - 1];
+    $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
 
     this.addElements(slide, $slide, i);
 
@@ -279,7 +298,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
 
-  if (this.previousState) {
+  if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
   }
 };
@@ -404,6 +423,10 @@ H5P.CoursePresentation.prototype.fitCT = function () {
  */
 H5P.CoursePresentation.prototype.resize = function () {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
+
+  if (this.ignoreResize) {
+    return;
+  }
 
   // Fill up all available width
   this.$wrapper.css('width', 'auto');
@@ -596,7 +619,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     }
 
     var internalSlideId = this.elementInstances[index] ? this.elementInstances[index].length : 0;
-    if (this.previousState && this.previousState.answers[index] && this.previousState.answers[index][internalSlideId]) {
+    if (this.previousState && this.previousState.answers && this.previousState.answers[index] && this.previousState.answers[index][internalSlideId]) {
       // Restore previous state
       library.userDatas = {
         state: this.previousState.answers[index][internalSlideId]
@@ -1150,6 +1173,24 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
 };
 
 /**
+ * Loads all slides (Needed by print)
+ * @method attachAllElements
+ */
+H5P.CoursePresentation.prototype.attachAllElements = function () {
+  var $slides = this.$slidesWrapper.children();
+
+  for (var i=0; i<this.slides.length; i++) {
+    this.attachElements($slides.eq(i), i);
+  }
+
+  // Need to force updating summary slide! This is normally done
+  // only when summary slide is about to be viewed
+  if (this.summarySlideObject !== undefined) {
+    this.summarySlideObject.updateSummarySlide(this.slides.length-1, true);
+  }
+};
+
+/**
  * Jump to the given slide.
  *
  * @param {type} slideNumber The slide number to jump to.
@@ -1379,8 +1420,8 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
  * Gets slides scores for whole cp
  * @returns {Array} slideScores Array containing scores for all slides.
  */
-H5P.CoursePresentation.prototype.getSlideScores = function () {
-  var jumpedToFirst = false;
+H5P.CoursePresentation.prototype.getSlideScores = function (noJump) {
+  var jumpedToFirst = (noJump === true);
   var slideScores = [];
   var hasScores = false;
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
@@ -1426,22 +1467,37 @@ H5P.CoursePresentation.prototype.getSlideScores = function () {
 H5P.CoursePresentation.prototype.getCopyrights = function () {
   var info = new H5P.ContentCopyrights();
 
+  var elementCopyrights;
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
     var slideInfo = new H5P.ContentCopyrights();
-    slideInfo.setLabel('Slide ' + (slide + 1));
+    slideInfo.setLabel(this.l10n.slide + ' ' + (slide + 1));
 
     if (this.elementInstances[slide] !== undefined) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];
+        var params = this.slides[slide].elements[element].action.params;
 
+        elementCopyrights = undefined;
         if (instance.getCopyrights !== undefined) {
-          var elementCopyrights = instance.getCopyrights();
-          if (elementCopyrights !== undefined) {
-            var params = this.slides[slide].elements[element].action.params;
-            elementCopyrights.setLabel((element + 1) + (params.contentName !== undefined ? ': ' + params.contentName : ''));
-            slideInfo.addContent(elementCopyrights);
-          }
+          // Use the instance's own copyright generator
+          elementCopyrights = instance.getCopyrights();
         }
+        if (elementCopyrights === undefined) {
+          // Create a generic flat copyright list
+          elementCopyrights = new H5P.ContentCopyrights();
+          H5P.findCopyrights(elementCopyrights, params, this.contentId);
+        }
+
+        var label = (element + 1);
+        if (params.contentName !== undefined) {
+          label += ': ' + params.contentName;
+        }
+        else if (instance.getTitle !== undefined) {
+          label += ': ' + instance.getTitle();
+        }
+        elementCopyrights.setLabel(label);
+
+        slideInfo.addContent(elementCopyrights);
       }
     }
 
