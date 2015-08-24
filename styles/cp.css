@@ -596,9 +596,14 @@ border-collapse: collapse;
   padding-right: 0.2em;
 }
 
-.h5p-course-presentation .h5p-advanced-text, .h5p-course-presentation .ct {
+.h5p-course-presentation .h5p-advanced-text,
+.h5p-course-presentation .ct {
   font-size: 0.75em;
   padding: 0.375em 0.5em;
+}
+.h5p-course-presentation .h5p-transparent.h5p-advanced-text,
+.h5p-course-presentation .h5p-transparent .ct {
+  padding: 0;
 }
 .h5p-course-presentation .h5p-advanced-text p span {
   line-height: 1.25em;
