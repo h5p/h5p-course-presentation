@@ -33,11 +33,15 @@
 .h5p-course-presentation h5,
 .h5p-course-presentation h6,
 .h5p-course-presentation p {
-  color: #323232;
-  font-family: H5PDroidSans, sans-serif;
   line-height: 150%;
   padding: 0.5em;
 }
+
+.h5p-course-presentation {
+  font-family: H5PDroidSans, sans-serif;
+  color: #323232;
+}
+
 .h5p-course-presentation h2 {
   font-size: 1.667em;
   font-weight: bold;
@@ -70,7 +74,6 @@
   height: 440px;
   text-align: center;
   font-size: 16px;
-  line-height: 125%;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
@@ -279,6 +282,7 @@
 .h5p-course-presentation .h5p-element {
   position: absolute;
   overflow: hidden;
+  overflow-y: auto;
   font-size: 0.75em;
 }
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
@@ -289,8 +293,13 @@
   overflow: visible !important;
   z-index: 2;
 }
-.h5p-course-presentation .h5p-element.h5p-blanks, .h5p-course-presentation .h5p-element.summary-content, .h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
+.h5p-course-presentation .h5p-element.h5p-blanks,
+.h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
   overflow: auto;
+}
+
+.h5p-course-presentation .h5p-element.h5p-summary {
+  overflow-x: visible;
 }
 
 .h5p-course-presentation .h5p-go-to-slide {
@@ -339,6 +348,7 @@
   max-height: 80%;
 
   overflow: auto;
+  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper {
@@ -586,9 +596,14 @@ border-collapse: collapse;
   padding-right: 0.2em;
 }
 
-.h5p-course-presentation .h5p-advanced-text, .h5p-course-presentation .ct {
+.h5p-course-presentation .h5p-advanced-text,
+.h5p-course-presentation .ct {
   font-size: 0.75em;
   padding: 0.375em 0.5em;
+}
+.h5p-course-presentation .h5p-transparent.h5p-advanced-text,
+.h5p-course-presentation .h5p-transparent .ct {
+  padding: 0;
 }
 .h5p-course-presentation .h5p-advanced-text p span {
   line-height: 1.25em;
