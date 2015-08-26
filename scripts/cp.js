@@ -849,7 +849,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     .prependTo(this.$wrapper)
     .click(close)
     .find('.h5p-popup-container')
-      .click(function () {
+      .click(function () {
         doNotClose = true;
       })
       .end()

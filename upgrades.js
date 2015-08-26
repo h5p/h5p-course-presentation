@@ -102,7 +102,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
        * @params {Object} parameters
        * @params {function} finished
        */
-      5: function (parameters, finished) {
+      5: function (parameters, finished) {
         var slides = parameters.presentation.slides;
 
         // Go through slides and elements
