@@ -54,14 +54,6 @@
                 }
               },
               {
-                "field": {
-                  "fields": [
-                    {},
-                    {
-                      "field": {}
-                    }
-                  ]
-                }
               }
             ]
           }
@@ -181,6 +173,14 @@
         {
           "label": "Titre pour l'icône de commentaire",
           "default": "Montrer les commentaires"
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
         }
       ]
     },
