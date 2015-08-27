@@ -68,6 +68,9 @@
 .h5p-course-presentation .h5p-summary-score-bar {
   position: relative;
 }
+.h5p-course-presentation .h5p-td.h5p-summary-score-bar {
+  border-top-width: 2px;
+}
 .h5p-course-presentation .h5p-summary-score-meter {
   height: 0.4em;
   background: #e0e0e0;
@@ -79,9 +82,13 @@
   background-color: #096bcb;
 }
 
+.h5p-course-presentation .h5p-summary-footer {
+  font-size: 0.75em;
+}
+
 /* ------------------------------- Summary table style -----------------------------------  */
 .h5p-course-presentation .h5p-summary-table-holder {
-  height: 65%;
+  height: 61%;
   margin: 0 1em;
 }
 
@@ -164,41 +171,6 @@
 }
 
 /* --------------------------------- Button styling ----------------------------------------------- */
-
-/* Summary slide button styling */
-.h5p-course-presentation .h5p-summary-slide button {
-  font-size: 0.6em;
-  padding: 0 0.6em;
-  border: 0.2em solid #fff;
-  border-radius: 0.4em;
-  margin: 0.15em;
-  line-height: 2em;
-  cursor: pointer;
-  color: #fff;
-  position: relative;
-
-  -webkit-box-shadow: 0 0 0.5em #999;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    0 0 0.5em #999;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         0 0 0.5em #999;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-
-  background: rgb(100,152,254); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(100,152,254,1) 0%, rgba(4,104,206,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(100,152,254,1)), color-stop(100%,rgba(4,104,206,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(100,152,254,1) 0%,rgba(4,104,206,1) 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6498fe', endColorstr='#0468ce',GradientType=0 );
-}
-
-.h5p-course-presentation .h5p-summary-slide button:hover {
-  background: rgb(4,104,206); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(4,104,206,1) 0%, rgba(100,152,254,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(4,104,206,1)), color-stop(100%,rgba(100,152,254,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(4,104,206,1) 0%,rgba(100,152,254,1) 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0468ce', endColorstr='#6498fe',GradientType=0 ); /* IE6-9 */
-}
 
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export:before {
   font-family: 'H5PFontAwesome4';
