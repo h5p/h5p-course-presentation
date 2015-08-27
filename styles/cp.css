@@ -600,11 +600,13 @@ border-collapse: collapse;
 }
 
 .h5p-course-presentation .h5p-advanced-text,
+.h5p-course-presentation .h5p-link,
 .h5p-course-presentation .ct {
   font-size: 0.75em;
   padding: 0.375em 0.5em;
 }
 .h5p-course-presentation .h5p-transparent.h5p-advanced-text,
+.h5p-course-presentation .h5p-transparent.h5p-link,
 .h5p-course-presentation .h5p-transparent .ct {
   padding: 0;
 }
