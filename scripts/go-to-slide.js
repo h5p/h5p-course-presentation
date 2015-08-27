@@ -27,7 +27,7 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
     /**
      * @private
      */
-    var go = function () {
+    var go = function () {
       if (cp.editor === undefined && cp.slides[slideNum] !== undefined) {
         cp.jumpToSlide(slideNum);
       }

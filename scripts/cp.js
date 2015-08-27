@@ -797,8 +797,9 @@ H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  */
 H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
-  elementInstance.showCPComments = function() {
-    if ($elementContainer.children('.h5p-element-solution').length === 0) {
+  elementInstance.showCPComments = function () {
+    var $stripHtml = H5P.jQuery('<div>');
+    if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
         .click(function(event) {
           event.preventDefault();
@@ -849,7 +850,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     .prependTo(this.$wrapper)
     .click(close)
     .find('.h5p-popup-container')
-      .click(function () {
+      .click(function () {
         doNotClose = true;
       })
       .end()

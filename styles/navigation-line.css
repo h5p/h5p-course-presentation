@@ -92,16 +92,13 @@
 
 /* Footer in solution mode */
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
-  background-color: #2b2c30;;
+  background-color: #2b2c30;
   color: #fbfbfb;
 }
 
 /* Only show exit solultion mode button in solution mode */
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode {
   display: inline-block;
-  position: absolute;
-  right: 0em;
-  margin-right: 3em;
   cursor: pointer;
 }
 
