@@ -132,7 +132,7 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
   this.setActivityStarted();
-  
+
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-box-wrapper">' +
@@ -797,8 +797,9 @@ H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  */
 H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
-  elementInstance.showCPComments = function() {
-    if ($elementContainer.children('.h5p-element-solution').length === 0) {
+  elementInstance.showCPComments = function () {
+    var $stripHtml = H5P.jQuery('<div>');
+    if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
         .click(function(event) {
           event.preventDefault();
