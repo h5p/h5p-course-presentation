@@ -63,6 +63,9 @@
   padding: 0;
   margin: 0 0 1em;
 }
+.h5p-course-presentation p:last-child {
+  margin-bottom: 0;
+}
 
 .h5p-course-presentation a:focus {
   box-shadow: none;
