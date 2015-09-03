@@ -721,7 +721,12 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     });
   }
   else {
-    instance.attach($elementContainer);
+
+    var $innerElementContainer = H5P.jQuery('<div>', {
+      'class': 'h5p-element-inner'
+    }).appendTo($elementContainer);
+
+    instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
       $elementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
     }
