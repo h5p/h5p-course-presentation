@@ -131,6 +131,7 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
+  this.setActivityStarted();
 
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
@@ -695,6 +696,8 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
+  var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
+  $elementContainer.toggleClass('h5p-transparent', isTransparent);
   if (displayAsButton) {
     var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
     instance.attach($buttonElement);
@@ -794,8 +797,9 @@ H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  */
 H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
-  elementInstance.showCPComments = function() {
-    if ($elementContainer.children('.h5p-element-solution').length === 0) {
+  elementInstance.showCPComments = function () {
+    var $stripHtml = H5P.jQuery('<div>');
+    if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
         .click(function(event) {
           event.preventDefault();
@@ -846,7 +850,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     .prependTo(this.$wrapper)
     .click(close)
     .find('.h5p-popup-container')
-      .click(function () {
+      .click(function () {
         doNotClose = true;
       })
       .end()
@@ -1106,7 +1110,7 @@ H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideN
     keyword += this.$keywords.children(':eq(' + slideNumber + ')').find('span').html();
   } else {
     var slideIndexToNumber = slideNumber+1;
-    keyword += this.l10n.slide + slideIndexToNumber;
+    keyword += this.l10n.slide + ' ' + slideIndexToNumber;
   }
 
   // Summary slide keyword

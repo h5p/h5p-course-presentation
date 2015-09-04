@@ -20,8 +20,12 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       element.forEach(function (elementInstance) {
         if (elementInstance.on !== undefined) {
           elementInstance.on('xAPI', function (event) {
-            if (event.getVerb() === 'attempted') {
+            var shortVerb = event.getVerb();
+            if (shortVerb === 'interacted') {
               that.updateProgressBarTasksAtSlideNumber(that.cp.currentSlideIndex);
+            }
+            else if (shortVerb === 'completed') {
+              event.setVerb('answered');
             }
           });
         }

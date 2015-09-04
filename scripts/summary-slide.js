@@ -1,7 +1,7 @@
 var H5P = H5P || {};
 H5P.CoursePresentation = H5P.CoursePresentation || {};
 
-H5P.CoursePresentation.SummarySlide = (function ($) {
+H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
   /**
    * Constructor for summary slide
@@ -46,10 +46,11 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       // Get total scores and construct progress circle
       var totalScores = that.totalScores(slideScores);
       if (isNaN(totalScores.totalPercentage)) {
-        H5P.JoubelUI.createProgressCircle(0)
+        JoubelUI.createProgressCircle(0)
           .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
-      } else {
-        H5P.JoubelUI.createProgressCircle(totalScores.totalPercentage)
+      }
+      else {
+        JoubelUI.createProgressCircle(totalScores.totalPercentage)
           .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
       }
 
@@ -74,31 +75,54 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       });
     }
 
-    // Add button click events
-    $('.h5p-show-solutions', that.$summarySlide)
-      .click(function (event) {
-        // Enable solution mode
-        that.toggleSolutionMode(true);
-        that.cp.jumpToSlide(0);
-        event.preventDefault();
-      });
+    // Button container ref
+    var $summaryFooter = $('.h5p-summary-footer', that.$summarySlide);
 
-    $('.h5p-eta-export', that.$summarySlide)
-      .click(function (event) {
-        H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
-        event.preventDefault();
-      }).hide();
+    // Show solutions button
+    JoubelUI.createButton({
+      'class': 'h5p-show-solutions',
+      html: that.cp.l10n.showSolutions,
+      on: {
+        click: function (event) {
+          // Enable solution mode
+          that.toggleSolutionMode(true);
+          that.cp.jumpToSlide(0);
+          // event.preventDefault();
+        }
+      },
+      appendTo: $summaryFooter
+    });
 
     // Only make export button if there is an export area in CP
     if (that.cp.hasAnswerElements) {
-      $('.h5p-eta-export', that.$summarySlide).show();
+      JoubelUI.createButton({
+        'class': 'h5p-eta-export',
+        html: that.cp.l10n.exportAnswers,
+        css: {
+          display: 'none' // Hide
+        },
+        on: {
+          click: function (event) {
+            H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
+            // event.preventDefault();
+          }
+        },
+        appendTo: $summaryFooter
+      });
     }
 
-    $('.h5p-cp-retry-button', that.$summarySlide)
-      .click(function (event) {
-        that.cp.resetTask();
-        event.preventDefault();
-      });
+    // Show solutions button
+    JoubelUI.createButton({
+      'class': 'h5p-cp-retry-button',
+      html: that.cp.l10n.retry,
+      on: {
+        click: function (event) {
+          that.cp.resetTask();
+          // event.preventDefault();
+        }
+      },
+      appendTo: $summaryFooter
+    });
   };
 
   /**
@@ -111,10 +135,7 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
     var self = this;
     if (slideScores === undefined) {
       this.$summarySlide.addClass('h5p-summary-only-export');
-      return '<div class="h5p-summary-footer">' +
-        ' <button class="h5p-eta-export">' + this.cp.l10n.exportAnswers + '</button>' +
-        ' <button class="h5p-cp-retry-button">' + this.cp.l10n.retry + '</button>' +
-        '</div>';
+      return '<div class="h5p-summary-footer"></div>';
     }
     var that = this;
     var totalScore = 0;
@@ -178,9 +199,6 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
       ' </table>' +
       '</div>' +
       '<div class="h5p-summary-footer">' +
-      ' <button class="h5p-show-solutions">' +  that.cp.l10n.showSolutions + '</button>' +
-      ' <button class="h5p-eta-export">' + that.cp.l10n.exportAnswers + '</button>' +
-      ' <button class="h5p-cp-retry-button">' + that.cp.l10n.retry + '</button>' +
       '</div>';
 
     return html;
@@ -336,6 +354,13 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
     var that = this;
 
+    if (enableSolutionMode) {
+      // Get scores for summary slide
+      var slideScores = that.cp.showSolutions();
+
+      // Update feedback icons in solution mode
+      this.cp.setProgressBarFeedback(slideScores);
+    }
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
       // Get scores for summary slide
@@ -368,4 +393,4 @@ H5P.CoursePresentation.SummarySlide = (function ($) {
   };
 
   return SummarySlide;
-})(H5P.jQuery);
+})(H5P.jQuery, H5P.JoubelUI);

@@ -3,61 +3,60 @@
     {
       "fields": [
         {
-          "fields": [
-            {
-              "field": {
-                "fields": [
-                  {},
-                  {},
-                  {},
-                  {},
-                  {},
-                  {
-                    "label": "Kommentarer",
-                    "description": "Kommentarene vises når brukeren ser på fasit."
-                  },
-                  {
-                    "label": "Alltid vis kommentarer"
-                  },
-                  {
-                    "label": "Opasitet for bakgrunn"
-                  },
-                  {
-                    "label": "Vis som knapp"
-                  },
-                  {
-                    "label": "Tittel"
-                  },
-                  {
-                    "label": "Gå til lysbilde"
-                  },
-                  {
-                    "label": "Usynlig",
-                    "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
-                  },
-                  {
-                    "label": "Metadata",
-                    "fields": [
-                      {
-                        "label": "Tittel"
-                      },
-                      {
-                        "label": "Forfatter"
-                      },
-                      {
-                        "label": "Lisens"
-                      }
-                    ]
-                  },
-                  {},
-                  {}
-                ]
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Kommentarer",
+                      "description": "Kommentarene vises når brukeren ser på fasit."
+                    },
+                    {
+                      "label": "Alltid vis kommentarer"
+                    },
+                    {
+                      "label": "Opasitet for bakgrunn"
+                    },
+                    {
+                      "label": "Vis som knapp"
+                    },
+                    {
+                      "label": "Tittel"
+                    },
+                    {
+                      "label": "Gå til lysbilde"
+                    },
+                    {
+                      "label": "Usynlig",
+                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                    },
+                    {
+                      "label": "Metadata",
+                      "fields": [
+                        {
+                          "label": "Tittel"
+                        },
+                        {
+                          "label": "Forfatter"
+                        },
+                        {
+                          "label": "Lisens"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
               }
-            },
-            {
-              "label": "Nøkkelordliste"
-            }
-          ]
+            ]
+          }
         },
         {},
         {
@@ -109,11 +108,11 @@
           "default": "Total"
         },
         {
-          "label": "Tekst på \"Vis fasi\" knappen",
+          "label": "Tekst på \"Vis fasit\"-knappen",
           "default": "Vis fasit"
         },
         {
-          "label": "Tekst til \"Prøv igjen\" knappen",
+          "label": "Tekst til \"Prøv igjen\"-knappen",
           "default": "Prøv igjen"
         },
         {
@@ -173,11 +172,11 @@
           "default": "Siste side"
         },
         {
-          "label": "Tittel for \"Avslutt fasit modus\"-knapp",
-          "default": "Avslutt fasit modus"
+          "label": "Tittel for \"Avslutt fasitmodus\"-knapp",
+          "default": "Avslutt fasitmodus"
         },
         {
-          "label": "Avslutt fasit modus tekst",
+          "label": "Avslutt fasitmodus tekst",
           "default": "Fasitmodus"
         },
         {
