@@ -599,15 +599,15 @@ border-collapse: collapse;
   padding-right: 0.2em;
 }
 
-.h5p-course-presentation .h5p-advanced-text,
-.h5p-course-presentation .h5p-link,
-.h5p-course-presentation .h5p-ct {
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text,
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-link,
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct {
   font-size: 0.75em;
   padding: 0.375em 0.5em;
 }
-.h5p-course-presentation .h5p-transparent.h5p-advanced-text,
-.h5p-course-presentation .h5p-transparent.h5p-link,
-.h5p-course-presentation .h5p-transparent.h5p-ct {
+.h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-advanced-text,
+.h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-link,
+.h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-ct {
   padding: 0;
 }
 .h5p-course-presentation .h5p-advanced-text p span {
