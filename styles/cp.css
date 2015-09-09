@@ -599,6 +599,16 @@ border-collapse: collapse;
   padding-right: 0.2em;
 }
 
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-ct):not(.h5p-link):not(.h5p-advanced-text) {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-link,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct {
