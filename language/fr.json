@@ -77,144 +77,119 @@
       "label": "Localisation",
       "fields": [
         {
-          "label": "Traduction pour \"Diapositive\"",
-          "default": "Diapositive"
+          "label": "Traduction pour \"Diapositive\""
         },
         {
-          "label": "Traduction pour \"Score\"",
-          "default": "Votre Score"
+          "label": "Traduction pour \"Score\""
         },
         {
-          "label": "Traduction pour \"Score maximum\"",
-          "default": "Score maximum"
+          "label": "Traduction pour \"Score maximum\""
         },
         {
           "label": "Félicitations pour ce très bon score",
-          "default": "Félicitations! Vous avez @percent de bonnes réponses!",
           "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
         },
         {
           "label": "Bravo pour ce bon score",
-          "default": "Bel effort! Vous avez @percent de bonnes réponses!",
           "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
         },
         {
           "label": "Mauvais score",
-          "default": "Vous avez @percent de bonnes réponses.",
           "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
         },
         {
-          "label": "Traduction pour \"Total\"",
-          "default": "Total"
+          "label": "Traduction pour \"Total\""
         },
         {
-          "label": "Texte pour le bouton Montrer la solution",
-          "default": "Montrer la solution"
+          "label": "Texte pour le bouton Montrer la solution"
         },
         {
-          "label": "Texte pour le bouton Réessayer",
-          "default": "Réessayer"
+          "label": "Texte pour le bouton Réessayer"
         },
         {
-          "label": "Traduction pour \"titre\"",
-          "default": "titre"
+          "label": "Traduction pour \"Titre\""
         },
         {
-          "label": "Traduction pour \"Auteur/créateur\"",
-          "default": "Auteur"
+          "label": "Traduction pour \"Auteur/créateur\""
         },
         {
-          "label": "Traduction pour \"Licence\"",
-          "default": "Licence"
+          "label": "Traduction pour \"Licence\""
         },
         {
-          "label": "Traduction pour \"License\"",
-          "default": "License"
+          "label": "Traduction pour \"Licence\""
         },
         {
-          "label": "Texte du bouton d'exportation",
-          "default": "Exporter"
+          "label": "Texte du bouton d'exportation"
         },
         {
-          "label": "Texte pour le bouton \"Droits d'utilisation\" ",
-          "default": "Droits d'utilisation"
+          "label": "Texte pour le bouton \"Droits d'utilisation\""
         },
         {
-          "label": "Cacher le bouton d'affichage de la liste des mots-clés",
-          "default": "Cacher la liste des mots-clés"
+          "label": "Cacher le bouton d'affichage de la liste des mots-clés"
         },
         {
-          "label": "Montrer le bouton d'affichage de la liste des mots-clés",
-          "default": "Montrer la liste des mots-clés"
+          "label": "Montrer le bouton d'affichage de la liste des mots-clés"
         },
         {
-          "label": "Texte de mise en plein écran",
-          "default": "Plein écran"
+          "label": "Texte de mise en plein écran"
         },
         {
-          "label": "Texte de sortie du plein écran",
-          "default": "Sortir du plein écran"
+          "label": "Texte de sortie du plein écran"
         },
         {
-          "label": "Texte d'accès à la diapositive précédente",
-          "default": "Diapositive précédente"
+          "label": "Texte d'accès à la diapositive précédente"
         },
         {
-          "label": "Texte d'accès à la diapositive suivante",
-          "default": "Diapositive suivante"
+          "label": "Texte d'accès à la diapositive suivante"
         },
         {
-          "label": "Texte pour la diapositive affichée",
-          "default": "Diapositive affichée"
+          "label": "Texte pour la diapositive affichée"
         },
         {
-          "label": "Texte de la dernière diapositive",
-          "default": "Dernière diapositive"
+          "label": "Texte de la dernière diapositive"
         },
         {
-          "label": "Texte de sortie du mode de solution",
-          "default": "Sortie du mode de solution"
+          "label": "Texte de sortie du mode de solution"
         },
         {
-          "label": "Texte du mode de solution",
-          "default": "Mode de solution"
+          "label": "Texte du mode de solution"
         },
         {
-          "label": "Texte affiché lors de taches multiples",
-          "default": "Taches multiples"
+          "label": "Texte affiché lors de multiples activités sur une page"
         },
         {
-          "label": "Texte d'affichage du score",
-          "default": "Vous avez:"
+          "label": "Texte d'affichage du score"
         },
         {
-          "label": "Texte de partage sur Facebook",
-          "default": "Partager sur Facebook"
+          "label": "Texte de partage sur Facebook"
         },
         {
-          "label": "Texte de partage sur Twitter",
-          "default": "Partager sur Twitter"
+          "label": "Texte de partage sur Twitter"
         },
-	      {
-	      },
-	      {
+        {
+          "label": "Titre de la légende de la diapositive",
+          "default": "Légende"
         },
-	      {
+        {
+          "label": "Titre pour l'icône de commentaire",
+          "default": "Montrer les commentaires"
         },
-	      {
+        {
         },
-	      {
+        {
         },
-	      {
+        {
+        },
+        {
         }
       ]
     },
     {
-      "label": "Options pour les boutons \"Montrer la solution\" et \"Réessayer\".",
-      "description": "Ces options vous permettent de choisir quand afficher les boutons \"Solutions\" et \"Réessayer\" dans votre acivité h5p..",
+      "label": "Paramètres",
+      "description": "Ces options vous permettent de proposer de passer certaines séquences.",
       "fields": [
         {
-          "label": "Activer les réglages par défaut pour les boutons \"Solution\" et \"Réessayer\".",
+          "label": "Activer la possibilité de passer certaines séquences.",
           "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."
         },
         {
@@ -225,8 +200,10 @@
           "label": "Afficher le bouton \"Réessayer\".",
           "description": "Affiche le bouton \"Réessayer\"."
         },
-	      {
-	      }
+        {
+          "label": "Comportement",
+          "description": "Style de la légende de la diapositive"
+        }
       ]
     }
   ]

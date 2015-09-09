@@ -394,13 +394,8 @@ H5P.CoursePresentation.prototype.fitCT = function () {
 
   this.$current.find('.h5p-ct').each(function () {
     var percent = 100;
-    var $parent = H5P.jQuery(this);
-    var $ct = $parent.children('.ct').css({
-      fontSize: '',
-      lineHeight: ''
-    });
-    var parentHeight = $parent.height();
-
+    var $ct = H5P.jQuery(this);
+    var parentHeight = $ct.parent().height();
     while ($ct.outerHeight() > parentHeight) {
       percent--;
       $ct.css({
@@ -721,14 +716,20 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     });
   }
   else {
-    instance.attach($elementContainer);
+
+    var $innerElementContainer = H5P.jQuery('<div>', {
+      'class': 'h5p-element-inner'
+    }).appendTo($elementContainer);
+
+    instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-      $elementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
+      $innerElementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
     }
   }
 
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elementInstances
+    console.log("process element in CP");
     this.editor.processElement(element, $elementContainer, index, instance);
   }
   else {
@@ -797,8 +798,9 @@ H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  */
 H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
-  elementInstance.showCPComments = function() {
-    if ($elementContainer.children('.h5p-element-solution').length === 0) {
+  elementInstance.showCPComments = function () {
+    var $stripHtml = H5P.jQuery('<div>');
+    if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
         .click(function(event) {
           event.preventDefault();
@@ -849,7 +851,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     .prependTo(this.$wrapper)
     .click(close)
     .find('.h5p-popup-container')
-      .click(function () {
+      .click(function () {
         doNotClose = true;
       })
       .end()
@@ -1300,7 +1302,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   if (this.editor !== undefined && this.editor.dnb !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
-    this.editor.dnb.blur();
+    this.editor.dnb.blurAll();
   }
 
   this.trigger('resize'); // Triggered to resize elements.
