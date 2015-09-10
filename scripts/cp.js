@@ -717,9 +717,13 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   }
   else {
 
+    var $outerElementContainer = H5P.jQuery('<div>', {
+      'class': 'h5p-element-outer'
+    }).appendTo($elementContainer);
+
     var $innerElementContainer = H5P.jQuery('<div>', {
       'class': 'h5p-element-inner'
-    }).appendTo($elementContainer);
+    }).appendTo($outerElementContainer);
 
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
