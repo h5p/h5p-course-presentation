@@ -729,7 +729,6 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elementInstances
-    console.log("process element in CP");
     this.editor.processElement(element, $elementContainer, index, instance);
   }
   else {
