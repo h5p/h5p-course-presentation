@@ -40,6 +40,7 @@
 .h5p-course-presentation {
   font-family: H5PDroidSans, sans-serif;
   color: #323232;
+  line-height: 1em;
 }
 
 .h5p-course-presentation h2 {
@@ -328,8 +329,6 @@
   background: #0580e2;
   opacity: 0.4;
 }
-
-
 
 .h5p-course-presentation .h5p-popup-overlay,
 .h5p-course-presentation .h5p-popup-overlay.h5p-video {
@@ -625,7 +624,6 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-link,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct {
-  font-size: 0.75em;
   padding: 0.375em 0.5em;
 }
 .h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-advanced-text,
