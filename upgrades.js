@@ -122,6 +122,37 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 
         // Done
         finished(null, parameters);
+      },
+
+      /**
+       * Increases width of H5P.AdvancedText to make old content keep proper dimensions.
+       *
+       * @param parameters
+       * @param finished
+       */
+      6: function (parameters, finished) {
+        var slides = parameters.presentation.slides;
+
+        // Go through slides and elements
+        for (var i = 0; i < slides.length; i++) {
+          if (slides[i].elements !== undefined) {
+            for (var j = 0; j < slides[i].elements.length; j++) {
+              var element = slides[i].elements[j];
+
+              // Check if element type is text
+              if (element.action && element.action.library &&
+                  (element.action.library.split(' ')[0] === 'H5P.AdvancedText' ||
+                    element.action.library.split(' ')[0] === 'H5P.ContinuousText'
+                  )) {
+                element.width += 1.7;
+                element.height += 3;
+              }
+            }
+          }
+        }
+
+        // Done
+        finished(null, parameters);
       }
     }
   };
