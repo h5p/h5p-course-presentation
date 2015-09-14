@@ -699,3 +699,32 @@ border-collapse: collapse;
   background: #000;
   color: #FFF;
 }
+.h5p-course-presentation .h5p-toggle-full-screen {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  z-index: 10;
+  cursor: pointer;
+  background: #aaafb3;
+  color: #fff;
+  outline: none;
+  padding: 0.125em;
+  line-height: 1em;
+}
+.h5p-course-presentation .h5p-toggle-full-screen:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f065";
+}
+.h5p-course-presentation.h5p-fullscreen .h5p-toggle-full-screen:before,
+.h5p-course-presentation.h5p-semi-fullscreen .h5p-toggle-full-screen:before {
+  content: "\f066";
+}
+.h5p-course-presentation .h5p-toggle-full-screen:focus,
+.h5p-course-presentation .h5p-toggle-full-screen:hover {
+  background: #91778a;
+}
+.h5p-course-presentation .h5p-toggle-full-screen:active {
+  background: #7e664e;
+}

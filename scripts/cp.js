@@ -68,6 +68,7 @@ H5P.CoursePresentation = function (params, id, extras) {
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
+    this.activeSurface = !!params.override.activeSurface;
     this.overrideButtons = !!params.override.overrideButtons;
     this.overrideShowSolutionsButton = !!params.override.overrideShowSolutionButton;
     this.overrideRetry = !!params.override.overrideRetry;
@@ -213,6 +214,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$footer = this.$wrapper.children('.h5p-footer');
 
   this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
+  if (this.activeSurface && this.editor === undefined) {
+    this.initKeywords = false;
+    this.$boxWrapper.css('height', '100%');
+  }
   this.isSolutionMode = false;
 
   // Create keywords html
@@ -293,10 +298,37 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Initialize touch events
   this.initTouchEvents();
 
-  // init navigation line
-  this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
+  if (this.editor !== undefined || !this.activeSurface) {
+    // init navigation line
+    this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
 
-  this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
+    this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
+  }
+  else {
+    this.$progressbar.add(this.$footer).remove();
+
+    if (H5P.canHasFullScreen) {
+      // Create full screen button
+      this.$fullScreenButton = H5P.jQuery('<div/>', {
+        'class': 'h5p-toggle-full-screen',
+        title: this.l10n.fullscreen,
+        role: 'button',
+        tabindex: 0,
+        on: {
+          click: function () {
+            that.toggleFullScreen();
+          },
+          keypress: function (event) {
+            // Buttons must respond to space bar
+            if (event.which === 32) {
+              that.toggleFullScreen();
+            }
+          }
+        },
+        appendTo: this.$wrapper
+      });
+    }
+  }
 
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
@@ -420,7 +452,7 @@ H5P.CoursePresentation.prototype.resize = function () {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
-    return;
+    return; // When printing.
   }
 
   // Fill up all available width
@@ -439,7 +471,8 @@ H5P.CoursePresentation.prototype.resize = function () {
 
   // TODO: Add support for -16 when content conversion script is created?
   var widthRatio = width / this.width;
-  style.height = (width / this.ratio) + 'px';
+  var height = (width / this.ratio);
+  style.height = height + 'px';
   style.fontSize = (this.fontSize * widthRatio) + 'px';
   this.$wrapper.css(style);
 
@@ -931,7 +964,7 @@ H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.initKeyEvents = function () {
-  if (this.keydown !== undefined) {
+  if (this.keydown !== undefined || this.activeSurface) {
     return;
   }
 

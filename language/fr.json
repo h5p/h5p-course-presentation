@@ -188,6 +188,7 @@
       "label": "Paramètres",
       "description": "Ces options vous permettent de proposer de passer certaines séquences.",
       "fields": [
+        {},
         {
           "label": "Activer la possibilité de passer certaines séquences.",
           "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."

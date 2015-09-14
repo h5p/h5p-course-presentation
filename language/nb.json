@@ -225,6 +225,7 @@
       "label": "Innstillinger for oppførsel.",
       "description": "Disse alternativene vil la deg overstyre innstillinger.",
       "fields": [
+        {},
         {
           "label": "Aktiver overstyring av oppførsel",
           "description": "Aktivering vil overstyre de følgende innstillingene for integrert innhold."

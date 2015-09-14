@@ -199,6 +199,7 @@
       "label": "Impostazioni.",
       "description": "Queste opzioni ti consente di ignorare le impostazioni.",
       "fields": [
+        {},
         {
           "label": "Attiva il comportamento di esclusione.",
           "description": "Se questa opzione � abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."

@@ -463,6 +463,14 @@
     "optional": true,
     "fields": [
       {
+        "name": "activeSurface",
+        "type": "boolean",
+        "widget": "disposableBoolean",
+        "label": "Activate Active Surface Mode",
+        "description": "Removes navigation controls for the end user. Use Go To Slide to navigate.",
+        "default": false
+      },
+      {
         "name": "overrideButtons",
         "type": "boolean",
         "label": "Enable behaviour override.",
