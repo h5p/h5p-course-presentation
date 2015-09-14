@@ -709,6 +709,7 @@ border-collapse: collapse;
   outline: none;
   padding: 0.125em;
   line-height: 1em;
+  opacity: 0.6;
 }
 .h5p-course-presentation .h5p-toggle-full-screen:before {
   font-family: 'H5PFontAwesome4';
@@ -720,8 +721,8 @@ border-collapse: collapse;
 }
 .h5p-course-presentation .h5p-toggle-full-screen:focus,
 .h5p-course-presentation .h5p-toggle-full-screen:hover {
-  background: #91778a;
+  opacity: 0.8;
 }
 .h5p-course-presentation .h5p-toggle-full-screen:active {
-  background: #7e664e;
+  opacity: 1;
 }
