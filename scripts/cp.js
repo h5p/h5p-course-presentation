@@ -690,7 +690,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   var that = this;
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
+  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
   if (displayAsButton) {
@@ -723,6 +723,8 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     var $innerElementContainer = H5P.jQuery('<div>', {
       'class': 'h5p-element-inner'
+    }).css({
+      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($outerElementContainer);
 
     instance.attach($innerElementContainer);
