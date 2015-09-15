@@ -297,10 +297,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.$keywordsWrapper.remove();
   }
 
-  // Initialize touch events
-  this.initTouchEvents();
-
   if (this.editor !== undefined || !this.activeSurface) {
+    // Initialize touch events
+    this.initTouchEvents();
+
     // init navigation line
     this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
 
