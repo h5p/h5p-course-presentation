@@ -473,8 +473,7 @@ H5P.CoursePresentation.prototype.resize = function () {
 
   // TODO: Add support for -16 when content conversion script is created?
   var widthRatio = width / this.width;
-  var height = (width / this.ratio);
-  style.height = height + 'px';
+  style.height = (width / this.ratio) + 'px';
   style.fontSize = (this.fontSize * widthRatio) + 'px';
   this.$wrapper.css(style);
 
