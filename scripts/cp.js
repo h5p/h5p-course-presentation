@@ -106,7 +106,9 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
 
   // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
-    state.answered[slide] = this.progressbarParts[slide].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered');
+    if (this.progressbarParts) {
+      state.answered[slide] = this.progressbarParts[slide].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered');
+    }
     if (this.elementInstances[slide]) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];
@@ -1321,14 +1323,18 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     that.showKeywords();
   }
 
-  // Update progress bar
-  that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex, this.isSolutionMode);
+  if (that.navigationLine) {
+    // Update progress bar
+    that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex, this.isSolutionMode);
 
-  // Update footer
-  that.navigationLine.updateFooter(slideNumber);
+    // Update footer
+    that.navigationLine.updateFooter(slideNumber);
+  }
 
-  // Update summary slide if on last slide
-  that.summarySlideObject.updateSummarySlide(slideNumber);
+  if (that.summarySlideObject) {
+    // Update summary slide if on last slide
+    that.summarySlideObject.updateSummarySlide(slideNumber);
+  }
 
   // Editor specific settings
   if (this.editor !== undefined && this.editor.dnb !== undefined) {
