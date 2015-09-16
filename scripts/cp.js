@@ -719,12 +719,12 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     var $outerElementContainer = H5P.jQuery('<div>', {
       'class': 'h5p-element-outer'
+    }).css({
+      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($elementContainer);
 
     var $innerElementContainer = H5P.jQuery('<div>', {
       'class': 'h5p-element-inner'
-    }).css({
-      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($outerElementContainer);
 
     instance.attach($innerElementContainer);
