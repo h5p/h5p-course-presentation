@@ -1264,10 +1264,17 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
     // Start media on new slide for elements beeing setup with autoplay!
     var instances = that.elementInstances[that.currentSlideIndex];
+    var instanceParams = that.slides[that.currentSlideIndex].elements;
     if (instances !== undefined) {
       for (var i = 0; i < instances.length; i++) {
         // TODO: Check instance type instead to avoid accidents?
-        if (instances[i].params && instances[i].params.cpAutoplay && typeof instances[i].play === 'function') {
+        if (instanceParams[i] &&
+            instanceParams[i].action &&
+            instanceParams[i].action.params &&
+            instanceParams[i].action.params.cpAutoplay &&
+            typeof instances[i].play === 'function') {
+
+          // Autoplay media
           instances[i].play();
         }
       }
