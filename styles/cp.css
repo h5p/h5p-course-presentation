@@ -40,6 +40,7 @@
 .h5p-course-presentation {
   font-family: H5PDroidSans, sans-serif;
   color: #323232;
+  line-height: 1.25;
 }
 
 .h5p-course-presentation h2 {
@@ -155,15 +156,21 @@
   overflow-y: auto;
   margin: 0.5em 0;
 }
-.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar, .h5p-course-presentation .h5p-element::-webkit-scrollbar {
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar,
+.h5p-course-presentation .h5p-element .h5p-element-outer::-webkit-scrollbar,
+.h5p-course-presentation .h5p-element .h5p-element-outer .h5p-element-inner::-webkit-scrollbar {
   width: 0.4em;
 }
-.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar-thumb, .h5p-course-presentation .h5p-element::-webkit-scrollbar-thumb {
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar-thumb,
+.h5p-course-presentation .h5p-element .h5p-element-outer::-webkit-scrollbar-thumb,
+.h5p-course-presentation .h5p-element .h5p-element-outer .h5p-element-inner::-webkit-scrollbar-thumb {
   border-radius: 0.2em;
   background: rgb(0, 151, 253);
   box-shadow: inset 0 0 0.3em rgba(0,0,0,0.5);
 }
-.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar-thumb:hover, .h5p-course-presentation .h5p-element::-webkit-scrollbar-thumb:hover {
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar-thumb:hover,
+.h5p-course-presentation .h5p-element .h5p-element-outer::-webkit-scrollbar-thumb:hover,
+.h5p-course-presentation .h5p-element .h5p-element-outer .h5p-element-inner::-webkit-scrollbar-thumb:hover {
   background: rgb(34, 161, 249);
 }
 
@@ -322,8 +329,6 @@
   background: #0580e2;
   opacity: 0.4;
 }
-
-
 
 .h5p-course-presentation .h5p-popup-overlay,
 .h5p-course-presentation .h5p-popup-overlay.h5p-video {
@@ -596,8 +601,17 @@ border-collapse: collapse;
   padding-right: 0.2em;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-ct):not(.h5p-link):not(.h5p-advanced-text) {
+.h5p-course-presentation .h5p-element .h5p-element-outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+  overflow-y: auto;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
   position: absolute;
   top: 0;
   left: 0;
@@ -606,10 +620,19 @@ border-collapse: collapse;
   padding: 0;
 }
 
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct {
+  overflow-y: hidden;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner {
+  overflow: hidden;
+  overflow-y: auto;
+  background: transparent;
+}
+
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-link,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct {
-  font-size: 0.75em;
   padding: 0.375em 0.5em;
 }
 .h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-advanced-text,

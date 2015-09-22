@@ -724,7 +724,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   var that = this;
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
+  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
   if (displayAsButton) {
@@ -751,9 +751,15 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   }
   else {
 
+    var $outerElementContainer = H5P.jQuery('<div>', {
+      'class': 'h5p-element-outer'
+    }).css({
+      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
+    }).appendTo($elementContainer);
+
     var $innerElementContainer = H5P.jQuery('<div>', {
       'class': 'h5p-element-inner'
-    }).appendTo($elementContainer);
+    }).appendTo($outerElementContainer);
 
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
@@ -1292,10 +1298,17 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
     // Start media on new slide for elements beeing setup with autoplay!
     var instances = that.elementInstances[that.currentSlideIndex];
+    var instanceParams = that.slides[that.currentSlideIndex].elements;
     if (instances !== undefined) {
       for (var i = 0; i < instances.length; i++) {
         // TODO: Check instance type instead to avoid accidents?
-        if (instances[i].params && instances[i].params.cpAutoplay && typeof instances[i].play === 'function') {
+        if (instanceParams[i] &&
+            instanceParams[i].action &&
+            instanceParams[i].action.params &&
+            instanceParams[i].action.params.cpAutoplay &&
+            typeof instances[i].play === 'function') {
+
+          // Autoplay media
           instances[i].play();
         }
       }
