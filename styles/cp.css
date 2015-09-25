@@ -94,6 +94,13 @@
 .h5p-course-presentation.h5p-fullscreen .h5p-box-wrapper {
   margin: 0.1em 0;
 }
+
+/* Disable fullscreen buttons inside Course Presentation when it is in full screen */
+.h5p-course-presentation.h5p-fullscreen video .controlBar > .fullscreenButton,
+.h5p-course-presentation.h5p-fullscreen video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
+
 .h5p-course-presentation .h5p-presentation-wrapper {
   z-index: 1;
   text-align: left;
