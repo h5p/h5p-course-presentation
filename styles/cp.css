@@ -634,7 +634,7 @@ border-collapse: collapse;
   overflow-y: hidden;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-inner {
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video) {
   overflow: hidden;
   overflow-y: auto;
   background: transparent;
