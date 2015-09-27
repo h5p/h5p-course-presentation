@@ -93,24 +93,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       appendTo: $summaryFooter
     });
 
-    // Only make export button if there is an export area in CP
-    if (that.cp.hasAnswerElements) {
-      JoubelUI.createButton({
-        'class': 'h5p-eta-export',
-        html: that.cp.l10n.exportAnswers,
-        css: {
-          display: 'none' // Hide
-        },
-        on: {
-          click: function (event) {
-            H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
-            // event.preventDefault();
-          }
-        },
-        appendTo: $summaryFooter
-      });
-    }
-
     // Show solutions button
     JoubelUI.createButton({
       'class': 'h5p-cp-retry-button',
@@ -123,6 +105,21 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       },
       appendTo: $summaryFooter
     });
+
+    // Only make export button if there is an export area in CP
+    if (that.cp.hasAnswerElements) {
+      JoubelUI.createButton({
+        'class': 'h5p-eta-export',
+        html: that.cp.l10n.exportAnswers,
+        on: {
+          click: function (event) {
+            H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
+            // event.preventDefault();
+          }
+        },
+        appendTo: $summaryFooter
+      });
+    }
   };
 
   /**
