@@ -91,6 +91,15 @@
   background: #666666;
   box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
 }
+.h5p-course-presentation.h5p-fullscreen .h5p-box-wrapper {
+  margin: 0.1em 0;
+}
+
+/* Disable fullscreen buttons inside Course Presentation when it is in full screen */
+.h5p-course-presentation.h5p-fullscreen video .controlBar > .fullscreenButton,
+.h5p-course-presentation.h5p-fullscreen video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
 .h5p-course-presentation .h5p-presentation-wrapper {
   z-index: 1;
   text-align: left;
@@ -620,14 +629,15 @@ border-collapse: collapse;
   padding: 0;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct {
-  overflow-y: hidden;
-}
-
-.h5p-course-presentation .h5p-element .h5p-element-inner {
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video) {
   overflow: hidden;
   overflow-y: auto;
   background: transparent;
+}
+
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct,
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-video {
+  overflow-y: hidden;
 }
 
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text,

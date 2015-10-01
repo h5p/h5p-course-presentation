@@ -185,7 +185,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     delete that.keydown;
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
-    if (!$target.is('input, textarea')) {
+    if (!$target.is('input, textarea') && !that.editor) {
       // Add focus to the wrapper so that it may capture keyboard events
       that.$wrapper.focus();
     }
