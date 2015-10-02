@@ -1296,6 +1296,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     // Done animating
     that.$slidesWrapper.children().removeClass('h5p-animate');
 
+    if (that.editor !== undefined) {
+      return;
+    }
+    
     // Start media on new slide for elements beeing setup with autoplay!
     var instances = that.elementInstances[that.currentSlideIndex];
     var instanceParams = that.slides[that.currentSlideIndex].elements;
