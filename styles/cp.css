@@ -379,6 +379,8 @@
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-advanced-text {
   font-size: 1em;
+  margin-right: 1.5em;
+  padding: 0.5em;
 }
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container,
