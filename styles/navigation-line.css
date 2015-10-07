@@ -92,16 +92,13 @@
 
 /* Footer in solution mode */
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode {
-  background-color: #2b2c30;;
+  background-color: #2b2c30;
   color: #fbfbfb;
 }
 
 /* Only show exit solultion mode button in solution mode */
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode {
   display: inline-block;
-  position: absolute;
-  right: 0em;
-  margin-right: 3em;
   cursor: pointer;
 }
 
@@ -334,6 +331,7 @@
   z-index: 3; /* Must be above feedback, which is 2 */
 
   font-size: 0.75em;
+  line-height: 1.5em;
 
   max-width: 50%;
   padding: 0 0.3em;

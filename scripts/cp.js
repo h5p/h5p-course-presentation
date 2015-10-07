@@ -131,6 +131,7 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
+  this.setActivityStarted();
 
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
@@ -181,7 +182,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     delete that.keydown;
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
-    if (!$target.is('input, textarea')) {
+    if (!$target.is('input, textarea') && !that.editor) {
       // Add focus to the wrapper so that it may capture keyboard events
       that.$wrapper.focus();
     }
@@ -393,13 +394,8 @@ H5P.CoursePresentation.prototype.fitCT = function () {
 
   this.$current.find('.h5p-ct').each(function () {
     var percent = 100;
-    var $parent = H5P.jQuery(this);
-    var $ct = $parent.children('.ct').css({
-      fontSize: '',
-      lineHeight: ''
-    });
-    var parentHeight = $parent.height();
-
+    var $ct = H5P.jQuery(this);
+    var parentHeight = $ct.parent().height();
     while ($ct.outerHeight() > parentHeight) {
       percent--;
       $ct.css({
@@ -694,7 +690,9 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   var that = this;
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;background-color:rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')"></div>').appendTo($slide);
+  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
+  var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
+  $elementContainer.toggleClass('h5p-transparent', isTransparent);
   if (displayAsButton) {
     var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
     instance.attach($buttonElement);
@@ -718,9 +716,20 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     });
   }
   else {
-    instance.attach($elementContainer);
+
+    var $outerElementContainer = H5P.jQuery('<div>', {
+      'class': 'h5p-element-outer'
+    }).css({
+      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
+    }).appendTo($elementContainer);
+
+    var $innerElementContainer = H5P.jQuery('<div>', {
+      'class': 'h5p-element-inner'
+    }).appendTo($outerElementContainer);
+
+    instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-      $elementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
+      $innerElementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
     }
   }
 
@@ -794,8 +803,9 @@ H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  */
 H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
-  elementInstance.showCPComments = function() {
-    if ($elementContainer.children('.h5p-element-solution').length === 0) {
+  elementInstance.showCPComments = function () {
+    var $stripHtml = H5P.jQuery('<div>');
+    if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
         .click(function(event) {
           event.preventDefault();
@@ -846,7 +856,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     .prependTo(this.$wrapper)
     .click(close)
     .find('.h5p-popup-container')
-      .click(function () {
+      .click(function () {
         doNotClose = true;
       })
       .end()
@@ -1106,7 +1116,7 @@ H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideN
     keyword += this.$keywords.children(':eq(' + slideNumber + ')').find('span').html();
   } else {
     var slideIndexToNumber = slideNumber+1;
-    keyword += this.l10n.slide + slideIndexToNumber;
+    keyword += this.l10n.slide + ' ' + slideIndexToNumber;
   }
 
   // Summary slide keyword
@@ -1252,12 +1262,23 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     // Done animating
     that.$slidesWrapper.children().removeClass('h5p-animate');
 
+    if (that.editor !== undefined) {
+      return;
+    }
+    
     // Start media on new slide for elements beeing setup with autoplay!
     var instances = that.elementInstances[that.currentSlideIndex];
+    var instanceParams = that.slides[that.currentSlideIndex].elements;
     if (instances !== undefined) {
       for (var i = 0; i < instances.length; i++) {
         // TODO: Check instance type instead to avoid accidents?
-        if (instances[i].params && instances[i].params.cpAutoplay && typeof instances[i].play === 'function') {
+        if (instanceParams[i] &&
+            instanceParams[i].action &&
+            instanceParams[i].action.params &&
+            instanceParams[i].action.params.cpAutoplay &&
+            typeof instances[i].play === 'function') {
+
+          // Autoplay media
           instances[i].play();
         }
       }
@@ -1297,7 +1318,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   if (this.editor !== undefined && this.editor.dnb !== undefined) {
     // Update drag and drop menu bar container
     this.editor.dnb.setContainer(this.$current);
-    this.editor.dnb.blur();
+    this.editor.dnb.blurAll();
   }
 
   this.trigger('resize'); // Triggered to resize elements.
