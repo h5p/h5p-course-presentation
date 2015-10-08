@@ -62,7 +62,7 @@
                       "H5P.InteractiveVideo 1.8",
                       "H5P.TwitterUserFeed 1.0",
                       "H5P.AppearIn 1.0",
-                      "H5P.GraphCake 1.1"
+                      "H5P.Chart 1.0"
                     ],
                     "optional": true
                   },
