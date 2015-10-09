@@ -727,12 +727,13 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
+  var libTypePmz = '';
   if (displayAsButton) {
     var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
     instance.attach($buttonElement);
 
     // Parameterize library name to use as html class.
-    var libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
+    libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
     H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
         $buttonElement.appendTo(that.showPopup('', function () {
@@ -750,9 +751,15 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     });
   }
   else {
-
+    if (element.action && element.action.library) {
+      libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
+    }
+    else {
+      libTypePmz = 'other';
+    }
+    var outerElementLibrary = libTypePmz + '-outer-element';
     var $outerElementContainer = H5P.jQuery('<div>', {
-      'class': 'h5p-element-outer'
+      'class': 'h5p-element-outer ' + outerElementLibrary
     }).css({
       background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($elementContainer);
@@ -1299,7 +1306,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     if (that.editor !== undefined) {
       return;
     }
-    
+
     // Start media on new slide for elements beeing setup with autoplay!
     var instances = that.elementInstances[that.currentSlideIndex];
     var instanceParams = that.slides[that.currentSlideIndex].elements;
