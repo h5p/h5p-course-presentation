@@ -623,6 +623,10 @@ border-collapse: collapse;
   overflow-y: auto;
 }
 
+.h5p-course-presentation .h5p-element .h5p-element-outer.h5p-advancedtext-outer-element {
+  overflow-y: hidden;
+}
+
 .h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
   position: absolute;
   top: 0;
