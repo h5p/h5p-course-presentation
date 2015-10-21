@@ -317,7 +317,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
         role: 'button',
         tabindex: 0,
         on: {
-          click: function () {
+          click: function () {
             that.toggleFullScreen();
           },
           keypress: function (event) {
