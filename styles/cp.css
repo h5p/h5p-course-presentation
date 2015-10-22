@@ -641,6 +641,7 @@ border-collapse: collapse;
   background: transparent;
 }
 
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-chart,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-video {
   overflow-y: hidden;
