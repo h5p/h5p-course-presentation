@@ -749,6 +749,13 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
       }
       return false;
     });
+    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+      instance.on('controls', function () {
+        if (instance.controls.$fullscreen) {
+          instance.controls.$fullscreen.remove();
+        }
+      });
+    }
   }
   else {
     if (element.action && element.action.library) {
@@ -770,7 +777,19 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-      $innerElementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
+      instance.on('controls', function () {
+        instance.$container.addClass('h5p-fullscreen');
+        if (instance.controls.$fullscreen) {
+          instance.controls.$fullscreen.remove();
+        }
+        instance.hasFullScreen = true;
+        if (instance.controls.$play.hasClass('h5p-pause')) {
+          instance.$controls.addClass('h5p-autohide');
+        }
+        else {
+          instance.enableAutoHide();
+        }
+      });
     }
   }
 
