@@ -777,7 +777,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-      instance.on('controls', function () {
+      var handleIV = function () {
         instance.$container.addClass('h5p-fullscreen');
         if (instance.controls.$fullscreen) {
           instance.controls.$fullscreen.remove();
@@ -789,7 +789,13 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
         else {
           instance.enableAutoHide();
         }
-      });
+      };
+      if (instance.$controls.is(':visible')) {
+        handleIV();
+      }
+      else {
+        instance.on('controls', handleIV);
+      }
     }
   }
 
