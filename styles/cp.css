@@ -563,6 +563,11 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
 }
+
+.h5p-course-presentation .h5p-chart-button:before {
+  content: "\f200";
+}
+
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
 }
@@ -773,4 +778,19 @@ border-collapse: collapse;
 }
 .h5p-course-presentation .h5p-toggle-full-screen:active {
   opacity: 1;
+}
+
+/* Always use full button dialog height for charts */
+.h5p-course-presentation .h5p-chart .h5p-popup-container {
+  height: 80%;
+}
+
+.h5p-course-presentation .h5p-chart .h5p-popup-wrapper {
+  padding: 1em;
+  height: 100%;
+}
+
+.h5p-course-presentation .h5p-chart .h5p-button-element.h5p-chart,
+.h5p-course-presentation .h5p-chart .h5p-chart-chart {
+  height: 100%;
 }
