@@ -61,7 +61,8 @@
                       "H5P.Table 1.1",
                       "H5P.InteractiveVideo 1.7",
                       "H5P.TwitterUserFeed 1.0",
-                      "H5P.AppearIn 1.0"
+                      "H5P.AppearIn 1.0",
+                      "H5P.Dialogcards 1.2"
                     ],
                     "optional": true
                   },
