@@ -627,7 +627,8 @@ border-collapse: collapse;
   overflow-y: auto;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-outer.h5p-advancedtext-outer-element {
+.h5p-course-presentation .h5p-element .h5p-element-outer.h5p-advancedtext-outer-element,
+.h5p-course-presentation .h5p-element .h5p-element-outer.h5p-audio-outer-element {
   overflow-y: hidden;
 }
 
@@ -640,7 +641,7 @@ border-collapse: collapse;
   padding: 0;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video) {
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video):not(.h5p-audio-wrapper) {
   overflow: hidden;
   overflow-y: auto;
   background: transparent;
