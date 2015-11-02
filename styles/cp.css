@@ -13,11 +13,11 @@
 /* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
 @font-face {
   font-family: 'H5PCoursePresentation';
-  src:url('../fonts/H5P.eot');
-  src:url('../fonts/H5P.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/H5P.woff') format('woff'),
-    url('../fonts/H5P.ttf') format('truetype'),
-    url('../fonts/H5P.svg#icomoon') format('svg');
+  src:url('../fonts/h5p.eot');
+  src:url('../fonts/h5p.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/h5p.woff') format('woff'),
+    url('../fonts/h5p.ttf') format('truetype'),
+    url('../fonts/h5p.svg#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -398,6 +398,7 @@
   text-align: left;
 }
 
+.h5p-popup-overlay.h5p-dialogcards .h5p-popup-container,
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
   overflow: hidden;
 }
@@ -504,6 +505,7 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-summary-button:before,
 .h5p-course-presentation .h5p-singlechoiceset-button:before,
 .h5p-course-presentation .h5p-dragtext-button:before,
+.h5p-course-presentation .h5p-dialogcards-button:before,
 .h5p-course-presentation .h5p-markthewords-button:before {
   font-family: 'H5PCoursePresentation';
 }
@@ -560,6 +562,10 @@ border-collapse: collapse;
 }
 .h5p-course-presentation .h5p-dragtext-button:before {
   content: "\e600";
+}
+.h5p-course-presentation .h5p-dialogcards-button:before {
+  content: "\e900";
+  vertical-align: middle;
 }
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
