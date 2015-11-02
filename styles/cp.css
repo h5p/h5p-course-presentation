@@ -398,7 +398,11 @@
   text-align: left;
 }
 
-.h5p-popup-overlay.h5p-dialogcards .h5p-popup-container,
+.h5p-popup-overlay.h5p-dialogcards .h5p-popup-container {
+  height: 80%;
+  overflow: hidden;
+}
+
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
   overflow: hidden;
 }
