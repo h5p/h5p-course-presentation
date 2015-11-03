@@ -478,6 +478,7 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-markthewords-button,
 .h5p-course-presentation .h5p-dragquestion-button,
 .h5p-course-presentation .h5p-summary-button,
+.h5p-course-presentation .h5p-dialogcards-button,
 .h5p-course-presentation .h5p-interactivevideo-button {
   background: #981d99;
   background-image: -webkit-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
