@@ -475,6 +475,11 @@ H5P.CoursePresentation.prototype.resize = function () {
   var widthRatio = width / this.width;
   style.height = (width / this.ratio) + 'px';
   style.fontSize = (this.fontSize * widthRatio) + 'px';
+
+  if (this.editor !== undefined) {
+    this.editor.setContainerEm(this.fontSize * widthRatio * 0.75);
+  }
+
   this.$wrapper.css(style);
 
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
