@@ -223,10 +223,10 @@
 }
 .h5p-course-presentation .h5p-current {
   display: block;
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  transform: translateX(0);
+  -webkit-transform: translateX(0) translateZ(0);
+  -moz-transform: translateX(0) translateZ(0);
+  -ms-transform: translateX(0) translateZ(0);
+  transform: translateX(0) translateZ(0);
   z-index: 2;
 }
 .h5p-course-presentation .h5p-previous {
