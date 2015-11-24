@@ -748,7 +748,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
         H5P.trigger(instance, 'resize');
 
         // Resize images to fit popup dialog
-        if (H5P.Image !== undefined && instance instanceof H5P.Image) {
+        if (libTypePmz === 'h5p-image') {
           that.resizePopupImage($buttonElement);
         }
       }
