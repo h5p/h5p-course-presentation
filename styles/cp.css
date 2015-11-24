@@ -653,12 +653,13 @@ border-collapse: collapse;
   padding: 0;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video):not(.h5p-audio-wrapper) {
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video) {
   overflow: hidden;
   overflow-y: auto;
   background: transparent;
 }
 
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-audio-wrapper,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-chart,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-ct,
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-video {
