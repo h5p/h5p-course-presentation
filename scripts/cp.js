@@ -795,7 +795,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
           instance.enableAutoHide();
         }
       };
-      if (instance.$controls.is(':visible')) {
+      if (instance.controls !== undefined) {
         handleIV();
       }
       else {
