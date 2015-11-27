@@ -134,7 +134,11 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
-  this.setActivityStarted();
+  
+  // isRoot is undefined in the editor
+  if (this.isRoot !== undefined && this.isRoot()) {
+    this.setActivityStarted();
+  }
 
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
@@ -751,6 +755,9 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
         if (libTypePmz === 'h5p-image') {
           that.resizePopupImage($buttonElement);
         }
+        if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
+          instance.setActivityStarted();
+        }
       }
       return false;
     });
@@ -1351,6 +1358,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
           // Autoplay media
           instances[i].play();
+        }
+
+        if (!instanceParams[i].displayAsButton && typeof instances[i].setActivityStarted === 'function' && typeof instances[i].getScore === 'function') {
+          instances[i].setActivityStarted();
         }
       }
     }
