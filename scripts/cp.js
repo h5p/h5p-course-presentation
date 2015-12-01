@@ -134,7 +134,7 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
-  
+
   // isRoot is undefined in the editor
   if (this.isRoot !== undefined && this.isRoot()) {
     this.setActivityStarted();
@@ -1396,8 +1396,8 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
   }
 
   if (that.summarySlideObject) {
-    // Update summary slide if on last slide
-    that.summarySlideObject.updateSummarySlide(slideNumber);
+    // Update summary slide if on last slide, do not jump
+    that.summarySlideObject.updateSummarySlide(slideNumber, true);
   }
 
   // Editor specific settings

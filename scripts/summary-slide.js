@@ -86,8 +86,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
         click: function (event) {
           // Enable solution mode
           that.toggleSolutionMode(true);
-          that.cp.jumpToSlide(0);
-          // event.preventDefault();
         }
       },
       appendTo: $summaryFooter
@@ -351,13 +349,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
     var that = this;
 
-    if (enableSolutionMode) {
-      // Get scores for summary slide
-      var slideScores = that.cp.showSolutions();
-
-      // Update feedback icons in solution mode
-      this.cp.setProgressBarFeedback(slideScores);
-    }
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
       // Get scores for summary slide
