@@ -21,7 +21,7 @@
                       "label": "Visualizza i commenti sempre"
                     },
                     {
-                      "label": "Opacit� Sfondo"
+                      "label": "Opacità Sfondo"
                     },
                     {
                       "label": "Visualizza come pulsante"
@@ -34,7 +34,7 @@
                     },
                     {
                       "label": "Invisibile",
-                      "description": "Cursore predefinito, nessun titolo e nessun indice scheda. Attenzione: gli utenti con disabilit� o che utilizzano solo la tastiera utenti avranno problemi con questo elemento."
+                      "description": "Cursore predefinito, nessun titolo e nessun indice scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera utenti avranno problemi con questo elemento."
                     },
                     {
                       "label": "Metadata",
@@ -69,7 +69,7 @@
           "label": "Nascondi automaticamente"
         },
         {
-          "label": "Opacit�"
+          "label": "Opacità"
         }
       ]
     },
@@ -87,15 +87,15 @@
         },
         {
           "label": "Messaggio dato per un punteggio OTTIMO",
-          "description": "@percent � sostituito dal reale punteggio dell'utente in percentuale"
+          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
           "label": "Messaggio dato per un punteggio BUONO",
-          "description": "@percent � sostituito dal reale punteggio dell'utente in percentuale"
+          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
           "label": "Messaggio dato per un punteggio BASSO",
-          "description": "@percent � sostituito dal reale punteggio dell'utente in percentuale"
+          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
           "label": "Traduzione per \"Totale\""
@@ -149,16 +149,13 @@
           "label": "Etichetta ultima scheda"
         },
         {
-          "label": "Esci dal testo modalit� soluzione"
+          "label": "Esci dal testo modalità soluzione"
         },
         {
-          "label": "Testo modalit� soluzione"
+          "label": "Testo modalità soluzione"
         },
         {
-          "label": "Testo modalit� soluzione sottolineato"
-        },
-        {
-          "label": "Testo attivit� multiple in una pagina"
+          "label": "Testo attività multiple in una pagina"
         },
         {
           "label": "Testo del messaggio del punteggio"
@@ -200,16 +197,20 @@
       "description": "Queste opzioni ti consente di ignorare le impostazioni.",
       "fields": [
         {
+          "label": "Activate Active Surface Mode",
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+        },
+        {
           "label": "Attiva il comportamento di esclusione.",
-          "description": "Se questa opzione � abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
+          "description": "Se questa opzione è abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
         },
         {
           "label": "Abilita pulsanti \"Mostra soluzione\".",
-          "description": "L'attivazione di questa opzione far� in modo che le domande mostrino il tasto \"Mostra soluzione\"."
+          "description": "L'attivazione di questa opzione farà in modo che le domande mostrino il tasto \"Mostra soluzione\"."
         },
         {
           "label": "Abilita \"Riprova\".",
-          "description": "L'attivazione di questa opzione far� in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
+          "description": "L'attivazione di questa opzione farà in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
         },
         {
           "label": "Comportamento",
