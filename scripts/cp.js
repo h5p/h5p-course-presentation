@@ -642,8 +642,11 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
     var library;
     if (this.editor !== undefined) {
+
+
       // Clone the whole tree to avoid libraries accidentally changing params while running.
       library = H5P.jQuery.extend(true, {}, element.action, defaults);
+
     }
     else {
       // Add defaults
@@ -653,6 +656,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     /* If library allows autoplay, control this from CP */
     if (library.params.autoplay) {
       library.params.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
+    else if (library.params.media &&
+      library.params.media.params &&
+      library.params.media.params.autoplay) {
+
+      // Control libraries that has content with autoplay through CP
+      library.params.media.params.autoplay = false;
       library.params.cpAutoplay = true;
     }
 
