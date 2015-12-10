@@ -745,6 +745,18 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
     H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
+
+        // Autoplay media
+        if (element &&
+          element.action &&
+          element.action.params &&
+          element.action.params.cpAutoplay &&
+          typeof instance.play === 'function') {
+
+          // Autoplay media if not button
+          instance.play();
+        }
+
         $buttonElement.appendTo(that.showPopup('', function () {
           that.pauseMedia(instance);
           $buttonElement.detach();
@@ -1354,9 +1366,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
             instanceParams[i].action &&
             instanceParams[i].action.params &&
             instanceParams[i].action.params.cpAutoplay &&
+            !instanceParams[i].displayAsButton &&
             typeof instances[i].play === 'function') {
 
-          // Autoplay media
+          // Autoplay media if not button
           instances[i].play();
         }
 
