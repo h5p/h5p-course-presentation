@@ -642,8 +642,11 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
     var library;
     if (this.editor !== undefined) {
+
+
       // Clone the whole tree to avoid libraries accidentally changing params while running.
       library = H5P.jQuery.extend(true, {}, element.action, defaults);
+
     }
     else {
       // Add defaults
@@ -653,6 +656,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     /* If library allows autoplay, control this from CP */
     if (library.params.autoplay) {
       library.params.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
+    else if (library.params.media &&
+      library.params.media.params &&
+      library.params.media.params.autoplay) {
+
+      // Control libraries that has content with autoplay through CP
+      library.params.media.params.autoplay = false;
       library.params.cpAutoplay = true;
     }
 
@@ -745,6 +756,18 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
     H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
+
+        // Autoplay media
+        if (element &&
+          element.action &&
+          element.action.params &&
+          element.action.params.cpAutoplay &&
+          typeof instance.play === 'function') {
+
+          // Autoplay media if not button
+          instance.play();
+        }
+
         $buttonElement.appendTo(that.showPopup('', function () {
           that.pauseMedia(instance);
           $buttonElement.detach();
@@ -1354,9 +1377,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
             instanceParams[i].action &&
             instanceParams[i].action.params &&
             instanceParams[i].action.params.cpAutoplay &&
+            !instanceParams[i].displayAsButton &&
             typeof instances[i].play === 'function') {
 
-          // Autoplay media
+          // Autoplay media if not button
           instances[i].play();
         }
 
