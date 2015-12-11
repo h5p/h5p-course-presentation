@@ -661,7 +661,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     else if (library.params.media &&
       library.params.media.params &&
       library.params.media.params.autoplay) {
-
       // Control libraries that has content with autoplay through CP
       library.params.media.params.autoplay = false;
       library.params.cpAutoplay = true;
@@ -756,16 +755,16 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
     H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
-
         // Autoplay media
-        if (element &&
-          element.action &&
-          element.action.params &&
+        if (element.action.params &&
           element.action.params.cpAutoplay &&
           typeof instance.play === 'function') {
 
           // Autoplay media if not button
-          instance.play();
+          // Timeout is used to make it work in Firefox
+          setTimeout(function () {
+            instance.play();
+          }, 1);
         }
 
         $buttonElement.appendTo(that.showPopup('', function () {
