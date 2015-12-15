@@ -314,6 +314,8 @@
   background-image: url(../fonts/summari_right_scale_horisontal.svg);
   width: calc(100% - 1em);
   height: 0.5em;
+  background-repeat: repeat-x;
+  background-size: contain;
 }
 
 .h5p-course-presentation .summary-slide-left-svg {
