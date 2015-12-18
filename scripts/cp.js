@@ -755,9 +755,23 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
     H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
+
+        // Handle exit fullscreen
+        var exitFullScreen = function () {
+          that.$footer.removeClass('footer-full-screen');
+          that.$fullScreenButton.attr('title', this.l10n.fullscreen);
+          instance.trigger('resize');
+        };
+
+        // Listen for exit fullscreens not triggered by button, for instance using 'esc'
+        that.on('exitFullScreen', exitFullScreen);
+
         $buttonElement.appendTo(that.showPopup('', function () {
           that.pauseMedia(instance);
           $buttonElement.detach();
+
+          // Remove listener, we only need it for active popups
+          that.off('exitFullScreen', exitFullScreen);
         }, libTypePmz).find('.h5p-popup-wrapper'));
         H5P.trigger(instance, 'resize');
 
