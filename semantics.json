@@ -52,16 +52,17 @@
                       "H5P.Audio 1.2",
                       "H5P.Blanks 1.4",
                       "H5P.SingleChoiceSet 1.3",
-                      "H5P.MultiChoice 1.4",
+                      "H5P.MultiChoice 1.5",
                       "H5P.DragQuestion 1.5",
                       "H5P.Summary 1.4",
                       "H5P.DragText 1.4",
-                      "H5P.MarkTheWords 1.4",
+                      "H5P.MarkTheWords 1.5",
                       "H5P.ExportableTextArea 1.2",
                       "H5P.Table 1.1",
-                      "H5P.InteractiveVideo 1.7",
+                      "H5P.InteractiveVideo 1.8",
                       "H5P.TwitterUserFeed 1.0",
-                      "H5P.AppearIn 1.0"
+                      "H5P.AppearIn 1.0",
+                      "H5P.Dialogcards 1.2"
                     ],
                     "optional": true
                   },
@@ -462,6 +463,14 @@
     "description": "These options will let you override behaviour settings.",
     "optional": true,
     "fields": [
+      {
+        "name": "activeSurface",
+        "type": "boolean",
+        "widget": "disposableBoolean",
+        "label": "Activate Active Surface Mode",
+        "description": "Removes navigation controls for the end user. Use Go To Slide to navigate.",
+        "default": false
+      },
       {
         "name": "overrideButtons",
         "type": "boolean",

@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Commentaires",
-                      "description": "Les commentaires sont affichés pour aider le utilisateurs pendant le diaporama."
+                      "description": "Les commentaires sont affichés pour aider les utilisateurs pendant le diaporama."
                     },
                     {
                       "label": "Toujours afficher les commentaires"
@@ -74,97 +74,126 @@
       ]
     },
     {
-      "label": "Localisation",
+      "label": "Traductions",
       "fields": [
         {
-          "label": "Traduction pour \"Diapositive\""
+          "label": "Traduction pour \"Diapositive\"",
+          "default": "Diapositive"
         },
         {
-          "label": "Traduction pour \"Score\""
+          "label": "Traduction pour \"Score\"",
+          "default": "Score"
         },
         {
-          "label": "Traduction pour \"Score maximum\""
+          "label": "Traduction pour \"Score maximum\"",
+          "default": "Score maximum"
         },
         {
           "label": "Félicitations pour ce très bon score",
-          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur",
+          "default": "Félicitations ! Vous avez un score de @percent !"
         },
         {
           "label": "Bravo pour ce bon score",
-          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur",
+          "default": "Bravo ! Vous avez un score de @percent !"
         },
         {
           "label": "Mauvais score",
-          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur",
+          "default": "Vous avez un score de @percent."
         },
         {
-          "label": "Traduction pour \"Total\""
+          "label": "Traduction pour \"Total\"",
+          "default": "Total"
         },
         {
-          "label": "Texte pour le bouton Montrer la solution"
+          "label": "Texte pour le bouton Montrer la solution",
+          "default": "Montrer la solution"
         },
         {
-          "label": "Texte pour le bouton Réessayer"
+          "label": "Texte pour le bouton Réessayer",
+          "default": "Réessayer"
         },
         {
-          "label": "Traduction pour \"Titre\""
+          "label": "Traduction pour \"Titre\"",
+          "default": "Titre"
         },
         {
-          "label": "Traduction pour \"Auteur/créateur\""
+          "label": "Traduction pour \"Auteur/créateur\"",
+          "default": "Auteur/créateur"
         },
         {
-          "label": "Traduction pour \"Licence\""
+          "label": "Traduction pour \"Licence\"",
+          "default": "Licence"
         },
         {
-          "label": "Traduction pour \"Licence\""
+          "label": "Traduction pour \"Licence\"",
+          "default": "Licence"
         },
         {
-          "label": "Texte du bouton d'exportation"
+          "label": "Texte du bouton d'exportation",
+          "default": "Exporter"
         },
         {
-          "label": "Texte pour le bouton \"Droits d'utilisation\""
+          "label": "Texte pour le bouton \"Droits d'utilisation\"",
+          "default": "Droits d'utilisation"
         },
         {
-          "label": "Cacher le bouton d'affichage de la liste des mots-clés"
+          "label": "Cacher le bouton d'affichage de la liste des mots-clés",
+          "default": "Cacher la liste des mots-clés"
         },
         {
-          "label": "Montrer le bouton d'affichage de la liste des mots-clés"
+          "label": "Montrer le bouton d'affichage de la liste des mots-clés",
+          "default": "Afficher la liste des mots-clés"
         },
         {
-          "label": "Texte de mise en plein écran"
+          "label": "Texte de mise en plein écran",
+          "default": "Plein écran"
         },
         {
-          "label": "Texte de sortie du plein écran"
+          "label": "Texte de sortie du plein écran",
+          "default": "Sortir du Plein écra"
         },
         {
-          "label": "Texte d'accès à la diapositive précédente"
+          "label": "Texte d'accès à la diapositive précédente",
+          "default": ""
         },
         {
-          "label": "Texte d'accès à la diapositive suivante"
+          "label": "Texte d'accès à la diapositive suivante",
+          "default": "Diapositive suivante"
         },
         {
-          "label": "Texte pour la diapositive affichée"
+          "label": "Texte pour la diapositive affichée",
+          "default": "Diapositive affichée"
         },
         {
-          "label": "Texte de la dernière diapositive"
+          "label": "Texte de la dernière diapositive",
+          "default": "Dernière diapositive"
         },
         {
-          "label": "Texte de sortie du mode de solution"
+          "label": "Texte de sortie du mode de solution",
+          "default": "Sortir du mode de solution"
         },
         {
-          "label": "Texte du mode de solution"
+          "label": "Texte du mode de solution",
+          "default": "Mode de solution"
         },
         {
-          "label": "Texte affiché lors de multiples activités sur une page"
+          "label": "Texte affiché lors de multiples activités sur une page",
+          "default": "Multiples activités"
         },
         {
-          "label": "Texte d'affichage du score"
+          "label": "Texte d'affichage du score",
+          "default": "Votre score :"
         },
         {
-          "label": "Texte de partage sur Facebook"
+          "label": "Texte de partage sur Facebook",
+          "default": "Partager sur Facebook"
         },
         {
-          "label": "Texte de partage sur Twitter"
+          "label": "Texte de partage sur Twitter",
+          "default": "Partager sur Twitter"
         },
         {
           "label": "Titre de la légende de la diapositive",
@@ -188,6 +217,7 @@
       "label": "Paramètres",
       "description": "Ces options vous permettent de proposer de passer certaines séquences.",
       "fields": [
+        {},
         {
           "label": "Activer la possibilité de passer certaines séquences.",
           "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."

@@ -68,6 +68,7 @@ H5P.CoursePresentation = function (params, id, extras) {
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
+    this.activeSurface = !!params.override.activeSurface;
     this.overrideButtons = !!params.override.overrideButtons;
     this.overrideShowSolutionsButton = !!params.override.overrideShowSolutionButton;
     this.overrideRetry = !!params.override.overrideRetry;
@@ -105,7 +106,9 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
 
   // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
-    state.answered[slide] = this.progressbarParts[slide].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered');
+    if (this.progressbarParts) {
+      state.answered[slide] = this.progressbarParts[slide].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered');
+    }
     if (this.elementInstances[slide]) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];
@@ -131,7 +134,11 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
  */
 H5P.CoursePresentation.prototype.attach = function ($container) {
   var that = this;
-  this.setActivityStarted();
+
+  // isRoot is undefined in the editor
+  if (this.isRoot !== undefined && this.isRoot()) {
+    this.setActivityStarted();
+  }
 
   var html =
           '<div class="h5p-wrapper" tabindex="0">' +
@@ -213,6 +220,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$footer = this.$wrapper.children('.h5p-footer');
 
   this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
+  if (this.activeSurface && this.editor === undefined) {
+    this.initKeywords = false;
+    this.$boxWrapper.css('height', '100%');
+  }
   this.isSolutionMode = false;
 
   // Create keywords html
@@ -290,13 +301,40 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.$keywordsWrapper.remove();
   }
 
-  // Initialize touch events
-  this.initTouchEvents();
+  if (this.editor !== undefined || !this.activeSurface) {
+    // Initialize touch events
+    this.initTouchEvents();
 
-  // init navigation line
-  this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
+    // init navigation line
+    this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
 
-  this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
+    this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
+  }
+  else {
+    this.$progressbar.add(this.$footer).remove();
+
+    if (H5P.canHasFullScreen) {
+      // Create full screen button
+      this.$fullScreenButton = H5P.jQuery('<div/>', {
+        'class': 'h5p-toggle-full-screen',
+        title: this.l10n.fullscreen,
+        role: 'button',
+        tabindex: 0,
+        on: {
+          click: function () {
+            that.toggleFullScreen();
+          },
+          keypress: function (event) {
+            // Buttons must respond to space bar
+            if (event.which === 32) {
+              that.toggleFullScreen();
+            }
+          }
+        },
+        appendTo: this.$wrapper
+      });
+    }
+  }
 
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
@@ -420,7 +458,7 @@ H5P.CoursePresentation.prototype.resize = function () {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
-    return;
+    return; // When printing.
   }
 
   // Fill up all available width
@@ -441,6 +479,11 @@ H5P.CoursePresentation.prototype.resize = function () {
   var widthRatio = width / this.width;
   style.height = (width / this.ratio) + 'px';
   style.fontSize = (this.fontSize * widthRatio) + 'px';
+
+  if (this.editor !== undefined) {
+    this.editor.setContainerEm(this.fontSize * widthRatio * 0.75);
+  }
+
   this.$wrapper.css(style);
 
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
@@ -599,8 +642,11 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
     var library;
     if (this.editor !== undefined) {
+
+
       // Clone the whole tree to avoid libraries accidentally changing params while running.
       library = H5P.jQuery.extend(true, {}, element.action, defaults);
+
     }
     else {
       // Add defaults
@@ -610,6 +656,13 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
     /* If library allows autoplay, control this from CP */
     if (library.params.autoplay) {
       library.params.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
+    else if (library.params.media &&
+      library.params.media.params &&
+      library.params.media.params.autoplay) {
+      // Control libraries that has content with autoplay through CP
+      library.params.media.params.autoplay = false;
       library.params.cpAutoplay = true;
     }
 
@@ -702,19 +755,48 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
     H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
+
+        // Handle exit fullscreen
+        var exitFullScreen = function () {
+          that.$footer.removeClass('footer-full-screen');
+          that.$fullScreenButton.attr('title', this.l10n.fullscreen);
+          instance.trigger('resize');
+        };
+
+        // Listen for exit fullscreens not triggered by button, for instance using 'esc'
+        that.on('exitFullScreen', exitFullScreen);
+
         $buttonElement.appendTo(that.showPopup('', function () {
           that.pauseMedia(instance);
           $buttonElement.detach();
+
+          // Remove listener, we only need it for active popups
+          that.off('exitFullScreen', exitFullScreen);
         }, libTypePmz).find('.h5p-popup-wrapper'));
         H5P.trigger(instance, 'resize');
 
         // Resize images to fit popup dialog
-        if (H5P.Image !== undefined && instance instanceof H5P.Image) {
+        if (libTypePmz === 'h5p-image') {
           that.resizePopupImage($buttonElement);
+        }
+        if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
+          instance.setActivityStarted();
+        }
+
+        // Autoplay media
+        if (element.action.params && element.action.params.cpAutoplay && typeof instance.play === 'function') {
+          instance.play();
         }
       }
       return false;
     });
+    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+      instance.on('controls', function () {
+        if (instance.controls.$fullscreen) {
+          instance.controls.$fullscreen.remove();
+        }
+      });
+    }
   }
   else {
     if (element.action && element.action.library) {
@@ -736,7 +818,25 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-      $innerElementContainer.addClass('h5p-fullscreen').find('.h5p-fullscreen').remove();
+      var handleIV = function () {
+        instance.$container.addClass('h5p-fullscreen');
+        if (instance.controls.$fullscreen) {
+          instance.controls.$fullscreen.remove();
+        }
+        instance.hasFullScreen = true;
+        if (instance.controls.$play.hasClass('h5p-pause')) {
+          instance.$controls.addClass('h5p-autohide');
+        }
+        else {
+          instance.enableAutoHide();
+        }
+      };
+      if (instance.controls !== undefined) {
+        handleIV();
+      }
+      else {
+        instance.on('controls', handleIV);
+      }
     }
   }
 
@@ -944,7 +1044,7 @@ H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
  * @returns {undefined} Nothing.
  */
 H5P.CoursePresentation.prototype.initKeyEvents = function () {
-  if (this.keydown !== undefined) {
+  if (this.keydown !== undefined || this.activeSurface) {
     return;
   }
 
@@ -1283,10 +1383,15 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
             instanceParams[i].action &&
             instanceParams[i].action.params &&
             instanceParams[i].action.params.cpAutoplay &&
+            !instanceParams[i].displayAsButton &&
             typeof instances[i].play === 'function') {
 
-          // Autoplay media
+          // Autoplay media if not button
           instances[i].play();
+        }
+
+        if (!instanceParams[i].displayAsButton && typeof instances[i].setActivityStarted === 'function' && typeof instances[i].getScore === 'function') {
+          instances[i].setActivityStarted();
         }
       }
     }
@@ -1312,14 +1417,18 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     that.showKeywords();
   }
 
-  // Update progress bar
-  that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex, this.isSolutionMode);
+  if (that.navigationLine) {
+    // Update progress bar
+    that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex, this.isSolutionMode);
 
-  // Update footer
-  that.navigationLine.updateFooter(slideNumber);
+    // Update footer
+    that.navigationLine.updateFooter(slideNumber);
+  }
 
-  // Update summary slide if on last slide
-  that.summarySlideObject.updateSummarySlide(slideNumber);
+  if (that.summarySlideObject) {
+    // Update summary slide if on last slide, do not jump
+    that.summarySlideObject.updateSummarySlide(slideNumber, true);
+  }
 
   // Editor specific settings
   if (this.editor !== undefined && this.editor.dnb !== undefined) {
