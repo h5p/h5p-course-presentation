@@ -146,6 +146,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
           '      <div class="h5p-slides-wrapper"></div>' +
+          '      <div class="h5p-settings-wrapper"></div>' +
           '    </div>' +
           '  </div>' +
           '  <div class="h5p-progressbar"></div>' +
@@ -216,6 +217,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
+  this.$settingsWrapper = $presentationWrapper.children('.h5p-settings-wrapper');
   this.$progressbar = this.$wrapper.children('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
 
@@ -335,6 +337,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       });
     }
   }
+
+  new H5P.CoursePresentation.SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
@@ -1437,6 +1441,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     this.editor.dnb.blurAll();
   }
 
+  this.trigger('changedSlide', slideNumber);
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
