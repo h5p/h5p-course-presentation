@@ -1,32 +1,53 @@
 H5P.CoursePresentation.SlideBackground = (function ($) {
   /**
-   * SlideBackground class
-   * @class SlideBackground
+   * Create a Slide specific background selector
+   *
+   * @class H5P.CoursePresentation.SlideBackground
+   * @param {H5P.CoursePresentation} cp Course Presentation instance
    */
   function SlideBackground (cp) {
     var params = cp.presentation;
 
+    // Extend defaults
+    params = $.extend(true, {
+      globalBackgroundSelector: {
+        fillGlobalBackground: "",
+        imageGlobalBackground: {}
+      },
+      slides: [
+        {
+          slideBackgroundSelector: {
+            fillSlideBackground: "",
+            imageSlideBackground: {}
+          }
+        }
+      ]
+    }, params);
+
+    /**
+     * Set global background
+     */
     var setGlobalBackground = function () {
       var globalSettings = params.globalBackgroundSelector;
-      if (globalSettings) {
-        setBackground(globalSettings.fillGlobalBackground, globalSettings.imageGlobalBackground);
-      }
+      setBackground(globalSettings.fillGlobalBackground, globalSettings.imageGlobalBackground);
     };
 
+    /**
+     * Set single slide background
+     */
     var setSlideBackgrounds = function () {
       params.slides.forEach(function (slideParams, idx) {
         var bgParams = slideParams.slideBackgroundSelector;
-        if (bgParams) {
-          setBackground(bgParams.fillSlideBackground, bgParams.imageSlideBackground, idx);
-        }
+        setBackground(bgParams.fillSlideBackground, bgParams.imageSlideBackground, idx);
       });
     };
 
     /**
+     * Set background of slide(s)
      *
-     * @param fillSettings
-     * @param imageSettings
-     * @param index
+     * @param {Object} fillSettings Background color settings
+     * @param {Object} imageSettings Image background settings
+     * @param {number} [index] Optional target slide index, otherwise all slides.
      */
     var setBackground = function (fillSettings, imageSettings, index) {
       var $updateSlides = cp.$slidesWrapper.children();
@@ -51,6 +72,7 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
       }
     };
 
+    // Set backgrounds
     setGlobalBackground();
     setSlideBackgrounds();
   }
