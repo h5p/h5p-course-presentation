@@ -38,7 +38,9 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
     var setSlideBackgrounds = function () {
       params.slides.forEach(function (slideParams, idx) {
         var bgParams = slideParams.slideBackgroundSelector;
-        setBackground(bgParams.fillSlideBackground, bgParams.imageSlideBackground, idx);
+        if (bgParams) {
+          setBackground(bgParams.fillSlideBackground, bgParams.imageSlideBackground, idx);
+        }
       });
     };
 
@@ -50,7 +52,7 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
      * @param {number} [index] Optional target slide index, otherwise all slides.
      */
     var setBackground = function (fillSettings, imageSettings, index) {
-      var $updateSlides = cp.$slidesWrapper.children();
+      var $updateSlides = cp.$slidesWrapper.children().filter(':not(.h5p-summary-slide)');
 
       if (index !== undefined) {
         $updateSlides = $updateSlides.eq(index);
