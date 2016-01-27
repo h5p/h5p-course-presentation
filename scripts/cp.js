@@ -1367,6 +1367,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
+    that.trigger('changedSlide', that.$current.index());
   }, 1);
 
   setTimeout(function () {
@@ -1441,7 +1442,6 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     this.editor.dnb.blurAll();
   }
 
-  this.trigger('changedSlide', slideNumber);
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
