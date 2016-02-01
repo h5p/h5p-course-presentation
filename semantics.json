@@ -152,7 +152,7 @@
                         "name": "lisence",
                         "type": "text",
                         "optional": true,
-                        "label": "Lisence"
+                        "label": "License"
                       }
                     ]
                   }
@@ -367,8 +367,8 @@
       {
         "name": "lisence",
         "type": "text",
-        "label": "Translation for \"Lisence\"",
-        "default": "Lisence",
+        "label": "Translation for \"License\"",
+        "default": "License",
         "deprecated": true,
         "optional": true
       },
