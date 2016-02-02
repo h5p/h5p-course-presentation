@@ -985,7 +985,8 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
  *  false otherwise
  */
 H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
-  return (elementInstance.showSolutions !== undefined || elementInstance.showCPComments !== undefined);
+  return (elementInstance.showSolutions !== undefined ||
+          elementInstance.showCPComments !== undefined);
 };
 
 /**
