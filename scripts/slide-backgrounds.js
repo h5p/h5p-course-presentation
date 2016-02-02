@@ -26,6 +26,7 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
 
     /**
      * Set global background
+     * @private
      */
     var setGlobalBackground = function () {
       var globalSettings = params.globalBackgroundSelector;
@@ -34,6 +35,7 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
 
     /**
      * Set single slide background
+     * @private
      */
     var setSlideBackgrounds = function () {
       params.slides.forEach(function (slideParams, idx) {
@@ -47,6 +49,7 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
     /**
      * Set background of slide(s)
      *
+     * @private
      * @param {Object} fillSettings Background color settings
      * @param {Object} imageSettings Image background settings
      * @param {number} [index] Optional target slide index, otherwise all slides.
