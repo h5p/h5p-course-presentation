@@ -142,15 +142,13 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var slideElements;
     var action;
     for (i = 0; i < slideScores.length; i += 1) {
+      slideDescription = self.getSlideDescription(slideScores[i]);
+      
       // Get percentage score for slide
-      slidePercentageScore = (slideScores[i].score / slideScores[i].maxscore) * 100;
-      if (slideScores[i].score === 0) {
+      slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
+      if (isNaN(slidePercentageScore)) {
         slidePercentageScore = 0;
       }
-
-      slideDescription = self.getSlideDescription(slideScores[i]);
-
-      slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
       tds +=
         '<tr>' +
           '<td class="h5p-td h5p-summary-task-title">' +

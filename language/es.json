@@ -1,0 +1,282 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Comentarios",
+                      "description": "Los comentarios se muestran cuando el usuario solicita ver las respuestas para todas las diapositivas."
+                    },
+                    {
+                      "label": "Mostrar siempre los comentarios"
+                    },
+                    {
+                      "label": "Opacidad del fondo"
+                    },
+                    {
+                      "label": "Mostrar como botón"
+                    },
+                    {
+                      "label": "Título"
+                    },
+                    {
+                      "label": "Ir a la diapositiva"
+                    },
+                    {
+                      "label": "Invisible",
+                      "description": "Cursor por defecto, sin título ni pestaña de índice. Advertencia: Aquellos usuarios con discapacidades o usuarios quienes sólo utilizan teclado tendrán problemas al utilizar este elemento."
+                    },
+                    {
+                      "label": "Metadatos",
+                      "fields": [
+                        {
+                          "label": "Título"
+                        },
+                        {
+                          "label": "Autor"
+                        },
+                        {
+                          "label": "Licencia"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "englishLabel": "Image",
+                    "label": "Image",
+                    "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
+                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                  },
+                  {
+                    "englishLabel": "Pick a color",
+                    "label": "Pick a color",
+                    "englishDefault": null,
+                    "default": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Lista de palabras claves"
+        },
+        {
+          "label": "Mostrar siempre"
+        },
+        {
+          "label": "Ocultar automáticamente"
+        },
+        {
+          "label": "Opacidad"
+        },
+        {
+          "fields": [
+            {
+              "englishLabel": "Image",
+              "label": "Image",
+              "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
+              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+            },
+            {
+              "englishLabel": "Pick a color",
+              "label": "Pick a color",
+              "englishDefault": null,
+              "default": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Traducciones",
+      "fields": [
+        {
+          "label": "Traducción para \"Diapositiva\"",
+          "default": "Diapositiva"
+        },
+        {
+          "label": "Traduction para \"Pauntaje\"",
+          "default": "Puntaje"
+        },
+        {
+          "label": "Traducción para \"Puntaje máximo\"",
+          "default": "Puntaje máximo"
+        },
+        {
+          "label": "Mensaje por haber obtenido BUEN puntaje",
+          "description": "@percent es reemplazado por el puntaje real del usuario en porcentaje",
+          "default": "Felicitaciones! Obtuviste @percent de aciertos!"
+        },
+        {
+          "label": "Mensaje por cualquier puntaje de aciertos",
+          "description": "@percent es reemplazado por el puntaje real del usuario en porcentaje",
+          "default": "Buen intento! Obtuviste @percent de aciertos!"
+        },
+        {
+          "label": "Mensaje por haber obtenido un MAL puntaje",
+          "description": "@percent es reemplazado por el puntaje real del usuario en porcentaje",
+          "default": "Obtuviste @percent de aciertos"
+        },
+        {
+          "label": "Traducción para \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Texto para el botón de Mostrar la Solución",
+          "default": "Mostrar solución"
+        },
+        {
+          "label": "Texto para el botón de Reintentar",
+          "default": "Reintentar"
+        },
+        {
+          "label": "Traducción para \"Título\"",
+          "default": "Título"
+        },
+        {
+          "label": "Traducción para \"Autor/Creador\"",
+          "default": "Autor/Creador"
+        },
+        {
+          "label": "Traducción para \"Licencia\"",
+          "default": "Licencia"
+        },
+        {
+          "label": "Traduction pour \"Licencia\"",
+          "default": "Licencia"
+        },
+        {
+          "label": "Texto para el botón de exportación",
+          "default": "Exportar com texto"
+        },
+        {
+          "label": "Texto para el botón \"Derechos de uso\"",
+          "default": "Derechos de uso"
+        },
+        {
+          "label": "Ocultar el botón de lista de palabras claves",
+          "default": "Ocultar lista de plalabras claves"
+        },
+        {
+          "label": "Mostrar el botón de lista de palabras claves",
+          "default": "Mostrar lista de palabras claves"
+        },
+        {
+          "label": "Etiqueta de mostrar en pantalla completa",
+          "default": "Pantalla completa"
+        },
+        {
+          "label": "Etiqueta de salir de pantalla completa",
+          "default": "Salir de Pantalla completa"
+        },
+        {
+          "label": "Etiqueta de Diapositiva previa",
+          "default": "Diapositiva previa"
+        },
+        {
+          "label": "Etiqueta de Diapositiva siguiente",
+          "default": "Diapositiva siguiente"
+        },
+        {
+          "label": "Etiqueta de Diapositiva actual",
+          "default": "Diapositiva actual"
+        },
+        {
+          "label": "Etiqueta de Diapositiva final",
+          "default": "Diapositiva final"
+        },
+        {
+          "label": "Etiqueta de Salir del modo de solución",
+          "default": "salir del modo de solución"
+        },
+        {
+          "label": "Etiqueta del Modo de solución",
+          "default": "Modo de solución"
+        },
+        {
+          "label": "Texto cuando existen múltiples actividades en una página",
+          "default": "Actividades múltiples"
+        },
+        {
+          "label": "Mensaje de texto de puntaje",
+          "default": "Obtuviste:"
+        },
+        {
+          "label": "Texto de Compartir en Facebook",
+          "default": "Compartir en Facebook"
+        },
+        {
+          "label": "Texto de Compartir en Twitter",
+          "default": "Compartir en Twitter"
+        },
+        {
+          "label": "Título de la diapositiva de resúmen",
+          "default": "Resúmen"
+        },
+        {
+          "label": "Título para el ícono de comentarios",
+          "default": "Mostrar comentarios"
+        },
+        {
+          "label": "Título para el botón de imprimir",
+          "default": "Imprimir"
+        },
+        {
+          "label": "Confirmación del diálogo de impresión",
+          "default": "Le gustarí imprimir esta presentación?"
+        },
+        {
+          "label": "Etiqueta para el botón \"Imprimir todas las diapositivas\"",
+          "default": "Imprimir todas las diapositivas"
+        },
+        {
+          "label": "Etiqueta para el botón \"Imprimir diapositiva actual\"",
+          "default": "Imprimir diapositiva actual"
+        }
+      ]
+    },
+    {
+      "label": "Opciones de comportamiento.",
+      "description": "Estas opciones le permitirán anular los ajustes de comportamiento.",
+      "fields": [
+        {
+          "label": "Activar el modo de Navegación Gestual",
+          "description": "Suprime los controles de navegación para el usuario final. Utilice Ir a la Diapositiva para navegar."
+        },
+        {
+          "label": "Activar la anulación de comportamiento.",
+          "description": "De ser activado, los ajustes propios del questionario serán ignorados y los ajustes siguientes será usados en sustitución."
+        },
+        {
+          "label": "Activar el botón \"Mostrar solución\".",
+          "description": "Al activar esta opción se mostrará el botón de \"Mostrar solución\" en el questionario."
+        },
+        {
+          "label": "Activar el botón \"Reintentar\".",
+          "description": "Al activar esta opción se mostrará el botón de \"Reintentar\" en el questionario."
+        },
+        {
+          "label": "Ocultar la Diapositiva de Resúmen",
+          "description": "Oculta la diapositiva de resúmen."
+        }
+      ]
+    }
+  ]
+}

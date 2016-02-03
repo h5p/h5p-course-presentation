@@ -2,7 +2,7 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 7,
+  "minorVersion": 8,
   "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 1,
@@ -29,6 +29,9 @@
       "path": "scripts/navigation-line.js"
     },
     {
+      "path": "scripts/slide-backgrounds.js"
+    },
+    {
       "path": "scripts/printer.js"
     }
   ],
@@ -43,6 +46,9 @@
       "path": "styles/navigation-line.css"
     },
     {
+      "path": "styles/slide-background.css"
+    },
+    {
       "path": "styles/print.css"
     }
   ],
@@ -50,7 +56,7 @@
     {
       "machineName": "FontAwesome",
       "majorVersion": 4,
-      "minorVersion": 3
+      "minorVersion": 5
     },
     {
       "machineName": "H5P.JoubelUI",
@@ -62,7 +68,7 @@
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 7
+      "minorVersion": 8
     }
   ]
 }

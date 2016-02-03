@@ -152,7 +152,7 @@
                         "name": "lisence",
                         "type": "text",
                         "optional": true,
-                        "label": "Lisence"
+                        "label": "License"
                       }
                     ]
                   }
@@ -184,6 +184,34 @@
                   }
                 ]
               }
+            },
+            {
+              "name": "slideBackgroundSelector",
+              "type": "group",
+              "widget": "radioSelector",
+              "fields": [
+                {
+                  "name": "imageSlideBackground",
+                  "type": "image",
+                  "label": "Image",
+                  "optional": true,
+                  "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                },
+                {
+                  "name": "fillSlideBackground",
+                  "type": "text",
+                  "widget": "colorSelector",
+                  "label": "Pick a color",
+                  "spectrum": {
+                    "flat": true,
+                    "showInput": true,
+                    "allowEmpty": true,
+                    "showButtons": false
+                  },
+                  "default": null,
+                  "optional": true
+                }
+              ]
             }
           ]
         }
@@ -229,6 +257,34 @@
         "min": 0,
         "max": 100,
         "default": 90
+      },
+      {
+        "name": "globalBackgroundSelector",
+        "type": "group",
+        "widget": "radioSelector",
+        "fields": [
+          {
+            "name": "imageGlobalBackground",
+            "type": "image",
+            "label": "Image",
+            "optional": true,
+            "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+          },
+          {
+            "name": "fillGlobalBackground",
+            "type": "text",
+            "widget": "colorSelector",
+            "label": "Pick a color",
+            "spectrum": {
+              "flat": true,
+              "showInput": true,
+              "allowEmpty": true,
+              "showButtons": false
+            },
+            "default": null,
+            "optional": true
+          }
+        ]
       }
     ]
   },
@@ -311,8 +367,8 @@
       {
         "name": "lisence",
         "type": "text",
-        "label": "Translation for \"Lisence\"",
-        "default": "Lisence",
+        "label": "Translation for \"License\"",
+        "default": "License",
         "deprecated": true,
         "optional": true
       },
