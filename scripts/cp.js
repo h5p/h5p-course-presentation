@@ -336,6 +336,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
   }
 
+  new H5P.CoursePresentation.SlideBackground(this);
+
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
   }
@@ -983,7 +985,8 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
  *  false otherwise
  */
 H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
-  return (elementInstance.showSolutions !== undefined || elementInstance.showCPComments !== undefined);
+  return (elementInstance.showSolutions !== undefined ||
+          elementInstance.showCPComments !== undefined);
 };
 
 /**
@@ -1363,6 +1366,7 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
+    that.trigger('changedSlide', that.$current.index());
   }, 1);
 
   setTimeout(function () {

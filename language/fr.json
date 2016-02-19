@@ -53,7 +53,22 @@
                   ]
                 }
               },
+              {},
               {
+                "fields": [
+                  {
+                    "englishLabel": "Image",
+                    "label": "Image",
+                    "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
+                    "description": "L'image d'arrière-plan doit avoir un ratio largeur:hauteur de 2:1 pour éviter les déformations. Les images en haute résolution permettent un meilleur rendu sur les grands écrans."
+                  },
+                  {
+                    "englishLabel": "Pick a color",
+                    "label": "Sélectionner une couleur",
+                    "englishDefault": null,
+                    "default": null
+                  }
+                ]
               }
             ]
           }
@@ -70,6 +85,22 @@
         },
         {
           "label": "Opacité"
+        },
+        {
+          "fields": [
+            {
+              "englishLabel": "Image",
+              "label": "Image",
+              "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
+              "description": "L'image d'arrière-plan doit avoir un ratio largeur:hauteur de 2:1 pour éviter les déformations. Les images en haute résolution permettent un meilleur rendu sur les grands écrans."
+            },
+            {
+              "englishLabel": "Pick a color",
+              "label": "Sélectionner une couleur",
+              "englishDefault": null,
+              "default": null
+            }
+          ]
         }
       ]
     },
@@ -153,11 +184,11 @@
         },
         {
           "label": "Texte de sortie du plein écran",
-          "default": "Sortir du Plein écra"
+          "default": "Sortir du Plein écran"
         },
         {
           "label": "Texte d'accès à la diapositive précédente",
-          "default": ""
+          "default": "Diapositive précédente"
         },
         {
           "label": "Texte d'accès à la diapositive suivante",
@@ -204,12 +235,20 @@
           "default": "Montrer les commentaires"
         },
         {
+          "label": "Titre pour le bouton Imprimer",
+          "default": "Imprimer"
         },
         {
+          "label": "Texte pour la boite de dialogue d'impression",
+          "default": "Comment souhaitez-vous imprimer ?"
         },
         {
+          "label": "Texte pour le bouton Imprimer toutes les diapositives",
+          "default": "Imprimer toutes les diapositives"
         },
         {
+          "label": "Texte pour le bouton Imprimer la diapositive courante",
+          "default": "Imprimer la diapositive courante"
         }
       ]
     },
@@ -217,7 +256,10 @@
       "label": "Paramètres",
       "description": "Ces options vous permettent de proposer de passer certaines séquences.",
       "fields": [
-        {},
+        {
+          "label": "Activer la surface active",
+          "description":"Supprime les boutons de navigation entre diapositives pour l'utilisateur. Utiliser le glisser pour passer d'une diapositive à une autre."
+        },
         {
           "label": "Activer la possibilité de passer certaines séquences.",
           "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."
