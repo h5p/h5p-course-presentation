@@ -2,7 +2,7 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 9,
+  "minorVersion": 10,
   "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 1,
@@ -13,7 +13,7 @@
   "author": "Joubel AS",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 6
+    "minorVersion": 7
   },
   "preloadedJs": [
     {

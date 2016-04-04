@@ -64,9 +64,7 @@
                   },
                   {
                     "englishLabel": "Pick a color",
-                    "label": "Sélectionner une couleur",
-                    "englishDefault": null,
-                    "default": null
+                    "label": "Sélectionner une couleur"
                   }
                 ]
               }
@@ -96,9 +94,7 @@
             },
             {
               "englishLabel": "Pick a color",
-              "label": "Sélectionner une couleur",
-              "englishDefault": null,
-              "default": null
+              "label": "Sélectionner une couleur"
             }
           ]
         }
@@ -261,20 +257,32 @@
           "description":"Supprime les boutons de navigation entre diapositives pour l'utilisateur. Utiliser le glisser pour passer d'une diapositive à une autre."
         },
         {
-          "label": "Activer la possibilité de passer certaines séquences.",
-          "description": "Si cette option est choisie, les réglages seront valables pour toutes les questions, les réglages individuels ne seront pas pris en compte."
-        },
-        {
-          "label": "Afficher le bouton \"Solution\".",
-          "description": "Affiche le bouton \"Solution\"."
-        },
-        {
-          "label": "Afficher le bouton \"Réessayer\".",
-          "description": "Affiche le bouton \"Réessayer\"."
-        },
-        {
           "label": "Comportement",
           "description": "Style de la légende de la diapositive"
+        },
+        {
+          "label": "Override \"Show Solution\" button",
+          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "label": "Override \"Retry\" button",
+          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
         }
       ]
     }
