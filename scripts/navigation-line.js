@@ -309,7 +309,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       }).appendTo($rightFooter);
 
       // Print button
-      if (H5P.CoursePresentation.Printer.supported()) {
+      if (this.cp.enablePrintButton && H5P.CoursePresentation.Printer.supported()) {
         this.cp.$printButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-print',
           'title': this.cp.l10n.printTitle,

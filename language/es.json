@@ -285,6 +285,12 @@
               "label": "Disabled"
             }
           ]
+        },
+        {
+          "englishLabel": "Enable print button",
+          "label": "Enable print button",
+          "englishDescription": "Enables the print button.",
+          "description": "Enables the print button."
         }
       ]
     }

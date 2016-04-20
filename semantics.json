@@ -567,6 +567,13 @@
             "label": "Disabled"
           }
         ]
+      },
+      {
+        "name": "enablePrintButton",
+        "type": "boolean",
+        "label": "Enable print button",
+        "description": "Enables the print button.",
+        "default": false
       }
     ]
   }
