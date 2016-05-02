@@ -77,9 +77,7 @@
                   },
                   {
                     "englishLabel": "Pick a color",
-                    "label": "Velg farge",
-                    "englishDefault": null,
-                    "default": null
+                    "label": "Velg farge"
                   }
                 ]
               }
@@ -113,9 +111,7 @@
             },
             {
               "englishLabel": "Pick a color",
-              "label": "Velg farge",
-              "englishDefault": null,
-              "default": null
+              "label": "Velg farge"
             }
           ]
         }
@@ -356,28 +352,34 @@
           "description": "Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
         },
         {
-          "englishLabel": "Enable behaviour override.",
-          "label": "Aktiver overstyring av oppførsel",
-          "englishDescription": "If this is enabled the questions own settings will be ignored and the below settings will be used instead.",
-          "description": "Aktivering vil overstyre dei følgjande innstillingene for integrert innhald."
-        },
-        {
-          "englishLabel": "Enable \"Show solution\" buttons.",
-          "label": "Slå på \"Vis svar\" knapp.",
-          "englishDescription": "Enabling this option will make questions show the \"Show solution\" button.",
-          "description": "Aktivering vil slå på \"Vis svar\" knappen."
-        },
-        {
-          "englishLabel": "Enable \"Retry\".",
-          "label": "Slå på \"Prøv igjen\".",
-          "englishDescription": "Enabling this option will make the user able to \"Retry\" .",
-          "description": "Aktivering vil slå på \"Prøv igjen\" ."
-        },
-        {
           "englishLabel": "Hide Summary Slide",
           "label": "Skjul sammendrag.",
           "englishDescription": "Hides the summary slide.",
           "description": "Aktivering vil føre til at sammendrag siden ikke vises."
+        },
+        {
+          "label": "Overstyr «Vis svar»-knapp",
+          "description": "Dette valget avgjør om «Vis svar»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "options": [
+            {
+              "label": "Aktivert"
+            },
+            {
+              "label": "Deaktivert"
+            }
+          ]
+        },
+        {
+          "label": "Overstyr «Prøv igjen»-knapp",
+          "description": "Dette valget avgjør om «Prøv igjen»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "options": [
+            {
+              "label": "Aktivert"
+            },
+            {
+              "label": "Deaktivert"
+            }
+          ]
         }
       ]
     }

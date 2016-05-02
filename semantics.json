@@ -59,7 +59,7 @@
                       "H5P.MarkTheWords 1.5",
                       "H5P.ExportableTextArea 1.2",
                       "H5P.Table 1.1",
-                      "H5P.InteractiveVideo 1.9",
+                      "H5P.InteractiveVideo 1.10",
                       "H5P.TwitterUserFeed 1.0",
                       "H5P.AppearIn 1.0",
                       "H5P.Dialogcards 1.2"
@@ -528,32 +528,45 @@
         "default": false
       },
       {
-        "name": "overrideButtons",
-        "type": "boolean",
-        "label": "Enable behaviour override.",
-        "description": "If this is enabled the questions own settings will be ignored and the below settings will be used instead.",
-        "default": false
-      },
-      {
-        "name": "overrideShowSolutionButton",
-        "type": "boolean",
-        "label": "Enable \"Show solution\" buttons.",
-        "description": "Enabling this option will make questions show the \"Show solution\" button.",
-        "default": false
-      },
-      {
-        "name": "overrideRetry",
-        "type": "boolean",
-        "label": "Enable \"Retry\".",
-        "description": "Enabling this option will make the user able to \"Retry\" .",
-        "default": false
-      },
-      {
         "name": "hideSummarySlide",
         "type": "boolean",
         "label": "Hide Summary Slide",
         "description": "Hides the summary slide.",
         "default": false
+      },
+      {
+        "name": "showSolutionButton",
+        "type": "select",
+        "label": "Override \"Show Solution\" button",
+        "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+        "optional": true,
+        "options": [
+          {
+            "value": "on",
+            "label": "Enabled"
+          },
+          {
+            "value": "off",
+            "label": "Disabled"
+          }
+        ]
+      },
+      {
+        "name": "retryButton",
+        "type": "select",
+        "label": "Override \"Retry\" button",
+        "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+        "optional": true,
+        "options": [
+          {
+            "value": "on",
+            "label": "Enabled"
+          },
+          {
+            "value": "off",
+            "label": "Disabled"
+          }
+        ]
       }
     ]
   }

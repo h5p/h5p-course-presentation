@@ -64,9 +64,7 @@
                   },
                   {
                     "englishLabel": "Pick a color",
-                    "label": "Pick a color",
-                    "englishDefault": null,
-                    "default": null
+                    "label": "Pick a color"
                   }
                 ]
               }
@@ -261,20 +259,32 @@
           "description": "Suprime los controles de navegación para el usuario final. Utilice Ir a la Diapositiva para navegar."
         },
         {
-          "label": "Activar la anulación de comportamiento.",
-          "description": "De ser activado, los ajustes propios del questionario serán ignorados y los ajustes siguientes será usados en sustitución."
-        },
-        {
-          "label": "Activar el botón \"Mostrar solución\".",
-          "description": "Al activar esta opción se mostrará el botón de \"Mostrar solución\" en el questionario."
-        },
-        {
-          "label": "Activar el botón \"Reintentar\".",
-          "description": "Al activar esta opción se mostrará el botón de \"Reintentar\" en el questionario."
-        },
-        {
           "label": "Ocultar la Diapositiva de Resúmen",
           "description": "Oculta la diapositiva de resúmen."
+        },
+        {
+          "label": "Override \"Show Solution\" button",
+          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "label": "Override \"Retry\" button",
+          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
         }
       ]
     }
