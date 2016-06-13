@@ -45,7 +45,6 @@
                     "type": "library",
                     "options": [
                       "H5P.AdvancedText 1.1",
-                      "H5P.ContinuousText 1.2",
                       "H5P.Link 1.1",
                       "H5P.Image 1.0",
                       "H5P.Video 1.2",
@@ -57,12 +56,13 @@
                       "H5P.Summary 1.4",
                       "H5P.DragText 1.4",
                       "H5P.MarkTheWords 1.5",
+                      "H5P.Dialogcards 1.2",
+                      "H5P.ContinuousText 1.2",
                       "H5P.ExportableTextArea 1.2",
                       "H5P.Table 1.1",
                       "H5P.InteractiveVideo 1.10",
                       "H5P.TwitterUserFeed 1.0",
-                      "H5P.AppearIn 1.0",
-                      "H5P.Dialogcards 1.2"
+                      "H5P.AppearIn 1.0"
                     ],
                     "optional": true
                   },
