@@ -64,7 +64,11 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     var progressbarPartTitle;
 
     var clickProgressbar = function () {
-      that.cp.jumpToSlide($(this).data('slideNumber'));
+      var jumpToSlideID = $(this).data('slideNumber');
+
+      if (jumpToSlideID !== that.cp.currentSlideIndex) {
+        that.cp.jumpToSlide(jumpToSlideID);
+      }
     };
 
     var mouseenterProgressbar = function (event) {
