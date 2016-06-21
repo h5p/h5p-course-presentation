@@ -69,11 +69,12 @@ H5P.CoursePresentation = function (params, id, extras) {
 
   if (!!params.override) {
     this.activeSurface = !!params.override.activeSurface;
-    this.overrideButtons = !!params.override.overrideButtons;
-    this.overrideShowSolutionsButton = !!params.override.overrideShowSolutionButton;
-    this.overrideRetry = !!params.override.overrideRetry;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
   }
+
+  // Set override for all actions
+  this.setElementsOverride(params.override);
+
   this.on('resize', this.resize, this);
 
   this.on('printing', function (event) {
@@ -185,8 +186,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
-    H5P.jQuery('body').unbind('keydown', that.keydown);
-    delete that.keydown;
+    if (that.keydown !== undefined) {
+      H5P.jQuery('body').unbind('keydown', that.keydown);
+      delete that.keydown;
+    }
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
     if (!$target.is('input, textarea') && !that.editor) {
@@ -609,6 +612,35 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
 };
 
 /**
+ * Set the default behaviour override for all actions.
+ *
+ * @param {Object} override
+ */
+H5P.CoursePresentation.prototype.setElementsOverride = function (override) {
+  // Create default object
+  this.elementsOverride = {
+    params: {}
+  };
+
+  if (override) {
+    // Create behaviour object for overriding
+    this.elementsOverride.params.behaviour = {};
+
+    if (override.showSolutionButton) {
+      // Override show solutions button
+      this.elementsOverride.params.behaviour.enableSolutionsButton =
+          (override.showSolutionButton === 'on' ? true : false);
+    }
+
+    if (override.retryButton) {
+      // Override retry button
+      this.elementsOverride.params.behaviour.enableRetry =
+          (override.retryButton === 'on' ? true : false);
+    }
+  }
+};
+
+/**
  * Add element to the given slide and stores elements with solutions.
  *
  * @param {Object} element The Element to add.
@@ -624,35 +656,14 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   }
   else {
     // H5P library
-    var defaults;
-    if (this.overrideButtons) {
-      defaults = {
-        params: {
-          behaviour: {
-            enableSolutionsButton: this.overrideShowSolutionsButton,
-            enableRetry: this.overrideRetry
-          }
-        }
-      };
-    }
-    else {
-      defaults = {
-        params: {
-        }
-      };
-    }
-
     var library;
     if (this.editor !== undefined) {
-
-
       // Clone the whole tree to avoid libraries accidentally changing params while running.
-      library = H5P.jQuery.extend(true, {}, element.action, defaults);
-
+      library = H5P.jQuery.extend(true, {}, element.action, this.elementsOverride);
     }
     else {
       // Add defaults
-      library = H5P.jQuery.extend(true, element.action, defaults);
+      library = H5P.jQuery.extend(true, element.action, this.elementsOverride);
     }
 
     /* If library allows autoplay, control this from CP */
@@ -676,6 +687,10 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
       };
     }
 
+    // Override child settings
+    library.params = library.params || {};
+    library.params.overrideSettings = library.params.overrideSettings || {};
+    library.params.overrideSettings.$confirmationDialogParent = this.$wrapper;
     instance = H5P.newRunnable(library, this.contentId, undefined, undefined, {parent: this});
     if (instance.preventResize !== undefined) {
       instance.preventResize = true;

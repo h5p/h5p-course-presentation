@@ -64,9 +64,7 @@
                   },
                   {
                     "englishLabel": "Pick a color",
-                    "label": "Pick a color",
-                    "englishDefault": null,
-                    "default": null
+                    "label": "Pick a color"
                   }
                 ]
               }
@@ -96,9 +94,7 @@
             },
             {
               "englishLabel": "Pick a color",
-              "label": "Pick a color",
-              "englishDefault": null,
-              "default": null
+              "label": "Pick a color"
             }
           ]
         }
@@ -232,20 +228,32 @@
           "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
         },
         {
-          "label": "Attiva il comportamento di esclusione.",
-          "description": "Se questa opzione è abilitata le proprie impostazioni per le domande saranno ignorate e verranno utilizzate le impostazioni seguenti."
-        },
-        {
-          "label": "Abilita pulsanti \"Mostra soluzione\".",
-          "description": "L'attivazione di questa opzione farà in modo che le domande mostrino il tasto \"Mostra soluzione\"."
-        },
-        {
-          "label": "Abilita \"Riprova\".",
-          "description": "L'attivazione di questa opzione farà in modo che per l'utente sia abilitata l'opzione \"Riprova\"."
-        },
-        {
           "label": "Comportamento",
           "description": "Nasconde la diapositiva sommario"
+        },
+        {
+          "label": "Override \"Show Solution\" button",
+          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "label": "Override \"Retry\" button",
+          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
         }
       ]
     }

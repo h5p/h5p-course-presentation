@@ -806,3 +806,8 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-chart .h5p-chart-chart {
   height: 100%;
 }
+
+/* Making the confirmation dialog popup font-size fit */
+.h5p-course-presentation .h5p-confirmation-dialog-popup {
+  font-size: 0.85em;
+}
