@@ -143,7 +143,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var action;
     for (i = 0; i < slideScores.length; i += 1) {
       slideDescription = self.getSlideDescription(slideScores[i]);
-      
+
       // Get percentage score for slide
       slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
       if (isNaN(slidePercentageScore)) {
@@ -282,7 +282,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
    */
   SummarySlide.prototype.addTwitterScoreLinkTo = function ($twitterContainer, percentageScore) {
     var that = this;
-    var twitterString = 'http://twitter.com/share?text=I%20got%20' + percentageScore + '%25%20on%20this%20task:';
+    var twitterString = 'http://twitter.com/share?text=I%20got%20' + percentageScore + '%25%20on%20this%20task:&url=' + encodeURIComponent(window.location.href);
 
     var popupWidth = 800;
     var popupHeight = 250;

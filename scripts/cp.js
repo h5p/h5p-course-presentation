@@ -187,8 +187,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
-    H5P.jQuery('body').unbind('keydown', that.keydown);
-    delete that.keydown;
+    if (that.keydown !== undefined) {
+      H5P.jQuery('body').unbind('keydown', that.keydown);
+      delete that.keydown;
+    }
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
     if (!$target.is('input, textarea') && !that.editor) {
