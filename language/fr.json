@@ -254,7 +254,7 @@
       "fields": [
         {
           "label": "Activer le mode \"Surface active\"",
-          "description":"Cela supprime les boutons de navigation entre diapositives pour l'utilisateur. Il faut utiliser les boutons \"Aller à la diapositive\" pour naviguer entre les diapositives."
+          "description": "Cela supprime les boutons de navigation entre diapositives pour l'utilisateur. Il faut utiliser les boutons \"Aller à la diapositive\" pour naviguer entre les diapositives."
         },
         {
           "label": "Cacher le récapitulatif de fin",
