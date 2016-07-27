@@ -2,7 +2,7 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 10,
+  "minorVersion": 11,
   "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 1,
@@ -68,7 +68,7 @@
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 10
+      "minorVersion": 11
     }
   ]
 }
