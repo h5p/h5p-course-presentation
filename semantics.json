@@ -63,7 +63,6 @@
                       "H5P.InteractiveVideo 1.10",
                       "H5P.TwitterUserFeed 1.0",
                       "H5P.AppearIn 1.0",
-					  "H5P.QuestionSet 1.8",
 					  "H5P.ImageHotspots 1.3"
                     ],
                     "optional": true
