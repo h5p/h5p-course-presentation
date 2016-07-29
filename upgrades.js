@@ -187,21 +187,23 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
         finished(null, parameters);
       },
 
-        /**
-         * Asynchronous content upgrade hook.
-         * Upgrades content parameters to support CP 1.11.
-         *
-         * Set overriding checkbox `enablePrintButton` to true for
-         * old versions of CP.
-         *
-         * @param {Object} parameters
-         * @param {function} finished
-         */
-        11: function (parameters, finished) {
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.11.
+       *
+       * Set overriding checkbox `enablePrintButton` to true for
+       * old versions of CP.
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      11: function (parameters, finished) {
+        if (parameters.override) {
           parameters.override.enablePrintButton = true;
+	}
 
-          finished(null, parameters);
-        }
+        finished(null, parameters);
+      }
     }
   };
 })(H5P.jQuery);
