@@ -380,6 +380,12 @@
               "label": "Deaktivert"
             }
           ]
+        },
+        {
+          "englishLabel": "Enable print button",
+          "label": "Aktiver print-knapp",
+          "englishDescription": "Enables the print button.",
+          "description": "Aktiverer print-knappen."
         }
       ]
     }

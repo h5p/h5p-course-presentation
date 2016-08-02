@@ -70,6 +70,7 @@ H5P.CoursePresentation = function (params, id, extras) {
   if (!!params.override) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
+    this.enablePrintButton = !!params.override.enablePrintButton;
   }
 
   // Set override for all actions
