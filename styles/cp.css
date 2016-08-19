@@ -545,7 +545,7 @@ border-collapse: collapse;
 }
 
 .h5p-course-presentation .h5p-multichoice-button:before {
-  content: "\e993";
+  content: "\e603";
 }
 
 .h5p-course-presentation .h5p-dragquestion-button:before {
@@ -560,7 +560,7 @@ border-collapse: collapse;
   content: "\f03d";
 }
 .h5p-course-presentation .h5p-singlechoiceset-button:before {
-  content: "\e603";
+  content: "\e993";
 }
 .h5p-course-presentation .h5p-dragtext-button:before {
   content: "\e600";
