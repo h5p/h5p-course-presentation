@@ -203,6 +203,35 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 	}
 
         finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.12.
+       *
+       * Fixes color selector widget upgrade
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      12: function (parameters, finished) {
+        if (parameters.presentation) {
+          if (parameters.presentation.globalBackgroundSelector.fillGlobalBackground) {
+            parameters.presentation.globalBackgroundSelector.fillGlobalBackground =
+              '#' + parameters.presentation.globalBackgroundSelector.fillGlobalBackground;
+          }
+
+          if (parameters.presentation.slides) {
+            parameters.presentation.slides.forEach(function (slide) {
+              if (slide.slideBackgroundSelector.fillSlideBackground) {
+                slide.slideBackgroundSelector.fillSlideBackground =
+                  '#' + slide.slideBackgroundSelector.fillSlideBackground;
+              }
+            });
+          }
+        }
+
+        finished(null, parameters);
       }
     }
   };
