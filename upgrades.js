@@ -200,7 +200,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
       11: function (parameters, finished) {
         if (parameters.override) {
           parameters.override.enablePrintButton = true;
-	}
+	      }
 
         finished(null, parameters);
       },
@@ -216,7 +216,8 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
        */
       12: function (parameters, finished) {
         if (parameters.presentation) {
-          if (parameters.presentation.globalBackgroundSelector.fillGlobalBackground) {
+          if (parameters.presentation.globalBackgroundSelector &&
+              parameters.presentation.globalBackgroundSelector.fillGlobalBackground) {
             parameters.presentation.globalBackgroundSelector.fillGlobalBackground =
               '#' + parameters.presentation.globalBackgroundSelector.fillGlobalBackground;
           }
