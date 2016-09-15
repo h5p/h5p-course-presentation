@@ -224,7 +224,8 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 
           if (parameters.presentation.slides) {
             parameters.presentation.slides.forEach(function (slide) {
-              if (slide.slideBackgroundSelector.fillSlideBackground) {
+              if (slide.slideBackgroundSelector &&
+                  slide.slideBackgroundSelector.fillSlideBackground) {
                 slide.slideBackgroundSelector.fillSlideBackground =
                   '#' + slide.slideBackgroundSelector.fillSlideBackground;
               }
