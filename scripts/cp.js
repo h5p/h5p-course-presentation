@@ -253,6 +253,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
   }
 
+  // We have always attached all elements on current slide
+  this.elementsAttached[this.currentSlideIndex] = true;
+
   // Determine if summary slide should be added
   var $summarySlide;
   this.showSummarySlide = false;
