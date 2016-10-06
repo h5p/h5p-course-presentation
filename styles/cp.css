@@ -548,6 +548,11 @@ border-collapse: collapse;
   content: "\e603";
 }
 
+.h5p-course-presentation .h5p-truefalse-button:before {
+  font-family: 'H5PFontIcons';
+  content: "\e902";
+}
+
 .h5p-course-presentation .h5p-dragquestion-button:before {
   content: "\e991";
 }
