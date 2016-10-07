@@ -476,7 +476,8 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-dragquestion-button,
 .h5p-course-presentation .h5p-summary-button,
 .h5p-course-presentation .h5p-dialogcards-button,
-.h5p-course-presentation .h5p-interactivevideo-button {
+.h5p-course-presentation .h5p-interactivevideo-button,
+.h5p-course-presentation .h5p-truefalse-button {
   background: #981d99;
   background-image: -webkit-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
   background: -moz-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
@@ -550,6 +551,7 @@ border-collapse: collapse;
 
 .h5p-course-presentation .h5p-truefalse-button:before {
   font-family: 'H5PFontIcons';
+  font-size: 1.2em;
   content: "\e902";
 }
 
