@@ -1,5 +1,19 @@
 var H5P = H5P || {};
 
+
+/**
+ * Flattens a nested array
+ *
+ * Example:
+ * [['a'], ['b']].flatten() -> ['a', 'b']
+ *
+ * @returns {Array}
+ */
+Array.prototype.flatten = function(){
+  return this.concat.apply([], this);
+};
+
+
 /**
  * Constructor.
  *
@@ -348,6 +362,48 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
   }
+};
+
+/**
+ * Does an object have functions to determine the score
+ *
+ * @param obj The object to investigate
+ * @returns {boolean}
+ */
+H5P.CoursePresentation.prototype.hasScoreData = function(obj){
+  return (
+    (typeof obj !== typeof undefined) &&
+    (typeof obj.getScore === 'function') &&
+    (typeof obj.getMaxScore === 'function') &&
+    (typeof obj.getScore() === 'number') &&
+    (typeof obj.getMaxScore() === 'number')
+  );
+};
+
+
+/**
+ * Return the combined score of all children
+ *
+ * @returns {Number}
+ */
+H5P.CoursePresentation.prototype.getScore = function(){
+  var that = this;
+  return that.slidesWithSolutions.flatten().reduce(function(sum, slide){
+    return sum + (that.hasScoreData(slide) ? slide.getScore() : 0);
+  }, 0);
+};
+
+/**
+ * Return the combined maxScore of all children
+ *
+ * @returns {Number}
+ */
+H5P.CoursePresentation.prototype.getMaxScore = function(){
+  var that = this;
+
+  return that.slidesWithSolutions.flatten().reduce(function(sum, slide){
+    return sum + (that.hasScoreData(slide) ? slide.getMaxScore() : 0);
+  }, 0);
 };
 
 /**
