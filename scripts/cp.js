@@ -1,19 +1,5 @@
 var H5P = H5P || {};
 
-
-/**
- * Flattens a nested array
- *
- * Example:
- * [['a'], ['b']].flatten() -> ['a', 'b']
- *
- * @returns {Array}
- */
-Array.prototype.flatten = function(){
-  return this.concat.apply([], this);
-};
-
-
 /**
  * Constructor.
  *
@@ -367,16 +353,15 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 /**
  * Does an object have functions to determine the score
  *
+ * @public
  * @param obj The object to investigate
  * @returns {boolean}
  */
-H5P.CoursePresentation.prototype.hasScoreData = function(obj){
+H5P.CoursePresentation.prototype.hasScoreData = function (obj){
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
-    (typeof obj.getMaxScore === 'function') &&
-    (typeof obj.getScore() === 'number') &&
-    (typeof obj.getMaxScore() === 'number')
+    (typeof obj.getMaxScore === 'function')
   );
 };
 
@@ -384,26 +369,43 @@ H5P.CoursePresentation.prototype.hasScoreData = function(obj){
 /**
  * Return the combined score of all children
  *
+ * @public
  * @returns {Number}
  */
-H5P.CoursePresentation.prototype.getScore = function(){
-  var that = this;
-  return that.slidesWithSolutions.flatten().reduce(function(sum, slide){
-    return sum + (that.hasScoreData(slide) ? slide.getScore() : 0);
+H5P.CoursePresentation.prototype.getScore = function (){
+  var self = this;
+
+  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+    return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
   }, 0);
 };
 
 /**
  * Return the combined maxScore of all children
  *
+ * @public
  * @returns {Number}
  */
-H5P.CoursePresentation.prototype.getMaxScore = function(){
-  var that = this;
+H5P.CoursePresentation.prototype.getMaxScore = function (){
+  var self = this;
 
-  return that.slidesWithSolutions.flatten().reduce(function(sum, slide){
-    return sum + (that.hasScoreData(slide) ? slide.getMaxScore() : 0);
+  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+    return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
   }, 0);
+};
+
+/**
+ * Flattens a nested array
+ *
+ * Example:
+ * [['a'], ['b']].flatten() -> ['a', 'b']
+ *
+ * @private
+ * @param {Array} arr A nested array
+ * @returns {Array} A flattened array
+ */
+H5P.CoursePresentation.prototype.flattenArray = function (arr){
+  return arr.concat.apply([], arr);
 };
 
 /**
@@ -991,7 +993,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
     var $stripHtml = H5P.jQuery('<div>');
     if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
-        .click(function(event) {
+        .click(function (event) {
           event.preventDefault();
           that.showPopup(element.solution);
         })
@@ -1015,7 +1017,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
   var self = this;
 
   /** @private */
-  var close = function(event) {
+  var close = function (event) {
     if (doNotClose) {
       // Prevent closing the popup
       doNotClose = false;
