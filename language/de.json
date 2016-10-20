@@ -1,316 +1,219 @@
 {
-  "semantics": [
-    {
-      "fields": [
-        {
-          "field": {
-            "fields": [
-              {
-                "field": {
-                  "fields": [
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                      "options": [
+	"semantics": [{
+		"fields": [{
+			"field": {
+				"fields": [{
+					"field": {
+						"fields": [{}, {}, {}, {}, {
+							"options": [
 
-                      ],
-                    },
-                    {
-                      "label": "Kommentare",
-                      "description": "Die Kommentare werden angezeigt, wenn der Benutzer die vorgeschlagenen Antworten für alle Folien anzeigt.",
-                      "tags": [
+							]
+						}, {
+							"label": "Kommentare",
+							"description": "Die Kommentare werden angezeigt, wenn der Benutzer die vorgeschlagenen Antworten für alle Folien anzeigt.",
+							"tags": [
 
-                      ]
-                    },
-                    {
-                      "label": "Kommentare immer anzeigen",
-                    },
-                    {
-                      "label": "Hintergrunddeckkraft",
-                    },
-                    {
-                      "label": "Als Buttons anzeigen",
-                    },
-                    {
-                      "label": "Titel"
-                    },
-                    {
-                      "label": "Zur Folie wechseln",
-                    },
-                    {
-                      "label": "Unsichtbar",
-                      "description": "Standard Cursor, kein Titel und kein Registerindex. Warnung: Benutzer mit Behinderungen oder Benutzer, die nur die Tastatur verwenden, werden Probleme beim Benutzen dieses Elements haben.",
-                    },
-                    {
-                      "label": "Metadaten",
-                      "fields": [
-                        {
-                          "label": "Titel"
-                        },
-                        {
-                          "label": "Autor"
-                        },
-                        {
-                          "label": "Lizenz"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              },
-              {
-                "field": {
-                  "fields": [
-                    {
-                    },
-                    {
-                      "field": {
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "fields": [
-                  {
-                    "label": "Bild",
-                    "description": "Bildhintergrund sollte ein 2:1 Breiten- und Höhenverhältnis haben, um ein Strecken zu verhindern. Hochauflösende Bilder werden auf größeren Bildschirmen besser angezeigt."
-                  },
-                  {
-                    "label": "Eine Farbe wählen",
-                    "spectrum": {
-                    },
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "tags": [
+							]
+						}, {
+							"label": "Kommentare immer anzeigen"
+						}, {
+							"label": "Hintergrunddeckkraft"
+						}, {
+							"label": "Als Buttons anzeigen"
+						}, {
+							"label": "Titel"
+						}, {
+							"label": "Zur Folie wechseln"
+						}, {
+							"label": "Unsichtbar",
+							"description": "Standard Cursor, kein Titel und kein Registerindex. Warnung: Benutzer mit Behinderungen oder Benutzer, die nur die Tastatur verwenden, werden Probleme beim Benutzen dieses Elements haben."
+						}, {
+							"label": "Metadaten",
+							"fields": [{
+								"label": "Titel"
+							}, {
+								"label": "Autor"
+							}, {
+								"label": "Lizenz"
+							}]
+						}]
+					}
+				}, {
+					"field": {
+						"fields": [{}, {
+							"field": {}
+						}]
+					}
+				}, {
+					"fields": [{
+						"label": "Bild",
+						"description": "Bildhintergrund sollte ein 2:1 Breiten- und Höhenverhältnis haben, um ein Strecken zu verhindern. Hochauflösende Bilder werden auf größeren Bildschirmen besser angezeigt."
+					}, {
+						"label": "Eine Farbe wählen",
+						"spectrum": {}
+					}]
+				}]
+			}
+		}, {
+			"tags": [
 
-          ]
-        },
-        {
-          "label": "Schlagwortliste",
+			]
+		}, {
+			"label": "Schlagwortliste"
 
-        },
-        {
-          "label": "Immer anzeigen",
+		}, {
+			"label": "Immer anzeigen"
 
-        },
-        {
-          "label": "Automatisch verstecken",
+		}, {
+			"label": "Automatisch verstecken"
 
-        },
-        {
-          "label": "Deckkraft",
-        },
-        {
-          "fields": [
-            {
-              "label": "Bild",
-              "description": "Der Bildhintergrund sollte ein 2:1 Breiten- und Höhenverhältnis besitzen, um ein Strecken zu vermeiden. Hochauflösende Bilder werden auf größeren Bildschirmen besser angezeigt."
-            },
-            {
-              "label": "Eine Farbe wählen",
-              "spectrum": {
-              },
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Lokalisieren",
-      "fields": [
-        {
-          "label": "Übersetzung für \"Folie\"",
-          "default": "Folie"
-        },
-        {
-          "label": "Übersetzung für \"Spielstand\"",
-          "default": "Spielstand"
-        },
-        {
-          "label": "Übersetzung für \"Gesamtspielstand\"",
-          "default": "Gesamtspielstand"
-        },
-        {
-          "label": "Grußwort für GUTEN Spielstand",
-          "default": "Herzlichen Glückwunsch! @percent sind korrekt!",
-          "description": "@percent wird durch den echten Benutzerspielstand in Prozent ersetzt"
-        },
-        {
-          "label": "Grußwort für OK Spielstand",
-          "default": "Gute Arbeit! @percent sind korrekt!",
-          "description": "@percent wird durch den echten Benutzerspielstand in Prozent ersetzt"
-        },
-        {
-          "label": "Grußwort für SCHLECHTEN Spielstand",
-          "default": "@percent sind korrekt.",
-          "description": "@percent wird durch den echten Benutzerspielstand in Prozent ersetzt."
-        },
-        {
-          "label": "Übersetzung für \"Gesamt\"",
-          "default": "Gesamt"
-        },
-        {
-          "label": "Titel für den Button zum Anzeigen der Lösungen",
-          "default": "Lösungen anzeigen"
-        },
-        {
-          "label": "Titel für den Button zum Wiederholen",
-          "default": "Wiederholen",
-        },
-        {
-          "label": "Übersetzung für den \"Titel\"",
-          "default": "Titel"
-        },
-        {
-          "label": "Übersetzung für \"Autor/Anbieter\"",
-          "default": "Autor"
-        },
-        {
-          "label": "Übersetzung für \"Lizenz\"",
-          "default": "Lizenz",
-        },
-        {
-          "label": "Übersetzung für \"Lizenz\"",
-          "default": "Lizenz"
-        },
-        {
-          "label": "Text für den Text exportieren Button",
-          "default": "Text exportieren"
-        },
-        {
-          "label": "Text für den \"Benutzerrechte\" Button",
-          "default": "Benutzerrechte"
-        },
-        {
-          "label": "Titel für den Button zum verbergen der Schlagwortliste",
-          "default": "Schlagwortliste verbergen"
-        },
-        {
-          "label": "Titel für den Button zum Anzeigen der Schlagwortliste",
-          "default": "Schlagwortliste anzeigen"
-        },
-        {
-          "label": "Vollbildmodus Label",
-          "default": "Vollbildmodus"
-        },
-        {
-          "label": "Vollbildmodus verlassen Label",
-          "default": "Vollbildmodus verlassen"
-        },
-        {
-          "label": "Label der vorherigen Folie",
-          "default": "Vorherige Folie"
-        },
-        {
-          "label": "Label der nächsten Folie",
-          "default": "Nächste Folie"
-        },
-        {
-          "label": "Label der aktuellen Folie",
-          "default": "Aktuelle Folie"
-        },
-        {
-          "label": "Label der letzten Folie",
-          "default": "Letzte Folie"
-        },
-        {
-          "label": "Text zum verlassen des Lösungsmodus",
-          "default": "Lösungsmodus verlassen"
-        },
-        {
-          "label": "Text für den Lösungsmodus",
-          "default": "Lösungsmodus"
-        },
-        {
-          "label": "Text bei mehrfachen Aufgaben auf der Seite",
-          "default": "Mehrfache Aufgaben"
-        },
-        {
-          "label": "Text der Spielstandsnachricht",
-          "default": "Erreichte Punktzahl:"
-        },
-        {
-          "label": "Text zum Teilen auf Facebook",
-          "default": "Auf Facebook teilen"
-        },
-        {
-          "label": "Text zum Teilen auf Twitter",
-          "default": "Auf Twitter teilen"
-        },
-        {
-          "label": "Titel für zusammenfassende Folie",
-          "default": "Zusammenfassung"
-        },
-        {
-          "label": "Titel für das Kommentaricon",
-          "default": "Kommentare anzeigen"
-        },
-        {
-          "label": "Titel für den Drucken Button",
-          "default": "Drucken"
-        },
-        {
-          "label": "Druckendialog",
-          "default": "Wie soll diese Präsentation gedruckt werden?"
-        },
-        {
-          "label": "Label für den Button \"Alle Folien ausdrucken\"",
-          "default": "Alle Folien ausdrucken"
-        },
-        {
-          "label": "Label für den Button \"Aktuelle Folie ausdrucken\"",
-          "default": "Aktuelle Folie ausdrucken"
-        }
-      ]
-    },
-    {
-      "label": "Verhaltenseinstellungen.",
-      "description": "Diese Optionen überschreiben Verhaltenseinstellungen.",
-      "fields": [
-        {
-          "label": "Aktivieren des aktiven Oberflächenmodus",
-          "description": "Entfernt Navigationssteuerung für den Endbenutzer. Zum Navigieren Zur Folie Wechseln verwenden.",
-        },
-        {
-          "label": "Zusammenfassende Folie verbergen",
-          "description": "Verbirgt die zusammenfassende Folie.",
-        },
-        {
-          "label": "Überschreiben des Buttons \"Lösung anzeigen\"",
-          "description": "Diese Option legt fest, ob der \"Lösung anzeigen\" Button für alle Fragen angezeigt, deaktiviert oder für jede Frage individuell konfiguriert wird.",
-          "options": [
-            {
-              "label": "Aktiviert"
-            },
-            {
-              "label": "Deaktiviert"
-            }
-          ]
-        },
-        {
-          "label": "Überschreiben des \"Wiederholen\" Buttons",
-          "description": "Diese Option legt fest, ob der \"Wiederholen\" Button für alle Fragen angezeigt, deaktiviert oder für jede Frage individuell konfiguriert wird.",
-          "options": [
-            {
-              "label": "Aktiviert"
-            },
-            {
-              "label": "Deaktiviert"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+		}, {
+			"label": "Deckkraft"
+		}, {
+			"fields": [{
+				"label": "Bild",
+				"description": "Der Bildhintergrund sollte ein 2:1 Breiten- und Höhenverhältnis besitzen, um ein Strecken zu vermeiden. Hochauflösende Bilder werden auf größeren Bildschirmen besser angezeigt."
+			}, {
+				"label": "Eine Farbe wählen",
+				"spectrum": {}
+			}]
+		}]
+	}, {
+		"label": "Lokalisieren",
+		"fields": [{
+			"label": "Übersetzung für \"Folie\"",
+			"default": "Folie"
+		}, {
+			"label": "Übersetzung für \"Spielstand\"",
+			"default": "Spielstand"
+		}, {
+			"label": "Übersetzung für \"Gesamtspielstand\"",
+			"default": "Gesamtspielstand"
+		}, {
+			"label": "Grußwort für GUTEN Spielstand",
+			"default": "Herzlichen Glückwunsch! @percent sind korrekt!",
+			"description": "@percent wird durch den echten Benutzerspielstand in Prozent ersetzt"
+		}, {
+			"label": "Grußwort für OK Spielstand",
+			"default": "Gute Arbeit! @percent sind korrekt!",
+			"description": "@percent wird durch den echten Benutzerspielstand in Prozent ersetzt"
+		}, {
+			"label": "Grußwort für SCHLECHTEN Spielstand",
+			"default": "@percent sind korrekt.",
+			"description": "@percent wird durch den echten Benutzerspielstand in Prozent ersetzt."
+		}, {
+			"label": "Übersetzung für \"Gesamt\"",
+			"default": "Gesamt"
+		}, {
+			"label": "Titel für den Button zum Anzeigen der Lösungen",
+			"default": "Lösungen anzeigen"
+		}, {
+			"label": "Titel für den Button zum Wiederholen",
+			"default": "Wiederholen"
+		}, {
+			"label": "Übersetzung für den \"Titel\"",
+			"default": "Titel"
+		}, {
+			"label": "Übersetzung für \"Autor/Anbieter\"",
+			"default": "Autor"
+		}, {
+			"label": "Übersetzung für \"Lizenz\"",
+			"default": "Lizenz"
+		}, {
+			"label": "Übersetzung für \"Lizenz\"",
+			"default": "Lizenz"
+		}, {
+			"label": "Text für den Text exportieren Button",
+			"default": "Text exportieren"
+		}, {
+			"label": "Text für den \"Benutzerrechte\" Button",
+			"default": "Benutzerrechte"
+		}, {
+			"label": "Titel für den Button zum verbergen der Schlagwortliste",
+			"default": "Schlagwortliste verbergen"
+		}, {
+			"label": "Titel für den Button zum Anzeigen der Schlagwortliste",
+			"default": "Schlagwortliste anzeigen"
+		}, {
+			"label": "Vollbildmodus Label",
+			"default": "Vollbildmodus"
+		}, {
+			"label": "Vollbildmodus verlassen Label",
+			"default": "Vollbildmodus verlassen"
+		}, {
+			"label": "Label der vorherigen Folie",
+			"default": "Vorherige Folie"
+		}, {
+			"label": "Label der nächsten Folie",
+			"default": "Nächste Folie"
+		}, {
+			"label": "Label der aktuellen Folie",
+			"default": "Aktuelle Folie"
+		}, {
+			"label": "Label der letzten Folie",
+			"default": "Letzte Folie"
+		}, {
+			"label": "Text zum verlassen des Lösungsmodus",
+			"default": "Lösungsmodus verlassen"
+		}, {
+			"label": "Text für den Lösungsmodus",
+			"default": "Lösungsmodus"
+		}, {
+			"label": "Text bei mehrfachen Aufgaben auf der Seite",
+			"default": "Mehrfache Aufgaben"
+		}, {
+			"label": "Text der Spielstandsnachricht",
+			"default": "Erreichte Punktzahl:"
+		}, {
+			"label": "Text zum Teilen auf Facebook",
+			"default": "Auf Facebook teilen"
+		}, {
+			"label": "Text zum Teilen auf Twitter",
+			"default": "Auf Twitter teilen"
+		}, {
+			"label": "Titel für zusammenfassende Folie",
+			"default": "Zusammenfassung"
+		}, {
+			"label": "Titel für das Kommentaricon",
+			"default": "Kommentare anzeigen"
+		}, {
+			"label": "Titel für den Drucken Button",
+			"default": "Drucken"
+		}, {
+			"label": "Druckendialog",
+			"default": "Wie soll diese Präsentation gedruckt werden?"
+		}, {
+			"label": "Label für den Button \"Alle Folien ausdrucken\"",
+			"default": "Alle Folien ausdrucken"
+		}, {
+			"label": "Label für den Button \"Aktuelle Folie ausdrucken\"",
+			"default": "Aktuelle Folie ausdrucken"
+		}]
+	}, {
+		"label": "Verhaltenseinstellungen.",
+		"description": "Diese Optionen überschreiben Verhaltenseinstellungen.",
+		"fields": [{
+			"label": "Aktivieren des aktiven Oberflächenmodus",
+			"description": "Entfernt Navigationssteuerung für den Endbenutzer. Zum Navigieren Zur Folie Wechseln verwenden."
+		}, {
+			"label": "Zusammenfassende Folie verbergen",
+			"description": "Verbirgt die zusammenfassende Folie."
+		}, {
+			"label": "Überschreiben des Buttons \"Lösung anzeigen\"",
+			"description": "Diese Option legt fest, ob der \"Lösung anzeigen\" Button für alle Fragen angezeigt, deaktiviert oder für jede Frage individuell konfiguriert wird.",
+			"options": [{
+				"label": "Aktiviert"
+			}, {
+				"label": "Deaktiviert"
+			}]
+		}, {
+			"label": "Überschreiben des \"Wiederholen\" Buttons",
+			"description": "Diese Option legt fest, ob der \"Wiederholen\" Button für alle Fragen angezeigt, deaktiviert oder für jede Frage individuell konfiguriert wird.",
+			"options": [{
+				"label": "Aktiviert"
+			}, {
+				"label": "Deaktiviert"
+			}]
+		}]
+	}]
+}
