@@ -351,6 +351,64 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 };
 
 /**
+ * Does an object have functions to determine the score
+ *
+ * @public
+ * @param obj The object to investigate
+ * @returns {boolean}
+ */
+H5P.CoursePresentation.prototype.hasScoreData = function (obj){
+  return (
+    (typeof obj !== typeof undefined) &&
+    (typeof obj.getScore === 'function') &&
+    (typeof obj.getMaxScore === 'function')
+  );
+};
+
+
+/**
+ * Return the combined score of all children
+ *
+ * @public
+ * @returns {Number}
+ */
+H5P.CoursePresentation.prototype.getScore = function (){
+  var self = this;
+
+  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+    return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
+  }, 0);
+};
+
+/**
+ * Return the combined maxScore of all children
+ *
+ * @public
+ * @returns {Number}
+ */
+H5P.CoursePresentation.prototype.getMaxScore = function (){
+  var self = this;
+
+  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+    return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
+  }, 0);
+};
+
+/**
+ * Flattens a nested array
+ *
+ * Example:
+ * [['a'], ['b']].flatten() -> ['a', 'b']
+ *
+ * @private
+ * @param {Array} arr A nested array
+ * @returns {Array} A flattened array
+ */
+H5P.CoursePresentation.prototype.flattenArray = function (arr){
+  return arr.concat.apply([], arr);
+};
+
+/**
  * Updates the feedback icons for the progres bar.
  *
  * @param slideScores
@@ -935,7 +993,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
     var $stripHtml = H5P.jQuery('<div>');
     if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
-        .click(function(event) {
+        .click(function (event) {
           event.preventDefault();
           that.showPopup(element.solution);
         })
@@ -959,7 +1017,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
   var self = this;
 
   /** @private */
-  var close = function(event) {
+  var close = function (event) {
     if (doNotClose) {
       // Prevent closing the popup
       doNotClose = false;
