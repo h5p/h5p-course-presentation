@@ -66,7 +66,7 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
         // Fill with background color
         $updateSlides.addClass('has-background')
           .css('background-image', '')
-          .css('background-color', '#' + fillSettings);
+          .css('background-color', fillSettings);
       }
       else if (imageSettings && imageSettings.path) {
 

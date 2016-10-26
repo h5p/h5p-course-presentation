@@ -476,7 +476,8 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-dragquestion-button,
 .h5p-course-presentation .h5p-summary-button,
 .h5p-course-presentation .h5p-dialogcards-button,
-.h5p-course-presentation .h5p-interactivevideo-button {
+.h5p-course-presentation .h5p-interactivevideo-button,
+.h5p-course-presentation .h5p-truefalse-button {
   background: #981d99;
   background-image: -webkit-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
   background: -moz-linear-gradient(bottom, #981d99 50%, #ce6cd8 50%, #981d99 100%);
@@ -545,7 +546,13 @@ border-collapse: collapse;
 }
 
 .h5p-course-presentation .h5p-multichoice-button:before {
-  content: "\e993";
+  content: "\e603";
+}
+
+.h5p-course-presentation .h5p-truefalse-button:before {
+  font-family: 'H5PFontIcons';
+  font-size: 1.2em;
+  content: "\e902";
 }
 
 .h5p-course-presentation .h5p-dragquestion-button:before {
@@ -560,7 +567,7 @@ border-collapse: collapse;
   content: "\f03d";
 }
 .h5p-course-presentation .h5p-singlechoiceset-button:before {
-  content: "\e603";
+  content: "\e993";
 }
 .h5p-course-presentation .h5p-dragtext-button:before {
   content: "\e600";
@@ -805,4 +812,9 @@ border-collapse: collapse;
 .h5p-course-presentation .h5p-chart .h5p-button-element.h5p-chart,
 .h5p-course-presentation .h5p-chart .h5p-chart-chart {
   height: 100%;
+}
+
+/* Making the confirmation dialog popup font-size fit */
+.h5p-course-presentation .h5p-confirmation-dialog-popup {
+  font-size: 0.85em;
 }

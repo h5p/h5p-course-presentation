@@ -70,6 +70,7 @@ H5P.CoursePresentation = function (params, id, extras) {
   if (!!params.override) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
+    this.enablePrintButton = !!params.override.enablePrintButton;
   }
 
   // Set override for all actions
@@ -186,8 +187,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
-    H5P.jQuery('body').unbind('keydown', that.keydown);
-    delete that.keydown;
+    if (that.keydown !== undefined) {
+      H5P.jQuery('body').unbind('keydown', that.keydown);
+      delete that.keydown;
+    }
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
     if (!$target.is('input, textarea') && !that.editor) {
@@ -249,6 +252,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
   }
+
+  // We have always attached all elements on current slide
+  this.elementsAttached[this.currentSlideIndex] = true;
 
   // Determine if summary slide should be added
   var $summarySlide;
@@ -342,6 +348,64 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
   }
+};
+
+/**
+ * Does an object have functions to determine the score
+ *
+ * @public
+ * @param obj The object to investigate
+ * @returns {boolean}
+ */
+H5P.CoursePresentation.prototype.hasScoreData = function (obj){
+  return (
+    (typeof obj !== typeof undefined) &&
+    (typeof obj.getScore === 'function') &&
+    (typeof obj.getMaxScore === 'function')
+  );
+};
+
+
+/**
+ * Return the combined score of all children
+ *
+ * @public
+ * @returns {Number}
+ */
+H5P.CoursePresentation.prototype.getScore = function (){
+  var self = this;
+
+  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+    return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
+  }, 0);
+};
+
+/**
+ * Return the combined maxScore of all children
+ *
+ * @public
+ * @returns {Number}
+ */
+H5P.CoursePresentation.prototype.getMaxScore = function (){
+  var self = this;
+
+  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+    return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
+  }, 0);
+};
+
+/**
+ * Flattens a nested array
+ *
+ * Example:
+ * [['a'], ['b']].flatten() -> ['a', 'b']
+ *
+ * @private
+ * @param {Array} arr A nested array
+ * @returns {Array} A flattened array
+ */
+H5P.CoursePresentation.prototype.flattenArray = function (arr){
+  return arr.concat.apply([], arr);
 };
 
 /**
@@ -929,7 +993,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
     var $stripHtml = H5P.jQuery('<div>');
     if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
       H5P.jQuery('<a href="#" class="h5p-element-solution" title="' + that.l10n.solutionsButtonTitle + '"></a>')
-        .click(function(event) {
+        .click(function (event) {
           event.preventDefault();
           that.showPopup(element.solution);
         })
@@ -953,7 +1017,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
   var self = this;
 
   /** @private */
-  var close = function(event) {
+  var close = function (event) {
     if (doNotClose) {
       // Prevent closing the popup
       doNotClose = false;

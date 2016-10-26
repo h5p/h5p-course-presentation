@@ -185,6 +185,55 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 
         // Done
         finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.11.
+       *
+       * Set overriding checkbox `enablePrintButton` to true for
+       * old versions of CP.
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      11: function (parameters, finished) {
+        if (parameters.override) {
+          parameters.override.enablePrintButton = true;
+	      }
+
+        finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.12.
+       *
+       * Fixes color selector widget upgrade
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      12: function (parameters, finished) {
+        if (parameters.presentation) {
+          if (parameters.presentation.globalBackgroundSelector &&
+              parameters.presentation.globalBackgroundSelector.fillGlobalBackground) {
+            parameters.presentation.globalBackgroundSelector.fillGlobalBackground =
+              '#' + parameters.presentation.globalBackgroundSelector.fillGlobalBackground;
+          }
+
+          if (parameters.presentation.slides) {
+            parameters.presentation.slides.forEach(function (slide) {
+              if (slide.slideBackgroundSelector &&
+                  slide.slideBackgroundSelector.fillSlideBackground) {
+                slide.slideBackgroundSelector.fillSlideBackground =
+                  '#' + slide.slideBackgroundSelector.fillSlideBackground;
+              }
+            });
+          }
+        }
+
+        finished(null, parameters);
       }
     }
   };

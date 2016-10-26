@@ -28,7 +28,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
               event.setVerb('answered');
             }
             if (event.data.statement.context.extensions === undefined) {
-              event.data.statement.context.extensions = [];
+              event.data.statement.context.extensions = {};
             }
             event.data.statement.context.extensions['http://id.tincanapi.com/extension/ending-point'] = that.cp.currentSlideIndex + 1;
           });
@@ -309,7 +309,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       }).appendTo($rightFooter);
 
       // Print button
-      if (H5P.CoursePresentation.Printer.supported()) {
+      if (this.cp.enablePrintButton && H5P.CoursePresentation.Printer.supported()) {
         this.cp.$printButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-print',
           'title': this.cp.l10n.printTitle,
