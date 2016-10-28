@@ -2,8 +2,8 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 12,
-  "patchVersion": 1,
+  "minorVersion": 13,
+  "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -62,13 +62,18 @@
       "machineName": "H5P.JoubelUI",
       "majorVersion": 1,
       "minorVersion": 2
+    },
+    {
+      "machineName": "H5P.FontIcons",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ],
   "editorDependencies": [
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 12
+      "minorVersion": 13
     }
   ]
 }
