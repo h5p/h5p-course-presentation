@@ -320,7 +320,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   else {
     this.$progressbar.add(this.$footer).remove();
 
-    if (H5P.canHasFullScreen) {
+    if (H5P.fullscreenSupported) {
       // Create full screen button
       this.$fullScreenButton = H5P.jQuery('<div/>', {
         'class': 'h5p-toggle-full-screen',
