@@ -2,6 +2,7 @@
   {
     "name": "presentation",
     "type": "group",
+    "importance": "high",
     "widget": "coursepresentation",
     "fields": [
       {
@@ -51,6 +52,7 @@
                   {
                     "name": "action",
                     "type": "library",
+                    "importance": "high",
                     "options": [
                       "H5P.AdvancedText 1.1",
                       "H5P.Link 1.2",
@@ -81,7 +83,7 @@
                     "widget": "html",
                     "optional": true,
                     "label": "Comments",
-                    "importance": "medium",
+                    "importance": "low",
                     "description": "The comments are shown when the user displays the suggested answers for all slides.",
                     "enterMode": "p",
                     "tags": [
@@ -118,7 +120,7 @@
                     "name": "displayAsButton",
                     "type": "boolean",
                     "label": "Display as button",
-                    "importance": "low",
+                    "importance": "medium",
                     "default": false,
                     "optional": true
                   },
@@ -127,7 +129,7 @@
                     "type": "text",
                     "optional": true,
                     "label": "Title",
-                    "importance": "high"
+                    "importance": "medium"
                   },
                   {
                     "name": "goToSlide",
@@ -149,7 +151,7 @@
                     "name": "metadata",
                     "type": "group",
                     "label": "Metadata",
-                    "importance": "high",
+                    "importance": "low",
                     "optional": true,
                     "deprecated": true,
                     "fields": [
@@ -157,22 +159,19 @@
                         "name": "title",
                         "type": "text",
                         "optional": true,
-                        "label": "Title",
-                        "importance": "high"
+                        "label": "Title"
                       },
                       {
                         "name": "author",
                         "type": "text",
                         "optional": true,
-                        "label": "Author",
-                        "importance": "high"
+                        "label": "Author"
                       },
                       {
                         "name": "lisence",
                         "type": "text",
                         "optional": true,
-                        "label": "License",
-                        "importance": "high"
+                        "label": "License"
                       }
                     ]
                   }
@@ -181,29 +180,29 @@
             },
             {
               "name": "keywords",
-              "importance": "medium",
+              "importance": "low",
               "type": "list",
               "optional": true,
               "field": {
                 "name": "keyword",
-                "importance": "medium",
+                "importance": "low",
                 "type": "group",
                 "optional": true,
                 "fields": [
                   {
                     "name": "main",
-                    "importance": "medium",
+                    "importance": "low",
                     "type": "text",
                     "optional": true
                   },
                   {
                     "name": "subs",
-                    "importance": "medium",
+                    "importance": "low",
                     "type": "list",
                     "optional": true,
                     "field": {
                       "name": "keyword",
-                      "importance": "medium",
+                      "importance": "low",
                       "type": "text"
                     }
                   }
@@ -212,7 +211,7 @@
             },
             {
               "name": "slideBackgroundSelector",
-              "importance": "low",
+              "importance": "medium",
               "type": "group",
               "widget": "radioSelector",
               "fields": [
@@ -220,13 +219,13 @@
                   "name": "imageSlideBackground",
                   "type": "image",
                   "label": "Image",
-                  "importance": "low",
+                  "importance": "medium",
                   "optional": true,
                   "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                 },
                 {
                   "name": "fillSlideBackground",
-                  "importance": "low",
+                  "importance": "medium",
                   "type": "text",
                   "widget": "colorSelector",
                   "label": "Pick a color",
@@ -279,6 +278,7 @@
         "name": "keywordListAutoHide",
         "type": "boolean",
         "label": "Auto hide",
+        "importance": "low",
         "default": false
       },
       {
@@ -292,7 +292,7 @@
       },
       {
         "name": "globalBackgroundSelector",
-        "importance": "low",
+        "importance": "medium",
         "type": "group",
         "widget": "radioSelector",
         "fields": [
@@ -300,7 +300,7 @@
             "name": "imageGlobalBackground",
             "type": "image",
             "label": "Image",
-            "importance": "low",
+            "importance": "medium",
             "optional": true,
             "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
           },
@@ -309,7 +309,7 @@
             "type": "text",
             "widget": "colorSelector",
             "label": "Pick a color",
-            "importance": "low",
+            "importance": "medium",
             "spectrum": {
               "flat": true,
               "showInput": true,
