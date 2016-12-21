@@ -103,7 +103,7 @@
         },
         {
           "fields": [
-                {             
+            {
               "englishLabel": "Image",
               "label": "Kuva",
               "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
@@ -216,7 +216,6 @@
           "label": "Teksti Käyttöehdot-painikkeelle",
           "englishDefault": "Rights of use",
           "default": "Käyttöehdot"
-
         },
         {
           "englishLabel": "Hide keywords list button title",
@@ -226,7 +225,7 @@
         },
         {
           "englishLabel": "Show keywords list button title",
-          "label": "\"Näytä avainsanalista\"painikkeen teksti" ,
+          "label": "\"Näytä avainsanalista\"painikkeen teksti",
           "englishDefault": "Show keywords list",
           "default": "Näytä avainsanalista"
         },
