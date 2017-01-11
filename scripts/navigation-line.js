@@ -325,7 +325,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         this.cp.$printButton.appendTo($rightFooter);
       }
 
-      if (H5P.canHasFullScreen) {
+      if (H5P.fullscreenSupported) {
         // Toggle full screen button
         this.cp.$fullScreenButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
