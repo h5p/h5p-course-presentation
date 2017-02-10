@@ -1,0 +1,292 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Kommentare",
+                      "description": "Die Kommentare werden angezeigt, wenn der Nutzer die vorgeschlagenen Antworten für alle Schaubilder anzeigt."
+                    },
+                    {
+                      "label": "Kommentare immer anzeigen"
+                    },
+                    {
+                      "label": "Undurchlässigkeit des Hintergrunds"
+                    },
+                    {
+                      "label": "Als Button anzeigen"
+                    },
+                    {
+                      "label": "Titel"
+                    },
+                    {
+                      "label": "Gehe zu Schaubild"
+                    },
+                    {
+                      "label": "Unsichtbar",
+                      "description": "Vorgabe-Cursor, kein Titel und kein Tab-Index. Warnung: Nutzer, die beeinträchtigt sind oder nur über eine Tastatur verfügen, werden Probleme mit der Bedienung haben."
+                    },
+                    {
+                      "label": "Metadaten",
+                      "fields": [
+                        {
+                          "label": "Titel"
+                        },
+                        {
+                          "label": "Autor"
+                        },
+                        {
+                          "label": "Lizenz"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "label": "Bild",
+                    "description": "Das Hintergrundbild sollte für Breite zu Höhe ein Format von 2:1 haben, um Verzerrungen zu vermeiden. Hochaufgelöste Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
+                  },
+                  {
+                    "label": "Wähle eine Farbe",
+                    "spectrum": {},
+                    "default": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Schlagwortliste"
+        },
+        {
+          "label": "Immer anzeigen"
+        },
+        {
+          "label": "Automatisch verbergen"
+        },
+        {
+          "label": "Undurchlässigkeit"
+        },
+        {
+          "fields": [
+            {
+              "label": "Bild",
+              "description": "Das Hintergrundbild sollte für Breite zu Höhe ein Format von 2:1 haben, um Verzerrungen zu vermeiden. Hochaufgelöste Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
+            },
+            {
+              "label": "Wähle eine Farbe",
+              "spectrum": {},
+              "default": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Sprache anpassen",
+      "fields": [
+        {
+          "label": "Übersetzung für \"Slide\"",
+          "default": "Schaubild"
+        },
+        {
+          "label": "Übersetzung für \"Your Score\"",
+          "default": "Deine Punktzahl"
+        },
+        {
+          "label": "Übersetzung für \"Max Score\"",
+          "default": "Maximale Punktzahl"
+        },
+        {
+          "label": "Nachricht bei GUTER Punktzahl",
+          "default": "Glückwunsch! Du hast @percent richtig!",
+          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
+        },
+        {
+          "label": "Nachricht bei OK Punktzahl",
+          "default": "Nette Leistung! Du hast @percent richtig!",
+          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
+        },
+        {
+          "label": "Nachricht bei SCHLECHTER Punktzahl",
+          "default": "Du hast @percent korrekt.",
+          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
+        },
+        {
+          "label": "Übersetzung für \"Total\"",
+          "default": "Insgesamt"
+        },
+        {
+          "label": "Beschriftung für den \"Lösungen zeigen\"-Button",
+          "default": "Lösungen"
+        },
+        {
+          "label": "Beschriftung für den \"Wiederholen\"-Button",
+          "default": "Wiederholen"
+        },
+        {
+          "label": "Übersetzung für \"Title\"",
+          "default": "Titel"
+        },
+        {
+          "label": "Übersetzung für \"Author/supplier\"",
+          "default": "Autor/Unterstützer"
+        },
+        {
+          "label": "Übersetzung für \"License\"",
+          "default": "Lizenz"
+        },
+        {
+          "label": "Übersetzung für \"License\"",
+          "default": "Lizenz"
+        },
+        {
+          "label": "Beschriftung für den \"Text exportieren\"-Button",
+          "default": "Text exportieren"
+        },
+        {
+          "label": "Beschriftung für den \"Urheberrecht\"-Button",
+          "default": "Urheberrecht"
+        },
+        {
+          "label": "Beschriftung für den \"Schlagwortliste verbergen\"-Button",
+          "default": "Schlagwortliste verbergen"
+        },
+        {
+          "label": "Beschriftung für den \"Schlagwortliste anzeigen\"-Button",
+          "default": "Schlagwortliste anzeigen"
+        },
+        {
+          "label": "Beschriftung für \"Vollbild\"",
+          "default": "Vollbild"
+        },
+        {
+          "label": "Beschriftung für \"Vollbild beenden\"",
+          "default": "Vollbild beenden"
+        },
+        {
+          "label": "Beschriftung für \"Vorheriges Schaubild\"",
+          "default": "Vorheriges Schaubild"
+        },
+        {
+          "label": "Beschriftung für \"Nächstes Schaubild\"",
+          "default": "Nächstes Schaubild"
+        },
+        {
+          "label": "Beschriftung für \"Aktuelles Schaubild\"",
+          "default": "Aktuelles Schaubild"
+        },
+        {
+          "label": "Beschriftung für \"Letztes Schaubild\"",
+          "default": "Letztes Schaubild"
+        },
+        {
+          "label": "Beschriftung für \"Lösungsmodus beenden\"",
+          "default": "Lösungsmodus beenden"
+        },
+        {
+          "label": "Beschriftung für \"Lösungsmodus\"",
+          "default": "Lösungsmodus"
+        },
+        {
+          "label": "Texthinweis bei mehreren Aufgaben auf einer Seite",
+          "default": "Mehrere Aufgaben"
+        },
+        {
+          "label": "Texthinweis für die Punktzahl",
+          "default": "Du hast erreicht:"
+        },
+        {
+          "label": "Texthinweis für \"Auf Facebook teilen\"",
+          "default": "Auf Facebook teilen"
+        },
+        {
+          "label": "Texthinweis für \"Auf Twitter teilen\"",
+          "default": "Auf Twitter teilen"
+        },
+        {
+          "label": "Titel für das Übersichtsschaubild",
+          "default": "Übersicht"
+        },
+        {
+          "label": "Titel für das \"Kommentare zeigen\"-Icon",
+          "default": "Kommentare zeigen"
+        },
+        {
+          "label": "Beschriftung für den \"Drucken\"-Button",
+          "default": "Drucken"
+        },
+        {
+          "label": "Zugang zum Druck-Dialog",
+          "default": "Wie möchtest du diese Präsentation drucken?"
+        },
+        {
+          "label": "Beschriftung für den \"Alle Schaubilder drucken\"-Button",
+          "default": "Alle Schaubilder drucken"
+        },
+        {
+          "label": "Beschriftung für den \"Aktuelles Schaubild drucken\"-Button",
+          "default": "Aktuelles Schaubild drucken"
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "description": "Mit diesen Optionen kannst du diverse Einstellungen überschreiben.",
+      "fields": [
+        {
+          "label": "\"Active Surface\"-Modus aktivieren",
+          "description": "Entfernt die Bedienelemente für den Nutzer. Benutze \"Gehe zu Schaubild\" zum navigieren."
+        },
+        {
+          "label": "Übersichtsschaubild verbergen",
+          "description": "Verbirgt das Übersichtsschaubild"
+        },
+        {
+          "label": "\"Lösungen zeigen\"-Knopf überschreiben",
+          "description": "Diese Option legt fest, ob der \"Lösungen zeigen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
+          "options": [
+            {
+              "label": "anzeigen"
+            },
+            {
+              "label": "ausblenden"
+            }
+          ]
+        },
+        {
+          "label": "\"Wiederholen\"-Button überschreiben",
+          "description": "Diese Option legt fest, ob der \"Wiederholen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
+          "options": [
+            {
+              "label": "anzeigen"
+            },
+            {
+              "label": "ausblenden"
+            }
+          ]
+        },
+        {
+          "label": "\"Drucken\"-Button einblenden",
+          "description": "Zeigt den \"Drucken\"-Button an."
+        }
+      ]
+    }
+  ]
+}
