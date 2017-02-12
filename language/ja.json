@@ -233,7 +233,7 @@
           "default": "印刷"
         },
         {
-          "label": "Zugang zum Druck-Dialog",
+          "label": "印刷ダイアログを表示",
           "default": "このプレゼンテーションをどう印刷しますか？"
         },
         {
