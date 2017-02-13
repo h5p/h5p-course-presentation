@@ -278,9 +278,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.slides.push(summarySlideData);
 
     slide = this.slides[this.slides.length - 1];
-    $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
+    $summarySlide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
 
-    this.addElements(slide, $slide, i);
+    this.addElements(slide, $summarySlide, i);
 
     if (!foundKeywords && slide.keywords !== undefined && slide.keywords.length) {
       foundKeywords = true;
@@ -289,8 +289,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       keywords += this.keywordsHtml(slide.keywords, first);
     }
 
-    $slide.addClass('h5p-summary-slide');
-    $summarySlide = H5P.jQuery('.h5p-summary-slide');
+    $summarySlide.addClass('h5p-summary-slide');
   }
 
   if (!foundKeywords && this.editor === undefined) {
