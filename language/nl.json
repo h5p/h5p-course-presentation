@@ -1,391 +1,319 @@
 {
-  "semantics": [
+  "semantics":[
     {
-      "fields": [
+      "fields":[
         {
-          "field": {
-            "fields": [
+          "field":{
+            "fields":[
               {
-                "field": {
-                  "fields": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
+                "field":{
+                  "fields":[
                     {
-                      "englishLabel": "Comments",
-                      "label": "Opmerkingen",
-                      "englishDescription": "The comments are shown when the user displays the suggested answers for all slides.",
-                      "description": "De opmerkingen worden getoond wanneer de gebruiker de voorgestelde antwoorden voor alle slides toont."
+                      
                     },
                     {
-                      "englishLabel": "Always display comments",
-                      "label": "Altijd opmerkingen tonen"
+                      
                     },
                     {
-                      "englishLabel": "Background Opacity",
-                      "label": "Ondoorzichtigheid achtergrond"
+                      
                     },
                     {
-                      "englishLabel": "Display as button",
-                      "label": "Tonen als knop"
+                      
                     },
                     {
-                      "englishLabel": "Title",
-                      "label": "Titel"
+                      
                     },
                     {
-                      "englishLabel": "Go To Slide",
-                      "label": "Ga naar slide"
+                      "label":"Opmerkingen",
+                      "description":"De opmerkingen worden getoond wanneer de gebruiker de voorgestelde antwoorden voor alle slides toont."
                     },
                     {
-                      "englishLabel": "Invisible",
-                      "label": "Onzichtbaar",
-                      "englishDescription": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
-                      "description": "Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
+                      "label":"Altijd opmerkingen tonen"
                     },
                     {
-                      "englishLabel": "Metadata",
-                      "label": "Metadata",
-                      "fields": [
+                      "label":"Ondoorzichtigheid achtergrond"
+                    },
+                    {
+                      "label":"Tonen als knop"
+                    },
+                    {
+                      "label":"Titel"
+                    },
+                    {
+                      "label":"Ga naar slide"
+                    },
+                    {
+                      "label":"Onzichtbaar",
+                      "description":"Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
+                    },
+                    {
+                      "label":"Metadata",
+                      "fields":[
                         {
-                          "englishLabel": "Title",
-                          "label": "Titel"
+                          "label":"Titel"
                         },
                         {
-                          "englishLabel": "Author",
-                          "label": "Auteur"
+                          "label":"Auteur"
                         },
                         {
-                          "englishLabel": "License",
-                          "label": "Licentie"
+                          "label":"Licentie"
                         }
                       ]
                     }
                   ]
                 }
               },
-              {},
               {
-                "fields": [
+                "field":{
+                  "fields":[
+                    {
+                      
+                    },
+                    {
+                      "field":{
+                        
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "fields":[
                   {
-                    "englishLabel": "Image",
-                    "label": "Afbeelding",
-                    "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-                    "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
+                    "label":"Afbeelding",
+                    "description":"Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
                   },
                   {
-                    "englishLabel": "Pick a color",
-                    "label": "Kies een kleur"
+                    "label":"Kies een kleur",
+                    "spectrum":{
+                      
+                    },
+                    "default":""
                   }
                 ]
               }
             ]
           }
         },
-        {},
         {
-          "englishLabel": "Keyword list",
-          "label": "Lijst met sleutelwoorden"
+          
         },
         {
-          "englishLabel": "Always show",
-          "label": "Altijd tonen"
+          "label":"Lijst met sleutelwoorden"
         },
         {
-          "englishLabel": "Auto hide",
-          "label": "Automatisch verbergen"
+          "label":"Altijd tonen"
         },
         {
-          "englishLabel": "Opacity",
-          "label": "Ondoorzichtigheid"
+          "label":"Automatisch verbergen"
         },
         {
-          "fields": [
+          "label":"Ondoorzichtigheid"
+        },
+        {
+          "fields":[
             {
-              "englishLabel": "Image",
-              "label": "Afbeelding",
-              "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-              "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
+              "label":"Afbeelding",
+              "description":"Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
             },
             {
-              "englishLabel": "Pick a color",
-              "label": "Kies een kleur"
+              "label":"Kies een kleur",
+              "spectrum":{
+                
+              },
+              "default":""
             }
           ]
         }
       ]
     },
     {
-      "englishLabel": "Localize",
-      "label": "Localiseer",
-      "fields": [
+      "label":"Localiseer",
+      "fields":[
         {
-          "englishLabel": "Translation for \"Slide\"",
-          "label": "Vertaling voor \"Slide\"",
-          "englishDefault": "Slide",
-          "default": "Slide"
+          "label":"Vertaling voor \"Slide\"",
+          "default":"Slide"
         },
         {
-          "englishLabel": "Translation for \"Your Score\"",
-          "label": "Vertaling voor \"Jouw score\"",
-          "englishDefault": "Your Score",
-          "default": "Jouw score"
+          "label":"Vertaling voor \"Jouw score\"",
+          "default":"Jouw score"
         },
         {
-          "englishLabel": "Translation for \"Max Score\"",
-          "label": "Vertaling voor \"Maximale score\"",
-          "englishDefault": "Max Score",
-          "default": "Max score"
+          "label":"Vertaling voor \"Maximale score\"",
+          "default":"Max score"
         },
         {
-          "englishLabel": "Greeting given for GOOD score",
-          "label": "Melding voor een GOEDE score",
-          "englishDefault": "Congratulations! You got @percent correct!",
-          "default": "Gefeliciteerd! Je hebt @percent correct!",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
+          "label":"Melding voor een GOEDE score",
+          "default":"Gefeliciteerd! Je hebt @percent correct!",
+          "description":"@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "englishLabel": "Greeting given for OK score",
-          "label": "Melding voor een REDELIJKE score",
-          "englishDefault": "Nice effort! You got @percent correct!",
-          "default": " Goed gedaan! Je hebt @percent correct!",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
+          "label":"Melding voor een REDELIJKE score",
+          "default":" Goed gedaan! Je hebt @percent correct!",
+          "description":"@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "englishLabel": "Greeting given for BAD score",
-          "label": "Melding voor een SLECHTE score",
-          "englishDefault": "You got @percent correct.",
-          "default": "Je hebt @percent correct.",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
+          "label":"Melding voor een SLECHTE score",
+          "default":"Je hebt @percent correct.",
+          "description":"@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "englishLabel": "Translation for \"Total\"",
-          "label": "Vertaling voor \"Totaal\"",
-          "englishDefault": "Total",
-          "default": "Totaal"
+          "label":"Vertaling voor \"Totaal\"",
+          "default":"Totaal"
         },
         {
-          "englishLabel": "Title for show solutions button",
-          "label": "Tekst voor \"Toon oplossing\"-knop",
-          "englishDefault": "Show solutions",
-          "default": "Toon oplossing"
+          "label":"Tekst voor \"Toon oplossing\"-knop",
+          "default":"Toon oplossing"
         },
         {
-          "englishLabel": "Text for the retry button",
-          "label": "Tekst voor \"Probeer opnieuw\"-knop",
-          "englishDefault": "Retry",
-          "default": "Probeer opnieuw"
+          "label":"Tekst voor \"Probeer opnieuw\"-knop",
+          "default":"Probeer opnieuw"
         },
         {
-          "englishLabel": "Translation for \"Title\"",
-          "label": "Vertaling voor \"Titel\"",
-          "englishDefault": "Title",
-          "default": "Titel"
+          "label":"Vertaling voor \"Titel\"",
+          "default":"Titel"
         },
         {
-          "englishLabel": "Translation for \"Author/supplier\"",
-          "label": "Vertaling voor \"Auteur/Leverancier\"",
-          "englishDefault": "Author",
-          "default": "Auteur/Leverancier"
+          "label":"Vertaling voor \"Auteur/Leverancier\"",
+          "default":"Auteur/Leverancier"
         },
         {
-          "englishLabel": "Translation for \"License\"",
-          "label": "Vertaling voor \"Licentie\"",
-          "englishDefault": "License",
-          "default": "Licentie"
+          "label":"Vertaling voor \"Licentie\"",
+          "default":"Licentie"
         },
         {
-          "englishLabel": "Translation for \"License\"",
-          "label": "Vertaling voor \"Licentie\"",
-          "englishDefault": "License",
-          "default": "Licentie"
+          "label":"Vertaling voor \"Licentie\"",
+          "default":"Licentie"
         },
         {
-          "englishLabel": "Text for the export text button",
-          "label": "Vertaling voor \"Exporteer tekst\"",
-          "englishDefault": "Export text",
-          "default": "Exporteer tekst"
+          "label":"Vertaling voor \"Exporteer tekst\"",
+          "default":"Exporteer tekst"
         },
         {
-          "englishLabel": "Text for the \"Rights of use\" button",
-          "label": "Tekst voor Gebruiksrechten-knop",
-          "englishDefault": "Rights of use",
-          "default": "Gebruiksrechten"
+          "label":"Tekst voor Gebruiksrechten-knop",
+          "default":"Gebruiksrechten"
         },
         {
-          "englishLabel": "Hide keywords list button title",
-          "label": "Titel voor \"Verberg sleutelwoordenlijst\"-knop",
-          "englishDefault": "Hide keywords list",
-          "default": "Verberg sleutelwoordenlijst"
+          "label":"Titel voor \"Verberg sleutelwoordenlijst\"-knop",
+          "default":"Verberg sleutelwoordenlijst"
         },
         {
-          "englishLabel": "Show keywords list button title",
-          "label": "Titel voor \"Toon sleutelwoordenlijst\"-knop",
-          "englishDefault": "Show keywords list",
-          "default": "Toon sleutelwoordenlijst"
+          "label":"Titel voor \"Toon sleutelwoordenlijst\"-knop",
+          "default":"Toon sleutelwoordenlijst"
         },
         {
-          "englishLabel": "Fullscreen label",
-          "label": "Titel voor \"Volledig scherm\"-knop",
-          "englishDefault": "Fullscreen",
-          "default": "Volledig scherm"
+          "label":"Titel voor \"Volledig scherm\"-knop",
+          "default":"Volledig scherm"
         },
         {
-          "englishLabel": "Exit fullscreen label",
-          "label": "Titel voor \"Volledig scherm afsluiten\"-knop",
-          "englishDefault": "Exit fullscreen",
-          "default": "Volledig scherm afsluiten"
+          "label":"Titel voor \"Volledig scherm afsluiten\"-knop",
+          "default":"Volledig scherm afsluiten"
         },
         {
-          "englishLabel": "Previous slide label",
-          "label": "Titel voor \"Vorige slide\"-knop",
-          "englishDefault": "Previous slide",
-          "default": "Vorige slide"
+          "label":"Titel voor \"Vorige slide\"-knop",
+          "default":"Vorige slide"
         },
         {
-          "englishLabel": "Next slide label",
-          "label": "Titel voor \"Volgende slide\"-knop",
-          "englishDefault": "Next slide",
-          "default": "Volgende slide"
+          "label":"Titel voor \"Volgende slide\"-knop",
+          "default":"Volgende slide"
         },
         {
-          "englishLabel": "Current slide label",
-          "label": "Titel voor \"Huidige slide\"-knop",
-          "englishDefault": "Current slide",
-          "default": "Huidige slide"
+          "label":"Titel voor \"Huidige slide\"-knop",
+          "default":"Huidige slide"
         },
         {
-          "englishLabel": "Last slide label",
-          "label": "Titel voor \"Laatste slide\"-knop",
-          "englishDefault": "Last slide",
-          "default": "Laatste slide"
+          "label":"Titel voor \"Laatste slide\"-knop",
+          "default":"Laatste slide"
         },
         {
-          "englishLabel": "Exit solution mode text",
-          "label": "Titel voor \"Oplossingsmodus afsluiten\"-knop",
-          "englishDefault": "Exit solution mode",
-          "default": "Oplossingsmodus afsluiten"
+          "label":"Titel voor \"Oplossingsmodus afsluiten\"-knop",
+          "default":"Oplossingsmodus afsluiten"
         },
         {
-          "englishLabel": "Solution mode text",
-          "label": "Tekst oplossingsmodus",
-          "englishDefault": "Solution Mode",
-          "default": "Oplossingsmodus"
+          "label":"Tekst oplossingsmodus",
+          "default":"Oplossingsmodus"
         },
         {
-          "englishLabel": "Text when multiple tasks on a page",
-          "label": "Tekst wanneer er meerdere taken op een pagina zijn",
-          "englishDefault": "Multiple tasks",
-          "default": "Meerdere taken"
+          "label":"Tekst wanneer er meerdere taken op een pagina zijn",
+          "default":"Meerdere taken"
         },
         {
-          "englishLabel": "Score message text",
-          "label": "Scoretekst",
-          "englishDefault": "You achieved:",
-          "default": "Je hebt gescoord:"
+          "label":"Scoretekst",
+          "default":"Je hebt gescoord:"
         },
         {
-          "englishLabel": "Share to Facebook text",
-          "label": "Deel op Facebook tekst",
-          "englishDefault": "Share on Facebook",
-          "default": "Deel op Facebook"
+          "label":"Deel op Facebook tekst",
+          "default":"Deel op Facebook"
         },
         {
-          "englishLabel": "Share to Twitter text",
-          "label": "Deel op Twitter tekst",
-          "englishDefault": "Share on Twitter",
-          "default": "Deel op Twitter"
+          "label":"Deel op Twitter tekst",
+          "default":"Deel op Twitter"
         },
         {
-          "englishLabel": "Title for summary slide",
-          "label": "Titel voor \"Samenvatting\" slide",
-          "englishDefault": "Summary",
-          "default": "Samenvatting"
+          "label":"Titel voor \"Samenvatting\" slide",
+          "default":"Samenvatting"
         },
         {
-          "englishLabel": "Title for the comments icon",
-          "label": "Titel voor opmerkingenicoon",
-          "englishDefault": "Show comments",
-          "default": "Toon opmerkingen"
+          "label":"Titel voor opmerkingenicoon",
+          "default":"Toon opmerkingen"
         },
         {
-          "englishLabel": "Title for print button",
-          "label": "Titel voor \"Afdrukken\"-knop",
-          "englishDefault": "Print",
-          "default": "Afdrukken"
+          "label":"Titel voor \"Afdrukken\"-knop",
+          "default":"Afdrukken"
         },
         {
-          "englishLabel": "Print dialog ingress",
-          "label": "Afdrukken dialoog ingress",
-          "englishDefault": "How would you like to print this presentation?",
-          "default": "Hoe wil je deze presentatie afdrukken?"
+          "label":"Afdrukken dialoog ingress",
+          "default":"Hoe wil je deze presentatie afdrukken?"
         },
         {
-          "englishLabel": "Label for \"Print all slides\" button",
-          "label": "Titel voor \"Druk alle slides af\"-knop",
-          "englishDefault": "Print all slides",
-          "default": "Druk alle slides af"
+          "label":"Titel voor \"Druk alle slides af\"-knop",
+          "default":"Druk alle slides af"
         },
         {
-          "englishLabel": "Label for \"Print current slide\" button",
-          "label": "Titel voor \"Druk huidige slide af\"-knop",
-          "englishDefault": "Print current slide",
-          "default": "Druk huidige slide af"
+          "label":"Titel voor \"Druk huidige slide af\"-knop",
+          "default":"Druk huidige slide af"
         }
       ]
     },
     {
-      "englishLabel": "Behaviour settings.",
-      "label": "Gedragsinstellingen",
-      "englishDescription": "These options will let you override behaviour settings.",
-      "description": "Met deze opties kun je de gedragsinstellingen overschrijven.",
-      "fields": [
+      "label":"Gedragsinstellingen",
+      "description":"Met deze opties kun je de gedragsinstellingen overschrijven.",
+      "fields":[
         {
-          "englishLabel": "Activate Active Surface Mode",
-          "label": "Activeer Active Surface Mode",
-          "englishDescription": "Removes navigation controls for the end user. Use Go To Slide to navigate.",
-          "description": "Verwijdert navigatieregelaars voor de eindgebruiker. Gebruik 'Ga naar Slide' om te navigeren."
+          "label":"Activeer Active Surface Mode",
+          "description":"Verwijdert navigatieregelaars voor de eindgebruiker. Gebruik 'Ga naar Slide' om te navigeren."
         },
         {
-          "englishLabel": "Hide Summary Slide",
-          "label": "Verberg samenvatting",
-          "englishDescription": "Hides the summary slide.",
-          "description": "Verbergt de samenvattingsslide."
+          "label":"Verberg samenvatting",
+          "description":"Verbergt de samenvattingsslide."
         },
         {
-          "label": "\"Toon oplossing\"-knop instellen",
-          "description": "Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd",
-          "options": [
+          "label":"\"Toon oplossing\"-knop instellen",
+          "description":"Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd",
+          "options":[
             {
-              "label": "Ingeschakeld"
+              "label":"Ingeschakeld"
             },
             {
-              "label": "Uitgeschakeld"
+              "label":"Uitgeschakeld"
             }
           ]
         },
         {
-          "label": "\"Opnieuw proberen\" knop instellen",
-          "description": "Deze optie bepaalt of de \"Opnieuw proberen\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
-          "options": [
+          "label":"\"Opnieuw proberen\" knop instellen",
+          "description":"Deze optie bepaalt of de \"Opnieuw proberen\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
+          "options":[
             {
-              "label": "Ingeschakeld"
+              "label":"Ingeschakeld"
             },
             {
-              "label": "Uitgeschakeld"
+              "label":"Uitgeschakeld"
             }
           ]
         },
         {
-          "englishLabel": "Enable print button",
-          "label": "Printknop inschakelen",
-          "englishDescription": "Enables the print button.",
-          "description": "Schakelt printknop in"
+          "label":"Printknop inschakelen",
+          "description":"Schakelt printknop in"
         }
       ]
     }
