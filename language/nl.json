@@ -47,7 +47,7 @@
                       "description":"Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
                     },
                     {
-                      "label":"Metadata",
+                      "label":"Meta gegevens",
                       "fields":[
                         {
                           "label":"Titel"
@@ -132,7 +132,7 @@
       "fields":[
         {
           "label":"Vertaling voor \"Slide\"",
-          "default":"Slide"
+          "default":"Dia"
         },
         {
           "label":"Vertaling voor \"Jouw score\"",
