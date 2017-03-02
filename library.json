@@ -10,7 +10,8 @@
     "iframe"
   ],
   "machineName": "H5P.CoursePresentation",
-  "author": "Joubel AS",
+  "author": "Joubel",
+  "license": "MIT",
   "coreApi": {
     "majorVersion": 1,
     "minorVersion": 12
