@@ -114,7 +114,7 @@
           "fields":[
             {
               "label":"Imagem",
-              "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar esticamento. Imagens de alta resolução obterão melhor qualidade em telas maiores."
+              "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar distorções. Imagens de alta resolução obterão melhores resultados em telas maiores."
             },
             {
               "label":"Escolha uma cor",
@@ -149,7 +149,7 @@
         },
         {
           "label":"Saudação dada por uma pontuação aceitável",
-          "default":"Você se esforçou e acertou @percent!",
+          "default":"Bom trabalho, você acertou @percent!",
           "description":"@percent será substituído pela pontuação real do usuário em %"
         },
         {
@@ -194,7 +194,7 @@
           "default":"Direitos de utilização"
         },
         {
-          "label":"Título de botão de Ocultar lista de palavras-chave",
+          "label":"Título do botão de Ocultar lista de palavras-chave",
           "default":"Esconder a lista de palavras-chave"
         },
         {
