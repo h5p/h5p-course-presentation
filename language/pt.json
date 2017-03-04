@@ -198,15 +198,15 @@
           "default":"Esconder a lista de palavras-chave"
         },
         {
-          "label":"Título de botão de mostrar lista de palavras-chave",
+          "label":"Mostrar título do botão de mostrar lista de palavras-chave",
           "default":"Mostart a lista de palavras-chave"
         },
         {
-          "label":"Modo Tela Cheia",
+          "label":"Rótulo do Modo Tela Cheia",
           "default":"Tela cheia"
         },
         {
-          "label":"Sair do modo tela cheia",
+          "label":"Sair do rótulo do modo tela cheia",
           "default":"Sair do modo tela cheia"
         },
         {
@@ -235,18 +235,18 @@
         },
         {
           "label":"Texto quando houver múltiplas tarefas em uma página",
-          "default":"Várias tarefas"
+          "default":"Múltiplas tarefas"
         },
         {
-          "label":"Texto da mensagem de Pontuação",
+          "label":"Texto da mensagem de pontuação",
           "default":"Você atingiu:"
         },
         {
-          "label":"Texto para Compartilhar Facebook",
+          "label":"Compartilhar como texto no Facebook",
           "default":"Compartilhar no Facebook"
         },
         {
-          "label":"Texto Compartilhar Twitter",
+          "label":"Compartilhar como texto no Twitter",
           "default":"Compartilhar no Twitter"
         },
         {
@@ -259,7 +259,7 @@
         },
         {
           "label":"Título para o botão de impressão",
-          "default":"Print"
+          "default":"Imprimir"
         },
         {
           "label":"Entrada de diálogo de impressão",
@@ -281,15 +281,15 @@
       "fields":[
         {
           "label":"Ativar modo de superfície ativa",
-          "description":"Remove os controles de navegação para o usuário final. Use o Ir Para Slide para navegar."
+          "description":"Remove os controles de navegação para o usuário final. Use o Seguir Para Slide para navegar."
         },
         {
-          "label":"Ocultar Slide de resumo",
+          "label":"Ocultar Slide de Resumo",
           "description":"Oculta o slide de resumo."
         },
         {
-          "label":"Substituir o botão de \"Mostrar a solução\"",
-          "description":"Essa opção determina se o botão \"Mostrar a solução\" é indicado para todas as perguntas, desativado para todos ou configurado individualmente para cada pergunta.",
+          "label":"Substituir o botão de \"Mostrar Solução\"",
+          "description":"Essa opção determina se o botão \"Mostrar Solução\" será visível para todas as perguntas, desativado para todas ou configurado individualmente para cada pergunta.",
           "options":[
             {
               "label":"Ativo"
