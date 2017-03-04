@@ -44,7 +44,7 @@
                     },
                     {
                       "label":"Invisível",
-                      "description":"Cursor padrão, nenhum título e nenhum índice de tabulação. Aviso: Os usuários com deficiência ou sem mouse terão problemas ao usar esse elemento."
+                      "description":"Cursor padrão, nenhum título e nenhum índice de tabulação. Aviso: Os usuários com deficiência ou sem mouse terão dificuldade ao usar esse elemento."
                     },
                     {
                       "label":"Metadata",
