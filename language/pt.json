@@ -167,7 +167,7 @@
         },
         {
           "label":"Texto para o botão de tentar novamente",
-          "default":"Tentar Novamente"
+          "default":"Repetir"
         },
         {
           "label":"Tradução para \"Título\"",
@@ -214,7 +214,7 @@
           "default":"Slide anterior"
         },
         {
-          "label":"Rótulo para slide seguinte",
+          "label":"Rótulo para próximo slide",
           "default":"Próximo slide"
         },
         {
@@ -285,7 +285,7 @@
         },
         {
           "label":"Ocultar Slide de Resumo",
-          "description":"Oculta o slide de resumo."
+          "description":"Oculta o slide de Resumo."
         },
         {
           "label":"Substituir o botão de \"Mostrar Solução\"",
@@ -301,7 +301,7 @@
         },
         {
           "label":"Substituir o botão \"Repetir\"",
-          "description":"Essa opção determina se o botão \"Repetir\" é indicado para todas as perguntas, desativado para todos ou configurado individualmente para cada pergunta.",
+          "description":"Essa opção determina se o botão \"Repetir\" será visível para todas as perguntas, desativado para todas ou configurado individualmente para cada pergunta.",
           "options":[
             {
               "label":"Ativo"
@@ -312,8 +312,8 @@
           ]
         },
         {
-          "label":"Habilitar o botão de impressão",
-          "description":"Habilitar o botão de impressão."
+          "label":"Habilitar o botão Imprimir",
+          "description":"Ativa o botão de Imprimir."
         }
       ]
     }
