@@ -31,7 +31,7 @@
                       "label":"Sempre exibir comentários"
                     },
                     {
-                      "label":"Opacidade de Fundo"
+                      "label":"Opacidade do Fundo"
                     },
                     {
                       "label":"Exibir como botão"
@@ -81,7 +81,7 @@
                 "fields":[
                   {
                     "label":"Imagem",
-                    "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar esticamento. Imagens de alta resolução irão exibir melhor em telas maiores."
+                    "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar distorções. Imagens de alta resolução obterão melhor qualidade em telas maiores."
                   },
                   {
                     "label":"Escolha uma cor",
