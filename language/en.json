@@ -226,8 +226,44 @@
           "default": "Share on Facebook"
         },
         {
+          "label": "Share to Facebook link",
+          "default": "https://www.facebook.com/sharer/sharer.php"
+        },
+        {
+          "label": "Share to Facebook title",
+          "default": "SHEilds E-Learning Courses"
+        },
+        {
+          "label": "Share to Facebook quote",
+          "default": "I scored @percentage on a task at @url"
+        },
+        {
+          "label": "Share to Facebook description",
+          "default": "Register today for all your health & safety qualification needs, around the world."
+        },
+        {
           "label": "Share to Twitter text",
           "default": "Share on Twitter"
+        },
+        {
+          "label": "Share to Twitter statement",
+          "default": "I scored @percentage on @url"
+        },
+        {
+          "label": "Share to Twitter link",
+          "default": "http://moodle30.sheilds.org/"
+        },
+        {
+          "label": "Share to Twitter hashtags",
+          "default": "moodle,education,health,safety"
+        },
+        {
+          "label": "Share to Google text",
+          "default": "Share on Google+"
+        },
+        {
+          "label": "Share to Google link",
+          "default": "http://moodle30.sheilds.org/"
         },
         {
           "label": "Title for summary slide",

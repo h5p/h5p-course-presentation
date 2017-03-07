@@ -54,15 +54,18 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
           .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
       }
 
-      // TODO: Get approved App-id for posting to facebook.
-      // Construct facebook share score link
-      //var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide).remove();
-      //this.addFacebookScoreLinkTo($facebookContainer, totalScores.totalPercentage);
-      $('.h5p-summary-facebook-message', that.$summarySlide).remove();
-
       // Construct twitter share score link
       var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
-      this.addTwitterScoreLinkTo($twitterContainer, totalScores.totalPercentage);
+      this.addTwitterScoreLinkTo($twitterContainer, totalScores);
+
+      // TODO: Get approved App-id for posting to facebook.
+      // Construct facebook share score link
+      var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide);
+      this.addFacebookScoreLinkTo($facebookContainer, totalScores);
+
+      // Construct google share score link
+      var $googleContainer = $('.h5p-summary-google-message', that.$summarySlide);
+      this.addGoogleScoreLinkTo($googleContainer, totalScores);
 
       // Update slide links
       var links = that.$summarySlide.find('.h5p-td > .h5p-slide-link');
@@ -173,6 +176,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       '<div class="h5p-score-message-percentage">' + that.cp.l10n.scoreMessage + '</div>' +
       '<div class="h5p-summary-facebook-message"></div>' +
       '<div class="h5p-summary-twitter-message"></div>' +
+      '<div class="h5p-summary-google-message"></div>' +
       '</div>' +
       '<div class="h5p-summary-table-holder">' +
       ' <div class="h5p-summary-table-pages">' +
@@ -241,54 +245,79 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
    * Adds a link to the given container which will link achieved score to facebook.
    *
    * @param {jQuery} $facebookContainer Container that should hold the facebook link.
-   * @param {Number} percentageScore Percentage score that should be linked.
+   * @param {Number} percentScore Percentage score that should be linked.
    */
-  SummarySlide.prototype.addFacebookScoreLinkTo = function ($facebookContainer, percentageScore) {
-    var that = this;
-    $('<span class="show-facebook-icon">' + that.cp.l10n.shareFacebook + '</span>')
-      .appendTo($facebookContainer);
+  // SummarySlide.prototype.addFacebookScoreLinkTo = function ($facebookContainer, scores) {
+  //   var that = this;
+  //   $('<span class="show-facebook-icon">' + that.cp.l10n.shareFacebook + '</span>')
+  //     .appendTo($facebookContainer);
 
-    var facebookString = 'http://www.facebook.com/dialog/feed?' +
-      'app_id=1385640295075628&' +
-      'link=http://h5p.org/&' +
-      'name=H5P&20task&' +
-      'caption=I%20just%20finished%20a%20H5P%20task!&' +
-      'description=I%20got%20' + percentageScore + '%25%20at:%20' + window.location.href + '&' +
-      'redirect_uri=http://h5p.org/';
+  //   var facebookString = 'http://www.facebook.com/dialog/feed?' +
+  //     'app_id=1385640295075628&' +
+  //     'link=http://h5p.org/&' +
+  //     'name=H5P&20task&' +
+  //     'caption=I%20just%20finished%20a%20H5P%20task!&' +
+  //     'description=I%20got%20' + scores.percentScore + '%25%20at:%20' + window.location.href + '&' +
+  //     'redirect_uri=http://h5p.org/';
 
-    var popupWidth = 800;
-    var popupHeight = 500;
-    var leftPos = (window.innerWidth / 2);
-    var topPos = (window.innerHeight / 2);
+  //   var popupWidth = 800;
+  //   var popupHeight = 500;
+  //   var leftPos = (window.innerWidth / 2);
+  //   var topPos = (window.innerHeight / 2);
 
-    $facebookContainer.attr('tabindex', '0')
-      .attr('role', 'button')
-      .click(function () {
-        window.open(facebookString,
-          that.cp.l10n.shareFacebook,
-          'width=' + popupWidth +
-          ',height=' + popupHeight +
-          ',left=' + leftPos +
-          ',top=' + topPos);
-        return false;
-      });
-  };
+  //   $facebookContainer.attr('tabindex', '0')
+  //     .attr('role', 'button')
+  //     .click(function () {
+  //       window.open(facebookString,
+  //         that.cp.l10n.shareFacebook,
+  //         'width=' + popupWidth +
+  //         ',height=' + popupHeight +
+  //         ',left=' + leftPos +
+  //         ',top=' + topPos);
+  //       return false;
+  //     });
+  // };
 
   /**
    * Adds a link to the given container which will link achieved score to twitter.
    *
    * @param {jQuery} $twitterContainer Container that should hold the twitter link.
-   * @param {Number} percentageScore Percentage score that should be linked.
+   * @param {Number} scores totalScores object to pull data from.
    */
-  SummarySlide.prototype.addTwitterScoreLinkTo = function ($twitterContainer, percentageScore) {
+  SummarySlide.prototype.addTwitterScoreLinkTo = function ($twitterContainer, scores) {
     var that = this;
-    var twitterString = 'http://twitter.com/share?text=I%20got%20' + percentageScore + '%25%20on%20this%20task:&url=' + encodeURIComponent(window.location.href);
+
+    // Get data from the localization object.
+    var twitterShareStatement = that.cp.l10n.twitterShareStatement;
+    twitterShareStatement = encodeURIComponent(twitterShareStatement);
+
+    var twitterShareUrl = that.cp.l10n.twitterShareUrl;
+    var twitterHashtagList = that.cp.l10n.twitterShareHashtags;
+    twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
+
+    // Add query strings to the URL based on settings.
+    var twitterString = 'http://twitter.com/intent/tweet?';
+
+    if (twitterShareStatement.length > 0)
+      twitterString += `text=${twitterShareStatement}&`;
+
+    if (twitterShareUrl.length > 0)
+      twitterString += `url=${twitterShareUrl}&`;
+
+    if (twitterHashtagList.length > 0)
+      twitterString += `hashtags=${twitterHashtagList}&`;
+
+    // Replace any placeholders with variables.
+    twitterShareStatement = twitterShareUrl.replace('@percentage', scores.totalPercentage + '%');
+    twitterShareStatement = twitterShareUrl.replace('@url', window.location.href);
+    twitterShareUrl = encodeURIComponent(twitterShareUrl);
 
     var popupWidth = 800;
-    var popupHeight = 250;
+    var popupHeight = 300;
     var leftPos = (window.innerWidth / 2);
     var topPos = (window.innerHeight / 2);
 
+  // Create the new Twitter window.
     $twitterContainer.attr('tabindex', '0')
       .attr('role', 'button')
       .click(function () {
@@ -300,10 +329,104 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
           ',top=' + topPos);
         return false;
       });
-
-    $('<span class="show-twitter-icon">' + that.cp.l10n.shareTwitter + '</span>')
-      .appendTo($twitterContainer);
   };
+
+  /**
+   * Adds a link to the given container which will link achieved score to facebook.
+   *
+   * @param {jQuery} $facebookContainer Container that should hold the facebook link.
+   * @param {Number} scores totalScores object to pull data from.
+   *
+   * TODO:- Replace with the Facebook API (requires an app ID)
+   */
+  SummarySlide.prototype.addFacebookScoreLinkTo = function ($facebookContainer, scores) {
+    var that = this;
+
+    // Get data from the localization object.
+    var facebookShareUrl = that.cp.l10n.facebookShareUrl;
+    var facebookShareTitle = that.cp.l10n.facebookShareTitle;
+    var facebookShareQuote = that.cp.l10n.facebookShareQuote;
+    var facebookShareDescription = that.cp.l10n.facebookShareDescription;
+
+    // Add query strings to the URL based on settings.
+    var facebookUrl = 'https://www.facebook.com/sharer/sharer.php?';
+
+    if (facebookShareUrl.length > 0)
+      facebookUrl += `u=${facebookShareUrl}&`;
+
+    if (facebookShareTitle.length > 0)
+      facebookUrl += `title=${facebookShareTitle}&`;
+
+    if (facebookShareQuote.length > 0)
+      facebookUrl += `quote=${facebookShareQuote}&`;
+
+    if (facebookShareDescription.length > 0)
+      facebookUrl += `description=${facebookShareDescription}`;
+
+    // Replace any placeholders with variables.
+    facebookUrl = facebookUrl.replace('@percentage', scores.totalPercentage + '%');
+    facebookUrl = facebookUrl.replace('@url', window.location.href);
+
+    // Encode the final URL.
+    facebookUrl = encodeURI(facebookUrl);
+
+    var popupWidth = 800;
+    var popupHeight = 300;
+    var leftPos = (window.innerWidth / 2);
+    var topPos = (window.innerHeight / 2);
+
+    // Create the new Facebook window.
+    $facebookContainer.attr('tabindex', '0')
+      .attr('role', 'button')
+      .click(function () {
+        window.open(facebookUrl,
+          that.cp.l10n.shareFacebook,
+          'width=' + popupWidth +
+          ',height=' + popupHeight +
+          ',left=' + leftPos +
+          ',top=' + topPos);
+        return false;
+      });
+  }
+
+  /**
+   * Adds a link to the given container which will link achieved score to google.
+   *
+   * @param {jQuery} $googleContainer Container that should hold the google link.
+   * @param {Number} scores totalScores object to pull data from.
+   */
+  SummarySlide.prototype.addGoogleScoreLinkTo = function ($googleContainer, scores) {
+    var that = this;
+
+    // Get data from the localization object.
+    var googleUrl = "https://plus.google.com/share?";
+    var googleShareUrl = that.cp.l10n.googleShareUrl;
+
+    // Replace any placeholders with variables.
+    googleShareUrl.replace('@url', window.location.href);
+
+    // Add query strings to the URL based on settings.
+    if (googleShareUrl.length > 0)
+      googleUrl += `url=${googleShareUrl}`;
+
+    var popupWidth = 401;
+    var popupHeight = 437;
+    var leftPos = (window.innerWidth / 2);
+    var topPos = (window.innerHeight / 2);
+
+    // Create the new Google+ window.
+    $googleContainer.attr('tabindex', '0')
+      .attr('role', 'button')
+      .click(function () {
+        window.open(googleUrl,
+          that.cp.l10n.shareGoogle,
+          'width=' + popupWidth +
+          ',height=' + popupHeight +
+          ',left=' + leftPos +
+          ',top=' + topPos);
+        return false;
+      });
+  }
 
   /**
    * Gets total scores for all slides

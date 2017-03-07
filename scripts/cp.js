@@ -59,6 +59,7 @@ H5P.CoursePresentation = function (params, id, extras) {
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
+    shareGoogle: 'Share on Google+',
     goToSlide: 'Go to slide :num',
     solutionsButtonTitle: 'Show comments',
     printTitle: 'Print',

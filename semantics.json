@@ -533,11 +533,74 @@
         "default": "Share on Facebook"
       },
       {
+        "name": "facebookShareUrl",
+        "type": "text",
+        "label": "Share to Facebook link",
+        "importance": "low",
+        "default": "http://moodle30.sheilds.org/"
+      },
+      {
+        "name": "facebookShareTitle",
+        "type": "text",
+        "label": "Share to Facebook title",
+        "importance": "low",
+        "default": "SHEilds E-Learning Courses"
+      },
+      {
+        "name": "facebookShareQuote",
+        "type": "text",
+        "label": "Share to Facebook quote",
+        "importance": "low",
+        "default": "I scored @percentage on a task at @url"
+      },
+      {
+        "name": "facebookShareDescription",
+        "type": "text",
+        "label": "Share to Facebook description",
+        "importance": "low",
+        "default": "Register today for all your health and safety qualification needs, around the world."
+      },
+      {
+        "name": "twitterShareStatement",
+        "type": "text",
+        "label": "Share to Twitter statement",
+        "importance": "low",
+        "default": "I scored @percentage on a task."
+      },
+      {
         "name": "shareTwitter",
         "type": "text",
         "label": "Share to Twitter text",
         "importance": "low",
         "default": "Share on Twitter"
+      },
+      {
+        "name": "twitterShareUrl",
+        "type": "text",
+        "label": "Share to Twitter link",
+        "importance": "low",
+        "default": ""
+      },
+      {
+        "name": "twitterShareHashtags",
+        "type": "text",
+        "label": "Share to Twitter hashtags",
+        "importance": "low",
+        "default": ""
+      },
+      {
+        "name": "shareGoogle",
+        "type": "text",
+        "label": "Share to Google text",
+        "importance": "low",
+        "default": "Share on Google+"
+      },
+      {
+        "name": "googleShareUrl",
+        "type": "text",
+        "label": "Share to Google link",
+        "importance": "low",
+        "default": "@url"
       },
       {
         "name": "summary",
