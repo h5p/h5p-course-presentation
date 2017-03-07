@@ -289,28 +289,29 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Get data from the localization object.
     var twitterShareStatement = that.cp.l10n.twitterShareStatement;
-    twitterShareStatement = encodeURIComponent(twitterShareStatement);
-
     var twitterShareUrl = that.cp.l10n.twitterShareUrl;
     var twitterHashtagList = that.cp.l10n.twitterShareHashtags;
+
+    console.log(that.cp.l10n);
+    console.log(that.cp.l10n.twitterShareStatement);
+    console.log(that.cp.l10n.shareTwitter)
+
+    // Do replaces on encoded data early on, before they're encoded
+    twitterShareUrl = twitterShareUrl.replace('@url', window.location.href);
+
+    // Parse data from the localization object.
+    twitterShareUrl = encodeURIComponent(twitterShareUrl);
     twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
 
     // Add query strings to the URL based on settings.
     var twitterString = 'http://twitter.com/intent/tweet?';
-
-    if (twitterShareStatement.length > 0)
-      twitterString += `text=${twitterShareStatement}&`;
-
-    if (twitterShareUrl.length > 0)
-      twitterString += `url=${twitterShareUrl}&`;
-
-    if (twitterHashtagList.length > 0)
-      twitterString += `hashtags=${twitterHashtagList}&`;
+    twitterString += (twitterShareStatement.length > 0) ? `text=${twitterShareStatement}&` : '';
+    twitterString += (twitterShareUrl.length > 0) ? `url=${twitterShareUrl}&` : '';
+    twitterString += (twitterHashtagList.length > 0) ? `hashtags=${twitterHashtagList}&` : '';
 
     // Replace any placeholders with variables.
-    twitterShareStatement = twitterShareUrl.replace('@percentage', scores.totalPercentage + '%');
-    twitterShareStatement = twitterShareUrl.replace('@url', window.location.href);
-    twitterShareUrl = encodeURIComponent(twitterShareUrl);
+    twitterString = twitterString.replace('@percentage', scores.totalPercentage + '%');
+    twitterString = twitterString.replace('@url', window.location.href);
 
     var popupWidth = 800;
     var popupHeight = 300;
@@ -348,27 +349,22 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var facebookShareQuote = that.cp.l10n.facebookShareQuote;
     var facebookShareDescription = that.cp.l10n.facebookShareDescription;
 
+    // Do replaces on encoded data early on, before they're encoded
+    facebookShareUrl = facebookShareUrl.replace('@url', window.location.href);
+
+    // Parse data from the localization object.
+    facebookShareUrl = encodeURIComponent(facebookShareUrl);
+
     // Add query strings to the URL based on settings.
     var facebookUrl = 'https://www.facebook.com/sharer/sharer.php?';
-
-    if (facebookShareUrl.length > 0)
-      facebookUrl += `u=${facebookShareUrl}&`;
-
-    if (facebookShareTitle.length > 0)
-      facebookUrl += `title=${facebookShareTitle}&`;
-
-    if (facebookShareQuote.length > 0)
-      facebookUrl += `quote=${facebookShareQuote}&`;
-
-    if (facebookShareDescription.length > 0)
-      facebookUrl += `description=${facebookShareDescription}`;
+    facebookUrl += (facebookShareUrl.length > 0) ? `u=${facebookShareUrl}&` : '';
+    facebookUrl += (facebookShareTitle.length > 0) ? `title=${facebookShareTitle}&` : '';
+    facebookUrl += (facebookShareQuote.length > 0) ? `quote=${facebookShareQuote}&` : '';
+    facebookUrl += (facebookShareDescription.length > 0) ? `description=${facebookShareDescription}` : '';
 
     // Replace any placeholders with variables.
-    facebookUrl = facebookUrl.replace('@percentage', scores.totalPercentage + '%');
     facebookUrl = facebookUrl.replace('@url', window.location.href);
-
-    // Encode the final URL.
-    facebookUrl = encodeURI(facebookUrl);
+    facebookUrl = facebookUrl.replace('@percentage', scores.totalPercentage + '%');
 
     var popupWidth = 800;
     var popupHeight = 300;
@@ -399,15 +395,19 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var that = this;
 
     // Get data from the localization object.
-    var googleUrl = "https://plus.google.com/share?";
     var googleShareUrl = that.cp.l10n.googleShareUrl;
 
     // Replace any placeholders with variables.
-    googleShareUrl.replace('@url', window.location.href);
+    googleShareUrl = googleShareUrl.replace('@url', window.location.href);
+
+    // Parse data from the localization object.
+    googleShareUrl = encodeURIComponent(googleShareUrl);
 
     // Add query strings to the URL based on settings.
-    if (googleShareUrl.length > 0)
-      googleUrl += `url=${googleShareUrl}`;
+    var googleUrl = "https://plus.google.com/share?";
+    googleUrl += (googleShareUrl.length > 0) ? `url=${googleShareUrl}` : '';
+
+
 
     var popupWidth = 401;
     var popupHeight = 437;

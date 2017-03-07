@@ -227,11 +227,11 @@
         },
         {
           "label": "Share to Facebook link",
-          "default": "https://www.facebook.com/sharer/sharer.php"
+          "default": ""
         },
         {
           "label": "Share to Facebook title",
-          "default": "SHEilds E-Learning Courses"
+          "default": "I completed a task on Moodle"
         },
         {
           "label": "Share to Facebook quote",
@@ -239,7 +239,7 @@
         },
         {
           "label": "Share to Facebook description",
-          "default": "Register today for all your health & safety qualification needs, around the world."
+          "default": ""
         },
         {
           "label": "Share to Twitter text",
@@ -247,15 +247,15 @@
         },
         {
           "label": "Share to Twitter statement",
-          "default": "I scored @percentage on @url"
+          "default": "I scored @percentage on a task at @url"
         },
         {
           "label": "Share to Twitter link",
-          "default": "http://moodle30.sheilds.org/"
+          "default": ""
         },
         {
           "label": "Share to Twitter hashtags",
-          "default": "moodle,education,health,safety"
+          "default": "moodle,education"
         },
         {
           "label": "Share to Google text",
@@ -263,7 +263,7 @@
         },
         {
           "label": "Share to Google link",
-          "default": "http://moodle30.sheilds.org/"
+          "default": "@url"
         },
         {
           "label": "Title for summary slide",

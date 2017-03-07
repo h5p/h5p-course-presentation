@@ -234,6 +234,9 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
         }
 
         finished(null, parameters);
+      },
+      17: function (parameters, finished) {
+        // Upgrade to 17 (added semantics)
       }
     }
   };

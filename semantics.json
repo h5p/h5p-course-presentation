@@ -537,35 +537,35 @@
         "type": "text",
         "label": "Share to Facebook link",
         "importance": "low",
-        "default": "http://moodle30.sheilds.org/"
+        "default": ""
       },
       {
         "name": "facebookShareTitle",
         "type": "text",
         "label": "Share to Facebook title",
         "importance": "low",
-        "default": "SHEilds E-Learning Courses"
+        "default": ""
       },
       {
         "name": "facebookShareQuote",
         "type": "text",
         "label": "Share to Facebook quote",
         "importance": "low",
-        "default": "I scored @percentage on a task at @url"
+        "default": "I scored @percentage on a task at @url."
       },
       {
         "name": "facebookShareDescription",
         "type": "text",
         "label": "Share to Facebook description",
         "importance": "low",
-        "default": "Register today for all your health and safety qualification needs, around the world."
+        "default": ""
       },
       {
         "name": "twitterShareStatement",
         "type": "text",
         "label": "Share to Twitter statement",
         "importance": "low",
-        "default": "I scored @percentage on a task."
+        "default": "I scored @percentage on a task at @url."
       },
       {
         "name": "shareTwitter",
