@@ -216,6 +216,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
   SummarySlide.prototype.getSlideDescription = function (slideScoresSlide) {
     var self = this;
+
     // Get task description, task name or identify multiple tasks:
     var slideDescription, action;
     var slideElements = self.cp.slides[slideScoresSlide.slide - 1].elements;
@@ -290,10 +291,10 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     twitterString += (twitterShareUrl.length > 0) ? `url=${twitterShareUrl}&` : '';
     twitterString += (twitterHashtagList.length > 0) ? `hashtags= ${twitterHashtagList}&` : '';
 
-    var popupWidth = 800;
-    var popupHeight = 300;
     var leftPos = (window.innerWidth / 2);
     var topPos = (window.innerHeight / 2);
+    var popupWidth = 800;
+    var popupHeight = 300;
 
     // Create the new Twitter window.
     $twitterContainer.attr('tabindex', '0')
@@ -314,8 +315,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
    *
    * @param {jQuery} $facebookContainer Container that should hold the facebook link.
    * @param {Number} scores totalScores object to pull data from.
-   *
-   * TODO:- Replace with the Facebook API (requires an app ID)
    */
   SummarySlide.prototype.addFacebookScoreLinkTo = function ($facebookContainer, scores) {
     var that = this;

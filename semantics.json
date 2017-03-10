@@ -745,7 +745,7 @@
         "label": "Google+ share overrides",
         "fields": [
           {
-            "name": "showGoogleshare",
+            "name": "showGoogleShare",
             "type": "boolean",
             "label": "Display Google+ share icon",
             "importance": "low",
