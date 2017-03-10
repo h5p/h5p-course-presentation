@@ -72,6 +72,21 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
     this.enablePrintButton = !!params.override.enablePrintButton;
+
+    this.enableTwitterShare = !!params.override.twitterShareOverrides.showTwitterShare;
+    this.enableFacebookShare = !!params.override.facebookShareOverrides.showFacebookShare;
+    this.enableGoogleShare = !!params.override.googleShareOverrides.showGoogleShare;
+
+    this.twitterShareStatement = params.override.twitterShareOverrides.twitterShareStatement;
+    this.twitterShareHashtags = params.override.twitterShareOverrides.twitterShareHashtags;
+    this.twitterShareUrl = params.override.twitterShareOverrides.twitterShareUrl;
+
+    this.facebookShareUrl = params.override.facebookShareOverrides.facebookShareUrl;
+    this.facebookShareTitle = params.override.facebookShareOverrides.facebookShareTitle;
+    this.facebookShareQuote = params.override.facebookShareOverrides.facebookShareQuote;
+    this.facebookShareDescription = params.override.facebookShareOverrides.facebookShareDescription;
+
+    this.googleShareUrl = params.override.googleShareOverrides.googleShareUrl;
   }
 
   // Set override for all actions
@@ -698,6 +713,24 @@ H5P.CoursePresentation.prototype.setElementsOverride = function (override) {
       // Override retry button
       this.elementsOverride.params.behaviour.enableRetry =
           (override.retryButton === 'on' ? true : false);
+    }
+
+    if (override.showTwitterShare) {
+      // Override Twitter share icon
+      this.elementsOverride.params.behaviour.showTwitterShare =
+          (override.enableTwitterShare === 'on' ? true : false);
+    }
+
+    if (override.showFacebookShare) {
+      // Override Facebook share icon
+      this.elementsOverride.params.behaviour.showFacebookShare =
+          (override.enableFacebookShare === 'on' ? true : false);
+    }
+
+    if (override.showGoogleShare) {
+      // Override Google+ share icon
+      this.elementsOverride.params.behaviour.showGoogleShare =
+          (override.enableGoogleShare === 'on' ? true : false);
     }
   }
 };

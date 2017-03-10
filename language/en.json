@@ -226,44 +226,12 @@
           "default": "Share on Facebook"
         },
         {
-          "label": "Share to Facebook link",
-          "default": ""
-        },
-        {
-          "label": "Share to Facebook title",
-          "default": "I completed a task on Moodle"
-        },
-        {
-          "label": "Share to Facebook quote",
-          "default": "I scored @percentage on a task at @url"
-        },
-        {
-          "label": "Share to Facebook description",
-          "default": ""
-        },
-        {
           "label": "Share to Twitter text",
           "default": "Share on Twitter"
         },
         {
-          "label": "Share to Twitter statement",
-          "default": "I scored @percentage on a task at @url"
-        },
-        {
-          "label": "Share to Twitter link",
-          "default": ""
-        },
-        {
-          "label": "Share to Twitter hashtags",
-          "default": "moodle,education"
-        },
-        {
           "label": "Share to Google text",
           "default": "Share on Google+"
-        },
-        {
-          "label": "Share to Google link",
-          "default": "@url"
         },
         {
           "label": "Title for summary slide",

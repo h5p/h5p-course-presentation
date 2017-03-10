@@ -533,41 +533,6 @@
         "default": "Share on Facebook"
       },
       {
-        "name": "facebookShareUrl",
-        "type": "text",
-        "label": "Share to Facebook link",
-        "importance": "low",
-        "default": ""
-      },
-      {
-        "name": "facebookShareTitle",
-        "type": "text",
-        "label": "Share to Facebook title",
-        "importance": "low",
-        "default": ""
-      },
-      {
-        "name": "facebookShareQuote",
-        "type": "text",
-        "label": "Share to Facebook quote",
-        "importance": "low",
-        "default": "I scored @percentage on a task at @url."
-      },
-      {
-        "name": "facebookShareDescription",
-        "type": "text",
-        "label": "Share to Facebook description",
-        "importance": "low",
-        "default": ""
-      },
-      {
-        "name": "twitterShareStatement",
-        "type": "text",
-        "label": "Share to Twitter statement",
-        "importance": "low",
-        "default": "I scored @percentage on a task at @url."
-      },
-      {
         "name": "shareTwitter",
         "type": "text",
         "label": "Share to Twitter text",
@@ -575,32 +540,11 @@
         "default": "Share on Twitter"
       },
       {
-        "name": "twitterShareUrl",
-        "type": "text",
-        "label": "Share to Twitter link",
-        "importance": "low",
-        "default": ""
-      },
-      {
-        "name": "twitterShareHashtags",
-        "type": "text",
-        "label": "Share to Twitter hashtags",
-        "importance": "low",
-        "default": ""
-      },
-      {
         "name": "shareGoogle",
         "type": "text",
         "label": "Share to Google text",
         "importance": "low",
         "default": "Share on Google+"
-      },
-      {
-        "name": "googleShareUrl",
-        "type": "text",
-        "label": "Share to Google link",
-        "importance": "low",
-        "default": "@url"
       },
       {
         "name": "summary",
@@ -714,6 +658,107 @@
         "importance": "low",
         "description": "Enables the print button.",
         "default": false
+      },
+      {
+        "name": "facebookShareOverrides",
+        "importance": "low",
+        "type": "group",
+        "label": "Facebook share overrides",
+        "fields": [
+          {
+            "name": "showFacebookShare",
+            "type": "boolean",
+            "label": "Display Facebook share icon",
+            "importance": "low",
+            "default": true
+          },
+          {
+            "name": "facebookShareUrl",
+            "type": "text",
+            "label": "Share to Facebook link",
+            "importance": "low",
+            "default": ""
+          },
+          {
+            "name": "facebookShareTitle",
+            "type": "text",
+            "label": "Share to Facebook title",
+            "importance": "low",
+            "default": ""
+          },
+          {
+            "name": "facebookShareQuote",
+            "type": "text",
+            "label": "Share to Facebook quote",
+            "importance": "low",
+            "default": "I scored @percentage on a task at @url."
+          },
+          {
+            "name": "facebookShareDescription",
+            "type": "text",
+            "label": "Share to Facebook description",
+            "importance": "low",
+            "default": ""
+          }
+        ]
+      },
+      {
+        "name": "twitterShareOverrides",
+        "importance": "low",
+        "type": "group",
+        "label": "Twitter share overrides",
+        "fields": [
+          {
+            "name": "showTwitterShare",
+            "type": "boolean",
+            "label": "Display Twitter share icon",
+            "importance": "low",
+            "default": true
+          },
+          {
+            "name": "twitterShareStatement",
+            "type": "text",
+            "label": "Share to Twitter statement",
+            "importance": "low",
+            "default": "I scored @percentage on a task at @url."
+          },
+          {
+            "name": "twitterShareUrl",
+            "type": "text",
+            "label": "Share to Twitter link",
+            "importance": "low",
+            "default": ""
+          },
+          {
+            "name": "twitterShareHashtags",
+            "type": "text",
+            "label": "Share to Twitter hashtags",
+            "importance": "low",
+            "default": ""
+          }
+        ]
+      },
+      {
+        "name": "googleShareOverrides",
+        "importance": "low",
+        "type": "group",
+        "label": "Google+ share overrides",
+        "fields": [
+          {
+            "name": "showGoogleshare",
+            "type": "boolean",
+            "label": "Display Google+ share icon",
+            "importance": "low",
+            "default": true
+          },
+          {
+            "name": "googleShareUrl",
+            "type": "text",
+            "label": "Share to Google link",
+            "importance": "low",
+            "default": "@url"
+          }
+        ]
       }
     ]
   }

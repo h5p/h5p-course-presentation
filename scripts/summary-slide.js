@@ -55,17 +55,22 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       }
 
       // Construct twitter share score link
-      var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
-      this.addTwitterScoreLinkTo($twitterContainer, totalScores);
+      if (that.cp.enableTwitterShare == true) {
+        var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
+        this.addTwitterScoreLinkTo($twitterContainer, totalScores);
+      }
 
-      // TODO: Get approved App-id for posting to facebook.
       // Construct facebook share score link
-      var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide);
-      this.addFacebookScoreLinkTo($facebookContainer, totalScores);
+      if (that.cp.enableFacebookShare == true) {
+        var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide);
+        this.addFacebookScoreLinkTo($facebookContainer, totalScores);
+      }
 
       // Construct google share score link
-      var $googleContainer = $('.h5p-summary-google-message', that.$summarySlide);
-      this.addGoogleScoreLinkTo($googleContainer, totalScores);
+      if (that.cp.enableGoogleShare == true) {
+        var $googleContainer = $('.h5p-summary-google-message', that.$summarySlide);
+        this.addGoogleScoreLinkTo($googleContainer, totalScores);
+      }
 
       // Update slide links
       var links = that.$summarySlide.find('.h5p-td > .h5p-slide-link');
@@ -155,7 +160,9 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       tds +=
         '<tr>' +
           '<td class="h5p-td h5p-summary-task-title">' +
-            '<span role="button" class="h5p-slide-link" data-slide="' + slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + '</span>' +
+            '<span role="button" class="h5p-slide-link" data-slide="' +
+              slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) +
+            '</span>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
             '<div title="' + slidePercentageScore + '%" class="h5p-summary-score-meter">' +
@@ -171,12 +178,18 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     var percentScore = Math.round((totalScore / totalMaxScore) * 100);
 
+    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<div class="h5p-summary-twitter-message"></div>': '';
+    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<div class="h5p-summary-facebook-message"></div>': '';
+    var googleContainer = (that.cp.enableGoogleShare == true) ? '<div class="h5p-summary-google-message"></div>' : '';
+
+    console.log(that.cp);
+
     var html =
       '<div class="h5p-score-message">' +
       '<div class="h5p-score-message-percentage">' + that.cp.l10n.scoreMessage + '</div>' +
-      '<div class="h5p-summary-facebook-message"></div>' +
-      '<div class="h5p-summary-twitter-message"></div>' +
-      '<div class="h5p-summary-google-message"></div>' +
+      facebookContainer +
+      twitterContainer +
+      googleContainer +
       '</div>' +
       '<div class="h5p-summary-table-holder">' +
       ' <div class="h5p-summary-table-pages">' +
@@ -242,43 +255,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
   };
 
   /**
-   * Adds a link to the given container which will link achieved score to facebook.
-   *
-   * @param {jQuery} $facebookContainer Container that should hold the facebook link.
-   * @param {Number} percentScore Percentage score that should be linked.
-   */
-  // SummarySlide.prototype.addFacebookScoreLinkTo = function ($facebookContainer, scores) {
-  //   var that = this;
-  //   $('<span class="show-facebook-icon">' + that.cp.l10n.shareFacebook + '</span>')
-  //     .appendTo($facebookContainer);
-
-  //   var facebookString = 'http://www.facebook.com/dialog/feed?' +
-  //     'app_id=1385640295075628&' +
-  //     'link=http://h5p.org/&' +
-  //     'name=H5P&20task&' +
-  //     'caption=I%20just%20finished%20a%20H5P%20task!&' +
-  //     'description=I%20got%20' + scores.percentScore + '%25%20at:%20' + window.location.href + '&' +
-  //     'redirect_uri=http://h5p.org/';
-
-  //   var popupWidth = 800;
-  //   var popupHeight = 500;
-  //   var leftPos = (window.innerWidth / 2);
-  //   var topPos = (window.innerHeight / 2);
-
-  //   $facebookContainer.attr('tabindex', '0')
-  //     .attr('role', 'button')
-  //     .click(function () {
-  //       window.open(facebookString,
-  //         that.cp.l10n.shareFacebook,
-  //         'width=' + popupWidth +
-  //         ',height=' + popupHeight +
-  //         ',left=' + leftPos +
-  //         ',top=' + topPos);
-  //       return false;
-  //     });
-  // };
-
-  /**
    * Adds a link to the given container which will link achieved score to twitter.
    *
    * @param {jQuery} $twitterContainer Container that should hold the twitter link.
@@ -288,37 +264,38 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var that = this;
 
     // Get data from the localization object.
-    var twitterShareStatement = that.cp.l10n.twitterShareStatement;
-    var twitterShareUrl = that.cp.l10n.twitterShareUrl;
-    var twitterHashtagList = that.cp.l10n.twitterShareHashtags;
-
-    console.log(that.cp.l10n);
-    console.log(that.cp.l10n.twitterShareStatement);
-    console.log(that.cp.l10n.shareTwitter)
+    var twitterShareStatement = that.cp.twitterShareStatement;
+    var twitterHashtagList = that.cp.twitterShareHashtags;
+    var twitterShareUrl = that.cp.twitterShareUrl;
 
     // Do replaces on encoded data early on, before they're encoded
     twitterShareUrl = twitterShareUrl.replace('@url', window.location.href);
 
     // Parse data from the localization object.
-    twitterShareUrl = encodeURIComponent(twitterShareUrl);
+    // twitterShareStatement = encodeURIComponent(twitterShareStatement);
     twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
+
+    // Replace any placeholders with variables.
+    twitterShareStatement = twitterShareStatement.replace('@percentage', scores.totalPercentage + '%');
+    twitterHashTagList = twitterHashtagList.replace('@url', window.location.href);
+
+    // Encode components that may contain breaking characters.
+    twitterShareStatement = encodeURIComponent(twitterShareStatement);
+    twitterHashTagList = encodeURIComponent(twitterHashtagList);
+    twitterShareUrl = encodeURIComponent(twitterShareUrl);
 
     // Add query strings to the URL based on settings.
     var twitterString = 'http://twitter.com/intent/tweet?';
     twitterString += (twitterShareStatement.length > 0) ? `text=${twitterShareStatement}&` : '';
     twitterString += (twitterShareUrl.length > 0) ? `url=${twitterShareUrl}&` : '';
-    twitterString += (twitterHashtagList.length > 0) ? `hashtags=${twitterHashtagList}&` : '';
-
-    // Replace any placeholders with variables.
-    twitterString = twitterString.replace('@percentage', scores.totalPercentage + '%');
-    twitterString = twitterString.replace('@url', window.location.href);
+    twitterString += (twitterHashtagList.length > 0) ? `hashtags= ${twitterHashtagList}&` : '';
 
     var popupWidth = 800;
     var popupHeight = 300;
     var leftPos = (window.innerWidth / 2);
     var topPos = (window.innerHeight / 2);
 
-  // Create the new Twitter window.
+    // Create the new Twitter window.
     $twitterContainer.attr('tabindex', '0')
       .attr('role', 'button')
       .click(function () {
@@ -344,10 +321,10 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var that = this;
 
     // Get data from the localization object.
-    var facebookShareUrl = that.cp.l10n.facebookShareUrl;
-    var facebookShareTitle = that.cp.l10n.facebookShareTitle;
-    var facebookShareQuote = that.cp.l10n.facebookShareQuote;
-    var facebookShareDescription = that.cp.l10n.facebookShareDescription;
+    var facebookShareUrl = that.cp.facebookShareUrl;
+    var facebookShareTitle = that.cp.facebookShareTitle;
+    var facebookShareQuote = that.cp.facebookShareQuote;
+    var facebookShareDescription = that.cp.facebookShareDescription;
 
     // Do replaces on encoded data early on, before they're encoded
     facebookShareUrl = facebookShareUrl.replace('@url', window.location.href);
@@ -395,7 +372,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var that = this;
 
     // Get data from the localization object.
-    var googleShareUrl = that.cp.l10n.googleShareUrl;
+    var googleShareUrl = that.cp.googleShareUrl;
 
     // Replace any placeholders with variables.
     googleShareUrl = googleShareUrl.replace('@url', window.location.href);
@@ -406,8 +383,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     // Add query strings to the URL based on settings.
     var googleUrl = "https://plus.google.com/share?";
     googleUrl += (googleShareUrl.length > 0) ? `url=${googleShareUrl}` : '';
-
-
 
     var popupWidth = 401;
     var popupHeight = 437;
