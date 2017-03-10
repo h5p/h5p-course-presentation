@@ -714,24 +714,6 @@ H5P.CoursePresentation.prototype.setElementsOverride = function (override) {
       this.elementsOverride.params.behaviour.enableRetry =
           (override.retryButton === 'on' ? true : false);
     }
-
-    if (override.showTwitterShare) {
-      // Override Twitter share icon
-      this.elementsOverride.params.behaviour.showTwitterShare =
-          (override.enableTwitterShare === 'on' ? true : false);
-    }
-
-    if (override.showFacebookShare) {
-      // Override Facebook share icon
-      this.elementsOverride.params.behaviour.showFacebookShare =
-          (override.enableFacebookShare === 'on' ? true : false);
-    }
-
-    if (override.showGoogleShare) {
-      // Override Google+ share icon
-      this.elementsOverride.params.behaviour.showGoogleShare =
-          (override.enableGoogleShare === 'on' ? true : false);
-    }
   }
 };
 

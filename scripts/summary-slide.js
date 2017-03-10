@@ -326,8 +326,18 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var facebookShareQuote = that.cp.facebookShareQuote;
     var facebookShareDescription = that.cp.facebookShareDescription;
 
-    // Do replaces on encoded data early on, before they're encoded
-    facebookShareUrl = facebookShareUrl.replace('@url', window.location.href);
+    // Replace any placeholders with variables.
+    facebookShareUrl = facebookShareUrl.replace('@url', window.location.href)
+                          .replace("@percentage", scores.totalPercentage + '%');
+
+    facebookShareTitle = facebookShareTitle.replace('@url', window.location.href)
+                            .replace("@percentage", scores.totalPercentage + '%');
+
+    facebookShareQuote = facebookShareQuote.replace('@url', window.location.href)
+                            .replace("@percentage", scores.totalPercentage + '%');
+
+    facebookShareDescription = facebookShareDescription.replace('@url', window.location.href)
+                                  .replace("@percentage", scores.totalPercentage + '%');
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);
@@ -338,10 +348,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     facebookUrl += (facebookShareTitle.length > 0) ? `title=${facebookShareTitle}&` : '';
     facebookUrl += (facebookShareQuote.length > 0) ? `quote=${facebookShareQuote}&` : '';
     facebookUrl += (facebookShareDescription.length > 0) ? `description=${facebookShareDescription}` : '';
-
-    // Replace any placeholders with variables.
-    facebookUrl = facebookUrl.replace('@url', window.location.href);
-    facebookUrl = facebookUrl.replace('@percentage', scores.totalPercentage + '%');
 
     var popupWidth = 800;
     var popupHeight = 300;
