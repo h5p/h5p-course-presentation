@@ -182,8 +182,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var facebookContainer = (that.cp.enableFacebookShare == true) ? '<div class="h5p-summary-facebook-message"></div>': '';
     var googleContainer = (that.cp.enableGoogleShare == true) ? '<div class="h5p-summary-google-message"></div>' : '';
 
-    console.log(that.cp);
-
     var html =
       '<div class="h5p-score-message">' +
       '<div class="h5p-score-message-percentage">' + that.cp.l10n.scoreMessage + '</div>' +
