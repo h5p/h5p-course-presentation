@@ -415,7 +415,7 @@
 
 /* Popup style */
 .h5p-course-presentation .h5p-popup-container table {
-border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .h5p-course-presentation .h5p-element-solution {
@@ -423,6 +423,7 @@ border-collapse: collapse;
   position: absolute;
   right: 0.5em;
   bottom: 0.1em;
+  text-decoration: none;
 }
 
 .h5p-course-presentation .h5p-element-button {
