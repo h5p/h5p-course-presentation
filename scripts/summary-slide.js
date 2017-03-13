@@ -257,7 +257,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
    * Adds a link to the given container which will link achieved score to twitter.
    *
    * @param {jQuery} $twitterContainer Container that should hold the twitter link.
-   * @param {Number} scores totalScores object to pull data from.
+   * @param {Object} scores totalScores object to pull data from.
    */
   SummarySlide.prototype.addTwitterScoreLinkTo = function ($twitterContainer, scores) {
     var that = this;
@@ -309,7 +309,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
    * Adds a link to the given container which will link achieved score to facebook.
    *
    * @param {jQuery} $facebookContainer Container that should hold the facebook link.
-   * @param {Number} scores totalScores object to pull data from.
+   * @param {Object} scores totalScores object to pull data from.
    */
   SummarySlide.prototype.addFacebookScoreLinkTo = function ($facebookContainer, scores) {
     var that = this;
@@ -366,7 +366,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
    * Adds a link to the given container which will link achieved score to google.
    *
    * @param {jQuery} $googleContainer Container that should hold the google link.
-   * @param {Number} scores totalScores object to pull data from.
+   * @param {Object} scores totalScores object to pull data from.
    */
   SummarySlide.prototype.addGoogleScoreLinkTo = function ($googleContainer, scores) {
     var that = this;
