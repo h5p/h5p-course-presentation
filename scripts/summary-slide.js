@@ -267,16 +267,13 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var twitterHashtagList = that.cp.twitterShareHashtags;
     var twitterShareUrl = that.cp.twitterShareUrl;
 
-    // Do replaces on encoded data early on, before they're encoded
+    // Replace any placeholders with variables.
     twitterShareUrl = twitterShareUrl.replace('@url', window.location.href);
+    twitterShareStatement = twitterShareStatement.replace('@percentage', scores.totalPercentage + '%')
+                                .replace('@url', window.location.href);
 
     // Parse data from the localization object.
-    // twitterShareStatement = encodeURIComponent(twitterShareStatement);
     twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
-
-    // Replace any placeholders with variables.
-    twitterShareStatement = twitterShareStatement.replace('@percentage', scores.totalPercentage + '%');
-    twitterHashTagList = twitterHashtagList.replace('@url', window.location.href);
 
     // Encode components that may contain breaking characters.
     twitterShareStatement = encodeURIComponent(twitterShareStatement);
