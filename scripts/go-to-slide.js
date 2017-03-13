@@ -7,8 +7,10 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
    * @class
    * @param {Number} slideNum
    * @param {CoursePresentation} cp
+   * @param {String} goToSlideNextPrevious
+   * @param {Number} index
    */
-  function GoToSlide(title, slideNum, invisible, cp) {
+  function GoToSlide(title, slideNum, invisible, cp, goToSlideNextPrevious, index) {
     var self = this;
 
     var classes = 'h5p-press-to-go';
@@ -21,8 +23,20 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
       title = title ? title : cp.l10n.goToSlide.replace(':num', slideNum);
       classes += ' h5p-visible';
     }
+    
+    // Check if previous or next is selected.
+    if (goToSlideNextPrevious == "next") {
+      slideNum = index + 1;
+      // If the title wasn't set, you don't want slide undefined to be shown.
+      title = title.replace('slide undefined', "next slide");
+    } else if (goToSlideNextPrevious == "previous") {
+      slideNum = index - 1;
+      title = title.replace('slide undefined', "previous slide");
+    } else {
+      // There is no goToSlideNextPrevious set, so jump to slide number is used.
+      slideNum--;
+    }
 
-    slideNum--;
 
     /**
      * @private
