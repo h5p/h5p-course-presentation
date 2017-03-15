@@ -995,7 +995,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
         'href': '#',
         'class': 'h5p-element-solution',
         'title': that.l10n.solutionsButtonTitle
-      }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-layer-1"></span><span class="h5p-icon-layer-2"></span><span class="h5p-icon-layer-3"></span></span>')
+      }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>')
         .click(function (event) {
           event.preventDefault();
           that.showPopup(element.solution);
