@@ -1,0 +1,321 @@
+{
+  "semantics":[
+    {
+      "fields":[
+        {
+          "field":{
+            "fields":[
+              {
+                "field":{
+                  "fields":[
+                    {
+                      
+                    },
+                    {
+                      
+                    },
+                    {
+                      
+                    },
+                    {
+                      
+                    },
+                    {
+                      
+                    },
+                    {
+                      "label":"Comentários",
+                      "description":"Os comentários são mostrados quando o usuário mostra as respostas sugeridas para todos os slides."
+                    },
+                    {
+                      "label":"Sempre mostrar comentários"
+                    },
+                    {
+                      "label":"Opacidade do Fundo"
+                    },
+                    {
+                      "label":"Mostrar como botão"
+                    },
+                    {
+                      "label":"Título"
+                    },
+                    {
+                      "label":"Seguir para o slide"
+                    },
+                    {
+                      "label":"Invisível",
+                      "description":"Cursor padrão, nenhum título e nenhum índice de tabulação. Aviso: Os usuários com deficiência ou sem mouse terão dificuldade ao usar esse elemento."
+                    },
+                    {
+                      "label":"Metadata",
+                      "fields":[
+                        {
+                          "label":"Título"
+                        },
+                        {
+                          "label":"Autor"
+                        },
+                        {
+                          "label":"Licença"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "field":{
+                  "fields":[
+                    {
+                      
+                    },
+                    {
+                      "field":{
+                        
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "fields":[
+                  {
+                    "label":"Imagem",
+                    "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar distorções. Imagens de alta resolução obterão melhor qualidade em telas maiores."
+                  },
+                  {
+                    "label":"Escolha uma cor",
+                    "spectrum":{
+                      
+                    },
+                    "default":""
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          
+        },
+        {
+          "label":"Lista de palavra-chave"
+        },
+        {
+          "label":"Mostrar sempre"
+        },
+        {
+          "label":"Ocultar automaticamente"
+        },
+        {
+          "label":"Opacidade"
+        },
+        {
+          "fields":[
+            {
+              "label":"Imagem",
+              "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar distorções. Imagens de alta resolução obterão melhores resultados em telas maiores."
+            },
+            {
+              "label":"Escolha uma cor",
+              "spectrum":{
+                
+              },
+              "default":""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label":"Localize",
+      "fields":[
+        {
+          "label":"Tradução para \"Slide\"",
+          "default":"Slide"
+        },
+        {
+          "label":"Tradução para \"Sua pontuação\"",
+          "default":"Sua Pontuação"
+        },
+        {
+          "label":"Tradução para \"Pontuação máxima\"",
+          "default":"Pontuação máxima"
+        },
+        {
+          "label":"Congratulação dada pela boa Pontuação",
+          "default":"Parabéns! Você acertou @percent!",
+          "description":"@percent será substituído pela pontuação real do usuário em %"
+        },
+        {
+          "label":"Saudação dada por uma pontuação aceitável",
+          "default":"Bom trabalho, você acertou @percent!",
+          "description":"@percent será substituído pela pontuação real do usuário em %"
+        },
+        {
+          "label":"Crítica por pontuação RUIM",
+          "default":"Você acertou @percent.",
+          "description":"@percent será substituído pela pontuação real do usuário em %"
+        },
+        {
+          "label":"Tradução para \"Total\"",
+          "default":"Total"
+        },
+        {
+          "label":"Título para botão mostrar soluções",
+          "default":"Mostrar soluções"
+        },
+        {
+          "label":"Texto para o botão de tentar novamente",
+          "default":"Repetir"
+        },
+        {
+          "label":"Tradução para \"Título\"",
+          "default":"Título"
+        },
+        {
+          "label":"Tradução para \"Autor/fornecedor\"",
+          "default":"Autor"
+        },
+        {
+          "label":"Tradução para \"Licença\"",
+          "default":"Licença"
+        },
+        {
+          "label":"Tradução para \"Licença\"",
+          "default":"Licença"
+        },
+        {
+          "label":"Texto para o botão de exportar texto",
+          "default":"Exportar texto"
+        },
+        {
+          "label":"Texto para o botão de \"Direitos de uso\"",
+          "default":"Direitos de utilização"
+        },
+        {
+          "label":"Título do botão de Ocultar lista de palavras-chave",
+          "default":"Esconder a lista de palavras-chave"
+        },
+        {
+          "label":"Mostrar título do botão de mostrar lista de palavras-chave",
+          "default":"Mostart a lista de palavras-chave"
+        },
+        {
+          "label":"Rótulo do Modo Tela Cheia",
+          "default":"Tela cheia"
+        },
+        {
+          "label":"Sair do rótulo do modo tela cheia",
+          "default":"Sair do modo tela cheia"
+        },
+        {
+          "label":"Rótulo para slide anterior",
+          "default":"Slide anterior"
+        },
+        {
+          "label":"Rótulo para próximo slide",
+          "default":"Próximo slide"
+        },
+        {
+          "label":"Rótulo para slide atual",
+          "default":"Slide atual"
+        },
+        {
+          "label":"Rótulo para último slide",
+          "default":"Último slide"
+        },
+        {
+          "label":"Texto para sair do modo de solução",
+          "default":"Sair do modo de solução"
+        },
+        {
+          "label":"Texto para modo de solução",
+          "default":"Modo de solução"
+        },
+        {
+          "label":"Texto quando houver múltiplas tarefas em uma página",
+          "default":"Múltiplas tarefas"
+        },
+        {
+          "label":"Texto da mensagem de pontuação",
+          "default":"Você atingiu:"
+        },
+        {
+          "label":"Compartilhar como texto no Facebook",
+          "default":"Compartilhar no Facebook"
+        },
+        {
+          "label":"Compartilhar como texto no Twitter",
+          "default":"Compartilhar no Twitter"
+        },
+        {
+          "label":"Título para o slide de resumo",
+          "default":"Resumo"
+        },
+        {
+          "label":"Título para o ícone de comentários",
+          "default":"Mostrar comentários"
+        },
+        {
+          "label":"Título para o botão de impressão",
+          "default":"Imprimir"
+        },
+        {
+          "label":"Entrada de diálogo de impressão",
+          "default":"Como você gostaria de imprimir esta apresentação?"
+        },
+        {
+          "label":"Rótulo para o botão \"Imprimir todos os slides\"",
+          "default":"Imprimir todos os slides"
+        },
+        {
+          "label":"Rótulo para o botão \"Imprimir slide atual\"",
+          "default":"Imprimir slide atual"
+        }
+      ]
+    },
+    {
+      "label":"Configurações de comportamento.",
+      "description":"Essas opções permitirão você substituir configurações de comportamento.",
+      "fields":[
+        {
+          "label":"Ativar modo de superfície ativa",
+          "description":"Remove os controles de navegação para o usuário final. Use o Seguir Para Slide para navegar."
+        },
+        {
+          "label":"Ocultar Slide de Resumo",
+          "description":"Oculta o slide de Resumo."
+        },
+        {
+          "label":"Substituir o botão de \"Mostrar Solução\"",
+          "description":"Essa opção determina se o botão \"Mostrar Solução\" será visível para todas as perguntas, desativado para todas ou configurado individualmente para cada pergunta.",
+          "options":[
+            {
+              "label":"Ativo"
+            },
+            {
+              "label":"Desativado"
+            }
+          ]
+        },
+        {
+          "label":"Substituir o botão \"Repetir\"",
+          "description":"Essa opção determina se o botão \"Repetir\" será visível para todas as perguntas, desativado para todas ou configurado individualmente para cada pergunta.",
+          "options":[
+            {
+              "label":"Ativo"
+            },
+            {
+              "label":"Desativado"
+            }
+          ]
+        },
+        {
+          "label":"Habilitar o botão Imprimir",
+          "description":"Ativa o botão de Imprimir."
+        }
+      ]
+    }
+  ]
+}
