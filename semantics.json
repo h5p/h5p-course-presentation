@@ -179,19 +179,24 @@
                     "name": "nextPreviousSlide",
                     "type": "select",
                     "label": "Go To Next or Previous Slide",
-                    "description": "This will override the Go To Slide Number",
+                    "description": "Specified slide will use the Go To Slide number.",
                     "importance": "low",
-                    "optional": true,
+                    "optional": false,
                     "options": [
                       {
+                        "value": "specified",
+                        "label": "Specified slide"
+                      },
+                      {
                         "value": "next",
-                        "label": "Next"
+                        "label": "Next slide"
                       },
                       {
                         "value": "previous",
-                        "label": "Previous"
+                        "label": "Previous slide"
                       }
-                    ]
+                    ],
+                    "default": "specified"
                   }
                 ]
               }
