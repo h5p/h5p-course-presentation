@@ -20,18 +20,31 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
       tabindex = -1;
     }
     else {
-      title = title ? title : cp.l10n.goToSlide.replace(':num', slideNum);
+      // If the title is set, use it.
+      if (title) {
+        title = title;
+      } else {
+        // No title so use the slide number, prev, or next.
+        switch(goToSlideNextPrevious) {
+            case "specified":
+              title = cp.l10n.goToSlide.replace(':num', slideNum);
+              break;
+            case "next":
+              title = cp.l10n.goToSlide.replace(':num', cp.l10n.nextSlide);
+              break;
+            case "previous":
+              title = cp.l10n.goToSlide.replace(':num', cp.l10n.prevSlide);
+              break;
+        }
+      }
       classes += ' h5p-visible';
     }
     
     // Check if previous or next is selected.
     if (goToSlideNextPrevious == "next") {
       slideNum = index + 1;
-      // If the title wasn't set, you don't want slide undefined to be shown.
-      title = title.replace('slide undefined', "next slide");
     } else if (goToSlideNextPrevious == "previous") {
       slideNum = index - 1;
-      title = title.replace('slide undefined', "previous slide");
     } else {
       // There is no goToSlideNextPrevious set, so jump to slide number is used.
       slideNum--;
