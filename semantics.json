@@ -176,7 +176,7 @@
                     ]
                   },
                   {
-                    "name": "nextPreviousSlide",
+                    "name": "goToSlideTypex",
                     "type": "select",
                     "label": "Go To Next or Previous Slide",
                     "description": "Specified slide will use the Go To Slide number.",
