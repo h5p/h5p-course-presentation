@@ -144,6 +144,11 @@
   margin-right: 0.5em;
 }
 
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords span {
+  vertical-align: top;
+  font-size: 0.9em;
+}
+
 /* Print button and full screen button (in footer) */
 .h5p-course-presentation .h5p-footer .h5p-footer-print,
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen {

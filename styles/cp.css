@@ -147,6 +147,10 @@
   line-height: 125%;
   list-style: none;
 }
+.h5p-course-presentation .h5p-keywords-li > span {
+  color: #424242;
+  font-weight: normal;
+}
 .h5p-course-presentation .h5p-sub-keyword {
   margin-left: 1.25em;
   margin-top: 0.5em;
@@ -162,6 +166,7 @@
   overflow-y: auto;
   margin: 0.5em 0;
 }
+
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar,
 .h5p-course-presentation .h5p-element .h5p-element-outer::-webkit-scrollbar,
 .h5p-course-presentation .h5p-element .h5p-element-outer .h5p-element-inner::-webkit-scrollbar {
@@ -184,13 +189,14 @@
   padding: 0 0.833em;
   margin: 0;
   cursor: pointer;
-  opacity: 0.45;
-  filter: alpha(opacity = 45);
 }
+
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li:hover{
+  color: #1d74c8;
+}
+
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li.h5p-current {
   cursor: default;
-  opacity: 1;
-  filter: alpha(opacity = 100);
 }
 .h5p-course-presentation .h5p-slide {
   width: 100%;
