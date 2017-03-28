@@ -8,9 +8,8 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
    * @param {Number} slideNum
    * @param {CoursePresentation} cp
    * @param {String} goToSlideType
-   * @param {Number} index
    */
-  function GoToSlide(title, slideNum, invisible, cp, goToSlideType, index) {
+  function GoToSlide(title, slideNum, invisible, cp, goToSlideType) {
     var self = this;
 
     var classes = 'h5p-press-to-go';
@@ -43,22 +42,20 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
       }
       classes += ' h5p-visible';
     }
-    
-    // Check if previous or next is selected.
-    if (goToSlideType == "next") {
-      slideNum = index + 1;
-    } else if (goToSlideType == "previous") {
-      slideNum = index - 1;
-    } else {
-      // There is no goToSlideType set, so jump to slide number is used.
-      slideNum--;
-    }
-
 
     /**
      * @private
      */
     var go = function () {
+      // Check if previous or next is selected.
+      if (goToSlideType == "next") {
+        slideNum = cp.currentSlideIndex + 1;
+      } else if (goToSlideType == "previous") {
+        slideNum = cp.currentSlideIndex - 1;
+      } else {
+        // There is no goToSlideType set, so jump to slide number is used.
+        slideNum--;
+      }
       if (cp.editor === undefined && cp.slides[slideNum] !== undefined) {
         cp.jumpToSlide(slideNum);
       }
