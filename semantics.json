@@ -132,12 +132,36 @@
                     "importance": "medium"
                   },
                   {
+                    "name": "goToSlideType",
+                    "type": "select",
+                    "label": "The slide we'll go",
+                    "description": "'Specified slide' will use the 'Specific slide number'.",
+                    "importance": "medium",
+                    "optional": false,
+                    "options": [
+                      {
+                        "value": "specified",
+                        "label": "Specified slide"
+                      },
+                      {
+                        "value": "next",
+                        "label": "Next slide"
+                      },
+                      {
+                        "value": "previous",
+                        "label": "Previous slide"
+                      }
+                    ],
+                    "default": "specified"
+                  },
+                  {
                     "name": "goToSlide",
                     "type": "number",
-                    "label": "Go To Slide",
+                    "label": "Specific slide number",
                     "importance": "low",
                     "min": 1,
-                    "optional": true
+                    "optional": true,
+                    "description": "Only used if 'specified slide' is selected for 'The slide we'll go to'"
                   },
                   {
                     "name": "invisible",
@@ -174,29 +198,6 @@
                         "label": "License"
                       }
                     ]
-                  },
-                  {
-                    "name": "goToSlideType",
-                    "type": "select",
-                    "label": "Go To Next or Previous Slide",
-                    "description": "Specified slide will use the Go To Slide number.",
-                    "importance": "low",
-                    "optional": false,
-                    "options": [
-                      {
-                        "value": "specified",
-                        "label": "Specified slide"
-                      },
-                      {
-                        "value": "next",
-                        "label": "Next slide"
-                      },
-                      {
-                        "value": "previous",
-                        "label": "Previous slide"
-                      }
-                    ],
-                    "default": "specified"
                   }
                 ]
               }
