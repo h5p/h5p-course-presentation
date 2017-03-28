@@ -713,7 +713,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
   var instance;
   if (element.action === undefined) {
     // goToSlide, internal element
-    instance = new H5P.CoursePresentation.GoToSlide(element.title, element.goToSlide, element.invisible, this);
+    instance = new H5P.CoursePresentation.GoToSlide(element.title, element.goToSlide, element.invisible, this, element.goToSlideType);
   }
   else {
     // H5P library
