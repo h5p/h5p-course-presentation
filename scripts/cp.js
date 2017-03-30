@@ -249,7 +249,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       foundKeywords = true;
     }
     if (this.initKeywords) {
-      keywords += this.keywordsHtml(slide.keywords, first);
+      keywords += this.keywordsHtml(slide.keywords, first, i);
     }
   }
 
@@ -286,7 +286,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       foundKeywords = true;
     }
     if (this.initKeywords) {
-      keywords += this.keywordsHtml(slide.keywords, first);
+      keywords += this.keywordsHtml(slide.keywords, first, i);
     }
 
     $summarySlide.addClass('h5p-summary-slide');
@@ -1076,25 +1076,22 @@ H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) 
  * @param {Boolean} first Indicates if this is the first slide.
  * @returns {String} HTML.
  */
-H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
+H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first, index) {
   var html = '';
+
   if (keywords === undefined) {
     keywords = [];
   }
-  for (var i = 0; i < keywords.length; i++) {
-    var keyword = keywords[i];
 
-    html += '<li class="h5p-keywords-li"><span>' + keyword.main + '</span>';
-
-    if (keyword.subs !== undefined && keyword.subs.length) {
-      html += '<ol class="h5p-keywords-ol">';
-      for (var j = 0; j < keyword.subs.length; j++) {
-        html += '<li class="h5p-keywords-li h5p-sub-keyword"><span>' + keyword.subs[j] + '</span></li>';
-      }
-      html += '</ol>';
-    }
-    html += '</li>';
+  if (keywords.length > 0) {
+    html += '<li class="h5p-keywords-li">' +
+      '<div class="h5p-keyword-title">' +
+        this.l10n.slide + ' ' + (index + 1) +
+      '</div>' +
+      '<span>' + keywords[0].main + '</span>' +
+    '</li>';
   }
+
   if (html) {
     html = '<ol class="h5p-keywords-ol">' + html + '</ol>';
   }
@@ -1490,10 +1487,10 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
       this.scrollToKeywords();
     }
 
-    if (this.editor !== undefined) {
+    /* if (this.editor !== undefined) {
       // Move add keywords button if using editor
       this.editor.$newKeyword.appendTo(this.$currentKeyword);
-    }
+    } */
   }
 
   // Show keywords if they should always show
