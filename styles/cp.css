@@ -142,7 +142,6 @@
   padding: 0;
 }
 .h5p-course-presentation .h5p-keywords-li {
-  padding: ;
   line-height: 125%;
   list-style: none;
 }
@@ -150,6 +149,9 @@
   color: #424242;
   font-weight: normal;
   display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .h5p-course-presentation .h5p-keywords-li .h5p-keyword-title {
   font-size: 0.6em;
