@@ -115,8 +115,9 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       }
 
       if (i === 0) {
-        $progressbarPart.addClass('h5p-progressbar-part-show');
+        $progressbarPart.addClass('h5p-progressbar-part-show h5p-progressbar-part-selected');
       }
+
       // Create task indicator if less than 60 slides and not in editor
       if (this.cp.slides.length <= 60) {
         if (slide.elements !== undefined && slide.elements.length) {
@@ -159,8 +160,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }
 
     this.$progressbarPopup.css({
-      'left': leftPos + '%',
-      'bottom': height
+      'bottom': '100%'
     });
   };
 
@@ -370,6 +370,10 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         that.cp.progressbarParts[i].removeClass('h5p-progressbar-part-show');
       }
     }
+
+    that.cp.progressbarParts[slideNumber]
+      .addClass("h5p-progressbar-part-selected")
+      .siblings().removeClass("h5p-progressbar-part-selected");
 
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (pbPart) {

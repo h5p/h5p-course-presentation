@@ -217,6 +217,7 @@
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
   height: 100%;
   width: 0;
+  position: relative;
 
   cursor: pointer;
 
