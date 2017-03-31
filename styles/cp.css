@@ -169,6 +169,7 @@
   overflow: auto;
   overflow-x: hidden;
   overflow-y: auto;
+  height: 100%;
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol::-webkit-scrollbar,
