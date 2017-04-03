@@ -137,16 +137,35 @@
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: 'h5pFontIcons';
   font-size: 1.3em;
-  content: "\f0c9";
-  padding: 0em 0.25em;
-  margin-right: 0.5em;
+  content: "\e90b";
+  padding: 0em 0em 0em 0.25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:after {
+  font-family: 'h5p';
+  content: '\e565';
+  vertical-align: top;
+  font-size: 0.6em;
+  display: inline-block;
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords.h5p-open:after {
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords span {
   vertical-align: top;
   font-size: 0.9em;
+  float: right;
+  margin-left: 0.5em;
 }
 
 /* Print button and full screen button (in footer) */
@@ -157,11 +176,11 @@
 }
 .h5p-course-presentation .h5p-footer .h5p-footer-print:before,
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
-    font-family: 'H5PFontAwesome4';
-    content: "\f065";
-    font-size: 1.2em;
-    padding: 0 0.25em;
-    margin-left: 0.5em;
+  font-family: 'H5PFontAwesome4';
+  content: "\f065";
+  font-size: 1.2em;
+  padding: 0 0.25em;
+  margin-left: 0.5em;
 }
 .h5p-course-presentation .h5p-footer .h5p-footer-print:before {
   content: "\f02f";

@@ -112,7 +112,6 @@
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper {
-  font-weight: bold;
   position: absolute;
   z-index: 3;
   top: 0;
@@ -148,7 +147,7 @@
 .h5p-course-presentation .h5p-keywords-li > span {
   color: #424242;
   font-weight: normal;
-  display: block;
+  display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -157,6 +156,7 @@
   font-size: 0.6em;
   color: #757575;
   letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 .h5p-course-presentation .h5p-sub-keyword {
   margin-left: 1.25em;
@@ -191,11 +191,15 @@
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li {
-  padding: 1em 0.8em;
+  padding: 0;
   margin: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.11);
-  font-size: 0.6em;
+  font-size: 0.65em;
   cursor: pointer;
+}
+
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li .h5p-keywords-li {
+  padding: 0.65em 0.65em 0.65em 1em;
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li:hover span{
