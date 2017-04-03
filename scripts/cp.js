@@ -73,20 +73,22 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.hideSummarySlide = !!params.override.hideSummarySlide;
     this.enablePrintButton = !!params.override.enablePrintButton;
 
-    this.enableTwitterShare = !!params.override.twitterShareOverrides.showTwitterShare;
-    this.enableFacebookShare = !!params.override.facebookShareOverrides.showFacebookShare;
-    this.enableGoogleShare = !!params.override.googleShareOverrides.showGoogleShare;
+    if (!!params.override.social) {
+      this.enableTwitterShare = !!params.override.social.twitterShareOverrides.showTwitterShare;
+      this.enableFacebookShare = !!params.override.social.facebookShareOverrides.showFacebookShare;
+      this.enableGoogleShare = !!params.override.social.googleShareOverrides.showGoogleShare;
 
-    this.twitterShareStatement = params.override.twitterShareOverrides.twitterShareStatement;
-    this.twitterShareHashtags = params.override.twitterShareOverrides.twitterShareHashtags;
-    this.twitterShareUrl = params.override.twitterShareOverrides.twitterShareUrl;
+      this.twitterShareStatement = params.override.social.twitterShareOverrides.twitterShareStatement;
+      this.twitterShareHashtags = params.override.social.twitterShareOverrides.twitterShareHashtags;
+      this.twitterShareUrl = params.override.social.twitterShareOverrides.twitterShareUrl;
 
-    this.facebookShareUrl = params.override.facebookShareOverrides.facebookShareUrl;
-    this.facebookShareTitle = params.override.facebookShareOverrides.facebookShareTitle;
-    this.facebookShareQuote = params.override.facebookShareOverrides.facebookShareQuote;
-    this.facebookShareDescription = params.override.facebookShareOverrides.facebookShareDescription;
+      this.facebookShareUrl = params.override.social.facebookShareOverrides.facebookShareUrl;
+      this.facebookShareTitle = params.override.social.facebookShareOverrides.facebookShareTitle;
+      this.facebookShareQuote = params.override.social.facebookShareOverrides.facebookShareQuote;
+      this.facebookShareDescription = params.override.social.facebookShareOverrides.facebookShareDescription;
 
-    this.googleShareUrl = params.override.googleShareOverrides.googleShareUrl;
+      this.googleShareUrl = params.override.social.googleShareOverrides.googleShareUrl;
+    }
   }
 
   // Set override for all actions

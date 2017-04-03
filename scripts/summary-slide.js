@@ -178,9 +178,9 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     var percentScore = Math.round((totalScore / totalMaxScore) * 100);
 
-    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<div class="h5p-summary-twitter-message"></div>': '';
-    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<div class="h5p-summary-facebook-message"></div>': '';
-    var googleContainer = (that.cp.enableGoogleShare == true) ? '<div class="h5p-summary-google-message"></div>' : '';
+    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<div class="h5p-summary-twitter-message" aria-label="Share on Twitter"></div>': '';
+    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<div class="h5p-summary-facebook-message" aria-label="Share on Facebook"></div>': '';
+    var googleContainer = (that.cp.enableGoogleShare == true) ? '<div class="h5p-summary-google-message" aria-label="Share on Google Plus"></div>' : '';
 
     var html =
       '<div class="h5p-score-message">' +
@@ -263,14 +263,15 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var that = this;
 
     // Get data from the localization object.
-    var twitterShareStatement = that.cp.twitterShareStatement;
-    var twitterHashtagList = that.cp.twitterShareHashtags;
-    var twitterShareUrl = that.cp.twitterShareUrl;
+    var twitterShareStatement = that.cp.twitterShareStatement || '';
+    var twitterHashtagList = that.cp.twitterShareHashtags || '';
+    var twitterShareUrl = that.cp.twitterShareUrl || '';
 
     // Replace any placeholders with variables.
     twitterShareUrl = twitterShareUrl.replace('@url', window.location.href);
     twitterShareStatement = twitterShareStatement.replace('@percentage', scores.totalPercentage + '%')
-                                .replace('@url', window.location.href);
+                                .replace('@url', window.location.href)
+                                .replace("@domain", window.location.hostname);
 
     // Parse data from the localization object.
     twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
@@ -315,23 +316,27 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var that = this;
 
     // Get data from the localization object.
-    var facebookShareUrl = that.cp.facebookShareUrl;
-    var facebookShareTitle = that.cp.facebookShareTitle;
-    var facebookShareQuote = that.cp.facebookShareQuote;
-    var facebookShareDescription = that.cp.facebookShareDescription;
+    var facebookShareUrl = that.cp.facebookShareUrl || '';
+    var facebookShareTitle = that.cp.facebookShareTitle || '';
+    var facebookShareQuote = that.cp.facebookShareQuote || '';
+    var facebookShareDescription = that.cp.facebookShareDescription || '';
 
     // Replace any placeholders with variables.
     facebookShareUrl = facebookShareUrl.replace('@url', window.location.href)
-                          .replace("@percentage", scores.totalPercentage + '%');
+                          .replace("@percentage", scores.totalPercentage + '%')
+                          .replace("@domain", window.location.hostname);
 
     facebookShareTitle = facebookShareTitle.replace('@url', window.location.href)
-                            .replace("@percentage", scores.totalPercentage + '%');
+                            .replace("@percentage", scores.totalPercentage + '%')
+                            .replace("@domain", window.location.hostname);
 
     facebookShareQuote = facebookShareQuote.replace('@url', window.location.href)
-                            .replace("@percentage", scores.totalPercentage + '%');
+                            .replace("@percentage", scores.totalPercentage + '%')
+                            .replace("@domain", window.location.hostname);
 
     facebookShareDescription = facebookShareDescription.replace('@url', window.location.href)
-                                  .replace("@percentage", scores.totalPercentage + '%');
+                                  .replace("@percentage", scores.totalPercentage + '%')
+                                  .replace("@domain", window.location.hostname);
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);
@@ -372,10 +377,11 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var that = this;
 
     // Get data from the localization object.
-    var googleShareUrl = that.cp.googleShareUrl;
+    var googleShareUrl = that.cp.googleShareUrl || '';
 
     // Replace any placeholders with variables.
-    googleShareUrl = googleShareUrl.replace('@url', window.location.href);
+    googleShareUrl = googleShareUrl.replace('@url', window.location.href)
+                          .replace("@domain", window.location.hostname);
 
     // Parse data from the localization object.
     googleShareUrl = encodeURIComponent(googleShareUrl);
