@@ -637,7 +637,7 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
     this.hideKeywords();
   }
 
-  this.jumpToSlide($keyword.index());
+  this.jumpToSlide($keyword.index(), true);
 };
 
 /**
