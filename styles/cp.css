@@ -151,6 +151,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  width: 80%;
 }
 .h5p-course-presentation .h5p-keywords-li .h5p-keyword-title {
   font-size: 0.6em;
@@ -200,6 +201,10 @@
 
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li .h5p-keywords-li {
   padding: 0.65em 0.65em 0.65em 1em;
+}
+
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li.h5p-current {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li:hover span{

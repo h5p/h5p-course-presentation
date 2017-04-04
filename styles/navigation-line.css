@@ -29,7 +29,7 @@
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
   position: absolute;
   left: 0.25em;
-  max-width: 40%;
+  width: 40%;
   height: inherit;
 }
 
@@ -166,6 +166,9 @@
   font-size: 0.9em;
   float: right;
   margin-left: 0.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 86%;
 }
 
 /* Print button and full screen button (in footer) */
