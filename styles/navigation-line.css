@@ -150,15 +150,15 @@
   vertical-align: top;
   font-size: 0.6em;
   display: inline-block;
-  -ms-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
+  -ms-transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords.h5p-open:after {
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords span {
