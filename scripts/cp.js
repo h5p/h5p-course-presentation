@@ -203,7 +203,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
     else if (that.presentation.keywordListEnabled &&
             !that.presentation.keywordListAlwaysShow &&
-            that.presentation.keywordListAutoHide) {
+            that.presentation.keywordListAutoHide &&
+            !$target.is('textarea, .h5p-icon-pencil, span')) {
       that.hideKeywords();
     }
   });
@@ -632,7 +633,8 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
 
   if (this.presentation.keywordListEnabled &&
       !this.presentation.keywordListAlwaysShow &&
-      this.presentation.keywordListAutoHide) {
+      this.presentation.keywordListAutoHide &&
+      this.editor === undefined) {
     // Auto-hide keywords list
     this.hideKeywords();
   }
