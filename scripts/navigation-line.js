@@ -456,7 +456,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }
 
     // Set footer keyword
-    this.cp.$keywordsButton.html(keywordString);
+    this.cp.$keywordsButton.html('<span>' + keywordString + '</span>');
   };
 
   return NavigationLine;
