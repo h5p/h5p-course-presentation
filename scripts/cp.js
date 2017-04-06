@@ -1488,11 +1488,6 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
     if (!noScroll) {
       this.scrollToKeywords();
     }
-
-    /* if (this.editor !== undefined) {
-      // Move add keywords button if using editor
-      this.editor.$newKeyword.appendTo(this.$currentKeyword);
-    } */
   }
 
   // Show keywords if they should always show
