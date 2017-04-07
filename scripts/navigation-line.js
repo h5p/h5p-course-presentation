@@ -148,14 +148,21 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       this.$progressbarPopup.appendTo($parent);
       this.$progressbarPopup.html(progressbarTitle);
     }
+
     var pbpartPercentWidth = $parent.data('percentageWidth');
-    var width = this.$progressbarPopup.width();
+    var width = this.$progressbarPopup.outerWidth();
     var popupPercentageWidth = (width / this.cp.$container.width()) * 100;
     var leftPos = (pbpartPercentWidth * $parent.data('slideNumber')) + (pbpartPercentWidth / 2) - (popupPercentageWidth / 2);
     var height = '10%';
 
+    // If popups position left is outside the right bound of container
     if ((((leftPos / 100) * this.cp.$container.width()) + width) >= this.cp.$container.width()) {
-      leftPos -= (width / (this.cp.$container.width() / 100));
+      leftPos = 100 - popupPercentageWidth;
+    }
+
+    // If popups position left is outside the left bound of container
+    if (leftPos < 0) {
+      leftPos = 0;
     }
 
     this.$progressbarPopup.css({
