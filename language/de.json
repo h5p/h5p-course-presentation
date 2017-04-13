@@ -30,22 +30,23 @@
                       "label": "Titel"
                     },
                     {
-                      "label": "The slide we'll go to",
-                      "description": "'Specified slide' will use the 'Specific slide number'.",
+                      "label": "Das Schaubild, zu dem wir springen",
+                      "description": "'Festgelegtes Schaubild' wird die 'Festgelegte Schaubildnummer' benutzen.",
                       "options": [
                         {
-                          "label": "Specified slide"
+                          "label": "Festgelegtes Schaubild"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "Nächstes Schaubild"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "Vorheriges Schaubild"
                         }
                       ]
                     },
                     {
-                      "label": "Gehe zu Schaubild"
+                      "label": "Festgelegte Schaubildnummer",
+                      "description": "Wird nur genutzt, wenn 'Festgelegtes Schaubild' für 'Das Schaubild, zu dem wir springen' ausgewählt ist."
                     },
                     {
                       "label": "Unsichtbar",
