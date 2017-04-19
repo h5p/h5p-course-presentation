@@ -203,7 +203,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
     else if (that.presentation.keywordListEnabled &&
             !that.presentation.keywordListAlwaysShow &&
-            that.presentation.keywordListAutoHide) {
+            that.presentation.keywordListAutoHide &&
+            !$target.is('textarea, .h5p-icon-pencil, span')) {
       that.hideKeywords();
     }
   });
@@ -249,7 +250,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       foundKeywords = true;
     }
     if (this.initKeywords) {
-      keywords += this.keywordsHtml(slide.keywords, first);
+      keywords += this.keywordsHtml(slide.keywords, first, i);
     }
   }
 
@@ -286,7 +287,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       foundKeywords = true;
     }
     if (this.initKeywords) {
-      keywords += this.keywordsHtml(slide.keywords, first);
+      keywords += this.keywordsHtml(slide.keywords, first, i);
     }
 
     $summarySlide.addClass('h5p-summary-slide');
@@ -632,12 +633,13 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
 
   if (this.presentation.keywordListEnabled &&
       !this.presentation.keywordListAlwaysShow &&
-      this.presentation.keywordListAutoHide) {
+      this.presentation.keywordListAutoHide &&
+      this.editor === undefined) {
     // Auto-hide keywords list
     this.hideKeywords();
   }
 
-  this.jumpToSlide($keyword.index());
+  this.jumpToSlide($keyword.index(), true);
 };
 
 /**
@@ -1076,25 +1078,22 @@ H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) 
  * @param {Boolean} first Indicates if this is the first slide.
  * @returns {String} HTML.
  */
-H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first) {
+H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first, index) {
   var html = '';
+
   if (keywords === undefined) {
     keywords = [];
   }
-  for (var i = 0; i < keywords.length; i++) {
-    var keyword = keywords[i];
 
-    html += '<li class="h5p-keywords-li"><span>' + keyword.main + '</span>';
-
-    if (keyword.subs !== undefined && keyword.subs.length) {
-      html += '<ol class="h5p-keywords-ol">';
-      for (var j = 0; j < keyword.subs.length; j++) {
-        html += '<li class="h5p-keywords-li h5p-sub-keyword"><span>' + keyword.subs[j] + '</span></li>';
-      }
-      html += '</ol>';
-    }
-    html += '</li>';
+  if (keywords.length > 0) {
+    html += '<li class="h5p-keywords-li">' +
+      '<div class="h5p-keyword-title">' +
+        this.l10n.slide + ' ' + (index + 1) +
+      '</div>' +
+      '<span>' + keywords[0].main + '</span>' +
+    '</li>';
   }
+
   if (html) {
     html = '<ol class="h5p-keywords-ol">' + html + '</ol>';
   }
@@ -1488,11 +1487,6 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
     if (!noScroll) {
       this.scrollToKeywords();
-    }
-
-    if (this.editor !== undefined) {
-      // Move add keywords button if using editor
-      this.editor.$newKeyword.appendTo(this.$currentKeyword);
     }
   }
 
