@@ -210,8 +210,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   });
 
   // Get intended base width from CSS.
-  this.width = parseInt(this.$wrapper.css('width'));
-  this.height = parseInt(this.$wrapper.css('height'));
+  this.width = 640; // derived from .h5p-wrapper in cp.css
+  this.height = 400; // derived from .h5p-wrapper in cp.css
   this.ratio = 16/9;
   // Intended base font size cannot be read from CSS, as it might be modified
   // by mobile browsers already. (The Android native browser does this.)
