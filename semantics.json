@@ -400,7 +400,7 @@
         "description": "@percent is replaced by the real user score in percent"
       },
       {
-        "name": "Total",
+        "name": "total",
         "type": "text",
         "label": "Translation for \"Total\"",
         "importance": "low",
