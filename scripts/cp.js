@@ -210,10 +210,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   });
 
   // Get intended base width from CSS.
-  var wrapperWidth = parseInt(this.$wrapper.css('width'))
+  var wrapperWidth = parseInt(this.$wrapper.css('width'));
   wrapperWidth !== 0 ? this.width = wrapperWidth : this.width = 640;
   
-  var wrapperHeight =  parseInt(this.$wrapper.css('height'));
+  var wrapperHeight = parseInt(this.$wrapper.css('height'));
   wrapperHeight !== 0 ? this.height = wrapperHeight : this.height = 400;
 
   this.ratio = 16/9;
