@@ -175,7 +175,7 @@
         },
         {
           "label":"Translation for \"Total\"",
-          "default":"Total"
+          "default":"TOTAL"
         },
         {
           "label":"Title for show solutions button",
