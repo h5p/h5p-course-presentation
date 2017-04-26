@@ -404,7 +404,7 @@
         "type": "text",
         "label": "Translation for \"Total\"",
         "importance": "low",
-        "default": "Total"
+        "default": "TOTAL"
       },
       {
         "name": "showSolutions",

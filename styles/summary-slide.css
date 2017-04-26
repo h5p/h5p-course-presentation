@@ -129,7 +129,6 @@
 /* Total score top border */
 .h5p-course-presentation .h5p-summary-total-table .h5p-td.h5p-summary-task-title {
   border-top: 2px solid #ddd;
-  text-transform: uppercase;
 }
 
 .h5p-course-presentation .h5p-td p {
