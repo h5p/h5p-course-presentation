@@ -211,10 +211,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   // Get intended base width from CSS.
   var wrapperWidth = parseInt(this.$wrapper.css('width'));
-  wrapperWidth !== 0 ? this.width = wrapperWidth : this.width = 640;
-  
+  this.width = wrapperWidth !== 0 ? wrapperWidth : 640;
+
   var wrapperHeight = parseInt(this.$wrapper.css('height'));
-  wrapperHeight !== 0 ? this.height = wrapperHeight : this.height = 400;
+  this.height = wrapperHeight !== 0 ? wrapperHeight : 400;
 
   this.ratio = 16/9;
   // Intended base font size cannot be read from CSS, as it might be modified
