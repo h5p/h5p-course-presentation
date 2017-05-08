@@ -750,8 +750,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
     // Override child settings
     library.params = library.params || {};
-    library.params.overrideSettings = library.params.overrideSettings || {};
-    library.params.overrideSettings.$confirmationDialogParent = this.$wrapper;
     instance = H5P.newRunnable(library, this.contentId, undefined, undefined, {parent: this});
     if (instance.preventResize !== undefined) {
       instance.preventResize = true;
