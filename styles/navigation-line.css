@@ -376,7 +376,7 @@
 /* -------------------------------------- Footer hover effects ---------------------------------- */
 
 .h5p-course-presentation .h5p-footer .h5p-footer-button:hover {
-  color: #aeaeae;
+  color: #000;
 }
 
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
