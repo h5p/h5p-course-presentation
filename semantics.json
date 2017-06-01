@@ -58,12 +58,12 @@
                       "H5P.Link 1.3",
                       "H5P.Image 1.0",
                       "H5P.Video 1.3",
-                      "H5P.Audio 1.2",
+                      "H5P.Audio 1.3",
                       "H5P.Blanks 1.7",
                       "H5P.SingleChoiceSet 1.8",
                       "H5P.MultiChoice 1.9",
                       "H5P.TrueFalse 1.1",
-                      "H5P.DragQuestion 1.9",
+                      "H5P.DragQuestion 1.10",
                       "H5P.Summary 1.7",
                       "H5P.DragText 1.5",
                       "H5P.MarkTheWords 1.6",
@@ -71,7 +71,7 @@
                       "H5P.ContinuousText 1.2",
                       "H5P.ExportableTextArea 1.2",
                       "H5P.Table 1.1",
-                      "H5P.InteractiveVideo 1.15",
+                      "H5P.InteractiveVideo 1.16",
                       "H5P.TwitterUserFeed 1.0",
                       "H5P.AppearIn 1.0"
                     ],
@@ -132,12 +132,36 @@
                     "importance": "medium"
                   },
                   {
+                    "name": "goToSlideType",
+                    "type": "select",
+                    "label": "The slide we'll go",
+                    "description": "'Specified slide' will use the 'Specific slide number'.",
+                    "importance": "medium",
+                    "optional": false,
+                    "options": [
+                      {
+                        "value": "specified",
+                        "label": "Specified slide"
+                      },
+                      {
+                        "value": "next",
+                        "label": "Next slide"
+                      },
+                      {
+                        "value": "previous",
+                        "label": "Previous slide"
+                      }
+                    ],
+                    "default": "specified"
+                  },
+                  {
                     "name": "goToSlide",
                     "type": "number",
-                    "label": "Go To Slide",
+                    "label": "Specific slide number",
                     "importance": "low",
                     "min": 1,
-                    "optional": true
+                    "optional": true,
+                    "description": "Only used if 'specified slide' is selected for 'The slide we'll go to'"
                   },
                   {
                     "name": "invisible",
@@ -376,11 +400,11 @@
         "description": "@percent is replaced by the real user score in percent"
       },
       {
-        "name": "Total",
+        "name": "total",
         "type": "text",
         "label": "Translation for \"Total\"",
         "importance": "low",
-        "default": "Total"
+        "default": "TOTAL"
       },
       {
         "name": "showSolutions",

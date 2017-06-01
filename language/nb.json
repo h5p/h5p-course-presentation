@@ -36,8 +36,24 @@
                       "label": "Tittel"
                     },
                     {
+                      "label": "Slide vi skal gå til",
+                      "description": "'Spesifisert slide' bruker slide nummer angitt i 'spesifisert slide'.",
+                      "options": [
+                        {
+                          "label": "Spesifisert slide"
+                        },
+                        {
+                          "label": "Neste slide"
+                        },
+                        {
+                          "label": "Forrige slide"
+                        }
+                      ]
+                    },
+                    {
                       "englishLabel": "Go To Slide",
-                      "label": "Gå til lysbilde"
+                      "label": "Spesifisert slide",
+                      "description": "Brukes kun om 'Spesifisert slide' er valgt over"
                     },
                     {
                       "englishLabel": "Invisible",
@@ -166,7 +182,7 @@
         {
           "englishLabel": "Translation for \"Total\"",
           "label": "Oversettelse for \"Total\"",
-          "englishDefault": "Total",
+          "englishDefault": "TOTAL",
           "default": "Total"
         },
         {

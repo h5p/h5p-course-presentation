@@ -7,27 +7,55 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
    * @class
    * @param {Number} slideNum
    * @param {CoursePresentation} cp
+   * @param {String} goToSlideType
    */
-  function GoToSlide(title, slideNum, invisible, cp) {
+  function GoToSlide(title, slideNum, invisible, cp, goToSlideType) {
     var self = this;
 
     var classes = 'h5p-press-to-go';
     var tabindex = 1;
+    // Set default value.
+    if (goToSlideType === undefined) {
+      goToSlideType = 'specified';
+    }
     if (invisible) {
       title = undefined;
       tabindex = -1;
     }
     else {
-      title = title ? title : cp.l10n.goToSlide.replace(':num', slideNum);
+      // If the title is set, use it.
+      if (title) {
+        title = title;
+      } else {
+        // No title so use the slide number, prev, or next.
+        switch(goToSlideType) {
+            case "specified":
+              title = cp.l10n.goToSlide.replace(':num', slideNum);
+              break;
+            case "next":
+              title = cp.l10n.goToSlide.replace(':num', cp.l10n.nextSlide);
+              break;
+            case "previous":
+              title = cp.l10n.goToSlide.replace(':num', cp.l10n.prevSlide);
+              break;
+        }
+      }
       classes += ' h5p-visible';
     }
-
-    slideNum--;
 
     /**
      * @private
      */
     var go = function () {
+      // Check if previous or next is selected.
+      if (goToSlideType == "next") {
+        slideNum = cp.currentSlideIndex + 1;
+      } else if (goToSlideType == "previous") {
+        slideNum = cp.currentSlideIndex - 1;
+      } else {
+        // There is no goToSlideType set, so jump to slide number is used.
+        slideNum--;
+      }
       if (cp.editor === undefined && cp.slides[slideNum] !== undefined) {
         cp.jumpToSlide(slideNum);
       }

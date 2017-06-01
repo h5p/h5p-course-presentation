@@ -36,6 +36,21 @@
                       "label": "Otsikko"
                     },
                     {
+                      "label": "The slide we'll go to",
+                      "description": "'Specified slide' will use the 'Specific slide number'.",
+                      "options": [
+                        {
+                          "label": "Specified slide"
+                        },
+                        {
+                          "label": "Next slide"
+                        },
+                        {
+                          "label": "Previous slide"
+                        }
+                      ]
+                    },
+                    {
                       "englishLabel": "Go To Slide",
                       "label": "Siirry sivulle"
                     },
