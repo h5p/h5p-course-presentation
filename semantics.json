@@ -73,7 +73,8 @@
                       "H5P.Table 1.1",
                       "H5P.InteractiveVideo 1.17",
                       "H5P.TwitterUserFeed 1.0",
-                      "H5P.AppearIn 1.0"
+                      "H5P.AppearIn 1.0",
+                      "H5P.Text 1.0"
                     ],
                     "optional": true
                   },
