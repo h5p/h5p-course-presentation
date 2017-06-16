@@ -235,6 +235,38 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 
         finished(null, parameters);
       }
-    }
+    },
+
+    /**
+     * Asynchronous content upgrade hook.
+     * Upgrades content parameters to support CP 1.17.
+     *
+     * Converts H5P.AppearIn to H5P.AdvancedText
+     *
+     * @params {Object} parameters
+     * @params {function} finished
+     */
+    17: function (parameters, finished) {
+      var slides = parameters.presentation.slides;
+
+      // Go through slides and elements
+      for (var i = 0; i < slides.length; i++) {
+        if (slides[i].elements !== undefined) {
+          for (var j = 0; j < slides[i].elements.length; j++) {
+            var element = slides[i].elements[j];
+
+            // Check if element type is text
+            if (element.action && element.action.library &&
+                element.action.library.split(' ')[0] === 'H5P.AppearIn') {
+              element.action.library = 'H5P.AdvancedText 1.0';
+              element.action.params.text = 'Sample text';
+            }
+          }
+        }
+      }
+
+      // Done
+      finished(null, parameters);
+    },
   };
 })(H5P.jQuery);
