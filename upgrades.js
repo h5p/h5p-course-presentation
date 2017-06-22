@@ -246,31 +246,33 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
        * @params {function} finished
        */
       17: function (parameters, finished) {
-        var slides = parameters.presentation.slides;
-        console.log('upgrading latest');
+        if (parameters && parameters.presentation && parameters.presentation.slides) {
+          var slides = parameters.presentation.slides;
 
-        // Go through slides and elements
-        for (var i = 0; i < slides.length; i++) {
-          if (slides[i].elements !== undefined) {
-            for (var j = 0; j < slides[i].elements.length; j++) {
-              var element = slides[i].elements[j];
-              console.log(element);
+          // Go through slides and elements
+          for (var i = 0; i < slides.length; i++) {
+            if (slides[i].elements !== undefined) {
+              for (var j = 0; j < slides[i].elements.length; j++) {
+                var element = slides[i].elements[j];
 
-              // Check if element type is text
-              if (element.action && element.action.library &&
-                  element.action.library.split(' ')[0] === 'H5P.AppearIn') {
+                // Check if element type is text
+                if (element.action && element.action.library &&
+                    element.action.library.split(' ')[0] === 'H5P.AppearIn') {
 
-                element.action.library = 'H5P.AdvancedText 1.1';
+                  element.action.library = 'H5P.AdvancedText 1.1';
 
-                var roomName = '';
+                  var roomName = '';
 
-                if (element.action.params.appearRoom) {
-                  roomName = element.action.params.appearRoom;
+                  element.action.params = element.action.params || {};
+
+                  if (element.action.params.appearRoom) {
+                    roomName = element.action.params.appearRoom;
+                  }
+
+                  var userMessage = '<p>AppearIn support for embedded rooms has been deprecated and is no longer maintained. Access your room in a new tab with the following <a target="_blank" href="https://appear.in/' + roomName + '">link.</a></p>';
+
+                  element.action.params.text = userMessage;
                 }
-
-                var userMessage = '<p>AppearIn support for embedded rooms has been deprecated and is no longer maintained. Access your room in a new tab with the following <a target="_blank" href="https://appear.in/' + roomName + '">link.</a></p>';
-
-                element.action.params.text = userMessage;
               }
             }
           }
