@@ -30,7 +30,7 @@
                       "label": "Title"
                     },
                     {
-                      "label": "The slide we'll go to",
+                      "label": "The slide we'll go",
                       "description": "'Specified slide' will use the 'Specific slide number'.",
                       "options": [
                         {
@@ -42,7 +42,8 @@
                         {
                           "label": "Previous slide"
                         }
-                      ]
+                      ],
+                      "default": "specified"
                     },
                     {
                       "label": "Specific slide number",

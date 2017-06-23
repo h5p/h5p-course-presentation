@@ -72,13 +72,10 @@
               {
                 "fields": [
                   {
-                    "englishLabel": "Image",
                     "label": "Image d'arrière-plan",
-                    "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
                     "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
                   },
                   {
-                    "englishLabel": "Pick a color",
                     "label": "Sélectionnez une couleur"
                   }
                 ]
@@ -102,13 +99,10 @@
         {
           "fields": [
             {
-              "englishLabel": "Image",
               "label": "Image d'arrière-plan",
-              "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
               "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
             },
             {
-              "englishLabel": "Pick a color",
               "label": "Sélectionnez une couleur"
             }
           ]
@@ -300,9 +294,7 @@
           ]
         },
         {
-          "englishLabel": "Enable print button",
           "label": "Activer le bouton \"Imprimer\"",
-          "englishDescription": "Enables the print button.",
           "description": "Cela active le bouton d'impression."
         }
       ]
