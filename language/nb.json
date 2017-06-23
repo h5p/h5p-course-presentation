@@ -40,7 +40,24 @@
                       "label":"Tittel"
                     },
                     {
-                      "label":"Gå til lysbilde"
+                      "label":"Slide vi skal gå til",
+                      "description":"'Spesifisert slide' bruker slide nummer angitt i 'spesifisert slide'.",
+                      "options":[
+                        {
+                          "label":"Spesifisert slide"
+                        },
+                        {
+                          "label":"Neste slide"
+                        },
+                        {
+                          "label":"Forrige slide"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Spesifisert slide",
+                      "description":"Brukes kun om 'Spesifisert slide' er valgt over"
                     },
                     {
                       "label":"Usynlig",
