@@ -40,7 +40,24 @@
                       "label":"Titel"
                     },
                     {
-                      "label":"Gehe zu Schaubild"
+                      "label":"Das Schaubild, zu dem wir springen",
+                      "description":"'Festgelegtes Schaubild' wird die 'Festgelegte Schaubildnummer' benutzen.",
+                      "options":[
+                        {
+                          "label":"Festgelegtes Schaubild"
+                        },
+                        {
+                          "label":"Nächstes Schaubild"
+                        },
+                        {
+                          "label":"Vorheriges Schaubild"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Festgelegte Schaubildnummer",
+                      "description":"Wird nur genutzt, wenn 'Festgelegtes Schaubild' für 'Das Schaubild, zu dem wir springen' ausgewählt ist."
                     },
                     {
                       "label":"Unsichtbar",
