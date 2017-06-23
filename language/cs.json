@@ -40,7 +40,24 @@
                       "label":"Title"
                     },
                     {
-                      "label":"Go To Slide"
+                      "label":"The slide we'll go",
+                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "options":[
+                        {
+                          "label":"Specified slide"
+                        },
+                        {
+                          "label":"Next slide"
+                        },
+                        {
+                          "label":"Previous slide"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Specific slide number",
+                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
                       "label":"Invisible",
@@ -159,7 +176,7 @@
         },
         {
           "label":"Translation for \"Total\"",
-          "default":"Total"
+          "default":"TOTAL"
         },
         {
           "label":"Title for show solutions button",
