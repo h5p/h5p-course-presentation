@@ -40,7 +40,24 @@
                       "label":"Titolo"
                     },
                     {
-                      "label":"Vai alla Diapositiva"
+                      "label":"The slide we'll go to",
+                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "options":[
+                        {
+                          "label":"Specified slide"
+                        },
+                        {
+                          "label":"Next slide"
+                        },
+                        {
+                          "label":"Previous slide"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Vai alla Diapositiva",
+                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
                       "label":"Invisibile",
@@ -159,7 +176,7 @@
         },
         {
           "label":"Traduzione per \"Totale\"",
-          "default":"Total"
+          "default":"TOTAL"
         },
         {
           "label":"Testo per il pulsante Mostra soluzioni",
