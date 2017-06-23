@@ -52,8 +52,7 @@
                         {
                           "label":"Vorheriges Schaubild"
                         }
-                      ],
-                      "default":"specified"
+                      ]
                     },
                     {
                       "label":"Festgelegte Schaubildnummer",
