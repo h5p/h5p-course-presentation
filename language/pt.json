@@ -24,39 +24,56 @@
                       
                     },
                     {
-                      "label":"Comentários",
-                      "description":"Os comentários são mostrados quando o usuário mostra as respostas sugeridas para todos os slides."
+                      "label":"Comments",
+                      "description":"The comments are shown when the user displays the suggested answers for all slides."
                     },
                     {
-                      "label":"Sempre mostrar comentários"
+                      "label":"Always display comments"
                     },
                     {
-                      "label":"Opacidade do Fundo"
+                      "label":"Background Opacity"
                     },
                     {
-                      "label":"Mostrar como botão"
+                      "label":"Display as button"
                     },
                     {
-                      "label":"Título"
+                      "label":"Title"
                     },
                     {
-                      "label":"Seguir para o slide"
+                      "label":"The slide we'll go",
+                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "options":[
+                        {
+                          "label":"Specified slide"
+                        },
+                        {
+                          "label":"Next slide"
+                        },
+                        {
+                          "label":"Previous slide"
+                        }
+                      ],
+                      "default":"specified"
                     },
                     {
-                      "label":"Invisível",
-                      "description":"Cursor padrão, nenhum título e nenhum índice de tabulação. Aviso: Os usuários com deficiência ou sem mouse terão dificuldade ao usar esse elemento."
+                      "label":"Specific slide number",
+                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                    },
+                    {
+                      "label":"Invisible",
+                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Título"
+                          "label":"Title"
                         },
                         {
-                          "label":"Autor"
+                          "label":"Author"
                         },
                         {
-                          "label":"Licença"
+                          "label":"License"
                         }
                       ]
                     }
@@ -80,11 +97,11 @@
               {
                 "fields":[
                   {
-                    "label":"Imagem",
-                    "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar distorções. Imagens de alta resolução obterão melhor qualidade em telas maiores."
+                    "label":"Image",
+                    "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
-                    "label":"Escolha uma cor",
+                    "label":"Pick a color",
                     "spectrum":{
                       
                     },
@@ -99,25 +116,25 @@
           
         },
         {
-          "label":"Lista de palavra-chave"
+          "label":"Keyword list"
         },
         {
-          "label":"Mostrar sempre"
+          "label":"Always show"
         },
         {
-          "label":"Ocultar automaticamente"
+          "label":"Auto hide"
         },
         {
-          "label":"Opacidade"
+          "label":"Opacity"
         },
         {
           "fields":[
             {
-              "label":"Imagem",
-              "description":"A imagem de fundo deve ter uma relação de 2:1 entre largura e altura para evitar distorções. Imagens de alta resolução obterão melhores resultados em telas maiores."
+              "label":"Image",
+              "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
-              "label":"Escolha uma cor",
+              "label":"Pick a color",
               "spectrum":{
                 
               },
@@ -131,189 +148,189 @@
       "label":"Localize",
       "fields":[
         {
-          "label":"Tradução para \"Slide\"",
+          "label":"Translation for \"Slide\"",
           "default":"Slide"
         },
         {
-          "label":"Tradução para \"Sua pontuação\"",
-          "default":"Sua Pontuação"
+          "label":"Translation for \"Your Score\"",
+          "default":"Your Score"
         },
         {
-          "label":"Tradução para \"Pontuação máxima\"",
-          "default":"Pontuação máxima"
+          "label":"Translation for \"Max Score\"",
+          "default":"Max Score"
         },
         {
-          "label":"Congratulação dada pela boa Pontuação",
-          "default":"Parabéns! Você acertou @percent!",
-          "description":"@percent será substituído pela pontuação real do usuário em %"
+          "label":"Greeting given for GOOD score",
+          "default":"Congratulations! You got @percent correct!",
+          "description":"@percent is replaced by the real user score in percent"
         },
         {
-          "label":"Saudação dada por uma pontuação aceitável",
-          "default":"Bom trabalho, você acertou @percent!",
-          "description":"@percent será substituído pela pontuação real do usuário em %"
+          "label":"Greeting given for OK score",
+          "default":"Nice effort! You got @percent correct!",
+          "description":"@percent is replaced by the real user score in percent"
         },
         {
-          "label":"Crítica por pontuação RUIM",
-          "default":"Você acertou @percent.",
-          "description":"@percent será substituído pela pontuação real do usuário em %"
+          "label":"Greeting given for BAD score",
+          "default":"You got @percent correct.",
+          "description":"@percent is replaced by the real user score in percent"
         },
         {
-          "label":"Tradução para \"Total\"",
-          "default":"Total"
+          "label":"Translation for \"Total\"",
+          "default":"TOTAL"
         },
         {
-          "label":"Título para botão mostrar soluções",
-          "default":"Mostrar soluções"
+          "label":"Title for show solutions button",
+          "default":"Show solutions"
         },
         {
-          "label":"Texto para o botão de tentar novamente",
-          "default":"Repetir"
+          "label":"Text for the retry button",
+          "default":"Retry"
         },
         {
-          "label":"Tradução para \"Título\"",
-          "default":"Título"
+          "label":"Translation for \"Title\"",
+          "default":"Title"
         },
         {
-          "label":"Tradução para \"Autor/fornecedor\"",
-          "default":"Autor"
+          "label":"Translation for \"Author/supplier\"",
+          "default":"Author"
         },
         {
-          "label":"Tradução para \"Licença\"",
-          "default":"Licença"
+          "label":"Translation for \"License\"",
+          "default":"License"
         },
         {
-          "label":"Tradução para \"Licença\"",
-          "default":"Licença"
+          "label":"Translation for \"License\"",
+          "default":"License"
         },
         {
-          "label":"Texto para o botão de exportar texto",
-          "default":"Exportar texto"
+          "label":"Text for the export text button",
+          "default":"Export text"
         },
         {
-          "label":"Texto para o botão de \"Direitos de uso\"",
-          "default":"Direitos de utilização"
+          "label":"Text for the \"Rights of use\" button",
+          "default":"Rights of use"
         },
         {
-          "label":"Título do botão de Ocultar lista de palavras-chave",
-          "default":"Esconder a lista de palavras-chave"
+          "label":"Hide keywords list button title",
+          "default":"Hide keywords list"
         },
         {
-          "label":"Mostrar título do botão de mostrar lista de palavras-chave",
-          "default":"Mostart a lista de palavras-chave"
+          "label":"Show keywords list button title",
+          "default":"Show keywords list"
         },
         {
-          "label":"Rótulo do Modo Tela Cheia",
-          "default":"Tela cheia"
+          "label":"Fullscreen label",
+          "default":"Fullscreen"
         },
         {
-          "label":"Sair do rótulo do modo tela cheia",
-          "default":"Sair do modo tela cheia"
+          "label":"Exit fullscreen label",
+          "default":"Exit fullscreen"
         },
         {
-          "label":"Rótulo para slide anterior",
-          "default":"Slide anterior"
+          "label":"Previous slide label",
+          "default":"Previous slide"
         },
         {
-          "label":"Rótulo para próximo slide",
-          "default":"Próximo slide"
+          "label":"Next slide label",
+          "default":"Next slide"
         },
         {
-          "label":"Rótulo para slide atual",
-          "default":"Slide atual"
+          "label":"Current slide label",
+          "default":"Current slide"
         },
         {
-          "label":"Rótulo para último slide",
-          "default":"Último slide"
+          "label":"Last slide label",
+          "default":"Last slide"
         },
         {
-          "label":"Texto para sair do modo de solução",
-          "default":"Sair do modo de solução"
+          "label":"Exit solution mode text",
+          "default":"Exit solution mode"
         },
         {
-          "label":"Texto para modo de solução",
-          "default":"Modo de solução"
+          "label":"Solution mode text",
+          "default":"Solution Mode"
         },
         {
-          "label":"Texto quando houver múltiplas tarefas em uma página",
-          "default":"Múltiplas tarefas"
+          "label":"Text when multiple tasks on a page",
+          "default":"Multiple tasks"
         },
         {
-          "label":"Texto da mensagem de pontuação",
-          "default":"Você atingiu:"
+          "label":"Score message text",
+          "default":"You achieved:"
         },
         {
-          "label":"Compartilhar como texto no Facebook",
-          "default":"Compartilhar no Facebook"
+          "label":"Share to Facebook text",
+          "default":"Share on Facebook"
         },
         {
-          "label":"Compartilhar como texto no Twitter",
-          "default":"Compartilhar no Twitter"
+          "label":"Share to Twitter text",
+          "default":"Share on Twitter"
         },
         {
-          "label":"Título para o slide de resumo",
-          "default":"Resumo"
+          "label":"Title for summary slide",
+          "default":"Summary"
         },
         {
-          "label":"Título para o ícone de comentários",
-          "default":"Mostrar comentários"
+          "label":"Title for the comments icon",
+          "default":"Show comments"
         },
         {
-          "label":"Título para o botão de impressão",
-          "default":"Imprimir"
+          "label":"Title for print button",
+          "default":"Print"
         },
         {
-          "label":"Entrada de diálogo de impressão",
-          "default":"Como você gostaria de imprimir esta apresentação?"
+          "label":"Print dialog ingress",
+          "default":"How would you like to print this presentation?"
         },
         {
-          "label":"Rótulo para o botão \"Imprimir todos os slides\"",
-          "default":"Imprimir todos os slides"
+          "label":"Label for \"Print all slides\" button",
+          "default":"Print all slides"
         },
         {
-          "label":"Rótulo para o botão \"Imprimir slide atual\"",
-          "default":"Imprimir slide atual"
+          "label":"Label for \"Print current slide\" button",
+          "default":"Print current slide"
         }
       ]
     },
     {
-      "label":"Configurações de comportamento.",
-      "description":"Essas opções permitirão você substituir configurações de comportamento.",
+      "label":"Behaviour settings.",
+      "description":"These options will let you override behaviour settings.",
       "fields":[
         {
-          "label":"Ativar modo de superfície ativa",
-          "description":"Remove os controles de navegação para o usuário final. Use o Seguir Para Slide para navegar."
+          "label":"Activate Active Surface Mode",
+          "description":"Removes navigation controls for the end user. Use Go To Slide to navigate."
         },
         {
-          "label":"Ocultar Slide de Resumo",
-          "description":"Oculta o slide de Resumo."
+          "label":"Hide Summary Slide",
+          "description":"Hides the summary slide."
         },
         {
-          "label":"Substituir o botão de \"Mostrar Solução\"",
-          "description":"Essa opção determina se o botão \"Mostrar Solução\" será visível para todas as perguntas, desativado para todas ou configurado individualmente para cada pergunta.",
+          "label":"Override \"Show Solution\" button",
+          "description":"This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
           "options":[
             {
-              "label":"Ativo"
+              "label":"Enabled"
             },
             {
-              "label":"Desativado"
+              "label":"Disabled"
             }
           ]
         },
         {
-          "label":"Substituir o botão \"Repetir\"",
-          "description":"Essa opção determina se o botão \"Repetir\" será visível para todas as perguntas, desativado para todas ou configurado individualmente para cada pergunta.",
+          "label":"Override \"Retry\" button",
+          "description":"This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
           "options":[
             {
-              "label":"Ativo"
+              "label":"Enabled"
             },
             {
-              "label":"Desativado"
+              "label":"Disabled"
             }
           ]
         },
         {
-          "label":"Habilitar o botão Imprimir",
-          "description":"Ativa o botão de Imprimir."
+          "label":"Enable print button",
+          "description":"Enables the print button."
         }
       ]
     }
