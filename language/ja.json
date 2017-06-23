@@ -52,8 +52,7 @@
                         {
                           "label":"Previous slide"
                         }
-                      ],
-                      "default":"specified"
+                      ]
                     },
                     {
                       "label":"スライドに行く",
