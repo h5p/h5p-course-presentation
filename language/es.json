@@ -52,8 +52,7 @@
                         {
                           "label":"Previous slide"
                         }
-                      ],
-                      "default":"specified"
+                      ]
                     },
                     {
                       "label":"Ir a la diapositiva",
