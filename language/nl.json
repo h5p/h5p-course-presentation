@@ -40,14 +40,31 @@
                       "label":"Titel"
                     },
                     {
-                      "label":"Ga naar slide"
+                      "label":"The slide we'll go to",
+                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "options":[
+                        {
+                          "label":"Specified slide"
+                        },
+                        {
+                          "label":"Next slide"
+                        },
+                        {
+                          "label":"Previous slide"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Ga naar slide",
+                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
                       "label":"Onzichtbaar",
                       "description":"Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
                     },
                     {
-                      "label":"Meta gegevens",
+                      "label":"Metadata",
                       "fields":[
                         {
                           "label":"Titel"
@@ -132,7 +149,7 @@
       "fields":[
         {
           "label":"Vertaling voor \"Slide\"",
-          "default":"Dia"
+          "default":"Slide"
         },
         {
           "label":"Vertaling voor \"Jouw score\"",
