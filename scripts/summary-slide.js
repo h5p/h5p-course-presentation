@@ -268,10 +268,10 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var twitterShareUrl = that.cp.twitterShareUrl || '';
 
     // Replace any placeholders with variables.
-    twitterShareUrl = twitterShareUrl.replace('@url', window.location.href);
+    twitterShareUrl = twitterShareUrl.replace('@url', H5PIntegration.url);
     twitterShareStatement = twitterShareStatement.replace('@percentage', scores.totalPercentage + '%')
-                                .replace('@url', window.location.href)
-                                .replace("@domain", window.location.hostname);
+                                .replace('@url', H5PIntegration.url)
+                                .replace("@domain", H5PIntegration.siteUrl);
 
     // Parse data from the localization object.
     twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
@@ -322,21 +322,21 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var facebookShareDescription = that.cp.facebookShareDescription || '';
 
     // Replace any placeholders with variables.
-    facebookShareUrl = facebookShareUrl.replace('@url', window.location.href)
+    facebookShareUrl = facebookShareUrl.replace('@url', H5PIntegration.url)
                           .replace("@percentage", scores.totalPercentage + '%')
-                          .replace("@domain", window.location.hostname);
+                          .replace("@domain", H5PIntegration.siteUrl);
 
-    facebookShareTitle = facebookShareTitle.replace('@url', window.location.href)
+    facebookShareTitle = facebookShareTitle.replace('@url', H5PIntegration.url)
                             .replace("@percentage", scores.totalPercentage + '%')
-                            .replace("@domain", window.location.hostname);
+                            .replace("@domain", H5PIntegration.siteUrl);
 
-    facebookShareQuote = facebookShareQuote.replace('@url', window.location.href)
+    facebookShareQuote = facebookShareQuote.replace('@url', H5PIntegration.url)
                             .replace("@percentage", scores.totalPercentage + '%')
-                            .replace("@domain", window.location.hostname);
+                            .replace("@domain", H5PIntegration.siteUrl);
 
-    facebookShareDescription = facebookShareDescription.replace('@url', window.location.href)
+    facebookShareDescription = facebookShareDescription.replace('@url', H5PIntegration.url)
                                   .replace("@percentage", scores.totalPercentage + '%')
-                                  .replace("@domain", window.location.hostname);
+                                  .replace("@domain", H5PIntegration.siteUrl);
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);
@@ -380,8 +380,8 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var googleShareUrl = that.cp.googleShareUrl || '';
 
     // Replace any placeholders with variables.
-    googleShareUrl = googleShareUrl.replace('@url', window.location.href)
-                          .replace("@domain", window.location.hostname);
+    googleShareUrl = googleShareUrl.replace('@url', H5PIntegration.url)
+                          .replace("@domain", H5PIntegration.siteUrl);
 
     // Parse data from the localization object.
     googleShareUrl = encodeURIComponent(googleShareUrl);

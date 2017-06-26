@@ -668,18 +668,27 @@
         "optional": true,
         "fields": [
           {
+            "name": "showFacebookShare",
+            "type": "boolean",
+            "label": "Display Facebook share icon",
+            "importance": "low",
+            "default": true
+          },
+          {
             "name": "facebookShareOverrides",
             "importance": "low",
             "type": "group",
-            "label": "Facebook share overrides",
+            "label": "Facebook share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showFacebookShare",
+                  "equals": true
+                }
+              ]
+            },
             "fields": [
-              {
-                "name": "showFacebookShare",
-                "type": "boolean",
-                "label": "Display Facebook share icon",
-                "importance": "low",
-                "default": true
-              },
               {
                 "name": "facebookShareUrl",
                 "type": "text",
@@ -711,18 +720,27 @@
             ]
           },
           {
+            "name": "showTwitterShare",
+            "type": "boolean",
+            "label": "Display Twitter share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
             "name": "twitterShareOverrides",
             "importance": "low",
             "type": "group",
-            "label": "Twitter share overrides",
+            "label": "Twitter share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showTwitterShare",
+                  "equals": true
+                }
+              ]
+            },
             "fields": [
-              {
-                "name": "showTwitterShare",
-                "type": "boolean",
-                "label": "Display Twitter share icon",
-                "importance": "low",
-                "default": true
-              },
               {
                 "name": "twitterShareStatement",
                 "type": "text",
@@ -747,18 +765,27 @@
             ]
           },
           {
+            "name": "showGoogleShare",
+            "type": "boolean",
+            "label": "Display Google+ share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
             "name": "googleShareOverrides",
             "importance": "low",
             "type": "group",
-            "label": "Google+ share overrides",
+            "label": "Google+ share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showGoogleShare",
+                  "equals": true
+                }
+              ]
+            },
             "fields": [
-              {
-                "name": "showGoogleShare",
-                "type": "boolean",
-                "label": "Display Google+ share icon",
-                "importance": "low",
-                "default": true
-              },
               {
                 "name": "googleShareUrl",
                 "type": "text",

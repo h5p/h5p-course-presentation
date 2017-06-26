@@ -74,9 +74,9 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.enablePrintButton = !!params.override.enablePrintButton;
 
     if (!!params.override.social) {
-      this.enableTwitterShare = !!params.override.social.twitterShareOverrides.showTwitterShare;
-      this.enableFacebookShare = !!params.override.social.facebookShareOverrides.showFacebookShare;
-      this.enableGoogleShare = !!params.override.social.googleShareOverrides.showGoogleShare;
+      this.enableTwitterShare = !!params.override.social.showTwitterShare;
+      this.enableFacebookShare = !!params.override.social.showFacebookShare;
+      this.enableGoogleShare = !!params.override.social.showGoogleShare;
 
       this.twitterShareStatement = params.override.social.twitterShareOverrides.twitterShareStatement;
       this.twitterShareHashtags = params.override.social.twitterShareOverrides.twitterShareHashtags;
@@ -87,7 +87,7 @@ H5P.CoursePresentation = function (params, id, extras) {
       this.facebookShareQuote = params.override.social.facebookShareOverrides.facebookShareQuote;
       this.facebookShareDescription = params.override.social.facebookShareOverrides.facebookShareDescription;
 
-      this.googleShareUrl = params.override.social.googleShareOverrides.googleShareUrl;
+      this.googleShareUrl = params.override.social.googleShareOverrides;
     }
   }
 
