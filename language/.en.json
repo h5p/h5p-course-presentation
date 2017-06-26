@@ -42,7 +42,8 @@
                         {
                           "label": "Previous slide"
                         }
-                      ]
+                      ],
+                      "default": "specified"
                     },
                     {
                       "label": "Specific slide number",
