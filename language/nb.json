@@ -52,7 +52,8 @@
                         {
                           "label":"Forrige slide"
                         }
-                      ]
+                      ],
+                      "default":"specified"
                     },
                     {
                       "label":"Spesifisert slide",
