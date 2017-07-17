@@ -738,6 +738,18 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
       library.params.autoplay = false;
       library.params.cpAutoplay = true;
     }
+    else if (library.params.playback && library.params.playback.autoplay) {
+      library.params.playback.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
+    else if (library.params.media &&
+      library.params.media.params &&
+      library.params.media.params.playback &&
+      library.params.media.params.playback.autoplay) {
+      // Control libraries that has content with autoplay through CP
+      library.params.media.params.playback.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
     else if (library.params.media &&
       library.params.media.params &&
       library.params.media.params.autoplay) {
