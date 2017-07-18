@@ -836,6 +836,7 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
 H5P.CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
   var that = this;
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
+  var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
 
   var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
@@ -847,7 +848,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     // Parameterize library name to use as html class.
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
-    H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
+    H5P.jQuery('<a href="#" class="h5p-element-button' + (buttonSizeClass !== null ? ' ' + buttonSizeClass + ' ' : ' ') + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
       if (that.editor === undefined) {
 
         // Handle exit fullscreen
