@@ -367,26 +367,57 @@
   padding: 10px;
 }
 
+.h5p-course-presentation .h5p-popup-overlay {
+  background-color: rgba(44, 44, 44, 0.5);
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.h5p-course-presentation .h5p-popup-overlay.h5p-animate {
+  background-color: transparent;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
 .h5p-course-presentation .h5p-popup-container {
   background-color: #fff;
   border: 0.083em solid #bebebe;
   box-shadow: 0 0 0.25em #bebebe;
-  left: 15%;
+  left: 5%;
   position: absolute;
   top: 10%;
-  width: 70%;
+  width: 90%;
   min-height: 65%;
   max-height: 80%;
-
-  overflow: auto;
+  transition: top 0.2s;
+  overflow: hidden;
   font-size: 0.75em;
+}
+
+.h5p-course-presentation .h5p-popup-container.h5p-animate {
+  top: 100%;
 }
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper {
   box-sizing: border-box;
-  max-height: 100%;
+  max-height: 22em;
   overflow: hidden;
   text-align: left;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper::-webkit-scrollbar {
+  width: 0.6em;
+  background: #fff;
+}
+
+.h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper::-webkit-scrollbar-thumb {
+  background: #ddd;
 }
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field {
@@ -601,20 +632,28 @@
   color: #888888;
 }
 
+.h5p-course-presentation .h5p-dialog-titlebar {
+  padding: 2.78em 1em 0.5em 0.5em;
+  border-bottom: 1px solid #eee;
+  font-size: 0.875em;
+  color: #757575;
+}
+
 .h5p-course-presentation .h5p-close-popup {
-  text-decoration: none;
-  float: right;
+  position: absolute;
+  top: 0.25em;
+  right: 0.5em;
   cursor: pointer;
+  padding: 0.4em 0.5em;
+  outline: none;
+  font-size: 1.33em;
 }
 
 .h5p-course-presentation .h5p-close-popup:before {
-  position: absolute;
-  right: 0.2em;
-  top: 0.2em;
   font-family: 'H5PFontAwesome4';
-  content: "\f00d";
-  font-size: 2em;
-  z-index: 1;
+  content: "\f057";
+  color: #757575;
+  vertical-align: middle;
 }
 
 .h5p-course-presentation .h5p-close-popup:hover:before {
