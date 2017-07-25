@@ -1073,7 +1073,6 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     .removeClass('h5p-animate')
     .click(close)
     .find('.h5p-popup-container')
-      .focus() 
       .removeClass('h5p-animate')
       .click(function () {
         doNotClose = true;
