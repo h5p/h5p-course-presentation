@@ -1050,8 +1050,9 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
       }, 100);
     }
     event.preventDefault();
-      $popup.addClass('h5p-animate');
-      $popup.find('.h5p-popup-container').addClass('h5p-animate');
+    $popup.addClass('h5p-animate');
+    $popup.find('.h5p-popup-container').addClass('h5p-animate');
+
     setTimeout(function() {
       $popup.remove();
     }, 100);
