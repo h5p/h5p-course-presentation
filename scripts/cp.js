@@ -59,6 +59,7 @@ H5P.CoursePresentation = function (params, id, extras) {
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
+    shareGoogle: 'Share on Google+',
     goToSlide: 'Go to slide :num',
     solutionsButtonTitle: 'Show comments',
     printTitle: 'Print',
@@ -71,6 +72,23 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
     this.enablePrintButton = !!params.override.enablePrintButton;
+
+    if (!!params.override.social) {
+      this.enableTwitterShare = !!params.override.social.showTwitterShare;
+      this.enableFacebookShare = !!params.override.social.showFacebookShare;
+      this.enableGoogleShare = !!params.override.social.showGoogleShare;
+
+      this.twitterShareStatement = params.override.social.twitterShareOverrides.twitterShareStatement;
+      this.twitterShareHashtags = params.override.social.twitterShareOverrides.twitterShareHashtags;
+      this.twitterShareUrl = params.override.social.twitterShareOverrides.twitterShareUrl;
+
+      this.facebookShareUrl = params.override.social.facebookShareOverrides.facebookShareUrl;
+      this.facebookShareTitle = params.override.social.facebookShareOverrides.facebookShareTitle;
+      this.facebookShareQuote = params.override.social.facebookShareOverrides.facebookShareQuote;
+      this.facebookShareDescription = params.override.social.facebookShareOverrides.facebookShareDescription;
+
+      this.googleShareUrl = params.override.social.googleShareOverrides;
+    }
   }
 
   // Set override for all actions

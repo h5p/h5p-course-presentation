@@ -564,6 +564,13 @@
         "default": "Share on Twitter"
       },
       {
+        "name": "shareGoogle",
+        "type": "text",
+        "label": "Share to Google text",
+        "importance": "low",
+        "default": "Share on Google+"
+      },
+      {
         "name": "summary",
         "type": "text",
         "label": "Title for summary slide",
@@ -675,6 +682,144 @@
         "importance": "low",
         "description": "Enables the print button.",
         "default": false
+      },
+      {
+        "name": "social",
+        "type": "group",
+        "label": "Social Settings",
+        "importance": "low",
+        "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+        "optional": true,
+        "fields": [
+          {
+            "name": "showFacebookShare",
+            "type": "boolean",
+            "label": "Display Facebook share icon",
+            "importance": "low",
+            "default": true
+          },
+          {
+            "name": "facebookShareOverrides",
+            "importance": "low",
+            "type": "group",
+            "label": "Facebook share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showFacebookShare",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "facebookShareUrl",
+                "type": "text",
+                "label": "Share to Facebook link",
+                "importance": "low",
+                "default": "@domain"
+              },
+              {
+                "name": "facebookShareTitle",
+                "type": "text",
+                "label": "Share to Facebook title",
+                "importance": "low",
+                "default": "@domain"
+              },
+              {
+                "name": "facebookShareQuote",
+                "type": "text",
+                "label": "Share to Facebook quote",
+                "importance": "low",
+                "default": "I scored @percentage on a task at @url."
+              },
+              {
+                "name": "facebookShareDescription",
+                "type": "text",
+                "label": "Share to Facebook description",
+                "importance": "low",
+                "default": ""
+              }
+            ]
+          },
+          {
+            "name": "showTwitterShare",
+            "type": "boolean",
+            "label": "Display Twitter share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
+            "name": "twitterShareOverrides",
+            "importance": "low",
+            "type": "group",
+            "label": "Twitter share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showTwitterShare",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "twitterShareStatement",
+                "type": "text",
+                "label": "Share to Twitter statement",
+                "importance": "low",
+                "default": "I scored @percentage on a task at @domain."
+              },
+              {
+                "name": "twitterShareUrl",
+                "type": "text",
+                "label": "Share to Twitter link",
+                "importance": "low",
+                "default": "@domain"
+              },
+              {
+                "name": "twitterShareHashtags",
+                "type": "text",
+                "label": "Share to Twitter hashtags",
+                "importance": "low",
+                "default": "h5p, course"
+              }
+            ]
+          },
+          {
+            "name": "showGoogleShare",
+            "type": "boolean",
+            "label": "Display Google+ share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
+            "name": "googleShareOverrides",
+            "importance": "low",
+            "type": "group",
+            "label": "Google+ share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showGoogleShare",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "googleShareUrl",
+                "type": "text",
+                "label": "Share to Google link",
+                "importance": "low",
+                "default": "@domain"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

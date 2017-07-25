@@ -247,6 +247,10 @@
           "default": "Share on Twitter"
         },
         {
+          "label": "Share to Google text",
+          "default": "Share on Google+"
+        },
+        {
           "label": "Title for summary slide",
           "default": "Summary"
         },
