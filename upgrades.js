@@ -245,7 +245,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
        * @param {Object} parameters
        * @param {function} finished
        */
-      19: function (parameters, finished) {
+      18: function (parameters, finished) {
         if (parameters.presentation) {
           if (parameters.presentation.slides) {
             parameters.presentation.slides.forEach(function (slide) {
