@@ -1046,22 +1046,35 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
 
     // Remove popup
     if (remove !== undefined) {
-      remove();
+      setTimeout(function() {
+        remove();
+      }, 100);
     }
     event.preventDefault();
-    $popup.remove();
+    $popup.addClass('h5p-animate');
+    $popup.find('.h5p-popup-container').addClass('h5p-animate');
+
+    setTimeout(function() {
+      $popup.remove();
+    }, 100);
   };
 
   var $popup = H5P.jQuery(
-    '<div class="h5p-popup-overlay ' + (classes || 'h5p-popup-comment-field') + '">' +
-      '<div class="h5p-popup-container">' +
+    '<div class="h5p-popup-overlay h5p-animate ' + (classes || 'h5p-popup-comment-field') + '">' +
+      '<div class="h5p-popup-container h5p-animate">' +
+        '<div class="h5p-dialog-titlebar">' +
+          '<div class="h5p-dialog-title"></div>' +
+          '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+        '</div>' +
         '<div class="h5p-popup-wrapper">' + popupContent + '</div>' +
-        '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
       '</div>' +
     '</div>')
     .prependTo(this.$wrapper)
+    .focus()
+    .removeClass('h5p-animate')
     .click(close)
     .find('.h5p-popup-container')
+      .removeClass('h5p-animate')
       .click(function () {
         doNotClose = true;
       })
