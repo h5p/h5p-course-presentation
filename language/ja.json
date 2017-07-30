@@ -41,19 +41,19 @@
                     },
                     {
                       "label":"The slide we'll go to",
-                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "description":"「指定スライド」は「指定スライド番号」を使用します。",
                       "options":[
                         {
-                          "label":"Specified slide"
+                          "label":"指定スライド"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"次のスライド"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"前のスライド"
                         }
                       ],
-                      "default":"specified"
+                      "default":"指定済み"
                     },
                     {
                       "label":"スライドに行く",
