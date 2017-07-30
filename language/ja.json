@@ -25,7 +25,7 @@
                     },
                     {
                       "label":"コメント",
-                      "description":"ユーザがすべての提出したスライドの回答を表示するときに、このコメントが表示されます。"
+                      "description":"このコメントは、ユーザーがすべてのスライドの推奨回答を表示したときに表示されます。"
                     },
                     {
                       "label":"常にコメントを表示"
@@ -57,7 +57,7 @@
                     },
                     {
                       "label":"スライドに行く",
-                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "description":"もし「指定スライド」が「このスライドの移動先」に選択された場合にのみ使われます。"
                     },
                     {
                       "label":"非表示",
