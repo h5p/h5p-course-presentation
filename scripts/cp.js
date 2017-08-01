@@ -83,9 +83,7 @@ H5P.CoursePresentation = function (params, id, extras) {
       this.twitterShareUrl = params.override.social.twitterShareOverrides.twitterShareUrl;
 
       this.facebookShareUrl = params.override.social.facebookShareOverrides.facebookShareUrl;
-      this.facebookShareTitle = params.override.social.facebookShareOverrides.facebookShareTitle;
       this.facebookShareQuote = params.override.social.facebookShareOverrides.facebookShareQuote;
-      this.facebookShareDescription = params.override.social.facebookShareOverrides.facebookShareDescription;
 
       this.googleShareUrl = params.override.social.googleShareOverrides;
     }
