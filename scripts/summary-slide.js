@@ -368,7 +368,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     googleShareUrl = googleShareUrl.replace('@currentpageurl', window.location.href);
 
     // Parse data from the localization object.
-    // googleShareUrl = encodeURIComponent(googleShareUrl);
+    googleShareUrl = encodeURIComponent(googleShareUrl);
 
     // Add query strings to the URL based on settings.
     var googleUrl = "https://plus.google.com/share?";
