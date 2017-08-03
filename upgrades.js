@@ -234,6 +234,32 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
         }
 
         finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.19.
+       *
+       * Adds small as default for button size
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      18: function (parameters, finished) {
+        if (parameters.presentation) {
+          if (parameters.presentation.slides) {
+            parameters.presentation.slides.forEach(function (slide) {
+              if (slide.elements) {
+                slide.elements.forEach(function (element) {
+                  if (element.displayAsButton) {
+                    element.buttonSize = 'small';
+                  }
+                });
+              }
+            });
+          }
+        }
+        finished(null, parameters);
       }
     }
   };

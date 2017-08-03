@@ -14,23 +14,23 @@
                     {},
                     {},
                     {
-                      "label": "Commenti",
-                      "description": "I commenti vengono mostrati quando l'utente visualizza le risposte suggerite per tutte le diapositive."
+                      "label": "Comments",
+                      "description": "The comments are shown when the user displays the suggested answers for all slides."
                     },
                     {
-                      "label": "Visualizza i commenti sempre"
+                      "label": "Always display comments"
                     },
                     {
-                      "label": "Opacità Sfondo"
+                      "label": "Background Opacity"
                     },
                     {
-                      "label": "Visualizza come pulsante"
+                      "label": "Display as button"
                     },
                     {
-                      "label": "Titolo"
+                      "label": "Title"
                     },
                     {
-                      "label": "The slide we'll go to",
+                      "label": "The slide we'll go",
                       "description": "'Specified slide' will use the 'Specific slide number'.",
                       "options": [
                         {
@@ -42,33 +42,44 @@
                         {
                           "label": "Previous slide"
                         }
-                      ]
+                      ],
+                      "default": "specified"
                     },
                     {
-                      "label": "Vai alla Diapositiva"
+                      "label": "Specific slide number",
+                      "description": "Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
-                      "label": "Invisibile",
-                      "description": "Cursore predefinito, nessun titolo e nessun indice scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera utenti avranno problemi con questo elemento."
+                      "label": "Invisible",
+                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
                       "label": "Metadata",
                       "fields": [
                         {
-                          "label": "Titolo"
+                          "label": "Title"
                         },
                         {
-                          "label": "Autore"
+                          "label": "Author"
                         },
                         {
-                          "label": "Licenza"
+                          "label": "License"
                         }
                       ]
                     }
                   ]
                 }
               },
-              {},
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "field": {}
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -76,7 +87,9 @@
                     "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
-                    "label": "Pick a color"
+                    "label": "Pick a color",
+                    "spectrum": {},
+                    "default": null
                   }
                 ]
               }
@@ -85,16 +98,16 @@
         },
         {},
         {
-          "label": "Elenco di parole chiave"
+          "label": "Keyword list"
         },
         {
-          "label": "Mostra sempre"
+          "label": "Always show"
         },
         {
-          "label": "Nascondi automaticamente"
+          "label": "Auto hide"
         },
         {
-          "label": "Opacità"
+          "label": "Opacity"
         },
         {
           "fields": [
@@ -103,104 +116,135 @@
               "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
-              "label": "Pick a color"
+              "label": "Pick a color",
+              "spectrum": {},
+              "default": null
             }
           ]
         }
       ]
     },
     {
-      "label": "Localizzazione",
+      "label": "Localize",
       "fields": [
         {
-          "label": "Traduzione per \"Diapositiva\""
+          "label": "Translation for \"Slide\"",
+          "default": "Slide"
         },
         {
-          "label": "Traduzione per il \"Tuo Punteggio\""
+          "label": "Translation for \"Your Score\"",
+          "default": "Your Score"
         },
         {
-          "label": "Traduzione per il \"Punteggio Massimo\""
+          "label": "Translation for \"Max Score\"",
+          "default": "Max Score"
         },
         {
-          "label": "Messaggio dato per un punteggio OTTIMO",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
+          "label": "Greeting given for GOOD score",
+          "default": "Congratulations! You got @percent correct!",
+          "description": "@percent is replaced by the real user score in percent"
         },
         {
-          "label": "Messaggio dato per un punteggio BUONO",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
+          "label": "Greeting given for OK score",
+          "default": "Nice effort! You got @percent correct!",
+          "description": "@percent is replaced by the real user score in percent"
         },
         {
-          "label": "Messaggio dato per un punteggio BASSO",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
+          "label": "Greeting given for BAD score",
+          "default": "You got @percent correct.",
+          "description": "@percent is replaced by the real user score in percent"
         },
         {
-          "label": "Traduzione per \"Totale\""
+          "label": "Translation for \"Total\"",
+          "default": "TOTAL"
         },
         {
-          "label": "Testo per il pulsante Mostra soluzioni"
+          "label": "Title for show solutions button",
+          "default": "Show solutions"
         },
         {
-          "label": "Testo per il pulsante Riprova"
+          "label": "Text for the retry button",
+          "default": "Retry"
         },
         {
-          "label": "Traduzione per \"Titolo\""
+          "label": "Translation for \"Title\"",
+          "default": "Title"
         },
         {
-          "label": "Traduzione per \"Autore/fornitore\""
+          "label": "Translation for \"Author/supplier\"",
+          "default": "Author"
         },
         {
-          "label": "Traduzione per \"Licenza\""
+          "label": "Translation for \"License\"",
+          "default": "License"
         },
         {
-          "label": "Traduzione per \"Licenza\""
+          "label": "Translation for \"License\"",
+          "default": "License"
         },
         {
-          "label": "Testo per il pulsante Esporta testo"
+          "label": "Text for the export text button",
+          "default": "Export text"
         },
         {
-          "label": "Testo per il pulsante \"Diritti di utilizzo\""
+          "label": "Text for the \"Rights of use\" button",
+          "default": "Rights of use"
         },
         {
-          "label": "Nascondi il titolo del pulsante Parole chiave"
+          "label": "Hide keywords list button title",
+          "default": "Hide keywords list"
         },
         {
-          "label": "Mostra il titolo del pulsante Parole chiave"
+          "label": "Show keywords list button title",
+          "default": "Show keywords list"
         },
         {
-          "label": "Etichetta Schermo intero"
+          "label": "Fullscreen label",
+          "default": "Fullscreen"
         },
         {
-          "label": "Esci da Schermo intero"
+          "label": "Exit fullscreen label",
+          "default": "Exit fullscreen"
         },
         {
-          "label": "Etichetta scheda precedente"
+          "label": "Previous slide label",
+          "default": "Previous slide"
         },
         {
-          "label": "Etichetta scheda successiva"
+          "label": "Next slide label",
+          "default": "Next slide"
         },
         {
-          "label": "Etichetta scheda corrente"
+          "label": "Current slide label",
+          "default": "Current slide"
         },
         {
-          "label": "Etichetta ultima scheda"
+          "label": "Last slide label",
+          "default": "Last slide"
         },
         {
-          "label": "Esci dal testo modalità soluzione"
+          "label": "Exit solution mode text",
+          "default": "Exit solution mode"
         },
         {
-          "label": "Testo modalità soluzione"
+          "label": "Solution mode text",
+          "default": "Solution Mode"
         },
         {
-          "label": "Testo attività multiple in una pagina"
+          "label": "Text when multiple tasks on a page",
+          "default": "Multiple tasks"
         },
         {
-          "label": "Testo del messaggio del punteggio"
+          "label": "Score message text",
+          "default": "You achieved:"
         },
         {
-          "label": "Testo condividi su Facebook"
+          "label": "Share to Facebook text",
+          "default": "Share on Facebook"
         },
         {
-          "label": "Testo condividi su Twitter"
+          "label": "Share to Twitter text",
+          "default": "Share on Twitter"
         },
         {
           "label": "Title for summary slide",
@@ -229,16 +273,16 @@
       ]
     },
     {
-      "label": "Impostazioni.",
-      "description": "Queste opzioni ti consente di ignorare le impostazioni.",
+      "label": "Behaviour settings.",
+      "description": "These options will let you override behaviour settings.",
       "fields": [
         {
           "label": "Activate Active Surface Mode",
           "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
         },
         {
-          "label": "Comportamento",
-          "description": "Nasconde la diapositiva sommario"
+          "label": "Hide Summary Slide",
+          "description": "Hides the summary slide."
         },
         {
           "label": "Override \"Show Solution\" button",
