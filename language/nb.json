@@ -255,7 +255,7 @@
           "default":"Flere oppgaver"
         },
         {
-          "label":"poengTekst",
+          "label":"Poeng tekst",
           "default":"Du klarte:"
         },
         {
