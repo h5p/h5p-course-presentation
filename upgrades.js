@@ -238,14 +238,14 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
 
       /**
        * Asynchronous content upgrade hook.
-       * Upgrades content parameters to support CP 1.19.
+       * Upgrades content parameters to support CP 1.17.
        *
        * Adds small as default for button size
        *
        * @param {Object} parameters
        * @param {function} finished
        */
-      18: function (parameters, finished) {
+      17: function (parameters, finished) {
         if (parameters.presentation) {
           if (parameters.presentation.slides) {
             parameters.presentation.slides.forEach(function (slide) {
