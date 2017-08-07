@@ -240,12 +240,15 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
        * Asynchronous content upgrade hook.
        * Upgrades content parameters to support CP 1.17.
        *
-       * Adds small as default for button size
+       * - Adds small as default for button size
+       * - Converts H5P.AppearIn to H5P.AdvancedText
        *
        * @param {Object} parameters
        * @param {function} finished
        */
       17: function (parameters, finished) {
+
+        // Adds small as default for button size
         if (parameters.presentation) {
           if (parameters.presentation.slides) {
             parameters.presentation.slides.forEach(function (slide) {
@@ -259,6 +262,41 @@ H5PUpgrades['H5P.CoursePresentation'] = (function ($) {
             });
           }
         }
+
+        // Converts H5P.AppearIn to H5P.AdvancedText
+        if (parameters && parameters.presentation && parameters.presentation.slides) {
+          var slides = parameters.presentation.slides;
+
+          // Go through slides and elements
+          for (var i = 0; i < slides.length; i++) {
+            if (slides[i].elements !== undefined) {
+              for (var j = 0; j < slides[i].elements.length; j++) {
+                var element = slides[i].elements[j];
+
+                // Check if element type is text
+                if (element.action && element.action.library &&
+                    element.action.library.split(' ')[0] === 'H5P.AppearIn') {
+
+                  element.action.library = 'H5P.AdvancedText 1.1';
+
+                  var roomName = '';
+
+                  element.action.params = element.action.params || {};
+
+                  if (element.action.params.appearRoom) {
+                    roomName = element.action.params.appearRoom;
+                  }
+
+                  var userMessage = '<p>AppearIn support for embedded rooms has been deprecated and is no longer maintained. Access your room in a new tab with the following <a target="_blank" href="https://appear.in/' + roomName + '">link.</a></p>';
+
+                  element.action.params.text = userMessage;
+                }
+              }
+            }
+          }
+        }
+
+        // Done
         finished(null, parameters);
       }
     }
