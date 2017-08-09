@@ -476,6 +476,11 @@
   text-decoration: none;
 }
 
+.h5p-course-presentation .h5p-element-button-wrapper .h5p-element-solution {
+  right: 0.9em;
+  bottom: 0.8em;
+}
+
 .h5p-course-presentation .h5p-element-button {
   text-decoration: none;
   position: absolute;
