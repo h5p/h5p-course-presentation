@@ -395,7 +395,6 @@
   max-height: 80%;
   transition: top 0.2s;
   overflow: hidden;
-  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-popup-container.h5p-animate {
@@ -418,10 +417,6 @@
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper::-webkit-scrollbar-thumb {
   background: #ddd;
-}
-
-.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field {
-  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-advanced-text {
