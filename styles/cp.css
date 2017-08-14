@@ -430,7 +430,7 @@
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-advancedtext .h5p-popup-container .h5p-popup-wrapper,
 .h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container .h5p-popup-wrapper {
-  padding: 0 2em;
+  padding: 0.5em;
   overflow: auto;
   text-align: left;
 }
