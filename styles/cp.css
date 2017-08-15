@@ -395,6 +395,7 @@
   max-height: 80%;
   transition: top 0.2s;
   overflow: hidden;
+  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-popup-container.h5p-animate {
@@ -425,8 +426,7 @@
   padding: 0.5em;
 }
 
-.h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container,
-.h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container {
+.h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container {
   padding: 2em 0;
 }
 
@@ -435,7 +435,7 @@
   position: absolute;
   box-sizing: border-box;
   max-height: calc(100% - 4em);
-  padding: 0 2em;
+  padding: 0.5em;
   overflow: auto;
   text-align: left;
 }
