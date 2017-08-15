@@ -156,7 +156,7 @@
           "default":"Il tuo punteggio"
         },
         {
-          "label":"Traduzione per il \"Punteggio Massimo\"",
+          "label":"Traduzione per \"Punteggio Massimo\"",
           "default":"Punteggio massimo"
         },
         {
@@ -166,7 +166,7 @@
         },
         {
           "label":"Messaggio dato per un punteggio BUONO",
-          "default":"Ottimo lavoro! La tua percentuale di correttezza è @percent!",
+          "default":"Bel lavoro! La tua percentuale di correttezza è @percent!",
           "description":"@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
