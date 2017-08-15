@@ -25,13 +25,13 @@
                     },
                     {
                       "label":"Commenti",
-                      "description":"I commenti vengono mostrati quando l'utente visualizza le risposte suggerite per tutte le diapositive."
+                      "description":"I commenti sono mostrati quando l'utente visualizza le risposte suggerite per tutte le diapositive."
                     },
                     {
-                      "label":"Visualizza i commenti sempre"
+                      "label":"Visualizza sempre i commenti"
                     },
                     {
-                      "label":"Opacità Sfondo"
+                      "label":"Opacità dello sfondo"
                     },
                     {
                       "label":"Visualizza come pulsante"
@@ -40,7 +40,7 @@
                       "label":"Titolo"
                     },
                     {
-                      "label":"The slide we'll go to",
+                      "label":"La diapositiva a cui andremo",
                       "description":"La 'diapositiva specificata' utilizzerà il 'numero di diapositiva specifica'.",
                       "options":[
                         {
@@ -56,12 +56,12 @@
                       "default":"specificato/a"
                     },
                     {
-                      "label":"Vai alla Diapositiva",
+                      "label":"Numero diapositiva specifica",
                       "description":"Utilizzato solo se per 'La diapositiva a cui andremo' è selezionato 'diapositiva specificata'"
                     },
                     {
                       "label":"Invisibile",
-                      "description":"Cursore predefinito, nessun titolo e nessun indice scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera utenti avranno problemi con questo elemento."
+                      "description":"Cursore predefinito, nessun titolo e nessun indice di scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera avranno problemi con questo elemento."
                     },
                     {
                       "label":"Metadati",
@@ -145,14 +145,14 @@
       ]
     },
     {
-      "label":"Localizzazione",
+      "label":"Localizza",
       "fields":[
         {
           "label":"Traduzione per \"Diapositiva\"",
           "default":"Diapositiva"
         },
         {
-          "label":"Traduzione per il \"Tuo Punteggio\"",
+          "label":"Traduzione per \"Il tuo punteggio\"",
           "default":"Il tuo punteggio"
         },
         {
@@ -207,68 +207,68 @@
           "default":"Esporta testo"
         },
         {
-          "label":"Testo per il pulsante \"Diritti di utilizzo\"",
+          "label":"Testo per il pulsante \"Diritti d'uso\"",
           "default":"Diritti d'uso"
         },
         {
-          "label":"Nascondi il titolo del pulsante Parole chiave",
+          "label":"Nascondi il titolo del pulsante di elenco parole chiave",
           "default":"Nascondi l'elenco delle parole chiave"
         },
         {
-          "label":"Mostra il titolo del pulsante Parole chiave",
+          "label":"Mostra il titolo del pulsante di elenco parole chiave",
           "default":"Mostra l'elenco delle parole chiave"
         },
         {
-          "label":"Etichetta Schermo intero",
+          "label":"Etichetta di schermo intero",
           "default":"Schermo intero"
         },
         {
-          "label":"Esci da Schermo intero",
+          "label":"Etichetta di uscita da schermo intero",
           "default":"Esci da schermo intero"
         },
         {
-          "label":"Etichetta scheda precedente",
+          "label":"Etichetta diapositiva precedente",
           "default":"Diapositiva precedente"
         },
         {
-          "label":"Etichetta scheda successiva",
+          "label":"Etichetta prossima diapositiva",
           "default":"Prossima diapositiva"
         },
         {
-          "label":"Etichetta scheda corrente",
+          "label":"Etichetta diapositiva corrente",
           "default":"Diapositiva corrente"
         },
         {
-          "label":"Etichetta ultima scheda",
+          "label":"Etichetta ultima diapositiva",
           "default":"Ultima diapositiva"
         },
         {
-          "label":"Esci dal testo modalità soluzione",
+          "label":"Esci dal testo in modalità di soluzione",
           "default":"Esci dalla modalità di soluzione"
         },
         {
-          "label":"Testo modalità soluzione",
+          "label":"Testo in modalità di soluzione",
           "default":"Modalità di soluzione"
         },
         {
           "label":"Testo attività multiple in una pagina",
-          "default":"Compiti multipli"
+          "default":"Attività multiple"
         },
         {
           "label":"Testo del messaggio del punteggio",
           "default":"Hai ottenuto:"
         },
         {
-          "label":"Testo condividi su Facebook",
+          "label":"Testo di condivisione su Facebook",
           "default":"Condividi su Facebook"
         },
         {
-          "label":"Testo condividi su Twitter",
+          "label":"Testo di condivisione su Twitter",
           "default":"Condividi su Twitter"
         },
         {
           "label":"Titolo della diapositiva di riepilogo",
-          "default":"Sommario"
+          "default":"Riepilogo"
         },
         {
           "label":"Titolo dell'icona dei commenti",
@@ -283,54 +283,54 @@
           "default":"Come vorresti stampare questa presentazione?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"Etichetta per il pulsante \"Stampa tutte le diapositive\"",
+          "default":"Stampa tutte le diapositive"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"Etichetta per il pulsante \"Stampa diapositiva corrente\"",
+          "default":"Stampare la diapositiva corrente"
         }
       ]
     },
     {
-      "label":"Impostazioni.",
-      "description":"Queste opzioni ti consente di ignorare le impostazioni.",
+      "label":"Impostazioni di esecuzione.",
+      "description":"Queste opzioni ti consentono di ignorare le impostazioni di esecuzione.",
       "fields":[
         {
-          "label":"Activate Active Surface Mode",
-          "description":"Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label":"Attiva la modalità di superficie attiva",
+          "description":"Rimuove i controlli di navigazione per l'utente finale. Per navigare usa l'opzione Vai alla diapositiva."
         },
         {
-          "label":"Comportamento",
-          "description":"Nasconde la diapositiva sommario"
+          "label":"Nascondi la diapositiva di riepilogo",
+          "description":"Nasconde la diapositiva di riepilogo."
         },
         {
-          "label":"Override \"Show Solution\" button",
-          "description":"This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Sovrascrivi il pulsante Mostra soluzione",
+          "description":"Questa opzione determina se il pulsante \"Mostra soluzione\" sarà visualizzato per tutte le domande, disabilitato per tutti o configurato individualmente per ogni domanda.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Attivato"
             },
             {
-              "label":"Disabled"
+              "label":"Disabilitato"
             }
           ]
         },
         {
-          "label":"Override \"Retry\" button",
-          "description":"This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Sovrascrivi il pulsante \"Riprova\"",
+          "description":"Questa opzione determina se il pulsante \"Riprova\" sarà visualizzato per tutte le domande, disabilitato per tutti o configurato individualmente per ogni domanda.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Attivato"
             },
             {
-              "label":"Disabled"
+              "label":"Disabilitato"
             }
           ]
         },
         {
-          "label":"Enable print button",
-          "description":"Enables the print button."
+          "label":"Attiva il pulsante di stampa",
+          "description":"Attiva il pulsante di stampa."
         }
       ]
     }
