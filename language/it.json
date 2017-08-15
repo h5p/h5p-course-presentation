@@ -161,126 +161,126 @@
         },
         {
           "label":"Messaggio dato per un punteggio OTTIMO",
-          "default":"Congratulations! You got @percent correct!",
+          "default":"Congratulazioni! La tua percentuale di correttezza è @percent!",
           "description":"@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
           "label":"Messaggio dato per un punteggio BUONO",
-          "default":"Nice effort! You got @percent correct!",
+          "default":"Ottimo lavoro! La tua percentuale di correttezza è @percent!",
           "description":"@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
           "label":"Messaggio dato per un punteggio BASSO",
-          "default":"You got @percent correct.",
+          "default":"La tua percentuale di correttezza è @percent.",
           "description":"@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
           "label":"Traduzione per \"Totale\"",
-          "default":"TOTAL"
+          "default":"TOTALE"
         },
         {
           "label":"Testo per il pulsante Mostra soluzioni",
-          "default":"Show solutions"
+          "default":"Mostra le soluzioni"
         },
         {
           "label":"Testo per il pulsante Riprova",
-          "default":"Retry"
+          "default":"Riprova"
         },
         {
           "label":"Traduzione per \"Titolo\"",
-          "default":"Title"
+          "default":"Titolo"
         },
         {
           "label":"Traduzione per \"Autore/fornitore\"",
-          "default":"Author"
+          "default":"Autore"
         },
         {
           "label":"Traduzione per \"Licenza\"",
-          "default":"License"
+          "default":"Licenza"
         },
         {
           "label":"Traduzione per \"Licenza\"",
-          "default":"License"
+          "default":"Licenza"
         },
         {
           "label":"Testo per il pulsante Esporta testo",
-          "default":"Export text"
+          "default":"Esporta testo"
         },
         {
           "label":"Testo per il pulsante \"Diritti di utilizzo\"",
-          "default":"Rights of use"
+          "default":"Diritti d'uso"
         },
         {
           "label":"Nascondi il titolo del pulsante Parole chiave",
-          "default":"Hide keywords list"
+          "default":"Nascondi l'elenco delle parole chiave"
         },
         {
           "label":"Mostra il titolo del pulsante Parole chiave",
-          "default":"Show keywords list"
+          "default":"Mostra l'elenco delle parole chiave"
         },
         {
           "label":"Etichetta Schermo intero",
-          "default":"Fullscreen"
+          "default":"Schermo intero"
         },
         {
           "label":"Esci da Schermo intero",
-          "default":"Exit fullscreen"
+          "default":"Esci da schermo intero"
         },
         {
           "label":"Etichetta scheda precedente",
-          "default":"Previous slide"
+          "default":"Diapositiva precedente"
         },
         {
           "label":"Etichetta scheda successiva",
-          "default":"Next slide"
+          "default":"Prossima diapositiva"
         },
         {
           "label":"Etichetta scheda corrente",
-          "default":"Current slide"
+          "default":"Diapositiva corrente"
         },
         {
           "label":"Etichetta ultima scheda",
-          "default":"Last slide"
+          "default":"Ultima diapositiva"
         },
         {
           "label":"Esci dal testo modalità soluzione",
-          "default":"Exit solution mode"
+          "default":"Esci dalla modalità di soluzione"
         },
         {
           "label":"Testo modalità soluzione",
-          "default":"Solution Mode"
+          "default":"Modalità di soluzione"
         },
         {
           "label":"Testo attività multiple in una pagina",
-          "default":"Multiple tasks"
+          "default":"Compiti multipli"
         },
         {
           "label":"Testo del messaggio del punteggio",
-          "default":"You achieved:"
+          "default":"Hai ottenuto:"
         },
         {
           "label":"Testo condividi su Facebook",
-          "default":"Share on Facebook"
+          "default":"Condividi su Facebook"
         },
         {
           "label":"Testo condividi su Twitter",
-          "default":"Share on Twitter"
+          "default":"Condividi su Twitter"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"Titolo della diapositiva di riepilogo",
+          "default":"Sommario"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Titolo dell'icona dei commenti",
+          "default":"Mostra commenti"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Titolo per il pulsante di stampa",
+          "default":"Stampa"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Stampa la finestra di dialogo d'ingresso",
+          "default":"Come vorresti stampare questa presentazione?"
         },
         {
           "label":"Label for \"Print all slides\" button",
