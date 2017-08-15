@@ -396,6 +396,8 @@
   transition: top 0.2s;
   overflow: hidden;
   font-size: 0.75em;
+  display: flex;
+  flex-direction: column;
 }
 
 .h5p-course-presentation .h5p-popup-container.h5p-animate {
@@ -420,7 +422,7 @@
   background: #ddd;
 }
 
-.h5p-course-presentation .h5p-popup-overlay .h5p-advanced-text {
+.h5p-course-presentation .h5p-popup-overlay.h5p-advancedtext {
   font-size: 1em;
   margin-right: 1.5em;
   padding: 0.5em;
@@ -432,9 +434,6 @@
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-advanced-text .h5p-popup-container .h5p-popup-wrapper,
 .h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container .h5p-popup-wrapper {
-  position: absolute;
-  box-sizing: border-box;
-  max-height: calc(100% - 4em);
   padding: 0.5em;
   overflow: auto;
   text-align: left;
