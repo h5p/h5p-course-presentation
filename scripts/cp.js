@@ -1579,7 +1579,7 @@ H5P.CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
  * @returns {String} HTML.
  */
 H5P.CoursePresentation.createSlide = function (slide) {
-  return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '"></div>';
+  return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
 };
 
 /**
