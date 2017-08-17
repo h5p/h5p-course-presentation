@@ -99,7 +99,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       if (supportsHover) {
         $progressbarPart
           .mouseenter(mouseenterProgressbar)
-          .mouseleave(mouseleaveProgressbar);
+          // .mouseleave(mouseleaveProgressbar);
       }
 
       if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.showSummarySlide) {
@@ -154,19 +154,31 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     var width = this.$progressbarPopup.outerWidth();
     var popupPercentageWidth = (width / this.cp.$container.width()) * 100;
     var leftPos = (pbpartPercentWidth * $parent.data('slideNumber')) + (pbpartPercentWidth / 2) - (popupPercentageWidth / 2);
-    var height = '10%';
+    var leftPosT = (pbpartPercentWidth * $parent.data('slideNumber')) + (pbpartPercentWidth / 2) - (popupPercentageWidth / 2);
 
-    // If popups position left is outside the right bound of container
+    var left;
+    // If the popup overflows beyond the right bound of container
     if ((((leftPos / 100) * this.cp.$container.width()) + width) >= this.cp.$container.width()) {
-      leftPos = 100 - popupPercentageWidth;
+      // Get the overflow amount in pixels
+      overflow = (((leftPos / 100) * this.cp.$container.width()) + width) - this.cp.$container.width();
+      // Get the difference between the pop up and the progress bar 'part'
+      var diff = (width/2) - ($parent.outerWidth()/2);
+      // Reset the left position
+      left = 0 - overflow - diff + 1 + 'px'; // +1 due to rounding in CSS
     }
 
-    // If popups position left is outside the left bound of container
-    if (leftPos < 0) {
-      leftPos = 0;
+    // If the popup overflows beyond the right bound of container
+    else if (leftPos < 0) {
+      left = 0 + '%';
+    }
+
+    // Otherwise, don't set a 'left' value, this allows it to automatically center
+    else {
+      left = '';
     }
 
     this.$progressbarPopup.css({
+      'left': left,
       'bottom': '100%'
     });
   };
