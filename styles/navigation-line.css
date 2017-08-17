@@ -372,17 +372,3 @@
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
   color: #dbd7d1;
 }
-
-/* ----------------------------------- Old IE <= 9 browser fallback for flexbox ------------------------------------ */
-.h5p-course-presentation.old-ie-browser .h5p-progressbar {
-  display: block;
-  line-height: 0.85em;
-}
-
-.h5p-course-presentation.old-ie-browser .h5p-progressbar .h5p-progressbar-part {
-  display: inline-block;
-}
-
-.h5p-course-presentation.old-ie-browser .h5p-progressbar .progressbar-part-summary-slide:before {
-  top: -0.26em;
-}

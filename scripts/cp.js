@@ -156,33 +156,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   $container.addClass('h5p-course-presentation').html(html);
 
-  //Detect ie version
-  var ie = (function () {
-    var undef;
-    var v = 3;
-    var div = document.createElement('div');
-    var all = div.getElementsByTagName('i');
-
-    while (
-      div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i>< ![endif]-->',
-        all[0]
-      );
-
-    return v > 4 ? v : undef;
-
-  }());
-
-  if (ie <= 9) {
-    $container.addClass('old-ie-browser');
-  }
-
-  if (window.navigator.userAgent.indexOf('MSIE 8.0') !== -1) {
-    $container.find('.h5p-box-wrapper').css({
-      border: '1px solid #a9a9a9',
-      boxSizing: 'border-box'
-    });
-  }
-
   this.$container = $container;
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
