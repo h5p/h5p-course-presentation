@@ -99,7 +99,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       if (supportsHover) {
         $progressbarPart
           .mouseenter(mouseenterProgressbar)
-          // .mouseleave(mouseleaveProgressbar);
+          .mouseleave(mouseleaveProgressbar);
       }
 
       if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.showSummarySlide) {
