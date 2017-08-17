@@ -837,8 +837,18 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
   var that = this;
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
   var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
+  var classes = 'h5p-element' +
+    (displayAsButton ? ' h5p-element-button-wrapper' : '') +
+    (buttonSizeClass.length ? ' ' + buttonSizeClass : '');
+  var $elementContainer = H5P.jQuery('<div>', {
+    'class': classes,
+  }).css({
+    left: element.x + '%',
+    top: element.y + '%',
+    width: element.width + '%',
+    height: element.height + '%'
+  }).appendTo($slide);
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
   var libTypePmz = '';
@@ -848,43 +858,50 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     // Parameterize library name to use as html class.
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
-    H5P.jQuery('<a href="#" class="h5p-element-button' + (buttonSizeClass !== null ? ' ' + buttonSizeClass + ' ' : ' ') + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
-      if (that.editor === undefined) {
+    var anchorClasses = 'h5p-element-button' +
+      (buttonSizeClass !== null ? ' ' + buttonSizeClass : '') +
+      ' ' + libTypePmz + '-button';
+    H5P.jQuery('<a>', {
+      href: '#',
+      'class': anchorClasses
+    }).appendTo($elementContainer)
+      .click(function () {
+        if (that.editor === undefined) {
 
-        // Handle exit fullscreen
-        var exitFullScreen = function () {
-          that.$footer.removeClass('footer-full-screen');
-          that.$fullScreenButton.attr('title', this.l10n.fullscreen);
-          instance.trigger('resize');
-        };
+          // Handle exit fullscreen
+          var exitFullScreen = function () {
+            that.$footer.removeClass('footer-full-screen');
+            that.$fullScreenButton.attr('title', this.l10n.fullscreen);
+            instance.trigger('resize');
+          };
 
-        // Listen for exit fullscreens not triggered by button, for instance using 'esc'
-        that.on('exitFullScreen', exitFullScreen);
+          // Listen for exit fullscreens not triggered by button, for instance using 'esc'
+          that.on('exitFullScreen', exitFullScreen);
 
-        $buttonElement.appendTo(that.showPopup('', function () {
-          that.pauseMedia(instance);
-          $buttonElement.detach();
+          $buttonElement.appendTo(that.showPopup('', function () {
+            that.pauseMedia(instance);
+            $buttonElement.detach();
 
-          // Remove listener, we only need it for active popups
-          that.off('exitFullScreen', exitFullScreen);
-        }, libTypePmz).find('.h5p-popup-wrapper'));
-        H5P.trigger(instance, 'resize');
+            // Remove listener, we only need it for active popups
+            that.off('exitFullScreen', exitFullScreen);
+          }, libTypePmz).find('.h5p-popup-wrapper'));
+          H5P.trigger(instance, 'resize');
 
-        // Resize images to fit popup dialog
-        if (libTypePmz === 'h5p-image') {
-          that.resizePopupImage($buttonElement);
+          // Resize images to fit popup dialog
+          if (libTypePmz === 'h5p-image') {
+            that.resizePopupImage($buttonElement);
+          }
+          if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
+            instance.setActivityStarted();
+          }
+
+          // Autoplay media
+          if (element.action.params && element.action.params.cpAutoplay && typeof instance.play === 'function') {
+            instance.play();
+          }
         }
-        if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
-          instance.setActivityStarted();
-        }
-
-        // Autoplay media
-        if (element.action.params && element.action.params.cpAutoplay && typeof instance.play === 'function') {
-          instance.play();
-        }
-      }
-      return false;
-    });
+        return false;
+      });
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
       instance.on('controls', function () {
         if (instance.controls.$fullscreen) {
