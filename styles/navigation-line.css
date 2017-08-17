@@ -236,9 +236,17 @@
   box-shadow: 0 0 0.5em 0em rgba(105, 105, 105, 0.4);
 }
 
-.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:before,
-.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:after {
-  color: #FFF;
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
+  flex: 0;
+  min-width: 2em;
+}
+
+/* The summary slide icon */
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide:after {
+  font-family: 'H5PFontAwesome4';
+  content: '\f005';
+  font-size: 0.8em;
+  color: #ffc80b;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
@@ -266,6 +274,8 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+
+  flex: 1;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
@@ -336,28 +346,11 @@
   background: #D3D3D3;
 }
 
-/* ----------------------- Summary slide svgs --------------------------------- */
-
-.h5p-course-presentation .summary-slide-right-svg {
-  background-image: url(../fonts/summari_right_scale_horisontal.svg);
-  width: calc(100% - 1em);
-  height: 0.5em;
-  background-repeat: repeat-x;
-  background-size: contain;
-}
-
-.h5p-course-presentation .summary-slide-left-svg {
-  background-image: url(../fonts/summary_left_constrain.svg);
-  width: 0.6em;
-  background-size: cover;
-  height: 0.5em;
-  margin-right: 0.2em;
-}
-
 /* ----------------------------------------- Progressbar popup ------------------------------------ */
 .h5p-course-presentation .h5p-progressbar-popup {
   display: block;
   position: absolute;
+  bottom: 100%;
   z-index: 3; /* Must be above feedback, which is 2 */
 
   font-size: 0.75em;
