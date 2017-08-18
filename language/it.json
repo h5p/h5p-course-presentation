@@ -288,7 +288,7 @@
         },
         {
           "label":"Etichetta per il pulsante \"Stampa diapositiva corrente\"",
-          "default":"Stampare la diapositiva corrente"
+          "default":"Stampa la diapositiva corrente"
         }
       ]
     },
