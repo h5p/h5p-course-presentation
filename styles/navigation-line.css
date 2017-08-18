@@ -20,9 +20,9 @@
   color: #555;
   cursor: pointer;
 
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 /* Footer containers */
@@ -236,9 +236,17 @@
   box-shadow: 0 0 0.5em 0em rgba(105, 105, 105, 0.4);
 }
 
-.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:before,
-.h5p-course-presentation .h5p-progressbar .progressbar-part-summary-slide.h5p-progressbar-part-show:after {
-  color: #FFF;
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
+  flex: 0;
+  min-width: 2em;
+}
+
+/* The summary slide icon */
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide:after {
+  font-family: 'H5PFontAwesome4';
+  content: '\f005';
+  font-size: 0.8em;
+  color: #ffc80b;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
@@ -248,9 +256,9 @@
 
   cursor: pointer;
 
-  -webkit-box-shadow: 0 0 0.05em 0 #fff;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    0 0 0.05em 0 #fff;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         0 0 0.05em 0 #fff;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  -webkit-box-shadow: 0 0 1px 0 #fff  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0 0 1px 0 #fff;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0 0 1px 0 #fff;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -ms-flexbox;      /* TWEENER - IE 10 */
@@ -266,6 +274,8 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+
+  flex: 1;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
@@ -336,41 +346,18 @@
   background: #D3D3D3;
 }
 
-/* ----------------------- Summary slide svgs --------------------------------- */
-
-.h5p-course-presentation .summary-slide-right-svg {
-  background-image: url(../fonts/summari_right_scale_horisontal.svg);
-  width: calc(100% - 1em);
-  height: 0.5em;
-  background-repeat: repeat-x;
-  background-size: contain;
-}
-
-.h5p-course-presentation .summary-slide-left-svg {
-  background-image: url(../fonts/summary_left_constrain.svg);
-  width: 0.6em;
-  background-size: cover;
-  height: 0.5em;
-  margin-right: 0.2em;
-}
-
 /* ----------------------------------------- Progressbar popup ------------------------------------ */
 .h5p-course-presentation .h5p-progressbar-popup {
   display: block;
   position: absolute;
+  bottom: 100%;
   z-index: 3; /* Must be above feedback, which is 2 */
-
-  left: 50%;
-  transform: translate(-50%, 0);
 
   font-size: 0.75em;
   line-height: 1.5em;
 
-  max-width: 50%;
   padding: 0 0.3em;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 
   background: #000;
   color: #FFF;
@@ -384,18 +371,4 @@
 
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
   color: #dbd7d1;
-}
-
-/* ----------------------------------- Old IE <= 9 browser fallback for flexbox ------------------------------------ */
-.h5p-course-presentation.old-ie-browser .h5p-progressbar {
-  display: block;
-  line-height: 0.85em;
-}
-
-.h5p-course-presentation.old-ie-browser .h5p-progressbar .h5p-progressbar-part {
-  display: inline-block;
-}
-
-.h5p-course-presentation.old-ie-browser .h5p-progressbar .progressbar-part-summary-slide:before {
-  top: -0.26em;
 }
