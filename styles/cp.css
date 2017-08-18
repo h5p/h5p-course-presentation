@@ -318,6 +318,7 @@
   font-size: 0.75em;
   z-index: 1;
 }
+
 .h5p-course-presentation .h5p-element.h5p-element-button-wrapper {
   border: 0;
   background-color: transparent !important;
@@ -326,6 +327,13 @@
   overflow: visible !important;
   z-index: 2;
 }
+
+.h5p-course-presentation .h5p-element.h5p-element-button-wrapper.h5p-element-button-big {
+  width: 2.334em !important;
+  height: 2.334em !important;
+  line-height: 2.334em !important;
+}
+
 .h5p-course-presentation .h5p-element.h5p-blanks,
 .h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
   overflow: auto;
