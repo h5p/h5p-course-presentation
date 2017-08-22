@@ -1218,7 +1218,6 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     // Set start positions
     lastX = startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
-    prevX = getTranslateX(that.$current.addClass('h5p-touch-move').prev().addClass('h5p-touch-move'));
     nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
     containerWidth = H5P.jQuery(this).width();
     startTime = new Date().getTime();
