@@ -24,56 +24,39 @@
                       
                     },
                     {
-                      "label":"التعليقات",
-                      "description":"وتظهر هذه التعليقات عندما يعرض المستخدم الإجابات المقترحة لكافة الشرائح"
+                      "label":"Comments",
+                      "description":"The comments are shown when the user displays the suggested answers for all slides."
                     },
                     {
-                      "label":"اعرض التعليقات دائما"
+                      "label":"Always display comments"
                     },
                     {
-                      "label":"شفافية الخلفيية"
+                      "label":"Background Opacity"
                     },
                     {
-                      "label":"اعرض كزر"
+                      "label":"Display as button"
                     },
                     {
-                      "label":"العنوان"
+                      "label":"Title"
                     },
                     {
-                      "label":"The slide we'll go to",
-                      "description":"'Specified slide' will use the 'Specific slide number'.",
-                      "options":[
-                        {
-                          "label":"Specified slide"
-                        },
-                        {
-                          "label":"Next slide"
-                        },
-                        {
-                          "label":"Previous slide"
-                        }
-                      ],
-                      "default":"specified"
+                      "label":"Go To Slide"
                     },
                     {
-                      "label":"الانتقال إلى الشريحة",
-                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "label":"Invisible",
+                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
-                      "label":"خفي",
-                      "description":"المؤشر الافتراضي، لا عنوان ولا مؤشر التبويب. تحذير: سيكون للمستخدمين ذوي الإعاقة أو لوحة المفاتيح للمستخدمين فقط لديها مشكلة في استخدام هذا العنصر"
-                    },
-                    {
-                      "label":"الفوقية",
+                      "label":"Metadata",
                       "fields":[
                         {
-                          "label":"العنوان"
+                          "label":"Title"
                         },
                         {
-                          "label":"الكاتب"
+                          "label":"Author"
                         },
                         {
-                          "label":"الرخصة"
+                          "label":"License"
                         }
                       ]
                     }
@@ -116,16 +99,16 @@
           
         },
         {
-          "label":"قائمة الكلمات"
+          "label":"Keyword list"
         },
         {
-          "label":"تظهر دائما"
+          "label":"Always show"
         },
         {
-          "label":"اخفاء تلقائي"
+          "label":"Auto hide"
         },
         {
-          "label":"الشفافية"
+          "label":"Opacity"
         },
         {
           "fields":[
@@ -145,130 +128,126 @@
       ]
     },
     {
-      "label":"تحديد الموقع",
+      "label":"Localize",
       "fields":[
         {
-          "label":"الترجمة \"للشريحة\"",
+          "label":"Translation for \"Slide\"",
           "default":"Slide"
         },
         {
-          "label":"الترجمة \"للنقاط الخاصة بك\"",
+          "label":"Translation for \"Your Score\"",
           "default":"Your Score"
         },
         {
-          "label":"الترجمة \"أقصى نقاط \"",
+          "label":"Translation for \"Max Score\"",
           "default":"Max Score"
         },
         {
-          "label":"تحية للنتيجة الممتازة",
+          "label":"Greeting given for GOOD score",
           "default":"Congratulations! You got @percent correct!",
-          "description":"يتم استبدال في النسبة المويئة بنسبة المستخدم المويئة"
+          "description":"@percent is replaced by the real user score in percent"
         },
         {
-          "label":"تحية للنتيجة الجيدة",
+          "label":"Greeting given for OK score",
           "default":"Nice effort! You got @percent correct!",
-          "description":"يتم استبدال في النسبة المويئة بنسبة المستخدم المويئة"
+          "description":"@percent is replaced by the real user score in percent"
         },
         {
-          "label":"تحية للنتيجة الضعيفة",
+          "label":"Greeting given for BAD score",
           "default":"You got @percent correct.",
-          "description":"يتم استبدال في النسبة المويئة بنسبة المستخدم المويئة"
+          "description":"@percent is replaced by the real user score in percent"
         },
         {
-          "label":"الترجمة \"الدرجة النهايئة\"",
-          "default":"TOTAL"
+          "label":"Translation for \"Total\"",
+          "default":"Total"
         },
         {
-          "label":"نص زر عرض الحل",
+          "label":"Title for show solutions button",
           "default":"Show solutions"
         },
         {
-          "label":"نص زر إعادة المحاولة",
+          "label":"Text for the retry button",
           "default":"Retry"
         },
         {
-          "label":"ترجمة \"العنوان\"",
+          "label":"Translation for \"Title\"",
           "default":"Title"
         },
         {
-          "label":"ترجمة\"الكاتب / والمورد\"",
+          "label":"Translation for \"Author/supplier\"",
           "default":"Author"
         },
         {
-          "label":"ترجمة \"الرخصة\"",
+          "label":"Translation for \"License\"",
           "default":"License"
         },
         {
-          "label":"ترجمة \"الرخصة\"",
+          "label":"Translation for \"License\"",
           "default":"License"
         },
         {
-          "label":"نص زر التصدير",
+          "label":"Text for the export text button",
           "default":"Export text"
         },
         {
-          "label":"نص زر \"حقوق الاستخدام\"",
+          "label":"Text for the \"Rights of use\" button",
           "default":"Rights of use"
         },
         {
-          "label":"إخفاء عنوان زر قائمة الكلمات الرئيسية",
+          "label":"Hide keywords list button title",
           "default":"Hide keywords list"
         },
         {
-          "label":"مشاهدة الكلمات الرئيسية لقب زر القائمة",
+          "label":"Show keywords list button title",
           "default":"Show keywords list"
         },
         {
-          "label":"تسمية لملء الشاشة",
+          "label":"Fullscreen label",
           "default":"Fullscreen"
         },
         {
-          "label":"تسمية خروج ملء الشاشة",
+          "label":"Exit fullscreen label",
           "default":"Exit fullscreen"
         },
         {
-          "label":"تسمية الشريحة السابقة",
+          "label":"Previous slide label",
           "default":"Previous slide"
         },
         {
-          "label":"تسمية الشريحة التالية",
+          "label":"Next slide label",
           "default":"Next slide"
         },
         {
-          "label":"تسمية الشريحة الحالية",
+          "label":"Current slide label",
           "default":"Current slide"
         },
         {
-          "label":"تسمية الشريحة الأخيرة",
+          "label":"Last slide label",
           "default":"Last slide"
         },
         {
-          "label":"نص الخروج من الحلول",
+          "label":"Exit solution mode text",
           "default":"Exit solution mode"
         },
         {
-          "label":"نص وضع الحل",
+          "label":"Solution mode text",
           "default":"Solution Mode"
         },
         {
-          "label":"خط تحت نص الحل",
+          "label":"Text when multiple tasks on a page",
           "default":"Multiple tasks"
         },
         {
-          "label":"نص في حالة وجود اكثر من نشاط",
+          "label":"Score message text",
           "default":"You achieved:"
         },
         {
-          "label":"رسالة نصية للنتيجة",
+          "label":"Share to Facebook text",
           "default":"Share on Facebook"
         },
         {
-          "label":"سجلة المحاولة علي الفيسبوك",
+          "label":"Share to Twitter text",
           "default":"Share on Twitter"
-        },
-        {
-          "label":"سجلة المحاولة علي التويتر",
-          "default":"Summary"
         },
         {
           "label":"Title for summary slide",
@@ -289,20 +268,24 @@
         {
           "label":"Label for \"Print all slides\" button",
           "default":"Print all slides"
+        },
+        {
+          "label":"Label for \"Print current slide\" button",
+          "default":"Print current slide"
         }
       ]
     },
     {
-      "label":"إعدادات زر \"مشاهدة حل \" و \"إعادة المحاولة\"",
-      "description":"وهذه الخيارات تمكنك من تجاوز إعدادات",
+      "label":"Behaviour settings.",
+      "description":"These options will let you override behaviour settings.",
       "fields":[
         {
           "label":"Activate Active Surface Mode",
           "description":"Removes navigation controls for the end user. Use Go To Slide to navigate."
         },
         {
-          "label":"السلوك",
-          "description":"يخفي الشريحة موجز"
+          "label":"Hide Summary Slide",
+          "description":"Hides the summary slide."
         },
         {
           "label":"Override \"Show Solution\" button",

@@ -59,6 +59,7 @@ H5P.CoursePresentation = function (params, id, extras) {
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
+    shareGoogle: 'Share on Google+',
     goToSlide: 'Go to slide :num',
     solutionsButtonTitle: 'Show comments',
     printTitle: 'Print',
@@ -71,6 +72,21 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
     this.enablePrintButton = !!params.override.enablePrintButton;
+
+    if (!!params.override.social) {
+      this.enableTwitterShare = !!params.override.social.showTwitterShare;
+      this.enableFacebookShare = !!params.override.social.showFacebookShare;
+      this.enableGoogleShare = !!params.override.social.showGoogleShare;
+
+      this.twitterShareStatement = params.override.social.twitterShare.statement;
+      this.twitterShareHashtags = params.override.social.twitterShare.hashtags;
+      this.twitterShareUrl = params.override.social.twitterShare.url;
+
+      this.facebookShareUrl = params.override.social.facebookShare.url;
+      this.facebookShareQuote = params.override.social.facebookShare.quote;
+
+      this.googleShareUrl = params.override.social.googleShareUrl;
+    }
   }
 
   // Set override for all actions
@@ -1024,7 +1040,6 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  */
 H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
   var doNotClose;
-  var self = this;
 
   /** @private */
   var close = function (event) {
@@ -1185,15 +1200,15 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
 H5P.CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
-  var containerWidth = this.$slidesWrapper.width();
-  var containerPercentageForScrolling = 0.6; // 60% of container width used to reach endpoints with touch
-  var slidesNumbers = this.slides.length;
-  var pixelsPerSlide = (containerWidth * containerPercentageForScrolling) / slidesNumbers;
-  var startTime;
-  var currentTime;
-  var navigateTimer = 500; // 500ms before navigation popup starts.
+  // var containerWidth = this.$slidesWrapper.width();
+  // var containerPercentageForScrolling = 0.6; // 60% of container width used to reach endpoints with touch
+  // var slidesNumbers = this.slides.length;
+  // var pixelsPerSlide = (containerWidth * containerPercentageForScrolling) / slidesNumbers;
+  // var startTime;
+  // var currentTime;
+  // var navigateTimer = 500; // 500ms before navigation popup starts.
   var isTouchJump = false;
-  var nextSlide;
+  // var nextSlide;
   var transform = function (value) {
     return {
       '-webkit-transform': value,
@@ -1220,8 +1235,8 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     startY = event.originalEvent.touches[0].pageY;
     prevX = getTranslateX(that.$current.addClass('h5p-touch-move').prev().addClass('h5p-touch-move'));
     nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
-    containerWidth = H5P.jQuery(this).width();
-    startTime = new Date().getTime();
+    // containerWidth = H5P.jQuery(this).width();
+    // startTime = new Date().getTime();
 
     scroll = null;
 

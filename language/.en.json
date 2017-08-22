@@ -27,6 +27,18 @@
                       "label": "Display as button"
                     },
                     {
+                      "label": "Button size",
+                      "default": "big",
+                      "options": [
+                        {
+                          "label": "Small"
+                        },
+                        {
+                          "label": "Big"
+                        }
+                      ]
+                    },
+                    {
                       "label": "Title"
                     },
                     {
@@ -247,6 +259,10 @@
           "default": "Share on Twitter"
         },
         {
+          "label": "Share to Google text",
+          "default": "Share on Google+"
+        },
+        {
           "label": "Title for summary slide",
           "default": "Summary"
         },
@@ -311,6 +327,75 @@
         {
           "label": "Enable print button",
           "description": "Enables the print button."
+        },
+        {
+          "label": "Social Settings",
+          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields": [
+            {
+              "label": "Display Facebook share icon"
+            },
+            {
+              "label": "Facebook share settings",
+              "showWhen": {
+                "rules": [
+                  {}
+                ]
+              },
+              "fields": [
+                {
+                  "label": "Share to Facebook link",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label": "Display Twitter share icon"
+            },
+            {
+              "label": "Twitter share settings",
+              "showWhen": {
+                "rules": [
+                  {}
+                ]
+              },
+              "fields": [
+                {
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label": "Share to Twitter link",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Share to Twitter hashtags",
+                  "default": "h5p, course"
+                }
+              ]
+            },
+            {
+              "label": "Display Google+ share icon"
+            },
+            {
+              "label": "Google+ share settings",
+              "showWhen": {
+                "rules": [
+                  {}
+                ]
+              },
+              "fields": [
+                {
+                  "label": "Share to Google link",
+                  "default": "@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

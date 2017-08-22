@@ -581,6 +581,13 @@
         "default": "Share on Twitter"
       },
       {
+        "name": "shareGoogle",
+        "type": "text",
+        "label": "Share to Google text",
+        "importance": "low",
+        "default": "Share on Google+"
+      },
+      {
         "name": "summary",
         "type": "text",
         "label": "Title for summary slide",
@@ -692,6 +699,133 @@
         "importance": "low",
         "description": "Enables the print button.",
         "default": false
+      },
+      {
+        "name": "social",
+        "type": "group",
+        "label": "Social Settings",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "hideSummarySlide",
+              "equals": false
+            }
+          ]
+        },
+        "importance": "low",
+        "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+        "optional": true,
+        "fields": [
+          {
+            "name": "showFacebookShare",
+            "type": "boolean",
+            "label": "Display Facebook share icon",
+            "importance": "low",
+            "default": true
+          },
+          {
+            "name": "facebookShare",
+            "importance": "low",
+            "type": "group",
+            "expanded": true,
+            "label": "Facebook share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showFacebookShare",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "url",
+                "type": "text",
+                "label": "Share to Facebook link",
+                "importance": "low",
+                "default": "@currentpageurl"
+              },
+              {
+                "name": "quote",
+                "type": "text",
+                "label": "Share to Facebook quote",
+                "importance": "low",
+                "default": "I scored @percentage on a task at @currentpageurl."
+              }
+            ]
+          },
+          {
+            "name": "showTwitterShare",
+            "type": "boolean",
+            "label": "Display Twitter share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
+            "name": "twitterShare",
+            "importance": "low",
+            "type": "group",
+            "expanded": true,
+            "label": "Twitter share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showTwitterShare",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "statement",
+                "type": "text",
+                "label": "Share to Twitter statement",
+                "importance": "low",
+                "default": "I scored @percentage on a task at @currentpageurl."
+              },
+              {
+                "name": "url",
+                "type": "text",
+                "label": "Share to Twitter link",
+                "importance": "low",
+                "default": "@currentpageurl"
+              },
+              {
+                "name": "hashtags",
+                "type": "text",
+                "label": "Share to Twitter hashtags",
+                "importance": "low",
+                "default": "h5p, course"
+              }
+            ]
+          },
+          {
+            "name": "showGoogleShare",
+            "type": "boolean",
+            "label": "Display Google+ share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
+            "name": "googleShareUrl",
+            "type": "text",
+            "label": "Share to Google link",
+            "importance": "low",
+            "default": "@currentpageurl",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showGoogleShare",
+                  "equals": true
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   }
