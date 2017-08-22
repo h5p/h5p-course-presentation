@@ -69,7 +69,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       // Construct google share score link
       if (that.cp.enableGoogleShare == true) {
         var $googleContainer = $('.h5p-summary-google-message', that.$summarySlide);
-        this.addGoogleScoreLinkTo($googleContainer, totalScores);
+        this.addGoogleScoreLinkTo($googleContainer);
       }
 
       // Update slide links
@@ -273,11 +273,11 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
                                 .replace('@currentpageurl', window.location.href);
 
     // Parse data from the localization object.
-    twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
+    twitterHashtagList = twitterHashtagList.trim().replace(' ', '');
 
     // Encode components that may contain breaking characters.
     twitterShareStatement = encodeURIComponent(twitterShareStatement);
-    twitterHashTagList = encodeURIComponent(twitterHashtagList);
+    twitterHashtagList = encodeURIComponent(twitterHashtagList);
     twitterShareUrl = encodeURIComponent(twitterShareUrl);
 
     // Add query strings to the URL based on settings.
@@ -350,15 +350,14 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
           ',top=' + topPos);
         return false;
       });
-  }
+  };
 
   /**
    * Adds a link to the given container which will link achieved score to google.
    *
    * @param {jQuery} $googleContainer Container that should hold the google link.
-   * @param {Object} scores totalScores object to pull data from.
    */
-  SummarySlide.prototype.addGoogleScoreLinkTo = function ($googleContainer, scores) {
+  SummarySlide.prototype.addGoogleScoreLinkTo = function ($googleContainer) {
     var that = this;
 
     // Get data from the localization object.
@@ -391,7 +390,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
           ',top=' + topPos);
         return false;
       });
-  }
+  };
 
   /**
    * Gets total scores for all slides

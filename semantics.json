@@ -704,6 +704,15 @@
         "name": "social",
         "type": "group",
         "label": "Social Settings",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "hideSummarySlide",
+              "equals": false
+            }
+          ]
+        },
         "importance": "low",
         "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
         "optional": true,
@@ -716,9 +725,10 @@
             "default": true
           },
           {
-            "name": "facebookShareOverrides",
+            "name": "facebookShare",
             "importance": "low",
             "type": "group",
+            "expanded": true,
             "label": "Facebook share settings",
             "widget": "showWhen",
             "showWhen": {
@@ -731,14 +741,14 @@
             },
             "fields": [
               {
-                "name": "facebookShareUrl",
+                "name": "url",
                 "type": "text",
                 "label": "Share to Facebook link",
                 "importance": "low",
                 "default": "@currentpageurl"
               },
               {
-                "name": "facebookShareQuote",
+                "name": "quote",
                 "type": "text",
                 "label": "Share to Facebook quote",
                 "importance": "low",
@@ -754,9 +764,10 @@
             "default": false
           },
           {
-            "name": "twitterShareOverrides",
+            "name": "twitterShare",
             "importance": "low",
             "type": "group",
+            "expanded": true,
             "label": "Twitter share settings",
             "widget": "showWhen",
             "showWhen": {
@@ -769,21 +780,21 @@
             },
             "fields": [
               {
-                "name": "twitterShareStatement",
+                "name": "statement",
                 "type": "text",
                 "label": "Share to Twitter statement",
                 "importance": "low",
                 "default": "I scored @percentage on a task at @currentpageurl."
               },
               {
-                "name": "twitterShareUrl",
+                "name": "url",
                 "type": "text",
                 "label": "Share to Twitter link",
                 "importance": "low",
                 "default": "@currentpageurl"
               },
               {
-                "name": "twitterShareHashtags",
+                "name": "hashtags",
                 "type": "text",
                 "label": "Share to Twitter hashtags",
                 "importance": "low",
@@ -799,10 +810,11 @@
             "default": false
           },
           {
-            "name": "googleShareOverrides",
+            "name": "googleShareUrl",
+            "type": "text",
+            "label": "Share to Google link",
             "importance": "low",
-            "type": "group",
-            "label": "Google+ share settings",
+            "default": "@currentpageurl",
             "widget": "showWhen",
             "showWhen": {
               "rules": [
@@ -811,16 +823,7 @@
                   "equals": true
                 }
               ]
-            },
-            "fields": [
-              {
-                "name": "googleShareUrl",
-                "type": "text",
-                "label": "Share to Google link",
-                "importance": "low",
-                "default": "@currentpageurl"
-              }
-            ]
+            }
           }
         ]
       }

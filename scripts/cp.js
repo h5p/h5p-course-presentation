@@ -78,14 +78,14 @@ H5P.CoursePresentation = function (params, id, extras) {
       this.enableFacebookShare = !!params.override.social.showFacebookShare;
       this.enableGoogleShare = !!params.override.social.showGoogleShare;
 
-      this.twitterShareStatement = params.override.social.twitterShareOverrides.twitterShareStatement;
-      this.twitterShareHashtags = params.override.social.twitterShareOverrides.twitterShareHashtags;
-      this.twitterShareUrl = params.override.social.twitterShareOverrides.twitterShareUrl;
+      this.twitterShareStatement = params.override.social.twitterShare.statement;
+      this.twitterShareHashtags = params.override.social.twitterShare.hashtags;
+      this.twitterShareUrl = params.override.social.twitterShare.url;
 
-      this.facebookShareUrl = params.override.social.facebookShareOverrides.facebookShareUrl;
-      this.facebookShareQuote = params.override.social.facebookShareOverrides.facebookShareQuote;
+      this.facebookShareUrl = params.override.social.facebookShare.url;
+      this.facebookShareQuote = params.override.social.facebookShare.quote;
 
-      this.googleShareUrl = params.override.social.googleShareOverrides;
+      this.googleShareUrl = params.override.social.googleShareUrl;
     }
   }
 
