@@ -91,7 +91,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       'class': 'h5p-show-solutions',
       html: that.cp.l10n.showSolutions,
       on: {
-        click: function (event) {
+        click: function () {
           // Enable solution mode
           that.toggleSolutionMode(true);
         }
@@ -104,7 +104,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       'class': 'h5p-cp-retry-button',
       html: that.cp.l10n.retry,
       on: {
-        click: function (event) {
+        click: function () {
           that.cp.resetTask();
           // event.preventDefault();
         }
@@ -118,7 +118,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
         'class': 'h5p-eta-export',
         html: that.cp.l10n.exportAnswers,
         on: {
-          click: function (event) {
+          click: function () {
             H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
             // event.preventDefault();
           }
@@ -147,8 +147,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var i;
     var slidePercentageScore = 0;
     var slideDescription = '';
-    var slideElements;
-    var action;
     for (i = 0; i < slideScores.length; i += 1) {
       slideDescription = self.getSlideDescription(slideScores[i]);
 
