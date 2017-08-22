@@ -37,43 +37,55 @@
                       "label":"Vis som knapp"
                     },
                     {
-                      "label":"Tittel"
-                    },
-                    {
-                      "label":"Slide vi skal gå til",
-                      "description":"'Spesifisert slide' bruker slide nummer angitt i 'spesifisert slide'.",
+                      "label":"Button size",
+                      "default":"big",
                       "options":[
                         {
-                          "label":"Spesifisert slide"
+                          "label":"Small"
                         },
                         {
-                          "label":"Neste slide"
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
+                      "label":"Title"
+                    },
+                    {
+                      "label":"The slide we'll go",
+                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "options":[
+                        {
+                          "label":"Specified slide"
                         },
                         {
-                          "label":"Forrige slide"
+                          "label":"Next slide"
+                        },
+                        {
+                          "label":"Previous slide"
                         }
                       ],
                       "default":"specified"
                     },
                     {
-                      "label":"Spesifisert slide",
-                      "description":"Brukes kun om 'Spesifisert slide' er valgt over"
+                      "label":"Specific slide number",
+                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
-                      "label":"Usynlig",
-                      "description":"Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                      "label":"Invisible",
+                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Tittel"
+                          "label":"Title"
                         },
                         {
-                          "label":"Forfatter"
+                          "label":"Author"
                         },
                         {
-                          "label":"Lisens"
+                          "label":"License"
                         }
                       ]
                     }
@@ -267,28 +279,32 @@
           "default":"Del på Twitter"
         },
         {
-          "label":"Tittel for \"Oppsummering\" siden",
-          "default":"Oppsummering"
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
-          "label":"Tittel for kommentarikonet",
-          "default":"Vis kommentarer"
+          "label":"Title for summary slide",
+          "default":"Summary"
         },
         {
-          "label":"Tittel for \"Skriv ut\"-knapp",
-          "default":"Skriv ut"
+          "label":"Title for the comments icon",
+          "default":"Show comments"
         },
         {
-          "label":"Skriv ut dialog ingress",
-          "default":"Hvordan vil du skrive ut denne presentasjonen?"
+          "label":"Title for print button",
+          "default":"Print"
         },
         {
-          "label":"Tittel for \"Skriv ut alle sider\"-knapp",
-          "default":"Skriv ut alle sider"
+          "label":"Print dialog ingress",
+          "default":"How would you like to print this presentation?"
         },
         {
-          "label":"Tittel for \"Skriv ut nåværende side\"-knapp",
-          "default":"Skriv ut nåværende side"
+          "label":"Label for \"Print all slides\" button",
+          "default":"Print all slides"
+        },
+        {
+          "label":"Label for \"Print current slide\" button",
+          "default":"Print current slide"
         }
       ]
     },
@@ -331,6 +347,81 @@
         {
           "label":"Aktiver print-knapp",
           "description":"Aktiverer print-knappen."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
