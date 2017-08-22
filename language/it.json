@@ -37,43 +37,55 @@
                       "label":"Visualizza come pulsante"
                     },
                     {
-                      "label":"Titolo"
-                    },
-                    {
-                      "label":"La diapositiva a cui andremo",
-                      "description":"La 'diapositiva specificata' utilizzerà il 'numero di diapositiva specifica'.",
+                      "label":"Button size",
+                      "default":"big",
                       "options":[
                         {
-                          "label":"Diapositiva specificata"
+                          "label":"Small"
                         },
                         {
-                          "label":"Prossima diapositiva"
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
+                      "label":"Title"
+                    },
+                    {
+                      "label":"The slide we'll go",
+                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "options":[
+                        {
+                          "label":"Specified slide"
                         },
                         {
-                          "label":"Diapositiva precedente"
+                          "label":"Next slide"
+                        },
+                        {
+                          "label":"Previous slide"
                         }
                       ],
-                      "default":"specificato/a"
+                      "default":"specified"
                     },
                     {
-                      "label":"Numero diapositiva specifica",
-                      "description":"Utilizzato solo se per 'La diapositiva a cui andremo' è selezionato 'diapositiva specificata'"
+                      "label":"Specific slide number",
+                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
-                      "label":"Invisibile",
-                      "description":"Cursore predefinito, nessun titolo e nessun indice di scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera avranno problemi con questo elemento."
+                      "label":"Invisible",
+                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
-                      "label":"Metadati",
+                      "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Titolo"
+                          "label":"Title"
                         },
                         {
-                          "label":"Autore"
+                          "label":"Author"
                         },
                         {
-                          "label":"Licenza"
+                          "label":"License"
                         }
                       ]
                     }
@@ -267,28 +279,32 @@
           "default":"Condividi su Twitter"
         },
         {
-          "label":"Titolo della diapositiva di riepilogo",
-          "default":"Riepilogo"
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
-          "label":"Titolo dell'icona dei commenti",
-          "default":"Mostra commenti"
+          "label":"Title for summary slide",
+          "default":"Summary"
         },
         {
-          "label":"Titolo per il pulsante di stampa",
-          "default":"Stampa"
+          "label":"Title for the comments icon",
+          "default":"Show comments"
         },
         {
-          "label":"Stampa la finestra di dialogo d'ingresso",
-          "default":"Come vorresti stampare questa presentazione?"
+          "label":"Title for print button",
+          "default":"Print"
         },
         {
-          "label":"Etichetta per il pulsante \"Stampa tutte le diapositive\"",
-          "default":"Stampa tutte le diapositive"
+          "label":"Print dialog ingress",
+          "default":"How would you like to print this presentation?"
         },
         {
-          "label":"Etichetta per il pulsante \"Stampa diapositiva corrente\"",
-          "default":"Stampa la diapositiva corrente"
+          "label":"Label for \"Print all slides\" button",
+          "default":"Print all slides"
+        },
+        {
+          "label":"Label for \"Print current slide\" button",
+          "default":"Print current slide"
         }
       ]
     },
@@ -331,6 +347,81 @@
         {
           "label":"Attiva il pulsante di stampa",
           "description":"Attiva il pulsante di stampa."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
