@@ -172,33 +172,6 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   $container.addClass('h5p-course-presentation').html(html);
 
-  //Detect ie version
-  var ie = (function () {
-    var undef;
-    var v = 3;
-    var div = document.createElement('div');
-    var all = div.getElementsByTagName('i');
-
-    while (
-      div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i>< ![endif]-->',
-        all[0]
-      );
-
-    return v > 4 ? v : undef;
-
-  }());
-
-  if (ie <= 9) {
-    $container.addClass('old-ie-browser');
-  }
-
-  if (window.navigator.userAgent.indexOf('MSIE 8.0') !== -1) {
-    $container.find('.h5p-box-wrapper').css({
-      border: '1px solid #a9a9a9',
-      boxSizing: 'border-box'
-    });
-  }
-
   this.$container = $container;
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
@@ -852,8 +825,19 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
 H5P.CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
   var that = this;
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
+  var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
+  var classes = 'h5p-element' +
+    (displayAsButton ? ' h5p-element-button-wrapper' : '') +
+    (buttonSizeClass.length ? ' ' + buttonSizeClass : '');
+  var $elementContainer = H5P.jQuery('<div>', {
+    'class': classes,
+  }).css({
+    left: element.x + '%',
+    top: element.y + '%',
+    width: element.width + '%',
+    height: element.height + '%'
+  }).appendTo($slide);
 
-  var $elementContainer = H5P.jQuery('<div class="h5p-element' + (displayAsButton ? ' h5p-element-button-wrapper' : '') + '" style="left: ' + element.x + '%; top: ' + element.y + '%; width: ' + element.width + '%; height: ' + element.height + '%;"></div>').appendTo($slide);
   var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
   var libTypePmz = '';
@@ -863,43 +847,50 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 
     // Parameterize library name to use as html class.
     libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
-    H5P.jQuery('<a href="#" class="h5p-element-button ' + libTypePmz + '-button"></a>').appendTo($elementContainer).click(function () {
-      if (that.editor === undefined) {
+    var anchorClasses = 'h5p-element-button' +
+      (buttonSizeClass !== null ? ' ' + buttonSizeClass : '') +
+      ' ' + libTypePmz + '-button';
+    H5P.jQuery('<a>', {
+      href: '#',
+      'class': anchorClasses
+    }).appendTo($elementContainer)
+      .click(function () {
+        if (that.editor === undefined) {
 
-        // Handle exit fullscreen
-        var exitFullScreen = function () {
-          that.$footer.removeClass('footer-full-screen');
-          that.$fullScreenButton.attr('title', this.l10n.fullscreen);
-          instance.trigger('resize');
-        };
+          // Handle exit fullscreen
+          var exitFullScreen = function () {
+            that.$footer.removeClass('footer-full-screen');
+            that.$fullScreenButton.attr('title', this.l10n.fullscreen);
+            instance.trigger('resize');
+          };
 
-        // Listen for exit fullscreens not triggered by button, for instance using 'esc'
-        that.on('exitFullScreen', exitFullScreen);
+          // Listen for exit fullscreens not triggered by button, for instance using 'esc'
+          that.on('exitFullScreen', exitFullScreen);
 
-        $buttonElement.appendTo(that.showPopup('', function () {
-          that.pauseMedia(instance);
-          $buttonElement.detach();
+          $buttonElement.appendTo(that.showPopup('', function () {
+            that.pauseMedia(instance);
+            $buttonElement.detach();
 
-          // Remove listener, we only need it for active popups
-          that.off('exitFullScreen', exitFullScreen);
-        }, libTypePmz).find('.h5p-popup-wrapper'));
-        H5P.trigger(instance, 'resize');
+            // Remove listener, we only need it for active popups
+            that.off('exitFullScreen', exitFullScreen);
+          }, libTypePmz).find('.h5p-popup-wrapper'));
+          H5P.trigger(instance, 'resize');
 
-        // Resize images to fit popup dialog
-        if (libTypePmz === 'h5p-image') {
-          that.resizePopupImage($buttonElement);
+          // Resize images to fit popup dialog
+          if (libTypePmz === 'h5p-image') {
+            that.resizePopupImage($buttonElement);
+          }
+          if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
+            instance.setActivityStarted();
+          }
+
+          // Autoplay media
+          if (element.action.params && element.action.params.cpAutoplay && typeof instance.play === 'function') {
+            instance.play();
+          }
         }
-        if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
-          instance.setActivityStarted();
-        }
-
-        // Autoplay media
-        if (element.action.params && element.action.params.cpAutoplay && typeof instance.play === 'function') {
-          instance.play();
-        }
-      }
-      return false;
-    });
+        return false;
+      });
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
       instance.on('controls', function () {
         if (instance.controls.$fullscreen) {
@@ -1061,22 +1052,35 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
 
     // Remove popup
     if (remove !== undefined) {
-      remove();
+      setTimeout(function() {
+        remove();
+      }, 100);
     }
     event.preventDefault();
-    $popup.remove();
+    $popup.addClass('h5p-animate');
+    $popup.find('.h5p-popup-container').addClass('h5p-animate');
+
+    setTimeout(function() {
+      $popup.remove();
+    }, 100);
   };
 
   var $popup = H5P.jQuery(
-    '<div class="h5p-popup-overlay ' + (classes || 'h5p-popup-comment-field') + '">' +
-      '<div class="h5p-popup-container">' +
+    '<div class="h5p-popup-overlay h5p-animate ' + (classes || 'h5p-popup-comment-field') + '">' +
+      '<div class="h5p-popup-container h5p-animate">' +
+        '<div class="h5p-dialog-titlebar">' +
+          '<div class="h5p-dialog-title"></div>' +
+          '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+        '</div>' +
         '<div class="h5p-popup-wrapper">' + popupContent + '</div>' +
-        '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
       '</div>' +
     '</div>')
     .prependTo(this.$wrapper)
+    .focus()
+    .removeClass('h5p-animate')
     .click(close)
     .find('.h5p-popup-container')
+      .removeClass('h5p-animate')
       .click(function () {
         doNotClose = true;
       })
@@ -1581,7 +1585,7 @@ H5P.CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
  * @returns {String} HTML.
  */
 H5P.CoursePresentation.createSlide = function (slide) {
-  return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '"></div>';
+  return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
 };
 
 /**
