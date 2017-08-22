@@ -37,10 +37,22 @@
                       "label":"Afficher sous forme de bouton"
                     },
                     {
-                      "label":"Titre"
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
                     },
                     {
-                      "label":"The slide we'll go to",
+                      "label":"Title"
+                    },
+                    {
+                      "label":"The slide we'll go",
                       "description":"'Specified slide' will use the 'Specific slide number'.",
                       "options":[
                         {
@@ -56,24 +68,24 @@
                       "default":"specified"
                     },
                     {
-                      "label":"Aller à la diapositive",
+                      "label":"Specific slide number",
                       "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
                       "label":"Invisible",
-                      "description":"Curseur par défaut, pas de titre, pas d'onglets. Attention : Les utilisateurs ayant des handicaps ou ceux qui n'utilisent que le clavier auront des difficultés à réaliser cette activité."
+                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Titre"
+                          "label":"Title"
                         },
                         {
-                          "label":"Auteur"
+                          "label":"Author"
                         },
                         {
-                          "label":"Licence"
+                          "label":"License"
                         }
                       ]
                     }
@@ -267,28 +279,32 @@
           "default":"Partager sur Twitter"
         },
         {
-          "label":"Titre de la diapositive récapitulative",
-          "default":"Bilan général"
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
-          "label":"Titre pour l'icône des commentaires",
-          "default":"Afficher les commentaires"
+          "label":"Title for summary slide",
+          "default":"Summary"
         },
         {
-          "label":"Titre du bouton \"Imprimer\"",
-          "default":"Imprimer"
+          "label":"Title for the comments icon",
+          "default":"Show comments"
         },
         {
-          "label":"Texte pour la boîte de dialogue d'impression",
-          "default":"Comment souhaitez-vous imprimer cette présentation ?"
+          "label":"Title for print button",
+          "default":"Print"
         },
         {
-          "label":"Texte du bouton \"Imprimer toutes les diapositives\"",
-          "default":"Imprimer toutes les diapositives"
+          "label":"Print dialog ingress",
+          "default":"How would you like to print this presentation?"
         },
         {
-          "label":"Texte du bouton \"Imprimer la diapositive courante\"",
-          "default":"Imprimer la diapositive courante"
+          "label":"Label for \"Print all slides\" button",
+          "default":"Print all slides"
+        },
+        {
+          "label":"Label for \"Print current slide\" button",
+          "default":"Print current slide"
         }
       ]
     },
@@ -331,6 +347,81 @@
         {
           "label":"Activer le bouton \"Imprimer\"",
           "description":"Cela active le bouton d'impression."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
