@@ -708,7 +708,6 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
     /* If library allows autoplay, control this from CP */
     if (library.params.autoplay) {
-      library.params.autoplay = false;
       library.params.cpAutoplay = true;
     }
     else if (library.params.playback && library.params.playback.autoplay) {
