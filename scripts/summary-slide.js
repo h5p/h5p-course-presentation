@@ -268,10 +268,9 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var twitterShareUrl = that.cp.twitterShareUrl || '';
 
     // Replace any placeholders with variables.
-    twitterShareUrl = twitterShareUrl.replace('@url', H5PIntegration.url);
+    twitterShareUrl = twitterShareUrl.replace('@currentpageurl', window.location.href);
     twitterShareStatement = twitterShareStatement.replace('@percentage', scores.totalPercentage + '%')
-                                .replace('@url', H5PIntegration.url)
-                                .replace("@domain", H5PIntegration.siteUrl);
+                                .replace('@currentpageurl', window.location.href);
 
     // Parse data from the localization object.
     twitterHashTagList = twitterHashtagList.trim().replace(' ', '');
@@ -283,9 +282,9 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Add query strings to the URL based on settings.
     var twitterString = 'http://twitter.com/intent/tweet?';
-    twitterString += (twitterShareStatement.length > 0) ? `text=${twitterShareStatement}&` : '';
-    twitterString += (twitterShareUrl.length > 0) ? `url=${twitterShareUrl}&` : '';
-    twitterString += (twitterHashtagList.length > 0) ? `hashtags= ${twitterHashtagList}&` : '';
+    twitterString += (twitterShareStatement.length > 0) ? "text="+twitterShareStatement+"&" : "";
+    twitterString += (twitterShareUrl.length > 0) ? "url="+twitterShareUrl+"&" : "";
+    twitterString += (twitterHashtagList.length > 0) ? "hashtags="+twitterHashtagList : "";
 
     var leftPos = (window.innerWidth / 2);
     var topPos = (window.innerHeight / 2);
@@ -317,36 +316,22 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Get data from the localization object.
     var facebookShareUrl = that.cp.facebookShareUrl || '';
-    var facebookShareTitle = that.cp.facebookShareTitle || '';
     var facebookShareQuote = that.cp.facebookShareQuote || '';
-    var facebookShareDescription = that.cp.facebookShareDescription || '';
 
     // Replace any placeholders with variables.
-    facebookShareUrl = facebookShareUrl.replace('@url', H5PIntegration.url)
-                          .replace("@percentage", scores.totalPercentage + '%')
-                          .replace("@domain", H5PIntegration.siteUrl);
+    facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href)
+                          .replace("@percentage", scores.totalPercentage + '%');
 
-    facebookShareTitle = facebookShareTitle.replace('@url', H5PIntegration.url)
-                            .replace("@percentage", scores.totalPercentage + '%')
-                            .replace("@domain", H5PIntegration.siteUrl);
-
-    facebookShareQuote = facebookShareQuote.replace('@url', H5PIntegration.url)
-                            .replace("@percentage", scores.totalPercentage + '%')
-                            .replace("@domain", H5PIntegration.siteUrl);
-
-    facebookShareDescription = facebookShareDescription.replace('@url', H5PIntegration.url)
-                                  .replace("@percentage", scores.totalPercentage + '%')
-                                  .replace("@domain", H5PIntegration.siteUrl);
+    facebookShareQuote = facebookShareQuote.replace('@currentpageurl', window.location.href)
+                            .replace("@percentage", scores.totalPercentage + '%');
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);
 
     // Add query strings to the URL based on settings.
     var facebookUrl = 'https://www.facebook.com/sharer/sharer.php?';
-    facebookUrl += (facebookShareUrl.length > 0) ? `u=${facebookShareUrl}&` : '';
-    facebookUrl += (facebookShareTitle.length > 0) ? `title=${facebookShareTitle}&` : '';
-    facebookUrl += (facebookShareQuote.length > 0) ? `quote=${facebookShareQuote}&` : '';
-    facebookUrl += (facebookShareDescription.length > 0) ? `description=${facebookShareDescription}` : '';
+    facebookUrl += (facebookShareUrl.length > 0) ? "u="+facebookShareUrl+"&" : "";
+    facebookUrl += (facebookShareQuote.length > 0) ? "quote="+facebookShareQuote : '';
 
     var popupWidth = 800;
     var popupHeight = 300;
@@ -380,15 +365,14 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
     var googleShareUrl = that.cp.googleShareUrl || '';
 
     // Replace any placeholders with variables.
-    googleShareUrl = googleShareUrl.replace('@url', H5PIntegration.url)
-                          .replace("@domain", H5PIntegration.siteUrl);
+    googleShareUrl = googleShareUrl.replace('@currentpageurl', window.location.href);
 
     // Parse data from the localization object.
     googleShareUrl = encodeURIComponent(googleShareUrl);
 
     // Add query strings to the URL based on settings.
     var googleUrl = "https://plus.google.com/share?";
-    googleUrl += (googleShareUrl.length > 0) ? `url=${googleShareUrl}` : '';
+    googleUrl += (googleShareUrl.length > 0) ? "url="+googleShareUrl+"" : "";
 
     var popupWidth = 401;
     var popupHeight = 437;

@@ -718,28 +718,14 @@
                 "type": "text",
                 "label": "Share to Facebook link",
                 "importance": "low",
-                "default": "@domain"
-              },
-              {
-                "name": "facebookShareTitle",
-                "type": "text",
-                "label": "Share to Facebook title",
-                "importance": "low",
-                "default": "@domain"
+                "default": "@currentpageurl"
               },
               {
                 "name": "facebookShareQuote",
                 "type": "text",
                 "label": "Share to Facebook quote",
                 "importance": "low",
-                "default": "I scored @percentage on a task at @url."
-              },
-              {
-                "name": "facebookShareDescription",
-                "type": "text",
-                "label": "Share to Facebook description",
-                "importance": "low",
-                "default": ""
+                "default": "I scored @percentage on a task at @currentpageurl."
               }
             ]
           },
@@ -770,14 +756,14 @@
                 "type": "text",
                 "label": "Share to Twitter statement",
                 "importance": "low",
-                "default": "I scored @percentage on a task at @domain."
+                "default": "I scored @percentage on a task at @currentpageurl."
               },
               {
                 "name": "twitterShareUrl",
                 "type": "text",
                 "label": "Share to Twitter link",
                 "importance": "low",
-                "default": "@domain"
+                "default": "@currentpageurl"
               },
               {
                 "name": "twitterShareHashtags",
@@ -815,7 +801,7 @@
                 "type": "text",
                 "label": "Share to Google link",
                 "importance": "low",
-                "default": "@domain"
+                "default": "@currentpageurl"
               }
             ]
           }
