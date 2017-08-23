@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Titolo"
                     },
                     {
-                      "label":"The slide we'll go",
-                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "label":"La diapositiva a cui andremo",
+                      "description":"La 'diapositiva specificata' utilizzerà il 'numero di diapositiva specifica'.",
                       "options":[
                         {
-                          "label":"Specified slide"
+                          "label":"Diapositiva specificata"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Prossima diapositiva"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Diapositiva precedente"
                         }
                       ],
-                      "default":"specified"
+                      "default":"specificato/a"
                     },
                     {
-                      "label":"Specific slide number",
-                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "label":"Numero diapositiva specifica",
+                      "description":"Utilizzato solo se per 'La diapositiva a cui andremo' è selezionato 'diapositiva specificata'"
                     },
                     {
-                      "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label":"Invisibile",
+                      "description":"Cursore predefinito, nessun titolo e nessun indice di scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera avranno problemi con questo elemento."
                     },
                     {
-                      "label":"Metadata",
+                      "label":"Metadati",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Titolo"
                         },
                         {
-                          "label":"Author"
+                          "label":"Autore"
                         },
                         {
-                          "label":"License"
+                          "label":"Licenza"
                         }
                       ]
                     }
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Localizza",
+      "label":"Impostazioni esecuzione",
       "fields":[
         {
           "label":"Traduzione per \"Diapositiva\"",
@@ -195,7 +195,7 @@
           "default":"Mostra le soluzioni"
         },
         {
-          "label":"Testo per il pulsante Riprova",
+          "label":"Testo per il pulsante Indietro",
           "default":"Riprova"
         },
         {
@@ -231,11 +231,11 @@
           "default":"Mostra l'elenco delle parole chiave"
         },
         {
-          "label":"Etichetta di schermo intero",
+          "label":"Abilita \"Riprova\"",
           "default":"Schermo intero"
         },
         {
-          "label":"Etichetta di uscita da schermo intero",
+          "label":"Richiedere l'immissione dei dati all'utente prima che la soluzione sia visualizzata",
           "default":"Esci da schermo intero"
         },
         {
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"Titolo della diapositiva di riepilogo",
+          "default":"Sommario"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Titolo dell'icona dei commenti",
+          "default":"Mostra commenti"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Titolo per il pulsante di stampa",
+          "default":"Stampa"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Stampa la finestra di dialogo d'ingresso",
+          "default":"Come vorresti stampare questa presentazione?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"Etichetta per il pulsante \"Stampa tutte le diapositive\"",
+          "default":"Stampa tutte le diapositive"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"Etichetta per il pulsante \"Stampa diapositiva corrente\"",
+          "default":"Stampa la diapositiva corrente"
         }
       ]
     },
