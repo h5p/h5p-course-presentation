@@ -31,7 +31,7 @@
                       "label":"Always display comments"
                     },
                     {
-                      "label":"Background Opacity"
+                      "label":"Pozadinska zamućenost"
                     },
                     {
                       "label":"Display as button"
@@ -49,7 +49,7 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Naziv"
                     },
                     {
                       "label":"The slide we'll go",
@@ -79,13 +79,13 @@
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Naziv"
                         },
                         {
-                          "label":"Author"
+                          "label":"Autor"
                         },
                         {
-                          "label":"License"
+                          "label":"Licenca"
                         }
                       ]
                     }
@@ -109,7 +109,7 @@
               {
                 "fields":[
                   {
-                    "label":"Image",
+                    "label":"Slika",
                     "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
@@ -142,7 +142,7 @@
         {
           "fields":[
             {
-              "label":"Image",
+              "label":"Slika",
               "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Localize",
+      "label":"Podešavanje ponašanja",
       "fields":[
         {
           "label":"Translation for \"Slide\"",
@@ -196,23 +196,23 @@
         },
         {
           "label":"Text for the retry button",
-          "default":"Retry"
+          "default":"Ponovi"
         },
         {
           "label":"Translation for \"Title\"",
-          "default":"Title"
+          "default":"Naziv"
         },
         {
           "label":"Translation for \"Author/supplier\"",
-          "default":"Author"
+          "default":"Autor"
         },
         {
           "label":"Translation for \"License\"",
-          "default":"License"
+          "default":"Licenca"
         },
         {
           "label":"Translation for \"License\"",
-          "default":"License"
+          "default":"Licenca"
         },
         {
           "label":"Text for the export text button",
@@ -231,12 +231,12 @@
           "default":"Show keywords list"
         },
         {
-          "label":"Fullscreen label",
-          "default":"Fullscreen"
+          "label":"Omogući \"Ponovi\"",
+          "default":"Cijeli ekran"
         },
         {
-          "label":"Exit fullscreen label",
-          "default":"Exit fullscreen"
+          "label":"Daje jedan bod za cijeli zadatak",
+          "default":"Izađi iz cijelog ekrana"
         },
         {
           "label":"Previous slide label",
@@ -321,26 +321,26 @@
           "description":"Hides the summary slide."
         },
         {
-          "label":"Override \"Show Solution\" button",
-          "description":"This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Poništi dugme \"Prikaži rješenje\"",
+          "description":"Ova opcija podešava prikazivanje dugmeta \"Prikaži rješenje\" za sva pitanja ili da bude za svako posebno pitanje konfigurirano.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Prikaži"
             },
             {
-              "label":"Disabled"
+              "label":"Nemoj prikazati"
             }
           ]
         },
         {
-          "label":"Override \"Retry\" button",
-          "description":"This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Poništi dugme \"Ponovi\"",
+          "description":"Ova opcija podešava prikazivanje dugmeta \"Ponovi\" za sva pitanja ili da bude za svako posebno pitanje konfigurirano.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Prikaži"
             },
             {
-              "label":"Disabled"
+              "label":"Nemoj prikazati"
             }
           ]
         },
