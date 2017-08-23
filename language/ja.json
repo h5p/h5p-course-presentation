@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"タイトル"
                     },
                     {
-                      "label":"The slide we'll go",
-                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "label":"行先スライド",
+                      "description":"「指定スライド」は「指定スライド番号」を使用します。",
                       "options":[
                         {
-                          "label":"Specified slide"
+                          "label":"指定スライド"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"次のスライド"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"前のスライド"
                         }
                       ],
-                      "default":"specified"
+                      "default":"指定済み"
                     },
                     {
-                      "label":"Specific slide number",
-                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "label":"スライド番号を指定",
+                      "description":"もし「指定スライド」が「行先スライド」に選択された場合にのみ使われます。"
                     },
                     {
-                      "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label":"非表示",
+                      "description":"デフォルトのカーソル、タイトルなし、タブインデックスなし。警告：障がいのある方、 キーボードのみのユーザーはこの要素を使う際に不自由な点があります。"
                     },
                     {
-                      "label":"Metadata",
+                      "label":"メタデータ",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"タイトル"
                         },
                         {
-                          "label":"Author"
+                          "label":"作者"
                         },
                         {
-                          "label":"License"
+                          "label":"ライセンス"
                         }
                       ]
                     }
@@ -231,12 +231,12 @@
           "default":"キーワードリストを表示"
         },
         {
-          "label":"全画面表示のラベル",
-          "default":"全画面表示"
+          "label":"フルスクリーンラベル",
+          "default":"フルスクリーン"
         },
         {
-          "label":"全画面表示を終了のラベル",
-          "default":"全画面表示を終了"
+          "label":"フルスクリーン解除のラベル",
+          "default":"フルスクリーン解除"
         },
         {
           "label":"前のスライドのラベル",
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"サマリースライドのスライド",
+          "default":"サマリー"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"コメントアイコンのタイトル",
+          "default":"コメントを表示"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"印刷ボタンのタイトル",
+          "default":"印刷"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"印刷ダイアログを表示",
+          "default":"このプレゼンテーションをどう印刷しますか ?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"すべてのスライドを印刷 ボタンのラベル",
+          "default":"すべてのスライドを印刷"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"現在のスライドを印刷 ボタンのラベル",
+          "default":"現在のスライドを印刷"
         }
       ]
     },
@@ -321,7 +321,7 @@
           "description":"サマリースライドを非表示"
         },
         {
-          "label":"解を表示 ボタンを上書き",
+          "label":"「解を表示」ボタンを上書き",
           "description":"このオプションは、すべての設問に対して「解を表示」ボタンが表示されるか、すべての設問に対して無効になるか、各設問ごとに個別に設定されるかを決定します。",
           "options":[
             {
