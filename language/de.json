@@ -31,7 +31,7 @@
                       "label":"Kommentare immer anzeigen"
                     },
                     {
-                      "label":"Undurchlässigkeit des Hintergrunds"
+                      "label":"Hintergrunddeckkraft"
                     },
                     {
                       "label":"Als Button anzeigen"
@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Titel"
                     },
                     {
-                      "label":"The slide we'll go",
-                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "label":"Das Schaubild, zu dem wir springen",
+                      "description":"'Festgelegtes Schaubild' wird die 'Festgelegte Schaubildnummer' benutzen.",
                       "options":[
                         {
-                          "label":"Specified slide"
+                          "label":"Festgelegtes Schaubild"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Nächstes Schaubild"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Vorheriges Schaubild"
                         }
                       ],
                       "default":"specified"
                     },
                     {
-                      "label":"Specific slide number",
-                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "label":"Festgelegte Schaubildnummer",
+                      "description":"Wird nur genutzt, wenn 'Festgelegtes Schaubild' für 'Das Schaubild, zu dem wir springen' ausgewählt ist."
                     },
                     {
-                      "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label":"Unsichtbar",
+                      "description":"Vorgabe-Cursor, kein Titel und kein Tab-Index. Warnung: Nutzer, die beeinträchtigt sind oder nur über eine Tastatur verfügen, werden Probleme mit der Bedienung haben."
                     },
                     {
-                      "label":"Metadata",
+                      "label":"Metadaten",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Titel"
                         },
                         {
-                          "label":"Author"
+                          "label":"Autor"
                         },
                         {
-                          "label":"License"
+                          "label":"Lizenz"
                         }
                       ]
                     }
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Sprache anpassen",
+      "label":"Verhaltenseinstellungen.",
       "fields":[
         {
           "label":"Übersetzung für \"Slide\"",
@@ -195,7 +195,7 @@
           "default":"Lösungen"
         },
         {
-          "label":"Beschriftung für den \"Wiederholen\"-Button",
+          "label":"Text für den \"Wiederholen\"-Button",
           "default":"Wiederholen"
         },
         {
@@ -204,7 +204,7 @@
         },
         {
           "label":"Übersetzung für \"Author/supplier\"",
-          "default":"Autor/Unterstützer"
+          "default":"Autor"
         },
         {
           "label":"Übersetzung für \"License\"",
@@ -231,11 +231,11 @@
           "default":"Schlagwortliste anzeigen"
         },
         {
-          "label":"Beschriftung für \"Vollbild\"",
-          "default":"Vollbild"
+          "label":"Aktivieren des \"Wiederholen\"-Buttons",
+          "default":"Vollbildmodus"
         },
         {
-          "label":"Beschriftung für \"Vollbild beenden\"",
+          "label":"Benutzereingabe erforderlich machen, bevor die Antwort angesehen werden kann",
           "default":"Vollbild beenden"
         },
         {
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"Titel für das Übersichtsschaubild",
+          "default":"Zusammenfassung"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Titel für das \"Kommentare zeigen\"-Icon",
+          "default":"Kommentare zeigen"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Beschriftung für den \"Drucken\"-Button",
+          "default":"Drucken"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Zugang zum Druck-Dialog",
+          "default":"Wie möchtest du diese Präsentation drucken?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"Beschriftung für den \"Alle Schaubilder drucken\"-Button",
+          "default":"Alle Schaubilder drucken"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"Beschriftung für den \"Aktuelles Schaubild drucken\"-Button",
+          "default":"Aktuelles Schaubild drucken"
         }
       ]
     },
@@ -321,26 +321,26 @@
           "description":"Verbirgt das Übersichtsschaubild"
         },
         {
-          "label":"\"Lösungen zeigen\"-Knopf überschreiben",
-          "description":"Diese Option legt fest, ob der \"Lösungen zeigen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
+          "label":"Überschreiben des \"Lösungen anzeigen\"-Buttons",
+          "description":"Diese Option gibt an, ob der \"Lösung anzeigen\"-Button für alle Fragen angezeigt, ausgeblendet oder für jede Frage individuell konfiguriert wird.",
           "options":[
             {
-              "label":"anzeigen"
+              "label":"Anzeigen"
             },
             {
-              "label":"ausblenden"
+              "label":"Ausblenden"
             }
           ]
         },
         {
-          "label":"\"Wiederholen\"-Button überschreiben",
-          "description":"Diese Option legt fest, ob der \"Wiederholen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
+          "label":"Überschreiben des \"Wiederholen\"-Buttons",
+          "description":"Diese Option gibt an, ob der \"Wiederholen\" Button für alle Fragen angezeigt, ausgeblendet oder für jede Frage individuell konfiguriert wird.",
           "options":[
             {
-              "label":"anzeigen"
+              "label":"Anzeigen"
             },
             {
-              "label":"ausblenden"
+              "label":"Ausblenden"
             }
           ]
         },
