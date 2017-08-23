@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Localize",
+      "label":"Lokalisere",
       "fields":[
         {
           "label":"Translation for \"Slide\"",
@@ -232,7 +232,7 @@
         },
         {
           "label":"Fullscreen label",
-          "default":"Fullscreen"
+          "default":"Fuldskærm"
         },
         {
           "label":"Exit fullscreen label",
@@ -284,7 +284,7 @@
         },
         {
           "label":"Title for summary slide",
-          "default":"Summary"
+          "default":"Resumé"
         },
         {
           "label":"Title for the comments icon",
@@ -321,26 +321,26 @@
           "description":"Hides the summary slide."
         },
         {
-          "label":"Override \"Show Solution\" button",
-          "description":"This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Overskriv \"Vi svar\"-knap",
+          "description":"Dette valg afgør om \"Vis svar\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Aktiveret"
             },
             {
-              "label":"Disabled"
+              "label":"Deaktiveret"
             }
           ]
         },
         {
-          "label":"Override \"Retry\" button",
-          "description":"This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Overskriv \"Prøv igen\"-knap",
+          "description":"Dette valg afgør om \"Prøv igen\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Aktiveret"
             },
             {
-              "label":"Disabled"
+              "label":"Deaktiveret"
             }
           ]
         },
