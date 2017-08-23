@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Otsikko"
                     },
                     {
-                      "label":"The slide we'll go",
+                      "label":"The slide we'll go to",
                       "description":"'Specified slide' will use the 'Specific slide number'.",
                       "options":[
                         {
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Seuraava sivu"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Edellinen sivu"
                         }
                       ],
                       "default":"specified"
                     },
                     {
-                      "label":"Specific slide number",
+                      "label":"Siirry sivulle",
                       "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
-                      "label":"Invisible",
+                      "label":"Näkymätön",
                       "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Otsikko"
                         },
                         {
-                          "label":"Author"
+                          "label":"Luoja/Toimittaja"
                         },
                         {
-                          "label":"License"
+                          "label":"Lisenssi"
                         }
                       ]
                     }
@@ -204,7 +204,7 @@
         },
         {
           "label":"Käännös tekstille \"Tekijä\"",
-          "default":"Luoja/Toimittaja"
+          "default":"Tekijä"
         },
         {
           "label":"Käännös tekstille \"Lisenssi\"",
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"\"Yhteenveto\"-sivun otsikko",
+          "default":"Yhteenveto"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Kommentti-ikonin teksti",
+          "default":"Näytä kommentit"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Tulostuspainikkeen teksti",
+          "default":"Tulosta"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Tulosikkunan johdantoteksti",
+          "default":"Miten haluat tulostaa tämän esityksen?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"\"Tulosta kaikki sivut\"-painikkeen teksti",
+          "default":"Tulosta kaikki sivut"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"\"Tulosta nykyinen sivu\"-painikkeen teksti",
+          "default":"Tulosta nykyinen sivu"
         }
       ]
     },
