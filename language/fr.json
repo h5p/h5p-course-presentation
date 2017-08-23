@@ -31,7 +31,7 @@
                       "label":"Toujours afficher les commentaires"
                     },
                     {
-                      "label":"Opacité de l'arrière-plan"
+                      "label":"Opacité"
                     },
                     {
                       "label":"Afficher sous forme de bouton"
@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Titre"
                     },
                     {
-                      "label":"The slide we'll go",
+                      "label":"The slide we'll go to",
                       "description":"'Specified slide' will use the 'Specific slide number'.",
                       "options":[
                         {
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Diapositive suivante"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Diapositive précédente"
                         }
                       ],
                       "default":"specified"
                     },
                     {
-                      "label":"Specific slide number",
+                      "label":"Aller à la diapositive",
                       "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
                       "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "description":"Curseur par défaut, pas de titre, pas d'onglets. Attention : Les utilisateurs ayant des handicaps ou ceux qui n'utilisent que le clavier auront des difficultés à réaliser cette activité."
                     },
                     {
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Titre"
                         },
                         {
-                          "label":"Author"
+                          "label":"Auteur"
                         },
                         {
-                          "label":"License"
+                          "label":"Licence"
                         }
                       ]
                     }
@@ -109,7 +109,7 @@
               {
                 "fields":[
                   {
-                    "label":"Image d'arrière-plan",
+                    "label":"Image",
                     "description":"Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
                   },
                   {
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Traduction de l'interface",
+      "label":"Options générales.",
       "fields":[
         {
           "label":"Traduction pour \"Diapositive\"",
@@ -174,17 +174,17 @@
         {
           "label":"Appréciation en cas de bon score",
           "default":"Félicitations ! Vous avez @percent de réponses justes !",
-          "description":"@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
+          "description":"@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
         },
         {
           "label":"Appréciation en cas de score moyen",
           "default":"Bravo pour vos efforts ! Vous avez @percent de réponses justes !",
-          "description":"@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
+          "description":"@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
         },
         {
           "label":"Appréciation en cas de mauvais score",
           "default":"Vous n'avez que @percent de réponses justes.",
-          "description":"@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+          "description":"@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
         },
         {
           "label":"Traduction pour \"Total\"",
@@ -204,7 +204,7 @@
         },
         {
           "label":"Traduction de \"Auteur/créateur\"",
-          "default":"Auteur/créateur"
+          "default":"Auteur"
         },
         {
           "label":"Traduction de \"Licence\"",
@@ -231,12 +231,12 @@
           "default":"Afficher la liste des mots-clés"
         },
         {
-          "label":"Texte pour ouvrir en plein écran",
+          "label":"Activer le bouton \"Recommencer\"",
           "default":"Plein écran"
         },
         {
-          "label":"Texte pour quitter le plein écran",
-          "default":"Sortir du plein écran"
+          "label":"Obliger l'utilisateur à saisir une réponse avant de pouvoir afficher la correction.",
+          "default":"Quitter le plein écran"
         },
         {
           "label":"Texte d'accès à la diapositive précédente",
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"Titre de la diapositive récapitulative",
+          "default":"Résumé"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Titre pour l'icône des commentaires",
+          "default":"Afficher les commentaires"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Titre du bouton \"Imprimer\"",
+          "default":"Imprimer"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Texte pour la boîte de dialogue d'impression",
+          "default":"Comment souhaitez-vous imprimer cette présentation ?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"Texte du bouton \"Imprimer toutes les diapositives\"",
+          "default":"Imprimer toutes les diapositives"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"Texte du bouton \"Imprimer la diapositive courante\"",
+          "default":"Imprimer la diapositive courante"
         }
       ]
     },
@@ -321,8 +321,8 @@
           "description":"Cela cache la diapositive finale qui liste les scores obtenus aux diverses activités."
         },
         {
-          "label":"Ecraser le bouton \"Voir la correction\"",
-          "description":"Cette option détermine si le bouton \"Voir la correction\" sera affiché pour toutes les questions, désactivé pour toutes ou configuré pour chaque question individuellement.",
+          "label":"Ecraser le bouton \"Voir la solution\"",
+          "description":"Cette option détermine si le bouton \"Voir la solution\" sera affiché pour toutes les questions, désactivé pour toutes ou configuré pour chaque question individuellement.",
           "options":[
             {
               "label":"Activé"
