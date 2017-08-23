@@ -196,7 +196,7 @@
         },
         {
           "label":"Text for the retry button",
-          "default":"Retry"
+          "default":"Yeniden dene"
         },
         {
           "label":"Translation for \"Title\"",
@@ -284,7 +284,7 @@
         },
         {
           "label":"Title for summary slide",
-          "default":"Summary"
+          "default":"Özet"
         },
         {
           "label":"Title for the comments icon",
