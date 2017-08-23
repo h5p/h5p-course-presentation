@@ -324,6 +324,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
+  } else {
+    this.jumpToSlide(0);
   }
 };
 
@@ -708,6 +710,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
 
     /* If library allows autoplay, control this from CP */
     if (library.params.autoplay) {
+      library.params.autoplay = false;
       library.params.cpAutoplay = true;
     }
     else if (library.params.playback && library.params.playback.autoplay) {
