@@ -31,7 +31,7 @@
                       "label":"اعرض التعليقات دائما"
                     },
                     {
-                      "label":"شفافية الخلفيية"
+                      "label":"شفافية الخلفية"
                     },
                     {
                       "label":"اعرض كزر"
@@ -49,10 +49,10 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"العنوان"
                     },
                     {
-                      "label":"The slide we'll go",
+                      "label":"The slide we'll go to",
                       "description":"'Specified slide' will use the 'Specific slide number'.",
                       "options":[
                         {
@@ -68,24 +68,24 @@
                       "default":"specified"
                     },
                     {
-                      "label":"Specific slide number",
+                      "label":"الانتقال إلى الشريحة",
                       "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
-                      "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label":"خفي",
+                      "description":"المؤشر الافتراضي، لا عنوان ولا مؤشر التبويب. تحذير: سيكون للمستخدمين ذوي الإعاقة أو لوحة المفاتيح للمستخدمين فقط لديها مشكلة في استخدام هذا العنصر"
                     },
                     {
-                      "label":"Metadata",
+                      "label":"الفوقية",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"العنوان"
                         },
                         {
-                          "label":"Author"
+                          "label":"المؤلف"
                         },
                         {
-                          "label":"License"
+                          "label":"رخصة الاستعمال"
                         }
                       ]
                     }
@@ -109,7 +109,7 @@
               {
                 "fields":[
                   {
-                    "label":"Image",
+                    "label":"الصورة",
                     "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
@@ -142,7 +142,7 @@
         {
           "fields":[
             {
-              "label":"Image",
+              "label":"الصورة",
               "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"تحديد الموقع",
+      "label":"حساسية الاجابة",
       "fields":[
         {
           "label":"الترجمة \"للشريحة\"",
@@ -195,24 +195,24 @@
           "default":"Show solutions"
         },
         {
-          "label":"نص زر إعادة المحاولة",
-          "default":"Retry"
+          "label":"النص الزر إعادة المحاولة",
+          "default":"إعادة المحاولة"
         },
         {
           "label":"ترجمة \"العنوان\"",
-          "default":"Title"
+          "default":"العنوان"
         },
         {
           "label":"ترجمة\"الكاتب / والمورد\"",
-          "default":"Author"
+          "default":"المؤلف"
         },
         {
           "label":"ترجمة \"الرخصة\"",
-          "default":"License"
+          "default":"رخصة الاستعمال"
         },
         {
           "label":"ترجمة \"الرخصة\"",
-          "default":"License"
+          "default":"رخصة الاستعمال"
         },
         {
           "label":"نص زر التصدير",
@@ -231,11 +231,11 @@
           "default":"Show keywords list"
         },
         {
-          "label":"تسمية لملء الشاشة",
+          "label":"تفعيل \"إعادة المحاولة \"",
           "default":"Fullscreen"
         },
         {
-          "label":"تسمية خروج ملء الشاشة",
+          "label":"تتطلب إدخال المستخدم قبل أن يتم عرضه الحل",
           "default":"Exit fullscreen"
         },
         {
@@ -283,6 +283,10 @@
           "default":"Share on Google+"
         },
         {
+          "label":"سجلة المحاولة علي التويتر",
+          "default":"الملخص"
+        },
+        {
           "label":"Title for summary slide",
           "default":"Summary"
         },
@@ -301,10 +305,6 @@
         {
           "label":"Label for \"Print all slides\" button",
           "default":"Print all slides"
-        },
-        {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
         }
       ]
     },
