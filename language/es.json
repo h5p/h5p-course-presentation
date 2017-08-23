@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Título"
                     },
                     {
-                      "label":"The slide we'll go",
+                      "label":"The slide we'll go to",
                       "description":"'Specified slide' will use the 'Specific slide number'.",
                       "options":[
                         {
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Diapositiva siguiente"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Diapositiva previa"
                         }
                       ],
                       "default":"specified"
                     },
                     {
-                      "label":"Specific slide number",
+                      "label":"Ir a la diapositiva",
                       "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
                       "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "description":"Cursor por defecto, sin título ni pestaña de índice. Advertencia: Aquellos usuarios con discapacidades o usuarios quienes sólo utilizan teclado tendrán problemas al utilizar este elemento."
                     },
                     {
-                      "label":"Metadata",
+                      "label":"Metadatos",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Título"
                         },
                         {
-                          "label":"Author"
+                          "label":"Autor"
                         },
                         {
-                          "label":"License"
+                          "label":"Licencia"
                         }
                       ]
                     }
@@ -109,7 +109,7 @@
               {
                 "fields":[
                   {
-                    "label":"Image",
+                    "label":"Imagen",
                     "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
@@ -142,7 +142,7 @@
         {
           "fields":[
             {
-              "label":"Image",
+              "label":"Imagen",
               "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Traducciones",
+      "label":"Localizar",
       "fields":[
         {
           "label":"Traducción para \"Diapositiva\"",
@@ -204,14 +204,14 @@
         },
         {
           "label":"Traducción para \"Autor/Creador\"",
-          "default":"Autor/Creador"
-        },
-        {
-          "label":"Traducción para \"Licencia\"",
-          "default":"Licencia"
+          "default":"Autor"
         },
         {
           "label":"Traduction pour \"Licencia\"",
+          "default":"Licencia"
+        },
+        {
+          "label":"Traducción para \"Licencia\"",
           "default":"Licencia"
         },
         {
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"Título de la diapositiva de resúmen",
+          "default":"Resumen"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Título para el ícono de comentarios",
+          "default":"Mostrar comentarios"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Título para el botón de imprimir",
+          "default":"Imprimir"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Confirmación del diálogo de impresión",
+          "default":"Le gustarí imprimir esta presentación?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"Etiqueta para el botón \"Imprimir todas las diapositivas\"",
+          "default":"Imprimir todas las diapositivas"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"Etiqueta para el botón \"Imprimir diapositiva actual\"",
+          "default":"Imprimir diapositiva actual"
         }
       ]
     },
@@ -321,26 +321,26 @@
           "description":"Oculta la diapositiva de resúmen."
         },
         {
-          "label":"Override \"Show Solution\" button",
-          "description":"This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Ocultar el botón \"Mostrar solución\"",
+          "description":"Esta opción determina si el botón \"Mostrar solución\" se muestra en todas las preguntas, se desactiva para todas, o se configura para cada pregunta individualmente.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Habilitado"
             },
             {
-              "label":"Disabled"
+              "label":"Deshabilitado"
             }
           ]
         },
         {
-          "label":"Override \"Retry\" button",
-          "description":"This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Ocultar el botón de \"Reintentar\"",
+          "description":"Esta opción determina si el botón \"Reintentar\" se muestra en todas las preguntas, se desactiva para todas, o se configura para cada pregunta individualmente.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Habilitado"
             },
             {
-              "label":"Disabled"
+              "label":"Deshabilitado"
             }
           ]
         },
