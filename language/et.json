@@ -196,7 +196,7 @@
         },
         {
           "label":"Text for the retry button",
-          "default":"Retry"
+          "default":"Proovi uuesti"
         },
         {
           "label":"Translation for \"Title\"",
