@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Tittel"
                     },
                     {
-                      "label":"The slide we'll go",
-                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "label":"Slide vi skal gå til",
+                      "description":"'Spesifisert slide' bruker slide nummer angitt i 'spesifisert slide'.",
                       "options":[
                         {
-                          "label":"Specified slide"
+                          "label":"Spesifisert slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Neste side"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Forrige side"
                         }
                       ],
                       "default":"specified"
                     },
                     {
-                      "label":"Specific slide number",
-                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "label":"Spesifisert slide",
+                      "description":"Brukes kun om 'Spesifisert slide' er valgt over"
                     },
                     {
-                      "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label":"Usynlig",
+                      "description":"Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
                     },
                     {
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Tittel"
                         },
                         {
-                          "label":"Author"
+                          "label":"Opphavsmann"
                         },
                         {
-                          "label":"License"
+                          "label":"Lisens"
                         }
                       ]
                     }
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Ledetekster",
+      "label":"Innstillinger for oppgave-oppførsel",
       "fields":[
         {
           "label":"Oversettelse for \"Slide\"",
@@ -195,7 +195,7 @@
           "default":"Vis fasit"
         },
         {
-          "label":"Tekst til \"Prøv igjen\"-knappen",
+          "label":"Tekst til \"Omstart\" knappen",
           "default":"Prøv igjen"
         },
         {
@@ -204,7 +204,7 @@
         },
         {
           "label":"Oversettelse for \"Forfatter/leverandør\"",
-          "default":"Forfatter/leverandør"
+          "default":"Opphavsmann"
         },
         {
           "label":"Oversettelse for \"Lisens\"",
@@ -216,7 +216,7 @@
         },
         {
           "label":"Oversettelse for \"Eksporter tekst\"",
-          "default":"Eksporter tekst"
+          "default":"Eksporter dokument"
         },
         {
           "label":"Tekst for bruksrett-knappen",
@@ -231,20 +231,20 @@
           "default":"Vis nøkkelordliste"
         },
         {
-          "label":"Tittel for \"Full skjerm\"-knapp",
+          "label":"Aktiver \"Prøv igjen\"-knapp",
           "default":"Fullskjerm"
         },
         {
-          "label":"Tittel for \"Avslutt fullskjerm\"-knapp",
-          "default":"Avslutt fullskjerm"
+          "label":"Krev inndata fra brukeren før fasit gis.",
+          "default":"Forlat fullskjerm"
         },
         {
           "label":"Tittel for \"Forrige side\"-knapp",
-          "default":"Forrige side"
+          "default":"Forrige slide"
         },
         {
           "label":"Tittel for \"Neste side\"-knapp",
-          "default":"Neste side"
+          "default":"Neste slide"
         },
         {
           "label":"Tittel for \"Denne side\"-knapp",
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"Tittel for \"Oppsummering\" siden",
+          "default":"Oppsummering"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Tittel for kommentarikonet",
+          "default":"Vis kommentarer"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Tittel for \"Skriv ut\"-knapp",
+          "default":"Skriv ut"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Skriv ut dialog ingress",
+          "default":"Hvordan vil du skrive ut denne presentasjonen?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"Tittel for \"Skriv ut alle sider\"-knapp",
+          "default":"Skriv ut alle sider"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"Tittel for \"Skriv ut nåværende side\"-knapp",
+          "default":"Skriv ut nåværende side"
         }
       ]
     },
@@ -321,8 +321,8 @@
           "description":"Aktivering vil føre til at sammendrag siden ikke vises."
         },
         {
-          "label":"Overstyr «Vis svar»-knapp",
-          "description":"Dette valget avgjør om «Vis svar»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "label":"Overstyr «Fasit»-knapp",
+          "description":"Dette valget avgjør om «Fasit»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
           "options":[
             {
               "label":"Aktivert"
