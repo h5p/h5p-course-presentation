@@ -196,7 +196,7 @@
         },
         {
           "label":"Text for the retry button",
-          "default":"Retry"
+          "default":"Επανάληψη"
         },
         {
           "label":"Translation for \"Title\"",
