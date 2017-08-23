@@ -49,43 +49,43 @@
                       ]
                     },
                     {
-                      "label":"Title"
+                      "label":"Titel"
                     },
                     {
-                      "label":"The slide we'll go",
+                      "label":"The slide we'll go to",
                       "description":"'Specified slide' will use the 'Specific slide number'.",
                       "options":[
                         {
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Volgende slide"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Vorige slide"
                         }
                       ],
                       "default":"specified"
                     },
                     {
-                      "label":"Specific slide number",
+                      "label":"Ga naar slide",
                       "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
                     },
                     {
-                      "label":"Invisible",
-                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label":"Onzichtbaar",
+                      "description":"Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
                     },
                     {
                       "label":"Metadata",
                       "fields":[
                         {
-                          "label":"Title"
+                          "label":"Titel"
                         },
                         {
-                          "label":"Author"
+                          "label":"Auteur/Leverancier"
                         },
                         {
-                          "label":"License"
+                          "label":"Licentie"
                         }
                       ]
                     }
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "label":"Localiseer",
+      "label":"Localiseren",
       "fields":[
         {
           "label":"Vertaling voor \"Slide\"",
@@ -195,8 +195,8 @@
           "default":"Toon oplossing"
         },
         {
-          "label":"Tekst voor \"Probeer opnieuw\"-knop",
-          "default":"Probeer opnieuw"
+          "label":"Tekst voor de knop Opnieuw",
+          "default":"Opnieuw proberen"
         },
         {
           "label":"Vertaling voor \"Titel\"",
@@ -204,7 +204,7 @@
         },
         {
           "label":"Vertaling voor \"Auteur/Leverancier\"",
-          "default":"Auteur/Leverancier"
+          "default":"Auteur"
         },
         {
           "label":"Vertaling voor \"Licentie\"",
@@ -283,28 +283,28 @@
           "default":"Share on Google+"
         },
         {
-          "label":"Title for summary slide",
-          "default":"Summary"
+          "label":"Titel voor \"Samenvatting\" slide",
+          "default":"Samenvatting"
         },
         {
-          "label":"Title for the comments icon",
-          "default":"Show comments"
+          "label":"Titel voor opmerkingenicoon",
+          "default":"Toon opmerkingen"
         },
         {
-          "label":"Title for print button",
-          "default":"Print"
+          "label":"Titel voor \"Afdrukken\"-knop",
+          "default":"Afdrukken"
         },
         {
-          "label":"Print dialog ingress",
-          "default":"How would you like to print this presentation?"
+          "label":"Afdrukken dialoog ingress",
+          "default":"Hoe wil je deze presentatie afdrukken?"
         },
         {
-          "label":"Label for \"Print all slides\" button",
-          "default":"Print all slides"
+          "label":"Titel voor \"Druk alle slides af\"-knop",
+          "default":"Druk alle slides af"
         },
         {
-          "label":"Label for \"Print current slide\" button",
-          "default":"Print current slide"
+          "label":"Titel voor \"Druk huidige slide af\"-knop",
+          "default":"Druk huidige slide af"
         }
       ]
     },
@@ -321,8 +321,8 @@
           "description":"Verbergt de samenvattingsslide."
         },
         {
-          "label":"\"Toon oplossing\"-knop instellen",
-          "description":"Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd",
+          "label":"\"Toon oplossing\" knop instellen",
+          "description":"Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
           "options":[
             {
               "label":"Ingeschakeld"
