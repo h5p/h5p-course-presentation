@@ -880,3 +880,8 @@
 .h5p-course-presentation .h5p-confirmation-dialog-popup {
   font-size: 0.85em;
 }
+
+/* Remove option for full enable full screen in Drag Question */
+.h5p-course-presentation  .h5p-dragquestion-editor .field-name-enableFullScreen {
+  display: none;
+}
