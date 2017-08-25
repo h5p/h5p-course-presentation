@@ -670,7 +670,7 @@
   color: #555;
 }
 
-.h5p-course-presentation .h5p-video, .h5p-course-presentation .h5p-audio {
+.h5p-course-presentation .h5p-element-inner.h5p-video, .h5p-course-presentation .h5p-element-inner.h5p-audio {
   background-color: #000;
   width: 100%;
 }
