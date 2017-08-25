@@ -164,11 +164,12 @@
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords span {
   vertical-align: top;
   font-size: 0.9em;
-  float: right;
   margin-left: 0.5em;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 86%;
+  width: 90%;
+  position: absolute;
+  left: 3em;
 }
 
 /* Print button and full screen button (in footer) */
