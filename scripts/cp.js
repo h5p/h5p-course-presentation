@@ -1067,7 +1067,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
   var $popup = H5P.jQuery(
     '<div class="h5p-popup-overlay h5p-animate ' + (classes || 'h5p-popup-comment-field') + '">' +
       '<div class="h5p-popup-container h5p-animate">' +
-        '<div class="h5p-dialog-titlebar">' +
+        '<div class="h5p-cp-dialog-titlebar">' +
           '<div class="h5p-dialog-title"></div>' +
           '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
         '</div>' +

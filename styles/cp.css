@@ -642,8 +642,8 @@
   color: #888888;
 }
 
-.h5p-course-presentation .h5p-dialog-titlebar {
-  padding: 2.78em 1em 0.5em 0.5em;
+.h5p-course-presentation .h5p-cp-dialog-titlebar {
+  padding: 1.78em 1em 0.5em 0.5em;
   border-bottom: 1px solid #eee;
   font-size: 0.875em;
   color: #757575;
