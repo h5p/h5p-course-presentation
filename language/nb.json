@@ -192,10 +192,10 @@
         },
         {
           "label":"\"Vis svar\" knapp",
-          "default":"Vis fasit"
+          "default":"Vis svar"
         },
         {
-          "label":"Tekst til \"Omstart\" knappen",
+          "label":"Tekst til \"Prøv igjen\"-knappen",
           "default":"Prøv igjen"
         },
         {
@@ -204,7 +204,7 @@
         },
         {
           "label":"Oversettelse for \"Forfatter/leverandør\"",
-          "default":"Opphavsmann"
+          "default":"Forfatter/leverandør"
         },
         {
           "label":"Oversettelse for \"Lisens\"",
@@ -231,12 +231,12 @@
           "default":"Vis nøkkelordliste"
         },
         {
-          "label":"Aktiver \"Prøv igjen\"-knapp",
+          "label":"Tittel for \"Full skjerm\"-knapp",
           "default":"Fullskjerm"
         },
         {
-          "label":"Krev inndata fra brukeren før fasit gis.",
-          "default":"Forlat fullskjerm"
+          "label":"Tittel for \"Avslutt fullskjerm\"-knapp",
+          "default":"Avslutt fullskjerm"
         },
         {
           "label":"Tittel for \"Forrige side\"-knapp",
