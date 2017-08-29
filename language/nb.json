@@ -215,8 +215,8 @@
           "default":"Lisens"
         },
         {
-          "label":"Oversettelse for \"Eksporter tekst\"",
-          "default":"Eksporter dokument"
+          "label":"Oversettelse for \"Eksporter tekst\" ",
+          "default":"Eksporter tekst"
         },
         {
           "label":"Tekst for bruksrett-knappen",
