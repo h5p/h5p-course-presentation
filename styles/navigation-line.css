@@ -240,15 +240,18 @@
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
   -webkit-flex: 0;
   flex: 0;
-  min-width: 2em;
+  min-width: 2.2em;
 }
 
 /* The summary slide icon */
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide:after {
-  font-family: 'H5PFontAwesome4';
-  content: '\f005';
-  font-size: 0.8em;
-  color: #ffc80b;
+  content: "";
+  display: inline-block;
+  height: 0.8em;
+  width: 1.7em;
+
+  background: transparent url(../fonts/summary-icon.svg) no-repeat center;
+  background-size: 1.7em;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
