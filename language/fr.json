@@ -31,10 +31,22 @@
                       "label":"Toujours afficher les commentaires"
                     },
                     {
-                      "label":"Opacité de l'arrière-plan"
+                      "label":"Opacité"
                     },
                     {
                       "label":"Afficher sous forme de bouton"
+                    },
+                    {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
                     },
                     {
                       "label":"Titre"
@@ -47,10 +59,10 @@
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Diapositive suivante"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Diapositive précédente"
                         }
                       ],
                       "default":"specified"
@@ -97,7 +109,7 @@
               {
                 "fields":[
                   {
-                    "label":"Image d'arrière-plan",
+                    "label":"Image",
                     "description":"Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
                   },
                   {
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"Traduction de l'interface",
+      "label":"Options générales.",
       "fields":[
         {
           "label":"Traduction pour \"Diapositive\"",
@@ -162,17 +174,17 @@
         {
           "label":"Appréciation en cas de bon score",
           "default":"Félicitations ! Vous avez @percent de réponses justes !",
-          "description":"@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
+          "description":"@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
         },
         {
           "label":"Appréciation en cas de score moyen",
           "default":"Bravo pour vos efforts ! Vous avez @percent de réponses justes !",
-          "description":"@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
+          "description":"@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
         },
         {
           "label":"Appréciation en cas de mauvais score",
           "default":"Vous n'avez que @percent de réponses justes.",
-          "description":"@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
+          "description":"@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
         },
         {
           "label":"Traduction pour \"Total\"",
@@ -192,7 +204,7 @@
         },
         {
           "label":"Traduction de \"Auteur/créateur\"",
-          "default":"Auteur/créateur"
+          "default":"Auteur"
         },
         {
           "label":"Traduction de \"Licence\"",
@@ -219,12 +231,12 @@
           "default":"Afficher la liste des mots-clés"
         },
         {
-          "label":"Texte pour ouvrir en plein écran",
+          "label":"Activer le bouton \"Recommencer\"",
           "default":"Plein écran"
         },
         {
-          "label":"Texte pour quitter le plein écran",
-          "default":"Sortir du plein écran"
+          "label":"Obliger l'utilisateur à saisir une réponse avant de pouvoir afficher la correction.",
+          "default":"Quitter le plein écran"
         },
         {
           "label":"Texte d'accès à la diapositive précédente",
@@ -267,8 +279,12 @@
           "default":"Partager sur Twitter"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"Titre de la diapositive récapitulative",
-          "default":"Bilan général"
+          "default":"Résumé"
         },
         {
           "label":"Titre pour l'icône des commentaires",
@@ -305,8 +321,8 @@
           "description":"Cela cache la diapositive finale qui liste les scores obtenus aux diverses activités."
         },
         {
-          "label":"Ecraser le bouton \"Voir la correction\"",
-          "description":"Cette option détermine si le bouton \"Voir la correction\" sera affiché pour toutes les questions, désactivé pour toutes ou configuré pour chaque question individuellement.",
+          "label":"Ecraser le bouton \"Voir la solution\"",
+          "description":"Cette option détermine si le bouton \"Voir la solution\" sera affiché pour toutes les questions, désactivé pour toutes ou configuré pour chaque question individuellement.",
           "options":[
             {
               "label":"Activé"
@@ -331,6 +347,81 @@
         {
           "label":"Activer le bouton \"Imprimer\"",
           "description":"Cela active le bouton d'impression."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

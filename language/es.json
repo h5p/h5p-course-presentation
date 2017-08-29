@@ -37,6 +37,18 @@
                       "label":"Mostrar como botón"
                     },
                     {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
                       "label":"Título"
                     },
                     {
@@ -47,10 +59,10 @@
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Diapositiva siguiente"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Diapositiva previa"
                         }
                       ],
                       "default":"specified"
@@ -97,7 +109,7 @@
               {
                 "fields":[
                   {
-                    "label":"Image",
+                    "label":"Imagen",
                     "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
@@ -130,7 +142,7 @@
         {
           "fields":[
             {
-              "label":"Image",
+              "label":"Imagen",
               "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"Traducciones",
+      "label":"Localizar",
       "fields":[
         {
           "label":"Traducción para \"Diapositiva\"",
@@ -192,14 +204,14 @@
         },
         {
           "label":"Traducción para \"Autor/Creador\"",
-          "default":"Autor/Creador"
-        },
-        {
-          "label":"Traducción para \"Licencia\"",
-          "default":"Licencia"
+          "default":"Autor"
         },
         {
           "label":"Traduction pour \"Licencia\"",
+          "default":"Licencia"
+        },
+        {
+          "label":"Traducción para \"Licencia\"",
           "default":"Licencia"
         },
         {
@@ -267,8 +279,12 @@
           "default":"Compartir en Twitter"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"Título de la diapositiva de resúmen",
-          "default":"Resúmen"
+          "default":"Resumen"
         },
         {
           "label":"Título para el ícono de comentarios",
@@ -305,32 +321,107 @@
           "description":"Oculta la diapositiva de resúmen."
         },
         {
-          "label":"Override \"Show Solution\" button",
-          "description":"This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Ocultar el botón \"Mostrar solución\"",
+          "description":"Esta opción determina si el botón \"Mostrar solución\" se muestra en todas las preguntas, se desactiva para todas, o se configura para cada pregunta individualmente.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Habilitado"
             },
             {
-              "label":"Disabled"
+              "label":"Deshabilitado"
             }
           ]
         },
         {
-          "label":"Override \"Retry\" button",
-          "description":"This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Ocultar el botón de \"Reintentar\"",
+          "description":"Esta opción determina si el botón \"Reintentar\" se muestra en todas las preguntas, se desactiva para todas, o se configura para cada pregunta individualmente.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Habilitado"
             },
             {
-              "label":"Disabled"
+              "label":"Deshabilitado"
             }
           ]
         },
         {
           "label":"Enable print button",
           "description":"Enables the print button."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

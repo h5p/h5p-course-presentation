@@ -31,10 +31,22 @@
                       "label":"Kommentare immer anzeigen"
                     },
                     {
-                      "label":"Undurchlässigkeit des Hintergrunds"
+                      "label":"Hintergrunddeckkraft"
                     },
                     {
                       "label":"Als Button anzeigen"
+                    },
+                    {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
                     },
                     {
                       "label":"Titel"
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"Sprache anpassen",
+      "label":"Verhaltenseinstellungen.",
       "fields":[
         {
           "label":"Übersetzung für \"Slide\"",
@@ -183,7 +195,7 @@
           "default":"Lösungen"
         },
         {
-          "label":"Beschriftung für den \"Wiederholen\"-Button",
+          "label":"Text für den \"Wiederholen\"-Button",
           "default":"Wiederholen"
         },
         {
@@ -192,7 +204,7 @@
         },
         {
           "label":"Übersetzung für \"Author/supplier\"",
-          "default":"Autor/Unterstützer"
+          "default":"Autor"
         },
         {
           "label":"Übersetzung für \"License\"",
@@ -219,11 +231,11 @@
           "default":"Schlagwortliste anzeigen"
         },
         {
-          "label":"Beschriftung für \"Vollbild\"",
-          "default":"Vollbild"
+          "label":"Aktivieren des \"Wiederholen\"-Buttons",
+          "default":"Vollbildmodus"
         },
         {
-          "label":"Beschriftung für \"Vollbild beenden\"",
+          "label":"Benutzereingabe erforderlich machen, bevor die Antwort angesehen werden kann",
           "default":"Vollbild beenden"
         },
         {
@@ -267,8 +279,12 @@
           "default":"Auf Twitter teilen"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"Titel für das Übersichtsschaubild",
-          "default":"Übersicht"
+          "default":"Zusammenfassung"
         },
         {
           "label":"Titel für das \"Kommentare zeigen\"-Icon",
@@ -305,32 +321,107 @@
           "description":"Verbirgt das Übersichtsschaubild"
         },
         {
-          "label":"\"Lösungen zeigen\"-Knopf überschreiben",
-          "description":"Diese Option legt fest, ob der \"Lösungen zeigen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
+          "label":"Überschreiben des \"Lösungen anzeigen\"-Buttons",
+          "description":"Diese Option gibt an, ob der \"Lösung anzeigen\"-Button für alle Fragen angezeigt, ausgeblendet oder für jede Frage individuell konfiguriert wird.",
           "options":[
             {
-              "label":"anzeigen"
+              "label":"Anzeigen"
             },
             {
-              "label":"ausblenden"
+              "label":"Ausblenden"
             }
           ]
         },
         {
-          "label":"\"Wiederholen\"-Button überschreiben",
-          "description":"Diese Option legt fest, ob der \"Wiederholen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
+          "label":"Überschreiben des \"Wiederholen\"-Buttons",
+          "description":"Diese Option gibt an, ob der \"Wiederholen\" Button für alle Fragen angezeigt, ausgeblendet oder für jede Frage individuell konfiguriert wird.",
           "options":[
             {
-              "label":"anzeigen"
+              "label":"Anzeigen"
             },
             {
-              "label":"ausblenden"
+              "label":"Ausblenden"
             }
           ]
         },
         {
           "label":"\"Drucken\"-Button einblenden",
           "description":"Zeigt den \"Drucken\"-Button an."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

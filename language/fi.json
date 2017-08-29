@@ -37,6 +37,18 @@
                       "label":"Näytä painikkeena"
                     },
                     {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
                       "label":"Otsikko"
                     },
                     {
@@ -47,10 +59,10 @@
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Seuraava sivu"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Edellinen sivu"
                         }
                       ],
                       "default":"specified"
@@ -70,7 +82,7 @@
                           "label":"Otsikko"
                         },
                         {
-                          "label":"Tekijä"
+                          "label":"Luoja/Toimittaja"
                         },
                         {
                           "label":"Lisenssi"
@@ -192,7 +204,7 @@
         },
         {
           "label":"Käännös tekstille \"Tekijä\"",
-          "default":"Luoja/Toimittaja"
+          "default":"Tekijä"
         },
         {
           "label":"Käännös tekstille \"Lisenssi\"",
@@ -267,6 +279,10 @@
           "default":"Jaa Twitterissä"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"\"Yhteenveto\"-sivun otsikko",
           "default":"Yhteenveto"
         },
@@ -331,6 +347,81 @@
         {
           "label":"Näytä tulostuspainike",
           "description":"Näytä tulostuspainike esityksen alakulmassa."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

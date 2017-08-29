@@ -37,6 +37,18 @@
                       "label":"ボタンとして表示"
                     },
                     {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
                       "label":"タイトル"
                     },
                     {
@@ -219,12 +231,12 @@
           "default":"キーワードリストを表示"
         },
         {
-          "label":"全画面表示のラベル",
-          "default":"全画面表示"
+          "label":"フルスクリーンラベル",
+          "default":"フルスクリーン"
         },
         {
-          "label":"全画面表示を終了のラベル",
-          "default":"全画面表示を終了"
+          "label":"フルスクリーン解除のラベル",
+          "default":"フルスクリーン解除"
         },
         {
           "label":"前のスライドのラベル",
@@ -267,6 +279,10 @@
           "default":"Twitterで共有"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"サマリースライドのスライド",
           "default":"サマリー"
         },
@@ -305,7 +321,7 @@
           "description":"サマリースライドを非表示"
         },
         {
-          "label":"解を表示 ボタンを上書き",
+          "label":"「解を表示」ボタンを上書き",
           "description":"このオプションは、すべての設問に対して「解を表示」ボタンが表示されるか、すべての設問に対して無効になるか、各設問ごとに個別に設定されるかを決定します。",
           "options":[
             {
@@ -331,6 +347,81 @@
         {
           "label":"印刷ボタンを有効にする",
           "description":"印刷ボタンを有効にする"
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

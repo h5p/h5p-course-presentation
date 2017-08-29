@@ -37,6 +37,18 @@
                       "label":"Display as button"
                     },
                     {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
                       "label":"Title"
                     },
                     {
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"Localize",
+      "label":"Lokalisere",
       "fields":[
         {
           "label":"Translation for \"Slide\"",
@@ -220,7 +232,7 @@
         },
         {
           "label":"Fullscreen label",
-          "default":"Fullscreen"
+          "default":"Fuldskærm"
         },
         {
           "label":"Exit fullscreen label",
@@ -267,8 +279,12 @@
           "default":"Share on Twitter"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"Title for summary slide",
-          "default":"Summary"
+          "default":"Resumé"
         },
         {
           "label":"Title for the comments icon",
@@ -305,32 +321,107 @@
           "description":"Hides the summary slide."
         },
         {
-          "label":"Override \"Show Solution\" button",
-          "description":"This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Overskriv \"Vi svar\"-knap",
+          "description":"Dette valg afgør om \"Vis svar\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Aktiveret"
             },
             {
-              "label":"Disabled"
+              "label":"Deaktiveret"
             }
           ]
         },
         {
-          "label":"Override \"Retry\" button",
-          "description":"This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label":"Overskriv \"Prøv igen\"-knap",
+          "description":"Dette valg afgør om \"Prøv igen\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
           "options":[
             {
-              "label":"Enabled"
+              "label":"Aktiveret"
             },
             {
-              "label":"Disabled"
+              "label":"Deaktiveret"
             }
           ]
         },
         {
           "label":"Enable print button",
           "description":"Enables the print button."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

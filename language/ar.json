@@ -31,10 +31,22 @@
                       "label":"اعرض التعليقات دائما"
                     },
                     {
-                      "label":"شفافية الخلفيية"
+                      "label":"شفافية الخلفية"
                     },
                     {
                       "label":"اعرض كزر"
+                    },
+                    {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
                     },
                     {
                       "label":"العنوان"
@@ -70,10 +82,10 @@
                           "label":"العنوان"
                         },
                         {
-                          "label":"الكاتب"
+                          "label":"المؤلف"
                         },
                         {
-                          "label":"الرخصة"
+                          "label":"رخصة الاستعمال"
                         }
                       ]
                     }
@@ -97,7 +109,7 @@
               {
                 "fields":[
                   {
-                    "label":"Image",
+                    "label":"الصورة",
                     "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
@@ -130,7 +142,7 @@
         {
           "fields":[
             {
-              "label":"Image",
+              "label":"الصورة",
               "description":"Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"تحديد الموقع",
+      "label":"حساسية الاجابة",
       "fields":[
         {
           "label":"الترجمة \"للشريحة\"",
@@ -183,24 +195,24 @@
           "default":"Show solutions"
         },
         {
-          "label":"نص زر إعادة المحاولة",
-          "default":"Retry"
+          "label":"النص الزر إعادة المحاولة",
+          "default":"إعادة المحاولة"
         },
         {
           "label":"ترجمة \"العنوان\"",
-          "default":"Title"
+          "default":"العنوان"
         },
         {
           "label":"ترجمة\"الكاتب / والمورد\"",
-          "default":"Author"
+          "default":"المؤلف"
         },
         {
           "label":"ترجمة \"الرخصة\"",
-          "default":"License"
+          "default":"رخصة الاستعمال"
         },
         {
           "label":"ترجمة \"الرخصة\"",
-          "default":"License"
+          "default":"رخصة الاستعمال"
         },
         {
           "label":"نص زر التصدير",
@@ -219,11 +231,11 @@
           "default":"Show keywords list"
         },
         {
-          "label":"تسمية لملء الشاشة",
+          "label":"تفعيل \"إعادة المحاولة \"",
           "default":"Fullscreen"
         },
         {
-          "label":"تسمية خروج ملء الشاشة",
+          "label":"تتطلب إدخال المستخدم قبل أن يتم عرضه الحل",
           "default":"Exit fullscreen"
         },
         {
@@ -267,8 +279,12 @@
           "default":"Share on Twitter"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"سجلة المحاولة علي التويتر",
-          "default":"Summary"
+          "default":"الملخص"
         },
         {
           "label":"Title for summary slide",
@@ -331,6 +347,81 @@
         {
           "label":"Enable print button",
           "description":"Enables the print button."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

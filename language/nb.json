@@ -37,6 +37,18 @@
                       "label":"Vis som knapp"
                     },
                     {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
                       "label":"Tittel"
                     },
                     {
@@ -47,10 +59,10 @@
                           "label":"Spesifisert slide"
                         },
                         {
-                          "label":"Neste slide"
+                          "label":"Neste side"
                         },
                         {
-                          "label":"Forrige slide"
+                          "label":"Forrige side"
                         }
                       ],
                       "default":"specified"
@@ -70,7 +82,7 @@
                           "label":"Tittel"
                         },
                         {
-                          "label":"Forfatter"
+                          "label":"Forfatter/leverandør"
                         },
                         {
                           "label":"Lisens"
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"Ledetekster",
+      "label":"Lokaliser",
       "fields":[
         {
           "label":"Oversettelse for \"Slide\"",
@@ -179,8 +191,8 @@
           "default":"Total"
         },
         {
-          "label":"Tekst på \"Vis fasit\"-knappen",
-          "default":"Vis fasit"
+          "label":"\"Vis svar\" knapp",
+          "default":"Vis svar"
         },
         {
           "label":"Tekst til \"Prøv igjen\"-knappen",
@@ -203,7 +215,7 @@
           "default":"Lisens"
         },
         {
-          "label":"Oversettelse for \"Eksporter tekst\"",
+          "label":"Oversettelse for \"Eksporter tekst\" ",
           "default":"Eksporter tekst"
         },
         {
@@ -228,11 +240,11 @@
         },
         {
           "label":"Tittel for \"Forrige side\"-knapp",
-          "default":"Forrige side"
+          "default":"Forrige slide"
         },
         {
           "label":"Tittel for \"Neste side\"-knapp",
-          "default":"Neste side"
+          "default":"Neste slide"
         },
         {
           "label":"Tittel for \"Denne side\"-knapp",
@@ -265,6 +277,10 @@
         {
           "label":"Del på Twitter tekst",
           "default":"Del på Twitter"
+        },
+        {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
           "label":"Tittel for \"Oppsummering\" siden",
@@ -331,6 +347,81 @@
         {
           "label":"Aktiver print-knapp",
           "description":"Aktiverer print-knappen."
+        },
+        {
+          "label":"Social Settings",
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Google+ share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Google link",
+                  "default":"@currentpageurl"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
