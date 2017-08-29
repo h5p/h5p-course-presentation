@@ -417,7 +417,6 @@
   max-height: 22em;
   overflow: hidden;
   text-align: left;
-  height: 100%;
   overflow-y: auto;
 }
 
