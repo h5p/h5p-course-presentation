@@ -350,6 +350,13 @@
         },
         {
           "label":"Social Settings",
+          "showWhen":{
+            "rules":[
+              {
+                
+              }
+            ]
+          },
           "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
           "fields":[
             {
@@ -406,20 +413,15 @@
               "label":"Display Google+ share icon"
             },
             {
-              "label":"Google+ share settings",
+              "label":"Share to Google link",
+              "default":"@currentpageurl",
               "showWhen":{
                 "rules":[
                   {
                     
                   }
                 ]
-              },
-              "fields":[
-                {
-                  "label":"Share to Google link",
-                  "default":"@currentpageurl"
-                }
-              ]
+              }
             }
           ]
         }
