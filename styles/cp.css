@@ -643,6 +643,13 @@
   color: #757575;
 }
 
+.h5p-course-presentation .h5p-cp-dialog-titlebar > .h5p-dialog-title:before {
+  content: " ";
+  margin-right: 0.5em;
+  margin-left: 0.1em;
+  vertical-align: middle;
+}
+
 .h5p-course-presentation .h5p-close-popup {
   position: absolute;
   top: 0.25em;
