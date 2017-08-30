@@ -192,21 +192,15 @@
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li {
-  padding: 0;
+  padding: 0.65em 0.65em 0.65em 1em;
   margin: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.11);
   font-size: 0.65em;
   cursor: pointer;
 }
-
-.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li .h5p-keywords-li {
-  padding: 0.65em 0.65em 0.65em 1em;
-}
-
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li.h5p-current {
   background-color: rgba(0, 0, 0, 0.04);
 }
-
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li:hover span{
   color: #1d74c8;
 }
