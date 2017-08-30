@@ -628,6 +628,13 @@
         "label": "Label for \"Print current slide\" button",
         "importance": "low",
         "default": "Print current slide"
+      },
+      {
+        "name": "noTitle",
+        "type": "text",
+        "label": "Label for slides without a title",
+        "importance": "low",
+        "default": "No title"
       }
     ]
   },
