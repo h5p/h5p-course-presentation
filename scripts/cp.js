@@ -249,7 +249,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       elements: [],
       keywords: []
     };
-    this.slides.push(summarySlideData);
+    this.slides.push(summarySlideParams);
 
     $summarySlide = H5P.jQuery(H5P.CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
