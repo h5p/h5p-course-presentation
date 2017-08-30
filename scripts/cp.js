@@ -1122,22 +1122,24 @@ H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) 
  * @returns {string} HTML
  */
 H5P.CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst, index) {
-  var titleKeyword = this.l10n.noTitle;
+  var title, titleKeyword = this.l10n.noTitle;
   if (!keywords || !keywords.length) {
     if (this.editor === undefined) {
-      return ''; // No keywords for this slide
+      title = ''; // No keywords for this slide
     }
   }
   else {
     titleKeyword = keywords[0].main;
   }
 
-  return '<li class="h5p-keywords-li' + (isFirst ? ' h5p-current' : '') + '">' +
-           '<div class="h5p-keyword-title">' +
-             this.l10n.slide + ' ' + (index + 1) +
-           '</div>' +
-           '<span>' + titleKeyword + '</span>' +
-          '</li>';
+  if (title === undefined) {
+    title = '<div class="h5p-keyword-title">' +
+              this.l10n.slide + ' ' + (index + 1) +
+            '</div>' +
+            '<span>' + titleKeyword + '</span>';
+  }
+
+  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '">' + title + '</li>';
 };
 
 /**

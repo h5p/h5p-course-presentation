@@ -198,6 +198,10 @@
   font-size: 0.65em;
   cursor: pointer;
 }
+.h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li.empty {
+  padding: 0;
+  border: 0;
+}
 .h5p-course-presentation .h5p-keywords-wrapper > .h5p-keywords-ol > .h5p-keywords-li.h5p-current {
   background-color: rgba(0, 0, 0, 0.04);
 }
@@ -565,7 +569,7 @@
   content: "\f05a";
 }
 
-.h5p-course-presentation .h5p-exportabletextarea-button:before {
+.h5p-course-presentation .h5p-exportabletextarea-button:before {h5p-keywords-li
   content: "\e995";
 }
 
@@ -641,13 +645,6 @@
   border-bottom: 1px solid #eee;
   font-size: 0.875em;
   color: #757575;
-}
-
-.h5p-course-presentation .h5p-cp-dialog-titlebar > .h5p-dialog-title:before {
-  content: " ";
-  margin-right: 0.5em;
-  margin-left: 0.1em;
-  vertical-align: middle;
 }
 
 .h5p-course-presentation .h5p-close-popup {
