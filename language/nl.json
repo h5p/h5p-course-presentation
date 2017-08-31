@@ -37,6 +37,18 @@
                       "label":"Tonen als knop"
                     },
                     {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
                       "label":"Titel"
                     },
                     {
@@ -47,10 +59,10 @@
                           "label":"Specified slide"
                         },
                         {
-                          "label":"Next slide"
+                          "label":"Volgende slide"
                         },
                         {
-                          "label":"Previous slide"
+                          "label":"Vorige slide"
                         }
                       ],
                       "default":"specified"
@@ -70,7 +82,7 @@
                           "label":"Titel"
                         },
                         {
-                          "label":"Auteur"
+                          "label":"Auteur/Leverancier"
                         },
                         {
                           "label":"Licentie"
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"Localiseer",
+      "label":"Localiseren",
       "fields":[
         {
           "label":"Vertaling voor \"Slide\"",
@@ -183,8 +195,8 @@
           "default":"Toon oplossing"
         },
         {
-          "label":"Tekst voor \"Probeer opnieuw\"-knop",
-          "default":"Probeer opnieuw"
+          "label":"Tekst voor de knop Opnieuw",
+          "default":"Opnieuw proberen"
         },
         {
           "label":"Vertaling voor \"Titel\"",
@@ -192,7 +204,7 @@
         },
         {
           "label":"Vertaling voor \"Auteur/Leverancier\"",
-          "default":"Auteur/Leverancier"
+          "default":"Auteur"
         },
         {
           "label":"Vertaling voor \"Licentie\"",
@@ -267,6 +279,10 @@
           "default":"Deel op Twitter"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"Titel voor \"Samenvatting\" slide",
           "default":"Samenvatting"
         },
@@ -305,8 +321,8 @@
           "description":"Verbergt de samenvattingsslide."
         },
         {
-          "label":"\"Toon oplossing\"-knop instellen",
-          "description":"Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd",
+          "label":"\"Toon oplossing\" knop instellen",
+          "description":"Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
           "options":[
             {
               "label":"Ingeschakeld"
@@ -331,6 +347,83 @@
         {
           "label":"Printknop inschakelen",
           "description":"Schakelt printknop in"
+        },
+        {
+          "label":"Social Settings",
+          "showWhen":{
+            "rules":[
+              {
+                
+              }
+            ]
+          },
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Share to Google link",
+              "default":"@currentpageurl",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

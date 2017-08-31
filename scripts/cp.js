@@ -65,7 +65,8 @@ H5P.CoursePresentation = function (params, id, extras) {
     printTitle: 'Print',
     printIngress: 'How would you like to print this presentation?',
     printAllSlides: 'Print all slides',
-    printCurrentSlide: 'Print current slide'
+    printCurrentSlide: 'Print current slide',
+    noTitle: 'No title'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -187,14 +188,11 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
       that.$wrapper.focus();
     }
 
-    if (that.keywordsClicked) {
-      that.keywordsClicked = false;
-    }
-    else if (that.presentation.keywordListEnabled &&
-            !that.presentation.keywordListAlwaysShow &&
-            that.presentation.keywordListAutoHide &&
-            !$target.is('textarea, .h5p-icon-pencil, span')) {
-      that.hideKeywords();
+    if (that.presentation.keywordListEnabled &&
+        !that.presentation.keywordListAlwaysShow &&
+        that.presentation.keywordListAutoHide &&
+        !$target.is('textarea, .h5p-icon-pencil, span')) {
+      that.hideKeywords(); // Auto-hide keywords
     }
   });
 
@@ -217,6 +215,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.$progressbar = this.$wrapper.children('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
 
+  // Determine if keywords pane should be initialized
   this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
   if (this.activeSurface && this.editor === undefined) {
     this.initKeywords = false;
@@ -224,28 +223,8 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   }
   this.isSolutionMode = false;
 
-  // Create keywords html
-  var keywords = '';
-  var foundKeywords = false;
-  var first, slide, $slide;
-  for (var i = 0; i < this.slides.length; i++) {
-    slide = this.slides[i];
-    $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
-    first = i === 0;
-
-    if (first) {
-      this.$current = $slide.addClass('h5p-current');
-    }
-
-    this.addElements(slide, $slide, i);
-
-    if (!foundKeywords && slide.keywords !== undefined && slide.keywords.length) {
-      foundKeywords = true;
-    }
-    if (this.initKeywords) {
-      keywords += this.keywordsHtml(slide.keywords, first, i);
-    }
-  }
+  // Create slides and retrieve keyword title details
+  var keywords = this.createSlides(this.slides);
 
   // We have always attached all elements on current slide
   this.elementsAttached[this.currentSlideIndex] = true;
@@ -253,51 +232,43 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   // Determine if summary slide should be added
   var $summarySlide;
   this.showSummarySlide = false;
-
   if (this.hideSummarySlide) {
+    // Always hide
     this.showSummarySlide = !this.hideSummarySlide;
-  } else {
-    // Check for task
+  }
+  else {
+    // Determine by checking for slides with tasks
     this.slidesWithSolutions.forEach(function (slide) {
       that.showSummarySlide = slide.length;
     });
   }
 
-  var summarySlideData = [];
   if ((this.editor === undefined) && (this.showSummarySlide || this.hasAnswerElements)) {
-    summarySlideData = {
+    // Create the summary slide
+    var summarySlideParams = {
       elements: [],
       keywords: []
     };
-    this.slides.push(summarySlideData);
+    this.slides.push(summarySlideParams);
 
-    slide = this.slides[this.slides.length - 1];
-    $summarySlide = H5P.jQuery(H5P.CoursePresentation.createSlide(slide)).appendTo(this.$slidesWrapper);
-
-    this.addElements(slide, $summarySlide, i);
-
-    if (!foundKeywords && slide.keywords !== undefined && slide.keywords.length) {
-      foundKeywords = true;
-    }
-    if (this.initKeywords) {
-      keywords += this.keywordsHtml(slide.keywords, first, i);
-    }
-
+    $summarySlide = H5P.jQuery(H5P.CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
   }
 
-  if (!foundKeywords && this.editor === undefined) {
-    this.initKeywords = false; // Do not show keywords pane if it's empty!
+  if (!keywords.exist && this.editor === undefined) {
+    // Do not show keywords pane if it's empty and there's no editor!
+    this.initKeywords = false;
   }
 
-  // Initialize keywords
   if (this.initKeywords) {
-    this.initKeywordsList(keywords);
+    // Initialize keyword titles
+    this.initKeywordsList(keywords.html);
     if (this.presentation.keywordListAlwaysShow) {
       this.showKeywords();
     }
   }
   else {
+    // Remove keyword titles completely
     this.$keywordsWrapper.remove();
   }
 
@@ -344,20 +315,59 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 };
 
 /**
+ * Create slides + keyword titles.
+ * Slides are directly attached to the slides wrapper.
+ * Keywords details are returned for further processing.
+ *
+ * @param {Array} slidesParams
+ * @returns {object} keyword details used for further processing
+ */
+H5P.CoursePresentation.prototype.createSlides = function (slidesParams) {
+  var keywords = {
+    html: '',
+    exist: false
+  };
+
+  for (var i = 0; i < slidesParams.length; i++) {
+    var slideParams = slidesParams[i];
+
+    // Create slide element
+    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
+
+    // Set as current if this is the first slide
+    var isFirst = (i === 0);
+    if (isFirst) {
+      this.$current = $slide.addClass('h5p-current');
+    }
+
+    // Add elements to slide
+    this.addElements(slideParams, $slide, i);
+
+    if (!keywords.exist && slideParams.keywords !== undefined && slideParams.keywords.length) {
+      keywords.exist = true;
+    }
+    if (this.initKeywords) {
+      keywords.html += this.createKeywordHtml(slideParams.keywords, isFirst, i);
+    }
+  }
+
+  return keywords;
+};
+
+/**
  * Does an object have functions to determine the score
  *
  * @public
  * @param obj The object to investigate
  * @returns {boolean}
  */
-H5P.CoursePresentation.prototype.hasScoreData = function (obj){
+H5P.CoursePresentation.prototype.hasScoreData = function (obj) {
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
     (typeof obj.getMaxScore === 'function')
   );
 };
-
 
 /**
  * Return the combined score of all children
@@ -1067,7 +1077,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
   var $popup = H5P.jQuery(
     '<div class="h5p-popup-overlay h5p-animate ' + (classes || 'h5p-popup-comment-field') + '">' +
       '<div class="h5p-popup-container h5p-animate">' +
-        '<div class="h5p-dialog-titlebar">' +
+        '<div class="h5p-cp-dialog-titlebar">' +
           '<div class="h5p-dialog-title"></div>' +
           '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
         '</div>' +
@@ -1105,33 +1115,31 @@ H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) 
 };
 
 /**
- * Generate html for the given keywords.
+ * Generate HTML for a slide's title keyword.
  *
- * @param {Array} keywords List of keywords.
- * @param {Boolean} first Indicates if this is the first slide.
- * @returns {String} HTML.
+ * @param {Array} keywords List of keywords
+ * @param {boolean} isFirst Indicates if this is the first slide
+ * @returns {string} HTML
  */
-H5P.CoursePresentation.prototype.keywordsHtml = function (keywords, first, index) {
-  var html = '';
-
-  if (keywords === undefined) {
-    keywords = [];
+H5P.CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst, index) {
+  var title, titleKeyword = this.l10n.noTitle;
+  if (!keywords || !keywords.length) {
+    if (this.editor === undefined) {
+      title = ''; // No keywords for this slide
+    }
+  }
+  else {
+    titleKeyword = keywords[0].main;
   }
 
-  if (keywords.length > 0) {
-    html += '<li class="h5p-keywords-li">' +
-      '<div class="h5p-keyword-title">' +
-        this.l10n.slide + ' ' + (index + 1) +
-      '</div>' +
-      '<span>' + keywords[0].main + '</span>' +
-    '</li>';
+  if (title === undefined) {
+    title = '<div class="h5p-keyword-title">' +
+              this.l10n.slide + ' ' + (index + 1) +
+            '</div>' +
+            '<span>' + titleKeyword + '</span>';
   }
 
-  if (html) {
-    html = '<ol class="h5p-keywords-ol">' + html + '</ol>';
-  }
-
-  return '<li class="h5p-keywords-li' + (first ? ' h5p-current' : '') + '">' + html + '</li>';
+  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '">' + title + '</li>';
 };
 
 /**
@@ -1150,7 +1158,6 @@ H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
   });
 
   this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
-
 };
 
 /**

@@ -37,6 +37,18 @@
                       "label":"Visualizza come pulsante"
                     },
                     {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
+                        {
+                          "label":"Small"
+                        },
+                        {
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
                       "label":"Titolo"
                     },
                     {
@@ -145,7 +157,7 @@
       ]
     },
     {
-      "label":"Localizza",
+      "label":"Impostazioni esecuzione",
       "fields":[
         {
           "label":"Traduzione per \"Diapositiva\"",
@@ -183,7 +195,7 @@
           "default":"Mostra le soluzioni"
         },
         {
-          "label":"Testo per il pulsante Riprova",
+          "label":"Testo per il pulsante Indietro",
           "default":"Riprova"
         },
         {
@@ -219,11 +231,11 @@
           "default":"Mostra l'elenco delle parole chiave"
         },
         {
-          "label":"Etichetta di schermo intero",
+          "label":"Abilita \"Riprova\"",
           "default":"Schermo intero"
         },
         {
-          "label":"Etichetta di uscita da schermo intero",
+          "label":"Richiedere l'immissione dei dati all'utente prima che la soluzione sia visualizzata",
           "default":"Esci da schermo intero"
         },
         {
@@ -267,8 +279,12 @@
           "default":"Condividi su Twitter"
         },
         {
+          "label":"Share to Google text",
+          "default":"Share on Google+"
+        },
+        {
           "label":"Titolo della diapositiva di riepilogo",
-          "default":"Riepilogo"
+          "default":"Sommario"
         },
         {
           "label":"Titolo dell'icona dei commenti",
@@ -331,6 +347,83 @@
         {
           "label":"Attiva il pulsante di stampa",
           "description":"Attiva il pulsante di stampa."
+        },
+        {
+          "label":"Social Settings",
+          "showWhen":{
+            "rules":[
+              {
+                
+              }
+            ]
+          },
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Share to Google link",
+              "default":"@currentpageurl",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }
