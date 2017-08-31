@@ -78,10 +78,11 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       slide = this.cp.slides[i];
 
       // Generate tooltip for progress bar slides
-      progressbarPartTitle = String(that.cp.l10n.slide) + (i + 1);
+      progressbarPartTitle = that.cp.l10n.slide + ' ' + (i + 1);
       if (slide.keywords !== undefined && slide.keywords.length) {
         progressbarPartTitle = slide.keywords[0].main;
-      } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.showSummarySlide) {
+      }
+      else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.showSummarySlide) {
         progressbarPartTitle = that.cp.l10n.summary;
       }
 
@@ -134,7 +135,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         'class': 'h5p-progressbar-popup',
         'html': progressbarTitle
       }).appendTo($parent);
-    } else {
+    }
+    else {
       this.$progressbarPopup.appendTo($parent);
       this.$progressbarPopup.html(progressbarTitle);
     }
