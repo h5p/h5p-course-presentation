@@ -367,6 +367,8 @@
 
   background: #000;
   color: #FFF;
+  
+  pointer-events: none;
 }
 
 /* -------------------------------------- Footer hover effects ---------------------------------- */
