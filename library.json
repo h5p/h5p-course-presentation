@@ -1,10 +1,9 @@
-
 {
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 17,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
