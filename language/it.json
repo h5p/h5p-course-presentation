@@ -1,265 +1,429 @@
 {
-  "semantics": [
+  "semantics":[
     {
-      "fields": [
+      "fields":[
         {
-          "field": {
-            "fields": [
+          "field":{
+            "fields":[
               {
-                "field": {
-                  "fields": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
+                "field":{
+                  "fields":[
                     {
-                      "label": "Commenti",
-                      "description": "I commenti vengono mostrati quando l'utente visualizza le risposte suggerite per tutte le diapositive."
+                      
                     },
                     {
-                      "label": "Visualizza i commenti sempre"
+                      
                     },
                     {
-                      "label": "Opacità Sfondo"
+                      
                     },
                     {
-                      "label": "Visualizza come pulsante"
+                      
                     },
                     {
-                      "label": "Titolo"
+                      
                     },
                     {
-                      "label": "Vai alla Diapositiva"
+                      "label":"Commenti",
+                      "description":"I commenti sono mostrati quando l'utente visualizza le risposte suggerite per tutte le diapositive."
                     },
                     {
-                      "label": "Invisibile",
-                      "description": "Cursore predefinito, nessun titolo e nessun indice scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera utenti avranno problemi con questo elemento."
+                      "label":"Visualizza sempre i commenti"
                     },
                     {
-                      "label": "Metadata",
-                      "fields": [
+                      "label":"Opacità dello sfondo"
+                    },
+                    {
+                      "label":"Visualizza come pulsante"
+                    },
+                    {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
                         {
-                          "label": "Titolo"
+                          "label":"Small"
                         },
                         {
-                          "label": "Autore"
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
+                      "label":"Titolo"
+                    },
+                    {
+                      "label":"La diapositiva a cui andremo",
+                      "description":"La 'diapositiva specificata' utilizzerà il 'numero di diapositiva specifica'.",
+                      "options":[
+                        {
+                          "label":"Diapositiva specificata"
                         },
                         {
-                          "label": "Licenza"
+                          "label":"Prossima diapositiva"
+                        },
+                        {
+                          "label":"Diapositiva precedente"
+                        }
+                      ],
+                      "default":"specificato/a"
+                    },
+                    {
+                      "label":"Numero diapositiva specifica",
+                      "description":"Utilizzato solo se per 'La diapositiva a cui andremo' è selezionato 'diapositiva specificata'"
+                    },
+                    {
+                      "label":"Invisibile",
+                      "description":"Cursore predefinito, nessun titolo e nessun indice di scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera avranno problemi con questo elemento."
+                    },
+                    {
+                      "label":"Metadati",
+                      "fields":[
+                        {
+                          "label":"Titolo"
+                        },
+                        {
+                          "label":"Autore"
+                        },
+                        {
+                          "label":"Licenza"
                         }
                       ]
                     }
                   ]
                 }
               },
-              {},
               {
-                "fields": [
+                "field":{
+                  "fields":[
+                    {
+                      
+                    },
+                    {
+                      "field":{
+                        
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "fields":[
                   {
-                    "englishLabel": "Image",
-                    "label": "Image",
-                    "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "label":"Immagine",
+                    "description":"L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione si visualizzano meglio sugli schermi più grandi."
                   },
                   {
-                    "englishLabel": "Pick a color",
-                    "label": "Pick a color"
+                    "label":"Scegli un colore",
+                    "spectrum":{
+                      
+                    },
+                    "default":""
                   }
                 ]
               }
             ]
           }
         },
-        {},
         {
-          "label": "Elenco di parole chiave"
+          
         },
         {
-          "label": "Mostra sempre"
+          "label":"Elenco di parole chiave"
         },
         {
-          "label": "Nascondi automaticamente"
+          "label":"Mostra sempre"
         },
         {
-          "label": "Opacità"
+          "label":"Nascondi automaticamente"
         },
         {
-          "fields": [
+          "label":"Opacità"
+        },
+        {
+          "fields":[
             {
-              "englishLabel": "Image",
-              "label": "Image",
-              "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+              "label":"Immagine",
+              "description":"L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione si visualizzano meglio sugli schermi più grandi."
             },
             {
-              "englishLabel": "Pick a color",
-              "label": "Pick a color"
+              "label":"Scegli un colore",
+              "spectrum":{
+                
+              },
+              "default":""
             }
           ]
         }
       ]
     },
     {
-      "label": "Localizzazione",
-      "fields": [
+      "label":"Impostazioni esecuzione",
+      "fields":[
         {
-          "label": "Traduzione per \"Diapositiva\""
+          "label":"Traduzione per \"Diapositiva\"",
+          "default":"Diapositiva"
         },
         {
-          "label": "Traduzione per il \"Tuo Punteggio\""
+          "label":"Traduzione per \"Il tuo punteggio\"",
+          "default":"Il tuo punteggio"
         },
         {
-          "label": "Traduzione per il \"Punteggio Massimo\""
+          "label":"Traduzione per \"Punteggio Massimo\"",
+          "default":"Punteggio massimo"
         },
         {
-          "label": "Messaggio dato per un punteggio OTTIMO",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
+          "label":"Messaggio dato per un punteggio OTTIMO",
+          "default":"Congratulazioni! La tua percentuale di correttezza è @percent!",
+          "description":"@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
-          "label": "Messaggio dato per un punteggio BUONO",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
+          "label":"Messaggio dato per un punteggio BUONO",
+          "default":"Bel lavoro! La tua percentuale di correttezza è @percent!",
+          "description":"@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
-          "label": "Messaggio dato per un punteggio BASSO",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
+          "label":"Messaggio dato per un punteggio BASSO",
+          "default":"La tua percentuale di correttezza è @percent.",
+          "description":"@percent è sostituito dal reale punteggio dell'utente in percentuale"
         },
         {
-          "label": "Traduzione per \"Totale\""
+          "label":"Traduzione per \"Totale\"",
+          "default":"TOTALE"
         },
         {
-          "label": "Testo per il pulsante Mostra soluzioni"
+          "label":"Testo per il pulsante Mostra soluzioni",
+          "default":"Mostra le soluzioni"
         },
         {
-          "label": "Testo per il pulsante Riprova"
+          "label":"Testo per il pulsante Indietro",
+          "default":"Riprova"
         },
         {
-          "label": "Traduzione per \"Titolo\""
+          "label":"Traduzione per \"Titolo\"",
+          "default":"Titolo"
         },
         {
-          "label": "Traduzione per \"Autore/fornitore\""
+          "label":"Traduzione per \"Autore/fornitore\"",
+          "default":"Autore"
         },
         {
-          "label": "Traduzione per \"Licenza\""
+          "label":"Traduzione per \"Licenza\"",
+          "default":"Licenza"
         },
         {
-          "label": "Traduzione per \"Licenza\""
+          "label":"Traduzione per \"Licenza\"",
+          "default":"Licenza"
         },
         {
-          "label": "Testo per il pulsante Esporta testo"
+          "label":"Testo per il pulsante Esporta testo",
+          "default":"Esporta testo"
         },
         {
-          "label": "Testo per il pulsante \"Diritti di utilizzo\""
+          "label":"Testo per il pulsante \"Diritti d'uso\"",
+          "default":"Diritti d'uso"
         },
         {
-          "label": "Nascondi il titolo del pulsante Parole chiave"
+          "label":"Nascondi il titolo del pulsante di elenco parole chiave",
+          "default":"Nascondi l'elenco delle parole chiave"
         },
         {
-          "label": "Mostra il titolo del pulsante Parole chiave"
+          "label":"Mostra il titolo del pulsante di elenco parole chiave",
+          "default":"Mostra l'elenco delle parole chiave"
         },
         {
-          "label": "Etichetta Schermo intero"
+          "label":"Abilita \"Riprova\"",
+          "default":"Schermo intero"
         },
         {
-          "label": "Esci da Schermo intero"
+          "label":"Richiedere l'immissione dei dati all'utente prima che la soluzione sia visualizzata",
+          "default":"Esci da schermo intero"
         },
         {
-          "label": "Etichetta scheda precedente"
+          "label":"Etichetta diapositiva precedente",
+          "default":"Diapositiva precedente"
         },
         {
-          "label": "Etichetta scheda successiva"
+          "label":"Etichetta prossima diapositiva",
+          "default":"Prossima diapositiva"
         },
         {
-          "label": "Etichetta scheda corrente"
+          "label":"Etichetta diapositiva corrente",
+          "default":"Diapositiva corrente"
         },
         {
-          "label": "Etichetta ultima scheda"
+          "label":"Etichetta ultima diapositiva",
+          "default":"Ultima diapositiva"
         },
         {
-          "label": "Esci dal testo modalità soluzione"
+          "label":"Esci dal testo in modalità di soluzione",
+          "default":"Esci dalla modalità di soluzione"
         },
         {
-          "label": "Testo modalità soluzione"
+          "label":"Testo in modalità di soluzione",
+          "default":"Modalità di soluzione"
         },
         {
-          "label": "Testo attività multiple in una pagina"
+          "label":"Testo attività multiple in una pagina",
+          "default":"Attività multiple"
         },
         {
-          "label": "Testo del messaggio del punteggio"
+          "label":"Testo del messaggio del punteggio",
+          "default":"Hai ottenuto:"
         },
         {
-          "label": "Testo condividi su Facebook"
+          "label":"Testo di condivisione su Facebook",
+          "default":"Condividi su Facebook"
         },
         {
-          "label": "Testo condividi su Twitter"
+          "label":"Testo di condivisione su Twitter",
+          "default":"Condividi su Twitter"
         },
         {
-          "label": "Title for summary slide",
-          "default": "Summary"
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
-          "label": "Title for the comments icon",
-          "default": "Show comments"
+          "label":"Titolo della diapositiva di riepilogo",
+          "default":"Sommario"
         },
         {
-          "label": "Title for print button",
-          "default": "Print"
+          "label":"Titolo dell'icona dei commenti",
+          "default":"Mostra commenti"
         },
         {
-          "label": "Print dialog ingress",
-          "default": "How would you like to print this presentation?"
+          "label":"Titolo per il pulsante di stampa",
+          "default":"Stampa"
         },
         {
-          "label": "Label for \"Print all slides\" button",
-          "default": "Print all slides"
+          "label":"Stampa la finestra di dialogo d'ingresso",
+          "default":"Come vorresti stampare questa presentazione?"
         },
         {
-          "label": "Label for \"Print current slide\" button",
-          "default": "Print current slide"
+          "label":"Etichetta per il pulsante \"Stampa tutte le diapositive\"",
+          "default":"Stampa tutte le diapositive"
+        },
+        {
+          "label":"Etichetta per il pulsante \"Stampa diapositiva corrente\"",
+          "default":"Stampa la diapositiva corrente"
         }
       ]
     },
     {
-      "label": "Impostazioni.",
-      "description": "Queste opzioni ti consente di ignorare le impostazioni.",
-      "fields": [
+      "label":"Impostazioni di esecuzione.",
+      "description":"Queste opzioni ti consentono di ignorare le impostazioni di esecuzione.",
+      "fields":[
         {
-          "label": "Activate Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label":"Attiva la modalità di superficie attiva",
+          "description":"Rimuove i controlli di navigazione per l'utente finale. Per navigare usa l'opzione Vai alla diapositiva."
         },
         {
-          "label": "Comportamento",
-          "description": "Nasconde la diapositiva sommario"
+          "label":"Nascondi la diapositiva di riepilogo",
+          "description":"Nasconde la diapositiva di riepilogo."
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
-          "options": [
+          "label":"Sovrascrivi il pulsante Mostra soluzione",
+          "description":"Questa opzione determina se il pulsante \"Mostra soluzione\" sarà visualizzato per tutte le domande, disabilitato per tutti o configurato individualmente per ogni domanda.",
+          "options":[
             {
-              "label": "Enabled"
+              "label":"Attivato"
             },
             {
-              "label": "Disabled"
+              "label":"Disabilitato"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
-          "options": [
+          "label":"Sovrascrivi il pulsante \"Riprova\"",
+          "description":"Questa opzione determina se il pulsante \"Riprova\" sarà visualizzato per tutte le domande, disabilitato per tutti o configurato individualmente per ogni domanda.",
+          "options":[
             {
-              "label": "Enabled"
+              "label":"Attivato"
             },
             {
-              "label": "Disabled"
+              "label":"Disabilitato"
             }
           ]
         },
         {
-          "englishLabel": "Enable print button",
-          "label": "Enable print button",
-          "englishDescription": "Enables the print button.",
-          "description": "Enables the print button."
+          "label":"Attiva il pulsante di stampa",
+          "description":"Attiva il pulsante di stampa."
+        },
+        {
+          "label":"Social Settings",
+          "showWhen":{
+            "rules":[
+              {
+                
+              }
+            ]
+          },
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Share to Google link",
+              "default":"@currentpageurl",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

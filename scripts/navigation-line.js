@@ -47,7 +47,6 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }
 
     var that = this;
-    var progressbarPercentage = (1 / this.cp.slides.length) * 100;
 
     // Remove existing progressbar
     if (this.cp.progressbarParts !== undefined && this.cp.progressbarParts) {
@@ -79,19 +78,18 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       slide = this.cp.slides[i];
 
       // Generate tooltip for progress bar slides
-      progressbarPartTitle = String(that.cp.l10n.slide) + (i + 1);
+      progressbarPartTitle = that.cp.l10n.slide + ' ' + (i + 1);
       if (slide.keywords !== undefined && slide.keywords.length) {
         progressbarPartTitle = slide.keywords[0].main;
-      } else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.showSummarySlide) {
+      }
+      else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.showSummarySlide) {
         progressbarPartTitle = that.cp.l10n.summary;
       }
 
       $progressbarPart = $('<div>', {
-        'width': progressbarPercentage + '%',
         'class': 'h5p-progressbar-part'
       }).data('slideNumber', i)
         .data('keyword', progressbarPartTitle)
-        .data('percentageWidth', progressbarPercentage)
         .click(clickProgressbar)
         .appendTo(that.cp.$progressbar);
 
@@ -104,19 +102,12 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
 
       if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.showSummarySlide) {
         $progressbarPart.addClass('progressbar-part-summary-slide');
-
-        // Add svg icons to summary slide
-        $('<div>', {
-          'class': 'summary-slide-left-svg'
-        }).appendTo($progressbarPart);
-        $('<div>', {
-          'class': 'summary-slide-right-svg'
-        }).appendTo($progressbarPart);
       }
 
       if (i === 0) {
-        $progressbarPart.addClass('h5p-progressbar-part-show');
+        $progressbarPart.addClass('h5p-progressbar-part-show h5p-progressbar-part-selected');
       }
+
       // Create task indicator if less than 60 slides and not in editor
       if (this.cp.slides.length <= 60) {
         if (slide.elements !== undefined && slide.elements.length) {
@@ -144,24 +135,34 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         'class': 'h5p-progressbar-popup',
         'html': progressbarTitle
       }).appendTo($parent);
-    } else {
+    }
+    else {
       this.$progressbarPopup.appendTo($parent);
       this.$progressbarPopup.html(progressbarTitle);
     }
-    var pbpartPercentWidth = $parent.data('percentageWidth');
-    var width = this.$progressbarPopup.width();
-    var popupPercentageWidth = (width / this.cp.$container.width()) * 100;
-    var leftPos = (pbpartPercentWidth * $parent.data('slideNumber')) + (pbpartPercentWidth / 2) - (popupPercentageWidth / 2);
-    var height = '10%';
 
-    if ((((leftPos / 100) * this.cp.$container.width()) + width) >= this.cp.$container.width()) {
-      leftPos -= (width / (this.cp.$container.width() / 100));
+    var availableWidth = this.cp.$container.width();
+    var popupWidth = this.$progressbarPopup.outerWidth();
+    var parentWidth = $parent.outerWidth();
+    var leftPos = ($parent.position().left + (parentWidth / 2) - (popupWidth / 2));
+
+    // default behavior, this will allow it to automatically center
+    var left = '';
+    // If the popup overflows beyond the right bound of container
+    if ((leftPos + popupWidth) >= availableWidth) {
+      // Get the overflow amount in pixels
+      var overflow = leftPos + popupWidth - availableWidth;
+      // Get the difference between the pop up and the progress bar 'part'
+      var diff = (popupWidth/2) - (parentWidth/2);
+      // Reset the left position
+      left = 1 - overflow - diff + 'px'; // +1 due to rounding in CSS
+    }
+    // If the popup overflows beyond the left bound of container
+    else if (leftPos < 0) {
+      left = '0';
     }
 
-    this.$progressbarPopup.css({
-      'left': leftPos + '%',
-      'bottom': height
-    });
+    this.$progressbarPopup.css('left', left);
   };
 
   NavigationLine.prototype.removeProgressbarPopup = function () {
@@ -371,6 +372,10 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       }
     }
 
+    that.cp.progressbarParts[slideNumber]
+      .addClass("h5p-progressbar-part-selected")
+      .siblings().removeClass("h5p-progressbar-part-selected");
+
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (pbPart) {
         pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-answered');
@@ -456,7 +461,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }
 
     // Set footer keyword
-    this.cp.$keywordsButton.html(keywordString);
+    this.cp.$keywordsButton.html('<span>' + keywordString + '</span>');
   };
 
   return NavigationLine;

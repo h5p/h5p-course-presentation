@@ -1,391 +1,429 @@
 {
-  "semantics": [
+  "semantics":[
     {
-      "fields": [
+      "fields":[
         {
-          "field": {
-            "fields": [
+          "field":{
+            "fields":[
               {
-                "field": {
-                  "fields": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
+                "field":{
+                  "fields":[
                     {
-                      "englishLabel": "Comments",
-                      "label": "Kommentarer",
-                      "englishDescription": "The comments are shown when the user displays the suggested answers for all slides.",
-                      "description": "Kommentarene vises når brukeren ser på fasit."
+                      
                     },
                     {
-                      "englishLabel": "Always display comments",
-                      "label": "Alltid vis kommentarer"
+                      
                     },
                     {
-                      "englishLabel": "Background Opacity",
-                      "label": "Opasitet for bakgrunn"
+                      
                     },
                     {
-                      "englishLabel": "Display as button",
-                      "label": "Vis som knapp"
+                      
                     },
                     {
-                      "englishLabel": "Title",
-                      "label": "Tittel"
+                      
                     },
                     {
-                      "englishLabel": "Go To Slide",
-                      "label": "Gå til lysbilde"
+                      "label":"Kommentarer",
+                      "description":"Kommentarene vises når brukeren ser på fasit."
                     },
                     {
-                      "englishLabel": "Invisible",
-                      "label": "Usynlig",
-                      "englishDescription": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
-                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                      "label":"Alltid vis kommentarer"
                     },
                     {
-                      "englishLabel": "Metadata",
-                      "label": "Metadata",
-                      "fields": [
+                      "label":"Opasitet for bakgrunn"
+                    },
+                    {
+                      "label":"Vis som knapp"
+                    },
+                    {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
                         {
-                          "englishLabel": "Title",
-                          "label": "Tittel"
+                          "label":"Small"
                         },
                         {
-                          "englishLabel": "Author",
-                          "label": "Forfatter"
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
+                      "label":"Tittel"
+                    },
+                    {
+                      "label":"Slide vi skal gå til",
+                      "description":"'Spesifisert slide' bruker slide nummer angitt i 'spesifisert slide'.",
+                      "options":[
+                        {
+                          "label":"Spesifisert slide"
                         },
                         {
-                          "englishLabel": "License",
-                          "label": "Lisens"
+                          "label":"Neste side"
+                        },
+                        {
+                          "label":"Forrige side"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Spesifisert slide",
+                      "description":"Brukes kun om 'Spesifisert slide' er valgt over"
+                    },
+                    {
+                      "label":"Usynlig",
+                      "description":"Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                    },
+                    {
+                      "label":"Metadata",
+                      "fields":[
+                        {
+                          "label":"Tittel"
+                        },
+                        {
+                          "label":"Forfatter/leverandør"
+                        },
+                        {
+                          "label":"Lisens"
                         }
                       ]
                     }
                   ]
                 }
               },
-              {},
               {
-                "fields": [
+                "field":{
+                  "fields":[
+                    {
+                      
+                    },
+                    {
+                      "field":{
+                        
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "fields":[
                   {
-                    "englishLabel": "Image",
-                    "label": "Bilde",
-                    "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-                    "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+                    "label":"Bilde",
+                    "description":"Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
                   },
                   {
-                    "englishLabel": "Pick a color",
-                    "label": "Velg farge"
+                    "label":"Velg farge",
+                    "spectrum":{
+                      
+                    },
+                    "default":""
                   }
                 ]
               }
             ]
           }
         },
-        {},
         {
-          "englishLabel": "Keyword list",
-          "label": "Nøkkelordsliste"
+          
         },
         {
-          "englishLabel": "Always show",
-          "label": "Vis alltid"
+          "label":"Nøkkelordsliste"
         },
         {
-          "englishLabel": "Auto hide",
-          "label": "Auto skjul"
+          "label":"Vis alltid"
         },
         {
-          "englishLabel": "Opacity",
-          "label": "Opasitet"
+          "label":"Auto skjul"
         },
         {
-          "fields": [
+          "label":"Opasitet"
+        },
+        {
+          "fields":[
             {
-              "englishLabel": "Image",
-              "label": "Bilde",
-              "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-              "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+              "label":"Bilde",
+              "description":"Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
             },
             {
-              "englishLabel": "Pick a color",
-              "label": "Velg farge"
+              "label":"Velg farge",
+              "spectrum":{
+                
+              },
+              "default":""
             }
           ]
         }
       ]
     },
     {
-      "englishLabel": "Localize",
-      "label": "Ledetekster",
-      "fields": [
+      "label":"Lokaliser",
+      "fields":[
         {
-          "englishLabel": "Translation for \"Slide\"",
-          "label": "Oversettelse for \"Slide\"",
-          "englishDefault": "Slide",
-          "default": "Slide"
+          "label":"Oversettelse for \"Slide\"",
+          "default":"Slide"
         },
         {
-          "englishLabel": "Translation for \"Your Score\"",
-          "label": "Oversettelse for \"Din poengsum\"",
-          "englishDefault": "Your Score",
-          "default": "Din poengsum"
+          "label":"Oversettelse for \"Din poengsum\"",
+          "default":"Din poengsum"
         },
         {
-          "englishLabel": "Translation for \"Max Score\"",
-          "label": "Oversettelse for \"Topp poengsum\"",
-          "englishDefault": "Max Score",
-          "default": "Topp poengsum"
+          "label":"Oversettelse for \"Topp poengsum\"",
+          "default":"Topp poengsum"
         },
         {
-          "englishLabel": "Greeting given for GOOD score",
-          "label": "Respons på høy poengsum",
-          "englishDefault": "Congratulations! You got @percent correct!",
-          "default": "Gratulerer! Du fikk @percent rett!",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
+          "label":"Respons på høy poengsum",
+          "default":"Gratulerer! Du fikk @percent rett!",
+          "description":"@percent blir erstattet med brukerens faktiske resultat i prosent"
         },
         {
-          "englishLabel": "Greeting given for OK score",
-          "label": "Respons på ok poengsum",
-          "englishDefault": "Nice effort! You got @percent correct!",
-          "default": " Du fikk @percent rett!",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
+          "label":"Respons på ok poengsum",
+          "default":" Du fikk @percent rett!",
+          "description":"@percent blir erstattet med brukerens faktiske resultat i prosent"
         },
         {
-          "englishLabel": "Greeting given for BAD score",
-          "label": "Respons på lav poengsum",
-          "englishDefault": "You got @percent correct.",
-          "default": "Du fikk @percent rett.",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
+          "label":"Respons på lav poengsum",
+          "default":"Du fikk @percent rett.",
+          "description":"@percent blir erstattet med brukerens faktiske resultat i prosent"
         },
         {
-          "englishLabel": "Translation for \"Total\"",
-          "label": "Oversettelse for \"Total\"",
-          "englishDefault": "Total",
-          "default": "Total"
+          "label":"Oversettelse for \"Total\"",
+          "default":"Total"
         },
         {
-          "englishLabel": "Title for show solutions button",
-          "label": "Tekst på \"Vis fasit\"-knappen",
-          "englishDefault": "Show solutions",
-          "default": "Vis fasit"
+          "label":"\"Vis svar\" knapp",
+          "default":"Vis svar"
         },
         {
-          "englishLabel": "Text for the retry button",
-          "label": "Tekst til \"Prøv igjen\"-knappen",
-          "englishDefault": "Retry",
-          "default": "Prøv igjen"
+          "label":"Tekst til \"Prøv igjen\"-knappen",
+          "default":"Prøv igjen"
         },
         {
-          "englishLabel": "Translation for \"Title\"",
-          "label": "Oversettelse for \"Tittel\"",
-          "englishDefault": "Title",
-          "default": "Tittel"
+          "label":"Oversettelse for \"Tittel\"",
+          "default":"Tittel"
         },
         {
-          "englishLabel": "Translation for \"Author/supplier\"",
-          "label": "Oversettelse for \"Forfatter/leverandør\"",
-          "englishDefault": "Author",
-          "default": "Forfatter/leverandør"
+          "label":"Oversettelse for \"Forfatter/leverandør\"",
+          "default":"Forfatter/leverandør"
         },
         {
-          "englishLabel": "Translation for \"License\"",
-          "label": "Oversettelse for \"Lisens\"",
-          "englishDefault": "License",
-          "default": "Lisens"
+          "label":"Oversettelse for \"Lisens\"",
+          "default":"Lisens"
         },
         {
-          "englishLabel": "Translation for \"License\"",
-          "label": "Oversettelse for \"Lisens\"",
-          "englishDefault": "License",
-          "default": "Lisens"
+          "label":"Oversettelse for \"Lisens\"",
+          "default":"Lisens"
         },
         {
-          "englishLabel": "Text for the export text button",
-          "label": "Oversettelse for \"Eksporter tekst\"",
-          "englishDefault": "Export text",
-          "default": "Eksporter tekst"
+          "label":"Oversettelse for \"Eksporter tekst\" ",
+          "default":"Eksporter tekst"
         },
         {
-          "englishLabel": "Text for the \"Rights of use\" button",
-          "label": "Tekst for bruksrett-knappen",
-          "englishDefault": "Rights of use",
-          "default": "Bruksrett"
+          "label":"Tekst for bruksrett-knappen",
+          "default":"Bruksrett"
         },
         {
-          "englishLabel": "Hide keywords list button title",
-          "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
-          "englishDefault": "Hide keywords list",
-          "default": "Skjul nøkkelordliste"
+          "label":"Tittel for \"Skjul nøkkelordliste\"-knapp",
+          "default":"Skjul nøkkelordliste"
         },
         {
-          "englishLabel": "Show keywords list button title",
-          "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
-          "englishDefault": "Show keywords list",
-          "default": "Vis nøkkelordliste"
+          "label":"Tittel for \"Vis nøkkelordliste\"-knapp",
+          "default":"Vis nøkkelordliste"
         },
         {
-          "englishLabel": "Fullscreen label",
-          "label": "Tittel for \"Full skjerm\"-knapp",
-          "englishDefault": "Fullscreen",
-          "default": "Fullskjerm"
+          "label":"Tittel for \"Full skjerm\"-knapp",
+          "default":"Fullskjerm"
         },
         {
-          "englishLabel": "Exit fullscreen label",
-          "label": "Tittel for \"Avslutt fullskjerm\"-knapp",
-          "englishDefault": "Exit fullscreen",
-          "default": "Avslutt fullskjerm"
+          "label":"Tittel for \"Avslutt fullskjerm\"-knapp",
+          "default":"Avslutt fullskjerm"
         },
         {
-          "englishLabel": "Previous slide label",
-          "label": "Tittel for \"Forrige side\"-knapp",
-          "englishDefault": "Previous slide",
-          "default": "Forrige side"
+          "label":"Tittel for \"Forrige side\"-knapp",
+          "default":"Forrige slide"
         },
         {
-          "englishLabel": "Next slide label",
-          "label": "Tittel for \"Neste side\"-knapp",
-          "englishDefault": "Next slide",
-          "default": "Neste side"
+          "label":"Tittel for \"Neste side\"-knapp",
+          "default":"Neste slide"
         },
         {
-          "englishLabel": "Current slide label",
-          "label": "Tittel for \"Denne side\"-knapp",
-          "englishDefault": "Current slide",
-          "default": "Denne side"
+          "label":"Tittel for \"Denne side\"-knapp",
+          "default":"Denne side"
         },
         {
-          "englishLabel": "Last slide label",
-          "label": "Tittel for \"Siste side\"-knapp",
-          "englishDefault": "Last slide",
-          "default": "Siste side"
+          "label":"Tittel for \"Siste side\"-knapp",
+          "default":"Siste side"
         },
         {
-          "englishLabel": "Exit solution mode text",
-          "label": "Tittel for \"Avslutt fasitmodus\"-knapp",
-          "englishDefault": "Exit solution mode",
-          "default": "Avslutt fasitmodus"
+          "label":"Tittel for \"Avslutt fasitmodus\"-knapp",
+          "default":"Avslutt fasitmodus"
         },
         {
-          "englishLabel": "Solution mode text",
-          "label": "Avslutt fasitmodus tekst",
-          "englishDefault": "Solution Mode",
-          "default": "Fasitmodus"
+          "label":"Avslutt fasitmodus tekst",
+          "default":"Fasitmodus"
         },
         {
-          "englishLabel": "Text when multiple tasks on a page",
-          "label": "Tekst ved flere oppgaver på en side",
-          "englishDefault": "Multiple tasks",
-          "default": "Flere oppgaver"
+          "label":"Tekst ved flere oppgaver på en side",
+          "default":"Flere oppgaver"
         },
         {
-          "englishLabel": "Score message text",
-          "label": "poengTekst",
-          "englishDefault": "You achieved:",
-          "default": "Du klarte:"
+          "label":"Poeng tekst",
+          "default":"Du klarte:"
         },
         {
-          "englishLabel": "Share to Facebook text",
-          "label": "Del på Facebook tekst",
-          "englishDefault": "Share on Facebook",
-          "default": "Del på Facebook"
+          "label":"Del på Facebook tekst",
+          "default":"Del på Facebook"
         },
         {
-          "englishLabel": "Share to Twitter text",
-          "label": "Del på Twitter tekst",
-          "englishDefault": "Share on Twitter",
-          "default": "Del på Twitter"
+          "label":"Del på Twitter tekst",
+          "default":"Del på Twitter"
         },
         {
-          "englishLabel": "Title for summary slide",
-          "label": "Tittel for \"Oppsummering\" siden",
-          "englishDefault": "Summary",
-          "default": "Oppsummering"
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
-          "englishLabel": "Title for the comments icon",
-          "label": "Tittel for kommentarikonet",
-          "englishDefault": "Show comments",
-          "default": "Vis kommentarer"
+          "label":"Tittel for \"Oppsummering\" siden",
+          "default":"Oppsummering"
         },
         {
-          "englishLabel": "Title for print button",
-          "label": "Tittel for \"Skriv ut\"-knapp",
-          "englishDefault": "Print",
-          "default": "Skriv ut"
+          "label":"Tittel for kommentarikonet",
+          "default":"Vis kommentarer"
         },
         {
-          "englishLabel": "Print dialog ingress",
-          "label": "Skriv ut dialog ingress",
-          "englishDefault": "How would you like to print this presentation?",
-          "default": "Hvordan vil du skrive ut denne presentasjonen?"
+          "label":"Tittel for \"Skriv ut\"-knapp",
+          "default":"Skriv ut"
         },
         {
-          "englishLabel": "Label for \"Print all slides\" button",
-          "label": "Tittel for \"Skriv ut alle sider\"-knapp",
-          "englishDefault": "Print all slides",
-          "default": "Skriv ut alle sider"
+          "label":"Skriv ut dialog ingress",
+          "default":"Hvordan vil du skrive ut denne presentasjonen?"
         },
         {
-          "englishLabel": "Label for \"Print current slide\" button",
-          "label": "Tittel for \"Skriv ut nåværende side\"-knapp",
-          "englishDefault": "Print current slide",
-          "default": "Skriv ut nåværende side"
+          "label":"Tittel for \"Skriv ut alle sider\"-knapp",
+          "default":"Skriv ut alle sider"
+        },
+        {
+          "label":"Tittel for \"Skriv ut nåværende side\"-knapp",
+          "default":"Skriv ut nåværende side"
         }
       ]
     },
     {
-      "englishLabel": "Behaviour settings.",
-      "label": "Innstillinger for oppførsel.",
-      "englishDescription": "These options will let you override behaviour settings.",
-      "description": "Disse alternativene vil la deg overstyre innstillinger.",
-      "fields": [
+      "label":"Innstillinger for oppførsel.",
+      "description":"Disse alternativene vil la deg overstyre innstillinger.",
+      "fields":[
         {
-          "englishLabel": "Activate Active Surface Mode",
-          "label": "Slå på aktiv flate",
-          "englishDescription": "Removes navigation controls for the end user. Use Go To Slide to navigate.",
-          "description": "Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
+          "label":"Slå på aktiv flate",
+          "description":"Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
         },
         {
-          "englishLabel": "Hide Summary Slide",
-          "label": "Skjul sammendrag.",
-          "englishDescription": "Hides the summary slide.",
-          "description": "Aktivering vil føre til at sammendrag siden ikke vises."
+          "label":"Skjul sammendrag.",
+          "description":"Aktivering vil føre til at sammendrag siden ikke vises."
         },
         {
-          "label": "Overstyr «Vis svar»-knapp",
-          "description": "Dette valget avgjør om «Vis svar»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
-          "options": [
+          "label":"Overstyr «Vis svar»-knapp",
+          "description":"Dette valget avgjør om «Vis svar»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "options":[
             {
-              "label": "Aktivert"
+              "label":"Aktivert"
             },
             {
-              "label": "Deaktivert"
+              "label":"Deaktivert"
             }
           ]
         },
         {
-          "label": "Overstyr «Prøv igjen»-knapp",
-          "description": "Dette valget avgjør om «Prøv igjen»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
-          "options": [
+          "label":"Overstyr «Prøv igjen»-knapp",
+          "description":"Dette valget avgjør om «Prøv igjen»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "options":[
             {
-              "label": "Aktivert"
+              "label":"Aktivert"
             },
             {
-              "label": "Deaktivert"
+              "label":"Deaktivert"
             }
           ]
         },
         {
-          "englishLabel": "Enable print button",
-          "label": "Aktiver print-knapp",
-          "englishDescription": "Enables the print button.",
-          "description": "Aktiverer print-knappen."
+          "label":"Aktiver print-knapp",
+          "description":"Aktiverer print-knappen."
+        },
+        {
+          "label":"Social Settings",
+          "showWhen":{
+            "rules":[
+              {
+                
+              }
+            ]
+          },
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Share to Google link",
+              "default":"@currentpageurl",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

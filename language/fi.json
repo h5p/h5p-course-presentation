@@ -1,395 +1,429 @@
 {
-  "semantics": [
+  "semantics":[
     {
-      "fields": [
+      "fields":[
         {
-          "field": {
-            "fields": [
+          "field":{
+            "fields":[
               {
-                "field": {
-                  "fields": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
+                "field":{
+                  "fields":[
                     {
-                      "englishLabel": "Comments",
-                      "label": "Kommentit",
-                      "englishDescription": "The comments are shown when the user displays the suggested answers for all slides.",
-                      "description": "Kommentit tulevat näkyviin, kun käyttäjälle näytetään lopussa oikeat vastaukset."
+                      
                     },
                     {
-                      "englishLabel": "Always display comments",
-                      "label": "Pidä kommentit koko ajan näkyvissä"
+                      
                     },
                     {
-                      "englishLabel": "backgroundOpacity",
-                      "label": "Taustan läpinäkyvyys 0-100 (0 = läpinäkyvä, 100 = valkoinen)"
+                      
                     },
                     {
-                      "englishLabel": "DisplayAsButton",
-                      "label": "Näytä painikkeena"
+                      
                     },
                     {
-                      "englishLabel": "title",
-                      "label": "Otsikko"
+                      
                     },
                     {
-                      "englishLabel": "Go To Slide",
-                      "label": "Siirry sivulle"
+                      "label":"Kommentit",
+                      "description":"Kommentit tulevat näkyviin, kun käyttäjälle näytetään lopussa oikeat vastaukset."
                     },
                     {
-                      "englishLabel": "Invisible",
-                      "label": "Näkymätön",
-                      "englishDescription": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label":"Pidä kommentit koko ajan näkyvissä"
                     },
                     {
-                      "englishLabel": "Metadata",
-                      "label": "Metadata",
-                      "fields": [
+                      "label":"Taustan läpinäkyvyys 0-100 (0 = läpinäkyvä, 100 = valkoinen)"
+                    },
+                    {
+                      "label":"Näytä painikkeena"
+                    },
+                    {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
                         {
-                          "englishLabel": "Title",
-                          "label": "Otsikko"
+                          "label":"Small"
                         },
                         {
-                          "englishLabel": "Author",
-                          "label": "Tekijä"
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
+                      "label":"Otsikko"
+                    },
+                    {
+                      "label":"The slide we'll go to",
+                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "options":[
+                        {
+                          "label":"Specified slide"
                         },
                         {
-                          "englishLabel": "Lisence",
-                          "label": "Lisenssi"
+                          "label":"Seuraava sivu"
+                        },
+                        {
+                          "label":"Edellinen sivu"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Siirry sivulle",
+                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                    },
+                    {
+                      "label":"Näkymätön",
+                      "description":"Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                    },
+                    {
+                      "label":"Metadata",
+                      "fields":[
+                        {
+                          "label":"Otsikko"
+                        },
+                        {
+                          "label":"Luoja/Toimittaja"
+                        },
+                        {
+                          "label":"Lisenssi"
                         }
                       ]
                     }
                   ]
                 }
               },
-              {},
               {
-                "fields": [
+                "field":{
+                  "fields":[
+                    {
+                      
+                    },
+                    {
+                      "field":{
+                        
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "fields":[
                   {
-                    "englishLabel": "Image",
-                    "label": "Kuva",
-                    "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-                    "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
+                    "label":"Kuva",
+                    "description":"Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
                   },
                   {
-                    "englishLabel": "Pick a color",
-                    "label": "Valitse väri"
+                    "label":"Valitse väri",
+                    "spectrum":{
+                      
+                    },
+                    "default":""
                   }
                 ]
               }
             ]
           }
         },
-        {},
         {
-          "englishLabel": "Keyword list",
-          "label": "Avainsanalista"
+          
         },
         {
-          "englishLabel": "Always show",
-          "label": "Näytä aina"
+          "label":"Avainsanalista"
         },
         {
-          "englishLabel": "Auto hide",
-          "label": "Automaattinen piilotus"
+          "label":"Näytä aina"
         },
         {
-          "englishLabel": "Opacity",
-          "label": "Taustan läpinäkyvyys 0-100 (0 = läpinäkyvä, 100 = valkoinen)"
+          "label":"Automaattinen piilotus"
         },
         {
-          "fields": [
+          "label":"Taustan läpinäkyvyys 0-100 (0 = läpinäkyvä, 100 = valkoinen)"
+        },
+        {
+          "fields":[
             {
-              "englishLabel": "Image",
-              "label": "Kuva",
-              "englishDescription": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.",
-              "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
+              "label":"Kuva",
+              "description":"Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
             },
             {
-              "englishLabel": "Pick a color",
-              "label": "Valitse väri"
+              "label":"Valitse väri",
+              "spectrum":{
+                
+              },
+              "default":""
             }
           ]
         }
       ]
     },
     {
-      "englishLabel": "Localize",
-      "label": "Muokkaa",
-      "fields": [
+      "label":"Muokkaa",
+      "fields":[
         {
-          "englishLabel": "Translation for \"Slide\"",
-          "label": "Käännös tekstille \"Sivu\"",
-          "englishDefault": "Slide",
-          "default": "Sivu"
+          "label":"Käännös tekstille \"Sivu\"",
+          "default":"Sivu"
         },
         {
-          "englishLabel": "Translation for \"Your Score\"",
-          "label": "Käännös tekstille \"Pisteesi\"",
-          "englishDefault": "Your Score",
-          "default": "Pisteesi"
+          "label":"Käännös tekstille \"Pisteesi\"",
+          "default":"Pisteesi"
         },
         {
-          "englishLabel": "Translation for \"Max Score\"",
-          "label": "Käännös tekstille \"Maksimipisteet\"",
-          "englishDefault": "Max Score",
-          "default": "Maksimipisteet"
+          "label":"Käännös tekstille \"Maksimipisteet\"",
+          "default":"Maksimipisteet"
         },
         {
-          "englishLabel": "Greeting given for GOOD score",
-          "label": "Viesti erinomaisille pisteille",
-          "englishDefault": "Congratulations! You got @percent correct!",
-          "default": "Onneksi olkoon! Sait @percent oikein!",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
+          "label":"Viesti erinomaisille pisteille",
+          "default":"Onneksi olkoon! Sait @percent oikein!",
+          "description":"Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
         },
         {
-          "englishLabel": "Greeting given for OK score",
-          "label": "Viesti hyville pisteille",
-          "englishDefault": "Nice effort! You got @percent correct!",
-          "default": " Sait @percent oikein!",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
+          "label":"Viesti hyville pisteille",
+          "default":" Sait @percent oikein!",
+          "description":"Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
         },
         {
-          "englishLabel": "Greeting given for BAD score",
-          "label": "Viesti kohtalaisille pisteille",
-          "englishDefault": "You got @percent correct.",
-          "default": "Sait @percent oikein.",
-          "englishDescription": "@percent is replaced by the real user score in percent",
-          "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
+          "label":"Viesti kohtalaisille pisteille",
+          "default":"Sait @percent oikein.",
+          "description":"Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
         },
         {
-          "englishLabel": "Translation for \"Total\"",
-          "label": "Käännös tekstille \"Yhteensä\"",
-          "englishDefault": "Total",
-          "default": "Yhteensä"
+          "label":"Käännös tekstille \"Yhteensä\"",
+          "default":"Yhteensä"
         },
         {
-          "englishLabel": "Title for show solutions button",
-          "label": "\"Näytä oikeat vastaukset\"-painikkeen teksti",
-          "englishDefault": "Show solutions",
-          "default": "Näytä oikeat vastaukset"
+          "label":"\"Näytä oikeat vastaukset\"-painikkeen teksti",
+          "default":"Näytä oikeat vastaukset"
         },
         {
-          "englishLabel": "Text for the retry button",
-          "label": "Teksti \"Yritä uudelleen\"-painikkeelle",
-          "englishDefault": "Retry",
-          "default": "Yritä uudelleen"
+          "label":"Teksti \"Yritä uudelleen\"-painikkeelle",
+          "default":"Yritä uudelleen"
         },
         {
-          "englishLabel": "Translation for \"Title\"",
-          "label": "Käännös tekstille \"Otsikko\"",
-          "englishDefault": "Title",
-          "default": "Otsikko"
+          "label":"Käännös tekstille \"Otsikko\"",
+          "default":"Otsikko"
         },
         {
-          "englishLabel": "Translation for \"Author/supplier\"",
-          "label": "Käännös tekstille \"Tekijä\"",
-          "englishDefault": "Author",
-          "default": "Luoja/Toimittaja"
+          "label":"Käännös tekstille \"Tekijä\"",
+          "default":"Tekijä"
         },
         {
-          "englishLabel": "Translation for \"License\"",
-          "label": "Käännös tekstille \"Lisenssi\"",
-          "englishDefault": "License",
-          "default": "Lisenssi"
+          "label":"Käännös tekstille \"Lisenssi\"",
+          "default":"Lisenssi"
         },
         {
-          "englishLabel": "Translation for \"License\"",
-          "label": "Käännös tekstille \"Lisenssi\"",
-          "englishDefault": "License",
-          "default": "Lisenssi"
+          "label":"Käännös tekstille \"Lisenssi\"",
+          "default":"Lisenssi"
         },
         {
-          "englishLabel": "Text for the export text button",
-          "label": "\"Vie tekstiä\"-painikkeessa näytettävä teksti",
-          "englishDefault": "Export text",
-          "default": "Vie tekstiä"
+          "label":"\"Vie tekstiä\"-painikkeessa näytettävä teksti",
+          "default":"Vie tekstiä"
         },
         {
-          "englishLabel": "Text for the \"Rights of use\" button",
-          "label": "Teksti Käyttöehdot-painikkeelle",
-          "englishDefault": "Rights of use",
-          "default": "Käyttöehdot"
+          "label":"Teksti Käyttöehdot-painikkeelle",
+          "default":"Käyttöehdot"
         },
         {
-          "englishLabel": "Hide keywords list button title",
-          "label": "\"Piilota Avainsanalista\"-painikkeen teksti",
-          "englishDefault": "Hide keywords list",
-          "default": "Piilota avainsanalista"
+          "label":"\"Piilota Avainsanalista\"-painikkeen teksti",
+          "default":"Piilota avainsanalista"
         },
         {
-          "englishLabel": "Show keywords list button title",
-          "label": "\"Näytä avainsanalista\"painikkeen teksti",
-          "englishDefault": "Show keywords list",
-          "default": "Näytä avainsanalista"
+          "label":"\"Näytä avainsanalista\"painikkeen teksti",
+          "default":"Näytä avainsanalista"
         },
         {
-          "englishLabel": "Fullscreen label",
-          "label": "\"Koko ruutu\"-painikkeen teksti",
-          "englishDefault": "Fullscreen",
-          "default": "Koko ruutu"
+          "label":"\"Koko ruutu\"-painikkeen teksti",
+          "default":"Koko ruutu"
         },
         {
-          "englishLabel": "Exit fullscreen label",
-          "label": "\"Poistu koko ruudun tilasta\"-painikkeen teksti",
-          "englishDefault": "Exit fullscreen",
-          "default": "Poistu kokoruudun tilasta"
+          "label":"\"Poistu koko ruudun tilasta\"-painikkeen teksti",
+          "default":"Poistu kokoruudun tilasta"
         },
         {
-          "englishLabel": "Previous slide label",
-          "label": "\"Edellinen sivu\"-painikkeen teksti",
-          "englishDefault": "Previous slide",
-          "default": "Edellinen sivu"
+          "label":"\"Edellinen sivu\"-painikkeen teksti",
+          "default":"Edellinen sivu"
         },
         {
-          "englishLabel": "Next slide label",
-          "label": "\"Seuraava sivu\"-painikkeen teksti",
-          "englishDefault": "Next slide",
-          "default": "Seuraava sivu"
+          "label":"\"Seuraava sivu\"-painikkeen teksti",
+          "default":"Seuraava sivu"
         },
         {
-          "englishLabel": "Current slide label",
-          "label": "\"Nykyinen sivu\"-painikkeen teksti",
-          "englishDefault": "Current slide",
-          "default": "Nykyinen sivu"
+          "label":"\"Nykyinen sivu\"-painikkeen teksti",
+          "default":"Nykyinen sivu"
         },
         {
-          "englishLabel": "Last slide label",
-          "label": "\"Viimeinen sivu\"-painikkeen teksti",
-          "englishDefault": "Last slide",
-          "default": "Viimeinen sivu"
+          "label":"\"Viimeinen sivu\"-painikkeen teksti",
+          "default":"Viimeinen sivu"
         },
         {
-          "englishLabel": "Exit solution mode text",
-          "label": "\"Palaa yhteenvetosivulle\"-painikkeen teksti",
-          "englishDefault": "Exit solution mode",
-          "default": "Palaa yhteenvetosivulle"
+          "label":"\"Palaa yhteenvetosivulle\"-painikkeen teksti",
+          "default":"Palaa yhteenvetosivulle"
         },
         {
-          "englishLabel": "Solution mode text",
-          "label": "\"Palaa yhteenvetosivulle\" teksti",
-          "englishDefault": "Solution Mode",
-          "default": "Palaa yhteenvetosivulle"
+          "label":"\"Palaa yhteenvetosivulle\" teksti",
+          "default":"Palaa yhteenvetosivulle"
         },
         {
-          "englishLabel": "Text when multiple tasks on a page",
-          "label": "Teksti, jos sivulla on useita tehtäviä",
-          "englishDefault": "Multiple tasks",
-          "default": "Useita tehtäviä"
+          "label":"Teksti, jos sivulla on useita tehtäviä",
+          "default":"Useita tehtäviä"
         },
         {
-          "englishLabel": "Score message text",
-          "label": "Pistemäärän yhteydessä näytettävä teksti",
-          "englishDefault": "You achieved:",
-          "default": "Tulos:"
+          "label":"Pistemäärän yhteydessä näytettävä teksti",
+          "default":"Tulos:"
         },
         {
-          "englishLabel": "Share to Facebook text",
-          "label": "\"Jaa Facebookissa\"-teksti",
-          "englishDefault": "Share on Facebook",
-          "default": "Jaa Facebookissa"
+          "label":"\"Jaa Facebookissa\"-teksti",
+          "default":"Jaa Facebookissa"
         },
         {
-          "englishLabel": "Share to Twitter text",
-          "label": "\"Jaa Twitterissä\"-teksti",
-          "englishDefault": "Share on Twitter",
-          "default": "Jaa Twitterissä"
+          "label":"\"Jaa Twitterissä\"-teksti",
+          "default":"Jaa Twitterissä"
         },
         {
-          "englishLabel": "Title for summary slide",
-          "label": "\"Yhteenveto\"-sivun otsikko",
-          "englishDefault": "Summary",
-          "default": "Yhteenveto"
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
-          "englishLabel": "Title for the comments icon",
-          "label": "Kommentti-ikonin teksti",
-          "englishDefault": "Show comments",
-          "default": "Näytä kommentit"
+          "label":"\"Yhteenveto\"-sivun otsikko",
+          "default":"Yhteenveto"
         },
         {
-          "englishLabel": "Title for print button",
-          "label": "Tulostuspainikkeen teksti",
-          "englishDefault": "Print",
-          "default": "Tulosta"
+          "label":"Kommentti-ikonin teksti",
+          "default":"Näytä kommentit"
         },
         {
-          "englishLabel": "Print dialog ingress",
-          "label": "Tulosikkunan johdantoteksti",
-          "englishDefault": "How would you like to print this presentation?",
-          "default": "Miten haluat tulostaa tämän esityksen?"
+          "label":"Tulostuspainikkeen teksti",
+          "default":"Tulosta"
         },
         {
-          "englishLabel": "Label for \"Print all slides\" button",
-          "label": "\"Tulosta kaikki sivut\"-painikkeen teksti",
-          "englishDefault": "Print all slides",
-          "default": "Tulosta kaikki sivut"
+          "label":"Tulosikkunan johdantoteksti",
+          "default":"Miten haluat tulostaa tämän esityksen?"
         },
         {
-          "englishLabel": "Label for \"Print current slide\" button",
-          "label": "\"Tulosta nykyinen sivu\"-painikkeen teksti",
-          "englishDefault": "Print current slide",
-          "default": "Tulosta nykyinen sivu"
+          "label":"\"Tulosta kaikki sivut\"-painikkeen teksti",
+          "default":"Tulosta kaikki sivut"
+        },
+        {
+          "label":"\"Tulosta nykyinen sivu\"-painikkeen teksti",
+          "default":"Tulosta nykyinen sivu"
         }
       ]
     },
     {
-      "englishLabel": "Behaviour settings.",
-      "label": "Asetukset",
-      "englishDescription": "These options will let you override behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
-      "fields": [
+      "label":"Asetukset",
+      "description":"These options will let you override behaviour settings.",
+      "fields":[
         {
-          "englishLabel": "Activate Active Surface Mode",
-          "label": "Ota käyttöön Active Surface -tila",
-          "englishDescription": "Removes navigation controls for the end user. Use Go To Slide to navigate.",
-          "description": "Piilottaa navigointipalkin loppukäyttäjältä. Jos tämä on valittuna, navigointi täytyy rakentaa \"Siirry sivulle\"-työkalulla. HUOM: tätä asetusta ei ole mahdollista perua jälkikäteen!"
+          "label":"Ota käyttöön Active Surface -tila",
+          "description":"Piilottaa navigointipalkin loppukäyttäjältä. Jos tämä on valittuna, navigointi täytyy rakentaa \"Siirry sivulle\"-työkalulla. HUOM: tätä asetusta ei ole mahdollista perua jälkikäteen!"
         },
         {
-          "englishLabel": "Hide Summary Slide",
-          "label": "Piilota yhteenvetosivu",
-          "englishDescription": "Hides the summary slide.",
-          "description": "Valitse tämä, jos et halua esityksen viimeisen sivun olevan yhteenveto tehtävien pistemääristä."
+          "label":"Piilota yhteenvetosivu",
+          "description":"Valitse tämä, jos et halua esityksen viimeisen sivun olevan yhteenveto tehtävien pistemääristä."
         },
         {
-          "englishLabel": "Override \"Show Solution\" button",
-          "label": "\"Näytä vastaus\"-painike",
-          "englishDescription": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
-          "description": "Ota käyttöön kaikissa kysymyksissä, ei yhdessäkään, tai jätä tyhjäksi käyttääksesi tehtäväkohtaisia asetuksia",
-          "options": [
+          "label":"\"Näytä vastaus\"-painike",
+          "description":"Ota käyttöön kaikissa kysymyksissä, ei yhdessäkään, tai jätä tyhjäksi käyttääksesi tehtäväkohtaisia asetuksia",
+          "options":[
             {
-              "label": "Käytössä kaikissa"
+              "label":"Käytössä kaikissa"
             },
             {
-              "label": "Pois käytöstä"
+              "label":"Pois käytöstä"
             }
           ]
         },
         {
-          "englishLabel": "Override \"Retry\" button",
-          "label": "\"Yritä uudelleen\"-painike",
-          "englishDescription": "",
-          "description": "Ota käyttöön kaikissa kysymyksissä, ei yhdessäkään, tai jätä tyhjäksi käyttääksesi tehtäväkohtaisia asetuksia.",
-          "options": [
+          "label":"\"Yritä uudelleen\"-painike",
+          "description":"Ota käyttöön kaikissa kysymyksissä, ei yhdessäkään, tai jätä tyhjäksi käyttääksesi tehtäväkohtaisia asetuksia.",
+          "options":[
             {
-              "label": "Käytössä kaikissa"
+              "label":"Käytössä kaikissa"
             },
             {
-              "label": "Pois käytöstä"
+              "label":"Pois käytöstä"
             }
           ]
         },
         {
-          "englishLabel": "Enable print button",
-          "label": "Näytä tulostuspainike",
-          "englishDescription": "Enables the print button.",
-          "description": "Näytä tulostuspainike esityksen alakulmassa."
+          "label":"Näytä tulostuspainike",
+          "description":"Näytä tulostuspainike esityksen alakulmassa."
+        },
+        {
+          "label":"Social Settings",
+          "showWhen":{
+            "rules":[
+              {
+                
+              }
+            ]
+          },
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Share to Google link",
+              "default":"@currentpageurl",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

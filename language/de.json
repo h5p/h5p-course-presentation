@@ -1,290 +1,429 @@
 {
-  "semantics": [
+  "semantics":[
     {
-      "fields": [
+      "fields":[
         {
-          "field": {
-            "fields": [
+          "field":{
+            "fields":[
               {
-                "field": {
-                  "fields": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
+                "field":{
+                  "fields":[
                     {
-                      "label": "Kommentare",
-                      "description": "Die Kommentare werden angezeigt, wenn der Nutzer die vorgeschlagenen Antworten für alle Schaubilder anzeigt."
+                      
                     },
                     {
-                      "label": "Kommentare immer anzeigen"
+                      
                     },
                     {
-                      "label": "Undurchlässigkeit des Hintergrunds"
+                      
                     },
                     {
-                      "label": "Als Button anzeigen"
+                      
                     },
                     {
-                      "label": "Titel"
+                      
                     },
                     {
-                      "label": "Gehe zu Schaubild"
+                      "label":"Kommentare",
+                      "description":"Die Kommentare werden angezeigt, wenn der Nutzer die vorgeschlagenen Antworten für alle Schaubilder anzeigt."
                     },
                     {
-                      "label": "Unsichtbar",
-                      "description": "Vorgabe-Cursor, kein Titel und kein Tab-Index. Warnung: Nutzer, die beeinträchtigt sind oder nur über eine Tastatur verfügen, werden Probleme mit der Bedienung haben."
+                      "label":"Kommentare immer anzeigen"
                     },
                     {
-                      "label": "Metadaten",
-                      "fields": [
+                      "label":"Hintergrunddeckkraft"
+                    },
+                    {
+                      "label":"Als Button anzeigen"
+                    },
+                    {
+                      "label":"Button size",
+                      "default":"big",
+                      "options":[
                         {
-                          "label": "Titel"
+                          "label":"Small"
                         },
                         {
-                          "label": "Autor"
+                          "label":"Big"
+                        }
+                      ]
+                    },
+                    {
+                      "label":"Titel"
+                    },
+                    {
+                      "label":"Das Schaubild, zu dem wir springen",
+                      "description":"'Festgelegtes Schaubild' wird die 'Festgelegte Schaubildnummer' benutzen.",
+                      "options":[
+                        {
+                          "label":"Festgelegtes Schaubild"
                         },
                         {
-                          "label": "Lizenz"
+                          "label":"Nächstes Schaubild"
+                        },
+                        {
+                          "label":"Vorheriges Schaubild"
+                        }
+                      ],
+                      "default":"specified"
+                    },
+                    {
+                      "label":"Festgelegte Schaubildnummer",
+                      "description":"Wird nur genutzt, wenn 'Festgelegtes Schaubild' für 'Das Schaubild, zu dem wir springen' ausgewählt ist."
+                    },
+                    {
+                      "label":"Unsichtbar",
+                      "description":"Vorgabe-Cursor, kein Titel und kein Tab-Index. Warnung: Nutzer, die beeinträchtigt sind oder nur über eine Tastatur verfügen, werden Probleme mit der Bedienung haben."
+                    },
+                    {
+                      "label":"Metadaten",
+                      "fields":[
+                        {
+                          "label":"Titel"
+                        },
+                        {
+                          "label":"Autor"
+                        },
+                        {
+                          "label":"Lizenz"
                         }
                       ]
                     }
                   ]
                 }
               },
-              {},
               {
-                "fields": [
+                "field":{
+                  "fields":[
+                    {
+                      
+                    },
+                    {
+                      "field":{
+                        
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "fields":[
                   {
-                    "label": "Bild",
-                    "description": "Das Hintergrundbild sollte für Breite zu Höhe ein Format von 2:1 haben, um Verzerrungen zu vermeiden. Hochaufgelöste Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
+                    "label":"Bild",
+                    "description":"Das Hintergrundbild sollte für Breite zu Höhe ein Format von 2:1 haben, um Verzerrungen zu vermeiden. Hochaufgelöste Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
                   },
                   {
-                    "label": "Wähle eine Farbe",
-                    "spectrum": {},
-                    "default": null
+                    "label":"Wähle eine Farbe",
+                    "spectrum":{
+                      
+                    },
+                    "default":""
                   }
                 ]
               }
             ]
           }
         },
-        {},
         {
-          "label": "Schlagwortliste"
+          
         },
         {
-          "label": "Immer anzeigen"
+          "label":"Schlagwortliste"
         },
         {
-          "label": "Automatisch verbergen"
+          "label":"Immer anzeigen"
         },
         {
-          "label": "Undurchlässigkeit"
+          "label":"Automatisch verbergen"
         },
         {
-          "fields": [
+          "label":"Undurchlässigkeit"
+        },
+        {
+          "fields":[
             {
-              "label": "Bild",
-              "description": "Das Hintergrundbild sollte für Breite zu Höhe ein Format von 2:1 haben, um Verzerrungen zu vermeiden. Hochaufgelöste Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
+              "label":"Bild",
+              "description":"Das Hintergrundbild sollte für Breite zu Höhe ein Format von 2:1 haben, um Verzerrungen zu vermeiden. Hochaufgelöste Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
             },
             {
-              "label": "Wähle eine Farbe",
-              "spectrum": {},
-              "default": null
+              "label":"Wähle eine Farbe",
+              "spectrum":{
+                
+              },
+              "default":""
             }
           ]
         }
       ]
     },
     {
-      "label": "Sprache anpassen",
-      "fields": [
+      "label":"Verhaltenseinstellungen.",
+      "fields":[
         {
-          "label": "Übersetzung für \"Slide\"",
-          "default": "Schaubild"
+          "label":"Übersetzung für \"Slide\"",
+          "default":"Schaubild"
         },
         {
-          "label": "Übersetzung für \"Your Score\"",
-          "default": "Deine Punktzahl"
+          "label":"Übersetzung für \"Your Score\"",
+          "default":"Deine Punktzahl"
         },
         {
-          "label": "Übersetzung für \"Max Score\"",
-          "default": "Maximale Punktzahl"
+          "label":"Übersetzung für \"Max Score\"",
+          "default":"Maximale Punktzahl"
         },
         {
-          "label": "Nachricht bei GUTER Punktzahl",
-          "default": "Glückwunsch! Du hast @percent richtig!",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
+          "label":"Nachricht bei GUTER Punktzahl",
+          "default":"Glückwunsch! Du hast @percent richtig!",
+          "description":"@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
         },
         {
-          "label": "Nachricht bei OK Punktzahl",
-          "default": "Nette Leistung! Du hast @percent richtig!",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
+          "label":"Nachricht bei OK Punktzahl",
+          "default":"Nette Leistung! Du hast @percent richtig!",
+          "description":"@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
         },
         {
-          "label": "Nachricht bei SCHLECHTER Punktzahl",
-          "default": "Du hast @percent korrekt.",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
+          "label":"Nachricht bei SCHLECHTER Punktzahl",
+          "default":"Du hast @percent korrekt.",
+          "description":"@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
         },
         {
-          "label": "Übersetzung für \"Total\"",
-          "default": "Insgesamt"
+          "label":"Übersetzung für \"Total\"",
+          "default":"Insgesamt"
         },
         {
-          "label": "Beschriftung für den \"Lösungen zeigen\"-Button",
-          "default": "Lösungen"
+          "label":"Beschriftung für den \"Lösungen zeigen\"-Button",
+          "default":"Lösungen"
         },
         {
-          "label": "Beschriftung für den \"Wiederholen\"-Button",
-          "default": "Wiederholen"
+          "label":"Text für den \"Wiederholen\"-Button",
+          "default":"Wiederholen"
         },
         {
-          "label": "Übersetzung für \"Title\"",
-          "default": "Titel"
+          "label":"Übersetzung für \"Title\"",
+          "default":"Titel"
         },
         {
-          "label": "Übersetzung für \"Author/supplier\"",
-          "default": "Autor/Unterstützer"
+          "label":"Übersetzung für \"Author/supplier\"",
+          "default":"Autor"
         },
         {
-          "label": "Übersetzung für \"License\"",
-          "default": "Lizenz"
+          "label":"Übersetzung für \"License\"",
+          "default":"Lizenz"
         },
         {
-          "label": "Übersetzung für \"License\"",
-          "default": "Lizenz"
+          "label":"Übersetzung für \"License\"",
+          "default":"Lizenz"
         },
         {
-          "label": "Beschriftung für den \"Text exportieren\"-Button",
-          "default": "Text exportieren"
+          "label":"Beschriftung für den \"Text exportieren\"-Button",
+          "default":"Text exportieren"
         },
         {
-          "label": "Beschriftung für den \"Urheberrecht\"-Button",
-          "default": "Urheberrecht"
+          "label":"Beschriftung für den \"Urheberrecht\"-Button",
+          "default":"Urheberrecht"
         },
         {
-          "label": "Beschriftung für den \"Schlagwortliste verbergen\"-Button",
-          "default": "Schlagwortliste verbergen"
+          "label":"Beschriftung für den \"Schlagwortliste verbergen\"-Button",
+          "default":"Schlagwortliste verbergen"
         },
         {
-          "label": "Beschriftung für den \"Schlagwortliste anzeigen\"-Button",
-          "default": "Schlagwortliste anzeigen"
+          "label":"Beschriftung für den \"Schlagwortliste anzeigen\"-Button",
+          "default":"Schlagwortliste anzeigen"
         },
         {
-          "label": "Beschriftung für \"Vollbild\"",
-          "default": "Vollbild"
+          "label":"Aktivieren des \"Wiederholen\"-Buttons",
+          "default":"Vollbildmodus"
         },
         {
-          "label": "Beschriftung für \"Vollbild beenden\"",
-          "default": "Vollbild beenden"
+          "label":"Benutzereingabe erforderlich machen, bevor die Antwort angesehen werden kann",
+          "default":"Vollbild beenden"
         },
         {
-          "label": "Beschriftung für \"Vorheriges Schaubild\"",
-          "default": "Vorheriges Schaubild"
+          "label":"Beschriftung für \"Vorheriges Schaubild\"",
+          "default":"Vorheriges Schaubild"
         },
         {
-          "label": "Beschriftung für \"Nächstes Schaubild\"",
-          "default": "Nächstes Schaubild"
+          "label":"Beschriftung für \"Nächstes Schaubild\"",
+          "default":"Nächstes Schaubild"
         },
         {
-          "label": "Beschriftung für \"Aktuelles Schaubild\"",
-          "default": "Aktuelles Schaubild"
+          "label":"Beschriftung für \"Aktuelles Schaubild\"",
+          "default":"Aktuelles Schaubild"
         },
         {
-          "label": "Beschriftung für \"Letztes Schaubild\"",
-          "default": "Letztes Schaubild"
+          "label":"Beschriftung für \"Letztes Schaubild\"",
+          "default":"Letztes Schaubild"
         },
         {
-          "label": "Beschriftung für \"Lösungsmodus beenden\"",
-          "default": "Lösungsmodus beenden"
+          "label":"Beschriftung für \"Lösungsmodus beenden\"",
+          "default":"Lösungsmodus beenden"
         },
         {
-          "label": "Beschriftung für \"Lösungsmodus\"",
-          "default": "Lösungsmodus"
+          "label":"Beschriftung für \"Lösungsmodus\"",
+          "default":"Lösungsmodus"
         },
         {
-          "label": "Texthinweis bei mehreren Aufgaben auf einer Seite",
-          "default": "Mehrere Aufgaben"
+          "label":"Texthinweis bei mehreren Aufgaben auf einer Seite",
+          "default":"Mehrere Aufgaben"
         },
         {
-          "label": "Texthinweis für die Punktzahl",
-          "default": "Du hast erreicht:"
+          "label":"Texthinweis für die Punktzahl",
+          "default":"Du hast erreicht:"
         },
         {
-          "label": "Texthinweis für \"Auf Facebook teilen\"",
-          "default": "Auf Facebook teilen"
+          "label":"Texthinweis für \"Auf Facebook teilen\"",
+          "default":"Auf Facebook teilen"
         },
         {
-          "label": "Texthinweis für \"Auf Twitter teilen\"",
-          "default": "Auf Twitter teilen"
+          "label":"Texthinweis für \"Auf Twitter teilen\"",
+          "default":"Auf Twitter teilen"
         },
         {
-          "label": "Titel für das Übersichtsschaubild",
-          "default": "Übersicht"
+          "label":"Share to Google text",
+          "default":"Share on Google+"
         },
         {
-          "label": "Titel für das \"Kommentare zeigen\"-Icon",
-          "default": "Kommentare zeigen"
+          "label":"Titel für das Übersichtsschaubild",
+          "default":"Zusammenfassung"
         },
         {
-          "label": "Beschriftung für den \"Drucken\"-Button",
-          "default": "Drucken"
+          "label":"Titel für das \"Kommentare zeigen\"-Icon",
+          "default":"Kommentare zeigen"
         },
         {
-          "label": "Zugang zum Druck-Dialog",
-          "default": "Wie möchtest du diese Präsentation drucken?"
+          "label":"Beschriftung für den \"Drucken\"-Button",
+          "default":"Drucken"
         },
         {
-          "label": "Beschriftung für den \"Alle Schaubilder drucken\"-Button",
-          "default": "Alle Schaubilder drucken"
+          "label":"Zugang zum Druck-Dialog",
+          "default":"Wie möchtest du diese Präsentation drucken?"
         },
         {
-          "label": "Beschriftung für den \"Aktuelles Schaubild drucken\"-Button",
-          "default": "Aktuelles Schaubild drucken"
+          "label":"Beschriftung für den \"Alle Schaubilder drucken\"-Button",
+          "default":"Alle Schaubilder drucken"
+        },
+        {
+          "label":"Beschriftung für den \"Aktuelles Schaubild drucken\"-Button",
+          "default":"Aktuelles Schaubild drucken"
         }
       ]
     },
     {
-      "label": "Verhaltenseinstellungen",
-      "description": "Mit diesen Optionen kannst du diverse Einstellungen überschreiben.",
-      "fields": [
+      "label":"Verhaltenseinstellungen",
+      "description":"Mit diesen Optionen kannst du diverse Einstellungen überschreiben.",
+      "fields":[
         {
-          "label": "\"Active Surface\"-Modus aktivieren",
-          "description": "Entfernt die Bedienelemente für den Nutzer. Benutze \"Gehe zu Schaubild\" zum navigieren."
+          "label":"\"Active Surface\"-Modus aktivieren",
+          "description":"Entfernt die Bedienelemente für den Nutzer. Benutze \"Gehe zu Schaubild\" zum navigieren."
         },
         {
-          "label": "Übersichtsschaubild verbergen",
-          "description": "Verbirgt das Übersichtsschaubild"
+          "label":"Übersichtsschaubild verbergen",
+          "description":"Verbirgt das Übersichtsschaubild"
         },
         {
-          "label": "\"Lösungen zeigen\"-Knopf überschreiben",
-          "description": "Diese Option legt fest, ob der \"Lösungen zeigen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
-          "options": [
+          "label":"Überschreiben des \"Lösungen anzeigen\"-Buttons",
+          "description":"Diese Option gibt an, ob der \"Lösung anzeigen\"-Button für alle Fragen angezeigt, ausgeblendet oder für jede Frage individuell konfiguriert wird.",
+          "options":[
             {
-              "label": "anzeigen"
+              "label":"Anzeigen"
             },
             {
-              "label": "ausblenden"
+              "label":"Ausblenden"
             }
           ]
         },
         {
-          "label": "\"Wiederholen\"-Button überschreiben",
-          "description": "Diese Option legt fest, ob der \"Wiederholen\"-Button für alle Fragen angezeigt, für alle Fragen ausgeblendet oder individuell für jede Frage eingestellt wird.",
-          "options": [
+          "label":"Überschreiben des \"Wiederholen\"-Buttons",
+          "description":"Diese Option gibt an, ob der \"Wiederholen\" Button für alle Fragen angezeigt, ausgeblendet oder für jede Frage individuell konfiguriert wird.",
+          "options":[
             {
-              "label": "anzeigen"
+              "label":"Anzeigen"
             },
             {
-              "label": "ausblenden"
+              "label":"Ausblenden"
             }
           ]
         },
         {
-          "label": "\"Drucken\"-Button einblenden",
-          "description": "Zeigt den \"Drucken\"-Button an."
+          "label":"\"Drucken\"-Button einblenden",
+          "description":"Zeigt den \"Drucken\"-Button an."
+        },
+        {
+          "label":"Social Settings",
+          "showWhen":{
+            "rules":[
+              {
+                
+              }
+            ]
+          },
+          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields":[
+            {
+              "label":"Display Facebook share icon"
+            },
+            {
+              "label":"Facebook share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Facebook link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Facebook quote",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label":"Display Twitter share icon"
+            },
+            {
+              "label":"Twitter share settings",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              },
+              "fields":[
+                {
+                  "label":"Share to Twitter statement",
+                  "default":"I scored @percentage on a task at @currentpageurl."
+                },
+                {
+                  "label":"Share to Twitter link",
+                  "default":"@currentpageurl"
+                },
+                {
+                  "label":"Share to Twitter hashtags",
+                  "default":"h5p, course"
+                }
+              ]
+            },
+            {
+              "label":"Display Google+ share icon"
+            },
+            {
+              "label":"Share to Google link",
+              "default":"@currentpageurl",
+              "showWhen":{
+                "rules":[
+                  {
+                    
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

@@ -59,21 +59,20 @@
                       "H5P.Image 1.0",
                       "H5P.Video 1.3",
                       "H5P.Audio 1.2",
-                      "H5P.Blanks 1.7",
-                      "H5P.SingleChoiceSet 1.8",
-                      "H5P.MultiChoice 1.9",
-                      "H5P.TrueFalse 1.1",
-                      "H5P.DragQuestion 1.9",
-                      "H5P.Summary 1.7",
-                      "H5P.DragText 1.5",
-                      "H5P.MarkTheWords 1.6",
-                      "H5P.Dialogcards 1.5",
+                      "H5P.Blanks 1.8",
+                      "H5P.SingleChoiceSet 1.9",
+                      "H5P.MultiChoice 1.10",
+                      "H5P.TrueFalse 1.2",
+                      "H5P.DragQuestion 1.11",
+                      "H5P.Summary 1.8",
+                      "H5P.DragText 1.6",
+                      "H5P.MarkTheWords 1.7",
+                      "H5P.Dialogcards 1.6",
                       "H5P.ContinuousText 1.2",
                       "H5P.ExportableTextArea 1.2",
                       "H5P.Table 1.1",
-                      "H5P.InteractiveVideo 1.15",
-                      "H5P.TwitterUserFeed 1.0",
-                      "H5P.AppearIn 1.0"
+                      "H5P.InteractiveVideo 1.17",
+                      "H5P.TwitterUserFeed 1.0"
                     ],
                     "optional": true
                   },
@@ -125,6 +124,24 @@
                     "optional": true
                   },
                   {
+                    "name": "buttonSize",
+                    "type": "select",
+                    "label": "Button size",
+                    "importance": "low",
+                    "optional": false,
+                    "default": "big",
+                    "options": [
+                      {
+                        "value": "small",
+                        "label": "Small"
+                      },
+                      {
+                        "value": "big",
+                        "label": "Big"
+                      }
+                    ]
+                  },
+                  {
                     "name": "title",
                     "type": "text",
                     "optional": true,
@@ -132,12 +149,36 @@
                     "importance": "medium"
                   },
                   {
+                    "name": "goToSlideType",
+                    "type": "select",
+                    "label": "The slide we'll go",
+                    "description": "'Specified slide' will use the 'Specific slide number'.",
+                    "importance": "medium",
+                    "optional": false,
+                    "options": [
+                      {
+                        "value": "specified",
+                        "label": "Specified slide"
+                      },
+                      {
+                        "value": "next",
+                        "label": "Next slide"
+                      },
+                      {
+                        "value": "previous",
+                        "label": "Previous slide"
+                      }
+                    ],
+                    "default": "specified"
+                  },
+                  {
                     "name": "goToSlide",
                     "type": "number",
-                    "label": "Go To Slide",
+                    "label": "Specific slide number",
                     "importance": "low",
                     "min": 1,
-                    "optional": true
+                    "optional": true,
+                    "description": "Only used if 'specified slide' is selected for 'The slide we'll go to'"
                   },
                   {
                     "name": "invisible",
@@ -376,11 +417,11 @@
         "description": "@percent is replaced by the real user score in percent"
       },
       {
-        "name": "Total",
+        "name": "total",
         "type": "text",
         "label": "Translation for \"Total\"",
         "importance": "low",
-        "default": "Total"
+        "default": "TOTAL"
       },
       {
         "name": "showSolutions",
@@ -540,6 +581,13 @@
         "default": "Share on Twitter"
       },
       {
+        "name": "shareGoogle",
+        "type": "text",
+        "label": "Share to Google text",
+        "importance": "low",
+        "default": "Share on Google+"
+      },
+      {
         "name": "summary",
         "type": "text",
         "label": "Title for summary slide",
@@ -580,6 +628,13 @@
         "label": "Label for \"Print current slide\" button",
         "importance": "low",
         "default": "Print current slide"
+      },
+      {
+        "name": "noTitle",
+        "type": "text",
+        "label": "Label for slides without a title",
+        "importance": "low",
+        "default": "No title"
       }
     ]
   },
@@ -651,6 +706,133 @@
         "importance": "low",
         "description": "Enables the print button.",
         "default": false
+      },
+      {
+        "name": "social",
+        "type": "group",
+        "label": "Social Settings",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "hideSummarySlide",
+              "equals": false
+            }
+          ]
+        },
+        "importance": "low",
+        "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+        "optional": true,
+        "fields": [
+          {
+            "name": "showFacebookShare",
+            "type": "boolean",
+            "label": "Display Facebook share icon",
+            "importance": "low",
+            "default": true
+          },
+          {
+            "name": "facebookShare",
+            "importance": "low",
+            "type": "group",
+            "expanded": true,
+            "label": "Facebook share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showFacebookShare",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "url",
+                "type": "text",
+                "label": "Share to Facebook link",
+                "importance": "low",
+                "default": "@currentpageurl"
+              },
+              {
+                "name": "quote",
+                "type": "text",
+                "label": "Share to Facebook quote",
+                "importance": "low",
+                "default": "I scored @percentage on a task at @currentpageurl."
+              }
+            ]
+          },
+          {
+            "name": "showTwitterShare",
+            "type": "boolean",
+            "label": "Display Twitter share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
+            "name": "twitterShare",
+            "importance": "low",
+            "type": "group",
+            "expanded": true,
+            "label": "Twitter share settings",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showTwitterShare",
+                  "equals": true
+                }
+              ]
+            },
+            "fields": [
+              {
+                "name": "statement",
+                "type": "text",
+                "label": "Share to Twitter statement",
+                "importance": "low",
+                "default": "I scored @percentage on a task at @currentpageurl."
+              },
+              {
+                "name": "url",
+                "type": "text",
+                "label": "Share to Twitter link",
+                "importance": "low",
+                "default": "@currentpageurl"
+              },
+              {
+                "name": "hashtags",
+                "type": "text",
+                "label": "Share to Twitter hashtags",
+                "importance": "low",
+                "default": "h5p, course"
+              }
+            ]
+          },
+          {
+            "name": "showGoogleShare",
+            "type": "boolean",
+            "label": "Display Google+ share icon",
+            "importance": "low",
+            "default": false
+          },
+          {
+            "name": "googleShareUrl",
+            "type": "text",
+            "label": "Share to Google link",
+            "importance": "low",
+            "default": "@currentpageurl",
+            "widget": "showWhen",
+            "showWhen": {
+              "rules": [
+                {
+                  "field": "showGoogleShare",
+                  "equals": true
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   }

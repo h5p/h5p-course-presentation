@@ -141,7 +141,8 @@
 
 /* Facebook and Twitter link styling */
 .h5p-course-presentation .h5p-summary-twitter-message,
-.h5p-course-presentation .h5p-summary-facebook-message {
+.h5p-course-presentation .h5p-summary-facebook-message,
+.h5p-course-presentation .h5p-summary-google-message {
   cursor: pointer;
   font-size: 0.7em;
   padding: 0 0.5em;
@@ -149,12 +150,14 @@
 }
 
 .h5p-course-presentation .h5p-summary-twitter-message:hover,
-.h5p-course-presentation .h5p-summary-facebook-message:hover {
+.h5p-course-presentation .h5p-summary-facebook-message:hover,
+.h5p-course-presentation .h5p-summary-google-message:hover {
   color: #096bcb;
 }
 
 .h5p-course-presentation .h5p-summary-twitter-message > span,
-.h5p-course-presentation .h5p-summary-facebook-message > span {
+.h5p-course-presentation .h5p-summary-facebook-message > span,
+.h5p-course-presentation .h5p-summary-google-message > span {
   text-decoration: none;
 }
 
@@ -167,6 +170,12 @@
 .h5p-course-presentation .h5p-summary-facebook-message:before {
   font-family: 'H5PFontAwesome4';
   content: "\f09a";
+  padding-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-google-message:before {
+  font-family: 'H5PFontAwesome4';
+  content: "\f0d5";
   padding-right: 0.5em;
 }
 
