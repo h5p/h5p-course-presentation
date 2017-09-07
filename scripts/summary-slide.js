@@ -325,6 +325,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);
+    facebookShareQuote = encodeURIComponent(facebookShareQuote);
 
     // Add query strings to the URL based on settings.
     var facebookUrl = 'https://www.facebook.com/sharer/sharer.php?';
