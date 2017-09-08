@@ -23,21 +23,18 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
       tabindex = -1;
     }
     else {
-      // If the title is set, use it.
-      if (title) {
-        title = title;
-      } else {
+      if (!title) {
         // No title so use the slide number, prev, or next.
         switch(goToSlideType) {
-            case "specified":
-              title = cp.l10n.goToSlide.replace(':num', slideNum);
-              break;
-            case "next":
-              title = cp.l10n.goToSlide.replace(':num', cp.l10n.nextSlide);
-              break;
-            case "previous":
-              title = cp.l10n.goToSlide.replace(':num', cp.l10n.prevSlide);
-              break;
+          case "specified":
+            title = cp.l10n.goToSlide.replace(':num', slideNum);
+            break;
+          case "next":
+            title = cp.l10n.goToSlide.replace(':num', cp.l10n.nextSlide);
+            break;
+          case "previous":
+            title = cp.l10n.goToSlide.replace(':num', cp.l10n.prevSlide);
+            break;
         }
       }
       classes += ' h5p-visible';
