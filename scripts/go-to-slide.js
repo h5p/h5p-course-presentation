@@ -23,21 +23,18 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
       tabindex = -1;
     }
     else {
-      // If the title is set, use it.
-      if (title) {
-        title = title;
-      } else {
+      if (!title) {
         // No title so use the slide number, prev, or next.
         switch(goToSlideType) {
-            case "specified":
-              title = cp.l10n.goToSlide.replace(':num', slideNum);
-              break;
-            case "next":
-              title = cp.l10n.goToSlide.replace(':num', cp.l10n.nextSlide);
-              break;
-            case "previous":
-              title = cp.l10n.goToSlide.replace(':num', cp.l10n.prevSlide);
-              break;
+          case "specified":
+            title = cp.l10n.goToSlide.replace(':num', slideNum);
+            break;
+          case "next":
+            title = cp.l10n.goToSlide.replace(':num', cp.l10n.nextSlide);
+            break;
+          case "previous":
+            title = cp.l10n.goToSlide.replace(':num', cp.l10n.prevSlide);
+            break;
         }
       }
       classes += ' h5p-visible';
@@ -47,17 +44,19 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
      * @private
      */
     var go = function () {
+      // Default goes to the set number
+      var goTo = slideNum - 1;
+
       // Check if previous or next is selected.
-      if (goToSlideType == "next") {
-        slideNum = cp.currentSlideIndex + 1;
-      } else if (goToSlideType == "previous") {
-        slideNum = cp.currentSlideIndex - 1;
-      } else {
-        // There is no goToSlideType set, so jump to slide number is used.
-        slideNum--;
+      if (goToSlideType === 'next') {
+        goTo = cp.currentSlideIndex + 1;
       }
-      if (cp.editor === undefined && cp.slides[slideNum] !== undefined) {
-        cp.jumpToSlide(slideNum);
+      else if (goToSlideType === 'previous') {
+        goTo = cp.currentSlideIndex - 1;
+      }
+
+      if (cp.editor === undefined && cp.slides[goTo] !== undefined) {
+        cp.jumpToSlide(goTo);
       }
     };
 
