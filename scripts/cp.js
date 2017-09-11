@@ -253,6 +253,10 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 
     $summarySlide = H5P.jQuery(H5P.CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
+
+    if (this.initKeywords) {
+      keywords.html += this.createKeywordHtml(summarySlideParams.keywords, false, this.slides.length - 1);
+    }
   }
 
   if (!keywords.exist && this.editor === undefined) {
