@@ -151,7 +151,7 @@
                   {
                     "name": "goToSlideType",
                     "type": "select",
-                    "label": "The slide we'll go",
+                    "label": "The slide we'll go to",
                     "description": "'Specified slide' will use the 'Specific slide number'.",
                     "importance": "medium",
                     "optional": false,
