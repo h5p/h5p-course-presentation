@@ -37,14 +37,14 @@
                       "label":"Als Button anzeigen"
                     },
                     {
-                      "label":"Button size",
-                      "default":"big",
+                      "label":"Buttongröße",
+                      "default":"Groß",
                       "options":[
                         {
-                          "label":"Small"
+                          "label":"Klein"
                         },
                         {
-                          "label":"Big"
+                          "label":"Groß"
                         }
                       ]
                     },
@@ -279,8 +279,8 @@
           "default":"Auf Twitter teilen"
         },
         {
-          "label":"Share to Google text",
-          "default":"Share on Google+"
+          "label":"Texthinweis für \"Auf Google+ teilen\"",
+          "default":"Auf Google+ teilen"
         },
         {
           "label":"Titel für das Übersichtsschaubild",
@@ -349,7 +349,7 @@
           "description":"Zeigt den \"Drucken\"-Button an."
         },
         {
-          "label":"Social Settings",
+          "label":"Einstellungen für Soziale Netzwerke",
           "showWhen":{
             "rules":[
               {
@@ -357,13 +357,13 @@
               }
             ]
           },
-          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "description":"Diese Optionen überschreiben die Einstellungen für Soziale Netzwerke.",
           "fields":[
             {
-              "label":"Display Facebook share icon"
+              "label":"Facebook-Icon anzeigen"
             },
             {
-              "label":"Facebook share settings",
+              "label":"Facebook-Teilen Einstellungen",
               "showWhen":{
                 "rules":[
                   {
@@ -373,20 +373,20 @@
               },
               "fields":[
                 {
-                  "label":"Share to Facebook link",
+                  "label":"Facebook-Teilen Link",
                   "default":"@currentpageurl"
                 },
                 {
-                  "label":"Share to Facebook quote",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label":"Facebook-Teilen Nachricht",
+                  "default":"Ich habe @percentage der Aufgabe @currentpageurl erreicht."
                 }
               ]
             },
             {
-              "label":"Display Twitter share icon"
+              "label":"Twitter-Icon anzeigen"
             },
             {
-              "label":"Twitter share settings",
+              "label":"Twitter-Teilen Einstellungen",
               "showWhen":{
                 "rules":[
                   {
@@ -396,24 +396,24 @@
               },
               "fields":[
                 {
-                  "label":"Share to Twitter statement",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label":"Twitter-Teilen Nachricht",
+                  "default":"Ich habe @percentage der Aufgabe @currentpageurl erreicht."
                 },
                 {
-                  "label":"Share to Twitter link",
+                  "label":"Twitter-Teilen Link",
                   "default":"@currentpageurl"
                 },
                 {
-                  "label":"Share to Twitter hashtags",
-                  "default":"h5p, course"
+                  "label":"Twitter Hashtags",
+                  "default":"h5p, Kurs"
                 }
               ]
             },
             {
-              "label":"Display Google+ share icon"
+              "label":"Google+-Icon zeigen"
             },
             {
-              "label":"Share to Google link",
+              "label":"Google+-Link",
               "default":"@currentpageurl",
               "showWhen":{
                 "rules":[
