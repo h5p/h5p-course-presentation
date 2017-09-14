@@ -151,14 +151,13 @@
                   {
                     "name": "goToSlideType",
                     "type": "select",
-                    "label": "The slide we'll go",
-                    "description": "'Specified slide' will use the 'Specific slide number'.",
+                    "label": "Go to",
                     "importance": "medium",
                     "optional": false,
                     "options": [
                       {
                         "value": "specified",
-                        "label": "Specified slide"
+                        "label": "Specific slide number"
                       },
                       {
                         "value": "next",
@@ -177,8 +176,15 @@
                     "label": "Specific slide number",
                     "importance": "low",
                     "min": 1,
-                    "optional": true,
-                    "description": "Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [
+                        {
+                          "field": "goToSlideType",
+                          "equals": "specified"
+                        }
+                      ]
+                    }
                   },
                   {
                     "name": "invisible",

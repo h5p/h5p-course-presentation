@@ -42,11 +42,10 @@
                       "label": "Title"
                     },
                     {
-                      "label": "The slide we'll go",
-                      "description": "'Specified slide' will use the 'Specific slide number'.",
+                      "label": "Go to",
                       "options": [
                         {
-                          "label": "Specified slide"
+                          "label": "Specific slide number"
                         },
                         {
                           "label": "Next slide"
@@ -58,8 +57,7 @@
                       "default": "specified"
                     },
                     {
-                      "label": "Specific slide number",
-                      "description": "Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "label": "Specific slide number"
                     },
                     {
                       "label": "Invisible",

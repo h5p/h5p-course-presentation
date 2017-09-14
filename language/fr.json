@@ -9,19 +9,19 @@
                 "field":{
                   "fields":[
                     {
-                      
+
                     },
                     {
-                      
+
                     },
                     {
-                      
+
                     },
                     {
-                      
+
                     },
                     {
-                      
+
                     },
                     {
                       "label":"Commentaires",
@@ -52,11 +52,10 @@
                       "label":"Titre"
                     },
                     {
-                      "label":"The slide we'll go to",
-                      "description":"'Specified slide' will use the 'Specific slide number'.",
+                      "label":"Go to to",
                       "options":[
                         {
-                          "label":"Specified slide"
+                          "label":"Specific slide number"
                         },
                         {
                           "label":"Diapositive suivante"
@@ -68,8 +67,7 @@
                       "default":"specified"
                     },
                     {
-                      "label":"Aller à la diapositive",
-                      "description":"Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "label":"Aller à la diapositive"
                     },
                     {
                       "label":"Invisible",
@@ -96,11 +94,11 @@
                 "field":{
                   "fields":[
                     {
-                      
+
                     },
                     {
                       "field":{
-                        
+
                       }
                     }
                   ]
@@ -115,7 +113,7 @@
                   {
                     "label":"Sélectionnez une couleur",
                     "spectrum":{
-                      
+
                     },
                     "default":""
                   }
@@ -125,7 +123,7 @@
           }
         },
         {
-          
+
         },
         {
           "label":"Liste des mots-clés"
@@ -148,7 +146,7 @@
             {
               "label":"Sélectionnez une couleur",
               "spectrum":{
-                
+
               },
               "default":""
             }
@@ -353,7 +351,7 @@
           "showWhen":{
             "rules":[
               {
-                
+
               }
             ]
           },
@@ -367,7 +365,7 @@
               "showWhen":{
                 "rules":[
                   {
-                    
+
                   }
                 ]
               },
@@ -390,7 +388,7 @@
               "showWhen":{
                 "rules":[
                   {
-                    
+
                   }
                 ]
               },
@@ -418,7 +416,7 @@
               "showWhen":{
                 "rules":[
                   {
-                    
+
                   }
                 ]
               }
