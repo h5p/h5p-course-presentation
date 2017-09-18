@@ -1,4 +1,4 @@
-H5P.CoursePresentation.Printer = (function ($) {
+const Printer = (function ($) {
   /**
    * Printer class
    * @class Printer
@@ -151,3 +151,5 @@ H5P.CoursePresentation.Printer = (function ($) {
   return Printer;
 
 })(H5P.jQuery);
+
+export default Printer;

@@ -1,5 +1,5 @@
 /** @namespace H5P */
-H5P.CoursePresentation.GoToSlide = (function ($) {
+const GoToSlide = (function ($) {
 
   /**
    * Element for linking between slides in presentations.
@@ -89,3 +89,6 @@ H5P.CoursePresentation.GoToSlide = (function ($) {
 
   return GoToSlide;
 })(H5P.jQuery);
+
+
+export default GoToSlide;

@@ -1,4 +1,7 @@
-var H5P = H5P || {};
+import GoToSlide from './go-to-slide';
+import SummarySlide from './summary-slide';
+import NavigationLine from './navigation-line';
+import SlideBackground from './slide-backgrounds';
 
 /**
  * Constructor.
@@ -9,7 +12,7 @@ var H5P = H5P || {};
  *  Set if an editor is initiating this library
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation = function (params, id, extras) {
+let CoursePresentation = function (params, id, extras) {
   H5P.EventDispatcher.call(this);
   var that = this;
   this.presentation = params.presentation;
@@ -107,13 +110,13 @@ H5P.CoursePresentation = function (params, id, extras) {
   });
 };
 
-H5P.CoursePresentation.prototype = Object.create(H5P.EventDispatcher.prototype);
-H5P.CoursePresentation.prototype.constructor = H5P.CoursePresentation;
+CoursePresentation.prototype = Object.create(H5P.EventDispatcher.prototype);
+CoursePresentation.prototype.constructor = CoursePresentation;
 
 /**
  * @public
  */
-H5P.CoursePresentation.prototype.getCurrentState = function () {
+CoursePresentation.prototype.getCurrentState = function () {
   var state = this.previousState ? this.previousState : {};
   state.progress = this.$current.index();
   if (!state.answers) {
@@ -151,7 +154,7 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
  * @param {H5P.jQuery} $container Container for this presentation.
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation.prototype.attach = function ($container) {
+CoursePresentation.prototype.attach = function ($container) {
   var that = this;
 
   // isRoot is undefined in the editor
@@ -251,7 +254,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     };
     this.slides.push(summarySlideParams);
 
-    $summarySlide = H5P.jQuery(H5P.CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
+    $summarySlide = H5P.jQuery(CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
 
     if (this.initKeywords) {
@@ -281,9 +284,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.initTouchEvents();
 
     // init navigation line
-    this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
+    this.navigationLine = new NavigationLine(this);
 
-    this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
+    this.summarySlideObject = new SummarySlide(this, $summarySlide);
   }
   else {
     this.$progressbar.add(this.$footer).remove();
@@ -311,7 +314,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
   }
 
-  new H5P.CoursePresentation.SlideBackground(this);
+  new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
@@ -326,7 +329,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
  * @param {Array} slidesParams
  * @returns {object} keyword details used for further processing
  */
-H5P.CoursePresentation.prototype.createSlides = function (slidesParams) {
+CoursePresentation.prototype.createSlides = function (slidesParams) {
   var keywords = {
     html: '',
     exist: false
@@ -336,7 +339,7 @@ H5P.CoursePresentation.prototype.createSlides = function (slidesParams) {
     var slideParams = slidesParams[i];
 
     // Create slide element
-    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
+    var $slide = H5P.jQuery(CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
 
     // Set as current if this is the first slide
     var isFirst = (i === 0);
@@ -365,7 +368,7 @@ H5P.CoursePresentation.prototype.createSlides = function (slidesParams) {
  * @param obj The object to investigate
  * @returns {boolean}
  */
-H5P.CoursePresentation.prototype.hasScoreData = function (obj) {
+CoursePresentation.prototype.hasScoreData = function (obj) {
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
@@ -379,7 +382,7 @@ H5P.CoursePresentation.prototype.hasScoreData = function (obj) {
  * @public
  * @returns {Number}
  */
-H5P.CoursePresentation.prototype.getScore = function (){
+CoursePresentation.prototype.getScore = function (){
   var self = this;
 
   return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
@@ -393,7 +396,7 @@ H5P.CoursePresentation.prototype.getScore = function (){
  * @public
  * @returns {Number}
  */
-H5P.CoursePresentation.prototype.getMaxScore = function (){
+CoursePresentation.prototype.getMaxScore = function (){
   var self = this;
 
   return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
@@ -411,7 +414,7 @@ H5P.CoursePresentation.prototype.getMaxScore = function (){
  * @param {Array} arr A nested array
  * @returns {Array} A flattened array
  */
-H5P.CoursePresentation.prototype.flattenArray = function (arr){
+CoursePresentation.prototype.flattenArray = function (arr){
   return arr.concat.apply([], arr);
 };
 
@@ -420,7 +423,7 @@ H5P.CoursePresentation.prototype.flattenArray = function (arr){
  *
  * @param slideScores
  */
-H5P.CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
+CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
   var that = this;
 
   if (slideScores !== undefined && slideScores) {
@@ -450,7 +453,7 @@ H5P.CoursePresentation.prototype.setProgressBarFeedback = function (slideScores)
 /**
  * Toggle keywords list on/off depending on current state
  */
-H5P.CoursePresentation.prototype.toggleKeywords = function () {
+CoursePresentation.prototype.toggleKeywords = function () {
   // Check state of keywords
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     // Already open, remove keywords
@@ -465,7 +468,7 @@ H5P.CoursePresentation.prototype.toggleKeywords = function () {
 /**
  * Hide keywords
  */
-H5P.CoursePresentation.prototype.hideKeywords = function () {
+CoursePresentation.prototype.hideKeywords = function () {
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.showKeywords);
   }
@@ -475,7 +478,7 @@ H5P.CoursePresentation.prototype.hideKeywords = function () {
 /**
  * Show keywords
  */
-H5P.CoursePresentation.prototype.showKeywords = function () {
+CoursePresentation.prototype.showKeywords = function () {
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.hideKeywords);
   }
@@ -487,7 +490,7 @@ H5P.CoursePresentation.prototype.showKeywords = function () {
  *
  * @param {Number} value 0 - 100
  */
-H5P.CoursePresentation.prototype.setKeywordsOpacity = function (value) {
+CoursePresentation.prototype.setKeywordsOpacity = function (value) {
   var self = this;
   var color = self.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
   self.$keywordsWrapper.css('background-color', 'rgba(' + color[1] + ', ' + color[2] + ', ' + color[3] + ',' + (value / 100) + ')');
@@ -499,7 +502,7 @@ H5P.CoursePresentation.prototype.setKeywordsOpacity = function (value) {
  *
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.fitCT = function () {
+CoursePresentation.prototype.fitCT = function () {
   if (this.editor !== undefined) {
     return;
   }
@@ -528,7 +531,7 @@ H5P.CoursePresentation.prototype.fitCT = function () {
  * @param {Boolean} fullscreen
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.resize = function () {
+CoursePresentation.prototype.resize = function () {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
@@ -580,7 +583,7 @@ H5P.CoursePresentation.prototype.resize = function () {
 /**
  * Enter/exit full screen mode.
  */
-H5P.CoursePresentation.prototype.toggleFullScreen = function () {
+CoursePresentation.prototype.toggleFullScreen = function () {
   if (H5P.isFullscreen || this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
     // Downscale fullscreen font size
     this.$footer.removeClass('footer-full-screen');
@@ -624,7 +627,7 @@ H5P.CoursePresentation.prototype.toggleFullScreen = function () {
 /**
  * Set focus.
  */
-H5P.CoursePresentation.prototype.focus = function () {
+CoursePresentation.prototype.focus = function () {
   this.$wrapper.focus();
 };
 
@@ -633,7 +636,7 @@ H5P.CoursePresentation.prototype.focus = function () {
  * @param {jQuery} $keyword
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
+CoursePresentation.prototype.keywordClick = function ($keyword) {
   if ($keyword.hasClass('h5p-current')) {
     return;
   }
@@ -656,7 +659,7 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
  * @param {jQuery} $slide
  * @param {Number} index
  */
-H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
+CoursePresentation.prototype.addElements = function (slide, $slide, index) {
   if (slide.elements === undefined) {
     return;
   }
@@ -675,7 +678,7 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
     this.elementsAttached[index] = true;
     this.trigger('domChanged', {
       '$target': $slide,
-      'library': 'H5P.CoursePresentation',
+      'library': 'CoursePresentation',
       'key': 'newSlide'
     }, {'bubbles': true, 'external': true});
   }
@@ -686,7 +689,7 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  *
  * @param {Object} override
  */
-H5P.CoursePresentation.prototype.setElementsOverride = function (override) {
+CoursePresentation.prototype.setElementsOverride = function (override) {
   // Create default object
   this.elementsOverride = {
     params: {}
@@ -718,11 +721,11 @@ H5P.CoursePresentation.prototype.setElementsOverride = function (override) {
  * @param {Number} index Optional, the index of the slide we're adding elements to.
  * @returns {unresolved}
  */
-H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
+CoursePresentation.prototype.addElement = function (element, $slide, index) {
   var instance;
   if (element.action === undefined) {
     // goToSlide, internal element
-    instance = new H5P.CoursePresentation.GoToSlide(element.title, element.goToSlide, element.invisible, this, element.goToSlideType);
+    instance = new GoToSlide(element.title, element.goToSlide, element.invisible, this, element.goToSlideType);
   }
   else {
     // H5P library
@@ -806,7 +809,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
  * @param {jQuery} $slide
  * @param {Number} index
  */
-H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
+CoursePresentation.prototype.attachElements = function ($slide, index) {
   if (this.elementsAttached[index] !== undefined) {
     return; // Already attached
   }
@@ -820,7 +823,7 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
   }
   this.trigger('domChanged', {
       '$target': $slide,
-      'library': 'H5P.CoursePresentation',
+      'library': 'CoursePresentation',
       'key': 'newSlide'
     }, {'bubbles': true, 'external': true});
 
@@ -836,7 +839,7 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @param {Number} index
  * @returns {jQuery}
  */
-H5P.CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
+CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
   var that = this;
   var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
   var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
@@ -978,7 +981,7 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
  * @public
  * @param {H5P.jQuery} $wrapper
  */
-H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
+CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
   // Get fontsize, needed for scale
   var fontSize = Number($wrapper.css('fontSize').replace('px', ''));
   var $img = $wrapper.find('img');
@@ -1023,7 +1026,7 @@ H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  * @param {jQuery} $elementContainer Wrapper for the element.
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
+CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   var that = this;
   elementInstance.showCPComments = function () {
     var $stripHtml = H5P.jQuery('<div>');
@@ -1052,7 +1055,7 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
  * @param {Function} [remove] Gets called before the popup is removed.
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
+CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
   var doNotClose;
 
   /** @private */
@@ -1113,7 +1116,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
  *  true if the element has a solution
  *  false otherwise
  */
-H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
+CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
   return (elementInstance.showSolutions !== undefined ||
           elementInstance.showCPComments !== undefined);
 };
@@ -1125,7 +1128,7 @@ H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) 
  * @param {boolean} isFirst Indicates if this is the first slide
  * @returns {string} HTML
  */
-H5P.CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst, index) {
+CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst, index) {
   var title, titleKeyword = this.l10n.noTitle;
   if (!keywords || !keywords.length) {
     if (this.editor === undefined) {
@@ -1151,7 +1154,7 @@ H5P.CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst
  *
  * @param {string} keywords Html string list entries for keywords
  */
-H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
+CoursePresentation.prototype.initKeywordsList = function (keywords) {
   var that = this;
 
   this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
@@ -1169,7 +1172,7 @@ H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
  *
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation.prototype.initKeyEvents = function () {
+CoursePresentation.prototype.initKeyEvents = function () {
   if (this.keydown !== undefined || this.activeSurface) {
     return;
   }
@@ -1208,7 +1211,7 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
  *
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation.prototype.initTouchEvents = function () {
+CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
   // var containerWidth = this.$slidesWrapper.width();
@@ -1333,7 +1336,7 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
  * @param xPos
  * @param yPos
  */
-H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
+CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
   // Remove popup on no arguments
   if (arguments.length <= 0) {
     if(this.touchPopup !== undefined) {
@@ -1388,7 +1391,7 @@ H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideN
  * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-H5P.CoursePresentation.prototype.previousSlide = function (noScroll) {
+CoursePresentation.prototype.previousSlide = function (noScroll) {
   var $prev = this.$current.prev();
   if (!$prev.length) {
     return false;
@@ -1403,7 +1406,7 @@ H5P.CoursePresentation.prototype.previousSlide = function (noScroll) {
  * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
+CoursePresentation.prototype.nextSlide = function (noScroll) {
   var $next = this.$current.next();
   if (!$next.length) {
     return false;
@@ -1416,7 +1419,7 @@ H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
  * Loads all slides (Needed by print)
  * @method attachAllElements
  */
-H5P.CoursePresentation.prototype.attachAllElements = function () {
+CoursePresentation.prototype.attachAllElements = function () {
   var $slides = this.$slidesWrapper.children();
 
   for (var i=0; i<this.slides.length; i++) {
@@ -1437,7 +1440,7 @@ H5P.CoursePresentation.prototype.attachAllElements = function () {
  * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   var that = this;
   if (this.editor === undefined) {
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1569,11 +1572,11 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
  *
  * @returns {undefined} Nothing
  */
-H5P.CoursePresentation.prototype.scrollToKeywords = function () {
+CoursePresentation.prototype.scrollToKeywords = function () {
   var $parent = this.$currentKeyword.parent();
   var move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
 
-  if (H5P.CoursePresentation.isiPad) {
+  if (CoursePresentation.isiPad) {
     // scrollTop animations does not work well on ipad.
     // TODO: Check on iPhone.
     $parent.scrollTop(move);
@@ -1586,7 +1589,7 @@ H5P.CoursePresentation.prototype.scrollToKeywords = function () {
 /**
  * @type Boolean Indicate if this is an ipad user.
  */
-H5P.CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
+CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
 
 /**
  * Create HTML for a slide.
@@ -1594,7 +1597,7 @@ H5P.CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
  * @param {object} slide Params.
  * @returns {String} HTML.
  */
-H5P.CoursePresentation.createSlide = function (slide) {
+CoursePresentation.createSlide = function (slide) {
   return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
 };
 
@@ -1602,7 +1605,7 @@ H5P.CoursePresentation.createSlide = function (slide) {
  * Reset the content for all slides.
  * @public
  */
-H5P.CoursePresentation.prototype.resetTask = function () {
+CoursePresentation.prototype.resetTask = function () {
   this.summarySlideObject.toggleSolutionMode(false);
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
     if (this.slidesWithSolutions[i] !== undefined) {
@@ -1624,7 +1627,7 @@ H5P.CoursePresentation.prototype.resetTask = function () {
  *
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.showSolutions = function () {
+CoursePresentation.prototype.showSolutions = function () {
   var jumpedToFirst = false;
   var slideScores = [];
   var hasScores = false;
@@ -1676,7 +1679,7 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
  * Gets slides scores for whole cp
  * @returns {Array} slideScores Array containing scores for all slides.
  */
-H5P.CoursePresentation.prototype.getSlideScores = function (noJump) {
+CoursePresentation.prototype.getSlideScores = function (noJump) {
   var jumpedToFirst = (noJump === true);
   var slideScores = [];
   var hasScores = false;
@@ -1720,7 +1723,7 @@ H5P.CoursePresentation.prototype.getSlideScores = function (noJump) {
  *
  * @returns {H5P.ContentCopyrights}
  */
-H5P.CoursePresentation.prototype.getCopyrights = function () {
+CoursePresentation.prototype.getCopyrights = function () {
   var info = new H5P.ContentCopyrights();
 
   var elementCopyrights;
@@ -1768,7 +1771,7 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
  *
  * @param {object} instance
  */
-H5P.CoursePresentation.prototype.pauseMedia = function (instance) {
+CoursePresentation.prototype.pauseMedia = function (instance) {
   try {
     if (instance.pause !== undefined &&
         (instance.pause instanceof Function ||
@@ -1799,7 +1802,7 @@ H5P.CoursePresentation.prototype.pauseMedia = function (instance) {
  *
  * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
  */
-H5P.CoursePresentation.prototype.getXAPIData = function () {
+CoursePresentation.prototype.getXAPIData = function () {
   var xAPIEvent = this.createXAPIEventTemplate('answered');
 
   // Extend definition
@@ -1824,3 +1827,5 @@ H5P.CoursePresentation.prototype.getXAPIData = function () {
     children: childrenXAPIData
   }
 };
+
+export default CoursePresentation;

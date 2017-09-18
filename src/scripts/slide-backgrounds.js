@@ -1,4 +1,4 @@
-H5P.CoursePresentation.SlideBackground = (function ($) {
+const SlideBackground = (function ($) {
   /**
    * Create a Slide specific background selector
    *
@@ -85,3 +85,5 @@ H5P.CoursePresentation.SlideBackground = (function ($) {
   return SlideBackground;
 
 })(H5P.jQuery);
+
+export default SlideBackground;

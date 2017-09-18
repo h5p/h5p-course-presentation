@@ -1,7 +1,4 @@
-var H5P = H5P || {};
-H5P.CoursePresentation = H5P.CoursePresentation || {};
-
-H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
+const SummarySlide = (function ($, JoubelUI) {
 
   /**
    * Constructor for summary slide
@@ -466,3 +463,5 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
   return SummarySlide;
 })(H5P.jQuery, H5P.JoubelUI);
+
+export default SummarySlide;

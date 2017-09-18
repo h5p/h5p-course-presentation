@@ -1,7 +1,6 @@
-var H5P = H5P || {};
-H5P.CoursePresentation = H5P.CoursePresentation || {};
+import Printer from './printer';
 
-H5P.CoursePresentation.NavigationLine = (function ($) {
+const NavigationLine = (function ($) {
 
   function NavigationLine(coursePresentation) {
     this.cp = coursePresentation;
@@ -310,7 +309,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
       }).appendTo($rightFooter);
 
       // Print button
-      if (this.cp.enablePrintButton && H5P.CoursePresentation.Printer.supported()) {
+      if (this.cp.enablePrintButton && Printer.supported()) {
         this.cp.$printButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-print',
           'title': this.cp.l10n.printTitle,
@@ -319,8 +318,8 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
         }).click(function () {
           var $h5pWrapper = $('.h5p-wrapper');
 
-          H5P.CoursePresentation.Printer.showDialog(that.cp.l10n, $h5pWrapper, function (printAllslides) {
-            H5P.CoursePresentation.Printer.print(that.cp, $h5pWrapper, printAllslides);
+          Printer.showDialog(that.cp.l10n, $h5pWrapper, function (printAllslides) {
+            Printer.print(that.cp, $h5pWrapper, printAllslides);
           });
         });
         this.cp.$printButton.appendTo($rightFooter);
@@ -466,3 +465,5 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
 
   return NavigationLine;
 })(H5P.jQuery);
+
+export default NavigationLine;
