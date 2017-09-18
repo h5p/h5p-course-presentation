@@ -305,6 +305,18 @@
         {
           "label":"Tittel for \"Skriv ut nåværende side\"-knapp",
           "default":"Skriv ut nåværende side"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Label for uncompleted interactions",
+          "default": "@slideName contains not completed interaction"
+        },
+        {
+          "label": "Label for completed interactions",
+          "default": "@slideName contains completed interaction"
         }
       ]
     },

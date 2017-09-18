@@ -69,7 +69,9 @@ let CoursePresentation = function (params, id, extras) {
     printIngress: 'How would you like to print this presentation?',
     printAllSlides: 'Print all slides',
     printCurrentSlide: 'Print current slide',
-    noTitle: 'No title'
+    noTitle: 'No title',
+    containsNotCompleted: '@slideName contains not completed interaction',
+    containsCompleted: '@slideName contains completed interaction'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {

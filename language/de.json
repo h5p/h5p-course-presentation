@@ -305,6 +305,18 @@
         {
           "label":"Beschriftung für den \"Aktuelles Schaubild drucken\"-Button",
           "default":"Aktuelles Schaubild drucken"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Label for uncompleted interactions",
+          "default": "@slideName contains not completed interaction"
+        },
+        {
+          "label": "Label for completed interactions",
+          "default": "@slideName contains completed interaction"
         }
       ]
     },

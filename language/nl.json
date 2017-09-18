@@ -303,6 +303,18 @@
         {
           "label":"Titel voor \"Druk huidige slide af\"-knop",
           "default":"Druk huidige slide af"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Label for uncompleted interactions",
+          "default": "@slideName contains not completed interaction"
+        },
+        {
+          "label": "Label for completed interactions",
+          "default": "@slideName contains completed interaction"
         }
       ]
     },

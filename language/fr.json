@@ -303,6 +303,18 @@
         {
           "label":"Texte du bouton \"Imprimer la diapositive courante\"",
           "default":"Imprimer la diapositive courante"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Label for uncompleted interactions",
+          "default": "@slideName contains not completed interaction"
+        },
+        {
+          "label": "Label for completed interactions",
+          "default": "@slideName contains completed interaction"
         }
       ]
     },

@@ -641,6 +641,20 @@
         "label": "Label for slides without a title",
         "importance": "low",
         "default": "No title"
+      },
+      {
+        "name": "containsNotCompleted",
+        "type": "text",
+        "label": "Label for uncompleted interactions",
+        "importance": "low",
+        "default": "@slideName contains not completed interaction"
+      },
+      {
+        "name": "containsCompleted",
+        "type": "text",
+        "label": "Label for completed interactions",
+        "importance": "low",
+        "default": "@slideName contains completed interaction"
       }
     ]
   },
