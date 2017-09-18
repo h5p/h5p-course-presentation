@@ -71,6 +71,14 @@
 .h5p-course-presentation a:focus {
   box-shadow: none;
 }
+
+.h5p-course-presentation ol.list-unstyled,
+.h5p-course-presentation ul.list-unstyled {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .h5p-course-presentation .h5p-wrapper {
   margin: 0 auto;
   position: relative;
@@ -888,4 +896,13 @@
 /* Remove option for full enable full screen in Drag Question */
 .h5p-course-presentation  .h5p-dragquestion-editor .field-name-enableFullScreen {
   display: none;
+}
+
+.h5p-course-presentation .hidden-but-read {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

@@ -169,10 +169,12 @@ CoursePresentation.prototype.attach = function ($container) {
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
-          '      <div class="h5p-slides-wrapper"></div>' +
+          '     <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
           '  </div>' +
-          '  <div class="h5p-progressbar"></div>' +
+          '  <nav class="h5p-cp-navigation">' +
+          '    <ol class="h5p-progressbar list-unstyled"></ol>' +
+          '  </nav>' +
           '  <div class="h5p-footer"></div>' +
           '</div>';
 
@@ -217,7 +219,7 @@ CoursePresentation.prototype.attach = function ($container) {
   var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
-  this.$progressbar = this.$wrapper.children('.h5p-progressbar');
+  this.$progressbar = this.$wrapper.find('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
 
   // Determine if keywords pane should be initialized

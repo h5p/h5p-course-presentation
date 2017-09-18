@@ -1,7 +1,17 @@
 import Printer from './printer';
 
-const NavigationLine = (function ($) {
+/**
+ * @enum {number}
+ */
+const keyCode = {
+  ENTER: 13,
+  SPACE: 32
+};
 
+/**
+ * @class
+ */
+const NavigationLine = (function ($) {
   function NavigationLine(coursePresentation) {
     this.cp = coursePresentation;
     this.initProgressbar(this.cp.slidesWithSolutions);
@@ -21,7 +31,8 @@ const NavigationLine = (function ($) {
           elementInstance.on('xAPI', function (event) {
             var shortVerb = event.getVerb();
             if (shortVerb === 'interacted') {
-              that.updateProgressBarTasksAtSlideNumber(that.cp.currentSlideIndex);
+              const hasAnswered = that.slideHasAnsweredTask(that.cp.currentSlideIndex);
+              that.setTaskAnswered(that.cp.currentSlideIndex, hasAnswered);
             }
             else if (shortVerb === 'completed') {
               event.setVerb('answered');
@@ -56,76 +67,118 @@ const NavigationLine = (function ($) {
 
     that.cp.progressbarParts = [];
 
-    var i;
-    var slide;
-    var $progressbarPart;
-    var progressbarPartTitle;
-
-    var clickProgressbar = function () {
+    const clickProgressbar = function () {
       that.cp.jumpToSlide($(this).data('slideNumber'));
     };
 
-    var mouseenterProgressbar = function (event) {
+    const keydownProgressbar = function (event) {
+      if (event.which === keyCode.ENTER || event.which === keyCode.SPACE) {
+        that.cp.jumpToSlide($(this).data('slideNumber'));
+      }
+    };
+
+    const mouseenterProgressbar = function (event) {
       that.createProgressbarPopup(event, $(this));
     };
 
-    var mouseleaveProgressbar = function () {
+    const mouseleaveProgressbar = function () {
       that.removeProgressbarPopup();
     };
 
-    for (i = 0; i < this.cp.slides.length; i += 1) {
-      slide = this.cp.slides[i];
+    for (let i = 0; i < this.cp.slides.length; i += 1) {
+      const slide = this.cp.slides[i];
+      const progressbarPartTitle = this.getSlideTitle(i);
 
-      // Generate tooltip for progress bar slides
-      progressbarPartTitle = that.cp.l10n.slide + ' ' + (i + 1);
-      if (slide.keywords !== undefined && slide.keywords.length) {
-        progressbarPartTitle = slide.keywords[0].main;
-      }
-      else if (that.cp.editor === undefined && i >= this.cp.slides.length - 1 && this.cp.showSummarySlide) {
-        progressbarPartTitle = that.cp.l10n.summary;
-      }
-
-      $progressbarPart = $('<div>', {
+      // create list item
+      const $li = $('<li>', {
         'class': 'h5p-progressbar-part'
+      })
+        .appendTo(that.cp.$progressbar);
+
+      // create link
+      const $link = $('<a>', {
+        href: '#',
+        html: '<span class="h5p-progressbar-part-title hidden-but-read">' + progressbarPartTitle + '</span>'
       }).data('slideNumber', i)
         .data('keyword', progressbarPartTitle)
         .click(clickProgressbar)
-        .appendTo(that.cp.$progressbar);
+        .keydown(keydownProgressbar)
+        .appendTo($li);
 
       // Add hover effect if not an ipad or iphone.
       if (supportsHover) {
-        $progressbarPart
+        $link
           .mouseenter(mouseenterProgressbar)
           .mouseleave(mouseleaveProgressbar);
       }
 
-      if ((this.cp.editor === undefined) && (i === this.cp.slides.length - 1) && this.cp.showSummarySlide) {
-        $progressbarPart.addClass('progressbar-part-summary-slide');
+      if (this.isSummarySlide(i)) {
+        $li.addClass('progressbar-part-summary-slide');
       }
 
       if (i === 0) {
-        $progressbarPart.addClass('h5p-progressbar-part-show h5p-progressbar-part-selected');
+        $li.addClass('h5p-progressbar-part-show h5p-progressbar-part-selected');
       }
+
+      that.cp.progressbarParts.push($li);
 
       // Create task indicator if less than 60 slides and not in editor
-      if (this.cp.slides.length <= 60) {
-        if (slide.elements !== undefined && slide.elements.length) {
-          if (slidesWithSolutions[i] !== undefined && slidesWithSolutions[i].length) {
-            var elementOptions = {
-              'class': 'h5p-progressbar-part-has-task'
-            };
-            if (that.cp.previousState && that.cp.previousState.answered && that.cp.previousState.answered[i]) {
-              elementOptions.class += ' h5p-answered';
-            }
+      if (this.cp.slides.length <= 60 && slide.elements && slide.elements.length > 0) {
+        var hasTask = slidesWithSolutions[i] && slidesWithSolutions[i].length > 0;
+        var isAnswered = !!(that.cp.previousState && that.cp.previousState.answered && that.cp.previousState.answered[i]);
 
-            $('<div>', elementOptions).appendTo($progressbarPart);
-          }
+        if (hasTask) {
+          // Add task indicator
+          $('<div>', {
+            'class': 'h5p-progressbar-part-has-task'
+          }).appendTo($link);
+
+          this.setTaskAnswered(i, isAnswered);
         }
       }
-      that.cp.progressbarParts.push($progressbarPart);
     }
   };
 
+  /**
+   * Generate tooltip for progress bar slides
+   * @param {number} slideNumber
+   * @return {string}
+   */
+  NavigationLine.prototype.getSlideTitle = function (slideNumber) {
+    const slide = this.cp.slides[slideNumber];
+    const hasKeyWords = slide.keywords && slide.keywords.length > 0;
+
+    if (hasKeyWords) {
+      return slide.keywords[0].main;
+    }
+    else if (this.isSummarySlide(slideNumber)) {
+      return this.cp.l10n.summary;
+    }
+    else {
+      return this.cp.l10n.slide + ' ' + (slideNumber + 1);
+    }
+  };
+
+
+  /**
+   *
+   * Returns true if slide with given index is summary slide
+   *
+   * @param {number} index
+   * @return {boolean}
+   */
+  NavigationLine.prototype.isSummarySlide = function (index) {
+    return !!((this.cp.editor === undefined)
+      && (index === this.cp.slides.length - 1)
+      && this.cp.showSummarySlide)
+  };
+
+  /**
+   * Creates the progressbar popup
+   *
+   * @param {Event} event
+   * @param {jQuery} $parent
+   */
   NavigationLine.prototype.createProgressbarPopup = function (event, $parent) {
     var progressbarTitle = $parent.data('keyword');
 
@@ -376,8 +429,8 @@ const NavigationLine = (function ($) {
       .siblings().removeClass("h5p-progressbar-part-selected");
 
     if (prevSlideNumber === undefined) {
-      that.cp.progressbarParts.forEach(function (pbPart) {
-        pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-answered');
+      that.cp.progressbarParts.forEach(function (part, i) {
+        that.setTaskAnswered(i, false);
       });
       return;
     }
@@ -388,29 +441,33 @@ const NavigationLine = (function ($) {
   };
 
   /**
-   * Update progress bar task at provided slide number
-   * @param {Number} slideNumber Slide number which will be updated
+   * Returns true if a slide has an answered task
+   *
+   * @param {number} index
+   * @return {boolean}
    */
-  NavigationLine.prototype.updateProgressBarTasksAtSlideNumber = function (slideNumber) {
-    var that = this;
+  NavigationLine.prototype.slideHasAnsweredTask = function (index) {
+    const tasks = this.cp.slidesWithSolutions[index] || [];
 
-    // Updates previous slide answer.
-    var answered = true;
-    if (this.cp.slidesWithSolutions[slideNumber] !== undefined && this.cp.slidesWithSolutions[slideNumber]) {
-      this.cp.slidesWithSolutions[slideNumber].forEach(function (slideTask) {
-        if (slideTask.getAnswerGiven !== undefined) {
-          if (!slideTask.getAnswerGiven()) {
-            answered = false;
-          }
-        }
-      });
-    }
+    return tasks
+      .filter(task => task.getAnswerGiven !== undefined)
+      .some(task => task.getAnswerGiven());
+  };
 
-    if (answered) {
-      that.cp.progressbarParts[slideNumber]
-        .children('.h5p-progressbar-part-has-task')
-        .addClass('h5p-answered');
-    }
+  /**
+   * Sets a part to be answered, or un answered
+   *
+   * @param {number} index
+   * @param {boolean} isAnswered
+   */
+  NavigationLine.prototype.setTaskAnswered = function (index, isAnswered) {
+    const $part = this.cp.progressbarParts[index];
+    const $partTitle = $part.find('.h5p-progressbar-part-title');
+    const $answeredIndicator = $part.find('.h5p-progressbar-part-has-task');
+    const answeredLabel = this.cp.l10n[isAnswered ? 'containsCompleted' : 'containsNotCompleted'];
+
+    $partTitle.html(answeredLabel.replace('@slideName', this.getSlideTitle(index)));
+    $answeredIndicator.toggleClass('h5p-answered', isAnswered);
   };
 
   /**
