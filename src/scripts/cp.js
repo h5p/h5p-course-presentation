@@ -190,7 +190,7 @@ CoursePresentation.prototype.attach = function ($container) {
     }
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
-    if (!$target.is('input, textarea') && !that.editor) {
+    if (!$target.is('input, textarea, a') && !that.editor) {
       // Add focus to the wrapper so that it may capture keyboard events
       that.$wrapper.focus();
     }
@@ -1417,6 +1417,25 @@ CoursePresentation.prototype.nextSlide = function (noScroll) {
   }
 
   return this.jumpToSlide($next.index(), noScroll);
+};
+
+/**
+ * Returns true when the element is the current slide
+ *
+ * @param {number} index
+ * @return {boolean}
+ */
+CoursePresentation.prototype.isCurrentSlide = function (index) {
+  return this.$current.index() === index;
+};
+
+/**
+ * Returns the current slide index
+ *
+ * @return {number}
+ */
+CoursePresentation.prototype.getCurrentSlideIndex = function () {
+  return this.$current.index();
 };
 
 /**

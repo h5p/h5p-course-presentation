@@ -301,6 +301,12 @@
   justify-content: center;
 }
 
+.h5p-course-presentation .h5p-progressbar a:focus {
+  outline: 2px solid #79abfd;
+  outline-offset: 1px;
+  z-index: 1;
+}
+
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
   background: #0097fd;
   background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
