@@ -2,7 +2,7 @@
 
 /* Footer */
 .h5p-course-presentation .h5p-footer {
-  display: block;
+  display: flex;
   font-size: 0.75em;
   width: 100%;
   height: 6.5%;
@@ -16,7 +16,7 @@
 /* Footer buttons */
 .h5p-course-presentation .h5p-footer .h5p-footer-button {
   background: transparent;
-  border: 0px;
+  border: 0;
   color: #555;
   cursor: pointer;
 
@@ -27,23 +27,17 @@
 
 /* Footer containers */
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
-  position: absolute;
-  left: 0.25em;
-  width: 40%;
-  height: inherit;
+  flex: 2;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-right-adjusted {
-  position: absolute;
+  flex: 2;
   text-align: right;
-  right: 0.25em;
-  width: 40%;
-  height: inherit;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
+  flex: 1;
   text-align: center;
-  height: 100%;
 }
 
 /* ---------------------------- Footer slide information buttons ----------------------- */

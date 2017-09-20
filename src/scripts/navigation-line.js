@@ -262,12 +262,12 @@ const NavigationLine = (function ($) {
       'class': 'h5p-footer-left-adjusted'
     }).appendTo($footer);
 
-    var $rightFooter = $('<div/>', {
-      'class': 'h5p-footer-right-adjusted'
-    }).appendTo($footer);
-
     var $centerFooter = $('<div/>', {
       'class': 'h5p-footer-center-adjusted'
+    }).appendTo($footer);
+
+    var $rightFooter = $('<div/>', {
+      'class': 'h5p-footer-right-adjusted'
     }).appendTo($footer);
 
     // Left footer elements
