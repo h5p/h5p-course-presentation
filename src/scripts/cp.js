@@ -71,7 +71,8 @@ let CoursePresentation = function (params, id, extras) {
     printCurrentSlide: 'Print current slide',
     noTitle: 'No title',
     containsNotCompleted: '@slideName contains not completed interaction',
-    containsCompleted: '@slideName contains completed interaction'
+    containsCompleted: '@slideName contains completed interaction',
+    slideCount: 'Slide @index of @total'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {

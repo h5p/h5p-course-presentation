@@ -60,20 +60,17 @@
   content: "\f0da";
 }
 
-/* Current slide */
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current {
+/* Slide counter */
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count,
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current,
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter,
+.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
   display: inline-block;
 }
 
 /* Slide delimiter */
 .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter {
-  display: inline-block;
-  padding: 0em 0.5em;
-}
-
-/* Max slides */
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
-  display: inline-block;
+  padding: 0 0.5em;
 }
 
 /* ---------------------------------------------- Solution Mode ---------------------------------- */
@@ -221,7 +218,7 @@
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
 
-  box-shadow: 0 0 0.5em 0em rgba(105, 105, 105, 0.4);
+  box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {

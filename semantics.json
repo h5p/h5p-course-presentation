@@ -655,6 +655,13 @@
         "label": "Label for completed interactions",
         "importance": "low",
         "default": "@slideName contains completed interaction"
+      },
+      {
+        "name": "slideCount",
+        "type": "text",
+        "label": "Label for slide counter. Variables are @index, @total",
+        "importance": "low",
+        "default": "Slide @index of @total"
       }
     ]
   },

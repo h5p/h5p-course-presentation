@@ -317,6 +317,10 @@
         {
           "label": "Label for completed interactions",
           "default": "@slideName contains completed interaction"
+        },
+        {
+          "label": "Label for slide counter. Variables are @index, @total",
+          "default": "Slide @index of @total"
         }
       ]
     },

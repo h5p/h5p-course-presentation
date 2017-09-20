@@ -326,25 +326,39 @@ const NavigationLine = (function ($) {
       $(this).focus();
     }).appendTo($centerFooter);
 
+    const $slideNumbering = $('<div/>', {
+      'class': 'h5p-footer-slide-count'
+    }).appendTo($centerFooter);
+
     // Current slide count
     this.cp.$footerCurrentSlide = $('<div/>', {
       'html': '1',
       'class': 'h5p-footer-slide-count-current',
-      'title': this.cp.l10n.currentSlide
+      'title': this.cp.l10n.currentSlide,
+      'aria-hidden': 'true'
+    }).appendTo($slideNumbering);
+
+    this.cp.$footerCounter = $('<div/>', {
+      'class': 'hidden-but-read',
+      'html': this.cp.l10n.slideCount
+        .replace('@index', '1')
+        .replace('@total', this.cp.slides.length.toString())
     }).appendTo($centerFooter);
 
     // Count delimiter, content configurable in css
     $('<div/>', {
       'html': '/',
-      'class': 'h5p-footer-slide-count-delimiter'
-    }).appendTo($centerFooter);
+      'class': 'h5p-footer-slide-count-delimiter',
+      'aria-hidden': 'true'
+    }).appendTo($slideNumbering);
 
     // Max slide count
     this.cp.$footerMaxSlide = $('<div/>', {
       'html': this.cp.slides.length,
       'class': 'h5p-footer-slide-count-max',
-      'title': this.cp.l10n.lastSlide
-    }).appendTo($centerFooter);
+      'title': this.cp.l10n.lastSlide,
+      'aria-hidden': 'true'
+    }).appendTo($slideNumbering);
 
     // Next slide
     $('<div/>', {
@@ -549,10 +563,13 @@ const NavigationLine = (function ($) {
    * @param {Number} slideNumber Current slide number
    */
   NavigationLine.prototype.updateFooter = function (slideNumber) {
-
     // Update current slide number in footer
     this.cp.$footerCurrentSlide.html(slideNumber + 1);
     this.cp.$footerMaxSlide.html(this.cp.slides.length);
+
+    this.cp.$footerCounter.html(this.cp.l10n.slideCount
+      .replace('@index', (slideNumber + 1).toString())
+      .replace('@total', this.cp.slides.length.toString()));
 
     // Hide exit solution mode button on summary slide
     if (this.cp.isSolutionMode && slideNumber === this.cp.slides.length - 1) {
