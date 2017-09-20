@@ -309,11 +309,12 @@ const NavigationLine = (function ($) {
     // Center footer elements
 
     // Previous slide
-    $('<div/>', {
+    this.cp.$prevSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-previous-slide',
       'title': this.cp.l10n.prevSlide,
       'role': 'button',
-      'tabindex': '0'
+      'tabindex': '-1',
+      'aria-disabled': 'true'
     }).click(function () {
       that.cp.previousSlide();
     }).keydown(function (e) { // Trigger the click event from the keyboard
@@ -361,7 +362,7 @@ const NavigationLine = (function ($) {
     }).appendTo($slideNumbering);
 
     // Next slide
-    $('<div/>', {
+    this.cp.$nextSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-next-slide',
       'title': this.cp.l10n.nextSlide,
       'role': 'button',
@@ -578,8 +579,19 @@ const NavigationLine = (function ($) {
       this.cp.$footer.removeClass('summary-slide');
     }
 
+    this.toggleButtons(slideNumber);
+
     // Update keyword in footer
     this.updateFooterKeyword(slideNumber);
+  };
+
+  NavigationLine.prototype.toggleButtons = function (index) {
+    const lastSlideIndex = this.cp.slides.length - 1;
+
+    this.cp.$prevSlideButton.attr('aria-disabled', (index === 0).toString());
+    this.cp.$nextSlideButton.attr('aria-disabled', (index === lastSlideIndex).toString());
+    this.cp.$prevSlideButton.attr('tabindex', (index === 0) ? '-1' : '0');
+    this.cp.$nextSlideButton.attr('tabindex', (index === lastSlideIndex) ? '-1' : '0');
   };
 
   /**
