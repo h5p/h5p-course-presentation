@@ -267,6 +267,7 @@ const NavigationLine = (function ($) {
     }).appendTo($footer);
 
     var $rightFooter = $('<div/>', {
+      'role': 'toolbar',
       'class': 'h5p-footer-right-adjusted'
     }).appendTo($footer);
 
