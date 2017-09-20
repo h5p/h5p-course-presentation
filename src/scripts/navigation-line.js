@@ -79,7 +79,8 @@ const NavigationLine = (function ($) {
 
     that.cp.progressbarParts = [];
 
-    const clickProgressbar = function () {
+    const clickProgressbar = function (event) {
+      event.preventDefault();
       const index = $(this).data('slideNumber');
       that.displaySlide(index);
     };
