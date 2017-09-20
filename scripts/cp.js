@@ -1140,10 +1140,10 @@ H5P.CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst
     title = '<div class="h5p-keyword-title">' +
               this.l10n.slide + ' ' + (index + 1) +
             '</div>' +
-            '<span tabindex="0">' + titleKeyword + '</span>';
+            '<span>' + titleKeyword + '</span>';
   }
 
-  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '">' + title + '</li>';
+  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '" tabindex="0">' + title + '</li>';
 };
 
 /**
