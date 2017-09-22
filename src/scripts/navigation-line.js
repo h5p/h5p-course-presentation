@@ -1,7 +1,7 @@
 import Printer from './printer';
+import keyCode from './key-code';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
-
 /**
  * Returns a default value if provided value is undefined
  *
@@ -285,14 +285,11 @@ const NavigationLine = (function ($) {
         that.cp.toggleKeywords();
         event.stopPropagation();
       }
-    }).keydown(function (e) { // Trigger the click event from the keyboard
-      var code = e.which;
-      // 32 = Space
-      if (code === 32 || code === 13) {
-        $(this).click();
-        e.preventDefault();
+    }).keydown(function (event) { // Trigger the click event from the keyboard
+      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
+        that.cp.toggleKeywords();
+        event.preventDefault();
       }
-      $(this).focus();
     }).appendTo($leftFooter);
 
     if (this.cp.presentation.keywordListAlwaysShow || !this.cp.initKeywords) {
@@ -319,9 +316,7 @@ const NavigationLine = (function ($) {
     }).click(function () {
       that.cp.previousSlide();
     }).keydown(function (e) { // Trigger the click event from the keyboard
-      var code = e.which;
-      // 32 = Space
-      if (code === 32) {
+      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
         $(this).click();
         e.preventDefault();
       }
@@ -371,13 +366,10 @@ const NavigationLine = (function ($) {
     }).click(function () {
       that.cp.nextSlide();
     }).keydown(function (e) { // Trigger the click event from the keyboard
-      var code = e.which;
-      // 32 = Space
-      if (code === 32) {
+      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
         $(this).click();
         e.preventDefault();
       }
-      $(this).focus();
     }).appendTo($centerFooter);
 
     // *********************
@@ -396,30 +388,24 @@ const NavigationLine = (function ($) {
         that.cp.jumpToSlide(that.cp.slides.length - 1);
         event.preventDefault();
       }).keydown(function (e) { // Trigger the click event from the keyboard
-        var code = e.which;
-        // 32 = Space
-        if (code === 32) {
+        if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
           $(this).click();
           e.preventDefault();
         }
-        $(this).focus();
       }).appendTo($rightFooter);
 
-      // Print button
       if (this.cp.enablePrintButton && Printer.supported()) {
         this.cp.$printButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-print',
           'title': this.cp.l10n.printTitle,
           'role': 'button',
           'tabindex': '0'
-        }).click(function () {
-          var $h5pWrapper = $('.h5p-wrapper');
-
-          Printer.showDialog(that.cp.l10n, $h5pWrapper, function (printAllslides) {
-            Printer.print(that.cp, $h5pWrapper, printAllslides);
-          });
-        });
-        this.cp.$printButton.appendTo($rightFooter);
+        }).click(() => that.openPrintDialog())
+          .keydown(event => {
+          if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
+            that.openPrintDialog();
+          }
+        }).appendTo($rightFooter);
       }
 
       if (H5P.fullscreenSupported) {
@@ -432,13 +418,10 @@ const NavigationLine = (function ($) {
         }).click(function () {
           that.cp.toggleFullScreen();
         }).keydown(function (e) { // Trigger the click event from the keyboard
-          var code = e.which;
-          // 32 = Space
-          if (code === 32) {
+          if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
             $(this).click();
             e.preventDefault();
           }
-          $(this).focus();
         });
 
         this.cp.$fullScreenButton.appendTo($rightFooter);
@@ -450,6 +433,16 @@ const NavigationLine = (function ($) {
       'html': '',
       'class': 'h5p-footer-exit-solution-mode-text'
     }).appendTo(this.cp.$exitSolutionModeButton);
+  };
+
+
+  NavigationLine.prototype.openPrintDialog = function () {
+    const $h5pWrapper = $('.h5p-wrapper');
+    const $dialog = Printer.showDialog(this.cp.l10n, $h5pWrapper, (printAllSlides) => {
+      Printer.print(this.cp, $h5pWrapper, printAllSlides);
+    });
+
+    $dialog.children('[role="dialog"]').focus();
   };
 
   /**

@@ -1,4 +1,6 @@
 const Printer = (function ($) {
+  let nextPrinterDialogId = 0;
+
   /**
    * Printer class
    * @class Printer
@@ -84,14 +86,17 @@ const Printer = (function ($) {
    */
   Printer.showDialog = function (texts, $element, callback) {
     var self = this;
-    /*jshint multistr: true */
-    var $dialog = $('<div class="h5p-popup-dialog h5p-print-dialog">\
-                      <div class="h5p-inner">\
-                        <h2>' + texts.printTitle + '</h2>\
-                        <div class="h5p-scroll-content"></div>\
-                        <div class="h5p-close" role="button" tabindex="1" title="' + H5P.t('close') + '">\
-                      </div>\
-                    </div>')
+    const instanceId = nextPrinterDialogId++;
+    const dialogTitleId = `h5p-cp-print-dialog-${instanceId}-title`;
+    const ingressId = `h5p-cp-print-dialog-${instanceId}-ingress`;
+
+    var $dialog = $(`<div class="h5p-popup-dialog h5p-print-dialog">
+                      <div role="dialog" aria-labelledby="${dialogTitleId}" aria-describedby="${ingressId}" tabindex="-1" class="h5p-inner">
+                        <h2 id="${dialogTitleId}">${texts.printTitle}</h2>
+                        <div class="h5p-scroll-content"></div>
+                        <div class="h5p-close" role="button" tabindex="0" title="${H5P.t('close')}">
+                      </div>
+                    </div>`)
       .insertAfter($element)
       .click(function () {
         self.close();
@@ -109,6 +114,7 @@ const Printer = (function ($) {
 
     $content.append($('<div>', {
       'class': 'h5p-cp-print-ingress',
+      id: ingressId,
       html: texts.printIngress
     }));
 
@@ -146,6 +152,8 @@ const Printer = (function ($) {
     };
 
     this.open();
+
+    return $dialog;
   };
 
   return Printer;
