@@ -1792,3 +1792,35 @@ H5P.CoursePresentation.prototype.pauseMedia = function (instance) {
     H5P.error(err);
   }
 };
+
+/**
+ * Get xAPI data.
+ * Contract used by report rendering engine.
+ *
+ * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+ */
+H5P.CoursePresentation.prototype.getXAPIData = function () {
+  var xAPIEvent = this.createXAPIEventTemplate('answered');
+
+  // Extend definition
+  var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
+  H5P.jQuery.extend(definition, {
+    interactionType: 'compound',
+    type: 'http://adlnet.gov/expapi/activities/cmi.interaction'
+  });
+
+  var score = this.getScore();
+  var maxScore = this.getMaxScore();
+  xAPIEvent.setScoredResult(score, maxScore, this, true, score === maxScore);
+
+  var childrenXAPIData = this.flattenArray(this.slidesWithSolutions).map((child) => {
+    if (child.getXAPIData) {
+      return child.getXAPIData();
+    }
+  });
+
+  return {
+    statement: xAPIEvent.data.statement,
+    children: childrenXAPIData
+  }
+};
