@@ -1143,7 +1143,7 @@ H5P.CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst
             '<span>' + titleKeyword + '</span>';
   }
 
-  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '">' + title + '</li>';
+  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '" tabindex="0">' + title + '</li>';
 };
 
 /**

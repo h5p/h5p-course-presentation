@@ -207,7 +207,7 @@ H5P.CoursePresentation.NavigationLine = (function ($) {
     }).keydown(function (e) { // Trigger the click event from the keyboard
       var code = e.which;
       // 32 = Space
-      if (code === 32) {
+      if (code === 32 || code === 13) {
         $(this).click();
         e.preventDefault();
       }
