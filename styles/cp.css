@@ -438,6 +438,7 @@
 }
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-advancedtext .h5p-popup-container .h5p-popup-wrapper,
+.h5p-course-presentation .h5p-popup-overlay.h5p-link .h5p-popup-container .h5p-popup-wrapper,
 .h5p-course-presentation .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container .h5p-popup-wrapper {
   padding: 0.5em;
   overflow: auto;
@@ -880,6 +881,15 @@
 }
 
 /* Remove option for full enable full screen in Drag Question */
-.h5p-course-presentation  .h5p-dragquestion-editor .field-name-enableFullScreen {
+.h5p-course-presentation .h5p-dragquestion-editor .field-name-enableFullScreen {
   display: none;
+}
+
+.h5p-course-presentation .h5p-dialog-title:before {
+    content: " ";
+    font-family: 'H5PFontAwesome4';
+    color: #313131;
+    margin-right: 0.5em;
+    margin-left: 0.1em;
+    vertical-align: middle;
 }
