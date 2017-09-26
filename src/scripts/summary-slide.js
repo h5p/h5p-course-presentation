@@ -160,6 +160,7 @@ const SummarySlide = (function ($, JoubelUI) {
             '</span>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
+            '<p class="h5p-summary-score-bar-hidden">' + slidePercentageScore + '%' + '</p>' +
             '<div title="' + slidePercentageScore + '%" class="h5p-summary-score-meter">' +
               '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
             '</div>' +
@@ -194,6 +195,7 @@ const SummarySlide = (function ($, JoubelUI) {
       '    <tr>' +
       '     <td class="h5p-td h5p-summary-task-title">' + that.cp.l10n.total + '</td>' +
       '     <td class="h5p-td h5p-summary-score-bar">' +
+      '       <p class="h5p-summary-score-bar-hidden">' + percentScore + '%' + '</p>' +
       '       <div title="' + percentScore + '%" class="h5p-summary-score-meter">' +
       '         <span style="width: ' + percentScore + '%; opacity: ' + (percentScore / 100) + '"></span>' +
       '       </div>' +
