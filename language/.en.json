@@ -28,7 +28,6 @@
                     },
                     {
                       "label": "Button size",
-                      "default": "big",
                       "options": [
                         {
                           "label": "Small"
@@ -53,8 +52,7 @@
                         {
                           "label": "Previous slide"
                         }
-                      ],
-                      "default": "specified"
+                      ]
                     },
                     {
                       "label": "Specific slide number"
@@ -80,16 +78,7 @@
                   ]
                 }
               },
-              {
-                "field": {
-                  "fields": [
-                    {},
-                    {
-                      "field": {}
-                    }
-                  ]
-                }
-              },
+              {},
               {
                 "fields": [
                   {
@@ -98,7 +87,6 @@
                   },
                   {
                     "label": "Pick a color",
-                    "spectrum": {},
                     "default": null
                   }
                 ]
@@ -127,7 +115,6 @@
             },
             {
               "label": "Pick a color",
-              "spectrum": {},
               "default": null
             }
           ]
@@ -283,6 +270,14 @@
         {
           "label": "Label for \"Print current slide\" button",
           "default": "Print current slide"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Explanation of slide navigation for assistive technologies",
+          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
         }
       ]
     },
@@ -328,11 +323,6 @@
         },
         {
           "label": "Social Settings",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          },
           "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
           "fields": [
             {
@@ -340,11 +330,6 @@
             },
             {
               "label": "Facebook share settings",
-              "showWhen": {
-                "rules": [
-                  {}
-                ]
-              },
               "fields": [
                 {
                   "label": "Share to Facebook link",
@@ -361,11 +346,6 @@
             },
             {
               "label": "Twitter share settings",
-              "showWhen": {
-                "rules": [
-                  {}
-                ]
-              },
               "fields": [
                 {
                   "label": "Share to Twitter statement",
@@ -386,12 +366,7 @@
             },
             {
               "label": "Share to Google link",
-              "default": "@currentpageurl",
-              "showWhen": {
-                "rules": [
-                  {}
-                ]
-              }
+              "default": "@currentpageurl"
             }
           ]
         }
