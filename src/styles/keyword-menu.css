@@ -43,7 +43,7 @@
   visibility: visible;
 }
 
-.h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"] .h5p-keyword-title {
+.h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"] .h5p-keyword-subtitle {
   font-size: 0.6em;
   color: #757575;
   letter-spacing: 0.2em;

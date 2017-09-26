@@ -23,7 +23,7 @@ const $ = H5P.jQuery;
 /**
  * Returns the index stored in a elements dataset
  *
- * @param {Element} element
+ * @param {Element|EventTarget} element
  * @return {number}
  */
 const getElementsDatasetIndex = element => parseInt(element.dataset.index);
@@ -132,7 +132,9 @@ export default class KeywordMenu {
     const element = document.createElement('li');
 
     element.setAttribute('role', 'menuitem');
-    element.addEventListener('click', () => this.onMenuItemSelect(config.index));
+    element.addEventListener('click', event => {
+      this.onMenuItemSelect(getElementsDatasetIndex(event.currentTarget))
+    });
     this.applyConfigToMenuItemElement(element, config);
 
     return element;
@@ -145,7 +147,7 @@ export default class KeywordMenu {
    * @param {KeywordMenuItemConfig} config
    */
   applyConfigToMenuItemElement(element, config) {
-    element.innerHTML = `<div class="h5p-keyword-title">${config.subtitle}</div><span>${config.title}</span>`;
+    element.innerHTML = `<div class="h5p-keyword-subtitle">${config.subtitle}</div><span class="h5p-keyword-title">${config.title}</span>`;
     element.dataset.index = config.index;
   }
 
