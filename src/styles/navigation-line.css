@@ -34,6 +34,7 @@
 /* Footer containers */
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
   flex: 2;
+  text-align: left;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-right-adjusted {
@@ -110,52 +111,44 @@
 
 /* --------------------------------------------- Footer elements ---------------------------------------- */
 
-/* Footer keyword button */
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
-  display: inline-block;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
-}
-
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:before {
-  position: absolute;
+.h5p-course-presentation .h5p-footer-toggle-keywords .h5p-icon-menu:before {
   font-family: 'H5PFontIcons';
   font-size: 1.3em;
   content: "\e90b";
-  padding: 0em 0em 0em 0.25em;
+  padding: 0 0 0 0.25em;
   -webkit-font-smoothing: antialiased;
 }
 
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords:after {
+/* Footer keyword button */
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
+  display: inline-block;
+  width: auto;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title {
+  vertical-align: top;
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title:before {
   font-family: 'h5p';
   font-size: 0.6em;
   content: '\e565';
   vertical-align: top;
-  position: absolute;
   left: 3em;
   display: inline-block;
+  margin-right: 1em;
   -ms-transform: rotate(270deg);
   -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords.h5p-open:after {
+.h5p-course-presentation .h5p-footer [aria-expanded="true"].h5p-footer-toggle-keywords .current-slide-title:before {
   -ms-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-}
-
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords span {
-  vertical-align: top;
-  font-size: 0.9em;
-  margin-left: 0.5em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 90%;
-  left: 3em;
 }
 
 /* Print button and full screen button (in footer) */

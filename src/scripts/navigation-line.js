@@ -277,9 +277,11 @@ const NavigationLine = (function ($) {
     // Toggle keywords menu
     this.cp.$keywordsButton = $('<div/>', {
       'class': "h5p-footer-button h5p-footer-toggle-keywords",
+      'aria-expanded': 'false',
       'title': this.cp.l10n.showKeywords,
       'role': 'button',
-      'tabindex': '0'
+      'tabindex': '0',
+      'html': '<span class="h5p-icon-menu"></span><span class="current-slide-title"></span>'
     }).click(function (event) {
       if (!that.cp.presentation.keywordListAlwaysShow) {
         that.cp.toggleKeywords();
@@ -613,7 +615,9 @@ const NavigationLine = (function ($) {
     }
 
     // Set footer keyword
-    this.cp.$keywordsButton.html('<span>' + keywordString + '</span>');
+    this.cp.$keywordsButton
+      .children('.current-slide-title')
+      .html(keywordString);
   };
 
   return NavigationLine;

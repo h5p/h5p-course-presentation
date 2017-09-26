@@ -2,6 +2,10 @@ import GoToSlide from './go-to-slide';
 import SummarySlide from './summary-slide';
 import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
+import KeywordsMenu from './keyword-menu';
+import keyCode from './key-code';
+
+const $ = H5P.jQuery;
 
 /**
  * Constructor.
@@ -95,6 +99,11 @@ let CoursePresentation = function (params, id, extras) {
       this.googleShareUrl = params.override.social.googleShareUrl;
     }
   }
+
+  this.keywordMenu = new KeywordsMenu({
+    l10n : this.l10n,
+    isiPad: CoursePresentation.isiPad
+  });
 
   // Set override for all actions
   this.setElementsOverride(params.override);
@@ -232,7 +241,7 @@ CoursePresentation.prototype.attach = function ($container) {
   this.isSolutionMode = false;
 
   // Create slides and retrieve keyword title details
-  var keywords = this.createSlides(this.slides);
+  this.createSlides(this.slides);
 
   // We have always attached all elements on current slide
   this.elementsAttached[this.currentSlideIndex] = true;
@@ -261,20 +270,22 @@ CoursePresentation.prototype.attach = function ($container) {
 
     $summarySlide = H5P.jQuery(CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
-
-    if (this.initKeywords) {
-      keywords.html += this.createKeywordHtml(summarySlideParams.keywords, false, this.slides.length - 1);
-    }
   }
 
-  if (!keywords.exist && this.editor === undefined) {
-    // Do not show keywords pane if it's empty and there's no editor!
-    this.initKeywords = false;
-  }
+  const keywordMenuConfig = this.keywordMenuConfig = this.getKeywordMenuConfig();
 
-  if (this.initKeywords) {
+  // Do not show keywords pane if it's empty and there's no editor!
+  if (keywordMenuConfig.length > 0 || this.editor !== undefined) {
     // Initialize keyword titles
-    this.initKeywordsList(keywords.html);
+    this.keywordMenu.init(keywordMenuConfig);
+    this.keywordMenu.on('select', event => this.keywordClick(event.data.index));
+    this.keywordMenu.on('close', event => this.hideKeywords());
+
+    this.$keywords = $(this.keywordMenu.getElement()).appendTo(this.$keywordsWrapper);
+    this.$currentKeyword = this.$keywords.children('.h5p-current');
+
+    this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
+
     if (this.presentation.keywordListAlwaysShow) {
       this.showKeywords();
     }
@@ -309,7 +320,7 @@ CoursePresentation.prototype.attach = function ($container) {
           },
           keypress: function (event) {
             // Buttons must respond to space bar
-            if (event.which === 32) {
+            if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
               that.toggleFullScreen();
             }
           }
@@ -327,19 +338,58 @@ CoursePresentation.prototype.attach = function ($container) {
 };
 
 /**
- * Create slides + keyword titles.
+ * Creates a keyword menu config based on the slides parameters
+ *
+ * @return {KeywordMenuItemConfig[]}
+ */
+CoursePresentation.prototype.getKeywordMenuConfig = function () {
+  return this.slides
+    .map((slide, index) => ({
+        title: this.createSlideTitle(slide),
+        subtitle: `${this.l10n.slide} ${index + 1}`,
+        index
+      })
+    )
+    .filter(config => config.title !== null);
+};
+
+/**
+ * Returns the slide title, or "No title" if inside editor without title
+ *
+ * @return {string|null}
+ */
+CoursePresentation.prototype.createSlideTitle = function (slide) {
+  const fallbackTitleForEditor = this.isEditor() ? this.l10n.noTitle : null;
+  return this.hasKeywords(slide) ? slide.keywords[0].main : fallbackTitleForEditor;
+};
+
+/**
+ * Returns true if inside the editor
+ *
+ * @return {boolean}
+ */
+CoursePresentation.prototype.isEditor = function () {
+  return this.editor !== undefined;
+};
+
+/**
+ * Returns true if a slide has keywords
+ *
+ * @param {object} slide
+ * @return {boolean}
+ */
+CoursePresentation.prototype.hasKeywords = function (slide) {
+  return slide.keywords !== undefined && slide.keywords.length > 0;
+};
+
+
+/**
+ * Create slides
  * Slides are directly attached to the slides wrapper.
- * Keywords details are returned for further processing.
  *
  * @param {Array} slidesParams
- * @returns {object} keyword details used for further processing
  */
 CoursePresentation.prototype.createSlides = function (slidesParams) {
-  var keywords = {
-    html: '',
-    exist: false
-  };
-
   for (var i = 0; i < slidesParams.length; i++) {
     var slideParams = slidesParams[i];
 
@@ -354,16 +404,7 @@ CoursePresentation.prototype.createSlides = function (slidesParams) {
 
     // Add elements to slide
     this.addElements(slideParams, $slide, i);
-
-    if (!keywords.exist && slideParams.keywords !== undefined && slideParams.keywords.length) {
-      keywords.exist = true;
-    }
-    if (this.initKeywords) {
-      keywords.html += this.createKeywordHtml(slideParams.keywords, isFirst, i);
-    }
   }
-
-  return keywords;
 };
 
 /**
@@ -459,15 +500,8 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
  * Toggle keywords list on/off depending on current state
  */
 CoursePresentation.prototype.toggleKeywords = function () {
-  // Check state of keywords
-  if (this.$keywordsWrapper.hasClass('h5p-open')) {
-    // Already open, remove keywords
-    this.hideKeywords();
-  }
-  else {
-    // Open keywords
-    this.showKeywords();
-  }
+  const keywordsAreShowing = this.$keywordsWrapper.hasClass('h5p-open');
+  this[keywordsAreShowing ? 'hideKeywords' : 'showKeywords']();
 };
 
 /**
@@ -476,8 +510,10 @@ CoursePresentation.prototype.toggleKeywords = function () {
 CoursePresentation.prototype.hideKeywords = function () {
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.showKeywords);
+    this.$keywordsButton.attr('aria-expanded', 'false');
+    this.$keywordsButton.focus();
   }
-  this.$keywordsWrapper.add(this.$keywordsButton).removeClass('h5p-open');
+  this.$keywordsWrapper.removeClass('h5p-open');
 };
 
 /**
@@ -486,8 +522,10 @@ CoursePresentation.prototype.hideKeywords = function () {
 CoursePresentation.prototype.showKeywords = function () {
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.hideKeywords);
+    this.$keywordsButton.attr('aria-expanded', 'true');
   }
-  this.$keywordsWrapper.add(this.$keywordsButton).addClass('h5p-open');
+  this.$keywordsWrapper.addClass('h5p-open');
+  this.$keywordsWrapper.find('li[tabindex="0"]').focus();
 };
 
 /**
@@ -637,24 +675,24 @@ CoursePresentation.prototype.focus = function () {
 };
 
 /**
+ * Handles click on keyword
  *
- * @param {jQuery} $keyword
- * @returns {undefined}
+ * @param {number} index
  */
-CoursePresentation.prototype.keywordClick = function ($keyword) {
-  if ($keyword.hasClass('h5p-current')) {
-    return;
-  }
-
-  if (this.presentation.keywordListEnabled &&
-      !this.presentation.keywordListAlwaysShow &&
-      this.presentation.keywordListAutoHide &&
-      this.editor === undefined) {
+CoursePresentation.prototype.keywordClick = function (index) {
+  if (this.shouldHideKeywordsAfterSelect()) {
     // Auto-hide keywords list
     this.hideKeywords();
   }
 
-  this.jumpToSlide($keyword.index(), true);
+  this.jumpToSlide(index, true);
+};
+
+CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
+  return this.presentation.keywordListEnabled &&
+    !this.presentation.keywordListAlwaysShow &&
+    this.presentation.keywordListAutoHide &&
+    this.editor === undefined;
 };
 
 /**
@@ -1126,51 +1164,6 @@ CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
           elementInstance.showCPComments !== undefined);
 };
 
-/**
- * Generate HTML for a slide's title keyword.
- *
- * @param {Array} keywords List of keywords
- * @param {boolean} isFirst Indicates if this is the first slide
- * @returns {string} HTML
- */
-CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst, index) {
-  var title, titleKeyword = this.l10n.noTitle;
-  if (!keywords || !keywords.length) {
-    if (this.editor === undefined) {
-      title = ''; // No keywords for this slide
-    }
-  }
-  else {
-    titleKeyword = keywords[0].main;
-  }
-
-  if (title === undefined) {
-    title = '<div class="h5p-keyword-title">' +
-              this.l10n.slide + ' ' + (index + 1) +
-            '</div>' +
-            '<span>' + titleKeyword + '</span>';
-  }
-
-  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '" tabindex="0">' + title + '</li>';
-};
-
-/**
- * Initialize list of keywords
- *
- * @param {string} keywords Html string list entries for keywords
- */
-CoursePresentation.prototype.initKeywordsList = function (keywords) {
-  var that = this;
-
-  this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
-  this.$currentKeyword = this.$keywords.children('.h5p-current');
-
-  this.$keywords.children('li').click(function () {
-    that.keywordClick(H5P.jQuery(this));
-  });
-
-  this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
-};
 
 /**
  * Initialize key press events.
@@ -1553,11 +1546,10 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
 
   // Jump keywords
   if (this.$keywords !== undefined) {
-    this.$currentKeyword.removeClass('h5p-current');
-    this.$currentKeyword = this.$keywords.children(':eq(' + slideNumber + ')').addClass('h5p-current');
+    this.keywordMenu.setCurrentSlideIndex(slideNumber);
 
     if (!noScroll) {
-      this.scrollToKeywords();
+      this.keywordMenu.scrollToKeywords(slideNumber);
     }
   }
 
@@ -1589,25 +1581,6 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
-};
-
-/**
- * Scroll to current keywords.
- *
- * @returns {undefined} Nothing
- */
-CoursePresentation.prototype.scrollToKeywords = function () {
-  var $parent = this.$currentKeyword.parent();
-  var move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
-
-  if (CoursePresentation.isiPad) {
-    // scrollTop animations does not work well on ipad.
-    // TODO: Check on iPhone.
-    $parent.scrollTop(move);
-  }
-  else {
-    $parent.stop().animate({scrollTop: move}, 250);
-  }
 };
 
 /**
