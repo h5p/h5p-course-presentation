@@ -641,6 +641,13 @@
         "label": "Label for slides without a title",
         "importance": "low",
         "default": "No title"
+      },
+      {
+        "name": "accessibilitySlideNavigationExplanation",
+        "type": "text",
+        "label": "Explanation of slide navigation for assistive technologies",
+        "importance": "low",
+        "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
       }
     ]
   },

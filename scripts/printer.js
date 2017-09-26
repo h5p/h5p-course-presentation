@@ -89,7 +89,7 @@ H5P.CoursePresentation.Printer = (function ($) {
                       <div class="h5p-inner">\
                         <h2>' + texts.printTitle + '</h2>\
                         <div class="h5p-scroll-content"></div>\
-                        <div class="h5p-close" role="button" tabindex="1" title="' + H5P.t('close') + '">\
+                        <div class="h5p-close" role="button" tabindex="0" title="' + H5P.t('close') + '">\
                       </div>\
                     </div>')
       .insertAfter($element)

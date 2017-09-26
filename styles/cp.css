@@ -889,3 +889,10 @@
 .h5p-course-presentation  .h5p-dragquestion-editor .field-name-enableFullScreen {
   display: none;
 }
+
+.h5p-course-presentation .h5p-keymap-explanation {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

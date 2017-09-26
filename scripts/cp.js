@@ -66,7 +66,8 @@ H5P.CoursePresentation = function (params, id, extras) {
     printIngress: 'How would you like to print this presentation?',
     printAllSlides: 'Print all slides',
     printCurrentSlide: 'Print current slide',
-    noTitle: 'No title'
+    noTitle: 'No title',
+    accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -160,6 +161,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   }
 
   var html =
+          '<div class="h5p-keymap-explanation">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
@@ -1083,7 +1085,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
       '<div class="h5p-popup-container h5p-animate">' +
         '<div class="h5p-cp-dialog-titlebar">' +
           '<div class="h5p-dialog-title"></div>' +
-          '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
         '</div>' +
         '<div class="h5p-popup-wrapper">' + popupContent + '</div>' +
       '</div>' +
