@@ -1,425 +1,372 @@
 {
-  "semantics":[
+  "semantics": [
     {
-      "fields":[
+      "fields": [
         {
-          "field":{
-            "fields":[
+          "field": {
+            "fields": [
               {
-                "field":{
-                  "fields":[
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
                     {
-
+                      "label": "Kommentarar",
+                      "description": "Kommentarane visast når brukaren ser på fasit."
                     },
                     {
-
+                      "label": "Alltid vis kommentarer"
                     },
                     {
-
+                      "label": "Opasitet for bakgrunn"
                     },
                     {
-
+                      "label": "Vis som knapp"
                     },
                     {
-
-                    },
-                    {
-                      "label":"Kommentarar",
-                      "description":"Kommentarane visast når brukaren ser på fasit."
-                    },
-                    {
-                      "label":"Alltid vis kommentarer"
-                    },
-                    {
-                      "label":"Opasitet for bakgrunn"
-                    },
-                    {
-                      "label":"Vis som knapp"
-                    },
-                    {
-                      "label":"Button size",
-                      "default":"big",
-                      "options":[
+                      "label": "Button size",
+                      "options": [
                         {
-                          "label":"Small"
+                          "label": "Small"
                         },
                         {
-                          "label":"Big"
+                          "label": "Big"
                         }
                       ]
                     },
                     {
-                      "label":"Tittel"
+                      "label": "Tittel"
                     },
                     {
-                      "label":"Go to to",
-                      "options":[
+                      "label": "Go to to",
+                      "options": [
                         {
-                          "label":"Specific slide number"
+                          "label": "Specific slide number"
                         },
                         {
-                          "label":"Neste side"
+                          "label": "Neste side"
                         },
                         {
-                          "label":"Forrige side"
+                          "label": "Forrige side"
                         }
-                      ],
-                      "default":"specified"
+                      ]
                     },
                     {
-                      "label":"Gå til lysbilete"
+                      "label": "Gå til lysbilete"
                     },
                     {
-                      "label":"Usynlig",
-                      "description":"Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukarar med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                      "label": "Usynlig",
+                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukarar med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
                     },
                     {
-                      "label":"Metadata",
-                      "fields":[
+                      "label": "Metadata",
+                      "fields": [
                         {
-                          "label":"Tittel"
+                          "label": "Tittel"
                         },
                         {
-                          "label":"Opphavsmann"
+                          "label": "Opphavsmann"
                         },
                         {
-                          "label":"Lisens"
+                          "label": "Lisens"
                         }
                       ]
                     }
                   ]
                 }
               },
+              {},
               {
-                "field":{
-                  "fields":[
-                    {
-
-                    },
-                    {
-                      "field":{
-
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "fields":[
+                "fields": [
                   {
-                    "label":"Bilete",
-                    "description":"Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+                    "label": "Bilete",
+                    "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
                   },
                   {
-                    "label":"Velg farge",
-                    "spectrum":{
-
-                    },
-                    "default":""
+                    "label": "Velg farge",
+                    "default": ""
                   }
                 ]
               }
             ]
           }
         },
+        {},
         {
-
+          "label": "Nøkkelordsliste"
         },
         {
-          "label":"Nøkkelordsliste"
+          "label": "Vis alltid"
         },
         {
-          "label":"Vis alltid"
+          "label": "Auto skjul"
         },
         {
-          "label":"Auto skjul"
+          "label": "Opasitet"
         },
         {
-          "label":"Opasitet"
-        },
-        {
-          "fields":[
+          "fields": [
             {
-              "label":"Bilete",
-              "description":"Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+              "label": "Bilete",
+              "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
             },
             {
-              "label":"Velg farge",
-              "spectrum":{
-
-              },
-              "default":""
+              "label": "Velg farge",
+              "default": ""
             }
           ]
         }
       ]
     },
     {
-      "label":"Innstillinger for oppgave-oppførsel",
-      "fields":[
+      "label": "Innstillinger for oppgave-oppførsel",
+      "fields": [
         {
-          "label":"Oversetting for \"Lysbilete\"",
-          "default":"Lysbilete"
+          "label": "Oversetting for \"Lysbilete\"",
+          "default": "Lysbilete"
         },
         {
-          "label":"Oversetting for \"Din poengsum\"",
-          "default":"Din poengsum"
+          "label": "Oversetting for \"Din poengsum\"",
+          "default": "Din poengsum"
         },
         {
-          "label":"Oversetting for \"Topp poengsum\"",
-          "default":"Topp poengsum"
+          "label": "Oversetting for \"Topp poengsum\"",
+          "default": "Topp poengsum"
         },
         {
-          "label":"Respons på høg poengsum",
-          "default":"Gratulerer! Du fikk @percent rett!",
-          "description":"@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
+          "label": "Respons på høg poengsum",
+          "default": "Gratulerer! Du fikk @percent rett!",
+          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
         },
         {
-          "label":"Respons på ok poengsum",
-          "default":" Du fikk @percent rett!",
-          "description":"@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
+          "label": "Respons på ok poengsum",
+          "default": " Du fikk @percent rett!",
+          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
         },
         {
-          "label":"Respons på låg poengsum",
-          "default":"Du fikk @percent rett.",
-          "description":"@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
+          "label": "Respons på låg poengsum",
+          "default": "Du fikk @percent rett.",
+          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
         },
         {
-          "label":"Oversetting for \"Total\"",
-          "default":"Total"
+          "label": "Oversetting for \"Total\"",
+          "default": "Total"
         },
         {
-          "label":"Tittel på \"Vis fasit\" knappen",
-          "default":"Vis fasit"
+          "label": "Tittel på \"Vis fasit\" knappen",
+          "default": "Vis fasit"
         },
         {
-          "label":"Tekst til \"Omstart\" knappen",
-          "default":"Prøv igjen"
+          "label": "Tekst til \"Omstart\" knappen",
+          "default": "Prøv igjen"
         },
         {
-          "label":"Oversetting for \"Tittel\"",
-          "default":"Tittel"
+          "label": "Oversetting for \"Tittel\"",
+          "default": "Tittel"
         },
         {
-          "label":"Oversetting for \"Forfattar/leverandør\"",
-          "default":"Opphavsmann"
+          "label": "Oversetting for \"Forfattar/leverandør\"",
+          "default": "Opphavsmann"
         },
         {
-          "label":"Oversetting for \"Lisens\"",
-          "default":"Lisens"
+          "label": "Oversetting for \"Lisens\"",
+          "default": "Lisens"
         },
         {
-          "label":"Oversetting for \"Lisens\"",
-          "default":"Lisens"
+          "label": "Oversetting for \"Lisens\"",
+          "default": "Lisens"
         },
         {
-          "label":"Oversetting for \"Eksporter tekst\"",
-          "default":"Eksporter dokument"
+          "label": "Oversetting for \"Eksporter tekst\"",
+          "default": "Eksporter dokument"
         },
         {
-          "label":"Tekst for bruksrett-knappen",
-          "default":"Bruksrett"
+          "label": "Tekst for bruksrett-knappen",
+          "default": "Bruksrett"
         },
         {
-          "label":"Tittel for \"Skjul nøkkelordliste\"-knapp",
-          "default":"Skjul nøkkelordliste"
+          "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
+          "default": "Skjul nøkkelordliste"
         },
         {
-          "label":"Tittel for \"Vis nøkkelordliste\"-knapp",
-          "default":"Vis nøkkelordliste"
+          "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
+          "default": "Vis nøkkelordliste"
         },
         {
-          "label":"Aktiver \"Prøv igjen\"-knapp",
-          "default":"Fullskjerm"
+          "label": "Aktiver \"Prøv igjen\"-knapp",
+          "default": "Fullskjerm"
         },
         {
-          "label":"Krev inndata fra brukeren før fasit gis.",
-          "default":"Forlat fullskjerm"
+          "label": "Krev inndata fra brukeren før fasit gis.",
+          "default": "Forlat fullskjerm"
         },
         {
-          "label":"Tittel for \"Forrige side\"-knapp",
-          "default":"Forrige side"
+          "label": "Tittel for \"Forrige side\"-knapp",
+          "default": "Forrige side"
         },
         {
-          "label":"Tittel for \"Neste side\"-knapp",
-          "default":"Neste side"
+          "label": "Tittel for \"Neste side\"-knapp",
+          "default": "Neste side"
         },
         {
-          "label":"Tittel for \"Denne side\"-knapp",
-          "default":"Denne side"
+          "label": "Tittel for \"Denne side\"-knapp",
+          "default": "Denne side"
         },
         {
-          "label":"Tittel for \"Siste side\"-knapp",
-          "default":"Siste side"
+          "label": "Tittel for \"Siste side\"-knapp",
+          "default": "Siste side"
         },
         {
-          "label":"Tittel for \"Avslutt fasit modus\"-knapp",
-          "default":"Avslutt fasit modus"
+          "label": "Tittel for \"Avslutt fasit modus\"-knapp",
+          "default": "Avslutt fasit modus"
         },
         {
-          "label":"Avslutt fasit modus tekst",
-          "default":"Fasitmodus"
+          "label": "Avslutt fasit modus tekst",
+          "default": "Fasitmodus"
         },
         {
-          "label":"Tekst ved flere oppgaver på en side",
-          "default":"Flere oppgaver"
+          "label": "Tekst ved flere oppgaver på en side",
+          "default": "Flere oppgaver"
         },
         {
-          "label":"poengTekst",
-          "default":"Du klarte:"
+          "label": "poengTekst",
+          "default": "Du klarte:"
         },
         {
-          "label":"Del på Facebook tekst",
-          "default":"Del på Facebook"
+          "label": "Del på Facebook tekst",
+          "default": "Del på Facebook"
         },
         {
-          "label":"Del på Twitter tekst",
-          "default":"Del på Twitter"
+          "label": "Del på Twitter tekst",
+          "default": "Del på Twitter"
         },
         {
-          "label":"Share to Google text",
-          "default":"Share on Google+"
+          "label": "Share to Google text",
+          "default": "Share on Google+"
         },
         {
-          "label":"Tittel for \"Oppsummering\" siden",
-          "default":"Oppsummering"
+          "label": "Tittel for \"Oppsummering\" siden",
+          "default": "Oppsummering"
         },
         {
-          "label":"Tittel for kommentarikonet",
-          "default":"Vis kommentarar"
+          "label": "Tittel for kommentarikonet",
+          "default": "Vis kommentarar"
         },
         {
-          "label":"Tittel for \"Skriv ut\"-knapp",
-          "default":"Skriv ut"
+          "label": "Tittel for \"Skriv ut\"-knapp",
+          "default": "Skriv ut"
         },
         {
-          "label":"Skriv ut dialog ingress",
-          "default":"Hvordan vil du skrive ut denne presentasjonen?"
+          "label": "Skriv ut dialog ingress",
+          "default": "Hvordan vil du skrive ut denne presentasjonen?"
         },
         {
-          "label":"Tittel for \"Skriv ut alle sider\"-knapp",
-          "default":"Skriv ut alle sider"
+          "label": "Tittel for \"Skriv ut alle sider\"-knapp",
+          "default": "Skriv ut alle sider"
         },
         {
-          "label":"Tittel for \"Skriv ut nåværende side\"-knapp",
-          "default":"Skriv ut nåværende side"
+          "label": "Tittel for \"Skriv ut nåværende side\"-knapp",
+          "default": "Skriv ut nåværende side"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Explanation of slide navigation for assistive technologies",
+          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
         }
       ]
     },
     {
-      "label":"Innstillinger for oppførsel.",
-      "description":"Disse alternativene vil la deg overstyre innstillinger.",
-      "fields":[
+      "label": "Innstillinger for oppførsel.",
+      "description": "Disse alternativene vil la deg overstyre innstillinger.",
+      "fields": [
         {
-          "label":"Slå på aktiv flate",
-          "description":"Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
+          "label": "Slå på aktiv flate",
+          "description": "Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
         },
         {
-          "label":"Skjul sammendrag.",
-          "description":"Aktivering vil føre til at sammendrag siden ikke vises."
+          "label": "Skjul sammendrag.",
+          "description": "Aktivering vil føre til at sammendrag siden ikke vises."
         },
         {
-          "label":"Overstyr «Fasit»-knapp",
-          "description":"Dette valget avgjør om «Fasit»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
-          "options":[
+          "label": "Overstyr «Fasit»-knapp",
+          "description": "Dette valget avgjør om «Fasit»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "options": [
             {
-              "label":"Aktivert"
+              "label": "Aktivert"
             },
             {
-              "label":"Deaktivert"
+              "label": "Deaktivert"
             }
           ]
         },
         {
-          "label":"Overstyr «Prøv igjen»-knapp",
-          "description":"Dette valget avgjør om «Prøv igjen»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
-          "options":[
+          "label": "Overstyr «Prøv igjen»-knapp",
+          "description": "Dette valget avgjør om «Prøv igjen»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "options": [
             {
-              "label":"Aktivert"
+              "label": "Aktivert"
             },
             {
-              "label":"Deaktivert"
+              "label": "Deaktivert"
             }
           ]
         },
         {
-          "label":"Aktiver print-knapp",
-          "description":"Aktiverer print-knappen."
+          "label": "Aktiver print-knapp",
+          "description": "Aktiverer print-knappen."
         },
         {
-          "label":"Social Settings",
-          "showWhen":{
-            "rules":[
-              {
-
-              }
-            ]
-          },
-          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
-          "fields":[
+          "label": "Social Settings",
+          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields": [
             {
-              "label":"Display Facebook share icon"
+              "label": "Display Facebook share icon"
             },
             {
-              "label":"Facebook share settings",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Facebook share settings",
+              "fields": [
                 {
-                  "label":"Share to Facebook link",
-                  "default":"@currentpageurl"
+                  "label": "Share to Facebook link",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Share to Facebook quote",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @percentage on a task at @currentpageurl."
                 }
               ]
             },
             {
-              "label":"Display Twitter share icon"
+              "label": "Display Twitter share icon"
             },
             {
-              "label":"Twitter share settings",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Twitter share settings",
+              "fields": [
                 {
-                  "label":"Share to Twitter statement",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @percentage on a task at @currentpageurl."
                 },
                 {
-                  "label":"Share to Twitter link",
-                  "default":"@currentpageurl"
+                  "label": "Share to Twitter link",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Share to Twitter hashtags",
-                  "default":"h5p, course"
+                  "label": "Share to Twitter hashtags",
+                  "default": "h5p, course"
                 }
               ]
             },
             {
-              "label":"Display Google+ share icon"
+              "label": "Display Google+ share icon"
             },
             {
-              "label":"Share to Google link",
-              "default":"@currentpageurl",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              }
+              "label": "Share to Google link",
+              "default": "@currentpageurl"
             }
           ]
         }
