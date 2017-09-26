@@ -137,12 +137,6 @@
   text-decoration: underline;
 }
 
-.h5p-course-presentation .h5p-summary-score-bar-hidden {
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
-}
-
 /* ---------------------------- Social media styles ---------------------------------------------- */
 
 /* Facebook and Twitter link styling */
