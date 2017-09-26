@@ -1568,6 +1568,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   // Jump keywords
   if (this.$keywords !== undefined) {
     this.keywordMenu.setCurrentSlideIndex(slideNumber);
+    this.$currentKeyword = this.$keywords.find('.h5p-current');
 
     if (!noScroll) {
       this.keywordMenu.scrollToKeywords(slideNumber);
