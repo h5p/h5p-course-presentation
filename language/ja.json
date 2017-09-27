@@ -1,314 +1,283 @@
 {
-  "semantics":[
+  "semantics": [
     {
-      "fields":[
+      "fields": [
         {
-          "field":{
-            "fields":[
+          "field": {
+            "fields": [
               {
-                "field":{
-                  "fields":[
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
                     {
-                      
+                      "label": "コメント",
+                      "description": "このコメントは、ユーザーがすべてのスライドの推奨回答を表示したときに表示されます。"
                     },
                     {
-                      
+                      "label": "常にコメントを表示"
                     },
                     {
-                      
+                      "label": "背景の不透明度"
                     },
                     {
-                      
+                      "label": "ボタンとして表示"
                     },
                     {
-                      
-                    },
-                    {
-                      "label":"コメント",
-                      "description":"このコメントは、ユーザーがすべてのスライドの推奨回答を表示したときに表示されます。"
-                    },
-                    {
-                      "label":"常にコメントを表示"
-                    },
-                    {
-                      "label":"背景の不透明度"
-                    },
-                    {
-                      "label":"ボタンとして表示"
-                    },
-                    {
-                      "label":"Button size",
-                      "default":"big",
-                      "options":[
+                      "label": "Button size",
+                      "options": [
                         {
-                          "label":"Small"
+                          "label": "Small"
                         },
                         {
-                          "label":"Big"
+                          "label": "Big"
                         }
                       ]
                     },
                     {
-                      "label":"タイトル"
+                      "label": "タイトル"
                     },
                     {
-                      "label":"行先スライド",
-                      "description":"「指定スライド」は「指定スライド番号」を使用します。",
-                      "options":[
+                      "label": "行先スライド",
+                      "options": [
                         {
-                          "label":"指定スライド"
+                          "label": "指定スライド"
                         },
                         {
-                          "label":"次のスライド"
+                          "label": "次のスライド"
                         },
                         {
-                          "label":"前のスライド"
+                          "label": "前のスライド"
                         }
-                      ],
-                      "default":"指定済み"
+                      ]
                     },
                     {
-                      "label":"スライド番号を指定",
-                      "description":"もし「指定スライド」が「行先スライド」に選択された場合にのみ使われます。"
+                      "label": "スライド番号を指定"
                     },
                     {
-                      "label":"非表示",
-                      "description":"デフォルトのカーソル、タイトルなし、タブインデックスなし。警告：障がいのある方、 キーボードのみのユーザーはこの要素を使う際に不自由な点があります。"
+                      "label": "非表示",
+                      "description": "デフォルトのカーソル、タイトルなし、タブインデックスなし。警告：障がいのある方、 キーボードのみのユーザーはこの要素を使う際に不自由な点があります。"
                     },
                     {
-                      "label":"メタデータ",
-                      "fields":[
+                      "label": "メタデータ",
+                      "fields": [
                         {
-                          "label":"タイトル"
+                          "label": "タイトル"
                         },
                         {
-                          "label":"作者"
+                          "label": "作者"
                         },
                         {
-                          "label":"ライセンス"
+                          "label": "ライセンス"
                         }
                       ]
                     }
                   ]
                 }
               },
+              {},
               {
-                "field":{
-                  "fields":[
-                    {
-                      
-                    },
-                    {
-                      "field":{
-                        
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "fields":[
+                "fields": [
                   {
-                    "label":"画像",
-                    "description":"画像の背景は、伸びを避けるために2：1の幅と高さの比にする必要があります。高解像度の画像は、大画面でよりきれいに表示されます。"
+                    "label": "画像",
+                    "description": "画像の背景は、伸びを避けるために2：1の幅と高さの比にする必要があります。高解像度の画像は、大画面でよりきれいに表示されます。"
                   },
                   {
-                    "label":"色を選択",
-                    "spectrum":{
-                      
-                    },
-                    "default":""
+                    "label": "色を選択",
+                    "default": ""
                   }
                 ]
               }
             ]
           }
         },
+        {},
         {
-          
+          "label": "キーワードリスト"
         },
         {
-          "label":"キーワードリスト"
+          "label": "常に表示"
         },
         {
-          "label":"常に表示"
+          "label": "自動非表示"
         },
         {
-          "label":"自動非表示"
+          "label": "不透明度"
         },
         {
-          "label":"不透明度"
-        },
-        {
-          "fields":[
+          "fields": [
             {
-              "label":"画像",
-              "description":"画像の背景は、伸びを避けるために2：1の幅と高さの比にする必要があります。高解像度の画像は、大画面でよりきれいに表示されます。"
+              "label": "画像",
+              "description": "画像の背景は、伸びを避けるために2：1の幅と高さの比にする必要があります。高解像度の画像は、大画面でよりきれいに表示されます。"
             },
             {
-              "label":"色を選択",
-              "spectrum":{
-                
-              },
-              "default":""
+              "label": "色を選択",
+              "default": ""
             }
           ]
         }
       ]
     },
     {
-      "label":"ローカライズ",
-      "fields":[
+      "label": "ローカライズ",
+      "fields": [
         {
-          "label":"「スライド」の翻訳",
-          "default":"スライド"
+          "label": "「スライド」の翻訳",
+          "default": "スライド"
         },
         {
-          "label":"「あなたの得点」の翻訳",
-          "default":"あなたの得点"
+          "label": "「あなたの得点」の翻訳",
+          "default": "あなたの得点"
         },
         {
-          "label":"「最高得点」の翻訳",
-          "default":"最高得点"
+          "label": "「最高得点」の翻訳",
+          "default": "最高得点"
         },
         {
-          "label":"高得点のメッセージ",
-          "default":"おめでとうございます！ @percent の正解です !",
-          "description":"@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
+          "label": "高得点のメッセージ",
+          "default": "おめでとうございます！ @percent の正解です !",
+          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
         },
         {
-          "label":"OK得点へのメッセージ",
-          "default":"よくがんばりました ! @percent の正解です !",
-          "description":"@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
+          "label": "OK得点へのメッセージ",
+          "default": "よくがんばりました ! @percent の正解です !",
+          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
         },
         {
-          "label":"低得点へのメッセージ",
-          "default":"@percent の正解です !",
-          "description":"@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
+          "label": "低得点へのメッセージ",
+          "default": "@percent の正解です !",
+          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
         },
         {
-          "label":"「トータル」の翻訳",
-          "default":"トータル"
+          "label": "「トータル」の翻訳",
+          "default": "トータル"
         },
         {
-          "label":"「解を表示」ボタンのタイトル",
-          "default":"解を表示"
+          "label": "「解を表示」ボタンのタイトル",
+          "default": "解を表示"
         },
         {
-          "label":"リトライボタンのテキスト",
-          "default":"リトライ"
+          "label": "リトライボタンのテキスト",
+          "default": "リトライ"
         },
         {
-          "label":"「タイトル」の翻訳",
-          "default":"タイトル"
+          "label": "「タイトル」の翻訳",
+          "default": "タイトル"
         },
         {
-          "label":"「作者 / 供給者」の翻訳",
-          "default":"作者"
+          "label": "「作者 / 供給者」の翻訳",
+          "default": "作者"
         },
         {
-          "label":"「ライセンス」の翻訳",
-          "default":"ライセンス"
+          "label": "「ライセンス」の翻訳",
+          "default": "ライセンス"
         },
         {
-          "label":"「ライセンス」の翻訳",
-          "default":"ライセンス"
+          "label": "「ライセンス」の翻訳",
+          "default": "ライセンス"
         },
         {
-          "label":"テキストをエクスポート ボタンのテキスト",
-          "default":"テキストをエクスポート"
+          "label": "テキストをエクスポート ボタンのテキスト",
+          "default": "テキストをエクスポート"
         },
         {
-          "label":"\"著作権\"ボタンのテキスト",
-          "default":"著作権"
+          "label": "\"著作権\"ボタンのテキスト",
+          "default": "著作権"
         },
         {
-          "label":"キーワードリストを非表示 ボタンのタイトル",
-          "default":"キーワードリストを非表示"
+          "label": "キーワードリストを非表示 ボタンのタイトル",
+          "default": "キーワードリストを非表示"
         },
         {
-          "label":"キーワードリストを表示 ボタンのタイトル",
-          "default":"キーワードリストを表示"
+          "label": "キーワードリストを表示 ボタンのタイトル",
+          "default": "キーワードリストを表示"
         },
         {
-          "label":"フルスクリーンラベル",
-          "default":"フルスクリーン"
+          "label": "フルスクリーンラベル",
+          "default": "フルスクリーン"
         },
         {
-          "label":"フルスクリーン解除のラベル",
-          "default":"フルスクリーン解除"
+          "label": "フルスクリーン解除のラベル",
+          "default": "フルスクリーン解除"
         },
         {
-          "label":"前のスライドのラベル",
-          "default":"前のスライド"
+          "label": "前のスライドのラベル",
+          "default": "前のスライド"
         },
         {
-          "label":"次のスライドのラベル",
-          "default":"次のスライド"
+          "label": "次のスライドのラベル",
+          "default": "次のスライド"
         },
         {
-          "label":"現在のスライドのラベル",
-          "default":"現在のスライド"
+          "label": "現在のスライドのラベル",
+          "default": "現在のスライド"
         },
         {
-          "label":"最後のスライドのラベル",
-          "default":"最後のスライド"
+          "label": "最後のスライドのラベル",
+          "default": "最後のスライド"
         },
         {
-          "label":"解モードを終了のテキスト",
-          "default":"解モードを終了"
+          "label": "解モードを終了のテキスト",
+          "default": "解モードを終了"
         },
         {
-          "label":"解モードのテキスト",
-          "default":"解モード"
+          "label": "解モードのテキスト",
+          "default": "解モード"
         },
         {
-          "label":"ページ上に複数のタスクがある場合のテキスト",
-          "default":"複数のタスク"
+          "label": "ページ上に複数のタスクがある場合のテキスト",
+          "default": "複数のタスク"
         },
         {
-          "label":"得点メッセージのテキスト",
-          "default":"あなたの達成度 :"
+          "label": "得点メッセージのテキスト",
+          "default": "あなたの達成度 :"
         },
         {
-          "label":"Facebookで共有のテキスト",
-          "default":"Facebookで共有"
+          "label": "Facebookで共有のテキスト",
+          "default": "Facebookで共有"
         },
         {
-          "label":"Twitterで共有のテキスト",
-          "default":"Twitterで共有"
+          "label": "Twitterで共有のテキスト",
+          "default": "Twitterで共有"
         },
         {
-          "label":"Share to Google text",
-          "default":"Share on Google+"
+          "label": "Share to Google text",
+          "default": "Share on Google+"
         },
         {
-          "label":"サマリースライドのスライド",
-          "default":"サマリー"
+          "label": "サマリースライドのスライド",
+          "default": "サマリー"
         },
         {
-          "label":"コメントアイコンのタイトル",
-          "default":"コメントを表示"
+          "label": "コメントアイコンのタイトル",
+          "default": "コメントを表示"
         },
         {
-          "label":"印刷ボタンのタイトル",
-          "default":"印刷"
+          "label": "印刷ボタンのタイトル",
+          "default": "印刷"
         },
         {
-          "label":"印刷ダイアログを表示",
-          "default":"このプレゼンテーションをどう印刷しますか ?"
+          "label": "印刷ダイアログを表示",
+          "default": "このプレゼンテーションをどう印刷しますか ?"
         },
         {
-          "label":"すべてのスライドを印刷 ボタンのラベル",
-          "default":"すべてのスライドを印刷"
+          "label": "すべてのスライドを印刷 ボタンのラベル",
+          "default": "すべてのスライドを印刷"
         },
         {
-          "label":"現在のスライドを印刷 ボタンのラベル",
-          "default":"現在のスライドを印刷"
+          "label": "現在のスライドを印刷 ボタンのラベル",
+          "default": "現在のスライドを印刷"
         },
         {
           "label": "Label for slides without a title",
           "default": "No title"
+        },
+        {
+          "label": "Explanation of slide navigation for assistive technologies",
+          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
         },
         {
           "label": "Label for uncompleted interactions",
@@ -325,119 +294,91 @@
       ]
     },
     {
-      "label":"動作設定",
-      "description":"これらのオプションは動作設定を上書きします。",
-      "fields":[
+      "label": "動作設定",
+      "description": "これらのオプションは動作設定を上書きします。",
+      "fields": [
         {
-          "label":"アクティブサーフェイスモードをアクティベート",
-          "description":"エンドユーザーのためのナビゲーションコントロールを削除します。移動するには スライドに移動 を使用してください。"
+          "label": "アクティブサーフェイスモードをアクティベート",
+          "description": "エンドユーザーのためのナビゲーションコントロールを削除します。移動するには スライドに移動 を使用してください。"
         },
         {
-          "label":"サマリースライドを非表示",
-          "description":"サマリースライドを非表示"
+          "label": "サマリースライドを非表示",
+          "description": "サマリースライドを非表示"
         },
         {
-          "label":"「解を表示」ボタンを上書き",
-          "description":"このオプションは、すべての設問に対して「解を表示」ボタンが表示されるか、すべての設問に対して無効になるか、各設問ごとに個別に設定されるかを決定します。",
-          "options":[
+          "label": "「解を表示」ボタンを上書き",
+          "description": "このオプションは、すべての設問に対して「解を表示」ボタンが表示されるか、すべての設問に対して無効になるか、各設問ごとに個別に設定されるかを決定します。",
+          "options": [
             {
-              "label":"有効"
+              "label": "有効"
             },
             {
-              "label":"無効"
+              "label": "無効"
             }
           ]
         },
         {
-          "label":"「リトライ」ボタンを上書き",
-          "description":"このオプションは、すべての設問に対して「リトライ」ボタンが表示されるか、すべての設問に対して無効になるか、各設問ごとに個別に設定されるかを決定します。",
-          "options":[
+          "label": "「リトライ」ボタンを上書き",
+          "description": "このオプションは、すべての設問に対して「リトライ」ボタンが表示されるか、すべての設問に対して無効になるか、各設問ごとに個別に設定されるかを決定します。",
+          "options": [
             {
-              "label":"有効"
+              "label": "有効"
             },
             {
-              "label":"無効"
+              "label": "無効"
             }
           ]
         },
         {
-          "label":"印刷ボタンを有効にする",
-          "description":"印刷ボタンを有効にする"
+          "label": "印刷ボタンを有効にする",
+          "description": "印刷ボタンを有効にする"
         },
         {
-          "label":"Social Settings",
-          "showWhen":{
-            "rules":[
-              {
-                
-              }
-            ]
-          },
-          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
-          "fields":[
+          "label": "Social Settings",
+          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields": [
             {
-              "label":"Display Facebook share icon"
+              "label": "Display Facebook share icon"
             },
             {
-              "label":"Facebook share settings",
-              "showWhen":{
-                "rules":[
-                  {
-                    
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Facebook share settings",
+              "fields": [
                 {
-                  "label":"Share to Facebook link",
-                  "default":"@currentpageurl"
+                  "label": "Share to Facebook link",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Share to Facebook quote",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @percentage on a task at @currentpageurl."
                 }
               ]
             },
             {
-              "label":"Display Twitter share icon"
+              "label": "Display Twitter share icon"
             },
             {
-              "label":"Twitter share settings",
-              "showWhen":{
-                "rules":[
-                  {
-                    
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Twitter share settings",
+              "fields": [
                 {
-                  "label":"Share to Twitter statement",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @percentage on a task at @currentpageurl."
                 },
                 {
-                  "label":"Share to Twitter link",
-                  "default":"@currentpageurl"
+                  "label": "Share to Twitter link",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Share to Twitter hashtags",
-                  "default":"h5p, course"
+                  "label": "Share to Twitter hashtags",
+                  "default": "h5p, course"
                 }
               ]
             },
             {
-              "label":"Display Google+ share icon"
+              "label": "Display Google+ share icon"
             },
             {
-              "label":"Share to Google link",
-              "default":"@currentpageurl",
-              "showWhen":{
-                "rules":[
-                  {
-                    
-                  }
-                ]
-              }
+              "label": "Share to Google link",
+              "default": "@currentpageurl"
             }
           ]
         }

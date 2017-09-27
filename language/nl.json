@@ -1,312 +1,283 @@
 {
-  "semantics":[
+  "semantics": [
     {
-      "fields":[
+      "fields": [
         {
-          "field":{
-            "fields":[
+          "field": {
+            "fields": [
               {
-                "field":{
-                  "fields":[
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
                     {
-
+                      "label": "Opmerkingen",
+                      "description": "De opmerkingen worden getoond wanneer de gebruiker de voorgestelde antwoorden voor alle slides toont."
                     },
                     {
-
+                      "label": "Altijd opmerkingen tonen"
                     },
                     {
-
+                      "label": "Ondoorzichtigheid achtergrond"
                     },
                     {
-
+                      "label": "Tonen als knop"
                     },
                     {
-
-                    },
-                    {
-                      "label":"Opmerkingen",
-                      "description":"De opmerkingen worden getoond wanneer de gebruiker de voorgestelde antwoorden voor alle slides toont."
-                    },
-                    {
-                      "label":"Altijd opmerkingen tonen"
-                    },
-                    {
-                      "label":"Ondoorzichtigheid achtergrond"
-                    },
-                    {
-                      "label":"Tonen als knop"
-                    },
-                    {
-                      "label":"Button size",
-                      "default":"big",
-                      "options":[
+                      "label": "Button size",
+                      "options": [
                         {
-                          "label":"Small"
+                          "label": "Small"
                         },
                         {
-                          "label":"Big"
+                          "label": "Big"
                         }
                       ]
                     },
                     {
-                      "label":"Titel"
+                      "label": "Titel"
                     },
                     {
-                      "label":"Go to to",
-                      "options":[
+                      "label": "Go to to",
+                      "options": [
                         {
-                          "label":"Specific slide number"
+                          "label": "Specific slide number"
                         },
                         {
-                          "label":"Volgende slide"
+                          "label": "Volgende slide"
                         },
                         {
-                          "label":"Vorige slide"
+                          "label": "Vorige slide"
                         }
-                      ],
-                      "default":"specified"
+                      ]
                     },
                     {
-                      "label":"Ga naar slide"
+                      "label": "Ga naar slide"
                     },
                     {
-                      "label":"Onzichtbaar",
-                      "description":"Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
+                      "label": "Onzichtbaar",
+                      "description": "Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
                     },
                     {
-                      "label":"Metadata",
-                      "fields":[
+                      "label": "Metadata",
+                      "fields": [
                         {
-                          "label":"Titel"
+                          "label": "Titel"
                         },
                         {
-                          "label":"Auteur/Leverancier"
+                          "label": "Auteur/Leverancier"
                         },
                         {
-                          "label":"Licentie"
+                          "label": "Licentie"
                         }
                       ]
                     }
                   ]
                 }
               },
+              {},
               {
-                "field":{
-                  "fields":[
-                    {
-
-                    },
-                    {
-                      "field":{
-
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "fields":[
+                "fields": [
                   {
-                    "label":"Afbeelding",
-                    "description":"Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
+                    "label": "Afbeelding",
+                    "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
                   },
                   {
-                    "label":"Kies een kleur",
-                    "spectrum":{
-
-                    },
-                    "default":""
+                    "label": "Kies een kleur",
+                    "default": ""
                   }
                 ]
               }
             ]
           }
         },
+        {},
         {
-
+          "label": "Lijst met sleutelwoorden"
         },
         {
-          "label":"Lijst met sleutelwoorden"
+          "label": "Altijd tonen"
         },
         {
-          "label":"Altijd tonen"
+          "label": "Automatisch verbergen"
         },
         {
-          "label":"Automatisch verbergen"
+          "label": "Ondoorzichtigheid"
         },
         {
-          "label":"Ondoorzichtigheid"
-        },
-        {
-          "fields":[
+          "fields": [
             {
-              "label":"Afbeelding",
-              "description":"Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
+              "label": "Afbeelding",
+              "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
             },
             {
-              "label":"Kies een kleur",
-              "spectrum":{
-
-              },
-              "default":""
+              "label": "Kies een kleur",
+              "default": ""
             }
           ]
         }
       ]
     },
     {
-      "label":"Localiseren",
-      "fields":[
+      "label": "Localiseren",
+      "fields": [
         {
-          "label":"Vertaling voor \"Slide\"",
-          "default":"Slide"
+          "label": "Vertaling voor \"Slide\"",
+          "default": "Slide"
         },
         {
-          "label":"Vertaling voor \"Jouw score\"",
-          "default":"Jouw score"
+          "label": "Vertaling voor \"Jouw score\"",
+          "default": "Jouw score"
         },
         {
-          "label":"Vertaling voor \"Maximale score\"",
-          "default":"Max score"
+          "label": "Vertaling voor \"Maximale score\"",
+          "default": "Max score"
         },
         {
-          "label":"Melding voor een GOEDE score",
-          "default":"Gefeliciteerd! Je hebt @percent correct!",
-          "description":"@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
+          "label": "Melding voor een GOEDE score",
+          "default": "Gefeliciteerd! Je hebt @percent correct!",
+          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "label":"Melding voor een REDELIJKE score",
-          "default":" Goed gedaan! Je hebt @percent correct!",
-          "description":"@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
+          "label": "Melding voor een REDELIJKE score",
+          "default": " Goed gedaan! Je hebt @percent correct!",
+          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "label":"Melding voor een SLECHTE score",
-          "default":"Je hebt @percent correct.",
-          "description":"@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
+          "label": "Melding voor een SLECHTE score",
+          "default": "Je hebt @percent correct.",
+          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "label":"Vertaling voor \"Totaal\"",
-          "default":"Totaal"
+          "label": "Vertaling voor \"Totaal\"",
+          "default": "Totaal"
         },
         {
-          "label":"Tekst voor \"Toon oplossing\"-knop",
-          "default":"Toon oplossing"
+          "label": "Tekst voor \"Toon oplossing\"-knop",
+          "default": "Toon oplossing"
         },
         {
-          "label":"Tekst voor de knop Opnieuw",
-          "default":"Opnieuw proberen"
+          "label": "Tekst voor de knop Opnieuw",
+          "default": "Opnieuw proberen"
         },
         {
-          "label":"Vertaling voor \"Titel\"",
-          "default":"Titel"
+          "label": "Vertaling voor \"Titel\"",
+          "default": "Titel"
         },
         {
-          "label":"Vertaling voor \"Auteur/Leverancier\"",
-          "default":"Auteur"
+          "label": "Vertaling voor \"Auteur/Leverancier\"",
+          "default": "Auteur"
         },
         {
-          "label":"Vertaling voor \"Licentie\"",
-          "default":"Licentie"
+          "label": "Vertaling voor \"Licentie\"",
+          "default": "Licentie"
         },
         {
-          "label":"Vertaling voor \"Licentie\"",
-          "default":"Licentie"
+          "label": "Vertaling voor \"Licentie\"",
+          "default": "Licentie"
         },
         {
-          "label":"Vertaling voor \"Exporteer tekst\"",
-          "default":"Exporteer tekst"
+          "label": "Vertaling voor \"Exporteer tekst\"",
+          "default": "Exporteer tekst"
         },
         {
-          "label":"Tekst voor Gebruiksrechten-knop",
-          "default":"Gebruiksrechten"
+          "label": "Tekst voor Gebruiksrechten-knop",
+          "default": "Gebruiksrechten"
         },
         {
-          "label":"Titel voor \"Verberg sleutelwoordenlijst\"-knop",
-          "default":"Verberg sleutelwoordenlijst"
+          "label": "Titel voor \"Verberg sleutelwoordenlijst\"-knop",
+          "default": "Verberg sleutelwoordenlijst"
         },
         {
-          "label":"Titel voor \"Toon sleutelwoordenlijst\"-knop",
-          "default":"Toon sleutelwoordenlijst"
+          "label": "Titel voor \"Toon sleutelwoordenlijst\"-knop",
+          "default": "Toon sleutelwoordenlijst"
         },
         {
-          "label":"Titel voor \"Volledig scherm\"-knop",
-          "default":"Volledig scherm"
+          "label": "Titel voor \"Volledig scherm\"-knop",
+          "default": "Volledig scherm"
         },
         {
-          "label":"Titel voor \"Volledig scherm afsluiten\"-knop",
-          "default":"Volledig scherm afsluiten"
+          "label": "Titel voor \"Volledig scherm afsluiten\"-knop",
+          "default": "Volledig scherm afsluiten"
         },
         {
-          "label":"Titel voor \"Vorige slide\"-knop",
-          "default":"Vorige slide"
+          "label": "Titel voor \"Vorige slide\"-knop",
+          "default": "Vorige slide"
         },
         {
-          "label":"Titel voor \"Volgende slide\"-knop",
-          "default":"Volgende slide"
+          "label": "Titel voor \"Volgende slide\"-knop",
+          "default": "Volgende slide"
         },
         {
-          "label":"Titel voor \"Huidige slide\"-knop",
-          "default":"Huidige slide"
+          "label": "Titel voor \"Huidige slide\"-knop",
+          "default": "Huidige slide"
         },
         {
-          "label":"Titel voor \"Laatste slide\"-knop",
-          "default":"Laatste slide"
+          "label": "Titel voor \"Laatste slide\"-knop",
+          "default": "Laatste slide"
         },
         {
-          "label":"Titel voor \"Oplossingsmodus afsluiten\"-knop",
-          "default":"Oplossingsmodus afsluiten"
+          "label": "Titel voor \"Oplossingsmodus afsluiten\"-knop",
+          "default": "Oplossingsmodus afsluiten"
         },
         {
-          "label":"Tekst oplossingsmodus",
-          "default":"Oplossingsmodus"
+          "label": "Tekst oplossingsmodus",
+          "default": "Oplossingsmodus"
         },
         {
-          "label":"Tekst wanneer er meerdere taken op een pagina zijn",
-          "default":"Meerdere taken"
+          "label": "Tekst wanneer er meerdere taken op een pagina zijn",
+          "default": "Meerdere taken"
         },
         {
-          "label":"Scoretekst",
-          "default":"Je hebt gescoord:"
+          "label": "Scoretekst",
+          "default": "Je hebt gescoord:"
         },
         {
-          "label":"Deel op Facebook tekst",
-          "default":"Deel op Facebook"
+          "label": "Deel op Facebook tekst",
+          "default": "Deel op Facebook"
         },
         {
-          "label":"Deel op Twitter tekst",
-          "default":"Deel op Twitter"
+          "label": "Deel op Twitter tekst",
+          "default": "Deel op Twitter"
         },
         {
-          "label":"Share to Google text",
-          "default":"Share on Google+"
+          "label": "Share to Google text",
+          "default": "Share on Google+"
         },
         {
-          "label":"Titel voor \"Samenvatting\" slide",
-          "default":"Samenvatting"
+          "label": "Titel voor \"Samenvatting\" slide",
+          "default": "Samenvatting"
         },
         {
-          "label":"Titel voor opmerkingenicoon",
-          "default":"Toon opmerkingen"
+          "label": "Titel voor opmerkingenicoon",
+          "default": "Toon opmerkingen"
         },
         {
-          "label":"Titel voor \"Afdrukken\"-knop",
-          "default":"Afdrukken"
+          "label": "Titel voor \"Afdrukken\"-knop",
+          "default": "Afdrukken"
         },
         {
-          "label":"Afdrukken dialoog ingress",
-          "default":"Hoe wil je deze presentatie afdrukken?"
+          "label": "Afdrukken dialoog ingress",
+          "default": "Hoe wil je deze presentatie afdrukken?"
         },
         {
-          "label":"Titel voor \"Druk alle slides af\"-knop",
-          "default":"Druk alle slides af"
+          "label": "Titel voor \"Druk alle slides af\"-knop",
+          "default": "Druk alle slides af"
         },
         {
-          "label":"Titel voor \"Druk huidige slide af\"-knop",
-          "default":"Druk huidige slide af"
+          "label": "Titel voor \"Druk huidige slide af\"-knop",
+          "default": "Druk huidige slide af"
         },
         {
           "label": "Label for slides without a title",
           "default": "No title"
+        },
+        {
+          "label": "Explanation of slide navigation for assistive technologies",
+          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
         },
         {
           "label": "Label for uncompleted interactions",
@@ -323,119 +294,91 @@
       ]
     },
     {
-      "label":"Gedragsinstellingen",
-      "description":"Met deze opties kun je de gedragsinstellingen overschrijven.",
-      "fields":[
+      "label": "Gedragsinstellingen",
+      "description": "Met deze opties kun je de gedragsinstellingen overschrijven.",
+      "fields": [
         {
-          "label":"Activeer Active Surface Mode",
-          "description":"Verwijdert navigatieregelaars voor de eindgebruiker. Gebruik 'Ga naar Slide' om te navigeren."
+          "label": "Activeer Active Surface Mode",
+          "description": "Verwijdert navigatieregelaars voor de eindgebruiker. Gebruik 'Ga naar Slide' om te navigeren."
         },
         {
-          "label":"Verberg samenvatting",
-          "description":"Verbergt de samenvattingsslide."
+          "label": "Verberg samenvatting",
+          "description": "Verbergt de samenvattingsslide."
         },
         {
-          "label":"\"Toon oplossing\" knop instellen",
-          "description":"Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
-          "options":[
+          "label": "\"Toon oplossing\" knop instellen",
+          "description": "Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
+          "options": [
             {
-              "label":"Ingeschakeld"
+              "label": "Ingeschakeld"
             },
             {
-              "label":"Uitgeschakeld"
+              "label": "Uitgeschakeld"
             }
           ]
         },
         {
-          "label":"\"Opnieuw proberen\" knop instellen",
-          "description":"Deze optie bepaalt of de \"Opnieuw proberen\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
-          "options":[
+          "label": "\"Opnieuw proberen\" knop instellen",
+          "description": "Deze optie bepaalt of de \"Opnieuw proberen\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
+          "options": [
             {
-              "label":"Ingeschakeld"
+              "label": "Ingeschakeld"
             },
             {
-              "label":"Uitgeschakeld"
+              "label": "Uitgeschakeld"
             }
           ]
         },
         {
-          "label":"Printknop inschakelen",
-          "description":"Schakelt printknop in"
+          "label": "Printknop inschakelen",
+          "description": "Schakelt printknop in"
         },
         {
-          "label":"Social Settings",
-          "showWhen":{
-            "rules":[
-              {
-
-              }
-            ]
-          },
-          "description":"These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
-          "fields":[
+          "label": "Social Settings",
+          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields": [
             {
-              "label":"Display Facebook share icon"
+              "label": "Display Facebook share icon"
             },
             {
-              "label":"Facebook share settings",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Facebook share settings",
+              "fields": [
                 {
-                  "label":"Share to Facebook link",
-                  "default":"@currentpageurl"
+                  "label": "Share to Facebook link",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Share to Facebook quote",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @percentage on a task at @currentpageurl."
                 }
               ]
             },
             {
-              "label":"Display Twitter share icon"
+              "label": "Display Twitter share icon"
             },
             {
-              "label":"Twitter share settings",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Twitter share settings",
+              "fields": [
                 {
-                  "label":"Share to Twitter statement",
-                  "default":"I scored @percentage on a task at @currentpageurl."
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @percentage on a task at @currentpageurl."
                 },
                 {
-                  "label":"Share to Twitter link",
-                  "default":"@currentpageurl"
+                  "label": "Share to Twitter link",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Share to Twitter hashtags",
-                  "default":"h5p, course"
+                  "label": "Share to Twitter hashtags",
+                  "default": "h5p, course"
                 }
               ]
             },
             {
-              "label":"Display Google+ share icon"
+              "label": "Display Google+ share icon"
             },
             {
-              "label":"Share to Google link",
-              "default":"@currentpageurl",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              }
+              "label": "Share to Google link",
+              "default": "@currentpageurl"
             }
           ]
         }

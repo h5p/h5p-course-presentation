@@ -13,7 +13,7 @@ const GoToSlide = (function ($) {
     var self = this;
 
     var classes = 'h5p-press-to-go';
-    var tabindex = 1;
+    var tabindex = 0;
     // Set default value.
     if (goToSlideType === undefined) {
       goToSlideType = 'specified';

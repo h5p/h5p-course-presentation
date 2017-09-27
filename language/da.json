@@ -1,427 +1,375 @@
 {
-  "semantics":[
+  "semantics": [
     {
-      "fields":[
+      "fields": [
         {
-          "field":{
-            "fields":[
+          "field": {
+            "fields": [
               {
-                "field":{
-                  "fields":[
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
                     {
-
+                      "label": "Kommentarer",
+                      "description": "Kommentarer vises når brugeren får vist forslåede svar på alle slides."
                     },
                     {
-
+                      "label": "Vis altid kommentarer"
                     },
                     {
-
+                      "label": "Gennemsigtighed baggrund"
                     },
                     {
-
+                      "label": "Vis som knap"
                     },
                     {
-
-                    },
-                    {
-                      "label":"Kommentarer",
-                      "description":"Kommentarer vises når brugeren får vist forslåede svar på alle slides."
-                    },
-                    {
-                      "label":"Vis altid kommentarer"
-                    },
-                    {
-                      "label":"Gennemsigtighed baggrund"
-                    },
-                    {
-                      "label":"Vis som knap"
-                    },
-                    {
-                      "label":"Størrelse knap",
-                      "default":"big",
-                      "options":[
+                      "label": "Størrelse knap",
+                      "options": [
                         {
-                          "label":"Lille"
+                          "label": "Lille"
                         },
                         {
-                          "label":"Stor"
+                          "label": "Stor"
                         }
                       ]
                     },
                     {
-                      "label":"Titel"
+                      "label": "Titel"
                     },
                     {
-                      "label":"valg af slide der vises",
+                      "label": "valg af slide der vises",
                       "description":"'Specifikt slide' vil bruge the 'Specifike slide nummer'.",
-                      "options":[
+                      "options": [
                         {
-                          "label":"Specifikt slide"
+                          "label": "Specifikt slide"
                         },
                         {
-                          "label":"Næste slide"
+                          "label": "Næste slide"
                         },
                         {
-                          "label":"Forrige slide"
+                          "label": "Forrige slide"
                         }
                       ],
                       "default":"specifikt"
                     },
                     {
-                      "label":"Specifikt slide nummer",
+                      "label": "Specifikt slide nummer",
                       "description":"Anvendes kun vis 'specifikt slide' er valgt til 'Valg af slide der vises'"
                     },
                     {
-                      "label":"Usynlig",
-                      "description":"Default cursor, ingen titel eller index. Advarsel: Brugere der alene anvender keyboard vil vanskeligt kunne anvende denne funktion."
+                      "label": "Usynlig",
+                      "description": "Default cursor, ingen titel eller index. Advarsel: Brugere der alene anvender keyboard vil vanskeligt kunne anvende denne funktion."
                     },
                     {
-                      "label":"Metadata",
-                      "fields":[
+                      "label": "Metadata",
+                      "fields": [
                         {
-                          "label":"Titel"
+                          "label": "Titel"
                         },
                         {
-                          "label":"Forfatter"
+                          "label": "Forfatter"
                         },
                         {
-                          "label":"Licens"
+                          "label": "Licens"
                         }
                       ]
                     }
                   ]
                 }
               },
+              {},
               {
-                "field":{
-                  "fields":[
-                    {
-
-                    },
-                    {
-                      "field":{
-
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "fields":[
+                "fields": [
                   {
-                    "label":"Billede",
-                    "description":"Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
+                    "label": "Billede",
+                    "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
                   },
                   {
-                    "label":"Valg af farve",
-                    "spectrum":{
-
-                    },
-                    "default":""
+                    "label": "Valg af farve",
+                    "default": ""
                   }
                 ]
               }
             ]
           }
         },
+        {},
         {
-
+          "label": "Liste nøgleord"
         },
         {
-          "label":"Liste nøgleord"
+          "label": "Vis altid"
         },
         {
-          "label":"Vis altid"
+          "label": "Skjul automatisk"
         },
         {
-          "label":"Skjul automatisk"
+          "label": "Gennemsigtighed"
         },
         {
-          "label":"Gennemsigtighed"
-        },
-        {
-          "fields":[
+          "fields": [
             {
-              "label":"Billede",
-              "description":"Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
+              "label": "Billede",
+              "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
             },
             {
-              "label":"Valg af farve",
-              "spectrum":{
-
-              },
-              "default":""
+              "label": "Valg af farve",
+              "default": ""
             }
           ]
         }
       ]
     },
     {
-      "label":"Lokalisere",
-      "fields":[
+      "label": "Lokalisere",
+      "fields": [
         {
-          "label":"Oversættelse for \"Slide\"",
-          "default":"Slide"
+          "label": "Oversættelse for \"Slide\"",
+          "default": "Slide"
         },
         {
-          "label":"Oversættelse for \"Dit resultat\"",
-          "default":"Dit resultat"
+          "label": "Oversættelse for \"Dit resultat\"",
+          "default": "Dit resultat"
         },
         {
-          "label":"OVersættelse for \"Højeste score\"",
-          "default":"Højeste Score"
+          "label": "OVersættelse for \"Højeste score\"",
+          "default": "Højeste Score"
         },
         {
-          "label":"Feedback for GOD score",
-          "default":"Tillykke! Du har @percent rigtigt!",
-          "description":"@procent ændres til brugerens opnåede resultat i procent"
+          "label": "Feedback for GOD score",
+          "default": "Tillykke! Du har @percent rigtigt!",
+          "description": "@procent ændres til brugerens opnåede resultat i procent"
         },
         {
-          "label":"Feedback for OK score",
-          "default":"Fin indsats! Du har @percent rigtigt!",
-          "description":"@procent ændres til brugerens opnåede resultat i procent"
+          "label": "Feedback for OK score",
+          "default": "Fin indsats! Du har @percent rigtigt!",
+          "description": "@procent ændres til brugerens opnåede resultat i procent"
         },
         {
-          "label":"Feedback for LAV score",
-          "default":"Du har @percent rigtigt, prøv igen!.",
-          "description":"@percentage ændres til brugerens opnåede resultat i procent"
+          "label": "Feedback for LAV score",
+          "default": "Du har @percent rigtigt, prøv igen!.",
+          "description": "@percentage ændres til brugerens opnåede resultat i procent"
         },
         {
-          "label":"Oversættelse for \"Total\"",
-          "default":"TOTAL"
+          "label": "Oversættelse for \"Total\"",
+          "default": "TOTAL"
         },
         {
-          "label":"Titel vist på 'Vis svar' knap",
-          "default":"Vis svar"
+          "label": "Titel vist på 'Vis svar' knap",
+          "default": "Vis svar"
         },
         {
-          "label":"Tekst for 'prøv igen' knap",
-          "default":"Prøv igen"
+          "label": "Tekst for 'prøv igen' knap",
+          "default": "Prøv igen"
         },
         {
-          "label":"Oversættelse for \"Titel\"",
-          "default":"titel"
+          "label": "Oversættelse for \"Titel\"",
+          "default": "titel"
         },
         {
-          "label":"Oversættelse for \"Forfatter/bidrager\"",
-          "default":"Forfatter"
+          "label": "Oversættelse for \"Forfatter/bidrager\"",
+          "default": "Forfatter"
         },
         {
-          "label":"Oversættelse for \"Licens\"",
-          "default":"Licens"
+          "label": "Oversættelse for \"Licens\"",
+          "default": "Licens"
         },
         {
-          "label":"Oversættelse for \"Licens\"",
-          "default":"Licens"
+          "label": "Oversættelse for \"Licens\"",
+          "default": "Licens"
         },
         {
-          "label":"Tekst på 'eksporter som tekst' knap",
-          "default":"Eksporter som tekst"
+          "label": "Tekst på 'eksporter som tekst' knap",
+          "default": "Eksporter som tekst"
         },
         {
-          "label":"Tekst på \"Rettigheder for brug\" knap",
-          "default":"Rettigheder for brug"
+          "label": "Tekst på \"Rettigheder for brug\" knap",
+          "default": "Rettigheder for brug"
         },
         {
-          "label":"Titel på 'Skjul liste' med nøgleord knap",
-          "default":"Skjul liste med nøgleord"
+          "label": "Titel på 'Skjul liste' med nøgleord knap",
+          "default": "Skjul liste med nøgleord"
         },
         {
-          "label":"Titel på 'Vis liste med nøgleord' knap.",
-          "default":"Vis liste med nøgleord"
+          "label": "Titel på 'Vis liste med nøgleord' knap.",
+          "default": "Vis liste med nøgleord"
         },
         {
-          "label":"Fuldskærms titel",
-          "default":"Fuldskærm"
+          "label": "Fuldskærms titel",
+          "default": "Fuldskærm"
         },
         {
-          "label":"Afslut fuldskærm titel",
-          "default":"Afslut fuldskærm"
+          "label": "Afslut fuldskærm titel",
+          "default": "Afslut fuldskærm"
         },
         {
-          "label":"Forrige slide titel titel",
-          "default":"Forrige slide"
+          "label": "Forrige slide titel titel",
+          "default": "Forrige slide"
         },
         {
-          "label":"Næste slide titel",
-          "default":"Næste slide"
+          "label": "Næste slide titel",
+          "default": "Næste slide"
         },
         {
-          "label":"Aktuelt slide titel",
-          "default":"Aktuelt slide"
+          "label": "Aktuelt slide titel",
+          "default": "Aktuelt slide"
         },
         {
-          "label":"Sidste slide titel",
-          "default":"Sidste slide"
+          "label": "Sidste slide titel",
+          "default": "Sidste slide"
         },
         {
-          "label":"Afslut besvarelse tekst",
-          "default":"Afslut besvarelse"
+          "label": "Afslut besvarelse tekst",
+          "default": "Afslut besvarelse"
         },
         {
-          "label":"Svar mode tekst",
-          "default":"Svar mode"
+          "label": "Svar mode tekst",
+          "default": "Svar mode"
         },
         {
-          "label":"Tekst når siden indeholder multiple choice opgave",
-          "default":"Multiple choice opgave"
+          "label": "Tekst når siden indeholder multiple choice opgave",
+          "default": "Multiple choice opgave"
         },
         {
-          "label":"Tekst på besked med resultat",
-          "default":"Du opnåede:"
+          "label": "Tekst på besked med resultat",
+          "default": "Du opnåede:"
         },
         {
-          "label":"Del på Facebook tekst",
-          "default":"Del på Facebook"
+          "label": "Del på Facebook tekst",
+          "default": "Del på Facebook"
         },
         {
-          "label":"Del på Twitter tekst",
-          "default":"Del på Twitter"
+          "label": "Del på Twitter tekst",
+          "default": "Del på Twitter"
         },
         {
-          "label":"Del på Google tekst",
-          "default":"Del på Google+"
+          "label": "Del på Google tekst",
+          "default": "Del på Google+"
         },
         {
-          "label":"Titel på resume slide",
-          "default":"Resumé"
+          "label": "Titel på resume slide",
+          "default": "Resumé"
         },
         {
-          "label":"Titel på kommentar icon",
-          "default":"Vis kommentar"
+          "label": "Titel på kommentar icon",
+          "default": "Vis kommentar"
         },
         {
-          "label":"Titel på print knap",
-          "default":"Print"
+          "label": "Titel på print knap",
+          "default": "Print"
         },
         {
-          "label":"Indstillinger for print",
-          "default":"Hvordan vil du printe præsentation?"
+          "label": "Indstillinger for print",
+          "default": "Hvordan vil du printe præsentation?"
         },
         {
-          "label":"Tekst på \"Print alle slides\" knap",
-          "default":"Print alle slides"
+          "label": "Tekst på \"Print alle slides\" knap",
+          "default": "Print alle slides"
         },
         {
-          "label":"tekst på \"Print aktuelt slide\" knap",
-          "default":"Print aktielt slide"
+          "label": "tekst på \"Print aktuelt slide\" knap",
+          "default": "Print aktielt slide"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Explanation of slide navigation for assistive technologies",
+          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
         }
       ]
     },
     {
-      "label":"Indstillinger for handling.",
-      "description":"Disse muligheder vil overskrive indstillinger for handling.",
-      "fields":[
+      "label": "Indstillinger for handling.",
+      "description": "Disse muligheder vil overskrive indstillinger for handling.",
+      "fields": [
         {
-          "label":"Aktivér Aktiv Surface Mode",
-          "description":"Fjerner kontrol af navigation for brugeren. Brug Gå til Slide for at navigere."
+          "label": "Aktivér Aktiv Surface Mode",
+          "description": "Fjerner kontrol af navigation for brugeren. Brug Gå til Slide for at navigere."
         },
         {
-          "label":"Skjul Resumé Slide",
-          "description":"Skjul resume slide."
+          "label": "Skjul Resumé Slide",
+          "description": "Skjul resume slide."
         },
         {
-          "label":"Overskriv \"Vi svar\"-knap",
-          "description":"Dette valg afgør om \"Vis svar\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
-          "options":[
+          "label": "Overskriv \"Vi svar\"-knap",
+          "description": "Dette valg afgør om \"Vis svar\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
+          "options": [
             {
-              "label":"Aktiveret"
+              "label": "Aktiveret"
             },
             {
-              "label":"Deaktiveret"
+              "label": "Deaktiveret"
             }
           ]
         },
         {
-          "label":"Overskriv \"Prøv igen\"-knap",
-          "description":"Dette valg afgør om \"Prøv igen\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
-          "options":[
+          "label": "Overskriv \"Prøv igen\"-knap",
+          "description": "Dette valg afgør om \"Prøv igen\"-knappen skal vises på alle spørgsmål, skjules for alle eller konfigureres individuelt til hvert spørgsmål.",
+          "options": [
             {
-              "label":"Aktiveret"
+              "label": "Aktiveret"
             },
             {
-              "label":"Deaktiveret"
+              "label": "Deaktiveret"
             }
           ]
         },
         {
-          "label":"Aktivér print knap",
-          "description":"Aktiver print knap."
+          "label": "Aktivér print knap",
+          "description": "Aktiver print knap."
         },
         {
-          "label":"Sociale indstillinger",
-          "showWhen":{
-            "rules":[
-              {
-
-              }
-            ]
-          },
-          "description":"Disse indstillinger vil tillade ændringer af sociale indstillinger. Hvis ingen værdi indsættes vil dette blive generere automatisk hvis et link indsættes. Alternativt vil alle værdier blive genereret automatisk.",
-          "fields":[
+          "label": "Sociale indstillinger",
+          "description": "Disse indstillinger vil tillade ændringer af sociale indstillinger. Hvis ingen værdi indsættes vil dette blive generere automatisk hvis et link indsættes. Alternativt vil alle værdier blive genereret automatisk.",
+          "fields": [
             {
-              "label":"Vis ikon for deling på Facebook."
+              "label": "Vis ikon for deling på Facebook."
             },
             {
-              "label":"Facebook indstillinger for deling",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Facebook indstillinger for deling",
+              "fields": [
                 {
-                  "label":"Del på Facebook link",
-                  "default":"@currentpageurl"
+                  "label": "Del på Facebook link",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Del status på Facebook.",
-                  "default":"Jeg scorede @percentage i en opgave på @currentpageurl."
+                  "label": "Del status på Facebook.",
+                  "default": "Jeg scorede @percentage i en opgave på @currentpageurl."
                 }
               ]
             },
             {
-              "label":"Vis ikon for deling på Twitter."
+              "label": "Vis ikon for deling på Twitter."
             },
             {
-              "label":"Twitter indstillinger for deling.",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              },
-              "fields":[
+              "label": "Twitter indstillinger for deling.",
+              "fields": [
                 {
-                  "label":"Del status på Twitter.",
-                  "default":"Jeg scorede @percentage i en opgave på @currentpageurl."
+                  "label": "Del status på Twitter.",
+                  "default": "Jeg scorede @percentage i en opgave på @currentpageurl."
                 },
                 {
-                  "label":"Del status på Twitter.",
-                  "default":"@currentpageurl"
+                  "label": "Del status på Twitter.",
+                  "default": "@currentpageurl"
                 },
                 {
-                  "label":"Del med Twitter hashtags",
-                  "default":"h5p, øvelse"
+                  "label": "Del med Twitter hashtags",
+                  "default": "h5p, øvelse"
                 }
               ]
             },
             {
-              "label":"Vis ikon for deling på Google+."
+              "label": "Vis ikon for deling på Google+."
             },
             {
-              "label":"Del med Google link",
-              "default":"@currentpageurl",
-              "showWhen":{
-                "rules":[
-                  {
-
-                  }
-                ]
-              }
+              "label": "Del med Google link",
+              "default": "@currentpageurl"
             }
           ]
         }

@@ -80,6 +80,7 @@ let CoursePresentation = function (params, id, extras) {
     printAllSlides: 'Print all slides',
     printCurrentSlide: 'Print current slide',
     noTitle: 'No title',
+    accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected',
     containsNotCompleted: '@slideName contains not completed interaction',
     containsCompleted: '@slideName contains completed interaction',
     slideCount: 'Slide @index of @total'
@@ -181,6 +182,7 @@ CoursePresentation.prototype.attach = function ($container) {
   }
 
   var html =
+          '<div class="h5p-keymap-explanation">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
           '<div class="h5p-wrapper" tabindex="0">' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
@@ -1140,7 +1142,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, remove, classes
       '<div class="h5p-popup-container h5p-animate">' +
         '<div class="h5p-cp-dialog-titlebar">' +
           '<div class="h5p-dialog-title"></div>' +
-          '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
         '</div>' +
         '<div class="h5p-popup-wrapper">' + popupContent + '</div>' +
       '</div>' +
@@ -1256,8 +1258,11 @@ CoursePresentation.prototype.initTouchEvents = function () {
     // Set start positions
     lastX = startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
+
+    // Set classes for slide movement and remember how much they move
     prevX = -getTranslateX(that.$current.prev().addClass('h5p-touch-move'));
     nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
+
     // containerWidth = H5P.jQuery(this).width();
     // startTime = new Date().getTime();
 
