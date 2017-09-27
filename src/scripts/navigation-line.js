@@ -282,6 +282,7 @@ const NavigationLine = (function ($) {
     this.cp.$keywordsButton = $('<div/>', {
       'class': "h5p-footer-button h5p-footer-toggle-keywords",
       'aria-expanded': 'false',
+      'aria-label': this.cp.l10n.showKeywords,
       'title': this.cp.l10n.showKeywords,
       'role': 'button',
       'tabindex': '0',

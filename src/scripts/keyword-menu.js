@@ -60,6 +60,7 @@ export default class KeywordMenu {
     this.controls.on('close', () => this.eventDispatcher.trigger('close'));
 
     this.menuElement = this.createMenuElement();
+    this.currentSlideMarkerElement = this.createCurrentSlideMarkerElement();
   }
 
   /**
@@ -185,6 +186,10 @@ export default class KeywordMenu {
     elements.forEach(element => {
       const isSelected = state.currentIndex === getElementsDatasetIndex(element);
       element.classList.toggle('h5p-current', isSelected);
+
+      if (isSelected) {
+        element.appendChild(this.currentSlideMarkerElement);
+      }
     });
   }
 
@@ -217,5 +222,17 @@ export default class KeywordMenu {
    */
   getFirstElementAfter(index) {
     return this.menuItemElements.filter(element => getElementsDatasetIndex(element) >= index)[0];
+  }
+
+  /**
+   * Creates a hidden element, that will read "Current slide"
+   *
+   * @return {Element}
+   */
+  createCurrentSlideMarkerElement() {
+    const element = document.createElement('div');
+    element.classList.add('hidden-but-read');
+    element.innerHTML = this.l10n.currentSlide;
+    return element;
   }
 }

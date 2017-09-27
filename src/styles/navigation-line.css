@@ -26,6 +26,7 @@
   margin: 0.2em 0.4em;
   text-align: center;
 
+
   -webkit-transition: color 0.2s ease-in-out;
   -moz-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
@@ -123,6 +124,7 @@
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
   display: inline-block;
   width: auto;
+  padding-right: 0.4em;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title {
