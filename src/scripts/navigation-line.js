@@ -22,6 +22,7 @@ const NavigationLine = (function ($) {
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
     this.initTaskAnsweredListener();
+    this.toggleNextAndPreviousButtonDisabled(this.cp.getCurrentSlideIndex());
   }
 
   /**
@@ -165,6 +166,9 @@ const NavigationLine = (function ($) {
 
     // navigate to slide
     this.cp.jumpToSlide(index);
+
+    // toggle next and prev buttons
+    this.toggleNextAndPreviousButtonDisabled(index);
   };
 
   /**
@@ -575,13 +579,19 @@ const NavigationLine = (function ($) {
       this.cp.$footer.removeClass('summary-slide');
     }
 
-    this.toggleButtons(slideNumber);
+    this.toggleNextAndPreviousButtonDisabled(slideNumber);
 
     // Update keyword in footer
     this.updateFooterKeyword(slideNumber);
   };
 
-  NavigationLine.prototype.toggleButtons = function (index) {
+  /**
+   * Disables previous button if on the first slide,
+   * and disables the next button if on the last slide
+   *
+   * @param {number} index
+   */
+  NavigationLine.prototype.toggleNextAndPreviousButtonDisabled = function (index) {
     const lastSlideIndex = this.cp.slides.length - 1;
 
     this.cp.$prevSlideButton.attr('aria-disabled', (index === 0).toString());
