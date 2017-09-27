@@ -599,7 +599,7 @@ const NavigationLine = (function ($) {
     var keywordString = '';
     // Get current keyword
     if (this.cp.$currentKeyword !== undefined && this.cp.$currentKeyword) {
-      keywordString = this.cp.$currentKeyword.find('span').html();
+      keywordString = this.cp.$currentKeyword.find('.h5p-keyword-title').html();
     }
 
     // Summary slide keyword

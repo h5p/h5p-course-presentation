@@ -8,6 +8,11 @@ import keyCode from './key-code';
 const $ = H5P.jQuery;
 
 /**
+ * @const {string}
+ */
+const KEYWORD_TITLE_SKIP = null;
+
+/**
  * Constructor.
  *
  * @param {object} params Start paramteres.
@@ -272,7 +277,7 @@ CoursePresentation.prototype.attach = function ($container) {
     $summarySlide.addClass('h5p-summary-slide');
   }
 
-  const keywordMenuConfig = this.keywordMenuConfig = this.getKeywordMenuConfig();
+  const keywordMenuConfig = this.getKeywordMenuConfig();
 
   // Do not show keywords pane if it's empty and there's no editor!
   if (keywordMenuConfig.length > 0 || this.editor !== undefined) {
@@ -280,6 +285,9 @@ CoursePresentation.prototype.attach = function ($container) {
     this.keywordMenu.init(keywordMenuConfig);
     this.keywordMenu.on('select', event => this.keywordClick(event.data.index));
     this.keywordMenu.on('close', event => this.hideKeywords());
+    this.keywordMenu.on('select', () => {
+      this.$currentKeyword = this.$keywords.children('.h5p-current');
+    });
 
     this.$keywords = $(this.keywordMenu.getElement()).appendTo(this.$keywordsWrapper);
     this.$currentKeyword = this.$keywords.children('.h5p-current');
@@ -338,6 +346,19 @@ CoursePresentation.prototype.attach = function ($container) {
 };
 
 /**
+ * Removes old menu items, and create new ones from slides.
+ * Returns menu items as jQuery
+ *
+ * @return {jQuery}
+ */
+CoursePresentation.prototype.updateKeywordMenuFromSlides = function () {
+  this.keywordMenu.removeAllMenuItemElements();
+  const config = this.getKeywordMenuConfig();
+  return $(this.keywordMenu.init(config));
+};
+
+
+/**
  * Creates a keyword menu config based on the slides parameters
  *
  * @return {KeywordMenuItemConfig[]}
@@ -350,7 +371,7 @@ CoursePresentation.prototype.getKeywordMenuConfig = function () {
         index
       })
     )
-    .filter(config => config.title !== null);
+    .filter(config => config.title !== KEYWORD_TITLE_SKIP);
 };
 
 /**
@@ -359,7 +380,7 @@ CoursePresentation.prototype.getKeywordMenuConfig = function () {
  * @return {string|null}
  */
 CoursePresentation.prototype.createSlideTitle = function (slide) {
-  const fallbackTitleForEditor = this.isEditor() ? this.l10n.noTitle : null;
+  const fallbackTitleForEditor = this.isEditor() ? this.l10n.noTitle : KEYWORD_TITLE_SKIP;
   return this.hasKeywords(slide) ? slide.keywords[0].main : fallbackTitleForEditor;
 };
 
@@ -1547,6 +1568,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   // Jump keywords
   if (this.$keywords !== undefined) {
     this.keywordMenu.setCurrentSlideIndex(slideNumber);
+    this.$currentKeyword = this.$keywords.find('.h5p-current');
 
     if (!noScroll) {
       this.keywordMenu.scrollToKeywords(slideNumber);
