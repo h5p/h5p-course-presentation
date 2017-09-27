@@ -281,7 +281,7 @@ CoursePresentation.prototype.attach = function ($container) {
   const keywordMenuConfig = this.getKeywordMenuConfig();
 
   // Do not show keywords pane if it's empty and there's no editor!
-  if (keywordMenuConfig.length > 0 || this.editor !== undefined) {
+  if (keywordMenuConfig.length > 0 || this.isEditor()) {
     // Initialize keyword titles
     this.keywordMenu.init(keywordMenuConfig);
     this.keywordMenu.on('select', event => this.keywordClick(event.data.index));
@@ -302,6 +302,9 @@ CoursePresentation.prototype.attach = function ($container) {
   else {
     // Remove keyword titles completely
     this.$keywordsWrapper.remove();
+
+    // Do not show keywords pane if it's empty and there's no editor!
+    this.initKeywords = false;
   }
 
   if (this.editor !== undefined || !this.activeSurface) {
