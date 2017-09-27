@@ -4,6 +4,7 @@ import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
 import KeywordsMenu from './keyword-menu';
 import keyCode from './key-code';
+import { flattenArray } from './utils';
 
 const $ = H5P.jQuery;
 
@@ -452,7 +453,7 @@ CoursePresentation.prototype.hasScoreData = function (obj) {
 CoursePresentation.prototype.getScore = function (){
   var self = this;
 
-  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
     return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
   }, 0);
 };
@@ -466,23 +467,9 @@ CoursePresentation.prototype.getScore = function (){
 CoursePresentation.prototype.getMaxScore = function (){
   var self = this;
 
-  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
     return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
   }, 0);
-};
-
-/**
- * Flattens a nested array
- *
- * Example:
- * [['a'], ['b']].flatten() -> ['a', 'b']
- *
- * @private
- * @param {Array} arr A nested array
- * @returns {Array} A flattened array
- */
-CoursePresentation.prototype.flattenArray = function (arr){
-  return arr.concat.apply([], arr);
 };
 
 /**
@@ -1835,7 +1822,7 @@ CoursePresentation.prototype.getXAPIData = function () {
   var maxScore = this.getMaxScore();
   xAPIEvent.setScoredResult(score, maxScore, this, true, score === maxScore);
 
-  var childrenXAPIData = this.flattenArray(this.slidesWithSolutions).map((child) => {
+  var childrenXAPIData = flattenArray(this.slidesWithSolutions).map((child) => {
     if (child.getXAPIData) {
       return child.getXAPIData();
     }
