@@ -133,7 +133,6 @@ export default class KeywordMenu {
     const element = document.createElement('li');
 
     element.setAttribute('role', 'menuitem');
-    element.setAttribute('tabindex', 0);
     element.addEventListener('click', event => {
       this.onMenuItemSelect(getElementsDatasetIndex(event.currentTarget))
     });

@@ -43,6 +43,10 @@
   visibility: visible;
 }
 
+.h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"].h5p-editing .joubel-icon-edit {
+  visibility: hidden;
+}
+
 .h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"] .h5p-keyword-subtitle {
   font-size: 0.6em;
   color: #757575;
