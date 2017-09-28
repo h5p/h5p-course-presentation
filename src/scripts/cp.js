@@ -533,12 +533,11 @@ CoursePresentation.prototype.showKeywords = function () {
 /**
  * Change the background opacity of the keywords list.
  *
- * @param {Number} value 0 - 100
+ * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  var self = this;
-  var color = self.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
-  self.$keywordsWrapper.css('background-color', 'rgba(' + color[1] + ', ' + color[2] + ', ' + color[3] + ',' + (value / 100) + ')');
+  const [red, green, blue] = this.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
+  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
 
 /**
