@@ -157,9 +157,9 @@ const SummarySlide = (function ($, JoubelUI) {
       tds +=
         '<tr>' +
           '<td class="h5p-td h5p-summary-task-title">' +
-            '<span role="button" class="h5p-slide-link" data-slide="' +
+            '<a href="#" role="button" class="h5p-slide-link" data-slide="' +
               slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) +
-            '</span>' +
+            '</a>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
             '<p class="hidden-but-read">' + slidePercentageScore + '%' + '</p>' +
