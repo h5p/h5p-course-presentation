@@ -982,6 +982,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
   const autoPlay = element.action.params && element.action.params.cpAutoplay;
+  const label = (element.action.params && element.action.params.contentName) || '';
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
   /**
@@ -995,7 +996,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   const $button = $('<div>', {
     role: 'button',
     tabindex: 0,
-    'aria-label': '',
+    'aria-label': label,
     'aria-popup': true,
     'aria-expanded': false,
     'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
