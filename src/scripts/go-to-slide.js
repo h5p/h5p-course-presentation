@@ -1,3 +1,5 @@
+import { addClickAndKeyboardListeners } from './utils';
+
 /** @namespace H5P */
 const GoToSlide = (function ($) {
 
@@ -65,16 +67,10 @@ const GoToSlide = (function ($) {
       'class': classes,
       role: 'button',
       tabindex: tabindex,
-      title: title,
-      on: {
-        click: go,
-        keypress: function (event) {
-          if (event.which === 13) {
-            go();
-          }
-        }
-      }
+      title: title
     });
+
+    addClickAndKeyboardListeners($button, go);
 
     /**
      * Attach element to the given container.
