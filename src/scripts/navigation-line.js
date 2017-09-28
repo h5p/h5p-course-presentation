@@ -1,17 +1,8 @@
 import Printer from './printer';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
-import { keyCode, addClickAndKeyboardListeners } from './utils';
-/**
- * Returns a default value if provided value is undefined
- *
- * @param {*} value
- * @param {*} fallback
- * @return {*}
- */
-const defaultValue = function (value, fallback) {
-  return value === undefined ? fallback : value;
-};
+import { defaultValue, addClickAndKeyboardListeners } from './utils';
+
 
 /**
  * @class
