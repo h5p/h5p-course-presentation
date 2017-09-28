@@ -62,11 +62,17 @@
 
 .h5p-course-presentation .h5p-summary-task-title .h5p-slide-link {
   cursor: pointer;
+  text-decoration: none;
+}
+
+.h5p-course-presentation .h5p-summary-task-title .h5p-slide-link:visited {
+  color: #333;
 }
 
 /* Rectangular summary score meter */
 .h5p-course-presentation .h5p-summary-score-bar {
   position: relative;
+  overflow: hidden;
 }
 .h5p-course-presentation .h5p-td.h5p-summary-score-bar {
   border-top-width: 2px;
