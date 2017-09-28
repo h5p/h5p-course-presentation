@@ -61,6 +61,7 @@
 }
 
 .h5p-course-presentation .h5p-summary-task-title .h5p-slide-link {
+  color: #333;
   cursor: pointer;
   text-decoration: none;
 }
