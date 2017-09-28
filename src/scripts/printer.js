@@ -1,3 +1,5 @@
+import { addClickAndKeyboardListeners } from './utils'
+
 const Printer = (function ($) {
   let nextPrinterDialogId = 0;
 
@@ -101,14 +103,14 @@ const Printer = (function ($) {
       .click(function () {
         self.close();
       })
+      // prevent propagation inside inner
       .children('.h5p-inner')
       .click(function () {
           return false;
       })
-      .find('.h5p-close')
-      .click(function () {
-        self.close();
-      }).end().end();
+      .end();
+
+    addClickAndKeyboardListeners($dialog.find('.h5p-close'), () => self.close());
 
     var $content = $dialog.find('.h5p-scroll-content');
 

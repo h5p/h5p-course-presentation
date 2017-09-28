@@ -1,7 +1,7 @@
 import Printer from './printer';
-import keyCode from './key-code';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
+import { keyCode, addClickAndKeyboardListeners } from './utils';
 /**
  * Returns a default value if provided value is undefined
  *
@@ -287,17 +287,14 @@ const NavigationLine = (function ($) {
       'role': 'button',
       'tabindex': '0',
       'html': '<span class="h5p-icon-menu"></span><span class="current-slide-title"></span>'
-    }).click(function (event) {
+    }).appendTo($leftFooter);
+
+    addClickAndKeyboardListeners(this.cp.$keywordsButton, event => {
       if (!that.cp.presentation.keywordListAlwaysShow) {
         that.cp.toggleKeywords();
         event.stopPropagation();
       }
-    }).keydown(function (event) { // Trigger the click event from the keyboard
-      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-        that.cp.toggleKeywords();
-        event.preventDefault();
-      }
-    }).appendTo($leftFooter);
+    });
 
     if (this.cp.presentation.keywordListAlwaysShow || !this.cp.initKeywords) {
       this.cp.$keywordsButton.hide();
@@ -320,15 +317,9 @@ const NavigationLine = (function ($) {
       'role': 'button',
       'tabindex': '-1',
       'aria-disabled': 'true'
-    }).click(function () {
-      that.cp.previousSlide();
-    }).keydown(function (e) { // Trigger the click event from the keyboard
-      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-        $(this).click();
-        e.preventDefault();
-      }
-      $(this).focus();
     }).appendTo($centerFooter);
+
+    addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide());
 
     const $slideNumbering = $('<div/>', {
       'class': 'h5p-footer-slide-count'
@@ -370,14 +361,9 @@ const NavigationLine = (function ($) {
       'title': this.cp.l10n.nextSlide,
       'role': 'button',
       'tabindex': '0'
-    }).click(function () {
-      that.cp.nextSlide();
-    }).keydown(function (e) { // Trigger the click event from the keyboard
-      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-        $(this).click();
-        e.preventDefault();
-      }
     }).appendTo($centerFooter);
+
+    addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide());
 
     // *********************
     // Right footer elements
@@ -391,15 +377,9 @@ const NavigationLine = (function ($) {
         'class': 'h5p-footer-exit-solution-mode',
         'title': this.cp.l10n.solutionModeTitle,
         'tabindex': '0'
-      }).click(function (event) {
-        that.cp.jumpToSlide(that.cp.slides.length - 1);
-        event.preventDefault();
-      }).keydown(function (e) { // Trigger the click event from the keyboard
-        if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-          $(this).click();
-          e.preventDefault();
-        }
       }).appendTo($rightFooter);
+
+      addClickAndKeyboardListeners(this.cp.$exitSolutionModeButton, () => that.cp.jumpToSlide(that.cp.slides.length - 1));
 
       if (this.cp.enablePrintButton && Printer.supported()) {
         this.cp.$printButton = $('<div/>', {
@@ -407,12 +387,9 @@ const NavigationLine = (function ($) {
           'title': this.cp.l10n.printTitle,
           'role': 'button',
           'tabindex': '0'
-        }).click(() => that.openPrintDialog())
-          .keydown(event => {
-          if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-            that.openPrintDialog();
-          }
         }).appendTo($rightFooter);
+
+        addClickAndKeyboardListeners(this.cp.$printButton, () => that.openPrintDialog());
       }
 
       if (H5P.fullscreenSupported) {
@@ -422,14 +399,9 @@ const NavigationLine = (function ($) {
           'title': this.cp.l10n.fullscreen,
           'role': 'button',
           'tabindex': '0'
-        }).click(function () {
-          that.cp.toggleFullScreen();
-        }).keydown(function (e) { // Trigger the click event from the keyboard
-          if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-            $(this).click();
-            e.preventDefault();
-          }
         });
+
+        addClickAndKeyboardListeners(this.cp.$fullScreenButton, () => that.cp.toggleFullScreen());
 
         this.cp.$fullScreenButton.appendTo($rightFooter);
       }

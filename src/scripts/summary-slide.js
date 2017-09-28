@@ -1,3 +1,5 @@
+import {addClickAndKeyboardListeners} from "./utils";
+
 const SummarySlide = (function ($, JoubelUI) {
 
   /**
@@ -290,16 +292,17 @@ const SummarySlide = (function ($, JoubelUI) {
 
     // Create the new Twitter window.
     $twitterContainer.attr('tabindex', '0')
-      .attr('role', 'button')
-      .click(function () {
-        window.open(twitterString,
-          that.cp.l10n.shareTwitter,
-          'width=' + popupWidth +
-          ',height=' + popupHeight +
-          ',left=' + leftPos +
-          ',top=' + topPos);
-        return false;
-      });
+      .attr('role', 'button');
+
+    addClickAndKeyboardListeners($twitterContainer, () => {
+      window.open(twitterString,
+        that.cp.l10n.shareTwitter,
+        'width=' + popupWidth +
+        ',height=' + popupHeight +
+        ',left=' + leftPos +
+        ',top=' + topPos);
+      return false;
+    });
   };
 
   /**
@@ -338,16 +341,18 @@ const SummarySlide = (function ($, JoubelUI) {
 
     // Create the new Facebook window.
     $facebookContainer.attr('tabindex', '0')
-      .attr('role', 'button')
-      .click(function () {
-        window.open(facebookUrl,
-          that.cp.l10n.shareFacebook,
-          'width=' + popupWidth +
-          ',height=' + popupHeight +
-          ',left=' + leftPos +
-          ',top=' + topPos);
-        return false;
-      });
+      .attr('role', 'button');
+
+    addClickAndKeyboardListeners($facebookContainer, () => {
+      window.open(facebookUrl,
+        that.cp.l10n.shareFacebook,
+        'width=' + popupWidth +
+        ',height=' + popupHeight +
+        ',left=' + leftPos +
+        ',top=' + topPos);
+
+      return false;
+    })
   };
 
   /**
@@ -378,16 +383,17 @@ const SummarySlide = (function ($, JoubelUI) {
 
     // Create the new Google+ window.
     $googleContainer.attr('tabindex', '0')
-      .attr('role', 'button')
-      .click(function () {
-        window.open(googleUrl,
-          that.cp.l10n.shareGoogle,
-          'width=' + popupWidth +
-          ',height=' + popupHeight +
-          ',left=' + leftPos +
-          ',top=' + topPos);
-        return false;
-      });
+      .attr('role', 'button');
+
+    addClickAndKeyboardListeners($googleContainer, () => {
+      window.open(googleUrl,
+        that.cp.l10n.shareGoogle,
+        'width=' + popupWidth +
+        ',height=' + popupHeight +
+        ',left=' + leftPos +
+        ',top=' + topPos);
+      return false;
+    })
   };
 
   /**
