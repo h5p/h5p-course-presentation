@@ -1,5 +1,6 @@
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
+import { isIPad } from './utils';
 
 const $ = H5P.jQuery;
 
@@ -35,12 +36,9 @@ export default class KeywordMenu {
   /**
    * @constructor
    * @param {object} l10n
-   * @param {boolean} isiPad
-   * @param {boolean} shouldHideKeywords
    */
-  constructor ({ l10n, isiPad }) {
+  constructor ({ l10n }) {
     this.l10n = l10n;
-    this.isiPad = isiPad;
     /**
      * @type {KeywordMenuState}
      */
@@ -204,11 +202,11 @@ export default class KeywordMenu {
       const $menu = $(this.menuElement);
       const move = $menu.scrollTop() + $(elementToScrollTo).position().top - 8;
 
-      if (this.isiPad) {
+      if (isIPad) {
         $menu.scrollTop(move);
       }
       else {
-        $menu.stop().animate({scrollTop: move}, 250);
+        $menu.stop().animate({ scrollTop: move }, 250);
       }
     }
   }

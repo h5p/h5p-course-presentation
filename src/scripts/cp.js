@@ -108,8 +108,7 @@ let CoursePresentation = function (params, id, extras) {
   }
 
   this.keywordMenu = new KeywordsMenu({
-    l10n : this.l10n,
-    isiPad: CoursePresentation.isiPad
+    l10n : this.l10n
   });
 
   // Set override for all actions
@@ -1651,11 +1650,6 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
   this.fitCT();
   return true;
 };
-
-/**
- * @type Boolean Indicate if this is an ipad user.
- */
-CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
 
 /**
  * Create HTML for a slide.

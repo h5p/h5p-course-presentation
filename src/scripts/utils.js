@@ -24,3 +24,10 @@ export const isFunction = f => typeof f === 'function';
  * @return {string}
  */
 export const kebabCase = str => str.replace(/[\W]/g, '-');
+
+/**
+ * Is true if the users device is an ipad
+ *
+ * @const {boolean}
+ */
+export const isIPad = navigator.userAgent.match(/iPad/i) !== null;
