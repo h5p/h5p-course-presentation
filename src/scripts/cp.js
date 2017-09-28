@@ -4,7 +4,7 @@ import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
 import KeywordsMenu from './keyword-menu';
 import keyCode from './key-code';
-import { flattenArray } from './utils';
+import { flattenArray, isFunction, kebabCase } from './utils';
 
 const $ = H5P.jQuery;
 
@@ -896,8 +896,7 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @returns {jQuery}
  */
 CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
-  var that = this;
-  var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
+  const displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
   var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
   var classes = 'h5p-element' +
     (displayAsButton ? ' h5p-element-button-wrapper' : '') +
@@ -911,77 +910,19 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     height: element.height + '%'
   }).appendTo($slide);
 
-  var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
+  const isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
-  var libTypePmz = '';
+
   if (displayAsButton) {
-    var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
-    instance.attach($buttonElement);
-
-    // Parameterize library name to use as html class.
-    libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
-    var anchorClasses = 'h5p-element-button' +
-      (buttonSizeClass !== null ? ' ' + buttonSizeClass : '') +
-      ' ' + libTypePmz + '-button';
-    H5P.jQuery('<a>', {
-      href: '#',
-      'class': anchorClasses
-    }).appendTo($elementContainer)
-      .click(function () {
-        if (that.editor === undefined) {
-
-          // Handle exit fullscreen
-          var exitFullScreen = function () {
-            that.$footer.removeClass('footer-full-screen');
-            that.$fullScreenButton.attr('title', this.l10n.fullscreen);
-            instance.trigger('resize');
-          };
-
-          // Listen for exit fullscreens not triggered by button, for instance using 'esc'
-          that.on('exitFullScreen', exitFullScreen);
-
-          $buttonElement.appendTo(that.showPopup('', function () {
-            that.pauseMedia(instance);
-            $buttonElement.detach();
-
-            // Remove listener, we only need it for active popups
-            that.off('exitFullScreen', exitFullScreen);
-          }, libTypePmz).find('.h5p-popup-wrapper'));
-          H5P.trigger(instance, 'resize');
-
-          // Resize images to fit popup dialog
-          if (libTypePmz === 'h5p-image') {
-            that.resizePopupImage($buttonElement);
-          }
-          if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
-            instance.setActivityStarted();
-          }
-
-          // Autoplay media
-          if (element.action.params && element.action.params.cpAutoplay && typeof instance.play === 'function') {
-            instance.play();
-          }
-        }
-        return false;
-      });
-    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-      instance.on('controls', function () {
-        if (instance.controls.$fullscreen) {
-          instance.controls.$fullscreen.remove();
-        }
-      });
-    }
+    const $button = this.createInteractionButton(element, instance);
+    $button.appendTo($elementContainer)
   }
   else {
-    if (element.action && element.action.library) {
-      libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
-    }
-    else {
-      libTypePmz = 'other';
-    }
-    var outerElementLibrary = libTypePmz + '-outer-element';
+    const hasLibrary = element.action && element.action.library;
+    const libTypePmz = hasLibrary ? this.getLibraryTypePmz(element.action.library) : 'other';
+
     var $outerElementContainer = H5P.jQuery('<div>', {
-      'class': 'h5p-element-outer ' + outerElementLibrary
+      'class': `h5p-element-outer ${libTypePmz}-outer-element'`
     }).css({
       background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($elementContainer);
@@ -1030,6 +971,116 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 
   return $elementContainer;
 };
+
+/**
+ * Creates the interaction button
+ *
+ * @param {Object} element
+ * @param {Object} instance
+ *
+ * @return {jQuery}
+ */
+CoursePresentation.prototype.createInteractionButton = function (element, instance) {
+  const autoPlay = element.action.params && element.action.params.cpAutoplay;
+  const libTypePmz = this.getLibraryTypePmz(element.action.library);
+
+  /**
+   * Returns a function that will set [aria-expanded="false"] on the $btn element
+   *
+   * @param {jQuery} $btn
+   * @return {Function}
+   */
+  const setAriaExpandedFalse = $btn => () => $button.attr('aria-expanded', 'false');
+
+  const $button = $('<div>', {
+    role: 'button',
+    tabindex: 0,
+    'aria-label': '',
+    'aria-popup': true,
+    'aria-expanded': false,
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
+  }).click(() => {
+      $button.attr('aria-expanded', 'true');
+      this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+    })
+    .keypress(event => {
+      // Buttons must respond to space bar
+      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
+        $button.attr('aria-expanded', 'true');
+        this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+      }
+    });
+
+  if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+    instance.on('controls', function () {
+      if (instance.controls.$fullscreen) {
+        instance.controls.$fullscreen.remove();
+      }
+    });
+  }
+
+  return $button;
+};
+
+/**
+ * Shows the interaction popup on button press
+ *
+ * @param {object} instance
+ * @param {string} libTypePmz
+ * @param {boolean} autoPlay
+ * @param {function} closeCallback
+ */
+CoursePresentation.prototype.showInteractionPopup = function (instance, libTypePmz, autoPlay, closeCallback) {
+  const $buttonElement = $('<div class="h5p-button-element"></div>');
+
+  instance.attach($buttonElement);
+
+  // Handle exit fullscreen
+  const exitFullScreen = () => {
+    this.$footer.removeClass('footer-full-screen');
+    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
+    instance.trigger('resize');
+  };
+
+  if (!this.isEditor()) {
+    // Listen for exit fullscreens not triggered by button, for instance using 'esc'
+    this.on('exitFullScreen', exitFullScreen);
+
+    $buttonElement.appendTo(this.showPopup('', () => {
+      this.pauseMedia(instance);
+      $buttonElement.detach();
+
+      // Remove listener, we only need it for active popups
+      this.off('exitFullScreen', exitFullScreen);
+      closeCallback();
+    }, libTypePmz).find('.h5p-popup-wrapper'));
+
+    H5P.trigger(instance, 'resize');
+
+    // Resize images to fit popup dialog
+    if (libTypePmz === 'h5p-image') {
+      this.resizePopupImage($buttonElement);
+    }
+
+    // start activity
+    if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
+      instance.setActivityStarted();
+    }
+
+    // Autoplay media
+    if (autoPlay && isFunction(instance.play)) {
+      instance.play();
+    }
+  }
+};
+
+/**
+ * Returns the name part of a library string
+ *
+ * @param {string} library
+ * @return {string}
+ */
+CoursePresentation.prototype.getLibraryTypePmz = library => kebabCase(library.split(' ')[0]).toLowerCase();
 
 /**
  * Resize image inside popup dialog.

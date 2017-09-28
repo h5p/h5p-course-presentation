@@ -424,6 +424,10 @@
   background: #003fdf;
 }
 
+.h5p-course-presentation .h5p-element-button:focus {
+  outline: 2px solid #79abfd;
+}
+
 .h5p-course-presentation .h5p-element-button:before {
   text-decoration: none;
   font-family: 'H5PFontAwesome4';
