@@ -181,7 +181,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
-          '<div class="h5p-current-slide-announcer hidden-but-read" aria-live="assertive"></div>' +
+          '<div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '<div class="h5p-wrapper" tabindex="0" role="application" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
@@ -1684,10 +1684,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
  * @param {number} slideNumber Index of slide that should have its' title announced
  */
 CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber) {
-  let slideTitle = '';
-  if (this.navigationLine) {
-    slideTitle = this.navigationLine.createSlideTitle(slideNumber);
-  }
+  const slideTitle = this.navigationLine ? this.navigationLine.createSlideTitle(slideNumber): '';
   this.$slideAnnouncer.html(slideTitle);
 };
 
