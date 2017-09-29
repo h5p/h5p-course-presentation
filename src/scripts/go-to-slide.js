@@ -21,13 +21,13 @@ export default class GoToSlide {
    *
    * @constructor
    * @param {string} title
-   * @param {number} slideNum
+   * @param {number} goToSlide
    * @param {boolean} invisible
    * @param {string} goToSlideType
    * @param {object} l10n
    * @param {number} currentIndex
    */
-  constructor({ title, slideNum = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
+  constructor({ title, goToSlide = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
     this.eventDispatcher = new EventDispatcher();
     let classes = 'h5p-press-to-go';
     let tabindex = 0;
@@ -41,7 +41,7 @@ export default class GoToSlide {
         // No title so use the slide number, prev, or next.
         switch(goToSlideType) {
           case navigationType.SPECIFIED:
-            title = l10n.goToSlide.replace(':num', slideNum.toString());
+            title = l10n.goToSlide.replace(':num', goToSlide.toString());
             break;
           case navigationType.NEXT:
             title = l10n.goToSlide.replace(':num', l10n.nextSlide);
@@ -55,7 +55,7 @@ export default class GoToSlide {
     }
 
     // Default goes to the set number
-    let goTo = slideNum - 1;
+    let goTo = goToSlide - 1;
 
     // Check if previous or next is selected.
     if (goToSlideType === navigationType.NEXT) {
