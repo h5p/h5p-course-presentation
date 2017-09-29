@@ -930,7 +930,8 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       'class': 'h5p-element-inner'
     }).appendTo($outerElementContainer);
 
-    if (libTypePmz === 'h5p-advancedtext') {
+    if (libTypePmz === 'h5p-advancedtext' ||
+        libTypePmz === 'h5p-table') {
       $innerElementContainer.attr('tabindex', 0);
     }
 
@@ -1070,8 +1071,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, libTypeP
 
     // Focus directly on content when popup is opened
     $container.on('transitionend', function() {
-      // TODO more robust solution for finding focusables
-      var $tabbables = $buttonElement.find(':input');
+      var $tabbables = $buttonElement.find(':input').add($buttonElement.find('[tabindex]'));
       if ($tabbables.length) {
         $tabbables[0].focus();
       }
