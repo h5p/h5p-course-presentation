@@ -1,7 +1,7 @@
-var H5P = H5P || {};
-H5P.CoursePresentation = H5P.CoursePresentation || {};
+import { jQuery as $, JoubelUI } from './globals';
+import {addClickAndKeyboardListeners} from "./utils";
 
-H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
+const SummarySlide = (function () {
 
   /**
    * Constructor for summary slide
@@ -158,11 +158,12 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       tds +=
         '<tr>' +
           '<td class="h5p-td h5p-summary-task-title">' +
-            '<span role="button" class="h5p-slide-link" data-slide="' +
+            '<a href="#" role="button" class="h5p-slide-link" data-slide="' +
               slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) +
-            '</span>' +
+            '</a>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
+            '<p class="hidden-but-read">' + slidePercentageScore + '%' + '</p>' +
             '<div title="' + slidePercentageScore + '%" class="h5p-summary-score-meter">' +
               '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
             '</div>' +
@@ -197,6 +198,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
       '    <tr>' +
       '     <td class="h5p-td h5p-summary-task-title">' + that.cp.l10n.total + '</td>' +
       '     <td class="h5p-td h5p-summary-score-bar">' +
+      '       <p class="hidden-but-read">' + percentScore + '%' + '</p>' +
       '       <div title="' + percentScore + '%" class="h5p-summary-score-meter">' +
       '         <span style="width: ' + percentScore + '%; opacity: ' + (percentScore / 100) + '"></span>' +
       '       </div>' +
@@ -291,16 +293,17 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Create the new Twitter window.
     $twitterContainer.attr('tabindex', '0')
-      .attr('role', 'button')
-      .click(function () {
-        window.open(twitterString,
-          that.cp.l10n.shareTwitter,
-          'width=' + popupWidth +
-          ',height=' + popupHeight +
-          ',left=' + leftPos +
-          ',top=' + topPos);
-        return false;
-      });
+      .attr('role', 'button');
+
+    addClickAndKeyboardListeners($twitterContainer, () => {
+      window.open(twitterString,
+        that.cp.l10n.shareTwitter,
+        'width=' + popupWidth +
+        ',height=' + popupHeight +
+        ',left=' + leftPos +
+        ',top=' + topPos);
+      return false;
+    });
   };
 
   /**
@@ -325,6 +328,7 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);
+    facebookShareQuote = encodeURIComponent(facebookShareQuote);
 
     // Add query strings to the URL based on settings.
     var facebookUrl = 'https://www.facebook.com/sharer/sharer.php?';
@@ -338,16 +342,18 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Create the new Facebook window.
     $facebookContainer.attr('tabindex', '0')
-      .attr('role', 'button')
-      .click(function () {
-        window.open(facebookUrl,
-          that.cp.l10n.shareFacebook,
-          'width=' + popupWidth +
-          ',height=' + popupHeight +
-          ',left=' + leftPos +
-          ',top=' + topPos);
-        return false;
-      });
+      .attr('role', 'button');
+
+    addClickAndKeyboardListeners($facebookContainer, () => {
+      window.open(facebookUrl,
+        that.cp.l10n.shareFacebook,
+        'width=' + popupWidth +
+        ',height=' + popupHeight +
+        ',left=' + leftPos +
+        ',top=' + topPos);
+
+      return false;
+    })
   };
 
   /**
@@ -378,16 +384,17 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
 
     // Create the new Google+ window.
     $googleContainer.attr('tabindex', '0')
-      .attr('role', 'button')
-      .click(function () {
-        window.open(googleUrl,
-          that.cp.l10n.shareGoogle,
-          'width=' + popupWidth +
-          ',height=' + popupHeight +
-          ',left=' + leftPos +
-          ',top=' + topPos);
-        return false;
-      });
+      .attr('role', 'button');
+
+    addClickAndKeyboardListeners($googleContainer, () => {
+      window.open(googleUrl,
+        that.cp.l10n.shareGoogle,
+        'width=' + popupWidth +
+        ',height=' + popupHeight +
+        ',left=' + leftPos +
+        ',top=' + topPos);
+      return false;
+    })
   };
 
   /**
@@ -464,4 +471,6 @@ H5P.CoursePresentation.SummarySlide = (function ($, JoubelUI) {
   };
 
   return SummarySlide;
-})(H5P.jQuery, H5P.JoubelUI);
+})();
+
+export default SummarySlide;
