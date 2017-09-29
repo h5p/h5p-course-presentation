@@ -1,4 +1,5 @@
 import "../styles/cp.css";
+import "../styles/go-to-slide.scss";
 import "../styles/keyword-menu.css";
 import "../styles/summary-slide.css";
 import "../styles/navigation-line.css";

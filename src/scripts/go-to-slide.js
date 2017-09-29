@@ -1,25 +1,38 @@
 import { addClickAndKeyboardListeners } from './utils';
 
-/** @namespace H5P */
-const GoToSlide = (function ($) {
+const $ = H5P.jQuery;
 
+/**
+ * Enum containing possible navigation types
+ * @readonly
+ * @enum {string}
+ */
+const navigationType = {
+  SPECIFIED: 'specified',
+  NEXT: 'next',
+  PREVIOUS: 'previous'
+};
+
+/**
+ * @class
+ */
+export default class GoToSlide {
   /**
    * Element for linking between slides in presentations.
    *
-   * @class
-   * @param {Number} slideNum
-   * @param {CoursePresentation} cp
-   * @param {String} goToSlideType
+   * @constructor
+   * @param {string} title
+   * @param {number} slideNum
+   * @param {boolean} invisible
+   * @param {string} goToSlideType
+   * @param {object} l10n
+   * @param {number} currentIndex
    */
-  function GoToSlide(title, slideNum, invisible, cp, goToSlideType) {
-    var self = this;
+  constructor({ title, slideNum = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
+    this.eventDispatcher = new H5P.EventDispatcher();
+    let classes = 'h5p-press-to-go';
+    let tabindex = 0;
 
-    var classes = 'h5p-press-to-go';
-    var tabindex = 0;
-    // Set default value.
-    if (goToSlideType === undefined) {
-      goToSlideType = 'specified';
-    }
     if (invisible) {
       title = undefined;
       tabindex = -1;
@@ -28,63 +41,62 @@ const GoToSlide = (function ($) {
       if (!title) {
         // No title so use the slide number, prev, or next.
         switch(goToSlideType) {
-          case "specified":
-            title = cp.l10n.goToSlide.replace(':num', slideNum);
+          case navigationType.SPECIFIED:
+            title = l10n.goToSlide.replace(':num', slideNum.toString());
             break;
-          case "next":
-            title = cp.l10n.goToSlide.replace(':num', cp.l10n.nextSlide);
+          case navigationType.NEXT:
+            title = l10n.goToSlide.replace(':num', l10n.nextSlide);
             break;
-          case "previous":
-            title = cp.l10n.goToSlide.replace(':num', cp.l10n.prevSlide);
+          case navigationType.PREVIOUS:
+            title = l10n.goToSlide.replace(':num', l10n.prevSlide);
             break;
         }
       }
       classes += ' h5p-visible';
     }
 
-    /**
-     * @private
-     */
-    var go = function () {
-      // Default goes to the set number
-      var goTo = slideNum - 1;
+    // Default goes to the set number
+    let goTo = slideNum - 1;
 
-      // Check if previous or next is selected.
-      if (goToSlideType === 'next') {
-        goTo = cp.currentSlideIndex + 1;
-      }
-      else if (goToSlideType === 'previous') {
-        goTo = cp.currentSlideIndex - 1;
-      }
-
-      if (cp.editor === undefined && cp.slides[goTo] !== undefined) {
-        cp.jumpToSlide(goTo);
-      }
-    };
+    // Check if previous or next is selected.
+    if (goToSlideType === navigationType.NEXT) {
+      goTo = currentIndex + 1;
+    }
+    else if (goToSlideType === navigationType.PREVIOUS) {
+      goTo = currentIndex - 1;
+    }
 
     // Create button that leads to another slide
-    var $button = $('<div/>', {
+    this.$element = $('<a/>', {
+      href: '#',
       'class': classes,
-      role: 'button',
       tabindex: tabindex,
       title: title
     });
 
-    addClickAndKeyboardListeners($button, go);
-
-    /**
-     * Attach element to the given container.
-     *
-     * @public
-     * @param {jQuery} $container
-     */
-    self.attach = function ($container) {
-      $container.html('').addClass('h5p-go-to-slide').append($button);
-    };
+    addClickAndKeyboardListeners(this.$element, event => {
+      this.eventDispatcher.trigger('navigate', goTo);
+      event.preventDefault();
+    });
   }
 
-  return GoToSlide;
-})(H5P.jQuery);
+  /**
+   * Attach element to the given container.
+   *
+   * @public
+   * @param {jQuery} $container
+   */
+  attach($container) {
+    $container.html('').addClass('h5p-go-to-slide').append(this.$element);
+  };
 
-
-export default GoToSlide;
+  /**
+   * Register an event listener
+   *
+   * @param {string} name
+   * @param {function} callback
+   */
+  on(name, callback) {
+    this.eventDispatcher.on(name, callback);
+  }
+}
