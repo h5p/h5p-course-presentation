@@ -74,6 +74,7 @@ const NavigationLine = (function ($) {
     const clickProgressbar = function (event) {
       event.preventDefault();
       const index = $(this).data('slideNumber');
+      that.progresbarKeyboardControls.setTabbableByIndex(index);
       that.displaySlide(index);
     };
 
