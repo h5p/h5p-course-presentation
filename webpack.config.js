@@ -30,6 +30,13 @@ var config = {
         }),
       },
       {
+        test: /\.scss$/,
+        use: extractStyles.extract({
+          use: ["css-loader?sourceMap", "sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true"],
+          fallback: "style-loader"
+        })
+      },
+      {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         include: path.join(__dirname, 'src/fonts'),
         loader: 'file-loader?name=fonts/[name].[ext]'
