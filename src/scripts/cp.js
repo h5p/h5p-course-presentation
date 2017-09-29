@@ -930,6 +930,10 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       'class': 'h5p-element-inner'
     }).appendTo($outerElementContainer);
 
+    if (libTypePmz === 'h5p-advancedtext') {
+      $innerElementContainer.attr('tabindex', 0);
+    }
+
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
       var handleIV = function () {
@@ -1061,6 +1065,21 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, libTypeP
     if (libTypePmz === 'h5p-image') {
       this.resizePopupImage($buttonElement);
     }
+
+    var $container = $buttonElement.closest('.h5p-popup-container');
+
+    // Focus directly on content when popup is opened
+    $container.on('transitionend', function() {
+      // TODO more robust solution for finding focusables
+      var $tabbables = $buttonElement.find(':input');
+      if ($tabbables.length) {
+        $tabbables[0].focus();
+      }
+      else {
+        $buttonElement.attr('tabindex', 0);
+        $buttonElement.focus();
+      }
+    });
 
     // start activity
     if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
@@ -1210,6 +1229,11 @@ CoursePresentation.prototype.showPopup = function (popupContent, remove, classes
       .end()
     .find('.h5p-close-popup')
       .click(close)
+      .on('keydown', function(e){
+        if(e.keyCode == 32 || e.keyCode == 13){
+          this.click(); // Close with spacebar or enter
+        }
+      })
       .end();
 
   return $popup;
