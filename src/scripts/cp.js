@@ -517,12 +517,14 @@ CoursePresentation.prototype.toggleKeywords = function () {
  * Hide keywords
  */
 CoursePresentation.prototype.hideKeywords = function () {
-  if (this.$keywordsButton !== undefined) {
-    this.$keywordsButton.attr('title', this.l10n.showKeywords);
-    this.$keywordsButton.attr('aria-expanded', 'false');
-    this.$keywordsButton.focus();
+  if (this.$keywordsWrapper.hasClass('h5p-open')) {
+    if (this.$keywordsButton !== undefined) {
+      this.$keywordsButton.attr('title', this.l10n.showKeywords);
+      this.$keywordsButton.attr('aria-expanded', 'false');
+      this.$keywordsButton.focus();
+    }
+    this.$keywordsWrapper.removeClass('h5p-open');
   }
-  this.$keywordsWrapper.removeClass('h5p-open');
 };
 
 /**
