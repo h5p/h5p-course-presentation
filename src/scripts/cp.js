@@ -284,7 +284,7 @@ CoursePresentation.prototype.attach = function ($container) {
     // Initialize keyword titles
     this.keywordMenu.init(keywordMenuConfig);
     this.keywordMenu.on('select', event => this.keywordClick(event.data.index));
-    this.keywordMenu.on('close', event => this.hideKeywords());
+    this.keywordMenu.on('close', () => this.hideKeywords());
     this.keywordMenu.on('select', () => {
       this.$currentKeyword = this.$keywords.children('.h5p-current');
     });
@@ -328,7 +328,7 @@ CoursePresentation.prototype.attach = function ($container) {
         appendTo: this.$wrapper
       });
 
-      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen())
+      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
     }
   }
 
@@ -912,7 +912,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 
   if (displayAsButton) {
     const $button = this.createInteractionButton(element, instance);
-    $button.appendTo($elementContainer)
+    $button.appendTo($elementContainer);
   }
   else {
     const hasLibrary = element.action && element.action.library;
@@ -927,6 +927,11 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     var $innerElementContainer = H5P.jQuery('<div>', {
       'class': 'h5p-element-inner'
     }).appendTo($outerElementContainer);
+
+    if (libTypePmz === 'h5p-advancedtext' ||
+        libTypePmz === 'h5p-table') {
+      $innerElementContainer.attr('tabindex', 0);
+    }
 
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
@@ -988,7 +993,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
    * @param {jQuery} $btn
    * @return {Function}
    */
-  const setAriaExpandedFalse = $btn => () => $button.attr('aria-expanded', 'false');
+  const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
 
   const $button = $('<div>', {
     role: 'button',
@@ -1054,6 +1059,20 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, libTypeP
     if (libTypePmz === 'h5p-image') {
       this.resizePopupImage($buttonElement);
     }
+
+    var $container = $buttonElement.closest('.h5p-popup-container');
+
+    // Focus directly on content when popup is opened
+    $container.on('transitionend', function() {
+      var $tabbables = $buttonElement.find(':input').add($buttonElement.find('[tabindex]'));
+      if ($tabbables.length) {
+        $tabbables[0].focus();
+      }
+      else {
+        $buttonElement.attr('tabindex', 0);
+        $buttonElement.focus();
+      }
+    });
 
     // start activity
     if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
@@ -1201,6 +1220,11 @@ CoursePresentation.prototype.showPopup = function (popupContent, remove, classes
       .end()
     .find('.h5p-close-popup')
       .click(close)
+      .on('keydown', function(e){
+        if(e.keyCode == 32 || e.keyCode == 13){
+          this.click(); // Close with spacebar or enter
+        }
+      })
       .end();
 
   return $popup;
@@ -1876,7 +1900,7 @@ CoursePresentation.prototype.getXAPIData = function () {
   return {
     statement: xAPIEvent.data.statement,
     children: childrenXAPIData
-  }
+  };
 };
 
 export default CoursePresentation;
