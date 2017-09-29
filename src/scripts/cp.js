@@ -919,7 +919,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     const libTypePmz = hasLibrary ? this.getLibraryTypePmz(element.action.library) : 'other';
 
     var $outerElementContainer = H5P.jQuery('<div>', {
-      'class': `h5p-element-outer ${libTypePmz}-outer-element'`
+      'class': `h5p-element-outer ${libTypePmz}-outer-element`
     }).css({
       background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($elementContainer);
