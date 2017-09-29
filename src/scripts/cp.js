@@ -285,7 +285,7 @@ CoursePresentation.prototype.attach = function ($container) {
     // Initialize keyword titles
     this.keywordMenu.init(keywordMenuConfig);
     this.keywordMenu.on('select', event => this.keywordClick(event.data.index));
-    this.keywordMenu.on('close', event => this.hideKeywords());
+    this.keywordMenu.on('close', () => this.hideKeywords());
     this.keywordMenu.on('select', () => {
       this.$currentKeyword = this.$keywords.children('.h5p-current');
     });
@@ -329,7 +329,7 @@ CoursePresentation.prototype.attach = function ($container) {
         appendTo: this.$wrapper
       });
 
-      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen())
+      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
     }
   }
 
@@ -913,7 +913,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 
   if (displayAsButton) {
     const $button = this.createInteractionButton(element, instance);
-    $button.appendTo($elementContainer)
+    $button.appendTo($elementContainer);
   }
   else {
     const hasLibrary = element.action && element.action.library;
@@ -989,7 +989,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
    * @param {jQuery} $btn
    * @return {Function}
    */
-  const setAriaExpandedFalse = $btn => () => $button.attr('aria-expanded', 'false');
+  const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
 
   const $button = $('<div>', {
     role: 'button',
@@ -1877,7 +1877,7 @@ CoursePresentation.prototype.getXAPIData = function () {
   return {
     statement: xAPIEvent.data.statement,
     children: childrenXAPIData
-  }
+  };
 };
 
 export default CoursePresentation;
