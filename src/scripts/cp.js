@@ -3,8 +3,7 @@ import SummarySlide from './summary-slide';
 import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
 import KeywordsMenu from './keyword-menu';
-import keyCode from './key-code';
-import { flattenArray, isFunction, kebabCase } from './utils';
+import {flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML} from './utils';
 
 const $ = H5P.jQuery;
 
@@ -327,19 +326,10 @@ CoursePresentation.prototype.attach = function ($container) {
         title: this.l10n.fullscreen,
         role: 'button',
         tabindex: 0,
-        on: {
-          click: function () {
-            that.toggleFullScreen();
-          },
-          keypress: function (event) {
-            // Buttons must respond to space bar
-            if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-              that.toggleFullScreen();
-            }
-          }
-        },
         appendTo: this.$wrapper
       });
+
+      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen())
     }
   }
 
@@ -543,12 +533,11 @@ CoursePresentation.prototype.showKeywords = function () {
 /**
  * Change the background opacity of the keywords list.
  *
- * @param {Number} value 0 - 100
+ * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  var self = this;
-  var color = self.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
-  self.$keywordsWrapper.css('background-color', 'rgba(' + color[1] + ', ' + color[2] + ', ' + color[3] + ',' + (value / 100) + ')');
+  const [red, green, blue] = this.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
+  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
 
 /**
@@ -1004,17 +993,12 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     'aria-popup': true,
     'aria-expanded': false,
     'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
-  }).click(() => {
-      $button.attr('aria-expanded', 'true');
-      this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
-    })
-    .keypress(event => {
-      // Buttons must respond to space bar
-      if (event.which === keyCode.SPACE || event.which === keyCode.ENTER) {
-        $button.attr('aria-expanded', 'true');
-        this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
-      }
-    });
+  });
+
+  addClickAndKeyboardListeners($button, () => {
+    $button.attr('aria-expanded', 'true');
+    this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+  });
 
   if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
     instance.on('controls', function () {
@@ -1150,25 +1134,24 @@ CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  * @param {Object} element Properties from params.
  * @param {Object} elementInstance Instance of the element.
  * @param {jQuery} $elementContainer Wrapper for the element.
- * @returns {undefined}
  */
 CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
-  var that = this;
-  elementInstance.showCPComments = function () {
-    var $stripHtml = H5P.jQuery('<div>');
-    if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
-      H5P.jQuery('<a/>', {
-        'href': '#',
-        'class': 'h5p-element-solution',
-        'title': that.l10n.solutionsButtonTitle
+  elementInstance.showCPComments = () => {
+    if ($elementContainer.children('.h5p-element-solution').length === 0 && stripHTML(element.solution).length > 0) {
+      const $commentButton = $('<div/>', {
+        role: 'button',
+        tabindex: 0,
+        title: this.l10n.solutionsButtonTitle,
+        'aria-popup': true,
+        'aria-expanded': false,
+        'class': 'h5p-element-solution'
       }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>')
-        .click(function (event) {
-          event.preventDefault();
-          that.showPopup(element.solution);
-        })
         .appendTo($elementContainer);
+
+      addClickAndKeyboardListeners($commentButton, () => this.showPopup(element.solution));
     }
   };
+
   if (element.alwaysDisplayComments !== undefined && element.alwaysDisplayComments) {
     elementInstance.showCPComments();
   }
@@ -1179,7 +1162,6 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  *
  * @param {String} popupContent
  * @param {Function} [remove] Gets called before the popup is removed.
- * @returns {undefined}
  */
 CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
   var doNotClose;
@@ -1477,7 +1459,7 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
 /**
  * Switch to previous slide
  *
- * @param {Boolean} noScroll Skip UI scrolling.
+ * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
 CoursePresentation.prototype.previousSlide = function (noScroll) {
@@ -1545,10 +1527,10 @@ CoursePresentation.prototype.attachAllElements = function () {
  * Jump to the given slide.
  *
  * @param {type} slideNumber The slide number to jump to.
- * @param {Boolean} noScroll Skip UI scrolling.
+ * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false) {
   var that = this;
   if (this.editor === undefined) {
     var progressedEvent = this.createXAPIEventTemplate('progressed');
