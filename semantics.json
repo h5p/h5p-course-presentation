@@ -640,7 +640,14 @@
         "type": "text",
         "label": "Explanation of slide navigation for assistive technologies",
         "importance": "low",
-        "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+        "default": "Use left and right arrow to change slide in that direction whenever canvas is selected."
+      },
+      {
+        "name": "accessibilityCanvasLabel",
+        "type": "text",
+        "label": "Canvas label for assistive technologies",
+        "importance": "low",
+        "default": "Presentation canvas. Use left and right arrow to move between slides."
       },
       {
         "name": "containsNotCompleted",

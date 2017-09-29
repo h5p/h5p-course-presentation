@@ -78,10 +78,11 @@ let CoursePresentation = function (params, id, extras) {
     printAllSlides: 'Print all slides',
     printCurrentSlide: 'Print current slide',
     noTitle: 'No title',
-    accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected',
+    accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected.',
     containsNotCompleted: '@slideName contains not completed interaction',
     containsCompleted: '@slideName contains completed interaction',
-    slideCount: 'Slide @index of @total'
+    slideCount: 'Slide @index of @total',
+    accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -179,8 +180,9 @@ CoursePresentation.prototype.attach = function ($container) {
   }
 
   var html =
-          '<div class="h5p-keymap-explanation">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
-          '<div class="h5p-wrapper" tabindex="0">' +
+          '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
+          '<div class="h5p-current-slide-announcer hidden-but-read" aria-live="assertive"></div>' +
+          '<div class="h5p-wrapper" tabindex="0" role="application" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
@@ -196,6 +198,7 @@ CoursePresentation.prototype.attach = function ($container) {
   $container.addClass('h5p-course-presentation').html(html);
 
   this.$container = $container;
+  this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
@@ -312,6 +315,11 @@ CoursePresentation.prototype.attach = function ($container) {
 
     // init navigation line
     this.navigationLine = new NavigationLine(this);
+
+    // Set slide title if initing on slide 0
+    if (!this.previousState || !this.previousState.progress) {
+      this.$slideAnnouncer.html(this.navigationLine.createSlideTitle(0));
+    }
 
     this.summarySlideObject = new SummarySlide(this, $summarySlide);
   }
@@ -1647,6 +1655,9 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
 
     // Update footer
     that.navigationLine.updateFooter(slideNumber);
+
+    // Announce slide change
+    this.setSlideNumberAnnouncer(slideNumber);
   }
 
   if (that.summarySlideObject) {
@@ -1664,6 +1675,18 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
+};
+
+/**
+ * Set slide number so it can be announced to assistive technologies
+ * @param {number} slideNumber Index of slide that should have its' title announced
+ */
+CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber) {
+  let slideTitle = '';
+  if (this.navigationLine) {
+    slideTitle = this.navigationLine.createSlideTitle(slideNumber);
+  }
+  this.$slideAnnouncer.html(slideTitle);
 };
 
 /**
