@@ -1,11 +1,15 @@
-const SlideBackground = (function ($) {
+const $ = H5P.jQuery;
+
+/**
+ * @class
+ */
+export default class SlideBackground {
   /**
    * Create a Slide specific background selector
    *
-   * @class H5P.CoursePresentation.SlideBackground
    * @param {H5P.CoursePresentation} cp Course Presentation instance
    */
-  function SlideBackground (cp) {
+  constructor(cp) {
     var params = cp.presentation;
 
     // Extend defaults
@@ -81,9 +85,4 @@ const SlideBackground = (function ($) {
     setGlobalBackground();
     setSlideBackgrounds();
   }
-
-  return SlideBackground;
-
-})(H5P.jQuery);
-
-export default SlideBackground;
+}

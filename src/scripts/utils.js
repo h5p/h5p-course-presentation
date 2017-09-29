@@ -45,6 +45,18 @@ export const isIPad = navigator.userAgent.match(/iPad/i) !== null;
 export const contains = (arr, val) => arr.indexOf(val) !== -1;
 
 /**
+ * Returns a default value if provided value is undefined
+ *
+ * @template T
+ * @param {T} value
+ * @param {T} fallback
+ * @return {T}
+ */
+export const defaultValue = function (value, fallback) {
+  return value === undefined ? fallback : value;
+};
+
+/**
  * Enum for keyboard key codes
  * @readonly
  * @enum {number}

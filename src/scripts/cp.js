@@ -769,7 +769,17 @@ CoursePresentation.prototype.addElement = function (element, $slide, index) {
   var instance;
   if (element.action === undefined) {
     // goToSlide, internal element
-    instance = new GoToSlide(element.title, element.goToSlide, element.invisible, this, element.goToSlideType);
+    instance = new GoToSlide(element, {
+      l10n: this.l10n,
+      currentIndex: index
+    });
+
+    if (!this.isEditor()) {
+      instance.on('navigate', event => {
+        const index = event.data;
+        this.jumpToSlide(index);
+      });
+    }
   }
   else {
     // H5P library
