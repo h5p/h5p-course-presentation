@@ -3,9 +3,8 @@ import SummarySlide from './summary-slide';
 import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
 import KeywordsMenu from './keyword-menu';
+import { jQuery as $, EventDispatcher } from './globals';
 import {flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML} from './utils';
-
-const $ = H5P.jQuery;
 
 /**
  * @const {string}
@@ -22,7 +21,7 @@ const KEYWORD_TITLE_SKIP = null;
  * @returns {undefined} Nothing.
  */
 let CoursePresentation = function (params, id, extras) {
-  H5P.EventDispatcher.call(this);
+  EventDispatcher.call(this);
   var that = this;
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
@@ -127,7 +126,7 @@ let CoursePresentation = function (params, id, extras) {
   });
 };
 
-CoursePresentation.prototype = Object.create(H5P.EventDispatcher.prototype);
+CoursePresentation.prototype = Object.create(EventDispatcher.prototype);
 CoursePresentation.prototype.constructor = CoursePresentation;
 
 /**

@@ -1,6 +1,7 @@
+import { jQuery as $, JoubelUI } from './globals';
 import {addClickAndKeyboardListeners} from "./utils";
 
-const SummarySlide = (function ($, JoubelUI) {
+const SummarySlide = (function () {
 
   /**
    * Constructor for summary slide
@@ -470,6 +471,6 @@ const SummarySlide = (function ($, JoubelUI) {
   };
 
   return SummarySlide;
-})(H5P.jQuery, H5P.JoubelUI);
+})();
 
 export default SummarySlide;

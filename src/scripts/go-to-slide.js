@@ -1,6 +1,5 @@
 import { addClickAndKeyboardListeners } from './utils';
-
-const $ = H5P.jQuery;
+import { jQuery as $, EventDispatcher } from './globals';
 
 /**
  * Enum containing possible navigation types
@@ -29,7 +28,7 @@ export default class GoToSlide {
    * @param {number} currentIndex
    */
   constructor({ title, slideNum = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
-    this.eventDispatcher = new H5P.EventDispatcher();
+    this.eventDispatcher = new EventDispatcher();
     let classes = 'h5p-press-to-go';
     let tabindex = 0;
 

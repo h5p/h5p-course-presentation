@@ -1,4 +1,4 @@
-const $ = H5P.jQuery;
+import { jQuery as $ } from './globals';
 
 /**
  * Flattens a nested array

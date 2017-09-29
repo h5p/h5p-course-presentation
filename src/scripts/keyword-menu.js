@@ -1,8 +1,7 @@
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
 import { isIPad } from './utils';
-
-const $ = H5P.jQuery;
+import { jQuery as $, EventDispatcher } from './globals';
 
 /**
  * Select event.
@@ -46,7 +45,7 @@ export default class KeywordMenu {
       currentIndex: 0,
       keywordConfigs: []
     };
-    this.eventDispatcher = new H5P.EventDispatcher();
+    this.eventDispatcher = new EventDispatcher();
     this.controls = new Controls([new UIKeyboard()]);
 
     // on keyboard select
