@@ -170,6 +170,7 @@ export default class KeywordMenu {
   setCurrentSlideIndex(index) {
     this.state.currentIndex = index;
     this.updateCurrentlySelected(this.menuItemElements, this.state);
+    this.controls.setTabbableByIndex(index);
   }
 
   /**
