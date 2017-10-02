@@ -56,6 +56,12 @@ const NavigationLine = (function ($) {
       that.displaySlide($(event.element).data('slideNumber'));
     });
 
+    // if last element, prevent next progression
+    this.progresbarKeyboardControls.on('beforeNextElement', event => event.index !== (event.elements.length - 1));
+
+    // if first element, prevent previous progression
+    this.progresbarKeyboardControls.on('beforePreviousElement', event => event.index !== 0);
+
     var supportsHover = true;
     if (navigator.userAgent.match(/iPad|iPod|iPhone/i) !== null) {
       supportsHover = false;
