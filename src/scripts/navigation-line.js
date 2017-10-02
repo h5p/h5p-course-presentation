@@ -125,6 +125,8 @@ const NavigationLine = (function ($) {
 
       that.cp.progressbarParts.push($li);
 
+      this.updateSlideTitle(i);
+
       // Create task indicator if less than 60 slides and not in editor
       if (this.cp.slides.length <= 60 && slide.elements && slide.elements.length > 0) {
         var hasTask = slidesWithSolutions[i] && slidesWithSolutions[i].length > 0;
@@ -481,11 +483,12 @@ const NavigationLine = (function ($) {
    * Updates a slides title with values from state, if overrides are not provided
    *
    * @param {number} index
-   * @param {boolean} [hasTask]
-   * @param {boolean} [isAnswered]
-   * @param {boolean} [isCurrent]
+   * @param {object} [config]
+   * @param {boolean} [config.hasTask]
+   * @param {boolean} [config.isAnswered]
+   * @param {boolean} [config.isCurrent]
    */
-  NavigationLine.prototype.updateSlideTitle = function (index, { isAnswered, hasTask, isCurrent }) {
+  NavigationLine.prototype.updateSlideTitle = function (index, { isAnswered, hasTask, isCurrent } = {}) {
     this.setSlideTitle(index, {
       hasTask: defaultValue(hasTask, this.slideHasInteraction(index)),
       isAnswered: defaultValue(isAnswered, this.slideHasAnsweredTask(index)),
