@@ -52,9 +52,7 @@ export const contains = (arr, val) => arr.indexOf(val) !== -1;
  * @param {T} fallback
  * @return {T}
  */
-export const defaultValue = function (value, fallback) {
-  return value === undefined ? fallback : value;
-};
+export const defaultValue = (value, fallback) => (value !== undefined) ? value : fallback;
 
 /**
  * Enum for keyboard key codes

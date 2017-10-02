@@ -432,6 +432,8 @@ const NavigationLine = (function ($) {
       }
     }
 
+    that.progresbarKeyboardControls.setTabbableByIndex(slideNumber);
+
     that.cp.progressbarParts[slideNumber]
       .addClass("h5p-progressbar-part-selected")
       .siblings().removeClass("h5p-progressbar-part-selected");
@@ -500,16 +502,18 @@ const NavigationLine = (function ($) {
    * @param {boolean} [isCurrent]
    */
   NavigationLine.prototype.setSlideTitle = function (index, { isAnswered = false, hasTask = false, isCurrent = false}) {
+    const total =  this.cp.slides.length;
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
+    const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total) + ': ';
     const answeredLabel = this.cp.l10n[isAnswered ? 'containsCompleted' : 'containsNotCompleted'];
     const currentSlideLabel = isCurrent ? ('. ' + this.cp.l10n['currentSlide']) : '';
 
     if (hasTask) {
-      $partTitle.html(answeredLabel.replace('@slideName', this.createSlideTitle(index)) + currentSlideLabel);
+      $partTitle.html(numberedLabel + answeredLabel.replace('@slideName', this.createSlideTitle(index)) + currentSlideLabel);
     }
     else {
-      $partTitle.html(this.createSlideTitle(index) + currentSlideLabel);
+      $partTitle.html(numberedLabel + this.createSlideTitle(index) + currentSlideLabel);
     }
   };
 

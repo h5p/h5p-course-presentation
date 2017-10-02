@@ -107,7 +107,8 @@ let CoursePresentation = function (params, id, extras) {
   }
 
   this.keywordMenu = new KeywordsMenu({
-    l10n : this.l10n
+    l10n : this.l10n,
+    currentIndex: this.previousState.progress
   });
 
   // Set override for all actions
@@ -181,7 +182,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
-          '<div class="h5p-current-slide-announcer hidden-but-read" aria-live="assertive"></div>' +
+          '<div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '<div class="h5p-wrapper" tabindex="0" role="application" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
@@ -517,12 +518,14 @@ CoursePresentation.prototype.toggleKeywords = function () {
  * Hide keywords
  */
 CoursePresentation.prototype.hideKeywords = function () {
-  if (this.$keywordsButton !== undefined) {
-    this.$keywordsButton.attr('title', this.l10n.showKeywords);
-    this.$keywordsButton.attr('aria-expanded', 'false');
-    this.$keywordsButton.focus();
+  if (this.$keywordsWrapper.hasClass('h5p-open')) {
+    if (this.$keywordsButton !== undefined) {
+      this.$keywordsButton.attr('title', this.l10n.showKeywords);
+      this.$keywordsButton.attr('aria-expanded', 'false');
+      this.$keywordsButton.focus();
+    }
+    this.$keywordsWrapper.removeClass('h5p-open');
   }
-  this.$keywordsWrapper.removeClass('h5p-open');
 };
 
 /**
