@@ -432,6 +432,8 @@ const NavigationLine = (function ($) {
       }
     }
 
+    that.progresbarKeyboardControls.setTabbableByIndex(slideNumber);
+
     that.cp.progressbarParts[slideNumber]
       .addClass("h5p-progressbar-part-selected")
       .siblings().removeClass("h5p-progressbar-part-selected");

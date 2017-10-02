@@ -107,7 +107,8 @@ let CoursePresentation = function (params, id, extras) {
   }
 
   this.keywordMenu = new KeywordsMenu({
-    l10n : this.l10n
+    l10n : this.l10n,
+    currentIndex: this.previousState.progress
   });
 
   // Set override for all actions
