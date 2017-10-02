@@ -584,28 +584,23 @@ const NavigationLine = (function ($) {
    * @param {Number} slideNumber Current slide number
    */
   NavigationLine.prototype.updateFooterKeyword = function (slideNumber) {
-    var keywordString = '';
+    const currentSlide = this.cp.slides[slideNumber];
+    let keywordString = '';
+
     // Get current keyword
-    if (this.cp.$currentKeyword !== undefined && this.cp.$currentKeyword) {
-      keywordString = this.cp.$currentKeyword.find('.h5p-keyword-title').html();
+    if (currentSlide && currentSlide.keywords && currentSlide.keywords[0]) {
+      keywordString = currentSlide.keywords[0].main;
     }
 
     // Summary slide keyword
-    if (this.cp.editor === undefined && this.cp.showSummarySlide) {
-      if (slideNumber >= this.cp.slides.length - 1) {
-        keywordString = this.cp.l10n.summary;
-      }
-    }
-
-    // Empty string if no keyword defined
-    if (keywordString === undefined) {
-      keywordString = '';
+    if (!this.cp.isEditor() && this.cp.showSummarySlide && (slideNumber >= this.cp.slides.length - 1)) {
+      keywordString = this.cp.l10n.summary;
     }
 
     // Set footer keyword
     this.cp.$keywordsButton
       .children('.current-slide-title')
-      .html(keywordString);
+      .html(defaultValue(keywordString, ''));
   };
 
   return NavigationLine;
