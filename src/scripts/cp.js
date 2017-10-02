@@ -318,7 +318,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
     // Set slide title if initing on slide 0
     if (!this.previousState || !this.previousState.progress) {
-      this.$slideAnnouncer.html(this.navigationLine.createSlideTitle(0));
+      this.setSlideNumberAnnouncer(0);
     }
 
     this.summarySlideObject = new SummarySlide(this, $summarySlide);
@@ -1543,7 +1543,7 @@ CoursePresentation.prototype.attachAllElements = function () {
 /**
  * Jump to the given slide.
  *
- * @param {type} slideNumber The slide number to jump to.
+ * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
@@ -1683,9 +1683,19 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
  */
 CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber) {
   let slideTitle = '';
-  if (this.navigationLine) {
-    slideTitle = this.navigationLine.createSlideTitle(slideNumber);
+
+  if (!this.navigationLine) {
+    return slideTitle;
   }
+
+  // Add slide number
+  const slide = this.slides[slideNumber];
+  const hasKeywords = slide.keywords && slide.keywords.length > 0;
+  if (hasKeywords && !this.navigationLine.isSummarySlide(slideNumber)) {
+    slideTitle += this.l10n.slide + ' ' + (slideNumber + 1) + ': ';
+  }
+
+  slideTitle += this.navigationLine.createSlideTitle(slideNumber);
   this.$slideAnnouncer.html(slideTitle);
 };
 
