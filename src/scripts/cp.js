@@ -986,6 +986,62 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 };
 
 /**
+ * Disables tab indexes behind a popup container
+ */
+CoursePresentation.prototype.disableTabIndexes = function() {
+  var $popupContainer = this.$container.find('.h5p-popup-container');
+
+  this.$tabbables = this.$container.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
+    var $tabbable = $(this);
+    var insideContainer = $.contains($popupContainer.get(0), $tabbable.get(0));
+
+    // tabIndex has already been modified, keep it in the set.
+    if ($tabbable.data('tabindex')) {
+      return true;
+    }
+
+    if (!insideContainer) {
+      // Store current tabindex, so we can set it back when dialog closes
+      var tabIndex = $tabbable.attr('tabindex');
+      $tabbable.data('tabindex', tabIndex);
+
+      // Make it non tabbable
+      $tabbable.attr('tabindex', '-1');
+      return true;
+    }
+
+    // If element is part of dialog wrapper, just ignore it
+    return false;
+  })
+}
+
+
+/**
+ * Re-enables tab indexes after a popup container is closed
+ */
+CoursePresentation.prototype.restoreTabIndexes = function() {
+  if (this.$tabbables) {
+    this.$tabbables.each(function () {
+      var $element = $(this);
+      var tabindex = $element.data('tabindex');
+
+      // Specifically handle jquery ui slider, since it overwrites data in an inconsistent way
+      if ($element.hasClass('ui-slider-handle')) {
+        $element.attr('tabindex', 0);
+        $element.removeData('tabindex');
+      }
+      else if (tabindex !== undefined) {
+        $element.attr('tabindex', tabindex);
+        $element.removeData('tabindex');
+      }
+      else {
+        $element.removeAttr('tabindex');
+      }
+    });
+  }
+}
+
+/**
  * Creates the interaction button
  *
  * @param {Object} element
@@ -1018,6 +1074,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
     this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+    this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
   if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
@@ -1184,6 +1241,7 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {Function} [remove] Gets called before the popup is removed.
  */
 CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
+  var self = this;
   var doNotClose;
 
   /** @private */
@@ -1198,6 +1256,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, remove, classes
     if (remove !== undefined) {
       setTimeout(function() {
         remove();
+        self.restoreTabIndexes();
       }, 100);
     }
     event.preventDefault();
