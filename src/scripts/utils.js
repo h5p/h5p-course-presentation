@@ -61,6 +61,7 @@ export const defaultValue = (value, fallback) => (value !== undefined) ? value :
  */
 export const keyCode = {
   ENTER: 13,
+  ESC: 27,
   SPACE: 32
 };
 

@@ -4,7 +4,7 @@ import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
 import KeywordsMenu from './keyword-menu';
 import { jQuery as $, EventDispatcher } from './globals';
-import {flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML} from './utils';
+import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
 
 /**
  * @const {string}
@@ -1237,10 +1237,11 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
 /**
  * Displays a popup.
  *
- * @param {String} popupContent
+ * @param {string} popupContent
  * @param {Function} [remove] Gets called before the popup is removed.
+ * @param {string} [classes]
  */
-CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
+CoursePresentation.prototype.showPopup = function (popupContent, remove, classes = 'h5p-popup-comment-field') {
   var self = this;
   var doNotClose;
 
@@ -1268,14 +1269,14 @@ CoursePresentation.prototype.showPopup = function (popupContent, remove, classes
     }, 100);
   };
 
-  var $popup = H5P.jQuery(
-    '<div class="h5p-popup-overlay h5p-animate ' + (classes || 'h5p-popup-comment-field') + '">' +
-      '<div class="h5p-popup-container h5p-animate">' +
+  const $popup = $(
+    '<div class="h5p-popup-overlay h5p-animate ' + classes + '">' +
+      '<div class="h5p-popup-container h5p-animate" role="dialog">' +
         '<div class="h5p-cp-dialog-titlebar">' +
           '<div class="h5p-dialog-title"></div>' +
           '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
         '</div>' +
-        '<div class="h5p-popup-wrapper">' + popupContent + '</div>' +
+        '<div class="h5p-popup-wrapper" role="document">' + popupContent + '</div>' +
       '</div>' +
     '</div>')
     .prependTo(this.$wrapper)
@@ -1287,15 +1288,14 @@ CoursePresentation.prototype.showPopup = function (popupContent, remove, classes
       .click(function () {
         doNotClose = true;
       })
-      .end()
-    .find('.h5p-close-popup')
-      .click(close)
-      .on('keydown', function(e){
-        if(e.keyCode == 32 || e.keyCode == 13){
-          this.click(); // Close with spacebar or enter
+      .keydown(function(event) {
+        if (event.which === keyCode.ESC) {
+          close(event);
         }
       })
       .end();
+
+  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => close(event));
 
   return $popup;
 };
