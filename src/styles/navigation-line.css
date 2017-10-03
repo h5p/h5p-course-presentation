@@ -237,10 +237,6 @@
   height: 100%;
   width: 0;
 
-  -webkit-box-shadow: 0 0 1px 0 #fff;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    0 0 1px 0 #fff;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         0 0 1px 0 #fff;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -ms-flexbox;      /* TWEENER - IE 10 */
   display: -webkit-flex;     /* NEW - Chrome */
@@ -248,6 +244,10 @@
 
   -webkit-flex: 1;
   flex: 1;
+}
+
+.h5p-course-presentation .h5p-progressbar li:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .h5p-course-presentation .h5p-progressbar a {
