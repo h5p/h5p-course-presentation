@@ -225,7 +225,7 @@
 /* The summary slide icon */
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a:after {
   content: "";
-  display: inline-block;
+  display: block;
   height: 0.8em;
   width: 1.7em;
 
@@ -234,16 +234,8 @@
 }
 
 .h5p-course-presentation .h5p-progressbar li {
-  height: 100%;
-  width: 0;
-
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-
-  -webkit-flex: 1;
   flex: 1;
+  position: relative;
 }
 
 .h5p-course-presentation .h5p-progressbar li:not(:last-child) {
@@ -251,26 +243,9 @@
 }
 
 .h5p-course-presentation .h5p-progressbar a {
+  display: block;
   width: 100%;
-  position: relative;
-
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-
-  -webkit-flex: 1;
-  flex: 1;
-
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-
-  -webkit-justify-content: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  height: 100%;
 }
 
 .h5p-course-presentation .h5p-progressbar a:focus {
@@ -337,6 +312,9 @@
   cursor: pointer;
 
   background: transparent;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 0.1em;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-answered {

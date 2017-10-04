@@ -100,6 +100,7 @@ const NavigationLine = (function ($) {
       const $li = $('<li>', {
         'class': 'h5p-progressbar-part'
       })
+        .data('keyword', progressbarPartTitle)
         .appendTo(that.cp.$progressbar);
 
       // create link
@@ -108,7 +109,6 @@ const NavigationLine = (function ($) {
         html: '<span class="h5p-progressbar-part-title hidden-but-read">' + progressbarPartTitle + '</span>',
         tabindex: '-1'
       }).data('slideNumber', i)
-        .data('keyword', progressbarPartTitle)
         .click(clickProgressbar)
         .appendTo($li);
 
@@ -116,7 +116,7 @@ const NavigationLine = (function ($) {
 
       // Add hover effect if not an ipad or iphone.
       if (supportsHover) {
-        $link
+        $li
           .mouseenter(mouseenterProgressbar)
           .mouseleave(mouseleaveProgressbar);
       }
