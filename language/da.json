@@ -42,7 +42,6 @@
                     },
                     {
                       "label": "valg af slide der vises",
-                      "description":"'Specifikt slide' vil bruge the 'Specifike slide nummer'.",
                       "options": [
                         {
                           "label": "Specifikt slide"
@@ -53,12 +52,11 @@
                         {
                           "label": "Forrige slide"
                         }
-                      ],
-                      "default":"specifikt"
+                      ]
                     },
                     {
                       "label": "Specifikt slide nummer",
-                      "description":"Anvendes kun vis 'specifikt slide' er valgt til 'Valg af slide der vises'"
+                      "description": "Anvendes kun vis 'specifikt slide' er valgt til 'Valg af slide der vises'"
                     },
                     {
                       "label": "Usynlig",
@@ -281,6 +279,30 @@
         {
           "label": "Explanation of slide navigation for assistive technologies",
           "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+        },
+        {
+          "label": "Canvas label for assistive technologies",
+          "default": "Presentation canvas. Use left and right arrow to move between slides."
+        },
+        {
+          "label": "Label for uncompleted interactions",
+          "default": "@slideName contains not completed interaction"
+        },
+        {
+          "label": "Label for completed interactions",
+          "default": "@slideName contains completed interaction"
+        },
+        {
+          "label": "Label for slide counter. Variables are @index, @total",
+          "default": "Slide @index of @total"
+        },
+        {
+          "label": "Label for slides that only contains correct answers",
+          "default": "@slideName only has correct answers"
+        },
+        {
+          "label": "Label for slides that has incorrect answers",
+          "default": "@slideName has incorrect answers"
         }
       ]
     },

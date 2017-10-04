@@ -43,7 +43,7 @@ let CoursePresentation = function (params, id, extras) {
 
   this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
 
-  this.l10n = H5P.jQuery.extend({
+  this.l10n = $.extend({
     slide: 'Slide',
     yourScore: 'Your score',
     maxScore: 'Max score',
@@ -82,7 +82,9 @@ let CoursePresentation = function (params, id, extras) {
     containsNotCompleted: '@slideName contains not completed interaction',
     containsCompleted: '@slideName contains completed interaction',
     slideCount: 'Slide @index of @total',
-    accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.'
+    accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
+    containsOnlyCorrect: "@slideName only has correct answers",
+    containsIncorrectAnswers: '@slideName has incorrect answers'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {

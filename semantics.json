@@ -669,6 +669,20 @@
         "label": "Label for slide counter. Variables are @index, @total",
         "importance": "low",
         "default": "Slide @index of @total"
+      },
+      {
+        "name": "containsOnlyCorrect",
+        "type": "text",
+        "label": "Label for slides that only contains correct answers",
+        "importance": "low",
+        "default": "@slideName only has correct answers"
+      },
+      {
+        "name": "containsIncorrectAnswers",
+        "type": "text",
+        "label": "Label for slides that has incorrect answers",
+        "importance": "low",
+        "default": "@slideName has incorrect answers"
       }
     ]
   },
