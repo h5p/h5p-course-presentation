@@ -318,6 +318,7 @@ const NavigationLine = (function ($) {
 
       // Exit solution mode button
       this.cp.$exitSolutionModeButton = $('<div/>', {
+        'role': 'button',
         'class': 'h5p-footer-exit-solution-mode',
         'title': this.cp.l10n.solutionModeTitle,
         'tabindex': '0'

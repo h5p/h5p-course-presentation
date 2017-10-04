@@ -477,31 +477,27 @@ CoursePresentation.prototype.getMaxScore = function (){
 /**
  * Updates the feedback icons for the progres bar.
  *
- * @param slideScores
+ * @param {array} [slideScores]
  */
 CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
-  var that = this;
-
   if (slideScores !== undefined && slideScores) {
     // Set feedback icons for progress bar.
-    slideScores.forEach(function (singleSlide) {
-      if (that.progressbarParts[singleSlide.slide-1].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered')) {
-        if (singleSlide.score >= singleSlide.maxScore) {
-          that.progressbarParts[singleSlide.slide-1]
-            .children('.h5p-progressbar-part-has-task')
-            .addClass('h5p-is-correct');
-        } else {
-          that.progressbarParts[singleSlide.slide-1]
-            .children('.h5p-progressbar-part-has-task')
-            .addClass('h5p-is-wrong');
-        }
+    slideScores.forEach(singleSlide => {
+      const $indicator = this.progressbarParts[singleSlide.slide-1]
+        .find('.h5p-progressbar-part-has-task');
+
+      if ($indicator.hasClass('h5p-answered')) {
+        const isCorrect = singleSlide.score >= singleSlide.maxScore;
+        $indicator.addClass(isCorrect ? 'h5p-is-correct' : 'h5p-is-wrong');
       }
     });
-  } else {
+  }
+  else {
     // Remove all feedback icons.
-    that.progressbarParts.forEach(function (pbPart) {
-      pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-is-correct');
-      pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-is-wrong');
+    this.progressbarParts.forEach(pbPart => {
+      pbPart.find('.h5p-progressbar-part-has-task')
+        .removeClass('h5p-is-correct')
+        .removeClass('h5p-is-wrong');
     });
   }
 };

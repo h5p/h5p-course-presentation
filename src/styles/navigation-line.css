@@ -269,18 +269,14 @@
 
 /* -------------------------------------- Feedback for progress bar ------------------------------------- */
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task:after {
-  display: inline;
-  position: relative;
-
-  top: -2.3em;
-  left: -0.5em;
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
   padding: 0.1em 0.3em;
-
-  width: 98%;
   line-height: 1em;
   border: 0.1em solid;
-
   cursor: auto;
   font-family: 'H5PFontAwesome4';
   font-size: 0.6em;
@@ -289,13 +285,13 @@
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-correct:after {
   content: "\f00c";
   color: #6aa81b;
-  background: #d1e2ce;
+  background-color: #d1e2ce;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-wrong:after {
   content: "\f00d";
   color: #c33f62;
-  background: #e6ced1;
+  background-color: #e6ced1;
 }
 
 /* --------------------------------------------------------- Progressbar with task ---------------------------- */
