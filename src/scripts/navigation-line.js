@@ -84,14 +84,6 @@ const NavigationLine = (function ($) {
       that.displaySlide(index);
     };
 
-    const mouseenterProgressbar = function (event) {
-      that.createProgressbarPopup(event, $(this));
-    };
-
-    const mouseleaveProgressbar = function () {
-      that.removeProgressbarPopup();
-    };
-
     for (let i = 0; i < this.cp.slides.length; i += 1) {
       const slide = this.cp.slides[i];
       const progressbarPartTitle = this.createSlideTitle(i);
@@ -100,7 +92,6 @@ const NavigationLine = (function ($) {
       const $li = $('<li>', {
         'class': 'h5p-progressbar-part'
       })
-        .data('keyword', progressbarPartTitle)
         .appendTo(that.cp.$progressbar);
 
       // create link
@@ -116,9 +107,12 @@ const NavigationLine = (function ($) {
 
       // Add hover effect if not an ipad or iphone.
       if (supportsHover) {
-        $li
-          .mouseenter(mouseenterProgressbar)
-          .mouseleave(mouseleaveProgressbar);
+        // create popup
+        $('<div/>', {
+          'class': 'h5p-progressbar-popup',
+          'html': progressbarPartTitle,
+          'aria-hidden': 'true'
+        }).appendTo($li);
       }
 
       if (this.isSummarySlide(i)) {
@@ -203,56 +197,6 @@ const NavigationLine = (function ($) {
     return !!((this.cp.editor === undefined)
       && (index === this.cp.slides.length - 1)
       && this.cp.showSummarySlide)
-  };
-
-  /**
-   * Creates the progressbar popup
-   *
-   * @param {Event} event
-   * @param {jQuery} $parent
-   */
-  NavigationLine.prototype.createProgressbarPopup = function (event, $parent) {
-    var progressbarTitle = $parent.data('keyword');
-
-    if (this.$progressbarPopup === undefined) {
-      this.$progressbarPopup = H5P.jQuery('<div/>', {
-        'class': 'h5p-progressbar-popup',
-        'html': progressbarTitle
-      }).appendTo($parent);
-    }
-    else {
-      this.$progressbarPopup.appendTo($parent);
-      this.$progressbarPopup.html(progressbarTitle);
-    }
-
-    var availableWidth = this.cp.$container.width();
-    var popupWidth = this.$progressbarPopup.outerWidth();
-    var parentWidth = $parent.outerWidth();
-    var leftPos = ($parent.position().left + (parentWidth / 2) - (popupWidth / 2));
-
-    // default behavior, this will allow it to automatically center
-    var left = '';
-    // If the popup overflows beyond the right bound of container
-    if ((leftPos + popupWidth) >= availableWidth) {
-      // Get the overflow amount in pixels
-      var overflow = leftPos + popupWidth - availableWidth;
-      // Get the difference between the pop up and the progress bar 'part'
-      var diff = (popupWidth/2) - (parentWidth/2);
-      // Reset the left position
-      left = 1 - overflow - diff + 'px'; // +1 due to rounding in CSS
-    }
-    // If the popup overflows beyond the left bound of container
-    else if (leftPos < 0) {
-      left = '0';
-    }
-
-    this.$progressbarPopup.css('left', left);
-  };
-
-  NavigationLine.prototype.removeProgressbarPopup = function () {
-    if (this.$progressbarPopup !== undefined) {
-      this.$progressbarPopup.remove();
-    }
   };
 
   /**
