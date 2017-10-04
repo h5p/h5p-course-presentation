@@ -34,6 +34,14 @@ export const kebabCase = str => str.replace(/[\W]/g, '-');
  */
 export const isIPad = navigator.userAgent.match(/iPad/i) !== null;
 
+
+/**
+ * Is true if the users device is an iOS device
+ *
+ * @const {boolean}
+ */
+export const isIOS = navigator.userAgent.match(/iPad|iPod|iPhone/i) !== null;
+
 /**
  * Returns true if the array contains the value
  *

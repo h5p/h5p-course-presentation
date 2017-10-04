@@ -1,7 +1,7 @@
 import Printer from './printer';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
-import { defaultValue, addClickAndKeyboardListeners } from './utils';
+import { defaultValue, addClickAndKeyboardListeners, isIOS } from './utils';
 
 
 /**
@@ -62,11 +62,6 @@ const NavigationLine = (function ($) {
     // if first element, prevent previous progression
     this.progresbarKeyboardControls.on('beforePreviousElement', event => event.index !== 0);
 
-    var supportsHover = true;
-    if (navigator.userAgent.match(/iPad|iPod|iPhone/i) !== null) {
-      supportsHover = false;
-    }
-
     // Remove existing progressbar
     if (this.cp.progressbarParts !== undefined && this.cp.progressbarParts) {
       this.cp.progressbarParts.forEach(function (part) {
@@ -106,7 +101,7 @@ const NavigationLine = (function ($) {
       this.progresbarKeyboardControls.addElement($link.get(0));
 
       // Add hover effect if not an ipad or iphone.
-      if (supportsHover) {
+      if (!isIOS) {
         // create popup
         $('<div/>', {
           'class': 'h5p-progressbar-popup',
