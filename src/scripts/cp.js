@@ -760,6 +760,12 @@ CoursePresentation.prototype.setElementsOverride = function (override) {
       this.elementsOverride.params.behaviour.enableRetry =
           (override.retryButton === 'on' ? true : false);
     }
+
+     if (override.checkButton) {
+      // Override check button
+      this.elementsOverride.params.behaviour.enableCheckButton =
+          (override.checkButton === 'on' ? true : false);
+    }
   }
 };
 
