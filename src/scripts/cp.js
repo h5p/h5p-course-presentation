@@ -491,6 +491,8 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
       if ($indicator.hasClass('h5p-answered')) {
         const isCorrect = singleSlide.score >= singleSlide.maxScore;
         $indicator.addClass(isCorrect ? 'h5p-is-correct' : 'h5p-is-wrong');
+
+        this.navigationLine.updateSlideTitle(singleSlide.slide - 1);
       }
     });
   }
