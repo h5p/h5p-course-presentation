@@ -475,11 +475,11 @@ const NavigationLine = (function ($) {
     const total =  this.cp.slides.length;
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
-    const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total) + ': ';
-    const currentSlideLabel = isCurrent ? ('. ' + this.cp.l10n['currentSlide']) : '';
-    const answeredLabel = this.answeredLabels[state];
+    const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total);
+    const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
+    const currentSlideLabel = isCurrent ? this.cp.l10n['currentSlide'] : '';
 
-    $partTitle.html(numberedLabel + answeredLabel.replace('@slideName', this.createSlideTitle(index)) + currentSlideLabel);
+    $partTitle.html(`${numberedLabel}: ${answeredLabel}. ${currentSlideLabel}`);
   };
 
   /**
