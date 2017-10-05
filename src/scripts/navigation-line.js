@@ -1,7 +1,7 @@
 import Printer from './printer';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
-import { defaultValue, addClickAndKeyboardListeners, isIOS } from './utils';
+import { defaultValue, contains, isFunction, addClickAndKeyboardListeners, isIOS } from './utils';
 
 /**
  * Enum indicating which state a navigation bar part is in
@@ -44,26 +44,27 @@ const NavigationLine = (function ($) {
    * Initializes xAPI event listener, updates progressbar when a task is changed.
    */
   NavigationLine.prototype.initTaskAnsweredListener = function () {
-    var that = this;
+    this.cp.elementInstances.forEach((slide, index) => {
+      slide
+        .filter(interaction => isFunction(interaction.on))
+        .forEach(interaction => {
+          interaction.on('xAPI', (event) => {
+            const shortVerb = event.getVerb();
 
-    this.cp.elementInstances.forEach(function (element) {
-      element.forEach(function (elementInstance) {
-        if (elementInstance.on !== undefined) {
-          elementInstance.on('xAPI', function (event) {
-            var shortVerb = event.getVerb();
-            if (shortVerb === 'interacted') {
-              const hasAnswered = that.slideHasAnsweredTask(that.cp.currentSlideIndex);
-              that.setTaskAnswered(that.cp.currentSlideIndex, hasAnswered);
+            if (contains(['interacted', 'answered', 'attempted'], shortVerb)) {
+              const isAnswered = this.cp.slideHasAnsweredTask(index);
+              this.setTaskAnswered(index, isAnswered);
             }
             else if (shortVerb === 'completed') {
               event.setVerb('answered');
             }
+
             if (event.data.statement.context.extensions === undefined) {
               event.data.statement.context.extensions = {};
             }
-            event.data.statement.context.extensions['http://id.tincanapi.com/extension/ending-point'] = that.cp.currentSlideIndex + 1;
+
+            event.data.statement.context.extensions['http://id.tincanapi.com/extension/ending-point'] = index + 1;
           });
-        }
       });
     });
   };
@@ -73,6 +74,7 @@ const NavigationLine = (function ($) {
    */
   NavigationLine.prototype.initProgressbar = function (slidesWithSolutions) {
     const that = this;
+    const currentSlideIndex = (that.cp.previousState && that.cp.previousState.progress) || 0;
 
     this.progresbarKeyboardControls = new Controls([new UIKeyboard()]);
     this.progresbarKeyboardControls.negativeTabIndexAllowed = true;
@@ -138,8 +140,13 @@ const NavigationLine = (function ($) {
         $li.addClass('progressbar-part-summary-slide');
       }
 
+
       if (i === 0) {
-        $li.addClass('h5p-progressbar-part-show h5p-progressbar-part-selected');
+        $li.addClass('h5p-progressbar-part-show');
+      }
+
+      if(i === currentSlideIndex) {
+        $li.addClass('h5p-progressbar-part-selected');
       }
 
       that.cp.progressbarParts.push($li);
@@ -423,20 +430,6 @@ const NavigationLine = (function ($) {
   };
 
   /**
-   * Returns true if a slide has an answered task
-   *
-   * @param {number} index
-   * @return {boolean}
-   */
-  NavigationLine.prototype.slideHasAnsweredTask = function (index) {
-    const tasks = this.cp.slidesWithSolutions[index] || [];
-
-    return tasks
-      .filter(task => task.getAnswerGiven !== undefined)
-      .some(task => task.getAnswerGiven());
-  };
-
-  /**
    * Sets a part to be answered, or un answered
    *
    * @param {number} index
@@ -491,7 +484,7 @@ const NavigationLine = (function ($) {
   NavigationLine.prototype.getAnsweredState = function (index) {
     const $part = this.cp.progressbarParts[index];
     const hasTask = this.slideHasInteraction(index);
-    const isAnswered = this.slideHasAnsweredTask(index);
+    const isAnswered = this.cp.slideHasAnsweredTask(index);
 
     if (!hasTask) {
       return answeredState.NO_INTERACTIONS;
