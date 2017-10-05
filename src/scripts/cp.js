@@ -1063,6 +1063,7 @@ CoursePresentation.prototype.restoreTabIndexes = function() {
  * @return {jQuery}
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
+  const self = this;
   const autoPlay = element.action.params && element.action.params.cpAutoplay;
   const label = (element.action.params && element.action.params.contentName) || '';
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
@@ -1084,10 +1085,13 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
   });
 
+  const $buttonElement = $('<div class="h5p-button-element"></div>');
+  instance.attach($buttonElement);
+
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
-    this.disableTabIndexes(); // Disable tabs behind overlay
+    self.showInteractionPopup(instance, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+    self.disableTabIndexes(); // Disable tabs behind overlay
   });
 
   if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
@@ -1109,10 +1113,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
  * @param {boolean} autoPlay
  * @param {function} closeCallback
  */
-CoursePresentation.prototype.showInteractionPopup = function (instance, libTypePmz, autoPlay, closeCallback) {
-  const $buttonElement = $('<div class="h5p-button-element"></div>');
-
-  instance.attach($buttonElement);
+CoursePresentation.prototype.showInteractionPopup = function (instance, $buttonElement, libTypePmz, autoPlay, closeCallback) {
 
   // Handle exit fullscreen
   const exitFullScreen = () => {
