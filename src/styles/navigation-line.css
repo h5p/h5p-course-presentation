@@ -343,17 +343,6 @@
   pointer-events: none;
 }
 
-.h5p-course-presentation .h5p-progressbar-part:first-child .h5p-progressbar-popup {
-  left: 0;
-  transform: translateX(0);
-}
-
-.h5p-course-presentation .h5p-progressbar-part:last-child .h5p-progressbar-popup {
-  left: auto;
-  right: 0;
-  transform: translateX(0);
-}
-
 .h5p-course-presentation .h5p-progressbar-part:hover .h5p-progressbar-popup {
   display: block;
 }
