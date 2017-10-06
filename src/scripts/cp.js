@@ -1063,7 +1063,6 @@ CoursePresentation.prototype.restoreTabIndexes = function() {
  * @return {jQuery}
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
-  const self = this;
   const autoPlay = element.action.params && element.action.params.cpAutoplay;
   const label = (element.action.params && element.action.params.contentName) || '';
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
@@ -1090,8 +1089,8 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
-    self.showInteractionPopup(instance, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button));
-    self.disableTabIndexes(); // Disable tabs behind overlay
+    this.showInteractionPopup(instance, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button))
+    this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
   if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
