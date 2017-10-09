@@ -211,7 +211,10 @@ CoursePresentation.prototype.attach = function ($container) {
           '  <div class="h5p-footer"></div>' +
           '</div>';
 
-  $container.addClass('h5p-course-presentation').html(html);
+  $container
+    .attr('role', 'application')
+    .addClass('h5p-course-presentation')
+    .html(html);
 
   this.$container = $container;
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
@@ -1785,7 +1788,7 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber) {
  * @returns {String} HTML.
  */
 CoursePresentation.createSlide = function (slide) {
-  return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
+  return '<div role="document" class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
 };
 
 /**
