@@ -55,7 +55,8 @@
                       ]
                     },
                     {
-                      "label": "Aller à la diapositive"
+                      "label": "Aller à la diapositive",
+                      "description": "Only applicable when 'Specific slide number' is selected"
                     },
                     {
                       "label": "Invisible",
@@ -280,6 +281,10 @@
           "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
         },
         {
+          "label": "Canvas label for assistive technologies",
+          "default": "Presentation canvas. Use left and right arrow to move between slides."
+        },
+        {
           "label": "Label for uncompleted interactions",
           "default": "@slideName contains not completed interaction"
         },
@@ -290,6 +295,14 @@
         {
           "label": "Label for slide counter. Variables are @index, @total",
           "default": "Slide @index of @total"
+        },
+        {
+          "label": "Label for slides that only contains correct answers",
+          "default": "@slideName only has correct answers"
+        },
+        {
+          "label": "Label for slides that has incorrect answers",
+          "default": "@slideName has incorrect answers"
         }
       ]
     },

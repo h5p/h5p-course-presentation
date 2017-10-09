@@ -26,7 +26,6 @@ let CoursePresentation = function (params, id, extras) {
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
   this.contentId = id;
-  this.currentSlideIndex = 0;
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
@@ -41,9 +40,11 @@ let CoursePresentation = function (params, id, extras) {
     this.previousState = extras.previousState;
   }
 
+  this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
+
   this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
 
-  this.l10n = H5P.jQuery.extend({
+  this.l10n = $.extend({
     slide: 'Slide',
     yourScore: 'Your score',
     maxScore: 'Max score',
@@ -82,7 +83,9 @@ let CoursePresentation = function (params, id, extras) {
     containsNotCompleted: '@slideName contains not completed interaction',
     containsCompleted: '@slideName contains completed interaction',
     slideCount: 'Slide @index of @total',
-    accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.'
+    accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
+    containsOnlyCorrect: "@slideName only has correct answers",
+    containsIncorrectAnswers: '@slideName has incorrect answers'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -133,22 +136,20 @@ CoursePresentation.prototype.constructor = CoursePresentation;
 
 /**
  * @public
+ * @return {object}
  */
 CoursePresentation.prototype.getCurrentState = function () {
   var state = this.previousState ? this.previousState : {};
-  state.progress = this.$current.index();
+  state.progress = this.getCurrentSlideIndex();
   if (!state.answers) {
     state.answers = [];
   }
-  if (!state.answered) {
-    state.answered = [];
-  }
+
+  state.answered = this.elementInstances
+    .map((interaction, index) => this.slideHasAnsweredTask(index));
 
   // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
-    if (this.progressbarParts) {
-      state.answered[slide] = this.progressbarParts[slide].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered');
-    }
     if (this.elementInstances[slide]) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];
@@ -164,6 +165,20 @@ CoursePresentation.prototype.getCurrentState = function () {
   }
 
   return state;
+};
+
+/**
+ * Returns true if a slide has answered interactions
+ *
+ * @param {number} index
+ * @return {boolean}
+ */
+CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
+  const tasks = this.slidesWithSolutions[index] || [];
+
+  return tasks
+    .filter(task => isFunction(task.getAnswerGiven))
+    .some(task => task.getAnswerGiven());
 };
 
 /**
@@ -418,11 +433,10 @@ CoursePresentation.prototype.createSlides = function (slidesParams) {
     var slideParams = slidesParams[i];
 
     // Create slide element
-    var $slide = H5P.jQuery(CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
+    var $slide = $(CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
 
-    // Set as current if this is the first slide
-    var isFirst = (i === 0);
-    if (isFirst) {
+    // Set as current
+    if (i === this.currentSlideIndex) {
       this.$current = $slide.addClass('h5p-current');
     }
 
@@ -489,6 +503,8 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
       if ($indicator.hasClass('h5p-answered')) {
         const isCorrect = singleSlide.score >= singleSlide.maxScore;
         $indicator.addClass(isCorrect ? 'h5p-is-correct' : 'h5p-is-wrong');
+
+        this.navigationLine.updateSlideTitle(singleSlide.slide - 1);
       }
     });
   }
@@ -713,11 +729,12 @@ CoursePresentation.prototype.addElements = function (slide, $slide, index) {
   if (slide.elements === undefined) {
     return;
   }
-  var attach = (this.editor !== undefined || index === 0 || index === 1);
+  var attach = (this.isEditor() || index === 0 || index === 1 || this.isCurrentSlide(index));
 
   for (var i = 0; i < slide.elements.length; i++) {
     var element = slide.elements[i];
     var instance = this.addElement(element, $slide, index);
+
     if (attach) {
       // The editor requires all fields to be attached/rendered right away
       this.attachElement(element, instance, $slide, index);
@@ -1073,9 +1090,12 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
   });
 
+  const $buttonElement = $('<div class="h5p-button-element"></div>');
+  instance.attach($buttonElement);
+
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+    this.showInteractionPopup(instance, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button))
     this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
@@ -1098,10 +1118,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
  * @param {boolean} autoPlay
  * @param {function} closeCallback
  */
-CoursePresentation.prototype.showInteractionPopup = function (instance, libTypePmz, autoPlay, closeCallback) {
-  const $buttonElement = $('<div class="h5p-button-element"></div>');
-
-  instance.attach($buttonElement);
+CoursePresentation.prototype.showInteractionPopup = function (instance, $buttonElement, libTypePmz, autoPlay, closeCallback) {
 
   // Handle exit fullscreen
   const exitFullScreen = () => {
@@ -1574,7 +1591,7 @@ CoursePresentation.prototype.nextSlide = function (noScroll) {
  * @return {boolean}
  */
 CoursePresentation.prototype.isCurrentSlide = function (index) {
-  return this.$current.index() === index;
+  return this.currentSlideIndex === index;
 };
 
 /**
@@ -1583,7 +1600,7 @@ CoursePresentation.prototype.isCurrentSlide = function (index) {
  * @return {number}
  */
 CoursePresentation.prototype.getCurrentSlideIndex = function () {
-  return this.$current.index();
+  return this.currentSlideIndex;
 };
 
 /**

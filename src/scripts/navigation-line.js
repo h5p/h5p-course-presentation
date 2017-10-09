@@ -1,8 +1,19 @@
 import Printer from './printer';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
-import { defaultValue, addClickAndKeyboardListeners, isIOS } from './utils';
+import { defaultValue, contains, isFunction, addClickAndKeyboardListeners, isIOS } from './utils';
 
+/**
+ * Enum indicating which state a navigation bar part is in
+ * @enum {string}
+ */
+const answeredState = {
+  NO_INTERACTIONS: 'none',
+  NOT_ANSWERED: 'not-answered',
+  ANSWERED: 'answered',
+  CORRECT: 'has-only-correct',
+  INCORRECT: 'has-incorrect'
+};
 
 /**
  * @class
@@ -10,6 +21,19 @@ import { defaultValue, addClickAndKeyboardListeners, isIOS } from './utils';
 const NavigationLine = (function ($) {
   function NavigationLine(coursePresentation) {
     this.cp = coursePresentation;
+
+    /**
+     * Mapping for labels indicating the answered state of a part
+     * @property {Object.<answeredState, string>} answeredLabels
+     */
+    this.answeredLabels = {
+      [answeredState.NOT_ANSWERED]: this.cp.l10n.containsNotCompleted,
+      [answeredState.ANSWERED]: this.cp.l10n.containsCompleted,
+      [answeredState.CORRECT]: this.cp.l10n.containsOnlyCorrect,
+      [answeredState.INCORRECT]: this.cp.l10n.containsIncorrectAnswers,
+      [answeredState.NO_INTERACTIONS]: '@slideName',
+    };
+
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
     this.initTaskAnsweredListener();
@@ -20,26 +44,27 @@ const NavigationLine = (function ($) {
    * Initializes xAPI event listener, updates progressbar when a task is changed.
    */
   NavigationLine.prototype.initTaskAnsweredListener = function () {
-    var that = this;
+    this.cp.elementInstances.forEach((slide, index) => {
+      slide
+        .filter(interaction => isFunction(interaction.on))
+        .forEach(interaction => {
+          interaction.on('xAPI', (event) => {
+            const shortVerb = event.getVerb();
 
-    this.cp.elementInstances.forEach(function (element) {
-      element.forEach(function (elementInstance) {
-        if (elementInstance.on !== undefined) {
-          elementInstance.on('xAPI', function (event) {
-            var shortVerb = event.getVerb();
-            if (shortVerb === 'interacted') {
-              const hasAnswered = that.slideHasAnsweredTask(that.cp.currentSlideIndex);
-              that.setTaskAnswered(that.cp.currentSlideIndex, hasAnswered);
+            if (contains(['interacted', 'answered', 'attempted'], shortVerb)) {
+              const isAnswered = this.cp.slideHasAnsweredTask(index);
+              this.setTaskAnswered(index, isAnswered);
             }
             else if (shortVerb === 'completed') {
               event.setVerb('answered');
             }
+
             if (event.data.statement.context.extensions === undefined) {
               event.data.statement.context.extensions = {};
             }
-            event.data.statement.context.extensions['http://id.tincanapi.com/extension/ending-point'] = that.cp.currentSlideIndex + 1;
+
+            event.data.statement.context.extensions['http://id.tincanapi.com/extension/ending-point'] = index + 1;
           });
-        }
       });
     });
   };
@@ -49,6 +74,7 @@ const NavigationLine = (function ($) {
    */
   NavigationLine.prototype.initProgressbar = function (slidesWithSolutions) {
     const that = this;
+    const currentSlideIndex = (that.cp.previousState && that.cp.previousState.progress) || 0;
 
     this.progresbarKeyboardControls = new Controls([new UIKeyboard()]);
     this.progresbarKeyboardControls.negativeTabIndexAllowed = true;
@@ -103,19 +129,26 @@ const NavigationLine = (function ($) {
       // Add hover effect if not an ipad or iphone.
       if (!isIOS) {
         // create popup
-        $('<div/>', {
+        const $popup = $('<div/>', {
           'class': 'h5p-progressbar-popup',
           'html': progressbarPartTitle,
           'aria-hidden': 'true'
         }).appendTo($li);
+
+        $li.mouseenter(() => this.ensurePopupVisible($popup))
       }
 
       if (this.isSummarySlide(i)) {
         $li.addClass('progressbar-part-summary-slide');
       }
 
+
       if (i === 0) {
-        $li.addClass('h5p-progressbar-part-show h5p-progressbar-part-selected');
+        $li.addClass('h5p-progressbar-part-show');
+      }
+
+      if(i === currentSlideIndex) {
+        $li.addClass('h5p-progressbar-part-selected');
       }
 
       that.cp.progressbarParts.push($li);
@@ -136,6 +169,27 @@ const NavigationLine = (function ($) {
           this.setTaskAnswered(i, isAnswered);
         }
       }
+    }
+  };
+
+  /**
+   * Ensures that all of a popup is visible
+   *
+   * @param {jQuery} $popup
+   */
+  NavigationLine.prototype.ensurePopupVisible = function ($popup) {
+    const availableWidth = this.cp.$container.width();
+    const popupWidth = $popup.outerWidth();
+    const popupOffsetLeft = $popup.offset().left;
+
+    if (popupOffsetLeft < 0) {
+      $popup.css('left', 0);
+      $popup.css('transform', 'translateX(0)')
+    }
+    else if ((popupOffsetLeft + popupWidth) > availableWidth) {
+      $popup.css('left', 'auto');
+      $popup.css('right', 0);
+      $popup.css('transform', 'translateX(0)')
     }
   };
 
@@ -399,20 +453,6 @@ const NavigationLine = (function ($) {
   };
 
   /**
-   * Returns true if a slide has an answered task
-   *
-   * @param {number} index
-   * @return {boolean}
-   */
-  NavigationLine.prototype.slideHasAnsweredTask = function (index) {
-    const tasks = this.cp.slidesWithSolutions[index] || [];
-
-    return tasks
-      .filter(task => task.getAnswerGiven !== undefined)
-      .some(task => task.getAnswerGiven());
-  };
-
-  /**
    * Sets a part to be answered, or un answered
    *
    * @param {number} index
@@ -422,7 +462,7 @@ const NavigationLine = (function ($) {
     const $answeredIndicator = this.cp.progressbarParts[index].find('.h5p-progressbar-part-has-task');
 
     $answeredIndicator.toggleClass('h5p-answered', isAnswered);
-    this.updateSlideTitle(index, { isAnswered });
+    this.updateSlideTitle(index, { state: isAnswered ? answeredState.ANSWERED : answeredState.NOT_ANSWERED });
   };
 
   /**
@@ -430,14 +470,12 @@ const NavigationLine = (function ($) {
    *
    * @param {number} index
    * @param {object} [config]
-   * @param {boolean} [config.hasTask]
-   * @param {boolean} [config.isAnswered]
+   * @param {answeredState} [config.state]
    * @param {boolean} [config.isCurrent]
    */
-  NavigationLine.prototype.updateSlideTitle = function (index, { isAnswered, hasTask, isCurrent } = {}) {
+  NavigationLine.prototype.updateSlideTitle = function (index, { state, isCurrent } = {}) {
     this.setSlideTitle(index, {
-      hasTask: defaultValue(hasTask, this.slideHasInteraction(index)),
-      isAnswered: defaultValue(isAnswered, this.slideHasAnsweredTask(index)),
+      state: defaultValue(state, this.getAnsweredState(index)),
       isCurrent: defaultValue(isCurrent, this.cp.isCurrentSlide(index))
     });
   };
@@ -446,23 +484,45 @@ const NavigationLine = (function ($) {
    * Sets a part to be answered, or un answered
    *
    * @param {number} index
-   * @param {boolean} [hasTask]
-   * @param {boolean} [isAnswered]
+   * @param {answeredState} [state]
    * @param {boolean} [isCurrent]
    */
-  NavigationLine.prototype.setSlideTitle = function (index, { isAnswered = false, hasTask = false, isCurrent = false}) {
+  NavigationLine.prototype.setSlideTitle = function (index, { state = answeredState.NO_INTERACTIONS, isCurrent = false}) {
     const total =  this.cp.slides.length;
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
-    const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total) + ': ';
-    const answeredLabel = this.cp.l10n[isAnswered ? 'containsCompleted' : 'containsNotCompleted'];
-    const currentSlideLabel = isCurrent ? ('. ' + this.cp.l10n['currentSlide']) : '';
+    const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total);
+    const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
+    const currentSlideLabel = isCurrent ? this.cp.l10n['currentSlide'] : '';
 
-    if (hasTask) {
-      $partTitle.html(numberedLabel + answeredLabel.replace('@slideName', this.createSlideTitle(index)) + currentSlideLabel);
+    $partTitle.html(`${numberedLabel}: ${answeredLabel}. ${currentSlideLabel}`);
+  };
+
+  /**
+   * Returns the answered state of a given slide
+   *
+   * @param {number} index
+   * @return {answeredState}
+   */
+  NavigationLine.prototype.getAnsweredState = function (index) {
+    const $part = this.cp.progressbarParts[index];
+    const hasTask = this.slideHasInteraction(index);
+    const isAnswered = this.cp.slideHasAnsweredTask(index);
+
+    if (!hasTask) {
+      return answeredState.NO_INTERACTIONS;
+    }
+    else if ($part.find('.h5p-is-correct').length > 0) {
+      return answeredState.CORRECT;
+    }
+    else if ($part.find('.h5p-is-wrong').length > 0) {
+      return answeredState.INCORRECT;
+    }
+    else if (isAnswered) {
+      return answeredState.ANSWERED;
     }
     else {
-      $partTitle.html(numberedLabel + this.createSlideTitle(index) + currentSlideLabel);
+      return answeredState.NOT_ANSWERED;
     }
   };
 
