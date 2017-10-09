@@ -294,6 +294,10 @@ CoursePresentation.prototype.attach = function ($container) {
 
     $summarySlide = H5P.jQuery(CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
+
+    if (this.isCurrentSlide(this.slides.length - 1)) {
+      this.$current = $summarySlide;
+    }
   }
 
   const keywordMenuConfig = this.getKeywordMenuConfig();
