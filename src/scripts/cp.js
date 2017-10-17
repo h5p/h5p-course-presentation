@@ -2010,10 +2010,10 @@ CoursePresentation.prototype.getXAPIData = function () {
   xAPIEvent.setScoredResult(score, maxScore, this, true, score === maxScore);
 
   var childrenXAPIData = flattenArray(this.slidesWithSolutions).map((child) => {
-    if (child.getXAPIData) {
+    if (child && child.getXAPIData) {
       return child.getXAPIData();
     }
-  });
+  }).filter(data => !!data);
 
   return {
     statement: xAPIEvent.data.statement,
