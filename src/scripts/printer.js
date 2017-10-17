@@ -1,4 +1,4 @@
-import { addClickAndKeyboardListeners } from './utils'
+import { addClickAndKeyboardListeners } from './utils';
 
 const Printer = (function ($) {
   let nextPrinterDialogId = 0;
@@ -120,7 +120,7 @@ const Printer = (function ($) {
       html: texts.printIngress
     }));
 
-    var $buttonAllSlides = H5P.JoubelUI.createButton({
+    H5P.JoubelUI.createButton({
       html: texts.printAllSlides,
       'class': 'h5p-cp-print-all-slides',
       click: function () {
@@ -129,7 +129,7 @@ const Printer = (function ($) {
       }
     }).appendTo($content);
 
-    var $buttonCurrentSlide = H5P.JoubelUI.createButton({
+    H5P.JoubelUI.createButton({
       html: texts.printCurrentSlide,
       'class': 'h5p-cp-print-current-slide',
       click: function () {

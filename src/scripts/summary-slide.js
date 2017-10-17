@@ -355,7 +355,7 @@ const SummarySlide = (function () {
         ',top=' + topPos);
 
       return false;
-    })
+    });
   };
 
   /**
@@ -396,7 +396,7 @@ const SummarySlide = (function () {
         ',left=' + leftPos +
         ',top=' + topPos);
       return false;
-    })
+    });
   };
 
   /**

@@ -298,7 +298,7 @@ CoursePresentation.prototype.attach = function ($container) {
     $summarySlide = H5P.jQuery(CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
 
-    if (this.isCurrentSlide(this.slides.length - 1)) {
+    if (this.isCurrentSlide(this.slides.length - 1)) {
       this.$current = $summarySlide;
     }
   }
@@ -1032,8 +1032,8 @@ CoursePresentation.prototype.disableTabIndexes = function() {
 
     // If element is part of dialog wrapper, just ignore it
     return false;
-  })
-}
+  });
+};
 
 
 /**
@@ -1059,7 +1059,7 @@ CoursePresentation.prototype.restoreTabIndexes = function() {
       }
     });
   }
-}
+};
 
 /**
  * Creates the interaction button
@@ -1096,7 +1096,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button))
+    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button));
     this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
