@@ -158,13 +158,15 @@ const SummarySlide = (function () {
       tds +=
         '<tr>' +
           '<td class="h5p-td h5p-summary-task-title">' +
-            '<a href="#" role="button" class="h5p-slide-link" data-slide="' +
+            '<a href="#" class="h5p-slide-link"  aria-label=" ' +
+              that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + ' ' +
+              slidePercentageScore + '%' +
+              '" data-slide="' +
               slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) +
             '</a>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
-            '<p class="hidden-but-read">' + slidePercentageScore + '%' + '</p>' +
-            '<div title="' + slidePercentageScore + '%" class="h5p-summary-score-meter">' +
+            '<div class="h5p-summary-score-meter">' +
               '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
             '</div>' +
           '</td>' +
