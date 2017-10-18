@@ -85,8 +85,7 @@ let CoursePresentation = function (params, id, extras) {
     slideCount: 'Slide @index of @total',
     accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
     containsOnlyCorrect: "@slideName only has correct answers",
-    containsIncorrectAnswers: '@slideName has incorrect answers',
-    backgroundImage: 'Background image'
+    containsIncorrectAnswers: '@slideName has incorrect answers'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
