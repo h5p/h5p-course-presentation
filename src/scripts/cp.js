@@ -1927,25 +1927,30 @@ CoursePresentation.prototype.getCopyrights = function () {
   var info = new H5P.ContentCopyrights();
   var elementCopyrights;
 
-  // If template background image is sat, add it directly to main copyright
-  if (this.presentation.globalBackgroundSelector.imageGlobalBackground) {
-    var globalParams = this.presentation.globalBackgroundSelector;
-    H5P.findCopyrights(info, globalParams, this.contentId);
-    info.setLabel(this.l10n.backgroundImage);
+  // Check for a common background image shared by all slides
+  if (this.presentation && this.presentation.globalBackgroundSelector &&
+      this.presentation.globalBackgroundSelector.imageGlobalBackground) {
+
+    // Add image copyrights to the presentation scope
+    var globalBackgroundImageParams = this.presentation.globalBackgroundSelector.imageGlobalBackground;
+    var globalBackgroundImageCopyright = new H5P.MediaCopyright(globalBackgroundImageParams.copyright);
+    globalBackgroundImageCopyright.setThumbnail(new H5P.Thumbnail(H5P.getPath(globalBackgroundImageParams.path, this.contentId), globalBackgroundImageParams.width, globalBackgroundImageParams.height));
+    info.addMedia(globalBackgroundImageCopyright);
   }
 
-  for (var slide = 0; slide < this.elementInstances.length; slide++) {
+  for (var slide = 0; slide < this.slides.length; slide++) {
     var slideInfo = new H5P.ContentCopyrights();
     slideInfo.setLabel(this.l10n.slide + ' ' + (slide + 1));
 
-    // If slide specifig background image is sat, add it inside slides copyright
-    if(this.slides[slide].slideBackgroundSelector.imageSlideBackground) {
-      var backgroundElementCopyrights = new H5P.ContentCopyrights();
-      var backgroundParams = this.slides[slide].slideBackgroundSelector;
+    // Check for a slide specific background image
+    if (this.slides[slide] && this.slides[slide].slideBackgroundSelector &&
+        this.slides[slide].slideBackgroundSelector.imageSlideBackground) {
 
-      H5P.findCopyrights(backgroundElementCopyrights, backgroundParams, this.contentId);
-      backgroundElementCopyrights.setLabel(this.l10n.backgroundImage);
-      slideInfo.addContent(backgroundElementCopyrights);
+      // Add image copyrights to the slide scope
+      var slideBackgroundImageParams = this.slides[slide].slideBackgroundSelector.imageSlideBackground;
+      var slideBackgroundImageCopyright = new H5P.MediaCopyright(slideBackgroundImageParams.copyright);
+      slideBackgroundImageCopyright.setThumbnail(new H5P.Thumbnail(H5P.getPath(slideBackgroundImageParams.path, this.contentId), slideBackgroundImageParams.width, slideBackgroundImageParams.height));
+      slideInfo.addMedia(slideBackgroundImageCopyright);
     }
 
     // If the slide has elements, add the ones with copyright info to this slides copyright
