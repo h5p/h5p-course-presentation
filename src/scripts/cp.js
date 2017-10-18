@@ -199,7 +199,8 @@ CoursePresentation.prototype.attach = function ($container) {
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
           '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
-          '  <div class="h5p-current-slide-announcer hidden-but-read" tabindex="-1"></div>' +
+          '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
+          '  <div tabindex="-1"></div>' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
@@ -219,6 +220,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   this.$container = $container;
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
+  this.$slideTop = this.$slideAnnouncer.next();
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
@@ -342,7 +344,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
     // Set slide title if initing on slide 0
     if (!this.previousState || !this.previousState.progress) {
-      this.setSlideNumberAnnouncer(0);
+      this.setSlideNumberAnnouncer(0, false);
     }
 
     this.summarySlideObject = new SummarySlide(this, $summarySlide);
@@ -1577,7 +1579,7 @@ CoursePresentation.prototype.previousSlide = function (noScroll) {
     return false;
   }
 
-  return this.jumpToSlide($prev.index(), noScroll);
+  return this.jumpToSlide($prev.index(), noScroll, false);
 };
 
 /**
@@ -1592,7 +1594,7 @@ CoursePresentation.prototype.nextSlide = function (noScroll) {
     return false;
   }
 
-  return this.jumpToSlide($next.index(), noScroll);
+  return this.jumpToSlide($next.index(), noScroll, false);
 };
 
 /**
@@ -1639,7 +1641,7 @@ CoursePresentation.prototype.attachAllElements = function () {
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = true) {
   var that = this;
   if (this.editor === undefined) {
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1749,7 +1751,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     that.navigationLine.updateFooter(slideNumber);
 
     // Announce slide change
-    this.setSlideNumberAnnouncer(slideNumber);
+    this.setSlideNumberAnnouncer(slideNumber, handleFocus);
   }
 
   if (that.summarySlideObject) {
@@ -1772,8 +1774,9 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
 /**
  * Set slide number so it can be announced to assistive technologies
  * @param {number} slideNumber Index of slide that should have its' title announced
+ * @param {boolean} [handleFocus=true] Moves focus to the top of the slide
  */
-CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber) {
+CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = true) {
   let slideTitle = '';
 
   if (!this.navigationLine) {
@@ -1788,7 +1791,10 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber) {
   }
 
   slideTitle += this.navigationLine.createSlideTitle(slideNumber);
-  this.$slideAnnouncer.html(slideTitle).focus();
+  this.$slideAnnouncer.html(slideTitle);
+  if (handleFocus) {
+    this.$slideTop.focus();
+  }
 };
 
 /**
