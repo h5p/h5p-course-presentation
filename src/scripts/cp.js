@@ -85,7 +85,8 @@ let CoursePresentation = function (params, id, extras) {
     slideCount: 'Slide @index of @total',
     accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
     containsOnlyCorrect: "@slideName only has correct answers",
-    containsIncorrectAnswers: '@slideName has incorrect answers'
+    containsIncorrectAnswers: '@slideName has incorrect answers',
+    backgroundImage: 'Background image'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -783,6 +784,12 @@ CoursePresentation.prototype.setElementsOverride = function (override) {
       // Override retry button
       this.elementsOverride.params.behaviour.enableRetry =
           (override.retryButton === 'on' ? true : false);
+    }
+
+     if (override.checkButton) {
+      // Override check button
+      this.elementsOverride.params.behaviour.enableCheckButton =
+          (override.checkButton === 'on' ? true : false);
     }
   }
 };
@@ -1918,15 +1925,38 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
  */
 CoursePresentation.prototype.getCopyrights = function () {
   var info = new H5P.ContentCopyrights();
-
   var elementCopyrights;
+
+  // If template background image is sat, add it directly to main copyright
+  if (this.presentation.globalBackgroundSelector.imageGlobalBackground) {
+    var globalParams = this.presentation.globalBackgroundSelector;
+    H5P.findCopyrights(info, globalParams, this.contentId);
+    info.setLabel(this.l10n.backgroundImage);
+  }
+
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
     var slideInfo = new H5P.ContentCopyrights();
     slideInfo.setLabel(this.l10n.slide + ' ' + (slide + 1));
 
+    // If slide specifig background image is sat, add it inside slides copyright
+    if(this.slides[slide].slideBackgroundSelector.imageSlideBackground) {
+      var backgroundElementCopyrights = new H5P.ContentCopyrights();
+      var backgroundParams = this.slides[slide].slideBackgroundSelector;
+
+      H5P.findCopyrights(backgroundElementCopyrights, backgroundParams, this.contentId);
+      backgroundElementCopyrights.setLabel(this.l10n.backgroundImage);
+      slideInfo.addContent(backgroundElementCopyrights);
+    }
+
+    // If the slide has elements, add the ones with copyright info to this slides copyright
     if (this.elementInstances[slide] !== undefined) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];
+
+        if (!this.slides[slide].elements[element].action) {
+          continue;
+        }
+
         var params = this.slides[slide].elements[element].action.params;
 
         elementCopyrights = undefined;
@@ -1939,7 +1969,6 @@ CoursePresentation.prototype.getCopyrights = function () {
           elementCopyrights = new H5P.ContentCopyrights();
           H5P.findCopyrights(elementCopyrights, params, this.contentId);
         }
-
         var label = (element + 1);
         if (params.contentName !== undefined) {
           label += ': ' + params.contentName;
@@ -1947,12 +1976,14 @@ CoursePresentation.prototype.getCopyrights = function () {
         else if (instance.getTitle !== undefined) {
           label += ': ' + instance.getTitle();
         }
+        else if (params.l10n && params.l10n.name) {
+          label += ': ' + params.l10n.name;
+        }
         elementCopyrights.setLabel(label);
 
         slideInfo.addContent(elementCopyrights);
       }
     }
-
     info.addContent(slideInfo);
   }
 
