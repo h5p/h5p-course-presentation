@@ -34,6 +34,14 @@ export const kebabCase = str => str.replace(/[\W]/g, '-');
  */
 export const isIPad = navigator.userAgent.match(/iPad/i) !== null;
 
+
+/**
+ * Is true if the users device is an iOS device
+ *
+ * @const {boolean}
+ */
+export const isIOS = navigator.userAgent.match(/iPad|iPod|iPhone/i) !== null;
+
 /**
  * Returns true if the array contains the value
  *
@@ -52,9 +60,7 @@ export const contains = (arr, val) => arr.indexOf(val) !== -1;
  * @param {T} fallback
  * @return {T}
  */
-export const defaultValue = function (value, fallback) {
-  return value === undefined ? fallback : value;
-};
+export const defaultValue = (value, fallback) => (value !== undefined) ? value : fallback;
 
 /**
  * Enum for keyboard key codes
@@ -63,6 +69,7 @@ export const defaultValue = function (value, fallback) {
  */
 export const keyCode = {
   ENTER: 13,
+  ESC: 27,
   SPACE: 32
 };
 

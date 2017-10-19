@@ -1,6 +1,6 @@
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
-import { isIPad } from './utils';
+import { isIPad, defaultValue } from './utils';
 import { jQuery as $, EventDispatcher } from './globals';
 
 /**
@@ -18,7 +18,6 @@ import { jQuery as $, EventDispatcher } from './globals';
 /**
  * @typedef {object} KeywordMenuState
  * @property {number} currentIndex
- * @property {KeywordMenuItemConfig[]} keywordConfigs
  */
 /**
  * Returns the index stored in a elements dataset
@@ -35,22 +34,22 @@ export default class KeywordMenu {
   /**
    * @constructor
    * @param {object} l10n
+   * @param {number} currentIndex
    */
-  constructor ({ l10n }) {
+  constructor ({ l10n, currentIndex }) {
     this.l10n = l10n;
     /**
      * @type {KeywordMenuState}
      */
     this.state = {
-      currentIndex: 0,
-      keywordConfigs: []
+      currentIndex: defaultValue(currentIndex, 0)
     };
     this.eventDispatcher = new EventDispatcher();
     this.controls = new Controls([new UIKeyboard()]);
 
     // on keyboard select
     this.controls.on('select', event => {
-      this.onMenuItemSelect(getElementsDatasetIndex(event.element))
+      this.onMenuItemSelect(getElementsDatasetIndex(event.element));
     });
 
     // propagate ESC event
@@ -67,15 +66,14 @@ export default class KeywordMenu {
    * @returns {Element[]}
    */
   init (keywordConfigs) {
-    this.state.keywordConfigs = keywordConfigs;
     this.menuItemElements = keywordConfigs.map(config => this.createMenuItemElement(config));
     this.menuItemElements.forEach(element => this.menuElement.appendChild(element));
     this.menuItemElements.forEach(element => this.controls.addElement(element));
 
-    this.updateCurrentlySelected(this.menuItemElements, this.state);
+    this.setCurrentSlideIndex(this.state.currentIndex);
 
     return this.menuItemElements;
-  };
+  }
 
   /**
    * Register an event listener
@@ -131,7 +129,7 @@ export default class KeywordMenu {
 
     element.setAttribute('role', 'menuitem');
     element.addEventListener('click', event => {
-      this.onMenuItemSelect(getElementsDatasetIndex(event.currentTarget))
+      this.onMenuItemSelect(getElementsDatasetIndex(event.currentTarget));
     });
     this.applyConfigToMenuItemElement(element, config);
 
@@ -168,9 +166,13 @@ export default class KeywordMenu {
    * @param {number} index
    */
   setCurrentSlideIndex(index) {
-    this.state.currentIndex = index;
-    this.updateCurrentlySelected(this.menuItemElements, this.state);
-    this.controls.setTabbableByIndex(index);
+    const selectedElement = this.getElementByIndex(this.menuItemElements, index);
+
+    if (selectedElement) {
+      this.state.currentIndex = index;
+      this.updateCurrentlySelected(this.menuItemElements, this.state);
+      this.controls.setTabbable(selectedElement);
+    }
   }
 
   /**
@@ -219,6 +221,17 @@ export default class KeywordMenu {
    */
   getFirstElementAfter(index) {
     return this.menuItemElements.filter(element => getElementsDatasetIndex(element) >= index)[0];
+  }
+
+  /**
+   * Returns the element with a given index
+   *
+   * @param {Element[]} elements
+   * @param {number} index
+   * @return {Element}
+   */
+  getElementByIndex(elements, index) {
+    return elements.filter(element => getElementsDatasetIndex(element) === index)[0];
   }
 
   /**

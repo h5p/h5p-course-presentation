@@ -335,6 +335,14 @@
   text-align: left;
 }
 
+.h5p-popup-overlay.h5p-interactivevideo .h5p-popup-container,
+.h5p-popup-overlay.h5p-video .h5p-popup-container {
+  top: 5%;
+  left: 17.5%;
+  width: 65%;
+  max-height: 95%;
+}
+
 .h5p-popup-overlay.h5p-dialogcards .h5p-popup-container {
   height: 80%;
   overflow: hidden;
@@ -779,10 +787,13 @@
 }
 
 .h5p-course-presentation .hidden-but-read {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
   height: 1px;
+  margin: -1px;
   overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
