@@ -101,7 +101,7 @@
 
 .h5p-course-presentation .h5p-summary-table-pages {
   overflow: auto;
-  max-height: 85%;
+  max-height: 75%;
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
 }
