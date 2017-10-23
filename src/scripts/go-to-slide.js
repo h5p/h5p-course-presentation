@@ -27,7 +27,7 @@ export default class GoToSlide {
    * @param {object} l10n
    * @param {number} currentIndex
    */
-  constructor({ title, goToSlide = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
+  constructor({ title, goToSlide = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
     this.eventDispatcher = new EventDispatcher();
     let classes = 'h5p-press-to-go';
     let tabindex = 0;
@@ -87,7 +87,7 @@ export default class GoToSlide {
    */
   attach($container) {
     $container.html('').addClass('h5p-go-to-slide').append(this.$element);
-  };
+  }
 
   /**
    * Register an event listener

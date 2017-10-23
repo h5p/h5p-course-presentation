@@ -162,7 +162,10 @@ const SummarySlide = (function () {
       tds +=
         '<tr>' +
           '<td class="h5p-td h5p-summary-task-title">' +
-            '<a href="#" role="button" class="h5p-slide-link" data-slide="' +
+            '<a href="#" class="h5p-slide-link"  aria-label=" ' +
+              that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + ' ' +
+              slidePercentageScore + '%' +
+              '" data-slide="' +
               slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) +
             '</a>' +
           '</td>' +
@@ -351,7 +354,7 @@ const SummarySlide = (function () {
         ',top=' + topPos);
 
       return false;
-    })
+    });
   };
 
   /**
@@ -392,7 +395,7 @@ const SummarySlide = (function () {
         ',left=' + leftPos +
         ',top=' + topPos);
       return false;
-    })
+    });
   };
 
   /**

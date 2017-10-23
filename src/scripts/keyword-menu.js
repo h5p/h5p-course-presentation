@@ -49,7 +49,7 @@ export default class KeywordMenu {
 
     // on keyboard select
     this.controls.on('select', event => {
-      this.onMenuItemSelect(getElementsDatasetIndex(event.element))
+      this.onMenuItemSelect(getElementsDatasetIndex(event.element));
     });
 
     // propagate ESC event
@@ -73,7 +73,7 @@ export default class KeywordMenu {
     this.setCurrentSlideIndex(this.state.currentIndex);
 
     return this.menuItemElements;
-  };
+  }
 
   /**
    * Register an event listener
@@ -129,7 +129,7 @@ export default class KeywordMenu {
 
     element.setAttribute('role', 'menuitem');
     element.addEventListener('click', event => {
-      this.onMenuItemSelect(getElementsDatasetIndex(event.currentTarget))
+      this.onMenuItemSelect(getElementsDatasetIndex(event.currentTarget));
     });
     this.applyConfigToMenuItemElement(element, config);
 

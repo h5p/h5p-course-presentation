@@ -135,7 +135,7 @@ const NavigationLine = (function ($) {
           'aria-hidden': 'true'
         }).appendTo($li);
 
-        $li.mouseenter(() => this.ensurePopupVisible($popup))
+        $li.mouseenter(() => this.ensurePopupVisible($popup));
       }
 
       if (this.isSummarySlide(i)) {
@@ -184,12 +184,12 @@ const NavigationLine = (function ($) {
 
     if (popupOffsetLeft < 0) {
       $popup.css('left', 0);
-      $popup.css('transform', 'translateX(0)')
+      $popup.css('transform', 'translateX(0)');
     }
     else if ((popupOffsetLeft + popupWidth) > availableWidth) {
       $popup.css('left', 'auto');
       $popup.css('right', 0);
-      $popup.css('transform', 'translateX(0)')
+      $popup.css('transform', 'translateX(0)');
     }
   };
 
@@ -245,7 +245,7 @@ const NavigationLine = (function ($) {
   NavigationLine.prototype.isSummarySlide = function (index) {
     return !!((this.cp.editor === undefined)
       && (index === this.cp.slides.length - 1)
-      && this.cp.showSummarySlide)
+      && this.cp.showSummarySlide);
   };
 
   /**
