@@ -102,12 +102,14 @@
 .h5p-course-presentation .h5p-summary-table-pages {
   overflow: auto;
   max-height: 85%;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 
 .h5p-course-presentation .h5p-summary-total-table {
   width: 100%;
   position: relative;
-  margin-top: 0.5em;
+  margin-top: 1em;
 }
 
 .h5p-course-presentation .h5p-summary-total-table p {
@@ -131,11 +133,7 @@
   padding: 0.3em;
 }
 
-.h5p-course-presentation .h5p-score-table tr:first-child {
-  border-top: 1px solid #ddd;
-}
-
-.h5p-course-presentation .h5p-score-table tr {
+.h5p-course-presentation .h5p-score-table tr:not(:last-child) {
   border-bottom: 1px solid #ddd;
 }
 
