@@ -46,12 +46,14 @@ let CoursePresentation = function (params, id, extras) {
 
   this.l10n = $.extend({
     slide: 'Slide',
+    score: 'Score',
     yourScore: 'Your score',
     maxScore: 'Max score',
     goodScore: 'Congratulations! You got @percent correct!',
     okScore: 'Nice effort! You got @percent correct!',
     badScore: 'You need to work more on this. You only got @percent correct...',
-    total: 'TOTAL',
+    total: 'Total',
+    totalScore: 'Total Score',
     showSolutions: 'Show solutions',
     summary: 'summary',
     retry: 'Retry',

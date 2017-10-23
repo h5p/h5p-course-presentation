@@ -130,6 +130,10 @@
           "default": "Sivu"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Käännös tekstille \"Pisteesi\"",
           "default": "Pisteesi"
         },
@@ -153,8 +157,12 @@
           "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
         },
         {
-          "label": "Käännös tekstille \"Yhteensä\"",
-          "default": "Yhteensä"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "\"Näytä oikeat vastaukset\"-painikkeen teksti",

@@ -130,6 +130,10 @@
           "default": "スライド"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "「あなたの得点」の翻訳",
           "default": "あなたの得点"
         },
@@ -153,8 +157,12 @@
           "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
         },
         {
-          "label": "「トータル」の翻訳",
-          "default": "トータル"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "「解を表示」ボタンのタイトル",

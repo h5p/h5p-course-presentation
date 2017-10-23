@@ -130,6 +130,10 @@
           "default": "Schaubild"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Übersetzung für \"Your Score\"",
           "default": "Deine Punktzahl"
         },
@@ -153,8 +157,12 @@
           "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
         },
         {
-          "label": "Übersetzung für \"Total\"",
-          "default": "Insgesamt"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Beschriftung für den \"Lösungen zeigen\"-Button",

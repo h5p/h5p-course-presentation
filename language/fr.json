@@ -130,6 +130,10 @@
           "default": "Diapositive"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Traduction pour \"Votre score\"",
           "default": "Votre score"
         },
@@ -153,8 +157,12 @@
           "description": "@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
         },
         {
-          "label": "Traduction pour \"Total\"",
+          "label": "Translation for \"Total\"",
           "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Texte pour le bouton \"Voir la correction\"",

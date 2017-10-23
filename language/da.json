@@ -130,6 +130,10 @@
           "default": "Slide"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Oversættelse for \"Dit resultat\"",
           "default": "Dit resultat"
         },
@@ -153,8 +157,12 @@
           "description": "@percentage ændres til brugerens opnåede resultat i procent"
         },
         {
-          "label": "Oversættelse for \"Total\"",
-          "default": "TOTAL"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Titel vist på 'Vis svar' knap",

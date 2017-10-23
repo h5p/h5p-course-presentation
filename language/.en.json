@@ -130,6 +130,10 @@
           "default": "Slide"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Translation for \"Your Score\"",
           "default": "Your Score"
         },
@@ -154,7 +158,11 @@
         },
         {
           "label": "Translation for \"Total\"",
-          "default": "TOTAL"
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Title for show solutions button",

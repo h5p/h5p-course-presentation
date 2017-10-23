@@ -130,6 +130,10 @@
           "default": "Lysbilete"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Oversetting for \"Din poengsum\"",
           "default": "Din poengsum"
         },
@@ -153,8 +157,12 @@
           "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
         },
         {
-          "label": "Oversetting for \"Total\"",
+          "label": "Translation for \"Total\"",
           "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Tittel på \"Vis fasit\" knappen",

@@ -130,6 +130,10 @@
           "default": "Slide"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Oversettelse for \"Din poengsum\"",
           "default": "Din poengsum"
         },
@@ -153,8 +157,12 @@
           "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
         },
         {
-          "label": "Oversettelse for \"Total\"",
+          "label": "Translation for \"Total\"",
           "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "\"Vis svar\" knapp",

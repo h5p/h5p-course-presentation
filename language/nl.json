@@ -130,6 +130,10 @@
           "default": "Slide"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Vertaling voor \"Jouw score\"",
           "default": "Jouw score"
         },
@@ -153,8 +157,12 @@
           "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "label": "Vertaling voor \"Totaal\"",
-          "default": "Totaal"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Tekst voor \"Toon oplossing\"-knop",

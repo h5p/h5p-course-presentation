@@ -378,6 +378,13 @@
         "default": "Slide"
       },
       {
+        "name": "score",
+        "type": "text",
+        "label": "Translation for \"Score\"",
+        "importance": "low",
+        "default": "Score"
+      },
+      {
         "name": "yourScore",
         "type": "text",
         "label": "Translation for \"Your Score\"",
@@ -420,7 +427,14 @@
         "type": "text",
         "label": "Translation for \"Total\"",
         "importance": "low",
-        "default": "TOTAL"
+        "default": "Total"
+      },
+      {
+        "name": "totalScore",
+        "type": "text",
+        "label": "Translation for \"Total Score\"",
+        "importance": "low",
+        "default": "Total Score"
       },
       {
         "name": "showSolutions",

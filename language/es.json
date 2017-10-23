@@ -130,6 +130,10 @@
           "default": "Diapositiva"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Traduction para \"Pauntaje\"",
           "default": "Puntaje"
         },
@@ -153,8 +157,12 @@
           "description": "@percent es reemplazado por el puntaje real del usuario en porcentaje"
         },
         {
-          "label": "Traducción para \"Total\"",
+          "label": "Translation for \"Total\"",
           "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Texto para el botón de Mostrar la Solución",
