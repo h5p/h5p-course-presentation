@@ -3,7 +3,7 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 17,
-  "patchVersion": 4,
+  "patchVersion": 6,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -18,39 +18,12 @@
   },
   "preloadedJs": [
     {
-      "path": "scripts/cp.js"
-    },
-    {
-      "path": "scripts/go-to-slide.js"
-    },
-    {
-      "path": "scripts/summary-slide.js"
-    },
-    {
-      "path": "scripts/navigation-line.js"
-    },
-    {
-      "path": "scripts/slide-backgrounds.js"
-    },
-    {
-      "path": "scripts/printer.js"
+      "path": "dist/h5p-course-presentation.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "styles/cp.css"
-    },
-    {
-      "path": "styles/summary-slide.css"
-    },
-    {
-      "path": "styles/navigation-line.css"
-    },
-    {
-      "path": "styles/slide-background.css"
-    },
-    {
-      "path": "styles/print.css"
+      "path": "dist/h5p-course-presentation.css"
     }
   ],
   "preloadedDependencies": [

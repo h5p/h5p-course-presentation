@@ -1,4 +1,15 @@
-var H5P = H5P || {};
+import GoToSlide from './go-to-slide';
+import SummarySlide from './summary-slide';
+import NavigationLine from './navigation-line';
+import SlideBackground from './slide-backgrounds';
+import KeywordsMenu from './keyword-menu';
+import { jQuery as $, EventDispatcher } from './globals';
+import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
+
+/**
+ * @const {string}
+ */
+const KEYWORD_TITLE_SKIP = null;
 
 /**
  * Constructor.
@@ -9,13 +20,12 @@ var H5P = H5P || {};
  *  Set if an editor is initiating this library
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation = function (params, id, extras) {
-  H5P.EventDispatcher.call(this);
+let CoursePresentation = function (params, id, extras) {
+  EventDispatcher.call(this);
   var that = this;
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
   this.contentId = id;
-  this.currentSlideIndex = 0;
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
@@ -30,9 +40,11 @@ H5P.CoursePresentation = function (params, id, extras) {
     this.previousState = extras.previousState;
   }
 
+  this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
+
   this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
 
-  this.l10n = H5P.jQuery.extend({
+  this.l10n = $.extend({
     slide: 'Slide',
     yourScore: 'Your score',
     maxScore: 'Max score',
@@ -66,7 +78,14 @@ H5P.CoursePresentation = function (params, id, extras) {
     printIngress: 'How would you like to print this presentation?',
     printAllSlides: 'Print all slides',
     printCurrentSlide: 'Print current slide',
-    noTitle: 'No title'
+    noTitle: 'No title',
+    accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected.',
+    containsNotCompleted: '@slideName contains not completed interaction',
+    containsCompleted: '@slideName contains completed interaction',
+    slideCount: 'Slide @index of @total',
+    accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
+    containsOnlyCorrect: "@slideName only has correct answers",
+    containsIncorrectAnswers: '@slideName has incorrect answers'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -90,6 +109,11 @@ H5P.CoursePresentation = function (params, id, extras) {
     }
   }
 
+  this.keywordMenu = new KeywordsMenu({
+    l10n : this.l10n,
+    currentIndex: this.previousState !== undefined ? this.previousState.progress : 0
+  });
+
   // Set override for all actions
   this.setElementsOverride(params.override);
 
@@ -107,27 +131,25 @@ H5P.CoursePresentation = function (params, id, extras) {
   });
 };
 
-H5P.CoursePresentation.prototype = Object.create(H5P.EventDispatcher.prototype);
-H5P.CoursePresentation.prototype.constructor = H5P.CoursePresentation;
+CoursePresentation.prototype = Object.create(EventDispatcher.prototype);
+CoursePresentation.prototype.constructor = CoursePresentation;
 
 /**
  * @public
+ * @return {object}
  */
-H5P.CoursePresentation.prototype.getCurrentState = function () {
+CoursePresentation.prototype.getCurrentState = function () {
   var state = this.previousState ? this.previousState : {};
-  state.progress = this.$current.index();
+  state.progress = this.getCurrentSlideIndex();
   if (!state.answers) {
     state.answers = [];
   }
-  if (!state.answered) {
-    state.answered = [];
-  }
+
+  state.answered = this.elementInstances
+    .map((interaction, index) => this.slideHasAnsweredTask(index));
 
   // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
-    if (this.progressbarParts) {
-      state.answered[slide] = this.progressbarParts[slide].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered');
-    }
     if (this.elementInstances[slide]) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];
@@ -146,12 +168,26 @@ H5P.CoursePresentation.prototype.getCurrentState = function () {
 };
 
 /**
+ * Returns true if a slide has answered interactions
+ *
+ * @param {number} index
+ * @return {boolean}
+ */
+CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
+  const tasks = this.slidesWithSolutions[index] || [];
+
+  return tasks
+    .filter(task => isFunction(task.getAnswerGiven))
+    .some(task => task.getAnswerGiven());
+};
+
+/**
  * Render the presentation inside the given container.
  *
  * @param {H5P.jQuery} $container Container for this presentation.
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation.prototype.attach = function ($container) {
+CoursePresentation.prototype.attach = function ($container) {
   var that = this;
 
   // isRoot is undefined in the editor
@@ -160,20 +196,30 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   }
 
   var html =
-          '<div class="h5p-wrapper" tabindex="0">' +
+          '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
+          '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
+          '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
+          '  <div tabindex="-1"></div>' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
-          '      <div class="h5p-slides-wrapper"></div>' +
+          '     <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
           '  </div>' +
-          '  <div class="h5p-progressbar"></div>' +
+          '  <nav class="h5p-cp-navigation">' +
+          '    <ol class="h5p-progressbar list-unstyled"></ol>' +
+          '  </nav>' +
           '  <div class="h5p-footer"></div>' +
           '</div>';
 
-  $container.addClass('h5p-course-presentation').html(html);
+  $container
+    .attr('role', 'application')
+    .addClass('h5p-course-presentation')
+    .html(html);
 
   this.$container = $container;
+  this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
+  this.$slideTop = this.$slideAnnouncer.next();
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
   }).blur(function () {
@@ -183,7 +229,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     }
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
-    if (!$target.is('input, textarea') && !that.editor) {
+    if (!$target.is('input, textarea, a') && !that.editor) {
       // Add focus to the wrapper so that it may capture keyboard events
       that.$wrapper.focus();
     }
@@ -212,7 +258,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
-  this.$progressbar = this.$wrapper.children('.h5p-progressbar');
+  this.$progressbar = this.$wrapper.find('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
 
   // Determine if keywords pane should be initialized
@@ -224,7 +270,7 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   this.isSolutionMode = false;
 
   // Create slides and retrieve keyword title details
-  var keywords = this.createSlides(this.slides);
+  this.createSlides(this.slides);
 
   // We have always attached all elements on current slide
   this.elementsAttached[this.currentSlideIndex] = true;
@@ -251,22 +297,31 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     };
     this.slides.push(summarySlideParams);
 
-    $summarySlide = H5P.jQuery(H5P.CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
+    $summarySlide = H5P.jQuery(CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
 
-    if (this.initKeywords) {
-      keywords.html += this.createKeywordHtml(summarySlideParams.keywords, false, this.slides.length - 1);
+    if (this.isCurrentSlide(this.slides.length - 1)) {
+      this.$current = $summarySlide;
     }
   }
 
-  if (!keywords.exist && this.editor === undefined) {
-    // Do not show keywords pane if it's empty and there's no editor!
-    this.initKeywords = false;
-  }
+  const keywordMenuConfig = this.getKeywordMenuConfig();
 
-  if (this.initKeywords) {
+  // Do not show keywords pane if it's empty and there's no editor!
+  if (keywordMenuConfig.length > 0 || this.isEditor()) {
     // Initialize keyword titles
-    this.initKeywordsList(keywords.html);
+    this.keywordMenu.init(keywordMenuConfig);
+    this.keywordMenu.on('select', event => this.keywordClick(event.data.index));
+    this.keywordMenu.on('close', () => this.hideKeywords());
+    this.keywordMenu.on('select', () => {
+      this.$currentKeyword = this.$keywords.children('.h5p-current');
+    });
+
+    this.$keywords = $(this.keywordMenu.getElement()).appendTo(this.$keywordsWrapper);
+    this.$currentKeyword = this.$keywords.children('.h5p-current');
+
+    this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
+
     if (this.presentation.keywordListAlwaysShow) {
       this.showKeywords();
     }
@@ -274,6 +329,9 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
   else {
     // Remove keyword titles completely
     this.$keywordsWrapper.remove();
+
+    // Do not show keywords pane if it's empty and there's no editor!
+    this.initKeywords = false;
   }
 
   if (this.editor !== undefined || !this.activeSurface) {
@@ -281,9 +339,14 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
     this.initTouchEvents();
 
     // init navigation line
-    this.navigationLine = new H5P.CoursePresentation.NavigationLine(this);
+    this.navigationLine = new NavigationLine(this);
 
-    this.summarySlideObject = new H5P.CoursePresentation.SummarySlide(this, $summarySlide);
+    // Set slide title if initing on slide 0
+    if (!this.previousState || !this.previousState.progress) {
+      this.setSlideNumberAnnouncer(0, false);
+    }
+
+    this.summarySlideObject = new SummarySlide(this, $summarySlide);
   }
   else {
     this.$progressbar.add(this.$footer).remove();
@@ -295,23 +358,14 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
         title: this.l10n.fullscreen,
         role: 'button',
         tabindex: 0,
-        on: {
-          click: function () {
-            that.toggleFullScreen();
-          },
-          keypress: function (event) {
-            // Buttons must respond to space bar
-            if (event.which === 32) {
-              that.toggleFullScreen();
-            }
-          }
-        },
         appendTo: this.$wrapper
       });
+
+      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
     }
   }
 
-  new H5P.CoursePresentation.SlideBackground(this);
+  new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
@@ -319,43 +373,85 @@ H5P.CoursePresentation.prototype.attach = function ($container) {
 };
 
 /**
- * Create slides + keyword titles.
+ * Removes old menu items, and create new ones from slides.
+ * Returns menu items as jQuery
+ *
+ * @return {jQuery}
+ */
+CoursePresentation.prototype.updateKeywordMenuFromSlides = function () {
+  this.keywordMenu.removeAllMenuItemElements();
+  const config = this.getKeywordMenuConfig();
+  return $(this.keywordMenu.init(config));
+};
+
+
+/**
+ * Creates a keyword menu config based on the slides parameters
+ *
+ * @return {KeywordMenuItemConfig[]}
+ */
+CoursePresentation.prototype.getKeywordMenuConfig = function () {
+  return this.slides
+    .map((slide, index) => ({
+        title: this.createSlideTitle(slide),
+        subtitle: `${this.l10n.slide} ${index + 1}`,
+        index
+      })
+    )
+    .filter(config => config.title !== KEYWORD_TITLE_SKIP);
+};
+
+/**
+ * Returns the slide title, or "No title" if inside editor without title
+ *
+ * @return {string|null}
+ */
+CoursePresentation.prototype.createSlideTitle = function (slide) {
+  const fallbackTitleForEditor = this.isEditor() ? this.l10n.noTitle : KEYWORD_TITLE_SKIP;
+  return this.hasKeywords(slide) ? slide.keywords[0].main : fallbackTitleForEditor;
+};
+
+/**
+ * Returns true if inside the editor
+ *
+ * @return {boolean}
+ */
+CoursePresentation.prototype.isEditor = function () {
+  return this.editor !== undefined;
+};
+
+/**
+ * Returns true if a slide has keywords
+ *
+ * @param {object} slide
+ * @return {boolean}
+ */
+CoursePresentation.prototype.hasKeywords = function (slide) {
+  return slide.keywords !== undefined && slide.keywords.length > 0;
+};
+
+
+/**
+ * Create slides
  * Slides are directly attached to the slides wrapper.
- * Keywords details are returned for further processing.
  *
  * @param {Array} slidesParams
- * @returns {object} keyword details used for further processing
  */
-H5P.CoursePresentation.prototype.createSlides = function (slidesParams) {
-  var keywords = {
-    html: '',
-    exist: false
-  };
-
+CoursePresentation.prototype.createSlides = function (slidesParams) {
   for (var i = 0; i < slidesParams.length; i++) {
     var slideParams = slidesParams[i];
 
     // Create slide element
-    var $slide = H5P.jQuery(H5P.CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
+    var $slide = $(CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
 
-    // Set as current if this is the first slide
-    var isFirst = (i === 0);
-    if (isFirst) {
+    // Set as current
+    if (i === this.currentSlideIndex) {
       this.$current = $slide.addClass('h5p-current');
     }
 
     // Add elements to slide
     this.addElements(slideParams, $slide, i);
-
-    if (!keywords.exist && slideParams.keywords !== undefined && slideParams.keywords.length) {
-      keywords.exist = true;
-    }
-    if (this.initKeywords) {
-      keywords.html += this.createKeywordHtml(slideParams.keywords, isFirst, i);
-    }
   }
-
-  return keywords;
 };
 
 /**
@@ -365,7 +461,7 @@ H5P.CoursePresentation.prototype.createSlides = function (slidesParams) {
  * @param obj The object to investigate
  * @returns {boolean}
  */
-H5P.CoursePresentation.prototype.hasScoreData = function (obj) {
+CoursePresentation.prototype.hasScoreData = function (obj) {
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
@@ -379,10 +475,10 @@ H5P.CoursePresentation.prototype.hasScoreData = function (obj) {
  * @public
  * @returns {Number}
  */
-H5P.CoursePresentation.prototype.getScore = function (){
+CoursePresentation.prototype.getScore = function (){
   var self = this;
 
-  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
     return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
   }, 0);
 };
@@ -393,56 +489,40 @@ H5P.CoursePresentation.prototype.getScore = function (){
  * @public
  * @returns {Number}
  */
-H5P.CoursePresentation.prototype.getMaxScore = function (){
+CoursePresentation.prototype.getMaxScore = function (){
   var self = this;
 
-  return self.flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
     return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
   }, 0);
 };
 
 /**
- * Flattens a nested array
- *
- * Example:
- * [['a'], ['b']].flatten() -> ['a', 'b']
- *
- * @private
- * @param {Array} arr A nested array
- * @returns {Array} A flattened array
- */
-H5P.CoursePresentation.prototype.flattenArray = function (arr){
-  return arr.concat.apply([], arr);
-};
-
-/**
  * Updates the feedback icons for the progres bar.
  *
- * @param slideScores
+ * @param {array} [slideScores]
  */
-H5P.CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
-  var that = this;
-
+CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
   if (slideScores !== undefined && slideScores) {
     // Set feedback icons for progress bar.
-    slideScores.forEach(function (singleSlide) {
-      if (that.progressbarParts[singleSlide.slide-1].children('.h5p-progressbar-part-has-task').hasClass('h5p-answered')) {
-        if (singleSlide.score >= singleSlide.maxScore) {
-          that.progressbarParts[singleSlide.slide-1]
-            .children('.h5p-progressbar-part-has-task')
-            .addClass('h5p-is-correct');
-        } else {
-          that.progressbarParts[singleSlide.slide-1]
-            .children('.h5p-progressbar-part-has-task')
-            .addClass('h5p-is-wrong');
-        }
+    slideScores.forEach(singleSlide => {
+      const $indicator = this.progressbarParts[singleSlide.slide-1]
+        .find('.h5p-progressbar-part-has-task');
+
+      if ($indicator.hasClass('h5p-answered')) {
+        const isCorrect = singleSlide.score >= singleSlide.maxScore;
+        $indicator.addClass(isCorrect ? 'h5p-is-correct' : 'h5p-is-wrong');
+
+        this.navigationLine.updateSlideTitle(singleSlide.slide - 1);
       }
     });
-  } else {
+  }
+  else {
     // Remove all feedback icons.
-    that.progressbarParts.forEach(function (pbPart) {
-      pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-is-correct');
-      pbPart.children('.h5p-progressbar-part-has-task').removeClass('h5p-is-wrong');
+    this.progressbarParts.forEach(pbPart => {
+      pbPart.find('.h5p-progressbar-part-has-task')
+        .removeClass('h5p-is-correct')
+        .removeClass('h5p-is-wrong');
     });
   }
 };
@@ -450,47 +530,45 @@ H5P.CoursePresentation.prototype.setProgressBarFeedback = function (slideScores)
 /**
  * Toggle keywords list on/off depending on current state
  */
-H5P.CoursePresentation.prototype.toggleKeywords = function () {
-  // Check state of keywords
-  if (this.$keywordsWrapper.hasClass('h5p-open')) {
-    // Already open, remove keywords
-    this.hideKeywords();
-  }
-  else {
-    // Open keywords
-    this.showKeywords();
-  }
+CoursePresentation.prototype.toggleKeywords = function () {
+  const keywordsAreShowing = this.$keywordsWrapper.hasClass('h5p-open');
+  this[keywordsAreShowing ? 'hideKeywords' : 'showKeywords']();
 };
 
 /**
  * Hide keywords
  */
-H5P.CoursePresentation.prototype.hideKeywords = function () {
-  if (this.$keywordsButton !== undefined) {
-    this.$keywordsButton.attr('title', this.l10n.showKeywords);
+CoursePresentation.prototype.hideKeywords = function () {
+  if (this.$keywordsWrapper.hasClass('h5p-open')) {
+    if (this.$keywordsButton !== undefined) {
+      this.$keywordsButton.attr('title', this.l10n.showKeywords);
+      this.$keywordsButton.attr('aria-expanded', 'false');
+      this.$keywordsButton.focus();
+    }
+    this.$keywordsWrapper.removeClass('h5p-open');
   }
-  this.$keywordsWrapper.add(this.$keywordsButton).removeClass('h5p-open');
 };
 
 /**
  * Show keywords
  */
-H5P.CoursePresentation.prototype.showKeywords = function () {
+CoursePresentation.prototype.showKeywords = function () {
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.hideKeywords);
+    this.$keywordsButton.attr('aria-expanded', 'true');
   }
-  this.$keywordsWrapper.add(this.$keywordsButton).addClass('h5p-open');
+  this.$keywordsWrapper.addClass('h5p-open');
+  this.$keywordsWrapper.find('li[tabindex="0"]').focus();
 };
 
 /**
  * Change the background opacity of the keywords list.
  *
- * @param {Number} value 0 - 100
+ * @param {number} value 0 - 100
  */
-H5P.CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  var self = this;
-  var color = self.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
-  self.$keywordsWrapper.css('background-color', 'rgba(' + color[1] + ', ' + color[2] + ', ' + color[3] + ',' + (value / 100) + ')');
+CoursePresentation.prototype.setKeywordsOpacity = function (value) {
+  const [red, green, blue] = this.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
+  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
 
 /**
@@ -499,7 +577,7 @@ H5P.CoursePresentation.prototype.setKeywordsOpacity = function (value) {
  *
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.fitCT = function () {
+CoursePresentation.prototype.fitCT = function () {
   if (this.editor !== undefined) {
     return;
   }
@@ -528,7 +606,7 @@ H5P.CoursePresentation.prototype.fitCT = function () {
  * @param {Boolean} fullscreen
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.resize = function () {
+CoursePresentation.prototype.resize = function () {
   var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
@@ -580,7 +658,7 @@ H5P.CoursePresentation.prototype.resize = function () {
 /**
  * Enter/exit full screen mode.
  */
-H5P.CoursePresentation.prototype.toggleFullScreen = function () {
+CoursePresentation.prototype.toggleFullScreen = function () {
   if (H5P.isFullscreen || this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
     // Downscale fullscreen font size
     this.$footer.removeClass('footer-full-screen');
@@ -624,29 +702,29 @@ H5P.CoursePresentation.prototype.toggleFullScreen = function () {
 /**
  * Set focus.
  */
-H5P.CoursePresentation.prototype.focus = function () {
+CoursePresentation.prototype.focus = function () {
   this.$wrapper.focus();
 };
 
 /**
+ * Handles click on keyword
  *
- * @param {jQuery} $keyword
- * @returns {undefined}
+ * @param {number} index
  */
-H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
-  if ($keyword.hasClass('h5p-current')) {
-    return;
-  }
-
-  if (this.presentation.keywordListEnabled &&
-      !this.presentation.keywordListAlwaysShow &&
-      this.presentation.keywordListAutoHide &&
-      this.editor === undefined) {
+CoursePresentation.prototype.keywordClick = function (index) {
+  if (this.shouldHideKeywordsAfterSelect()) {
     // Auto-hide keywords list
     this.hideKeywords();
   }
 
-  this.jumpToSlide($keyword.index(), true);
+  this.jumpToSlide(index, true);
+};
+
+CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
+  return this.presentation.keywordListEnabled &&
+    !this.presentation.keywordListAlwaysShow &&
+    this.presentation.keywordListAutoHide &&
+    this.editor === undefined;
 };
 
 /**
@@ -656,15 +734,16 @@ H5P.CoursePresentation.prototype.keywordClick = function ($keyword) {
  * @param {jQuery} $slide
  * @param {Number} index
  */
-H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
+CoursePresentation.prototype.addElements = function (slide, $slide, index) {
   if (slide.elements === undefined) {
     return;
   }
-  var attach = (this.editor !== undefined || index === 0 || index === 1);
+  var attach = (this.isEditor() || index === 0 || index === 1 || this.isCurrentSlide(index));
 
   for (var i = 0; i < slide.elements.length; i++) {
     var element = slide.elements[i];
     var instance = this.addElement(element, $slide, index);
+
     if (attach) {
       // The editor requires all fields to be attached/rendered right away
       this.attachElement(element, instance, $slide, index);
@@ -675,7 +754,7 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
     this.elementsAttached[index] = true;
     this.trigger('domChanged', {
       '$target': $slide,
-      'library': 'H5P.CoursePresentation',
+      'library': 'CoursePresentation',
       'key': 'newSlide'
     }, {'bubbles': true, 'external': true});
   }
@@ -686,7 +765,7 @@ H5P.CoursePresentation.prototype.addElements = function (slide, $slide, index) {
  *
  * @param {Object} override
  */
-H5P.CoursePresentation.prototype.setElementsOverride = function (override) {
+CoursePresentation.prototype.setElementsOverride = function (override) {
   // Create default object
   this.elementsOverride = {
     params: {}
@@ -718,11 +797,21 @@ H5P.CoursePresentation.prototype.setElementsOverride = function (override) {
  * @param {Number} index Optional, the index of the slide we're adding elements to.
  * @returns {unresolved}
  */
-H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) {
+CoursePresentation.prototype.addElement = function (element, $slide, index) {
   var instance;
   if (element.action === undefined) {
     // goToSlide, internal element
-    instance = new H5P.CoursePresentation.GoToSlide(element.title, element.goToSlide, element.invisible, this, element.goToSlideType);
+    instance = new GoToSlide(element, {
+      l10n: this.l10n,
+      currentIndex: index
+    });
+
+    if (!this.isEditor()) {
+      instance.on('navigate', event => {
+        const index = event.data;
+        this.jumpToSlide(index);
+      });
+    }
   }
   else {
     // H5P library
@@ -806,7 +895,7 @@ H5P.CoursePresentation.prototype.addElement = function (element, $slide, index) 
  * @param {jQuery} $slide
  * @param {Number} index
  */
-H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
+CoursePresentation.prototype.attachElements = function ($slide, index) {
   if (this.elementsAttached[index] !== undefined) {
     return; // Already attached
   }
@@ -820,7 +909,7 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
   }
   this.trigger('domChanged', {
       '$target': $slide,
-      'library': 'H5P.CoursePresentation',
+      'library': 'CoursePresentation',
       'key': 'newSlide'
     }, {'bubbles': true, 'external': true});
 
@@ -836,9 +925,8 @@ H5P.CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @param {Number} index
  * @returns {jQuery}
  */
-H5P.CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
-  var that = this;
-  var displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
+CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
+  const displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
   var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
   var classes = 'h5p-element' +
     (displayAsButton ? ' h5p-element-button-wrapper' : '') +
@@ -852,77 +940,19 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     height: element.height + '%'
   }).appendTo($slide);
 
-  var isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
+  const isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
-  var libTypePmz = '';
+
   if (displayAsButton) {
-    var $buttonElement = H5P.jQuery('<div class="h5p-button-element"></div>');
-    instance.attach($buttonElement);
-
-    // Parameterize library name to use as html class.
-    libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
-    var anchorClasses = 'h5p-element-button' +
-      (buttonSizeClass !== null ? ' ' + buttonSizeClass : '') +
-      ' ' + libTypePmz + '-button';
-    H5P.jQuery('<a>', {
-      href: '#',
-      'class': anchorClasses
-    }).appendTo($elementContainer)
-      .click(function () {
-        if (that.editor === undefined) {
-
-          // Handle exit fullscreen
-          var exitFullScreen = function () {
-            that.$footer.removeClass('footer-full-screen');
-            that.$fullScreenButton.attr('title', this.l10n.fullscreen);
-            instance.trigger('resize');
-          };
-
-          // Listen for exit fullscreens not triggered by button, for instance using 'esc'
-          that.on('exitFullScreen', exitFullScreen);
-
-          $buttonElement.appendTo(that.showPopup('', function () {
-            that.pauseMedia(instance);
-            $buttonElement.detach();
-
-            // Remove listener, we only need it for active popups
-            that.off('exitFullScreen', exitFullScreen);
-          }, libTypePmz).find('.h5p-popup-wrapper'));
-          H5P.trigger(instance, 'resize');
-
-          // Resize images to fit popup dialog
-          if (libTypePmz === 'h5p-image') {
-            that.resizePopupImage($buttonElement);
-          }
-          if (typeof instance.setActivityStarted === 'function' && typeof instance.getScore === 'function') {
-            instance.setActivityStarted();
-          }
-
-          // Autoplay media
-          if (element.action.params && element.action.params.cpAutoplay && typeof instance.play === 'function') {
-            instance.play();
-          }
-        }
-        return false;
-      });
-    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-      instance.on('controls', function () {
-        if (instance.controls.$fullscreen) {
-          instance.controls.$fullscreen.remove();
-        }
-      });
-    }
+    const $button = this.createInteractionButton(element, instance);
+    $button.appendTo($elementContainer);
   }
   else {
-    if (element.action && element.action.library) {
-      libTypePmz = element.action.library.split(' ')[0].toLowerCase().replace(/[\W]/g, '-');
-    }
-    else {
-      libTypePmz = 'other';
-    }
-    var outerElementLibrary = libTypePmz + '-outer-element';
+    const hasLibrary = element.action && element.action.library;
+    const libTypePmz = hasLibrary ? this.getLibraryTypePmz(element.action.library) : 'other';
+
     var $outerElementContainer = H5P.jQuery('<div>', {
-      'class': 'h5p-element-outer ' + outerElementLibrary
+      'class': `h5p-element-outer ${libTypePmz}-outer-element`
     }).css({
       background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($elementContainer);
@@ -930,6 +960,11 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
     var $innerElementContainer = H5P.jQuery('<div>', {
       'class': 'h5p-element-inner'
     }).appendTo($outerElementContainer);
+
+    if (libTypePmz === 'h5p-advancedtext' ||
+        libTypePmz === 'h5p-table') {
+      $innerElementContainer.attr('tabindex', 0);
+    }
 
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
@@ -973,12 +1008,189 @@ H5P.CoursePresentation.prototype.attachElement = function (element, instance, $s
 };
 
 /**
+ * Disables tab indexes behind a popup container
+ */
+CoursePresentation.prototype.disableTabIndexes = function() {
+  var $popupContainer = this.$container.find('.h5p-popup-container');
+
+  this.$tabbables = this.$container.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
+    var $tabbable = $(this);
+    var insideContainer = $.contains($popupContainer.get(0), $tabbable.get(0));
+
+    // tabIndex has already been modified, keep it in the set.
+    if ($tabbable.data('tabindex')) {
+      return true;
+    }
+
+    if (!insideContainer) {
+      // Store current tabindex, so we can set it back when dialog closes
+      var tabIndex = $tabbable.attr('tabindex');
+      $tabbable.data('tabindex', tabIndex);
+
+      // Make it non tabbable
+      $tabbable.attr('tabindex', '-1');
+      return true;
+    }
+
+    // If element is part of dialog wrapper, just ignore it
+    return false;
+  });
+};
+
+
+/**
+ * Re-enables tab indexes after a popup container is closed
+ */
+CoursePresentation.prototype.restoreTabIndexes = function() {
+  if (this.$tabbables) {
+    this.$tabbables.each(function () {
+      var $element = $(this);
+      var tabindex = $element.data('tabindex');
+
+      // Specifically handle jquery ui slider, since it overwrites data in an inconsistent way
+      if ($element.hasClass('ui-slider-handle')) {
+        $element.attr('tabindex', 0);
+        $element.removeData('tabindex');
+      }
+      else if (tabindex !== undefined) {
+        $element.attr('tabindex', tabindex);
+        $element.removeData('tabindex');
+      }
+      else {
+        $element.removeAttr('tabindex');
+      }
+    });
+  }
+};
+
+/**
+ * Creates the interaction button
+ *
+ * @param {Object} element
+ * @param {Object} instance
+ *
+ * @return {jQuery}
+ */
+CoursePresentation.prototype.createInteractionButton = function (element, instance) {
+  const autoPlay = element.action.params && element.action.params.cpAutoplay;
+  const label = (element.action.params && element.action.params.contentName) || '';
+  const libTypePmz = this.getLibraryTypePmz(element.action.library);
+
+  /**
+   * Returns a function that will set [aria-expanded="false"] on the $btn element
+   *
+   * @param {jQuery} $btn
+   * @return {Function}
+   */
+  const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
+
+  const $button = $('<div>', {
+    role: 'button',
+    tabindex: 0,
+    'aria-label': label,
+    'aria-popup': true,
+    'aria-expanded': false,
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
+  });
+
+  const $buttonElement = $('<div class="h5p-button-element"></div>');
+  instance.attach($buttonElement);
+
+  addClickAndKeyboardListeners($button, () => {
+    $button.attr('aria-expanded', 'true');
+    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+    this.disableTabIndexes(); // Disable tabs behind overlay
+  });
+
+  if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+    instance.on('controls', function () {
+      if (instance.controls.$fullscreen) {
+        instance.controls.$fullscreen.remove();
+      }
+    });
+  }
+
+  return $button;
+};
+
+/**
+ * Shows the interaction popup on button press
+ *
+ * @param {object} instance
+ * @param {string} libTypePmz
+ * @param {boolean} autoPlay
+ * @param {function} closeCallback
+ */
+CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback) {
+
+  // Handle exit fullscreen
+  const exitFullScreen = () => {
+    this.$footer.removeClass('footer-full-screen');
+    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
+    instance.trigger('resize');
+  };
+
+  if (!this.isEditor()) {
+    // Listen for exit fullscreens not triggered by button, for instance using 'esc'
+    this.on('exitFullScreen', exitFullScreen);
+
+    $buttonElement.appendTo(this.showPopup('', $button, () => {
+      this.pauseMedia(instance);
+      $buttonElement.detach();
+
+      // Remove listener, we only need it for active popups
+      this.off('exitFullScreen', exitFullScreen);
+      closeCallback();
+    }, libTypePmz).find('.h5p-popup-wrapper'));
+
+    H5P.trigger(instance, 'resize');
+
+    // Resize images to fit popup dialog
+    if (libTypePmz === 'h5p-image') {
+      this.resizePopupImage($buttonElement);
+    }
+
+    var $container = $buttonElement.closest('.h5p-popup-container');
+
+    // Focus directly on content when popup is opened
+    $container.on('transitionend', function() {
+      var $tabbables = $buttonElement.find(':input').add($buttonElement.find('[tabindex]'));
+      if ($tabbables.length) {
+        $tabbables[0].focus();
+      }
+      else {
+        $buttonElement.attr('tabindex', 0);
+        $buttonElement.focus();
+      }
+    });
+
+    // start activity
+    if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
+      instance.setActivityStarted();
+    }
+
+    // Autoplay media
+    if (autoPlay && isFunction(instance.play)) {
+      instance.play();
+    }
+  }
+};
+
+/**
+ * Returns the name part of a library string
+ *
+ * @param {string} library
+ * @return {string}
+ */
+CoursePresentation.prototype.getLibraryTypePmz = library => kebabCase(library.split(' ')[0]).toLowerCase();
+
+/**
  * Resize image inside popup dialog.
  *
  * @public
  * @param {H5P.jQuery} $wrapper
  */
-H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
+CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
   // Get fontsize, needed for scale
   var fontSize = Number($wrapper.css('fontSize').replace('px', ''));
   var $img = $wrapper.find('img');
@@ -1021,25 +1233,24 @@ H5P.CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  * @param {Object} element Properties from params.
  * @param {Object} elementInstance Instance of the element.
  * @param {jQuery} $elementContainer Wrapper for the element.
- * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
-  var that = this;
-  elementInstance.showCPComments = function () {
-    var $stripHtml = H5P.jQuery('<div>');
-    if (!$elementContainer.children('.h5p-element-solution').length && $stripHtml.html(element.solution).text().trim()) {
-      H5P.jQuery('<a/>', {
-        'href': '#',
-        'class': 'h5p-element-solution',
-        'title': that.l10n.solutionsButtonTitle
+CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
+  elementInstance.showCPComments = () => {
+    if ($elementContainer.children('.h5p-element-solution').length === 0 && stripHTML(element.solution).length > 0) {
+      const $commentButton = $('<div/>', {
+        role: 'button',
+        tabindex: 0,
+        title: this.l10n.solutionsButtonTitle,
+        'aria-popup': true,
+        'aria-expanded': false,
+        'class': 'h5p-element-solution'
       }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>')
-        .click(function (event) {
-          event.preventDefault();
-          that.showPopup(element.solution);
-        })
         .appendTo($elementContainer);
+
+      addClickAndKeyboardListeners($commentButton, () => this.showPopup(element.solution, $commentButton));
     }
   };
+
   if (element.alwaysDisplayComments !== undefined && element.alwaysDisplayComments) {
     elementInstance.showCPComments();
   }
@@ -1048,11 +1259,13 @@ H5P.CoursePresentation.prototype.addElementSolutionButton = function (element, e
 /**
  * Displays a popup.
  *
- * @param {String} popupContent
+ * @param {string} popupContent
+ * @param {jQuery} $focusOnClose Prevents losing focus when dialog closes
  * @param {Function} [remove] Gets called before the popup is removed.
- * @returns {undefined}
+ * @param {string} [classes]
  */
-H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, classes) {
+CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, remove, classes = 'h5p-popup-comment-field') {
+  var self = this;
   var doNotClose;
 
   /** @private */
@@ -1067,6 +1280,7 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     if (remove !== undefined) {
       setTimeout(function() {
         remove();
+        self.restoreTabIndexes();
       }, 100);
     }
     event.preventDefault();
@@ -1076,16 +1290,18 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
     setTimeout(function() {
       $popup.remove();
     }, 100);
+
+    $focusOnClose.focus();
   };
 
-  var $popup = H5P.jQuery(
-    '<div class="h5p-popup-overlay h5p-animate ' + (classes || 'h5p-popup-comment-field') + '">' +
-      '<div class="h5p-popup-container h5p-animate">' +
+  const $popup = $(
+    '<div class="h5p-popup-overlay h5p-animate ' + classes + '">' +
+      '<div class="h5p-popup-container h5p-animate" role="dialog">' +
         '<div class="h5p-cp-dialog-titlebar">' +
           '<div class="h5p-dialog-title"></div>' +
-          '<div role="button" tabindex="1" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
         '</div>' +
-        '<div class="h5p-popup-wrapper">' + popupContent + '</div>' +
+        '<div class="h5p-popup-wrapper" role="document">' + popupContent + '</div>' +
       '</div>' +
     '</div>')
     .prependTo(this.$wrapper)
@@ -1097,10 +1313,14 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
       .click(function () {
         doNotClose = true;
       })
-      .end()
-    .find('.h5p-close-popup')
-      .click(close)
+      .keydown(function(event) {
+        if (event.which === keyCode.ESC) {
+          close(event);
+        }
+      })
       .end();
+
+  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => close(event));
 
   return $popup;
 };
@@ -1113,63 +1333,18 @@ H5P.CoursePresentation.prototype.showPopup = function (popupContent, remove, cla
  *  true if the element has a solution
  *  false otherwise
  */
-H5P.CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
+CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
   return (elementInstance.showSolutions !== undefined ||
           elementInstance.showCPComments !== undefined);
 };
 
-/**
- * Generate HTML for a slide's title keyword.
- *
- * @param {Array} keywords List of keywords
- * @param {boolean} isFirst Indicates if this is the first slide
- * @returns {string} HTML
- */
-H5P.CoursePresentation.prototype.createKeywordHtml = function (keywords, isFirst, index) {
-  var title, titleKeyword = this.l10n.noTitle;
-  if (!keywords || !keywords.length) {
-    if (this.editor === undefined) {
-      title = ''; // No keywords for this slide
-    }
-  }
-  else {
-    titleKeyword = keywords[0].main;
-  }
-
-  if (title === undefined) {
-    title = '<div class="h5p-keyword-title">' +
-              this.l10n.slide + ' ' + (index + 1) +
-            '</div>' +
-            '<span>' + titleKeyword + '</span>';
-  }
-
-  return '<li class="h5p-keywords-li' + (title === '' ? ' empty' : '') + (isFirst ? ' h5p-current' : '') + '">' + title + '</li>';
-};
-
-/**
- * Initialize list of keywords
- *
- * @param {string} keywords Html string list entries for keywords
- */
-H5P.CoursePresentation.prototype.initKeywordsList = function (keywords) {
-  var that = this;
-
-  this.$keywords = this.$keywordsWrapper.html('<ol class="h5p-keywords-ol">' + keywords + '</ol>').children('ol');
-  this.$currentKeyword = this.$keywords.children('.h5p-current');
-
-  this.$keywords.children('li').click(function () {
-    that.keywordClick(H5P.jQuery(this));
-  });
-
-  this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
-};
 
 /**
  * Initialize key press events.
  *
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation.prototype.initKeyEvents = function () {
+CoursePresentation.prototype.initKeyEvents = function () {
   if (this.keydown !== undefined || this.activeSurface) {
     return;
   }
@@ -1208,7 +1383,7 @@ H5P.CoursePresentation.prototype.initKeyEvents = function () {
  *
  * @returns {undefined} Nothing.
  */
-H5P.CoursePresentation.prototype.initTouchEvents = function () {
+CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
   // var containerWidth = this.$slidesWrapper.width();
@@ -1244,8 +1419,11 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
     // Set start positions
     lastX = startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
-    prevX = getTranslateX(that.$current.addClass('h5p-touch-move').prev().addClass('h5p-touch-move'));
+
+    // Set classes for slide movement and remember how much they move
+    prevX = -getTranslateX(that.$current.prev().addClass('h5p-touch-move'));
     nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
+
     // containerWidth = H5P.jQuery(this).width();
     // startTime = new Date().getTime();
 
@@ -1333,7 +1511,7 @@ H5P.CoursePresentation.prototype.initTouchEvents = function () {
  * @param xPos
  * @param yPos
  */
-H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
+CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
   // Remove popup on no arguments
   if (arguments.length <= 0) {
     if(this.touchPopup !== undefined) {
@@ -1385,16 +1563,16 @@ H5P.CoursePresentation.prototype.updateTouchPopup = function ($container, slideN
 /**
  * Switch to previous slide
  *
- * @param {Boolean} noScroll Skip UI scrolling.
+ * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-H5P.CoursePresentation.prototype.previousSlide = function (noScroll) {
+CoursePresentation.prototype.previousSlide = function (noScroll) {
   var $prev = this.$current.prev();
   if (!$prev.length) {
     return false;
   }
 
-  return this.jumpToSlide($prev.index(), noScroll);
+  return this.jumpToSlide($prev.index(), noScroll, false);
 };
 
 /**
@@ -1403,20 +1581,39 @@ H5P.CoursePresentation.prototype.previousSlide = function (noScroll) {
  * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-H5P.CoursePresentation.prototype.nextSlide = function (noScroll) {
+CoursePresentation.prototype.nextSlide = function (noScroll) {
   var $next = this.$current.next();
   if (!$next.length) {
     return false;
   }
 
-  return this.jumpToSlide($next.index(), noScroll);
+  return this.jumpToSlide($next.index(), noScroll, false);
+};
+
+/**
+ * Returns true when the element is the current slide
+ *
+ * @param {number} index
+ * @return {boolean}
+ */
+CoursePresentation.prototype.isCurrentSlide = function (index) {
+  return this.currentSlideIndex === index;
+};
+
+/**
+ * Returns the current slide index
+ *
+ * @return {number}
+ */
+CoursePresentation.prototype.getCurrentSlideIndex = function () {
+  return this.currentSlideIndex;
 };
 
 /**
  * Loads all slides (Needed by print)
  * @method attachAllElements
  */
-H5P.CoursePresentation.prototype.attachAllElements = function () {
+CoursePresentation.prototype.attachAllElements = function () {
   var $slides = this.$slidesWrapper.children();
 
   for (var i=0; i<this.slides.length; i++) {
@@ -1433,11 +1630,11 @@ H5P.CoursePresentation.prototype.attachAllElements = function () {
 /**
  * Jump to the given slide.
  *
- * @param {type} slideNumber The slide number to jump to.
- * @param {Boolean} noScroll Skip UI scrolling.
+ * @param {number} slideNumber The slide number to jump to.
+ * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = true) {
   var that = this;
   if (this.editor === undefined) {
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1526,11 +1723,11 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
   // Jump keywords
   if (this.$keywords !== undefined) {
-    this.$currentKeyword.removeClass('h5p-current');
-    this.$currentKeyword = this.$keywords.children(':eq(' + slideNumber + ')').addClass('h5p-current');
+    this.keywordMenu.setCurrentSlideIndex(slideNumber);
+    this.$currentKeyword = this.$keywords.find('.h5p-current');
 
     if (!noScroll) {
-      this.scrollToKeywords();
+      this.keywordMenu.scrollToKeywords(slideNumber);
     }
   }
 
@@ -1545,6 +1742,9 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 
     // Update footer
     that.navigationLine.updateFooter(slideNumber);
+
+    // Announce slide change
+    this.setSlideNumberAnnouncer(slideNumber, handleFocus);
   }
 
   if (that.summarySlideObject) {
@@ -1565,28 +1765,30 @@ H5P.CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll) 
 };
 
 /**
- * Scroll to current keywords.
- *
- * @returns {undefined} Nothing
+ * Set slide number so it can be announced to assistive technologies
+ * @param {number} slideNumber Index of slide that should have its' title announced
+ * @param {boolean} [handleFocus=true] Moves focus to the top of the slide
  */
-H5P.CoursePresentation.prototype.scrollToKeywords = function () {
-  var $parent = this.$currentKeyword.parent();
-  var move = $parent.scrollTop() + this.$currentKeyword.position().top - 8;
+CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = true) {
+  let slideTitle = '';
 
-  if (H5P.CoursePresentation.isiPad) {
-    // scrollTop animations does not work well on ipad.
-    // TODO: Check on iPhone.
-    $parent.scrollTop(move);
+  if (!this.navigationLine) {
+    return slideTitle;
   }
-  else {
-    $parent.stop().animate({scrollTop: move}, 250);
+
+  // Add slide number
+  const slide = this.slides[slideNumber];
+  const hasKeywords = slide.keywords && slide.keywords.length > 0;
+  if (hasKeywords && !this.navigationLine.isSummarySlide(slideNumber)) {
+    slideTitle += this.l10n.slide + ' ' + (slideNumber + 1) + ': ';
+  }
+
+  slideTitle += this.navigationLine.createSlideTitle(slideNumber);
+  this.$slideAnnouncer.html(slideTitle);
+  if (handleFocus) {
+    this.$slideTop.focus();
   }
 };
-
-/**
- * @type Boolean Indicate if this is an ipad user.
- */
-H5P.CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
 
 /**
  * Create HTML for a slide.
@@ -1594,15 +1796,15 @@ H5P.CoursePresentation.isiPad = navigator.userAgent.match(/iPad/i) !== null;
  * @param {object} slide Params.
  * @returns {String} HTML.
  */
-H5P.CoursePresentation.createSlide = function (slide) {
-  return '<div class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
+CoursePresentation.createSlide = function (slide) {
+  return '<div role="document" class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
 };
 
 /**
  * Reset the content for all slides.
  * @public
  */
-H5P.CoursePresentation.prototype.resetTask = function () {
+CoursePresentation.prototype.resetTask = function () {
   this.summarySlideObject.toggleSolutionMode(false);
   for (var i = 0; i < this.slidesWithSolutions.length; i++) {
     if (this.slidesWithSolutions[i] !== undefined) {
@@ -1624,7 +1826,7 @@ H5P.CoursePresentation.prototype.resetTask = function () {
  *
  * @returns {undefined}
  */
-H5P.CoursePresentation.prototype.showSolutions = function () {
+CoursePresentation.prototype.showSolutions = function () {
   var jumpedToFirst = false;
   var slideScores = [];
   var hasScores = false;
@@ -1676,7 +1878,7 @@ H5P.CoursePresentation.prototype.showSolutions = function () {
  * Gets slides scores for whole cp
  * @returns {Array} slideScores Array containing scores for all slides.
  */
-H5P.CoursePresentation.prototype.getSlideScores = function (noJump) {
+CoursePresentation.prototype.getSlideScores = function (noJump) {
   var jumpedToFirst = (noJump === true);
   var slideScores = [];
   var hasScores = false;
@@ -1720,17 +1922,45 @@ H5P.CoursePresentation.prototype.getSlideScores = function (noJump) {
  *
  * @returns {H5P.ContentCopyrights}
  */
-H5P.CoursePresentation.prototype.getCopyrights = function () {
+CoursePresentation.prototype.getCopyrights = function () {
   var info = new H5P.ContentCopyrights();
-
   var elementCopyrights;
-  for (var slide = 0; slide < this.elementInstances.length; slide++) {
+
+  // Check for a common background image shared by all slides
+  if (this.presentation && this.presentation.globalBackgroundSelector &&
+      this.presentation.globalBackgroundSelector.imageGlobalBackground) {
+
+    // Add image copyrights to the presentation scope
+    var globalBackgroundImageParams = this.presentation.globalBackgroundSelector.imageGlobalBackground;
+    var globalBackgroundImageCopyright = new H5P.MediaCopyright(globalBackgroundImageParams.copyright);
+    globalBackgroundImageCopyright.setThumbnail(new H5P.Thumbnail(H5P.getPath(globalBackgroundImageParams.path, this.contentId), globalBackgroundImageParams.width, globalBackgroundImageParams.height));
+    info.addMedia(globalBackgroundImageCopyright);
+  }
+
+  for (var slide = 0; slide < this.slides.length; slide++) {
     var slideInfo = new H5P.ContentCopyrights();
     slideInfo.setLabel(this.l10n.slide + ' ' + (slide + 1));
 
+    // Check for a slide specific background image
+    if (this.slides[slide] && this.slides[slide].slideBackgroundSelector &&
+        this.slides[slide].slideBackgroundSelector.imageSlideBackground) {
+
+      // Add image copyrights to the slide scope
+      var slideBackgroundImageParams = this.slides[slide].slideBackgroundSelector.imageSlideBackground;
+      var slideBackgroundImageCopyright = new H5P.MediaCopyright(slideBackgroundImageParams.copyright);
+      slideBackgroundImageCopyright.setThumbnail(new H5P.Thumbnail(H5P.getPath(slideBackgroundImageParams.path, this.contentId), slideBackgroundImageParams.width, slideBackgroundImageParams.height));
+      slideInfo.addMedia(slideBackgroundImageCopyright);
+    }
+
+    // If the slide has elements, add the ones with copyright info to this slides copyright
     if (this.elementInstances[slide] !== undefined) {
       for (var element = 0; element < this.elementInstances[slide].length; element++) {
         var instance = this.elementInstances[slide][element];
+
+        if (!this.slides[slide].elements[element].action) {
+          continue;
+        }
+
         var params = this.slides[slide].elements[element].action.params;
 
         elementCopyrights = undefined;
@@ -1743,7 +1973,6 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
           elementCopyrights = new H5P.ContentCopyrights();
           H5P.findCopyrights(elementCopyrights, params, this.contentId);
         }
-
         var label = (element + 1);
         if (params.contentName !== undefined) {
           label += ': ' + params.contentName;
@@ -1751,12 +1980,14 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
         else if (instance.getTitle !== undefined) {
           label += ': ' + instance.getTitle();
         }
+        else if (params.l10n && params.l10n.name) {
+          label += ': ' + params.l10n.name;
+        }
         elementCopyrights.setLabel(label);
 
         slideInfo.addContent(elementCopyrights);
       }
     }
-
     info.addContent(slideInfo);
   }
 
@@ -1768,7 +1999,7 @@ H5P.CoursePresentation.prototype.getCopyrights = function () {
  *
  * @param {object} instance
  */
-H5P.CoursePresentation.prototype.pauseMedia = function (instance) {
+CoursePresentation.prototype.pauseMedia = function (instance) {
   try {
     if (instance.pause !== undefined &&
         (instance.pause instanceof Function ||
@@ -1792,3 +2023,37 @@ H5P.CoursePresentation.prototype.pauseMedia = function (instance) {
     H5P.error(err);
   }
 };
+
+/**
+ * Get xAPI data.
+ * Contract used by report rendering engine.
+ *
+ * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+ */
+CoursePresentation.prototype.getXAPIData = function () {
+  var xAPIEvent = this.createXAPIEventTemplate('answered');
+
+  // Extend definition
+  var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
+  H5P.jQuery.extend(definition, {
+    interactionType: 'compound',
+    type: 'http://adlnet.gov/expapi/activities/cmi.interaction'
+  });
+
+  var score = this.getScore();
+  var maxScore = this.getMaxScore();
+  xAPIEvent.setScoredResult(score, maxScore, this, true, score === maxScore);
+
+  var childrenXAPIData = flattenArray(this.slidesWithSolutions).map((child) => {
+    if (child && child.getXAPIData) {
+      return child.getXAPIData();
+    }
+  }).filter(data => !!data);
+
+  return {
+    statement: xAPIEvent.data.statement,
+    children: childrenXAPIData
+  };
+};
+
+export default CoursePresentation;

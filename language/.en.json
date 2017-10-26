@@ -28,7 +28,6 @@
                     },
                     {
                       "label": "Button size",
-                      "default": "big",
                       "options": [
                         {
                           "label": "Small"
@@ -42,11 +41,10 @@
                       "label": "Title"
                     },
                     {
-                      "label": "The slide we'll go",
-                      "description": "'Specified slide' will use the 'Specific slide number'.",
+                      "label": "Go to",
                       "options": [
                         {
-                          "label": "Specified slide"
+                          "label": "Specific slide number"
                         },
                         {
                           "label": "Next slide"
@@ -54,12 +52,11 @@
                         {
                           "label": "Previous slide"
                         }
-                      ],
-                      "default": "specified"
+                      ]
                     },
                     {
                       "label": "Specific slide number",
-                      "description": "Only used if 'specified slide' is selected for 'The slide we'll go to'"
+                      "description": "Only applicable when 'Specific slide number' is selected"
                     },
                     {
                       "label": "Invisible",
@@ -82,16 +79,7 @@
                   ]
                 }
               },
-              {
-                "field": {
-                  "fields": [
-                    {},
-                    {
-                      "field": {}
-                    }
-                  ]
-                }
-              },
+              {},
               {
                 "fields": [
                   {
@@ -100,8 +88,7 @@
                   },
                   {
                     "label": "Pick a color",
-                    "spectrum": {},
-                    "default": null
+                    "default": ""
                   }
                 ]
               }
@@ -129,8 +116,7 @@
             },
             {
               "label": "Pick a color",
-              "spectrum": {},
-              "default": null
+              "default": ""
             }
           ]
         }
@@ -285,6 +271,38 @@
         {
           "label": "Label for \"Print current slide\" button",
           "default": "Print current slide"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "No title"
+        },
+        {
+          "label": "Explanation of slide navigation for assistive technologies",
+          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+        },
+        {
+          "label": "Canvas label for assistive technologies",
+          "default": "Presentation canvas. Use left and right arrow to move between slides."
+        },
+        {
+          "label": "Label for uncompleted interactions",
+          "default": "@slideName contains not completed interaction"
+        },
+        {
+          "label": "Label for completed interactions",
+          "default": "@slideName contains completed interaction"
+        },
+        {
+          "label": "Label for slide counter. Variables are @index, @total",
+          "default": "Slide @index of @total"
+        },
+        {
+          "label": "Label for slides that only contains correct answers",
+          "default": "@slideName only has correct answers"
+        },
+        {
+          "label": "Label for slides that has incorrect answers",
+          "default": "@slideName has incorrect answers"
         }
       ]
     },
@@ -330,11 +348,6 @@
         },
         {
           "label": "Social Settings",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          },
           "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
           "fields": [
             {
@@ -342,11 +355,6 @@
             },
             {
               "label": "Facebook share settings",
-              "showWhen": {
-                "rules": [
-                  {}
-                ]
-              },
               "fields": [
                 {
                   "label": "Share to Facebook link",
@@ -363,11 +371,6 @@
             },
             {
               "label": "Twitter share settings",
-              "showWhen": {
-                "rules": [
-                  {}
-                ]
-              },
               "fields": [
                 {
                   "label": "Share to Twitter statement",
@@ -388,12 +391,7 @@
             },
             {
               "label": "Share to Google link",
-              "default": "@currentpageurl",
-              "showWhen": {
-                "rules": [
-                  {}
-                ]
-              }
+              "default": "@currentpageurl"
             }
           ]
         }
