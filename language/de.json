@@ -311,6 +311,10 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
         }
       ]
     },
@@ -369,8 +373,8 @@
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Facebook-Teilen Nachricht",
-                  "default": "Ich habe @percentage der Aufgabe @currentpageurl erreicht."
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -381,8 +385,8 @@
               "label": "Twitter-Teilen Einstellungen",
               "fields": [
                 {
-                  "label": "Twitter-Teilen Nachricht",
-                  "default": "Ich habe @percentage der Aufgabe @currentpageurl erreicht."
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Twitter-Teilen Link",
