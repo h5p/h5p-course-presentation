@@ -103,7 +103,7 @@
 .h5p-course-presentation .h5p-summary-table-pages {
   overflow: auto;
   clear: right;
-  max-height: 75%;
+  max-height: 69%;
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
 }
@@ -167,7 +167,7 @@
 .h5p-course-presentation .h5p-table-title-right {
   font-size: 0.5em;
   float: right;
-  margin: 1em;
+  margin: 2em 1em 1em 0em;
 }
 
 /* ---------------------------- Social media styles ---------------------------------------------- */
