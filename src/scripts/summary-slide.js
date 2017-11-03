@@ -182,7 +182,7 @@ const SummarySlide = (function () {
     var html =
       '<div class="h5p-summary-table-holder">' +
         '<div class="h5p-table-title-right">' +
-          that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total +
+          that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total.toLowerCase() +
         '</div>' +
         '<div class="h5p-summary-table-pages">' +
           '<table class="h5p-score-table">' +

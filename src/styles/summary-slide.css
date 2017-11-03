@@ -168,6 +168,7 @@
   font-size: 0.5em;
   float: right;
   margin: 2em 1em 1em 0em;
+  text-transform: capitalize;
 }
 
 /* ---------------------------- Social media styles ---------------------------------------------- */
