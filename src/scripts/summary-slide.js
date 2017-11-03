@@ -175,9 +175,9 @@ const SummarySlide = (function () {
 
     var percentScore = Math.round((totalScore / totalMaxScore) * 100);
 
-    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="Share on Twitter"></span>': '';
-    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="Share on Facebook"></span>': '';
-    var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="Share on Google Plus"></span>' : '';
+    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
+    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
+    var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
 
     var html =
       '<div class="h5p-summary-table-holder">' +
