@@ -45,13 +45,10 @@ const SummarySlide = (function () {
     if (!isExportSlide) {
       // Get total scores and construct progress circle
       var totalScores = that.totalScores(slideScores);
-      if (isNaN(totalScores.totalPercentage)) {
-        JoubelUI.createProgressCircle(0)
-          .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
-      }
-      else {
-        JoubelUI.createProgressCircle(totalScores.totalPercentage)
-          .appendTo($('.h5p-score-message-percentage', that.$summarySlide));
+      if (!isNaN(totalScores.totalPercentage)) {
+        var totalScoreBar = JoubelUI.createScoreBar(totalScores.totalMaxScore, "", "", "");
+        totalScoreBar.setScore(totalScores.totalScore);
+        totalScoreBar.appendTo($('.h5p-summary-total-score', that.$summarySlide));
       }
 
       // Construct twitter share score link
@@ -166,9 +163,8 @@ const SummarySlide = (function () {
             '</a>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
-            '<div class="h5p-summary-score-meter">' +
-              '<span style="width: ' + slidePercentageScore + '%; opacity: ' + (slidePercentageScore / 100) + '"></span>' +
-            '</div>' +
+            '<p class="hidden-but-read">' + slidePercentageScore + '%' + '</p>' +
+            '<p>' + slideScores[i].score + '<span>/</span>' + slideScores[i].maxScore + '</p>' +
           '</td>' +
         '</tr>';
       totalScore += slideScores[i].score;
@@ -179,34 +175,32 @@ const SummarySlide = (function () {
 
     var percentScore = Math.round((totalScore / totalMaxScore) * 100);
 
-    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<div class="h5p-summary-twitter-message" aria-label="Share on Twitter"></div>': '';
-    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<div class="h5p-summary-facebook-message" aria-label="Share on Facebook"></div>': '';
-    var googleContainer = (that.cp.enableGoogleShare == true) ? '<div class="h5p-summary-google-message" aria-label="Share on Google Plus"></div>' : '';
+    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
+    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
+    var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
 
     var html =
-      '<div class="h5p-score-message">' +
-      '<div class="h5p-score-message-percentage">' + that.cp.l10n.scoreMessage + '</div>' +
-      facebookContainer +
-      twitterContainer +
-      googleContainer +
-      '</div>' +
       '<div class="h5p-summary-table-holder">' +
-      ' <div class="h5p-summary-table-pages">' +
-      '   <table class="h5p-score-table">' +
-      '     <tbody>' + tds + '</tbody>' +
-      '   </table>' +
-      ' </div>' +
-      ' <table class="h5p-summary-total-table" style="width: 100%">' +
-      '    <tr>' +
-      '     <td class="h5p-td h5p-summary-task-title">' + that.cp.l10n.total + '</td>' +
-      '     <td class="h5p-td h5p-summary-score-bar">' +
-      '       <p class="hidden-but-read">' + percentScore + '%' + '</p>' +
-      '       <div title="' + percentScore + '%" class="h5p-summary-score-meter">' +
-      '         <span style="width: ' + percentScore + '%; opacity: ' + (percentScore / 100) + '"></span>' +
-      '       </div>' +
-      '     </td>' +
-      '   </tr>' +
-      ' </table>' +
+        '<div class="h5p-table-title-right">' +
+          that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total.toLowerCase() +
+        '</div>' +
+        '<div class="h5p-summary-table-pages">' +
+          '<table class="h5p-score-table">' +
+            '<tbody>' + tds + '</tbody>' +
+          '</table>' +
+        '</div>' +
+        '<div class="h5p-summary-total-table">' +
+          '<p class="hidden-but-read">' + percentScore + '%' + '</p>' +
+          '<div class="h5p-summary-social">' +
+            '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' + 
+            facebookContainer +
+            twitterContainer +
+            googleContainer +
+          '</div>' +
+          '<div class="h5p-summary-total-score">' +
+            '<p>' + that.cp.l10n.totalScore + '</p>' +
+          '</div>' +
+        '</div>' +
       '</div>' +
       '<div class="h5p-summary-footer">' +
       '</div>';
@@ -271,8 +265,11 @@ const SummarySlide = (function () {
 
     // Replace any placeholders with variables.
     twitterShareUrl = twitterShareUrl.replace('@currentpageurl', window.location.href);
-    twitterShareStatement = twitterShareStatement.replace('@percentage', scores.totalPercentage + '%')
-                                .replace('@currentpageurl', window.location.href);
+    twitterShareStatement = twitterShareStatement
+      .replace('@score', scores.totalScore)
+      .replace('@maxScore', scores.totalMaxScore)
+      .replace('@percentage', scores.totalPercentage + '%')
+      .replace('@currentpageurl', window.location.href);
 
     // Parse data from the localization object.
     twitterHashtagList = twitterHashtagList.trim().replace(' ', '');
@@ -322,11 +319,12 @@ const SummarySlide = (function () {
     var facebookShareQuote = that.cp.facebookShareQuote || '';
 
     // Replace any placeholders with variables.
-    facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href)
-                          .replace("@percentage", scores.totalPercentage + '%');
+    facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href);
 
     facebookShareQuote = facebookShareQuote.replace('@currentpageurl', window.location.href)
-                            .replace("@percentage", scores.totalPercentage + '%');
+    .replace("@percentage", scores.totalPercentage + '%')
+    .replace('@score', scores.totalScore)
+    .replace('@maxScore', scores.totalMaxScore);
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);

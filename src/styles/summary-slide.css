@@ -90,24 +90,51 @@
 }
 
 .h5p-course-presentation .h5p-summary-footer {
+  height: 12%;
   font-size: 0.75em;
 }
 
 /* ------------------------------- Summary table style -----------------------------------  */
 .h5p-course-presentation .h5p-summary-table-holder {
-  height: 61%;
+  height: 88%;
   margin: 0 1em;
 }
 
 .h5p-course-presentation .h5p-summary-table-pages {
   overflow: auto;
-  max-height: 85%;
+  clear: right;
+  max-height: 69%;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 
 .h5p-course-presentation .h5p-summary-total-table {
   width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
+  position: relative;
+  margin-top: 1em;
+}
+
+.h5p-course-presentation .h5p-summary-total-table p {
+  font-weight: bold;
+  display: inline;
+  margin-right: 1em;
+}
+
+.h5p-course-presentation .h5p-summary-total-score {
+  float: right;
+  font-size: 0.6em;
+}
+
+.h5p-course-presentation .h5p-summary-social {
+  float: left;
+  font-size: 0.75em;
+  padding: 0.25em 0em;
+}
+
+.h5p-course-presentation .h5p-summary-social .h5p-show-results-text {
+  font-size: 0.8em;
+  margin-right: 1em;
+  color: #999;
 }
 
 .h5p-course-presentation .h5p-score-table {
@@ -117,31 +144,31 @@
 }
 
 .h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
-  padding-right: 0.3em;
+  padding: 0.3em;
 }
 
-.h5p-course-presentation .h5p-th {
+.h5p-course-presentation .h5p-score-table tr:not(:last-child) {
   border-bottom: 1px solid #ddd;
 }
 
-.h5p-course-presentation .h5p-td {
-  border-top: 1px solid #ddd;
-}
-
-/* No top border for first score entry */
-.h5p-course-presentation .h5p-score-table tr:first-child .h5p-td {
-  border-top: 0;
-}
-
-/* Total score top border */
-.h5p-course-presentation .h5p-summary-total-table .h5p-td.h5p-summary-task-title {
-  border-top: 2px solid #ddd;
-}
-
 .h5p-course-presentation .h5p-td p {
-  display: inline;
-  color: -webkit-link;
-  text-decoration: underline;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-td p span,
+.h5p-course-presentation .h5p-table-title-right span {
+  color: #999;
+  padding: 0 0.1em;
+}
+
+.h5p-course-presentation .h5p-table-title-right {
+  font-size: 0.5em;
+  float: right;
+  margin: 2em 1em 1em 0em;
+  text-transform: capitalize;
 }
 
 /* ---------------------------- Social media styles ---------------------------------------------- */

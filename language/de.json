@@ -130,6 +130,10 @@
           "default": "Schaubild"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Übersetzung für \"Your Score\"",
           "default": "Deine Punktzahl"
         },
@@ -153,8 +157,12 @@
           "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
         },
         {
-          "label": "Übersetzung für \"Total\"",
-          "default": "Insgesamt"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Beschriftung für den \"Lösungen zeigen\"-Button",
@@ -303,6 +311,10 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
         }
       ]
     },
@@ -361,8 +373,8 @@
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Facebook-Teilen Nachricht",
-                  "default": "Ich habe @percentage der Aufgabe @currentpageurl erreicht."
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -373,8 +385,8 @@
               "label": "Twitter-Teilen Einstellungen",
               "fields": [
                 {
-                  "label": "Twitter-Teilen Nachricht",
-                  "default": "Ich habe @percentage der Aufgabe @currentpageurl erreicht."
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Twitter-Teilen Link",

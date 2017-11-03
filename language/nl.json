@@ -130,6 +130,10 @@
           "default": "Slide"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Vertaling voor \"Jouw score\"",
           "default": "Jouw score"
         },
@@ -153,8 +157,12 @@
           "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
         },
         {
-          "label": "Vertaling voor \"Totaal\"",
-          "default": "Totaal"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Tekst voor \"Toon oplossing\"-knop",
@@ -303,6 +311,10 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
         }
       ]
     },
@@ -362,7 +374,7 @@
                 },
                 {
                   "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -374,7 +386,7 @@
               "fields": [
                 {
                   "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Share to Twitter link",
