@@ -633,7 +633,10 @@
   overflow-y: hidden;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text,
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text {
+  outline: none;
+  padding: 0.375em 0.5em;
+}
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-link {
   padding: 0.375em 0.5em;
 }
