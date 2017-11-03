@@ -319,10 +319,7 @@ const SummarySlide = (function () {
     var facebookShareQuote = that.cp.facebookShareQuote || '';
 
     // Replace any placeholders with variables.
-    facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href)
-      .replace("@percentage", scores.totalPercentage + '%')
-      .replace('@score', scores.totalScore)
-      .replace('@maxScore', scores.totalMaxScore);
+    facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href);
 
     facebookShareQuote = facebookShareQuote.replace('@currentpageurl', window.location.href)
     .replace("@percentage", scores.totalPercentage + '%')
