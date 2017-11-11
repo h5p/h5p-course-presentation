@@ -1361,12 +1361,14 @@ CoursePresentation.prototype.initKeyEvents = function () {
     }
 
     // Left
-    if (event.keyCode === 37 && that.previousSlide()) {
+    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide()) {
+      event.preventDefault();
       wait = true;
     }
 
     // Right
-    else if (event.keyCode === 39 && that.nextSlide()) {
+    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide()) {
+      event.preventDefault();
       wait = true;
     }
 
