@@ -966,6 +966,16 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       $innerElementContainer.attr('tabindex', 0);
     }
 
+    // H5P.Shape sets it's own size when line in selected
+    instance.on('set-size', function (event) {
+      if (event.data.width) {
+        $elementContainer.css('width', event.data.width);
+      }
+      if (event.data.height) {
+        $elementContainer.css('height', event.data.height);
+      }
+    });
+
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
       var handleIV = function () {
