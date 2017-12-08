@@ -63,7 +63,7 @@
                       "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     },
                     {
-                      "label": "Metadata",
+                      "label": "詮釋資料",
                       "fields": [
                         {
                           "label": "標題"
@@ -138,95 +138,95 @@
           "default": "你的分數"
         },
         {
-          "label": "翻譯 \"Max Score\"",
-          "default": "Max Score"
+          "label": "翻譯 \"最高分數\"",
+          "default": "最高分數"
         },
         {
-          "label": "Greeting given for GOOD score",
-          "default": "Congratulations! You got @percent correct!",
-          "description": "@percent is replaced by the real user score in percent"
+          "label": "給好評分的問候語",
+          "default": "恭喜! 您得到 @percent 正確率!",
+          "description": "@percent 以真實使用者百分比分數取代"
         },
         {
-          "label": "Greeting given for OK score",
-          "default": "Nice effort! You got @percent correct!",
-          "description": "@percent is replaced by the real user score in percent"
+          "label": "給普通評分的問候語",
+          "default": "做得好! 您得到 @percent 正確率!",
+          "description": "@percent 以真實使用者百分比分數取代"
         },
         {
-          "label": "Greeting given for BAD score",
-          "default": "You got @percent correct.",
-          "description": "@percent is replaced by the real user score in percent"
+          "label": "給差評的問候語",
+          "default": "您得到 @percent 正確率.",
+          "description": "@percent 以真實使用者百分比分數取代"
         },
         {
-          "label": "Translation for \"Total\"",
-          "default": "Total"
+          "label": "翻譯 \"總計\"",
+          "default": "總計"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "翻譯 \"總分\"",
+          "default": "總分"
         },
         {
-          "label": "Title for show solutions button",
-          "default": "Show solutions"
+          "label": "顯示解決方案按鈕的標題",
+          "default": "顯示解決方案"
         },
         {
-          "label": "Text for the retry button",
-          "default": "Retry"
+          "label": "重試按鈕的文字",
+          "default": "重試"
         },
         {
-          "label": "Translation for \"Title\"",
-          "default": "Title"
+          "label": "翻譯 \"標題\"",
+          "default": "標題"
         },
         {
-          "label": "Translation for \"Author/supplier\"",
-          "default": "Author"
+          "label": "翻譯 \"作者/提供者\"",
+          "default": "作者"
         },
         {
-          "label": "Translation for \"License\"",
-          "default": "License"
+          "label": "翻譯 \"授權\"",
+          "default": "授權"
         },
         {
-          "label": "Translation for \"License\"",
-          "default": "License"
+          "label": "翻譯 \"授權\"",
+          "default": "授權"
         },
         {
-          "label": "Text for the export text button",
-          "default": "Export text"
+          "label": "輸出文本按鈕的文字",
+          "default": "輸出文本"
         },
         {
-          "label": "Text for the \"Rights of use\" button",
-          "default": "Rights of use"
+          "label": "“使用權”按鈕的文字",
+          "default": "使用權"
         },
         {
-          "label": "Hide keywords list button title",
-          "default": "Hide keywords list"
+          "label": "隱藏關鍵字列表按鈕標題",
+          "default": "隱藏關鍵字列表"
         },
         {
-          "label": "Show keywords list button title",
-          "default": "Show keywords list"
+          "label": "顯示關鍵字列表按鈕標題",
+          "default": "顯示關鍵字列表"
         },
         {
-          "label": "Fullscreen label",
-          "default": "Fullscreen"
+          "label": "全螢幕標籤",
+          "default": "全螢幕"
         },
         {
-          "label": "Exit fullscreen label",
-          "default": "Exit fullscreen"
+          "label": "退出全螢幕標籤",
+          "default": "退出全螢幕"
         },
         {
-          "label": "Previous slide label",
-          "default": "Previous slide"
+          "label": "上一張幻燈片標籤",
+          "default": "上一張幻燈片"
         },
         {
-          "label": "Next slide label",
-          "default": "Next slide"
+          "label": "下一張幻燈片標籤",
+          "default": "下一張幻燈片"
         },
         {
-          "label": "Current slide label",
-          "default": "Current slide"
+          "label": "目前幻燈片標籤",
+          "default": "目前幻燈片"
         },
         {
-          "label": "Last slide label",
-          "default": "Last slide"
+          "label": "上次幻燈片標籤",
+          "default": "上次幻燈片"
         },
         {
           "label": "Exit solution mode text",
@@ -313,63 +313,63 @@
           "default": "@slideName has incorrect answers"
         },
         {
-          "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "label": "社交分享欄的標籤",
+          "default": "分享成果"
         }
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "行為設定.",
+      "description": "這些選項將讓您覆蓋行為設定.",
       "fields": [
         {
           "label": "Activate Active Surface Mode",
           "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
         },
         {
-          "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "label": "隱藏摘要幻燈片",
+          "description": "隱藏此摘要幻燈片."
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "覆蓋 \"Show Solution\" 按鈕",
+          "description": "此選項決定是否顯示所有問題 \"Show Solution\" 按鈕, 全部停用或單獨為每個問題設定.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "啟用"
             },
             {
-              "label": "Disabled"
+              "label": "停用"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "覆蓋 \"Retry\" 按鈕",
+          "description": "此選項決定是否將針對所有問題顯示\"Retry\"按鈕, 全部停用或單獨為每個問題設定.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "啟用"
             },
             {
-              "label": "Disabled"
+              "label": "停用"
             }
           ]
         },
         {
-          "label": "Enable print button",
-          "description": "Enables the print button."
+          "label": "啟用列印按鈕",
+          "description": "啟用此列印按鈕."
         },
         {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "社交設定",
+          "description": "這些選項將讓您覆蓋社交行為設定. 如果提供了連結, 空值將會被自動填入, 否則將產生所有值.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "顯示Facebook分享圖示"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Facebook分享設定",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "分享到Facebook連結",
                   "default": "@currentpageurl"
                 },
                 {
@@ -379,30 +379,30 @@
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "顯示Twitter分享圖示"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Twitter分享設定",
               "fields": [
                 {
                   "label": "Share to Twitter statement",
                   "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "分享到Twitter連結",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "分享到Twitter的主題標籤",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "顯示Google+分享圖示"
             },
             {
-              "label": "Share to Google link",
+              "label": "分享到Google連結",
               "default": "@currentpageurl"
             }
           ]
