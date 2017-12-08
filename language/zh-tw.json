@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "評論",
-                      "description": "當使用者顯示所有幻燈片的建議答案時，會顯示評論."
+                      "description": "當使用者顯示所有幻燈片的建議答案時, 會顯示評論."
                     },
                     {
                       "label": "總是顯示評論"
@@ -60,7 +60,7 @@
                     },
                     {
                       "label": "Invisible",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "description": "預設游標, 無標題, 無標籤索引. 警告：使用此元件的受限制使用者或僅限鍵盤的使用者將會遇到問題."
                     },
                     {
                       "label": "詮釋資料",
@@ -84,7 +84,7 @@
                 "fields": [
                   {
                     "label": "圖片",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "description": "圖的背景應該有2：1寬高比以避免拉伸. 高解析度的圖像將在較大的螢幕上顯示得更好."
                   },
                   {
                     "label": "選擇一種顏色",
@@ -112,7 +112,7 @@
           "fields": [
             {
               "label": "圖片",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+              "description": "圖的背景應該有2：1寬高比以避免拉伸. 高解析度的圖像將在較大的螢幕上顯示得更好."
             },
             {
               "label": "選擇一種顏色",
@@ -126,8 +126,8 @@
       "label": "本土化",
       "fields": [
         {
-          "label": "翻譯 \"Slide\"",
-          "default": "Slide"
+          "label": "翻譯 \"幻燈片\"",
+          "default": "幻燈片"
         },
         {
           "label": "翻譯 \"分數\"",
@@ -229,88 +229,88 @@
           "default": "上次幻燈片"
         },
         {
-          "label": "Exit solution mode text",
-          "default": "Exit solution mode"
+          "label": "退出解決方案模式的文字",
+          "default": "退出解決方案模式"
         },
         {
-          "label": "Solution mode text",
-          "default": "Solution Mode"
+          "label": "解決方案模式文字",
+          "default": "解決方案模式"
         },
         {
-          "label": "Text when multiple tasks on a page",
-          "default": "Multiple tasks"
+          "label": "在一頁上有多個任務的文字",
+          "default": "多任務"
         },
         {
-          "label": "Score message text",
-          "default": "You achieved:"
+          "label": "評分訊息文字",
+          "default": "您得到:"
         },
         {
-          "label": "Share to Facebook text",
-          "default": "Share on Facebook"
+          "label": "分享到Facebook",
+          "default": "在Facebook上分享"
         },
         {
-          "label": "Share to Twitter text",
-          "default": "Share on Twitter"
+          "label": "分享到Twitter",
+          "default": "在Twitter上分享"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "分享到Google",
+          "default": "在Google+上分享"
         },
         {
-          "label": "Title for summary slide",
-          "default": "Summary"
+          "label": "摘要幻燈片的標題",
+          "default": "摘要"
         },
         {
-          "label": "Title for the comments icon",
-          "default": "Show comments"
+          "label": "評論圖示的標題",
+          "default": "顯示評論"
         },
         {
-          "label": "Title for print button",
-          "default": "Print"
+          "label": "列印按鈕的標題",
+          "default": "列印"
         },
         {
-          "label": "Print dialog ingress",
-          "default": "How would you like to print this presentation?"
+          "label": "列印對話框入口",
+          "default": "您打算如何列印此描述文字?"
         },
         {
-          "label": "Label for \"Print all slides\" button",
-          "default": "Print all slides"
+          "label": "\"列印所有幻燈片\" 按鈕的標籤",
+          "default": "列印所有幻燈片"
         },
         {
-          "label": "Label for \"Print current slide\" button",
-          "default": "Print current slide"
+          "label": "\"列印目前幻燈片\" 按鈕的標籤",
+          "default": "列印目前幻燈片"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "沒有標題的幻燈片標籤",
+          "default": "沒有標題"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "輔助技術幻燈片導航的說明",
+          "default": "使用左右箭頭在每當選擇畫布後,依方向變更幻燈片"
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "輔助技術的畫布標籤",
+          "default": "展示畫布. 使用左右箭頭在幻燈片之間移動."
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "未完成交流互動的標籤",
+          "default": "@slideName 包含未完成的交流互動"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "完成交流互動的標籤",
+          "default": "@slideName 包含完成的交流互動"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "幻燈片計數器的標籤. 變數是 @index, @total",
+          "default": "幻燈片 @index 的 @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "僅包含正確答案的幻燈片標籤",
+          "default": "@slideName 僅包含正確答"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "有錯誤答案的幻燈片的標籤",
+          "default": "@slideName 有錯誤答案"
         },
         {
           "label": "社交分享欄的標籤",
@@ -323,16 +323,16 @@
       "description": "這些選項將讓您覆蓋行為設定.",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "觸發活動表面模式",
+          "description": "刪除使用者的導航控制. 使用“轉到幻燈片”進行導航."
         },
         {
           "label": "隱藏摘要幻燈片",
           "description": "隱藏此摘要幻燈片."
         },
         {
-          "label": "覆蓋 \"Show Solution\" 按鈕",
-          "description": "此選項決定是否顯示所有問題 \"Show Solution\" 按鈕, 全部停用或單獨為每個問題設定.",
+          "label": "覆蓋 \"顯示解決方案\" 按鈕",
+          "description": "此選項決定是否顯示所有問題 \"顯示解決方案\" 按鈕, 全部停用或單獨為每個問題設定.",
           "options": [
             {
               "label": "啟用"
@@ -343,8 +343,8 @@
           ]
         },
         {
-          "label": "覆蓋 \"Retry\" 按鈕",
-          "description": "此選項決定是否將針對所有問題顯示\"Retry\"按鈕, 全部停用或單獨為每個問題設定.",
+          "label": "覆蓋 \"重試\" 按鈕",
+          "description": "此選項決定是否將針對所有問題顯示\"重試\"按鈕, 全部停用或單獨為每個問題設定.",
           "options": [
             {
               "label": "啟用"
@@ -373,8 +373,8 @@
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "分享到Facebook引言",
+                  "default": "我在@currentpageurl的任務上@maxScore得分@score"
                 }
               ]
             },
@@ -385,8 +385,8 @@
               "label": "Twitter分享設定",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "分享到Twitter的聲明",
+                  "default": "我在@currentpageurl的任務上@maxScore得分@score."
                 },
                 {
                   "label": "分享到Twitter連結",
