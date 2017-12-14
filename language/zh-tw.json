@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "評論",
-                      "description": "當使用者顯示所有幻燈片的建議答案時, 會顯示評論."
+                      "description": "當使用者顯示所有簡報的建議答案時, 會顯示評論."
                     },
                     {
                       "label": "總是顯示評論"
@@ -44,19 +44,19 @@
                       "label": "去到",
                       "options": [
                         {
-                          "label": "特定的幻燈片編號"
+                          "label": "特定的簡報編號"
                         },
                         {
-                          "label": "下一張幻燈片"
+                          "label": "下一張簡報"
                         },
                         {
-                          "label": "上一張幻燈片"
+                          "label": "上一張簡報"
                         }
                       ]
                     },
                     {
-                      "label": "特定的幻燈片編號",
-                      "description": "只有當選擇“特定的幻燈片編號”時才適用"
+                      "label": "特定的簡報編號",
+                      "description": "只有當選擇“特定的簡報編號”時才適用"
                     },
                     {
                       "label": "Invisible",
@@ -123,125 +123,125 @@
       ]
     },
     {
-      "label": "本土化",
+      "label": "在地化",
       "fields": [
         {
-          "label": "翻譯 \"幻燈片\"",
-          "default": "幻燈片"
+          "label": "簡報標題",
+          "default": "簡報"
         },
         {
-          "label": "翻譯 \"分數\"",
+          "label": "分數標題",
           "default": "分數"
         },
         {
-          "label": "翻譯 \"你的分數\"",
+          "label": "你的分數",
           "default": "你的分數"
         },
         {
-          "label": "翻譯 \"最高分數\"",
+          "label": "最高分數",
           "default": "最高分數"
         },
         {
-          "label": "給好評分的問候語",
+          "label": "好成績的問候語",
           "default": "恭喜! 您得到 @percent 正確率!",
           "description": "@percent 以真實使用者百分比分數取代"
         },
         {
-          "label": "給普通評分的問候語",
+          "label": "普通成績的問候語",
           "default": "做得好! 您得到 @percent 正確率!",
           "description": "@percent 以真實使用者百分比分數取代"
         },
         {
-          "label": "給差評的問候語",
+          "label": "不好成績的問候語",
           "default": "您得到 @percent 正確率.",
           "description": "@percent 以真實使用者百分比分數取代"
         },
         {
-          "label": "翻譯 \"總計\"",
+          "label": "總計標題",
           "default": "總計"
         },
         {
-          "label": "翻譯 \"總分\"",
+          "label": "總分標題",
           "default": "總分"
         },
         {
-          "label": "顯示解決方案按鈕的標題",
-          "default": "顯示解決方案"
+          "label": "查看解法功能鈕名稱",
+          "default": "查看解法"
         },
         {
-          "label": "重試按鈕的文字",
+          "label": "重試功能鈕名稱",
           "default": "重試"
         },
         {
-          "label": "翻譯 \"標題\"",
+          "label": "標題名稱",
           "default": "標題"
         },
         {
-          "label": "翻譯 \"作者/提供者\"",
+          "label": "作者/提供者",
           "default": "作者"
         },
         {
-          "label": "翻譯 \"授權\"",
-          "default": "授權"
+          "label": "授權資訊",
+          "default": "授權資訊"
         },
         {
-          "label": "翻譯 \"授權\"",
-          "default": "授權"
+          "label": "授權資訊",
+          "default": "授權資訊"
         },
         {
-          "label": "輸出文本按鈕的文字",
-          "default": "輸出文本"
+          "label": "匯出功能鈕名稱",
+          "default": "匯出"
         },
         {
-          "label": "“使用權”按鈕的文字",
+          "label": "顯示“使用權”功能鈕名稱",
           "default": "使用權"
         },
         {
-          "label": "隱藏關鍵字列表按鈕標題",
+          "label": "隱藏關鍵字列表功能鈕標題",
           "default": "隱藏關鍵字列表"
         },
         {
-          "label": "顯示關鍵字列表按鈕標題",
+          "label": "顯示關鍵字列表功能鈕標題",
           "default": "顯示關鍵字列表"
         },
         {
-          "label": "全螢幕標籤",
+          "label": "全螢幕標題",
           "default": "全螢幕"
         },
         {
-          "label": "退出全螢幕標籤",
+          "label": "退出全螢幕標題",
           "default": "退出全螢幕"
         },
         {
-          "label": "上一張幻燈片標籤",
-          "default": "上一張幻燈片"
+          "label": "上一張簡報名稱",
+          "default": "上一張簡報"
         },
         {
-          "label": "下一張幻燈片標籤",
-          "default": "下一張幻燈片"
+          "label": "下一張簡報名稱",
+          "default": "下一張簡報"
         },
         {
-          "label": "目前幻燈片標籤",
-          "default": "目前幻燈片"
+          "label": "目前簡報名稱",
+          "default": "目前簡報"
         },
         {
-          "label": "上次幻燈片標籤",
-          "default": "上次幻燈片"
+          "label": "上次簡報名稱",
+          "default": "上次簡報"
         },
         {
-          "label": "退出解決方案模式的文字",
-          "default": "退出解決方案模式"
+          "label": "退出查看解法模式名稱",
+          "default": "退出查看解法模式"
         },
         {
-          "label": "解決方案模式文字",
-          "default": "解決方案模式"
+          "label": "解法模式名稱",
+          "default": "解法模式"
         },
         {
-          "label": "在一頁上有多個任務的文字",
-          "default": "多任務"
+          "label": "單頁多組任務名稱",
+          "default": "多組任務"
         },
         {
-          "label": "評分訊息文字",
+          "label": "評分訊息名稱",
           "default": "您得到:"
         },
         {
@@ -257,59 +257,59 @@
           "default": "在Google+上分享"
         },
         {
-          "label": "摘要幻燈片的標題",
-          "default": "摘要"
+          "label": "總結簡報的標題",
+          "default": "總結"
         },
         {
-          "label": "評論圖示的標題",
+          "label": "評論功能鈕名稱",
           "default": "顯示評論"
         },
         {
-          "label": "列印按鈕的標題",
+          "label": "列印功能鈕名稱",
           "default": "列印"
         },
         {
-          "label": "列印對話框入口",
-          "default": "您打算如何列印此描述文字?"
+          "label": "列印對話視窗",
+          "default": "您預計如何列印此份簡報?"
         },
         {
-          "label": "\"列印所有幻燈片\" 按鈕的標籤",
-          "default": "列印所有幻燈片"
+          "label": "\"列印所有簡報頁\" 功能鈕名稱",
+          "default": "列印所有簡報頁"
         },
         {
-          "label": "\"列印目前幻燈片\" 按鈕的標籤",
-          "default": "列印目前幻燈片"
+          "label": "\"列印當前簡報頁\"功能鈕名稱",
+          "default": "列印當前簡報頁"
         },
         {
-          "label": "沒有標題的幻燈片標籤",
+          "label": "沒有標題的簡報標題名稱",
           "default": "沒有標題"
         },
         {
-          "label": "輔助技術幻燈片導航的說明",
-          "default": "使用左右箭頭在每當選擇畫布後,依方向變更幻燈片"
+          "label": "簡報快速鍵說明",
+          "default": "可使用左右箭頭來切換簡報頁"
         },
         {
-          "label": "輔助技術的畫布標籤",
-          "default": "展示畫布. 使用左右箭頭在幻燈片之間移動."
+          "label": "輔助操作說明",
+          "default": "簡報播放時可使用左右箭頭來切換簡報頁."
         },
         {
-          "label": "未完成交流互動的標籤",
-          "default": "@slideName 包含未完成的交流互動"
+          "label": "未完成互動的簡報頁名稱",
+          "default": "@slideName 包含未完成的互動"
         },
         {
-          "label": "完成交流互動的標籤",
-          "default": "@slideName 包含完成的交流互動"
+          "label": "完成互動的簡報頁名稱",
+          "default": "@slideName 包含完成的互動"
         },
         {
-          "label": "幻燈片計數器的標籤. 變數是 @index, @total",
-          "default": "幻燈片 @index 的 @total"
+          "label": "簡報頁計數器. 變數是 @index, @total",
+          "default": "簡報 @index / @total"
         },
         {
-          "label": "僅包含正確答案的幻燈片標籤",
+          "label": "正確作答的簡報標示",
           "default": "@slideName 僅包含正確答"
         },
         {
-          "label": "有錯誤答案的幻燈片的標籤",
+          "label": "錯誤作答的簡報標示",
           "default": "@slideName 有錯誤答案"
         },
         {
@@ -323,43 +323,43 @@
       "description": "這些選項將讓您覆蓋行為設定.",
       "fields": [
         {
-          "label": "觸發活動表面模式",
-          "description": "刪除使用者的導航控制. 使用“轉到幻燈片”進行導航."
+          "label": "簡報播放模式設定",
+          "description": "取消提供操作功能列給使用者。使用＂播放簡報＂方式進行內容揭露."
         },
         {
-          "label": "隱藏摘要幻燈片",
-          "description": "隱藏此摘要幻燈片."
+          "label": "隱藏總結頁簡報",
+          "description": "隱藏總結頁簡報."
         },
         {
-          "label": "覆蓋 \"顯示解決方案\" 按鈕",
-          "description": "此選項決定是否顯示所有問題 \"顯示解決方案\" 按鈕, 全部停用或單獨為每個問題設定.",
+          "label": " \"查看解法\" 功能鈕",
+          "description": "設定所有問題是否顯示\"查看解法\"功能鈕，全部啟用或是禁用.",
           "options": [
             {
               "label": "啟用"
             },
             {
-              "label": "停用"
+              "label": "禁用"
             }
           ]
         },
         {
-          "label": "覆蓋 \"重試\" 按鈕",
-          "description": "此選項決定是否將針對所有問題顯示\"重試\"按鈕, 全部停用或單獨為每個問題設定.",
+          "label": " \"重試\" 功能鈕",
+          "description": "設定所有問題是否顯示\"重試\"功能鈕，全部啟用或是禁用.",
           "options": [
             {
               "label": "啟用"
             },
             {
-              "label": "停用"
+              "label": "禁用"
             }
           ]
         },
         {
-          "label": "啟用列印按鈕",
-          "description": "啟用此列印按鈕."
+          "label": "啟用列印功能鈕",
+          "description": "啟用此列印功能鈕."
         },
         {
-          "label": "社交設定",
+          "label": "社交分享設定",
           "description": "這些選項將讓您覆蓋社交行為設定. 如果提供了連結, 空值將會被自動填入, 否則將產生所有值.",
           "fields": [
             {
@@ -369,11 +369,11 @@
               "label": "Facebook分享設定",
               "fields": [
                 {
-                  "label": "分享到Facebook連結",
+                  "label": "分享到Facebook(連結)",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "分享到Facebook引言",
+                  "label": "分享到Facebook(引用)",
                   "default": "我在@currentpageurl的任務上@maxScore得分@score"
                 }
               ]
