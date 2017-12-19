@@ -126,19 +126,19 @@
       "label": "Localize",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
+          "label": "\"Slide\"의 번역",
           "default": "슬라이드"
         },
         {
-          "label": "Translation for \"Score\"",
+          "label": "\"Score\"의 번역",
           "default": "점수"
         },
         {
-          "label": "Translation for \"Your Score\"",
+          "label": "\"Your Score\"의 번역",
           "default": "당신의 점수"
         },
         {
-          "label": "Translation for \"Max Score\"",
+          "label": "\"Max Score\"의 번역",
           "default": "최고 점수"
         },
         {
@@ -157,43 +157,43 @@
           "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
         },
         {
-          "label": "Translation for \"Total\"",
+          "label": "\"Total\"의 번역",
           "default": "총합"
         },
         {
-          "label": "Translation for \"Total Score\"",
+          "label": "\"Total Score\"의 번역",
           "default": "총점"
         },
         {
-          "label": "Title for show solutions button",
+          "label": "해답 보이기 버튼의 제목",
           "default": "해답 보이기"
         },
         {
-          "label": "Text for the retry button",
+          "label": "재시도 버튼에 들어갈 내용",
           "default": "재시도"
         },
         {
-          "label": "Translation for \"Title\"",
+          "label": "\"Title\"의 번역",
           "default": "제목"
         },
         {
-          "label": "Translation for \"Author/supplier\"",
+          "label": "\"Author/supplier\"의 번역",
           "default": "저자"
         },
         {
-          "label": "Translation for \"License\"",
+          "label": "\"License\"의 번역",
           "default": "라이선스"
         },
         {
-          "label": "Translation for \"License\"",
+          "label": "\"License\"의 번역",
           "default": "라이선스"
         },
         {
-          "label": "Text for the export text button",
+          "label": "텍스트 내보내기 버튼에 들어갈 내용",
           "default": "텍스트 내보내기"
         },
         {
-          "label": "Text for the \"Rights of use\" button",
+          "label": "\"사용권한\" 의 번역",
           "default": "사용권한"
         },
         {
@@ -254,22 +254,22 @@
         },
         {
           "label": "Share to Google text",
-          "default": "구글에 공유하기"
+          "default": "구글플러스에 공유하기"
         },
         {
-          "label": "Title for summary slide",
+          "label": "요약 슬라이드의 제목",
           "default": "요약"
         },
         {
-          "label": "Title for the comments icon",
+          "label": "코멘트 아이콘의 제목",
           "default": "코멘트"
         },
         {
-          "label": "Title for print button",
+          "label": "인쇄 버튼의 제목",
           "default": "인쇄"
         },
         {
-          "label": "Print dialog ingress",
+          "label": "인쇄 대화 상자에 들어갈 내용",
           "default": "인쇄 범위 지정"
         },
         {
@@ -320,90 +320,90 @@
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "동작 설정",
+      "description": "이 옵션들은 동작 설정을 덮어쓰기 합니다",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
+          "label": "액티브 서페이스 모드 활성화",
           "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
         },
         {
-          "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "label": "요약 슬라이드 숨기기",
+          "description": "요약 슬라이드 숨기기"
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "\"해답 보이기\" 버튼 덮어쓰기",
+          "description": "이 옵션은 \"해답 보이기 \" 버튼을 모든 문제에 보이게 할지, 모두 숨길지, 각 문제마다 개별적으로 설정할지를 결정합니다.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "활성화"
             },
             {
-              "label": "Disabled"
+              "label": "비활성화"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "\"재시도\" 버튼 덮어쓰기",
+          "description": "이 옵션은 \"재시도\" 버튼을 모든 문제에 보이게 할지, 모두 숨길지, 각 문제마다 개별적으로 설정할지를 결정합니다",
           "options": [
             {
-              "label": "Enabled"
+              "label": "활성화"
             },
             {
-              "label": "Disabled"
+              "label": "비활성화"
             }
           ]
         },
         {
-          "label": "Enable print button",
-          "description": "Enables the print button."
+          "label": "인쇄 버튼 활성화",
+          "description": "인쇄버튼을 활성화합니다"
         },
         {
-          "label": "Social Settings",
+          "label": "소셜 공유 설정",
           "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "페이스북 공유 아이콘 보이기"
             },
             {
-              "label": "Facebook share settings",
+              "label": "페이스북 공유 설정",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "페이스북에 링크를 공유",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
+                  "label": "페이스북에 문장을 공유",
                   "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "트위터 공유 아이콘 보이기"
             },
             {
-              "label": "Twitter share settings",
+              "label": "트위터 공유 설정",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
+                  "label": "트위터에 문장을 공유",
                   "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "트위터에 링크를 공유",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "트위터에 해쉬태그를 공유",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "구글 플러스 공유 아이콘 보이기"
             },
             {
-              "label": "Share to Google link",
+              "label": "구글에 링크를 공유",
               "default": "@currentpageurl"
             }
           ]
