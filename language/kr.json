@@ -292,7 +292,6 @@
           "label": "Canvas label for assistive technologies",
           "default": "캔버스가 선택된 상태에서 왼쪽, 오른쪽 화살표 키로 슬라이드를 이동할 수 있습니다."
         },
-        },
         {
           "label": "Label for uncompleted interactions",
           "default": "@slideName 에 수행하지 않은 상호작용이 있습니다."
