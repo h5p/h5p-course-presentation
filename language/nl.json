@@ -27,13 +27,13 @@
                       "label": "Tonen als knop"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Grootte knop",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Klein"
                         },
                         {
-                          "label": "Big"
+                          "label": "Groot"
                         }
                       ]
                     },
@@ -41,10 +41,10 @@
                       "label": "Titel"
                     },
                     {
-                      "label": "Go to to",
+                      "label": "Ga naar",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Specifieke slide"
                         },
                         {
                           "label": "Volgende slide"
@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Ga naar slide",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "description": "Allen mogelijk indien 'Specifieke slide' is geselecteerd"
                     },
                     {
                       "label": "Onzichtbaar",
@@ -130,6 +130,10 @@
           "default": "Slide"
         },
         {
+          "label": "Vertaling voor \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Vertaling voor \"Jouw score\"",
           "default": "Jouw score"
         },
@@ -155,6 +159,10 @@
         {
           "label": "Vertaling voor \"Totaal\"",
           "default": "Totaal"
+        },
+        {
+          "label": "Vertaling voor \"Totale score\"",
+          "default": "Totale score"
         },
         {
           "label": "Tekst voor \"Toon oplossing\"-knop",
@@ -245,8 +253,8 @@
           "default": "Deel op Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "Deel op Google+ tekst",
+          "default": "Deel op Google+"
         },
         {
           "label": "Titel voor \"Samenvatting\" slide",
@@ -273,11 +281,11 @@
           "default": "Druk huidige slide af"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Label voor slides zonder titel",
+          "default": "Geen titel"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
+          "label": "Uitleg slidenavigatie voor ondersteunende technologieën",
           "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
         },
         {
@@ -303,6 +311,10 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
         }
       ]
     },
@@ -362,7 +374,7 @@
                 },
                 {
                   "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -374,7 +386,7 @@
               "fields": [
                 {
                   "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Share to Twitter link",
