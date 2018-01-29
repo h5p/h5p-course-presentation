@@ -130,6 +130,10 @@
           "default": "Slide"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Translation for \"Your Score\"",
           "default": "Your Score"
         },
@@ -154,7 +158,11 @@
         },
         {
           "label": "Translation for \"Total\"",
-          "default": "TOTAL"
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Title for show solutions button",
@@ -303,6 +311,10 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
         }
       ]
     },
@@ -362,7 +374,7 @@
                 },
                 {
                   "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -374,7 +386,7 @@
               "fields": [
                 {
                   "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Share to Twitter link",

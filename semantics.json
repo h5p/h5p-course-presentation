@@ -378,6 +378,13 @@
         "default": "Slide"
       },
       {
+        "name": "score",
+        "type": "text",
+        "label": "Translation for \"Score\"",
+        "importance": "low",
+        "default": "Score"
+      },
+      {
         "name": "yourScore",
         "type": "text",
         "label": "Translation for \"Your Score\"",
@@ -420,7 +427,14 @@
         "type": "text",
         "label": "Translation for \"Total\"",
         "importance": "low",
-        "default": "TOTAL"
+        "default": "Total"
+      },
+      {
+        "name": "totalScore",
+        "type": "text",
+        "label": "Translation for \"Total Score\"",
+        "importance": "low",
+        "default": "Total Score"
       },
       {
         "name": "showSolutions",
@@ -683,6 +697,13 @@
         "label": "Label for slides that has incorrect answers",
         "importance": "low",
         "default": "@slideName has incorrect answers"
+      },
+      {
+        "name": "shareResult",
+        "type": "text",
+        "label": "Label for social sharing bar",
+        "importance": "low",
+        "default": "Share Result"
       }
     ]
   },
@@ -807,7 +828,7 @@
                 "type": "text",
                 "label": "Share to Facebook quote",
                 "importance": "low",
-                "default": "I scored @percentage on a task at @currentpageurl."
+                "default": "I scored @score out of @maxScore on a task at @currentpageurl."
               }
             ]
           },
@@ -839,7 +860,7 @@
                 "type": "text",
                 "label": "Share to Twitter statement",
                 "importance": "low",
-                "default": "I scored @percentage on a task at @currentpageurl."
+                "default": "I scored @score out of @maxScore on a task at @currentpageurl."
               },
               {
                 "name": "url",

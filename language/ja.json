@@ -130,6 +130,10 @@
           "default": "スライド"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "「あなたの得点」の翻訳",
           "default": "あなたの得点"
         },
@@ -153,8 +157,12 @@
           "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
         },
         {
-          "label": "「トータル」の翻訳",
-          "default": "トータル"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "「解を表示」ボタンのタイトル",
@@ -303,6 +311,10 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
         }
       ]
     },
@@ -362,7 +374,7 @@
                 },
                 {
                   "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -374,7 +386,7 @@
               "fields": [
                 {
                   "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Share to Twitter link",
