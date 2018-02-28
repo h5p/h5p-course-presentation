@@ -154,10 +154,8 @@ export default class KeywordMenu {
    * @fires KeywordMenu#select
    */
   onMenuItemSelect(index) {
-    if(this.state.currentIndex !== index) {
-      this.setCurrentSlideIndex(index);
-      this.eventDispatcher.trigger('select', { index });
-    }
+    this.setCurrentSlideIndex(index);
+    this.eventDispatcher.trigger('select', { index });
   }
 
   /**
