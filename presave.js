@@ -1,5 +1,13 @@
 var H5PPresave = H5PPresave || {};
 
+
+/**
+ * Function to go through all elements of a Course Presentation and perform the separate calculations before returning a aggregated result
+ *
+ * @param content
+ * @param finished
+ * @constructor
+ */
 H5PPresave['H5P.CoursePresentation'] = function (content, finished) {
     var self = this;
     if( typeof content === "undefined" || !content.hasOwnProperty('presentation') || !content.presentation.hasOwnProperty('slides')){
