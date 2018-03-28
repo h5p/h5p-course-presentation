@@ -55,6 +55,10 @@ H5PPresave['H5P.CoursePresentation'] = function (content, finished) {
     finished({maxScore: score});
   }
 
+  /**
+   * Check if required parameters is present
+   * @return {boolean}
+   */
   function isContentInValid() {
     return !presave.checkNestedRequirements(content, 'content.presentation.slides') || !Array.isArray(content.presentation.slides);
   }
