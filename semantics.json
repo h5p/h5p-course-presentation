@@ -737,7 +737,7 @@
         "type": "select",
         "label": "Override \"Show Solution\" button",
         "importance": "low",
-        "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+        "description": "This option determines if the \"Show Solution\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled) ",
         "optional": true,
         "options": [
           {
@@ -755,7 +755,7 @@
         "type": "select",
         "label": "Override \"Retry\" button",
         "importance": "low",
-        "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+        "description": "This option determines if the \"Retry\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled)",
         "optional": true,
         "options": [
           {
