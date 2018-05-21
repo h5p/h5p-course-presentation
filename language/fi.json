@@ -27,13 +27,13 @@
                       "label": "Näytä painikkeena"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Painikkeen koko",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Pieni"
                         },
                         {
-                          "label": "Big"
+                          "label": "Suuri"
                         }
                       ]
                     },
@@ -41,10 +41,10 @@
                       "label": "Otsikko"
                     },
                     {
-                      "label": "Go to to",
+                      "label": "Mene",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Määritä sivunumero"
                         },
                         {
                           "label": "Seuraava sivu"
@@ -130,8 +130,8 @@
           "default": "Sivu"
         },
         {
-          "label": "Translation for \"Score\"",
-          "default": "Score"
+          "label": "Käännös tekstille \"Pisteet\"",
+          "default": "Pisteet"
         },
         {
           "label": "Käännös tekstille \"Pisteesi\"",
@@ -157,12 +157,12 @@
           "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
         },
         {
-          "label": "Translation for \"Total\"",
-          "default": "Total"
+          "label": "Käännös sanalle yhteensä \"Total\"",
+          "default": "Yhteensä"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "Käännös tekstille Kokonaispisteet \"Total Score\"",
+          "default": "Kokonaispisteet"
         },
         {
           "label": "\"Näytä oikeat vastaukset\"-painikkeen teksti",
@@ -253,8 +253,8 @@
           "default": "Jaa Twitterissä"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "\"Jaa Google+ palvelussa\" -teksti",
+          "default": "Jaa Google+ palvelussa"
         },
         {
           "label": "\"Yhteenveto\"-sivun otsikko",
@@ -281,8 +281,8 @@
           "default": "Tulosta nykyinen sivu"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Teksti sivuille joilla ei ole otsikkoa",
+          "default": "Ei otsikkoa"
         },
         {
           "label": "Explanation of slide navigation for assistive technologies",
@@ -328,7 +328,7 @@
         },
         {
           "label": "Piilota yhteenvetosivu",
-          "description": "Valitse tämä, jos et halua esityksen viimeisen sivun olevan yhteenveto tehtävien pistemääristä."
+          "description": "Valitse tämä, jos et halua esityksen viimeisen sivun olevan yhteenveto tehtävien pistemääristä. Huom! Tulokset eivät tallennu ilman tätä sivua."
         },
         {
           "label": "\"Näytä vastaus\"-painike",
@@ -359,50 +359,50 @@
           "description": "Näytä tulostuspainike esityksen alakulmassa."
         },
         {
-          "label": "Social Settings",
+          "label": "Sosiaalisen median asetukset",
           "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Näytä jaa Facebookissa-ikoni"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Facebookin asetukset",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Facebookkiin jaettavan sivun linkki",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Facebookkiin jaettava teksti",
+                  "default": "Sain @score pistettä @maxScore pisteestä aineistosta sivustolla @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Näytä jaa Twitteriin-ikoni"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Twitter asetukset",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Twitteriin jaettava teksti",
+                  "default": "Sain @score pistettä @maxScore pisteestä sivustolla @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Twitteriin jaettavan sivuston linkki",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "Jaa twitteriin seuraavilla hashtageilla/aihetunnisteilla",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Näytä jaa Google+ palveluun -ikoni"
             },
             {
-              "label": "Share to Google link",
+              "label": "Google+ palveluun jaettavan sivuston linkki",
               "default": "@currentpageurl"
             }
           ]
