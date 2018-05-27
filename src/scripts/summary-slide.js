@@ -280,7 +280,7 @@ const SummarySlide = (function () {
     twitterShareUrl = encodeURIComponent(twitterShareUrl);
 
     // Add query strings to the URL based on settings.
-    var twitterString = 'http://twitter.com/intent/tweet?';
+    var twitterString = 'https://twitter.com/intent/tweet?';
     twitterString += (twitterShareStatement.length > 0) ? "text="+twitterShareStatement+"&" : "";
     twitterString += (twitterShareUrl.length > 0) ? "url="+twitterShareUrl+"&" : "";
     twitterString += (twitterHashtagList.length > 0) ? "hashtags="+twitterHashtagList : "";
