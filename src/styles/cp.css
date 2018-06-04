@@ -287,8 +287,8 @@
   left: 5%;
   position: absolute;
   top: 10%;
-  width: 90%;
-  min-height: 65%;
+  min-width: 22%;
+  max-width: 90%;
   max-height: 80%;
   transition: top 0.2s;
   overflow: hidden;
