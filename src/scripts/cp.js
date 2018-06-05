@@ -1255,10 +1255,16 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
       }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>')
         .appendTo($elementContainer);
 
-      addClickAndKeyboardListeners($commentButton, () => this.showPopup(element.solution, $commentButton, {
+      const parentPosition = {
         x: element.x,
         y: element.y
-      }));
+      };
+      if (!element.displayAsButton) {
+        parentPosition.x += element.width - 4;
+        parentPosition.y += element.height - 12;
+      }
+
+      addClickAndKeyboardListeners($commentButton, () => this.showPopup(element.solution, $commentButton, parentPosition));
     }
   };
 
@@ -1308,13 +1314,13 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
 
   const $popup = $(
     '<div class="h5p-popup-overlay ' + classes + '">' +
-    '<div class="h5p-popup-container" role="dialog">' +
-    '<div class="h5p-cp-dialog-titlebar">' +
-    '<div class="h5p-dialog-title"></div>' +
-    '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
-    '</div>' +
-    '<div class="h5p-popup-wrapper" role="document"></div>' +
-    '</div>' +
+      '<div class="h5p-popup-container" role="dialog">' +
+        '<div class="h5p-cp-dialog-titlebar">' +
+          '<div class="h5p-dialog-title"></div>' +
+          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+        '</div>' +
+        '<div class="h5p-popup-wrapper" role="document"></div>' +
+      '</div>' +
     '</div>');
 
   const $popupWrapper = $popup.find('.h5p-popup-wrapper');
