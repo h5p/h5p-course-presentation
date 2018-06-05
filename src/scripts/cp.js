@@ -1325,16 +1325,16 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     $popupWrapper.html(popupContent);
   }
 
-  // Do not show until we have finished calculating position
   const $popupContainer = $popup.find('.h5p-popup-container');
-  $popupContainer.css({ visibility: 'hidden' });
-  $popup.prependTo(this.$wrapper);
-
 
   const resizePopup = ($popup, $popupContainer, parentPosition) => {
     if (!parentPosition) {
       return;
     }
+
+    // Do not show until we have finished calculating position
+    $popupContainer.css({ visibility: 'hidden' });
+    $popup.prependTo(this.$wrapper);
 
     let popupHeight = $popupContainer.height();
     let popupWidth = $popupContainer.width();
@@ -1346,6 +1346,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     // Skip sufficiently big popups
     const skipThreshold = 50;
     if (widthPercentage > skipThreshold && heightPercentage > skipThreshold) {
+      $popup.detach();
       return;
     }
 
@@ -1381,6 +1382,8 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
       topPos = heightPadding;
     }
 
+    // Reset and prepare to animate in
+    $popup.detach();
     $popupContainer.css({
       left: leftPos + '%',
       top: topPos + '%',
@@ -1388,14 +1391,10 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
   };
 
   resizePopup($popup, $popupContainer, parentPosition);
-
-  // Reset and prepare to animate in
-  $popup.detach();
-  $popupContainer.css({ visibility: 'visible' });
-  $popup
-    .addClass('h5p-animate')
-    .find('.h5p-popup-container')
-    .addClass('h5p-animate');
+  $popup.addClass('h5p-animate');
+  $popupContainer.css({
+    'visibility': '',
+  }).addClass('h5p-animate');
 
   // Insert popup ready for use
   $popup

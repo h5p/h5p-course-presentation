@@ -287,14 +287,22 @@
   left: 5%;
   position: absolute;
   top: 10%;
-  min-width: 22%;
-  max-width: 90%;
+  width: 90%;
+  min-height: 65%;
   max-height: 80%;
   transition: top 0.2s;
   overflow: hidden;
   font-size: 0.75em;
   display: flex;
   flex-direction: column;
+}
+
+.h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container,
+.h5p-popup-overlay.h5p-advancedtext .h5p-popup-container {
+  width: initial;
+  min-height: initial;
+  min-width: 22%;
+  max-width: 90%;
 }
 
 .h5p-course-presentation .h5p-popup-container.h5p-animate {
