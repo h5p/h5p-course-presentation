@@ -1099,9 +1099,13 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   const $buttonElement = $('<div class="h5p-button-element"></div>');
   instance.attach($buttonElement);
 
+  const parentPosition = libTypePmz === 'h5p-advancedtext' ? {
+    x: element.x,
+    y: element.y
+  } : null;
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button));
+    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button), parentPosition);
     this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
@@ -1123,8 +1127,9 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
  * @param {string} libTypePmz
  * @param {boolean} autoPlay
  * @param {function} closeCallback
+ * @param {Object} [popupPosition] X and Y position of popup
  */
-CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback) {
+CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback, popupPosition = null) {
 
   // Handle exit fullscreen
   const exitFullScreen = () => {
@@ -1137,14 +1142,14 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     // Listen for exit fullscreens not triggered by button, for instance using 'esc'
     this.on('exitFullScreen', exitFullScreen);
 
-    $buttonElement.appendTo(this.showPopup('', $button, () => {
+    this.showPopup($buttonElement, $button, popupPosition, () => {
       this.pauseMedia(instance);
       $buttonElement.detach();
 
       // Remove listener, we only need it for active popups
       this.off('exitFullScreen', exitFullScreen);
       closeCallback();
-    }, libTypePmz).find('.h5p-popup-wrapper'));
+    }, libTypePmz);
 
     H5P.trigger(instance, 'resize');
 
@@ -1250,7 +1255,16 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
       }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>')
         .appendTo($elementContainer);
 
-      addClickAndKeyboardListeners($commentButton, () => this.showPopup(element.solution, $commentButton));
+      const parentPosition = {
+        x: element.x,
+        y: element.y
+      };
+      if (!element.displayAsButton) {
+        parentPosition.x += element.width - 4;
+        parentPosition.y += element.height - 12;
+      }
+
+      addClickAndKeyboardListeners($commentButton, () => this.showPopup(element.solution, $commentButton, parentPosition));
     }
   };
 
@@ -1262,12 +1276,13 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
 /**
  * Displays a popup.
  *
- * @param {string} popupContent
+ * @param {string|jQuery} popupContent
  * @param {jQuery} $focusOnClose Prevents losing focus when dialog closes
+ * @param {object} [parentPosition] x and y coordinates of parent
  * @param {Function} [remove] Gets called before the popup is removed.
  * @param {string} [classes]
  */
-CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, remove, classes = 'h5p-popup-comment-field') {
+CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field') {
   var self = this;
   var doNotClose;
 
@@ -1298,30 +1313,112 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
   };
 
   const $popup = $(
-    '<div class="h5p-popup-overlay h5p-animate ' + classes + '">' +
-      '<div class="h5p-popup-container h5p-animate" role="dialog">' +
+    '<div class="h5p-popup-overlay ' + classes + '">' +
+      '<div class="h5p-popup-container" role="dialog">' +
         '<div class="h5p-cp-dialog-titlebar">' +
           '<div class="h5p-dialog-title"></div>' +
           '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
         '</div>' +
-        '<div class="h5p-popup-wrapper" role="document">' + popupContent + '</div>' +
+        '<div class="h5p-popup-wrapper" role="document"></div>' +
       '</div>' +
-    '</div>')
+    '</div>');
+
+  const $popupWrapper = $popup.find('.h5p-popup-wrapper');
+  if (popupContent instanceof H5P.jQuery) {
+    $popupWrapper.append(popupContent);
+  }
+  else {
+    $popupWrapper.html(popupContent);
+  }
+
+  const $popupContainer = $popup.find('.h5p-popup-container');
+
+  const resizePopup = ($popup, $popupContainer, parentPosition) => {
+    if (!parentPosition) {
+      return;
+    }
+
+    // Do not show until we have finished calculating position
+    $popupContainer.css({ visibility: 'hidden' });
+    $popup.prependTo(this.$wrapper);
+
+    let popupHeight = $popupContainer.height();
+    let popupWidth = $popupContainer.width();
+    const overlayHeight = $popup.height();
+    const overlayWidth = $popup.width();
+    let widthPercentage = popupWidth * (100 / overlayWidth);
+    let heightPercentage = popupHeight * (100 / overlayHeight);
+
+    // Skip sufficiently big popups
+    const skipThreshold = 50;
+    if (widthPercentage > skipThreshold && heightPercentage > skipThreshold) {
+      $popup.detach();
+      return;
+    }
+
+    // Only resize boxes that are disproportionally wide
+    const heightThreshold = 45;
+    if (widthPercentage > heightPercentage && heightPercentage < heightThreshold) {
+      // Make the popup quadratic
+      widthPercentage = Math.sqrt(widthPercentage * heightPercentage);
+      $popupContainer.css({
+        width: widthPercentage + '%',
+      });
+    }
+
+    // Account for overflowing edges
+    const widthPadding = 15 / 2;
+    const leftPosThreshold = 100 - widthPercentage - widthPadding;
+    let leftPos = parentPosition.x;
+    if (parentPosition.x > leftPosThreshold) {
+      leftPos = leftPosThreshold;
+    }
+    else if (parentPosition.x < widthPadding) {
+      leftPos = widthPadding;
+    }
+
+    heightPercentage = $popupContainer.height() * (100 / overlayHeight);
+    const heightPadding = 20 / 2;
+    const topPosThreshold = 100 - heightPercentage - heightPadding;
+    let topPos = parentPosition.y;
+    if (parentPosition.y > topPosThreshold) {
+      topPos = topPosThreshold;
+    }
+    else if (parentPosition.y < heightPadding) {
+      topPos = heightPadding;
+    }
+
+    // Reset and prepare to animate in
+    $popup.detach();
+    $popupContainer.css({
+      left: leftPos + '%',
+      top: topPos + '%',
+    });
+  };
+
+  resizePopup($popup, $popupContainer, parentPosition);
+  $popup.addClass('h5p-animate');
+  $popupContainer.css({
+    'visibility': '',
+  }).addClass('h5p-animate');
+
+  // Insert popup ready for use
+  $popup
     .prependTo(this.$wrapper)
     .focus()
     .removeClass('h5p-animate')
     .click(close)
     .find('.h5p-popup-container')
-      .removeClass('h5p-animate')
-      .click(function () {
-        doNotClose = true;
-      })
-      .keydown(function(event) {
-        if (event.which === keyCode.ESC) {
-          close(event);
-        }
-      })
-      .end();
+    .removeClass('h5p-animate')
+    .click(function () {
+      doNotClose = true;
+    })
+    .keydown(function (event) {
+      if (event.which === keyCode.ESC) {
+        close(event);
+      }
+    })
+    .end();
 
   addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => close(event));
 
