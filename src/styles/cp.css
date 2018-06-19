@@ -535,7 +535,9 @@
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
 }
-
+.h5p-course-presentation .h5p-twitteruserfeed-button:before {
+  content: "\f099";
+}
 .h5p-course-presentation .h5p-chart-button:before {
   content: "\f200";
 }
