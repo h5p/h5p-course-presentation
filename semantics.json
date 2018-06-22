@@ -704,6 +704,13 @@
         "label": "Label for social sharing bar",
         "importance": "low",
         "default": "Share Result"
+      },
+      {
+        "name": "accessibilityTotalScore",
+        "type": "text",
+        "label": "Total score announcement for assistive technologies",
+        "default": "You got @score of @maxScore points in total",
+        "description": "Available variables are @score and @maxScore"
       }
     ]
   },

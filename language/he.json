@@ -315,6 +315,10 @@
         {
           "label": "תווית עבור סרגל שיתוף חברתי",
           "default": "שיתוף תוצאות"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },

@@ -48,7 +48,20 @@ const SummarySlide = (function () {
       if (!isNaN(totalScores.totalPercentage)) {
         var totalScoreBar = JoubelUI.createScoreBar(totalScores.totalMaxScore, "", "", "");
         totalScoreBar.setScore(totalScores.totalScore);
-        totalScoreBar.appendTo($('.h5p-summary-total-score', that.$summarySlide));
+        var $totalScore = $('.h5p-summary-total-score', that.$summarySlide);
+        totalScoreBar.appendTo($totalScore);
+
+        setTimeout(() => {
+          // Announce total score
+          $totalScore.append($('<div/>', {
+            'aria-live': 'polite',
+            'class': 'hidden-but-read',
+            'html': that.cp.l10n.summary + '. ' +
+              that.cp.l10n.accessibilityTotalScore
+              .replace('@score', totalScores.totalScore)
+              .replace('@maxScore', totalScores.totalMaxScore)
+          }));
+        }, 100);
       }
 
       // Construct twitter share score link
@@ -173,26 +186,24 @@ const SummarySlide = (function () {
 
     that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
 
-    var percentScore = Math.round((totalScore / totalMaxScore) * 100);
-
     var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
     var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
     var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
 
     var html =
       '<div class="h5p-summary-table-holder">' +
-        '<div class="h5p-table-title-right">' +
-          that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total.toLowerCase() +
-        '</div>' +
         '<div class="h5p-summary-table-pages">' +
           '<table class="h5p-score-table">' +
+            '<thead><tr>' +
+              '<th class="h5p-summary-table-header slide">' + that.cp.l10n.slide + '</th>' +
+              '<th class="h5p-summary-table-header score">' + that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total.toLowerCase() + '</th>' +
+            '</tr></thead>' +
             '<tbody>' + tds + '</tbody>' +
           '</table>' +
         '</div>' +
         '<div class="h5p-summary-total-table">' +
-          '<p class="hidden-but-read">' + percentScore + '%' + '</p>' +
           '<div class="h5p-summary-social">' +
-            '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' + 
+            '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' +
             facebookContainer +
             twitterContainer +
             googleContainer +

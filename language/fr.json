@@ -315,6 +315,10 @@
         {
           "label": "Etiquette pour le panneau Partager sur les réseaux sociaux",
           "default": "Partager le résultat"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
