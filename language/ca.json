@@ -315,6 +315,10 @@
         {
           "label": "Label for social sharing bar",
           "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
