@@ -144,17 +144,17 @@
         {
           "label": "Greeting given for GOOD score",
           "default": "축하합니다! @percent 맞았습니다 ",
-          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
+          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
         },
         {
           "label": "Greeting given for OK score",
-          "default": "잘하셨어요! @percent 맞았습니다",
-          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
+          "default": "잘하셨어요! @percent 맞았습니다",
+          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
         },
         {
           "label": "Greeting given for BAD score",
           "default": "@percent 맞았군요.",
-          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
+          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
         },
         {
           "label": "\"Total\"의 번역",
@@ -315,6 +315,10 @@
         {
           "label": "Label for social sharing bar",
           "default": "결과 공유하기"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },

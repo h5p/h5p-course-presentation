@@ -88,7 +88,8 @@ let CoursePresentation = function (params, id, extras) {
     accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
     containsOnlyCorrect: "@slideName only has correct answers",
     containsIncorrectAnswers: '@slideName has incorrect answers',
-    shareResult: 'Share Result'
+    shareResult: 'Share Result',
+    accessibilityTotalScore: 'You got @score of @maxScore points in total'
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
