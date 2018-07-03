@@ -56,7 +56,7 @@
                     "options": [
                       {
                         "name": "H5P.AdvancedText 1.1",
-                        "hasmetadata": false
+                        "hasmetadata": true
                       },
                       {
                         "name": "H5P.Link 1.3",
@@ -112,15 +112,15 @@
                       },
                       {
                         "name": "H5P.ContinuousText 1.2",
-                        "hasmetadata": false
+                        "hasmetadata": true
                       },
                       {
                         "name": "H5P.ExportableTextArea 1.2",
-                        "hasmetadata": false
+                        "hasmetadata": true
                       },
                       {
                         "name": "H5P.Table 1.1",
-                        "hasmetadata": false
+                        "hasmetadata": true
                       },
                       {
                         "name": "H5P.InteractiveVideo 1.19",
