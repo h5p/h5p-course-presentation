@@ -55,79 +55,79 @@
                     "importance": "high",
                     "options": [
                       {
-                        "name": "H5P.AdvancedText 1.2",
+                        "name": "H5P.AdvancedText 1.1",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.Link 1.4",
+                        "name": "H5P.Link 1.3",
                         "hasmetadata": false
                       },
                       {
-                        "name": "H5P.Image 1.2",
+                        "name": "H5P.Image 1.1",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.Video 1.5",
+                        "name": "H5P.Video 1.4",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.Audio 1.3",
+                        "name": "H5P.Audio 1.2",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.Blanks 1.11",
+                        "name": "H5P.Blanks 1.10",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.SingleChoiceSet 1.11",
+                        "name": "H5P.SingleChoiceSet 1.10",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.MultiChoice 1.13",
+                        "name": "H5P.MultiChoice 1.12",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.TrueFalse 1.5",
+                        "name": "H5P.TrueFalse 1.4",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.DragQuestion 1.13",
+                        "name": "H5P.DragQuestion 1.12",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.Summary 1.10",
+                        "name": "H5P.Summary 1.11",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.DragText 1.8",
+                        "name": "H5P.DragText 1.9",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.MarkTheWords 1.9",
+                        "name": "H5P.MarkTheWords 1.8",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.Dialogcards 1.8",
+                        "name": "H5P.Dialogcards 1.7",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.ContinuousText 1.3",
+                        "name": "H5P.ContinuousText 1.2",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.ExportableTextArea 1.3",
+                        "name": "H5P.ExportableTextArea 1.2",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.Table 1.2",
+                        "name": "H5P.Table 1.1",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.InteractiveVideo 1.20",
+                        "name": "H5P.InteractiveVideo 1.19",
                         "hasmetadata": true
                       },
                       {
-                        "name": "H5P.TwitterUserFeed 1.1",
+                        "name": "H5P.TwitterUserFeed 1.0",
                         "hasmetadata": false
                       }
                     ],
