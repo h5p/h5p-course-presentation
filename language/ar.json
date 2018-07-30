@@ -315,6 +315,10 @@
         {
           "label": "تسمية لشريط المشاركة الاجتماعية",
           "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
