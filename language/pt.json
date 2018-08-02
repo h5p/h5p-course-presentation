@@ -126,19 +126,19 @@
       "label": "Localizar",
       "fields": [
         {
-          "label": "Tradução para \"Slide\"",
+          "label": "Tradução para \"Diapositivo\"",
           "default": "Diapositivo"
         },
         {
-          "label": "Tradução para \"Score\"",
+          "label": "Tradução para \"Pontuação\"",
           "default": "Pontuação"
         },
         {
-          "label": "Tradução para \"Your Score\"",
+          "label": "Tradução para \"A sua pontuação\"",
           "default": "A sua pontuação"
         },
         {
-          "label": "Tradução para \"Max Score\"",
+          "label": "Tradução para \"Pontuação máxima\"",
           "default": "Pontuação máxima"
         },
         {
@@ -161,7 +161,7 @@
           "default": "Total"
         },
         {
-          "label": "Tradução para \"Total Score\"",
+          "label": "Tradução para \"Pontuação Total\"",
           "default": "Pontuação Total"
         },
         {
@@ -173,19 +173,19 @@
           "default": "Repetir"
         },
         {
-          "label": "Tradução para \"Title\"",
+          "label": "Tradução para \"Título\"",
           "default": "Título"
         },
         {
-          "label": "Tradução para \"Author/supplier\"",
+          "label": "Tradução para \"Autor\"",
           "default": "Autor"
         },
         {
-          "label": "Tradução para \"License\"",
+          "label": "Tradução para \"Licença\"",
           "default": "Licença"
         },
         {
-          "label": "Tradução para \"License\"",
+          "label": "Tradução para \"Licença\"",
           "default": "Licença"
         },
         {
