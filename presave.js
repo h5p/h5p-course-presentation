@@ -12,7 +12,7 @@ var H5PEditor = H5PEditor || {};
 H5PPresave['H5P.CoursePresentation'] = function (content, finished) {
   var presave = H5PEditor.Presave;
 
-  if (isContentInValid()) {
+  if (isContentInvalid()) {
     throw new presave.exceptions.InvalidContentSemanticsException('Invalid Course Presentation Error')
   }
 
@@ -59,7 +59,7 @@ H5PPresave['H5P.CoursePresentation'] = function (content, finished) {
    * Check if required parameters is present
    * @return {boolean}
    */
-  function isContentInValid() {
+  function isContentInvalid() {
     return !presave.checkNestedRequirements(content, 'content.presentation.slides') || !Array.isArray(content.presentation.slides);
   }
 };
