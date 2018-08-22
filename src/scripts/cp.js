@@ -2065,6 +2065,7 @@ CoursePresentation.prototype.getCopyrights = function () {
         }
 
         var params = this.slides[slide].elements[element].action.params;
+        var metadata = this.slides[slide].elements[element].action.metadata;
 
         elementCopyrights = undefined;
         if (instance.getCopyrights !== undefined) {
@@ -2074,7 +2075,8 @@ CoursePresentation.prototype.getCopyrights = function () {
         if (elementCopyrights === undefined) {
           // Create a generic flat copyright list
           elementCopyrights = new H5P.ContentCopyrights();
-          H5P.findCopyrights(elementCopyrights, params, this.contentId);
+          // In metadata alone there's no way of knowing what the machineName is.
+          H5P.findCopyrights(elementCopyrights, params, this.contentId, {metadata: metadata, machineName: instance.libraryInfo.machineName});
         }
         var label = (element + 1);
         if (params.contentName !== undefined) {
