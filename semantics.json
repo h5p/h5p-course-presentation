@@ -55,11 +55,11 @@
                     "importance": "high",
                     "options": [
                       {
-                        "name": "H5P.AdvancedText 1.2",
+                        "name": "H5P.AdvancedText 1.1",
                         "hasMetadata": true
                       },
                       {
-                        "name": "H5P.Link 1.4",
+                        "name": "H5P.Link 1.3",
                         "hasMetadata": false
                       },
                       {
@@ -107,11 +107,11 @@
                         "hasMetadata": true
                       },
                       {
-                        "name": "H5P.Dialogcards 1.8",
+                        "name": "H5P.Dialogcards 1.7",
                         "hasMetadata": true
                       },
                       {
-                        "name": "H5P.ContinuousText 1.3",
+                        "name": "H5P.ContinuousText 1.2",
                         "hasMetadata": true
                       },
                       {
@@ -119,7 +119,7 @@
                         "hasMetadata": true
                       },
                       {
-                        "name": "H5P.Table 1.2",
+                        "name": "H5P.Table 1.1",
                         "hasMetadata": true
                       },
                       {
@@ -127,7 +127,7 @@
                         "hasMetadata": true
                       },
                       {
-                        "name": "H5P.TwitterUserFeed 1.1",
+                        "name": "H5P.TwitterUserFeed 1.0",
                         "hasMetadata": false
                       }
                     ],
