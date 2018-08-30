@@ -61,20 +61,6 @@
                     {
                       "label": "Onzichtbaar",
                       "description": "Standaard cursor, geen titel en geen tab index. Let op: gebruikers met een beperking of gebruikers die alleen een toetsenbord gebruiken, zullen problemen ervaren met dit element."
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Titel"
-                        },
-                        {
-                          "label": "Auteur/Leverancier"
-                        },
-                        {
-                          "label": "Licentie"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Max score"
         },
         {
-          "label": "Melding voor een GOEDE score",
-          "default": "Gefeliciteerd! Je hebt @percent correct!",
-          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
-        },
-        {
-          "label": "Melding voor een REDELIJKE score",
-          "default": " Goed gedaan! Je hebt @percent correct!",
-          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
-        },
-        {
-          "label": "Melding voor een SLECHTE score",
-          "default": "Je hebt @percent correct.",
-          "description": "@percent wordt vervangen door de werkelijke score van de gebruiker, in procenten"
-        },
-        {
           "label": "Vertaling voor \"Totaal\"",
           "default": "Totaal"
         },
@@ -173,28 +144,8 @@
           "default": "Opnieuw proberen"
         },
         {
-          "label": "Vertaling voor \"Titel\"",
-          "default": "Titel"
-        },
-        {
-          "label": "Vertaling voor \"Auteur/Leverancier\"",
-          "default": "Auteur"
-        },
-        {
-          "label": "Vertaling voor \"Licentie\"",
-          "default": "Licentie"
-        },
-        {
-          "label": "Vertaling voor \"Licentie\"",
-          "default": "Licentie"
-        },
-        {
           "label": "Vertaling voor \"Exporteer tekst\"",
           "default": "Exporteer tekst"
-        },
-        {
-          "label": "Tekst voor Gebruiksrechten-knop",
-          "default": "Gebruiksrechten"
         },
         {
           "label": "Titel voor \"Verberg sleutelwoordenlijst\"-knop",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Aankondiging totaalscore van ondersteunende technologieën",
+          "default": "You got @score of @maxScore points in total",
           "description": "Beschikbare variabelen zijn @score en @maxScore"
         }
       ]

@@ -61,20 +61,6 @@
                     {
                       "label": "Näkymätön",
                       "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Otsikko"
-                        },
-                        {
-                          "label": "Luoja/Toimittaja"
-                        },
-                        {
-                          "label": "Lisenssi"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Maksimipisteet"
         },
         {
-          "label": "Viesti erinomaisille pisteille",
-          "default": "Onneksi olkoon! Sait @percent oikein!",
-          "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
-        },
-        {
-          "label": "Viesti hyville pisteille",
-          "default": " Sait @percent oikein!",
-          "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
-        },
-        {
-          "label": "Viesti kohtalaisille pisteille",
-          "default": "Sait @percent oikein.",
-          "description": "Älä muokkaa \"@percent\"-sanaa. Se korvataan prosenttimäärällä."
-        },
-        {
           "label": "Käännös sanalle yhteensä \"Total\"",
           "default": "Yhteensä"
         },
@@ -173,28 +144,8 @@
           "default": "Yritä uudelleen"
         },
         {
-          "label": "Käännös tekstille \"Otsikko\"",
-          "default": "Otsikko"
-        },
-        {
-          "label": "Käännös tekstille \"Tekijä\"",
-          "default": "Tekijä"
-        },
-        {
-          "label": "Käännös tekstille \"Lisenssi\"",
-          "default": "Lisenssi"
-        },
-        {
-          "label": "Käännös tekstille \"Lisenssi\"",
-          "default": "Lisenssi"
-        },
-        {
           "label": "\"Vie tekstiä\"-painikkeessa näytettävä teksti",
           "default": "Vie tekstiä"
-        },
-        {
-          "label": "Teksti Käyttöehdot-painikkeelle",
-          "default": "Käyttöehdot"
         },
         {
           "label": "\"Piilota Avainsanalista\"-painikkeen teksti",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
           "description": "Available variables are @score and @maxScore"
         }
       ]

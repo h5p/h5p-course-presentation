@@ -61,20 +61,6 @@
                     {
                       "label": "Invisível",
                       "description": "Cursor padrão, sem título e sem menu de abas. Aviso: Usuários com deficiências ou usuários que utilizam apenas teclado terão problemas ao utilizar este elemento."
-                    },
-                    {
-                      "label": "Metadados",
-                      "fields": [
-                        {
-                          "label": "Título"
-                        },
-                        {
-                          "label": "Autor"
-                        },
-                        {
-                          "label": "Licença"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Pontuação máxima"
         },
         {
-          "label": "Saudações para pontuação BOA",
-          "default": "Parabéns! Você acertou @percent!",
-          "description": "@percent é substituído pela pontuação real do usuário em porcentagem"
-        },
-        {
-          "label": "Greeting given for OK score",
-          "default": "Nice effort! You got @percent correct!",
-          "description": "@percent é substituído pela pontuação real do usuário em porcentagem"
-        },
-        {
-          "label": "Greeting given for BAD score",
-          "default": "You got @percent correct.",
-          "description": "@percent é substituído pela pontuação real do usuário em porcentagem"
-        },
-        {
           "label": "tradução para \"Total\"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "Tentar novamente"
         },
         {
-          "label": "Tradução para \"Title\"",
-          "default": "Título"
-        },
-        {
-          "label": "Tradução para \"Author/supplier\"",
-          "default": "Autor"
-        },
-        {
-          "label": "Tradução para \"License\"",
-          "default": "Licença"
-        },
-        {
-          "label": "Tradução para \"License\"",
-          "default": "Licença"
-        },
-        {
           "label": "Texto para botão \"Exportar texto\"",
           "default": "Exportar texto"
-        },
-        {
-          "label": "Texto para botão \"Direitos de uso\"",
-          "default": "Direitos de uso"
         },
         {
           "label": "Título de botão para esconder a lista de palavras-chave",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Anúncio de pontuação total para tecnologias assistivas",
+          "default": "You got @score of @maxScore points in total",
           "description": "Variáveis disponíveis são @score e @maxScore"
         }
       ]
