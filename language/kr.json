@@ -61,20 +61,6 @@
                     {
                       "label": "투명화",
                       "description": "기본 커서, 제목 및 탭 인덱스 없음. 경고 : 이 요소를 사용하면 마우스가 없는 사용자, 또는 장애인은 사용에 문제가 있을 수 있습니다."
-                    },
-                    {
-                      "label": "메타정보",
-                      "fields": [
-                        {
-                          "label": "제목"
-                        },
-                        {
-                          "label": "저자"
-                        },
-                        {
-                          "label": "라이선스"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "최고 점수"
         },
         {
-          "label": "Greeting given for GOOD score",
-          "default": "축하합니다! @percent 맞았습니다 ",
-          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
-        },
-        {
-          "label": "Greeting given for OK score",
-          "default": "잘하셨어요! @percent 맞았습니다",
-          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
-        },
-        {
-          "label": "Greeting given for BAD score",
-          "default": "@percent 맞았군요.",
-          "description": "'@percent'는 실제 사용자의 점수로 변환됩니다."
-        },
-        {
           "label": "\"Total\"의 번역",
           "default": "총합"
         },
@@ -173,28 +144,8 @@
           "default": "재시도"
         },
         {
-          "label": "\"Title\"의 번역",
-          "default": "제목"
-        },
-        {
-          "label": "\"Author/supplier\"의 번역",
-          "default": "저자"
-        },
-        {
-          "label": "\"License\"의 번역",
-          "default": "라이선스"
-        },
-        {
-          "label": "\"License\"의 번역",
-          "default": "라이선스"
-        },
-        {
           "label": "텍스트 내보내기 버튼에 들어갈 내용",
           "default": "텍스트 내보내기"
-        },
-        {
-          "label": "\"사용권한\" 의 번역",
-          "default": "사용권한"
         },
         {
           "label": "Hide keywords list button title",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
           "description": "Available variables are @score and @maxScore"
         }
       ]

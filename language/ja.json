@@ -61,20 +61,6 @@
                     {
                       "label": "非表示",
                       "description": "デフォルトのカーソル、タイトルなし、タブインデックスなし。警告：障がいのある方、 キーボードのみのユーザーはこの要素を使う際に不自由な点があります。"
-                    },
-                    {
-                      "label": "メタデータ",
-                      "fields": [
-                        {
-                          "label": "タイトル"
-                        },
-                        {
-                          "label": "作者"
-                        },
-                        {
-                          "label": "ライセンス"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "最高得点"
         },
         {
-          "label": "高得点のメッセージ",
-          "default": "おめでとうございます！ @percent の正解です !",
-          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
-        },
-        {
-          "label": "OK得点へのメッセージ",
-          "default": "よくがんばりました ! @percent の正解です !",
-          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
-        },
-        {
-          "label": "低得点へのメッセージ",
-          "default": "@percent の正解です !",
-          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
-        },
-        {
           "label": "Translation for \"Total\"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "リトライ"
         },
         {
-          "label": "「タイトル」の翻訳",
-          "default": "タイトル"
-        },
-        {
-          "label": "「作者 / 供給者」の翻訳",
-          "default": "作者"
-        },
-        {
-          "label": "「ライセンス」の翻訳",
-          "default": "ライセンス"
-        },
-        {
-          "label": "「ライセンス」の翻訳",
-          "default": "ライセンス"
-        },
-        {
           "label": "テキストをエクスポート ボタンのテキスト",
           "default": "テキストをエクスポート"
-        },
-        {
-          "label": "\"著作権\"ボタンのテキスト",
-          "default": "著作権"
         },
         {
           "label": "キーワードリストを非表示 ボタンのタイトル",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
           "description": "Available variables are @score and @maxScore"
         }
       ]

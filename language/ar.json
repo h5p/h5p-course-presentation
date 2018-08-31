@@ -61,20 +61,6 @@
                     {
                       "label": "غير مرئى",
                       "description": "المؤشر الافتراضي ، بدون عنوان ولا يوجد مؤشر جدولة. تحذير: سيواجه المستخدمون ذوو الإعاقات أو الذين يستخدمون لوحة المفاتيح فقط مشكلة في استخدام هذا العنصر."
-                    },
-                    {
-                      "label": "البيانات الوصفية",
-                      "fields": [
-                        {
-                          "label": "العنوان"
-                        },
-                        {
-                          "label": "الكاتب"
-                        },
-                        {
-                          "label": "الرخصة"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Max Score"
         },
         {
-          "label": "تحية تقدم للنتيجة الجيدة",
-          "default": "Congratulations! You got @percent correct!",
-          "description": "@percent يتم استبدالها بدرجة المستخدم الحقيقية من مئة"
-        },
-        {
-          "label": "تحية تقدم للنتيجة المقبولة",
-          "default": "Nice effort! You got @percent correct!",
-          "description": "@percent يتم استبدالها بدرجة المستخدم الحقيقية من مئة"
-        },
-        {
-          "label": "تحية تقدم للنتيجة السيئة",
-          "default": "You got @percent correct.",
-          "description": "@percent يتم استبدالها بدرجة المستخدم الحقيقية من مئة"
-        },
-        {
           "label": "الترجمة من اجل \" المجموع \"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "Retry"
         },
         {
-          "label": "الترجمة من اجل \" العنوان\"",
-          "default": "Title"
-        },
-        {
-          "label": "الترجمة من اجل \" الكاتب /المورد \"",
-          "default": "Author"
-        },
-        {
-          "label": "الترجمة من اجل \" الرخصة\"",
-          "default": "License"
-        },
-        {
-          "label": "الترجمة من اجل \" الرخصة\"",
-          "default": "License"
-        },
-        {
           "label": "نص زر تصدير النص",
           "default": "Export text"
-        },
-        {
-          "label": "نص زر \" حقوق الاستخدام\"",
-          "default": "Rights of use"
         },
         {
           "label": "عنوان زر اخفاء قائمة الكلمات الرئيسية",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
           "description": "Available variables are @score and @maxScore"
         }
       ]

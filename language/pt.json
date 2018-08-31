@@ -61,20 +61,6 @@
                     {
                       "label": "Invisível",
                       "description": "Cursor por defeito, sem título ou indíce com tabulações. Aviso: Utilizadores com necessidades especiais ou utilizadores que naveguem por teclado vão ter dificuldade em utilizar este elemento."
-                    },
-                    {
-                      "label": "Metadados",
-                      "fields": [
-                        {
-                          "label": "Título"
-                        },
-                        {
-                          "label": "Autor"
-                        },
-                        {
-                          "label": "Licença"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Pontuação máxima"
         },
         {
-          "label": "Mensagem para BOM resultado",
-          "default": "Parabéns! Obteve @percent das respostas corretas!",
-          "description": "@percent é substituido pelo resultado do utilizado em percentagem"
-        },
-        {
-          "label": "Mensagem para resultado MEDIANO",
-          "default": "Muito bem! Obteve @percent das respostas corretas!",
-          "description": "@percent é substituido pelo resultado do utilizado em percentagem"
-        },
-        {
-          "label": "Mensagem para MAU resultado",
-          "default": "Obteve @percent das respostas corretas!",
-          "description": "@percent é substituido pelo resultado do utilizado em percentagem"
-        },
-        {
           "label": "Tradução para \"Total\"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "Repetir"
         },
         {
-          "label": "Tradução para \"Título\"",
-          "default": "Título"
-        },
-        {
-          "label": "Tradução para \"Autor\"",
-          "default": "Autor"
-        },
-        {
-          "label": "Tradução para \"Licença\"",
-          "default": "Licença"
-        },
-        {
-          "label": "Tradução para \"Licença\"",
-          "default": "Licença"
-        },
-        {
           "label": "Texto para o botão de exportação de texto",
           "default": "Exportar texto"
-        },
-        {
-          "label": "Texto para o botão de \"Rights of use\"",
-          "default": "Termos de utilização"
         },
         {
           "label": "Título do botão de esconder a lista de palavras-chave",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Mensagem de resultado para tecnologias de apoio",
+          "default": "You got @score of @maxScore points in total",
           "description": "Variáveis disponíveis são @score e @maxScore"
         }
       ]
