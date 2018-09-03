@@ -61,20 +61,6 @@
                     {
                       "label": "Unsichtbar",
                       "description": "Vorgabe-Cursor, kein Titel und kein Tab-Index. Warnung: Nutzer, die beeinträchtigt sind oder nur über eine Tastatur verfügen, werden Probleme mit der Bedienung haben."
-                    },
-                    {
-                      "label": "Metadaten",
-                      "fields": [
-                        {
-                          "label": "Titel"
-                        },
-                        {
-                          "label": "Autor"
-                        },
-                        {
-                          "label": "Lizenz"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Maximale Punktzahl"
         },
         {
-          "label": "Nachricht bei GUTER Punktzahl",
-          "default": "Glückwunsch! Du hast @percent richtig!",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
-        },
-        {
-          "label": "Nachricht bei OK Punktzahl",
-          "default": "Nette Leistung! Du hast @percent richtig!",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
-        },
-        {
-          "label": "Nachricht bei SCHLECHTER Punktzahl",
-          "default": "Du hast @percent korrekt.",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
-        },
-        {
           "label": "Translation for \"Total\"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "Wiederholen"
         },
         {
-          "label": "Übersetzung für \"Title\"",
-          "default": "Titel"
-        },
-        {
-          "label": "Übersetzung für \"Author/supplier\"",
-          "default": "Autor"
-        },
-        {
-          "label": "Übersetzung für \"License\"",
-          "default": "Lizenz"
-        },
-        {
-          "label": "Übersetzung für \"License\"",
-          "default": "Lizenz"
-        },
-        {
           "label": "Beschriftung für den \"Text exportieren\"-Button",
           "default": "Text exportieren"
-        },
-        {
-          "label": "Beschriftung für den \"Urheberrecht\"-Button",
-          "default": "Urheberrecht"
         },
         {
           "label": "Beschriftung für den \"Schlagwortliste verbergen\"-Button",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
           "description": "Available variables are @score and @maxScore"
         }
       ]

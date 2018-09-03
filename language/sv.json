@@ -61,20 +61,6 @@
                     {
                       "label": "Invisible",
                       "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Title"
-                        },
-                        {
-                          "label": "Author"
-                        },
-                        {
-                          "label": "License"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Max Score"
         },
         {
-          "label": "Greeting given for GOOD score",
-          "default": "Congratulations! You got @percent correct!",
-          "description": "@percent is replaced by the real user score in percent"
-        },
-        {
-          "label": "Greeting given for OK score",
-          "default": "Nice effort! You got @percent correct!",
-          "description": "@percent is replaced by the real user score in percent"
-        },
-        {
-          "label": "Greeting given for BAD score",
-          "default": "You got @percent correct.",
-          "description": "@percent is replaced by the real user score in percent"
-        },
-        {
           "label": "Translation for \"Total\"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "Försök på nytt"
         },
         {
-          "label": "Translation for \"Title\"",
-          "default": "Title"
-        },
-        {
-          "label": "Translation for \"Author/supplier\"",
-          "default": "Author"
-        },
-        {
-          "label": "Translation for \"License\"",
-          "default": "License"
-        },
-        {
-          "label": "Translation for \"License\"",
-          "default": "License"
-        },
-        {
           "label": "Text for the export text button",
           "default": "Export text"
-        },
-        {
-          "label": "Text for the \"Rights of use\" button",
-          "default": "Rights of use"
         },
         {
           "label": "Hide keywords list button title",
@@ -318,6 +269,7 @@
         },
         {
           "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
           "description": "Available variables are @score and @maxScore"
         }
       ]

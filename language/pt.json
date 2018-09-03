@@ -1,0 +1,369 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Comentários",
+                      "description": "Os comentários são apresentados quando o utilizador acede às respostas sugeridas para todos os slides."
+                    },
+                    {
+                      "label": "Mostrar sempre comentários"
+                    },
+                    {
+                      "label": "Opacidade do Fundo"
+                    },
+                    {
+                      "label": "Mostrar como botão"
+                    },
+                    {
+                      "label": "Tamanho do botão",
+                      "options": [
+                        {
+                          "label": "Pequeno"
+                        },
+                        {
+                          "label": "Grande"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Título"
+                    },
+                    {
+                      "label": "Ir para",
+                      "options": [
+                        {
+                          "label": "Número específico do slide"
+                        },
+                        {
+                          "label": "Slide seguinte"
+                        },
+                        {
+                          "label": "Slide anterior"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Número específico do slide",
+                      "description": "Só aplicável quando a opção 'Número específico do slide' está ativada"
+                    },
+                    {
+                      "label": "Invisível",
+                      "description": "Cursor por defeito, sem título ou indíce com tabulações. Aviso: Utilizadores com necessidades especiais ou utilizadores que naveguem por teclado vão ter dificuldade em utilizar este elemento."
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "label": "Imagem",
+                    "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
+                  },
+                  {
+                    "label": "Escolha a cor",
+                    "default": ""
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Lista de palavras-chave"
+        },
+        {
+          "label": "Mostrar sempre"
+        },
+        {
+          "label": "Esconder automaticamente"
+        },
+        {
+          "label": "Opacidade"
+        },
+        {
+          "fields": [
+            {
+              "label": "Imagem",
+              "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
+            },
+            {
+              "label": "Escolha uma cor",
+              "default": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Localizar",
+      "fields": [
+        {
+          "label": "Tradução para \"Diapositivo\"",
+          "default": "Diapositivo"
+        },
+        {
+          "label": "Tradução para \"Pontuação\"",
+          "default": "Pontuação"
+        },
+        {
+          "label": "Tradução para \"A sua pontuação\"",
+          "default": "A sua pontuação"
+        },
+        {
+          "label": "Tradução para \"Pontuação máxima\"",
+          "default": "Pontuação máxima"
+        },
+        {
+          "label": "Tradução para \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Tradução para \"Pontuação Total\"",
+          "default": "Pontuação Total"
+        },
+        {
+          "label": "Título para mostrar no botão das soluções",
+          "default": "Mostrar soluções"
+        },
+        {
+          "label": "Texto para o botão de repetir",
+          "default": "Repetir"
+        },
+        {
+          "label": "Texto para o botão de exportação de texto",
+          "default": "Exportar texto"
+        },
+        {
+          "label": "Título do botão de esconder a lista de palavras-chave",
+          "default": "Esconder palavras-chave"
+        },
+        {
+          "label": "Título do botão de mostrar a lista de palavras-chave",
+          "default": "Mostrar palavras-chave"
+        },
+        {
+          "label": "Etiqueta para ecrã completo",
+          "default": "Ecrã completo"
+        },
+        {
+          "label": "Etiqueta para sair de ecrã completo",
+          "default": "Sair de Ecrã completo"
+        },
+        {
+          "label": "Etiqueta para Diapositivo anterior",
+          "default": "Diapositivo anterior"
+        },
+        {
+          "label": "Etiqueta para Diapositivo seguinte",
+          "default": "Diapositivo seguinte"
+        },
+        {
+          "label": "Etiqueta para Diapositivo atual",
+          "default": "Diapositivo atual"
+        },
+        {
+          "label": "Etiqueta para último Diapositivo",
+          "default": "Último diapositivo"
+        },
+        {
+          "label": "Texto para sair do modo de soluções",
+          "default": "Sair do modo de soluções"
+        },
+        {
+          "label": "Texto do modo de soluções",
+          "default": "Modo de soluções"
+        },
+        {
+          "label": "Texto para múltiplas atividades na mesma página",
+          "default": "Múltipla atividades"
+        },
+        {
+          "label": "Texto para a mensagem de resultado obtido.",
+          "default": "Você obteve:"
+        },
+        {
+          "label": "Texto para partilha no Facebook",
+          "default": "Partilhar no Facebook"
+        },
+        {
+          "label": "Texto para partilha no Twitter",
+          "default": "Texto para partilha no Twitter"
+        },
+        {
+          "label": "Texto para partilha no Google",
+          "default": "Texto para partilha no Google+"
+        },
+        {
+          "label": "Título do diapositivo de sumário",
+          "default": "Sumário"
+        },
+        {
+          "label": "Título do icone de comentários",
+          "default": "Mostrar comentários"
+        },
+        {
+          "label": "Título do botão de impressão",
+          "default": "Imprimir"
+        },
+        {
+          "label": "Mensagem da caixa de diálogo para impressão",
+          "default": "Como gostaria de imprimir esta apresentação?"
+        },
+        {
+          "label": "Etiqueta para o botão \"Print all slides\"",
+          "default": "Imprimir todos os slides"
+        },
+        {
+          "label": "Etiqueta para o botão \"Print current slide\"",
+          "default": "Imprimir o slide atual"
+        },
+        {
+          "label": "Etiqueta para slides sem título",
+          "default": "Sem título"
+        },
+        {
+          "label": "Explicação da navegação entre diapositivos para tecnologias de apoio",
+          "default": "Utilize as setas da direita e da esquerda para navegar entre diapositivos."
+        },
+        {
+          "label": "Etiqueta da tela para tecnologias de apoio",
+          "default": "Tela de apresentação. Use a seta da esquerda e da direita para navegar entre diapositivos."
+        },
+        {
+          "label": "Etiqueta para interações incompletas",
+          "default": "@slideName contém interações incompletas"
+        },
+        {
+          "label": "Etiqueta para interações incompletas",
+          "default": "@slideName contém interações completas"
+        },
+        {
+          "label": "Etiqueta para contador de diapositivos. As variáveis são @index, @total",
+          "default": "Diapositivo @index de @total"
+        },
+        {
+          "label": "Etiqueta para slides que só contenham respostas corretas",
+          "default": "@slideName contém respostas corretas"
+        },
+        {
+          "label": "Etiqueta para slides que só contenham respostas incorretas",
+          "default": "@slideName contém respostas incorretas"
+        },
+        {
+          "label": "Etiqueta para barra de partilha",
+          "default": "Partilhar Resultado"
+        },
+        {
+          "label": "Mensagem de resultado para tecnologias de apoio",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Variáveis disponíveis são @score e @maxScore"
+        }
+      ]
+    },
+    {
+      "label": "Definições de funcionamento",
+      "description": "Estas opções vão sobrepor as definições de funcionamento por defeito.",
+      "fields": [
+        {
+          "label": "Ativar o modo de controlo de superfície",
+          "description": "Remove os controlos de navegação para o utilizador. Utilize Ir para Diapositivo para navegar."
+        },
+        {
+          "label": "Esconder o diapositivo de sumário",
+          "description": "Esconde o diapositivo de sumário"
+        },
+        {
+          "label": "Substituir o botão \"Mostrar Solução\"",
+          "description": "Esta opção determina se o botão \"Mostrar Solução\" será apresentado para todas as questões, desativado para todas ou configurado individualmente para cada questão.",
+          "options": [
+            {
+              "label": "Ativado"
+            },
+            {
+              "label": "Desativado"
+            }
+          ]
+        },
+        {
+          "label": "Substituir o botão \"Repetir\"",
+          "description": "Esta opção determina se o botão \"Repetir\" será apresentado para todas as questões, desativado para todas ou configurado individualmente para cada questão.",
+          "options": [
+            {
+              "label": "Ativado"
+            },
+            {
+              "label": "Desativado"
+            }
+          ]
+        },
+        {
+          "label": "Ativar o botão de impressão",
+          "description": "Ativa o botão de impressão."
+        },
+        {
+          "label": "Definições Sociais",
+          "description": "Estas opções permitir-lhe-ão sobrepor a definições sociais. Valores que não estejam preenchidos serão preenchidos automaticamente se for providenciado um link, ou gerados automaticamente se não for.",
+          "fields": [
+            {
+              "label": "Mostrar o icone de partilha do Facebook"
+            },
+            {
+              "label": "Definições de partilha do Facebook",
+              "fields": [
+                {
+                  "label": "Partilhar através do link do Facebook",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Citar através do Facebook",
+                  "default": "Consegui @score pontos de um máximo de @maxScore na atividade da página @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label": "Mostrar o icone de partilha do Twitter"
+            },
+            {
+              "label": "Definições de partilha do Twitter",
+              "fields": [
+                {
+                  "label": "Partilhar no Twitter",
+                  "default": "Consegui @score pontos de um máximo de @maxScore na atividade da página @currentpageurl."
+                },
+                {
+                  "label": "Partilhar através do link do Twitter",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Partilhar hashtags através do Twitter",
+                  "default": "h5p, course"
+                }
+              ]
+            },
+            {
+              "label": "Mostrar o icone de partilha do Google+"
+            },
+            {
+              "label": "Partilhar através do link do Google",
+              "default": "@currentpageurl"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
