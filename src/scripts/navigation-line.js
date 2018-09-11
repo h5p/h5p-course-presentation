@@ -65,7 +65,7 @@ const NavigationLine = (function ($) {
 
             event.data.statement.context.extensions['http://id.tincanapi.com/extension/ending-point'] = index + 1;
           });
-      });
+        });
     });
   };
 
@@ -147,7 +147,7 @@ const NavigationLine = (function ($) {
         $li.addClass('h5p-progressbar-part-show');
       }
 
-      if(i === currentSlideIndex) {
+      if (i === currentSlideIndex) {
         $li.addClass('h5p-progressbar-part-selected');
       }
 
@@ -429,7 +429,8 @@ const NavigationLine = (function ($) {
     for (i = 0; i < that.cp.progressbarParts.length; i += 1) {
       if (slideNumber + 1 > i) {
         that.cp.progressbarParts[i].addClass('h5p-progressbar-part-show');
-      } else {
+      }
+      else {
         that.cp.progressbarParts[i].removeClass('h5p-progressbar-part-show');
       }
     }
@@ -553,7 +554,8 @@ const NavigationLine = (function ($) {
     // Hide exit solution mode button on summary slide
     if (this.cp.isSolutionMode && slideNumber === this.cp.slides.length - 1) {
       this.cp.$footer.addClass('summary-slide');
-    } else {
+    }
+    else {
       this.cp.$footer.removeClass('summary-slide');
     }
 

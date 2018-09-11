@@ -58,8 +58,8 @@ const SummarySlide = (function () {
             'class': 'hidden-but-read',
             'html': that.cp.l10n.summary + '. ' +
               that.cp.l10n.accessibilityTotalScore
-              .replace('@score', totalScores.totalScore)
-              .replace('@maxScore', totalScores.totalMaxScore)
+                .replace('@score', totalScores.totalScore)
+                .replace('@maxScore', totalScores.totalMaxScore)
           }));
         }, 100);
       }
@@ -227,11 +227,13 @@ const SummarySlide = (function () {
     var slideElements = self.cp.slides[slideScoresSlide.slide - 1].elements;
     if (slideScoresSlide.indexes.length > 1) {
       slideDescription = self.cp.l10n.summaryMultipleTaskText;
-    } else if (slideElements[slideScoresSlide.indexes[0]] !== undefined && slideElements[0]) {
+    }
+    else if (slideElements[slideScoresSlide.indexes[0]] !== undefined && slideElements[0]) {
       action = slideElements[slideScoresSlide.indexes[0]].action;
       if (typeof self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle === 'function') {
         slideDescription = self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle();
-      } else if (action.library !== undefined && action.library) {
+      }
+      else if (action.library !== undefined && action.library) {
 
         // Remove major, minor version and h5p prefix, Split on uppercase
         var humanReadableLibrary = action.library
@@ -333,9 +335,9 @@ const SummarySlide = (function () {
     facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href);
 
     facebookShareQuote = facebookShareQuote.replace('@currentpageurl', window.location.href)
-    .replace("@percentage", scores.totalPercentage + '%')
-    .replace('@score', scores.totalScore)
-    .replace('@maxScore', scores.totalMaxScore);
+      .replace("@percentage", scores.totalPercentage + '%')
+      .replace('@score', scores.totalScore)
+      .replace('@maxScore', scores.totalMaxScore);
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);

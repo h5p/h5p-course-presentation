@@ -394,11 +394,10 @@ CoursePresentation.prototype.updateKeywordMenuFromSlides = function () {
 CoursePresentation.prototype.getKeywordMenuConfig = function () {
   return this.slides
     .map((slide, index) => ({
-        title: this.createSlideTitle(slide),
-        subtitle: `${this.l10n.slide} ${index + 1}`,
-        index
-      })
-    )
+      title: this.createSlideTitle(slide),
+      subtitle: `${this.l10n.slide} ${index + 1}`,
+      index
+    }))
     .filter(config => config.title !== KEYWORD_TITLE_SKIP);
 };
 
@@ -476,10 +475,10 @@ CoursePresentation.prototype.hasScoreData = function (obj) {
  * @public
  * @returns {Number}
  */
-CoursePresentation.prototype.getScore = function (){
+CoursePresentation.prototype.getScore = function () {
   var self = this;
 
-  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide) {
     return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
   }, 0);
 };
@@ -490,10 +489,10 @@ CoursePresentation.prototype.getScore = function (){
  * @public
  * @returns {Number}
  */
-CoursePresentation.prototype.getMaxScore = function (){
+CoursePresentation.prototype.getMaxScore = function () {
   var self = this;
 
-  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide){
+  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide) {
     return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
   }, 0);
 };
@@ -668,7 +667,8 @@ CoursePresentation.prototype.toggleFullScreen = function () {
     // Cancel fullscreen
     if (H5P.exitFullScreen !== undefined && H5P.fullScreenBrowserPrefix !== undefined) {
       H5P.exitFullScreen();
-    } else {
+    }
+    else {
       // Use old system
       if (H5P.fullScreenBrowserPrefix === undefined) {
         // Click button to disable fullscreen
@@ -909,10 +909,10 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
     }
   }
   this.trigger('domChanged', {
-      '$target': $slide,
-      'library': 'CoursePresentation',
-      'key': 'newSlide'
-    }, {'bubbles': true, 'external': true});
+    '$target': $slide,
+    'library': 'CoursePresentation',
+    'key': 'newSlide'
+  }, {'bubbles': true, 'external': true});
 
   this.elementsAttached[index] = true;
 };
@@ -1011,7 +1011,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 /**
  * Disables tab indexes behind a popup container
  */
-CoursePresentation.prototype.disableTabIndexes = function() {
+CoursePresentation.prototype.disableTabIndexes = function () {
   var $popupContainer = this.$container.find('.h5p-popup-container');
 
   this.$tabbables = this.$container.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
@@ -1042,7 +1042,7 @@ CoursePresentation.prototype.disableTabIndexes = function() {
 /**
  * Re-enables tab indexes after a popup container is closed
  */
-CoursePresentation.prototype.restoreTabIndexes = function() {
+CoursePresentation.prototype.restoreTabIndexes = function () {
   if (this.$tabbables) {
     this.$tabbables.each(function () {
       var $element = $(this);
@@ -1159,7 +1159,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     var $container = $buttonElement.closest('.h5p-popup-container');
 
     // Focus directly on content when popup is opened
-    $container.on('transitionend', function() {
+    $container.on('transitionend', function () {
       var $tabbables = $buttonElement.find(':input').add($buttonElement.find('[tabindex]'));
       if ($tabbables.length) {
         $tabbables[0].focus();
@@ -1294,7 +1294,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
 
     // Remove popup
     if (remove !== undefined) {
-      setTimeout(function() {
+      setTimeout(function () {
         remove();
         self.restoreTabIndexes();
       }, 100);
@@ -1303,7 +1303,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     $popup.addClass('h5p-animate');
     $popup.find('.h5p-popup-container').addClass('h5p-animate');
 
-    setTimeout(function() {
+    setTimeout(function () {
       $popup.remove();
     }, 100);
 
@@ -1550,7 +1550,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
     // Create popup longer time than navigateTimer has passed
     if (!isTouchJump) {
-/*      currentTime = new Date().getTime();
+      /*currentTime = new Date().getTime();
       var timeLapsed = currentTime - startTime;
       if (timeLapsed > navigateTimer) {
         isTouchJump = true;
@@ -1588,7 +1588,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
   }).bind('touchend', function () {
     if (!scroll) {
-/*      if (isTouchJump) {
+      /*if (isTouchJump) {
         that.jumpToSlide(nextSlide);
         that.updateTouchPopup();
         return;
@@ -1614,7 +1614,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
   // Remove popup on no arguments
   if (arguments.length <= 0) {
-    if(this.touchPopup !== undefined) {
+    if (this.touchPopup !== undefined) {
       this.touchPopup.remove();
     }
     return;
@@ -1625,7 +1625,8 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
 
   if ((this.$keywords !== undefined) && (this.$keywords.children(':eq(' + slideNumber + ')').find('span').html() !== undefined)) {
     keyword += this.$keywords.children(':eq(' + slideNumber + ')').find('span').html();
-  } else {
+  }
+  else {
     var slideIndexToNumber = slideNumber+1;
     keyword += this.l10n.slide + ' ' + slideIndexToNumber;
   }
@@ -1641,14 +1642,16 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
     this.touchPopup = H5P.jQuery('<div/>', {
       'class': 'h5p-touch-popup'
     }).insertAfter($container);
-  } else {
+  }
+  else {
     this.touchPopup.insertAfter($container);
   }
 
   // Adjust yPos above finger.
   if ((yPos - ($container.parent().height() * yPosAdjustment)) < 0) {
     yPos = 0;
-  } else {
+  }
+  else {
     yPos -= ($container.parent().height() * yPosAdjustment);
   }
 
