@@ -36,7 +36,7 @@ export default class KeywordMenu {
    * @param {object} l10n
    * @param {number} currentIndex
    */
-  constructor ({ l10n, currentIndex }) {
+  constructor({ l10n, currentIndex }) {
     this.l10n = l10n;
     /**
      * @type {KeywordMenuState}
@@ -65,7 +65,7 @@ export default class KeywordMenu {
    * @param {KeywordMenuItemConfig[]} keywordConfigs
    * @returns {Element[]}
    */
-  init (keywordConfigs) {
+  init(keywordConfigs) {
     this.menuItemElements = keywordConfigs.map(config => this.createMenuItemElement(config));
     this.menuItemElements.forEach(element => this.menuElement.appendChild(element));
     this.menuItemElements.forEach(element => this.controls.addElement(element));
@@ -198,7 +198,7 @@ export default class KeywordMenu {
   scrollToKeywords(index) {
     const elementToScrollTo = this.getFirstElementAfter(index);
 
-    if(elementToScrollTo) {
+    if (elementToScrollTo) {
       const $menu = $(this.menuElement);
       const move = $menu.scrollTop() + $(elementToScrollTo).position().top - 8;
 
