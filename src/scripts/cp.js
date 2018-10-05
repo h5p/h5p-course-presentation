@@ -717,8 +717,7 @@ CoursePresentation.prototype.keywordClick = function (index) {
     // Auto-hide keywords list
     this.hideKeywords();
   }
-
-  this.jumpToSlide(index, true);
+  this.jumpToSlide(index, true, this.editor === undefined);
 };
 
 CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
