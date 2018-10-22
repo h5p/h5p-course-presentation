@@ -11,6 +11,8 @@
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
+
+  background-color: #fff;
 }
 
 /* Footer buttons */
@@ -346,7 +348,7 @@
 
   background: #000;
   color: #FFF;
-  
+
   pointer-events: none;
 }
 
