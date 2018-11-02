@@ -58,8 +58,8 @@ const SummarySlide = (function () {
             'class': 'hidden-but-read',
             'html': that.cp.l10n.summary + '. ' +
               that.cp.l10n.accessibilityTotalScore
-              .replace('@score', totalScores.totalScore)
-              .replace('@maxScore', totalScores.totalMaxScore)
+                .replace('@score', totalScores.totalScore)
+                .replace('@maxScore', totalScores.totalMaxScore)
           }));
         }, 100);
       }
@@ -185,7 +185,7 @@ const SummarySlide = (function () {
     }
 
     that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
-
+    var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
     var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
     var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
     var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
@@ -203,7 +203,7 @@ const SummarySlide = (function () {
         '</div>' +
         '<div class="h5p-summary-total-table">' +
           '<div class="h5p-summary-social">' +
-            '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' +
+            shareResultContainer +
             facebookContainer +
             twitterContainer +
             googleContainer +
@@ -227,11 +227,13 @@ const SummarySlide = (function () {
     var slideElements = self.cp.slides[slideScoresSlide.slide - 1].elements;
     if (slideScoresSlide.indexes.length > 1) {
       slideDescription = self.cp.l10n.summaryMultipleTaskText;
-    } else if (slideElements[slideScoresSlide.indexes[0]] !== undefined && slideElements[0]) {
+    }
+    else if (slideElements[slideScoresSlide.indexes[0]] !== undefined && slideElements[0]) {
       action = slideElements[slideScoresSlide.indexes[0]].action;
       if (typeof self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle === 'function') {
         slideDescription = self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle();
-      } else if (action.library !== undefined && action.library) {
+      }
+      else if (action.library !== undefined && action.library) {
 
         // Remove major, minor version and h5p prefix, Split on uppercase
         var humanReadableLibrary = action.library
@@ -291,7 +293,7 @@ const SummarySlide = (function () {
     twitterShareUrl = encodeURIComponent(twitterShareUrl);
 
     // Add query strings to the URL based on settings.
-    var twitterString = 'http://twitter.com/intent/tweet?';
+    var twitterString = 'https://twitter.com/intent/tweet?';
     twitterString += (twitterShareStatement.length > 0) ? "text="+twitterShareStatement+"&" : "";
     twitterString += (twitterShareUrl.length > 0) ? "url="+twitterShareUrl+"&" : "";
     twitterString += (twitterHashtagList.length > 0) ? "hashtags="+twitterHashtagList : "";
@@ -333,9 +335,9 @@ const SummarySlide = (function () {
     facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href);
 
     facebookShareQuote = facebookShareQuote.replace('@currentpageurl', window.location.href)
-    .replace("@percentage", scores.totalPercentage + '%')
-    .replace('@score', scores.totalScore)
-    .replace('@maxScore', scores.totalMaxScore);
+      .replace("@percentage", scores.totalPercentage + '%')
+      .replace('@score', scores.totalScore)
+      .replace('@maxScore', scores.totalMaxScore);
 
     // Parse data from the localization object.
     facebookShareUrl = encodeURIComponent(facebookShareUrl);

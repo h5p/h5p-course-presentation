@@ -1,6 +1,6 @@
 {
   "name": "h5p-course-presentation",
-  "version": "1.17.4",
+  "version": "1.20.0",
   "description": "A free HTML5- based presentation content type which allows users to add multiple choice, fill in the blanks, texts and other types of interactions to their presentations using only a web browser.",
   "private": true,
   "scripts": {
@@ -29,7 +29,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "h5p-lib-controls": "0.0.12",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.4",
     "resolve-url-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",

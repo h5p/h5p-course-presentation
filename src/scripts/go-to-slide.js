@@ -39,7 +39,7 @@ export default class GoToSlide {
     else {
       if (!title) {
         // No title so use the slide number, prev, or next.
-        switch(goToSlideType) {
+        switch (goToSlideType) {
           case navigationType.SPECIFIED:
             title = l10n.goToSlide.replace(':num', goToSlide.toString());
             break;
