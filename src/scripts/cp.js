@@ -1073,7 +1073,10 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
   const autoPlay = element.action.params && element.action.params.cpAutoplay;
-  const label = (element.action.params && element.action.params.contentName) || '';
+  let label = element.action.metadata ? element.action.metadata.title : '';
+  if (label === '') {
+    label = (element.action.params && element.action.params.contentName) || '';
+  }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
   /**
