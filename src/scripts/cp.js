@@ -1075,7 +1075,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   const autoPlay = element.action.params && element.action.params.cpAutoplay;
   let label = element.action.metadata ? element.action.metadata.title : '';
   if (label === '') {
-    label = (element.action.params && element.action.params.contentName) || '';
+    label = (element.action.params && element.action.params.contentName) || element.action.library.split(' ')[0].split('.')[1];
   }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
