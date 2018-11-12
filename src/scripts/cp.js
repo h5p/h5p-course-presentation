@@ -961,11 +961,6 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       'class': 'h5p-element-inner'
     }).appendTo($outerElementContainer);
 
-    if (libTypePmz === 'h5p-advancedtext' ||
-        libTypePmz === 'h5p-table') {
-      $innerElementContainer.attr('tabindex', 0);
-    }
-
     instance.attach($innerElementContainer);
     if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
       var handleIV = function () {
@@ -988,6 +983,8 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
         instance.on('controls', handleIV);
       }
     }
+
+    this.setOverflowTabIndex();
   }
 
   if (this.editor !== undefined) {
@@ -1867,6 +1864,27 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
+};
+
+/**
+ * Set tab index for text containers that overflow with a scrollbar
+ */
+CoursePresentation.prototype.setOverflowTabIndex = function () {
+  this.$current.find('.h5p-element-inner').each( function () {
+    const $inner = $(this);
+
+    // Currently, this rule is for tables only
+    let innerHeight;
+    if (this.classList.contains('h5p-table')) {
+      innerHeight = $inner.find('.h5p-table').outerHeight();
+    }
+
+    // Add tabindex if there's an overflow (scrollbar depending on CSS)
+    const outerHeight = $inner.closest('.h5p-element-outer').innerHeight();
+    if (innerHeight !== undefined && outerHeight !== null && innerHeight > outerHeight) {
+      $inner.attr('tabindex', 0);
+    }
+  });
 };
 
 /**
