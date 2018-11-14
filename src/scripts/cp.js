@@ -230,11 +230,6 @@ CoursePresentation.prototype.attach = function ($container) {
     }
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
-    if (!$target.is('input, textarea, a') && !that.editor) {
-      // Add focus to the wrapper so that it may capture keyboard events
-      that.$wrapper.focus();
-    }
-
     if (that.presentation.keywordListEnabled &&
         !that.presentation.keywordListAlwaysShow &&
         that.presentation.keywordListAutoHide &&
@@ -242,6 +237,21 @@ CoursePresentation.prototype.attach = function ($container) {
       that.hideKeywords(); // Auto-hide keywords
     }
   });
+
+  // Capturing to get capturing path
+  this.$wrapper.get(0).addEventListener('click', event => {
+    // Check if one of the selectors can be found in the capturing path up to currentTarget
+    const focussableElements = ['input', 'textarea', 'a'];
+    const bubblePathToCurrent = event.path.slice(0, event.path.indexOf(event.currentTarget) + 1);
+    const focusOnWrapper = !bubblePathToCurrent.some(path => {
+      return focussableElements.indexOf(path.tagName.toLowerCase()) !== -1;
+    });
+
+    // Add focus to the wrapper so that it may capture keyboard events
+    if (focusOnWrapper && !that.editor) {
+      that.$wrapper.focus();
+    }
+  }, true);
 
   // Get intended base width from CSS.
   var wrapperWidth = parseInt(this.$wrapper.css('width'));
