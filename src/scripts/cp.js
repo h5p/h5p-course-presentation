@@ -968,11 +968,8 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 
     // H5P.Shape sets it's own size when line in selected
     instance.on('set-size', function (event) {
-      if (event.data.width) {
-        $elementContainer.css('width', event.data.width);
-      }
-      if (event.data.height) {
-        $elementContainer.css('height', event.data.height);
+      for (let property in event.data) {
+        $elementContainer.get(0).style[property] = event.data[property];
       }
     });
 
