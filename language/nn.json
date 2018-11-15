@@ -61,20 +61,6 @@
                     {
                       "label": "Usynlig",
                       "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukarar med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Tittel"
-                        },
-                        {
-                          "label": "Opphavsmann"
-                        },
-                        {
-                          "label": "Lisens"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -130,6 +116,10 @@
           "default": "Lysbilete"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Oversetting for \"Din poengsum\"",
           "default": "Din poengsum"
         },
@@ -138,23 +128,12 @@
           "default": "Topp poengsum"
         },
         {
-          "label": "Respons på høg poengsum",
-          "default": "Gratulerer! Du fikk @percent rett!",
-          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
-        },
-        {
-          "label": "Respons på ok poengsum",
-          "default": " Du fikk @percent rett!",
-          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
-        },
-        {
-          "label": "Respons på låg poengsum",
-          "default": "Du fikk @percent rett.",
-          "description": "@percent blir erstatta med brukaren sitt faktiske resultat i prosent"
-        },
-        {
-          "label": "Oversetting for \"Total\"",
+          "label": "Translation for \"Total\"",
           "default": "Total"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Tittel på \"Vis fasit\" knappen",
@@ -165,28 +144,8 @@
           "default": "Prøv igjen"
         },
         {
-          "label": "Oversetting for \"Tittel\"",
-          "default": "Tittel"
-        },
-        {
-          "label": "Oversetting for \"Forfattar/leverandør\"",
-          "default": "Opphavsmann"
-        },
-        {
-          "label": "Oversetting for \"Lisens\"",
-          "default": "Lisens"
-        },
-        {
-          "label": "Oversetting for \"Lisens\"",
-          "default": "Lisens"
-        },
-        {
           "label": "Oversetting for \"Eksporter tekst\"",
           "default": "Eksporter dokument"
-        },
-        {
-          "label": "Tekst for bruksrett-knappen",
-          "default": "Bruksrett"
         },
         {
           "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
@@ -303,6 +262,15 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
@@ -362,7 +330,7 @@
                 },
                 {
                   "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -374,7 +342,7 @@
               "fields": [
                 {
                   "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Share to Twitter link",

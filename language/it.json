@@ -61,20 +61,6 @@
                     {
                       "label": "Invisibile",
                       "description": "Cursore predefinito, nessun titolo e nessun indice di scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera avranno problemi con questo elemento."
-                    },
-                    {
-                      "label": "Metadati",
-                      "fields": [
-                        {
-                          "label": "Titolo"
-                        },
-                        {
-                          "label": "Autore"
-                        },
-                        {
-                          "label": "Licenza"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -130,6 +116,10 @@
           "default": "Diapositiva"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Traduzione per \"Il tuo punteggio\"",
           "default": "Il tuo punteggio"
         },
@@ -138,23 +128,12 @@
           "default": "Punteggio massimo"
         },
         {
-          "label": "Messaggio dato per un punteggio OTTIMO",
-          "default": "Congratulazioni! La tua percentuale di correttezza è @percent!",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
         },
         {
-          "label": "Messaggio dato per un punteggio BUONO",
-          "default": "Bel lavoro! La tua percentuale di correttezza è @percent!",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
-        },
-        {
-          "label": "Messaggio dato per un punteggio BASSO",
-          "default": "La tua percentuale di correttezza è @percent.",
-          "description": "@percent è sostituito dal reale punteggio dell'utente in percentuale"
-        },
-        {
-          "label": "Traduzione per \"Totale\"",
-          "default": "TOTALE"
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Testo per il pulsante Mostra soluzioni",
@@ -165,28 +144,8 @@
           "default": "Riprova"
         },
         {
-          "label": "Traduzione per \"Titolo\"",
-          "default": "Titolo"
-        },
-        {
-          "label": "Traduzione per \"Autore/fornitore\"",
-          "default": "Autore"
-        },
-        {
-          "label": "Traduzione per \"Licenza\"",
-          "default": "Licenza"
-        },
-        {
-          "label": "Traduzione per \"Licenza\"",
-          "default": "Licenza"
-        },
-        {
           "label": "Testo per il pulsante Esporta testo",
           "default": "Esporta testo"
-        },
-        {
-          "label": "Testo per il pulsante \"Diritti d'uso\"",
-          "default": "Diritti d'uso"
         },
         {
           "label": "Nascondi il titolo del pulsante di elenco parole chiave",
@@ -303,6 +262,15 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
@@ -362,7 +330,7 @@
                 },
                 {
                   "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -374,7 +342,7 @@
               "fields": [
                 {
                   "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Share to Twitter link",

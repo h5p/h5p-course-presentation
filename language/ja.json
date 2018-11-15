@@ -61,20 +61,6 @@
                     {
                       "label": "非表示",
                       "description": "デフォルトのカーソル、タイトルなし、タブインデックスなし。警告：障がいのある方、 キーボードのみのユーザーはこの要素を使う際に不自由な点があります。"
-                    },
-                    {
-                      "label": "メタデータ",
-                      "fields": [
-                        {
-                          "label": "タイトル"
-                        },
-                        {
-                          "label": "作者"
-                        },
-                        {
-                          "label": "ライセンス"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -130,6 +116,10 @@
           "default": "スライド"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "「あなたの得点」の翻訳",
           "default": "あなたの得点"
         },
@@ -138,23 +128,12 @@
           "default": "最高得点"
         },
         {
-          "label": "高得点のメッセージ",
-          "default": "おめでとうございます！ @percent の正解です !",
-          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
         },
         {
-          "label": "OK得点へのメッセージ",
-          "default": "よくがんばりました ! @percent の正解です !",
-          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
-        },
-        {
-          "label": "低得点へのメッセージ",
-          "default": "@percent の正解です !",
-          "description": "@percent はユーザーの実際の得点（パーセント）で置き換えられます。"
-        },
-        {
-          "label": "「トータル」の翻訳",
-          "default": "トータル"
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "「解を表示」ボタンのタイトル",
@@ -165,28 +144,8 @@
           "default": "リトライ"
         },
         {
-          "label": "「タイトル」の翻訳",
-          "default": "タイトル"
-        },
-        {
-          "label": "「作者 / 供給者」の翻訳",
-          "default": "作者"
-        },
-        {
-          "label": "「ライセンス」の翻訳",
-          "default": "ライセンス"
-        },
-        {
-          "label": "「ライセンス」の翻訳",
-          "default": "ライセンス"
-        },
-        {
           "label": "テキストをエクスポート ボタンのテキスト",
           "default": "テキストをエクスポート"
-        },
-        {
-          "label": "\"著作権\"ボタンのテキスト",
-          "default": "著作権"
         },
         {
           "label": "キーワードリストを非表示 ボタンのタイトル",
@@ -303,6 +262,15 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
@@ -362,7 +330,7 @@
                 },
                 {
                   "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -374,7 +342,7 @@
               "fields": [
                 {
                   "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Share to Twitter link",

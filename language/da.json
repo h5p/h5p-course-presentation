@@ -61,20 +61,6 @@
                     {
                       "label": "Usynlig",
                       "description": "Default cursor, ingen titel eller index. Advarsel: Brugere der alene anvender keyboard vil vanskeligt kunne anvende denne funktion."
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Titel"
-                        },
-                        {
-                          "label": "Forfatter"
-                        },
-                        {
-                          "label": "Licens"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -130,6 +116,10 @@
           "default": "Slide"
         },
         {
+          "label": "Translation for \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Oversættelse for \"Dit resultat\"",
           "default": "Dit resultat"
         },
@@ -138,23 +128,12 @@
           "default": "Højeste Score"
         },
         {
-          "label": "Feedback for GOD score",
-          "default": "Tillykke! Du har @percent rigtigt!",
-          "description": "@procent ændres til brugerens opnåede resultat i procent"
+          "label": "Translation for \"Total\"",
+          "default": "Total"
         },
         {
-          "label": "Feedback for OK score",
-          "default": "Fin indsats! Du har @percent rigtigt!",
-          "description": "@procent ændres til brugerens opnåede resultat i procent"
-        },
-        {
-          "label": "Feedback for LAV score",
-          "default": "Du har @percent rigtigt, prøv igen!.",
-          "description": "@percentage ændres til brugerens opnåede resultat i procent"
-        },
-        {
-          "label": "Oversættelse for \"Total\"",
-          "default": "TOTAL"
+          "label": "Translation for \"Total Score\"",
+          "default": "Total Score"
         },
         {
           "label": "Titel vist på 'Vis svar' knap",
@@ -165,28 +144,8 @@
           "default": "Prøv igen"
         },
         {
-          "label": "Oversættelse for \"Titel\"",
-          "default": "titel"
-        },
-        {
-          "label": "Oversættelse for \"Forfatter/bidrager\"",
-          "default": "Forfatter"
-        },
-        {
-          "label": "Oversættelse for \"Licens\"",
-          "default": "Licens"
-        },
-        {
-          "label": "Oversættelse for \"Licens\"",
-          "default": "Licens"
-        },
-        {
           "label": "Tekst på 'eksporter som tekst' knap",
           "default": "Eksporter som tekst"
-        },
-        {
-          "label": "Tekst på \"Rettigheder for brug\" knap",
-          "default": "Rettigheder for brug"
         },
         {
           "label": "Titel på 'Skjul liste' med nøgleord knap",
@@ -303,6 +262,15 @@
         {
           "label": "Label for slides that has incorrect answers",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
@@ -361,8 +329,8 @@
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Del status på Facebook.",
-                  "default": "Jeg scorede @percentage i en opgave på @currentpageurl."
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 }
               ]
             },
@@ -373,8 +341,8 @@
               "label": "Twitter indstillinger for deling.",
               "fields": [
                 {
-                  "label": "Del status på Twitter.",
-                  "default": "Jeg scorede @percentage i en opgave på @currentpageurl."
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
                 },
                 {
                   "label": "Del status på Twitter.",

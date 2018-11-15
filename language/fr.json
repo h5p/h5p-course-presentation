@@ -27,13 +27,13 @@
                       "label": "Afficher sous forme de bouton"
                     },
                     {
-                      "label": "Button size",
+                      "label": "La taille de bouton",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Petite"
                         },
                         {
-                          "label": "Big"
+                          "label": "Grande"
                         }
                       ]
                     },
@@ -41,10 +41,10 @@
                       "label": "Titre"
                     },
                     {
-                      "label": "Go to to",
+                      "label": "Aller vers",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Le numéro de diapositive spécifique"
                         },
                         {
                           "label": "Diapositive suivante"
@@ -56,25 +56,11 @@
                     },
                     {
                       "label": "Aller à la diapositive",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "description": "N'est appliquable qu'avec le bouton 'Le numéro de diapositive spécifique' séléctionné"
                     },
                     {
                       "label": "Invisible",
                       "description": "Curseur par défaut, pas de titre, pas d'onglets. Attention : Les utilisateurs ayant des handicaps ou ceux qui n'utilisent que le clavier auront des difficultés à réaliser cette activité."
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Titre"
-                        },
-                        {
-                          "label": "Auteur"
-                        },
-                        {
-                          "label": "Licence"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -130,6 +116,10 @@
           "default": "Diapositive"
         },
         {
+          "label": "Traduction pour \"Score\"",
+          "default": "Score"
+        },
+        {
           "label": "Traduction pour \"Votre score\"",
           "default": "Votre score"
         },
@@ -138,23 +128,12 @@
           "default": "Score maximum"
         },
         {
-          "label": "Appréciation en cas de bon score",
-          "default": "Félicitations ! Vous avez @percent de réponses justes !",
-          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
-        },
-        {
-          "label": "Appréciation en cas de score moyen",
-          "default": "Bravo pour vos efforts ! Vous avez @percent de réponses justes !",
-          "description": "@percent est remplacé par le pourcentage de réussite réél de l'utilisateur"
-        },
-        {
-          "label": "Appréciation en cas de mauvais score",
-          "default": "Vous n'avez que @percent de réponses justes.",
-          "description": "@percent est remplacé par le pourcentage de réussite réel de l'utilisateur"
-        },
-        {
           "label": "Traduction pour \"Total\"",
           "default": "Total"
+        },
+        {
+          "label": "Traduction pour \"Score total\"",
+          "default": "Score total"
         },
         {
           "label": "Texte pour le bouton \"Voir la correction\"",
@@ -165,28 +144,8 @@
           "default": "Recommencer"
         },
         {
-          "label": "Traduction de \"Titre\"",
-          "default": "Titre"
-        },
-        {
-          "label": "Traduction de \"Auteur/créateur\"",
-          "default": "Auteur"
-        },
-        {
-          "label": "Traduction de \"Licence\"",
-          "default": "Licence"
-        },
-        {
-          "label": "Traduction de \"Licence\"",
-          "default": "Licence"
-        },
-        {
-          "label": "Texte du bouton d'exportation",
+          "label": "Texte pour le bouton d'exportation",
           "default": "Exporter"
-        },
-        {
-          "label": "Texte pour le bouton \"Droits d'utilisation\"",
-          "default": "Droits d'utilisation"
         },
         {
           "label": "Cacher le bouton d'affichage de la liste des mots-clés",
@@ -245,8 +204,8 @@
           "default": "Partager sur Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "Partager sur Google text",
+          "default": "Partager sur Google+"
         },
         {
           "label": "Titre de la diapositive récapitulative",
@@ -273,42 +232,51 @@
           "default": "Imprimer la diapositive courante"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Etiquette pour des diapositives sans intitulé",
+          "default": "Sans intitulé"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "Explication de la navigation par diapositive pour les technologies d'assistance",
+          "default": "Utilisez les fleches gauche et droite pour pour naviguer entre les diapositives"
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "Etiquette de champs pour les technologies d'assistance",
+          "default": "Le champs de présentation. Utilisez les fleches gauche et droite pour naviguer entre les diapositives."
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "Etiquette pour des interactions incomplètes",
+          "default": "@slideName contient des interactions incomplètes"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "Etiquette pour les interactions complètes",
+          "default": "@slideName ccontient des interactions complètes"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "Etiquette pour le compteur de diapositive. Variables sont @index, @total",
+          "default": "Diapositive a @index de @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "Etiquette pour les diapositives qui n'ont que de réponses correctes",
+          "default": "toutes les réponses sont bonnes sur @slideName"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "Etiquette pour les diapositives qui ont des réponses incorrectes",
+          "default": "@slideName contient des réponses incorrectes"
+        },
+        {
+          "label": "Etiquette pour le panneau Partager sur les réseaux sociaux",
+          "default": "Partager le résultat"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
     {
       "label": "Réglages généraux",
-      "description": "Ces options vous permettent d'écraser certains réglages.",
+      "description": "Ces options vous permettent d'enlever certains réglages.",
       "fields": [
         {
           "label": "Activer le mode \"Surface active\"",
@@ -319,7 +287,7 @@
           "description": "Cela cache la diapositive finale qui liste les scores obtenus aux diverses activités."
         },
         {
-          "label": "Ecraser le bouton \"Voir la solution\"",
+          "label": "Cacher le bouton \"Voir la solution\"",
           "description": "Cette option détermine si le bouton \"Voir la solution\" sera affiché pour toutes les questions, désactivé pour toutes ou configuré pour chaque question individuellement.",
           "options": [
             {
@@ -331,7 +299,7 @@
           ]
         },
         {
-          "label": "Ecraser le bouton \"Recommencer\"",
+          "label": "Cacher le bouton \"Recommencer\"",
           "description": "Cette option détermine si le bouton \"Recommencer\" sera affiché pour toutes les questions, désactivé pour toutes ou configuré pour chaque question individuellement.",
           "options": [
             {
@@ -347,50 +315,50 @@
           "description": "Cela active le bouton d'impression."
         },
         {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "Paramètres sociaux",
+          "description": "Ces options permettent de contourner les paramètres sociaux de comportement. Les valeurs vides seront remplies automatiquement s'il y a un lien, sinon toutes les valeurs seront générées.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Montrer l'icône Partager sur Facebook"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Les paramètres de partage sur Facebook",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Le lien pour partager sur Facebook",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "label": "Citation Partager sur Facebook",
+                  "default": "J'ai un score de @score sur un total de @maxScore pour @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Montrer l'icône partager sur Twitter"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Les paramètres de partage sur Twitter",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @percentage on a task at @currentpageurl."
+                  "label": "La citation pour partager sur Twitter",
+                  "default": "J'ai un score de @score sur un total de @maxScore pour @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Le lien pour partager sur Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "Les hashtags pour partager sur Twitter",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Montrer l'icône Partager sur Google+"
             },
             {
-              "label": "Share to Google link",
+              "label": "Lien Partager sur Google",
               "default": "@currentpageurl"
             }
           ]

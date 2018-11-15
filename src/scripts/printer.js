@@ -7,7 +7,7 @@ const Printer = (function ($) {
    * Printer class
    * @class Printer
    */
-  function Printer(){}
+  function Printer() {}
 
   /**
    * Check if printing is supported
@@ -106,7 +106,7 @@ const Printer = (function ($) {
       // prevent propagation inside inner
       .children('.h5p-inner')
       .click(function () {
-          return false;
+        return false;
       })
       .end();
 
