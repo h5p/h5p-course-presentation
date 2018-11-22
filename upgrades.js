@@ -200,7 +200,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
       11: function (parameters, finished) {
         if (parameters.override) {
           parameters.override.enablePrintButton = true;
-	      }
+        }
 
         finished(null, parameters);
       },
@@ -294,6 +294,33 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
               }
             }
           }
+        }
+
+        // Done
+        finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.21.
+       *
+       * Set bgcolor hard to old default bgcolor if not set
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      21: function (parameters, finished) {
+        if (parameters && parameters.presentation && parameters.presentation.slides && parameters.presentation.slides) {
+          const slides = parameters.presentation.slides;
+          slides.forEach(function (slide) {
+            if (slide.slideBackgroundSelector) {
+              // Old CPs should keep the previous default bgcolor
+              const bg = slide.slideBackgroundSelector;
+              if (!bg.fillSlideBackground && !bg.imageSlideBackground) {
+                bg.fillSlideBackground = '#e8e6e7';
+              }
+            }
+          });
         }
 
         // Done
