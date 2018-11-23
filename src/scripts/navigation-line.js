@@ -79,7 +79,7 @@ const NavigationLine = (function ($) {
     this.progresbarKeyboardControls = new Controls([new UIKeyboard()]);
     this.progresbarKeyboardControls.negativeTabIndexAllowed = true;
     this.progresbarKeyboardControls.on('select', event => {
-      that.displaySlide($(event.element).data('slideNumber'));
+      that.displaySlide($(event.element).data('slideNumber'), false, false);
     });
 
     // if last element, prevent next progression
@@ -197,8 +197,10 @@ const NavigationLine = (function ($) {
    * Displays a slide
    *
    * @param {number} index
+   * @param {boolean} [noScroll=false] Skip UI scrolling.
+   * @param {boolean} [handleFocus=true] Give focus to other element.
    */
-  NavigationLine.prototype.displaySlide = function (index) {
+  NavigationLine.prototype.displaySlide = function (index, noScroll = false, handleFocus = true) {
     const oldIndex = this.cp.getCurrentSlideIndex();
 
     // update current progress task
@@ -208,7 +210,7 @@ const NavigationLine = (function ($) {
     this.updateSlideTitle(oldIndex, { isCurrent: false });
 
     // navigate to slide
-    this.cp.jumpToSlide(index);
+    this.cp.jumpToSlide(index, noScroll, handleFocus);
 
     // toggle next and prev buttons
     this.toggleNextAndPreviousButtonDisabled(index);
