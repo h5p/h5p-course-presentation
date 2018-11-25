@@ -169,7 +169,10 @@ export default class KeywordMenu {
     if (selectedElement) {
       this.state.currentIndex = index;
       this.updateCurrentlySelected(this.menuItemElements, this.state);
-      this.controls.setTabbable(selectedElement);
+      // Need to check, because keydown listener also resets tabindex and confuses Chrome
+      if (selectedElement.getAttribute('tabIndex') !== '0') {
+        this.controls.setTabbable(selectedElement);
+      }
     }
   }
 
