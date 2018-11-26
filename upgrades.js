@@ -304,23 +304,31 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
        * Asynchronous content upgrade hook.
        * Upgrades content parameters to support CP 1.21.
        *
-       * Set bgcolor hard to old default bgcolor if not set
+       * Set bgcolor hard to old default bgcolor if not set and no global background set
        *
        * @param {Object} parameters
        * @param {function} finished
        */
       21: function (parameters, finished) {
-        if (parameters && parameters.presentation && parameters.presentation.slides && parameters.presentation.slides) {
-          const slides = parameters.presentation.slides;
-          slides.forEach(function (slide) {
-            if (slide.slideBackgroundSelector) {
-              // Old CPs should keep the previous default bgcolor
-              const bg = slide.slideBackgroundSelector;
-              if (!bg.fillSlideBackground && !bg.imageSlideBackground) {
-                bg.fillSlideBackground = '#e8e6e7';
+        if (parameters && parameters.presentation) {
+          const presentation = parameters.presentation;
+
+          // Check for global background
+          const globalBackground = presentation && presentation.globalBackgroundSelector &&
+            (presentation.globalBackgroundSelector.fillGlobalBackground || presentation.globalBackgroundSelector.imageGlobalBackground);
+
+          if (globalBackground === undefined && presentation.slides) {
+            const slides = presentation.slides;
+            slides.forEach(function (slide) {
+              if (slide.slideBackgroundSelector) {
+                // Old CPs should keep the previous default bgcolor
+                const bg = slide.slideBackgroundSelector;
+                if (!bg.fillSlideBackground && !bg.imageSlideBackground) {
+                  bg.fillSlideBackground = '#e8e6e7';
+                }
               }
-            }
-          });
+            });
+          }
         }
 
         // Done
