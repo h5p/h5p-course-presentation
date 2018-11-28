@@ -717,7 +717,7 @@
             "type": "boolean",
             "label": "Display Facebook share icon",
             "importance": "low",
-            "default": true
+            "default": false
           },
           {
             "name": "facebookShare",
