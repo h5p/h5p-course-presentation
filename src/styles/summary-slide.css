@@ -96,15 +96,18 @@
 
 /* ------------------------------- Summary table style -----------------------------------  */
 .h5p-course-presentation .h5p-summary-table-holder {
-  height: 88%;
-  margin: 0 1em;
+  height: calc(100% - 4.5em);
+  margin: 1em;
 }
 
 .h5p-course-presentation .h5p-summary-table-pages {
   overflow: auto;
   clear: right;
-  max-height: 69%;
+  max-height: 86%;
   border-bottom: 1px solid #ddd;
+}
+
+.h5p-course-presentation .h5p-score-table tbody {
   border-top: 1px solid #ddd;
 }
 
@@ -143,7 +146,7 @@
   border-spacing: 0px;
 }
 
-.h5p-course-presentation .h5p-td, .h5p-course-presentation .h5p-th {
+.h5p-course-presentation .h5p-td {
   padding: 0.3em;
 }
 
@@ -158,17 +161,23 @@
   padding-right: 0.5em;
 }
 
-.h5p-course-presentation .h5p-td p span,
-.h5p-course-presentation .h5p-table-title-right span {
+.h5p-course-presentation .h5p-summary-table-header {
+  font-size: 0.5em;
+  text-transform: capitalize;
+  font-weight: normal;
+  padding-bottom: 1em;
+}
+.h5p-course-presentation .h5p-summary-table-header.slide {
+  text-align: left;
+  padding-left: 0.42em;
+}
+.h5p-course-presentation .h5p-summary-table-header.score {
+  text-align: right;
+  padding-right: 1.6em;
+}
+.h5p-course-presentation .h5p-summary-table-header.score span {
   color: #999;
   padding: 0 0.1em;
-}
-
-.h5p-course-presentation .h5p-table-title-right {
-  font-size: 0.5em;
-  float: right;
-  margin: 2em 1em 1em 0em;
-  text-transform: capitalize;
 }
 
 /* ---------------------------- Social media styles ---------------------------------------------- */

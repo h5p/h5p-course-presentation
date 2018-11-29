@@ -56,22 +56,22 @@
                     "options": [
                       "H5P.AdvancedText 1.1",
                       "H5P.Link 1.3",
-                      "H5P.Image 1.0",
-                      "H5P.Video 1.3",
-                      "H5P.Audio 1.2",
-                      "H5P.Blanks 1.8",
-                      "H5P.SingleChoiceSet 1.9",
-                      "H5P.MultiChoice 1.10",
-                      "H5P.TrueFalse 1.2",
-                      "H5P.DragQuestion 1.11",
-                      "H5P.Summary 1.8",
-                      "H5P.DragText 1.6",
-                      "H5P.MarkTheWords 1.7",
-                      "H5P.Dialogcards 1.6",
+                      "H5P.Image 1.1",
+                      "H5P.Video 1.5",
+                      "H5P.Audio 1.3",
+                      "H5P.Blanks 1.11",
+                      "H5P.SingleChoiceSet 1.11",
+                      "H5P.MultiChoice 1.13",
+                      "H5P.TrueFalse 1.5",
+                      "H5P.DragQuestion 1.13",
+                      "H5P.Summary 1.10",
+                      "H5P.DragText 1.8",
+                      "H5P.MarkTheWords 1.9",
+                      "H5P.Dialogcards 1.7",
                       "H5P.ContinuousText 1.2",
-                      "H5P.ExportableTextArea 1.2",
+                      "H5P.ExportableTextArea 1.3",
                       "H5P.Table 1.1",
-                      "H5P.InteractiveVideo 1.17",
+                      "H5P.InteractiveVideo 1.20",
                       "H5P.TwitterUserFeed 1.0"
                     ],
                     "optional": true
@@ -186,34 +186,6 @@
                     "importance": "low",
                     "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
                     "default": false
-                  },
-                  {
-                    "name": "metadata",
-                    "type": "group",
-                    "label": "Metadata",
-                    "importance": "low",
-                    "optional": true,
-                    "deprecated": true,
-                    "fields": [
-                      {
-                        "name": "title",
-                        "type": "text",
-                        "optional": true,
-                        "label": "Title"
-                      },
-                      {
-                        "name": "author",
-                        "type": "text",
-                        "optional": true,
-                        "label": "Author"
-                      },
-                      {
-                        "name": "lisence",
-                        "type": "text",
-                        "optional": true,
-                        "label": "License"
-                      }
-                    ]
                   }
                 ]
               }
@@ -399,30 +371,6 @@
         "default": "Max Score"
       },
       {
-        "name": "goodScore",
-        "type": "text",
-        "label": "Greeting given for GOOD score",
-        "importance": "low",
-        "default": "Congratulations! You got @percent correct!",
-        "description": "@percent is replaced by the real user score in percent"
-      },
-      {
-        "name": "okScore",
-        "type": "text",
-        "label": "Greeting given for OK score",
-        "importance": "low",
-        "default": "Nice effort! You got @percent correct!",
-        "description": "@percent is replaced by the real user score in percent"
-      },
-      {
-        "name": "badScore",
-        "type": "text",
-        "label": "Greeting given for BAD score",
-        "importance": "low",
-        "default": "You got @percent correct.",
-        "description": "@percent is replaced by the real user score in percent"
-      },
-      {
         "name": "total",
         "type": "text",
         "label": "Translation for \"Total\"",
@@ -452,48 +400,11 @@
         "optional": true
       },
       {
-        "name": "title",
-        "type": "text",
-        "label": "Translation for \"Title\"",
-        "importance": "low",
-        "default": "Title"
-      },
-      {
-        "name": "author",
-        "type": "text",
-        "label": "Translation for \"Author/supplier\"",
-        "importance": "low",
-        "default": "Author"
-      },
-      {
-        "name": "lisence",
-        "type": "text",
-        "label": "Translation for \"License\"",
-        "importance": "low",
-        "default": "License",
-        "deprecated": true,
-        "optional": true
-      },
-      {
-        "name": "license",
-        "type": "text",
-        "label": "Translation for \"License\"",
-        "importance": "low",
-        "default": "License"
-      },
-      {
         "name": "exportAnswers",
         "type": "text",
         "label": "Text for the export text button",
         "importance": "low",
         "default": "Export text"
-      },
-      {
-        "name": "copyright",
-        "type": "text",
-        "label": "Text for the \"Rights of use\" button",
-        "importance": "low",
-        "default": "Rights of use"
       },
       {
         "name": "hideKeywords",
@@ -704,6 +615,13 @@
         "label": "Label for social sharing bar",
         "importance": "low",
         "default": "Share Result"
+      },
+      {
+        "name": "accessibilityTotalScore",
+        "type": "text",
+        "label": "Total score announcement for assistive technologies",
+        "default": "You got @score of @maxScore points in total",
+        "description": "Available variables are @score and @maxScore"
       }
     ]
   },
@@ -737,7 +655,7 @@
         "type": "select",
         "label": "Override \"Show Solution\" button",
         "importance": "low",
-        "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+        "description": "This option determines if the \"Show Solution\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled) ",
         "optional": true,
         "options": [
           {
@@ -755,7 +673,7 @@
         "type": "select",
         "label": "Override \"Retry\" button",
         "importance": "low",
-        "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+        "description": "This option determines if the \"Retry\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled)",
         "optional": true,
         "options": [
           {
@@ -798,7 +716,7 @@
             "type": "boolean",
             "label": "Display Facebook share icon",
             "importance": "low",
-            "default": true
+            "default": false
           },
           {
             "name": "facebookShare",

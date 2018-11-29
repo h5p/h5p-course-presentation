@@ -56,25 +56,11 @@
                     },
                     {
                       "label": "Festgelegte Schaubildnummer",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "description": "Nur anwendbar, wenn \"Festgelegtes Schaubild\" gewählt wurde"
                     },
                     {
                       "label": "Unsichtbar",
                       "description": "Vorgabe-Cursor, kein Titel und kein Tab-Index. Warnung: Nutzer, die beeinträchtigt sind oder nur über eine Tastatur verfügen, werden Probleme mit der Bedienung haben."
-                    },
-                    {
-                      "label": "Metadaten",
-                      "fields": [
-                        {
-                          "label": "Titel"
-                        },
-                        {
-                          "label": "Autor"
-                        },
-                        {
-                          "label": "Lizenz"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -130,8 +116,8 @@
           "default": "Schaubild"
         },
         {
-          "label": "Translation for \"Score\"",
-          "default": "Score"
+          "label": "Überstezung für \"Score\"",
+          "default": "Punktzahl"
         },
         {
           "label": "Übersetzung für \"Your Score\"",
@@ -142,27 +128,12 @@
           "default": "Maximale Punktzahl"
         },
         {
-          "label": "Nachricht bei GUTER Punktzahl",
-          "default": "Glückwunsch! Du hast @percent richtig!",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
+          "label": "Übersetzung für \"Total\"",
+          "default": "Summe"
         },
         {
-          "label": "Nachricht bei OK Punktzahl",
-          "default": "Nette Leistung! Du hast @percent richtig!",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
-        },
-        {
-          "label": "Nachricht bei SCHLECHTER Punktzahl",
-          "default": "Du hast @percent korrekt.",
-          "description": "@percent wird durch die tatsächliche Punktzahl des Nutzers in Prozent ersetzt."
-        },
-        {
-          "label": "Translation for \"Total\"",
-          "default": "Total"
-        },
-        {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "Übersetzung für \"Total Score\"",
+          "default": "Gesamtsumme"
         },
         {
           "label": "Beschriftung für den \"Lösungen zeigen\"-Button",
@@ -173,28 +144,8 @@
           "default": "Wiederholen"
         },
         {
-          "label": "Übersetzung für \"Title\"",
-          "default": "Titel"
-        },
-        {
-          "label": "Übersetzung für \"Author/supplier\"",
-          "default": "Autor"
-        },
-        {
-          "label": "Übersetzung für \"License\"",
-          "default": "Lizenz"
-        },
-        {
-          "label": "Übersetzung für \"License\"",
-          "default": "Lizenz"
-        },
-        {
           "label": "Beschriftung für den \"Text exportieren\"-Button",
           "default": "Text exportieren"
-        },
-        {
-          "label": "Beschriftung für den \"Urheberrecht\"-Button",
-          "default": "Urheberrecht"
         },
         {
           "label": "Beschriftung für den \"Schlagwortliste verbergen\"-Button",
@@ -281,40 +232,45 @@
           "default": "Aktuelles Schaubild drucken"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Beschriftung für Schaubild ohne Titel",
+          "default": "Kein Titel"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "Erklärung der Schaubildnavigation für technische Hilfsmittel",
+          "default": "Verwende die Cursortasten für links und rechts, um die Schaubilder in die jeweilige Richtung zu verschieben, wenn der Präsentationsbereich angewählt ist"
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "Beschriftung für Präsentationsbereich für technische Hilfsmittel",
+          "default": "Präsentationsbereich. Verwende die Cursortasten links und rechts um zwischen den Schaubildern zu navigieren."
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "Beschriftung für nicht abgeschlossene Interaktionen",
+          "default": "@slideName enthält eine nicht abgeschlossene Interaktion"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "Beschriftung für abgeschlossene Interaktionen",
+          "default": "@slideName wurde abgeschlossen"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "Beschriftung für den Schaubildzähler. Variablen sind @index, @total",
+          "default": "Schaubild @index von @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "Beschriftung für Schaubilder, die nur richtige Antworten enthalten",
+          "default": "@slideName enthält nur richtige Antworten"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "Beschriftung für Schaubilder, die falsche Antworten enthalten",
+          "default": "@slideName enthält falsche Antworten"
         },
         {
-          "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "label": "Beschriftung für den Social-Sharing-Balken",
+          "default": "Ergebnis teilen"
+        },
+        {
+          "label": "Ansage der Gesamtpunktzahl für technische Hilfsmittel",
+          "default": "Du hast insgesamt @score von @maxScore Punkten erreicht.",
+          "description": "Verfügbare Variablen sind @score und @maxScore"
         }
       ]
     },
@@ -366,15 +322,15 @@
               "label": "Facebook-Icon anzeigen"
             },
             {
-              "label": "Facebook-Teilen Einstellungen",
+              "label": "Facebook-Teilen-Einstellungen",
               "fields": [
                 {
-                  "label": "Facebook-Teilen Link",
+                  "label": "Facebook-Teilen-Link",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Mustersatz für das Teilen auf Facebook",
+                  "default": "Ich habe @score von @maxScore bei der Aufgabe @currentpageurl erreicht."
                 }
               ]
             },
@@ -382,18 +338,18 @@
               "label": "Twitter-Icon anzeigen"
             },
             {
-              "label": "Twitter-Teilen Einstellungen",
+              "label": "Twitter-Teilen-Einstellungen",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Mustersatz für das Teilen auf Twitter",
+                  "default": "Ich habe @score von @maxScore bei der Aufgabe @currentpageurl erreicht."
                 },
                 {
-                  "label": "Twitter-Teilen Link",
+                  "label": "Twitter-Teilen-Link",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Twitter Hashtags",
+                  "label": "Twitter-Hashtags",
                   "default": "h5p, Kurs"
                 }
               ]

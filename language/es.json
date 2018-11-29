@@ -61,20 +61,6 @@
                     {
                       "label": "Invisible",
                       "description": "Cursor por defecto, sin título ni pestaña de índice. Advertencia: Aquellos usuarios con discapacidades o usuarios quienes sólo utilizan teclado tendrán problemas al utilizar este elemento."
-                    },
-                    {
-                      "label": "Metadatos",
-                      "fields": [
-                        {
-                          "label": "Título"
-                        },
-                        {
-                          "label": "Autor"
-                        },
-                        {
-                          "label": "Licencia"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Puntaje máximo"
         },
         {
-          "label": "Mensaje por haber obtenido BUEN puntaje",
-          "default": "Felicitaciones! Obtuviste @percent de aciertos!",
-          "description": "@percent es reemplazado por el puntaje real del usuario en porcentaje"
-        },
-        {
-          "label": "Mensaje por cualquier puntaje de aciertos",
-          "default": "Buen intento! Obtuviste @percent de aciertos!",
-          "description": "@percent es reemplazado por el puntaje real del usuario en porcentaje"
-        },
-        {
-          "label": "Mensaje por haber obtenido un MAL puntaje",
-          "default": "Obtuviste @percent de aciertos",
-          "description": "@percent es reemplazado por el puntaje real del usuario en porcentaje"
-        },
-        {
           "label": "Translation for \"Total\"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "Reintentar"
         },
         {
-          "label": "Traducción para \"Título\"",
-          "default": "Título"
-        },
-        {
-          "label": "Traducción para \"Autor/Creador\"",
-          "default": "Autor"
-        },
-        {
-          "label": "Traduction pour \"Licencia\"",
-          "default": "Licencia"
-        },
-        {
-          "label": "Traducción para \"Licencia\"",
-          "default": "Licencia"
-        },
-        {
           "label": "Texto para el botón de exportación",
           "default": "Exportar com texto"
-        },
-        {
-          "label": "Texto para el botón \"Derechos de uso\"",
-          "default": "Derechos de uso"
         },
         {
           "label": "Ocultar el botón de lista de palabras claves",
@@ -315,6 +266,11 @@
         {
           "label": "Label for social sharing bar",
           "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },

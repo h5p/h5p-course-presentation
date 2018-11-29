@@ -61,20 +61,6 @@
                     {
                       "label": "Usynlig",
                       "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
-                    },
-                    {
-                      "label": "Metadata",
-                      "fields": [
-                        {
-                          "label": "Tittel"
-                        },
-                        {
-                          "label": "Forfatter/leverandør"
-                        },
-                        {
-                          "label": "Lisens"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "Topp poengsum"
         },
         {
-          "label": "Respons på høy poengsum",
-          "default": "Gratulerer! Du fikk @percent rett!",
-          "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
-        },
-        {
-          "label": "Respons på ok poengsum",
-          "default": " Du fikk @percent rett!",
-          "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
-        },
-        {
-          "label": "Respons på lav poengsum",
-          "default": "Du fikk @percent rett.",
-          "description": "@percent blir erstattet med brukerens faktiske resultat i prosent"
-        },
-        {
           "label": "Translation for \"Total\"",
           "default": "Total"
         },
@@ -173,28 +144,8 @@
           "default": "Prøv igjen"
         },
         {
-          "label": "Oversettelse for \"Tittel\"",
-          "default": "Tittel"
-        },
-        {
-          "label": "Oversettelse for \"Forfatter/leverandør\"",
-          "default": "Forfatter/leverandør"
-        },
-        {
-          "label": "Oversettelse for \"Lisens\"",
-          "default": "Lisens"
-        },
-        {
-          "label": "Oversettelse for \"Lisens\"",
-          "default": "Lisens"
-        },
-        {
           "label": "Oversettelse for \"Eksporter tekst\" ",
           "default": "Eksporter tekst"
-        },
-        {
-          "label": "Tekst for bruksrett-knappen",
-          "default": "Bruksrett"
         },
         {
           "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
@@ -315,6 +266,11 @@
         {
           "label": "Label for social sharing bar",
           "default": "Share Result"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },

@@ -297,6 +297,14 @@
   flex-direction: column;
 }
 
+.h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container,
+.h5p-popup-overlay.h5p-advancedtext .h5p-popup-container {
+  width: initial;
+  min-height: initial;
+  min-width: 22%;
+  max-width: 90%;
+}
+
 .h5p-course-presentation .h5p-popup-container.h5p-animate {
   top: 100%;
 }
@@ -535,7 +543,9 @@
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
 }
-
+.h5p-course-presentation .h5p-twitteruserfeed-button:before {
+  content: "\f099";
+}
 .h5p-course-presentation .h5p-chart-button:before {
   content: "\f200";
 }

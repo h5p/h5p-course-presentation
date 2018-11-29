@@ -65,7 +65,7 @@ const NavigationLine = (function ($) {
 
             event.data.statement.context.extensions['http://id.tincanapi.com/extension/ending-point'] = index + 1;
           });
-      });
+        });
     });
   };
 
@@ -147,7 +147,7 @@ const NavigationLine = (function ($) {
         $li.addClass('h5p-progressbar-part-show');
       }
 
-      if(i === currentSlideIndex) {
+      if (i === currentSlideIndex) {
         $li.addClass('h5p-progressbar-part-selected');
       }
 
@@ -306,6 +306,7 @@ const NavigationLine = (function ($) {
     // Previous slide
     this.cp.$prevSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-previous-slide',
+      'aria-label': this.cp.l10n.prevSlide,
       'title': this.cp.l10n.prevSlide,
       'role': 'button',
       'tabindex': '-1',
@@ -351,6 +352,7 @@ const NavigationLine = (function ($) {
     // Next slide
     this.cp.$nextSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-next-slide',
+      'aria-label': this.cp.l10n.nextSlide,
       'title': this.cp.l10n.nextSlide,
       'role': 'button',
       'tabindex': '0'
@@ -369,6 +371,7 @@ const NavigationLine = (function ($) {
       this.cp.$exitSolutionModeButton = $('<div/>', {
         'role': 'button',
         'class': 'h5p-footer-exit-solution-mode',
+        'aria-label': this.cp.l10n.solutionModeTitle,
         'title': this.cp.l10n.solutionModeTitle,
         'tabindex': '0'
       }).appendTo($rightFooter);
@@ -378,6 +381,7 @@ const NavigationLine = (function ($) {
       if (this.cp.enablePrintButton && Printer.supported()) {
         this.cp.$printButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-print',
+          'aria-label': this.cp.l10n.printTitle,
           'title': this.cp.l10n.printTitle,
           'role': 'button',
           'tabindex': '0'
@@ -390,6 +394,7 @@ const NavigationLine = (function ($) {
         // Toggle full screen button
         this.cp.$fullScreenButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
+          'aria-label': this.cp.l10n.fullscreen,
           'title': this.cp.l10n.fullscreen,
           'role': 'button',
           'tabindex': '0'
@@ -429,7 +434,8 @@ const NavigationLine = (function ($) {
     for (i = 0; i < that.cp.progressbarParts.length; i += 1) {
       if (slideNumber + 1 > i) {
         that.cp.progressbarParts[i].addClass('h5p-progressbar-part-show');
-      } else {
+      }
+      else {
         that.cp.progressbarParts[i].removeClass('h5p-progressbar-part-show');
       }
     }
@@ -553,7 +559,8 @@ const NavigationLine = (function ($) {
     // Hide exit solution mode button on summary slide
     if (this.cp.isSolutionMode && slideNumber === this.cp.slides.length - 1) {
       this.cp.$footer.addClass('summary-slide');
-    } else {
+    }
+    else {
       this.cp.$footer.removeClass('summary-slide');
     }
 

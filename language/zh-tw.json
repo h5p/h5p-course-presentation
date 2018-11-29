@@ -61,20 +61,6 @@
                     {
                       "label": "Invisible",
                       "description": "預設游標, 無標題, 無標籤索引. 警告：使用此元件的受限制使用者或僅限鍵盤的使用者將會遇到問題."
-                    },
-                    {
-                      "label": "詮釋資料",
-                      "fields": [
-                        {
-                          "label": "標題"
-                        },
-                        {
-                          "label": "作者"
-                        },
-                        {
-                          "label": "授權"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -142,21 +128,6 @@
           "default": "最高分數"
         },
         {
-          "label": "好成績的問候語",
-          "default": "恭喜! 您得到 @percent 正確率!",
-          "description": "@percent 以真實使用者百分比分數取代"
-        },
-        {
-          "label": "普通成績的問候語",
-          "default": "做得好! 您得到 @percent 正確率!",
-          "description": "@percent 以真實使用者百分比分數取代"
-        },
-        {
-          "label": "不好成績的問候語",
-          "default": "您得到 @percent 正確率.",
-          "description": "@percent 以真實使用者百分比分數取代"
-        },
-        {
           "label": "總計標題",
           "default": "總計"
         },
@@ -173,28 +144,8 @@
           "default": "重試"
         },
         {
-          "label": "標題名稱",
-          "default": "標題"
-        },
-        {
-          "label": "作者/提供者",
-          "default": "作者"
-        },
-        {
-          "label": "授權資訊",
-          "default": "授權資訊"
-        },
-        {
-          "label": "授權資訊",
-          "default": "授權資訊"
-        },
-        {
           "label": "匯出功能鈕名稱",
           "default": "匯出"
-        },
-        {
-          "label": "顯示“使用權”功能鈕名稱",
-          "default": "使用權"
         },
         {
           "label": "隱藏關鍵字列表功能鈕標題",
@@ -315,6 +266,11 @@
         {
           "label": "社交分享欄的標籤",
           "default": "分享成果"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "You got @score of @maxScore points in total",
+          "description": "Available variables are @score and @maxScore"
         }
       ]
     },
