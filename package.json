@@ -18,7 +18,7 @@
   "author": "Joubel",
   "license": "MIT",
   "devDependencies": {
-    "h5p-parent": "0.0.1",
+    "h5p-parent": "0.0.2",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
