@@ -1,10 +1,11 @@
-import GoToSlide from './go-to-slide';
+import Parent from 'h5p-parent';
 import SummarySlide from './summary-slide';
 import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
 import KeywordsMenu from './keyword-menu';
-import { jQuery as $, EventDispatcher } from './globals';
+import { jQuery as $ } from './globals';
 import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
+import Slide from './slide.js';
 
 /**
  * @const {string}
@@ -21,7 +22,6 @@ const KEYWORD_TITLE_SKIP = null;
  * @returns {undefined} Nothing.
  */
 let CoursePresentation = function (params, id, extras) {
-  EventDispatcher.call(this);
   var that = this;
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
@@ -31,6 +31,7 @@ let CoursePresentation = function (params, id, extras) {
   this.slidesWithSolutions = [];
   this.hasAnswerElements = false;
   this.ignoreResize = false;
+  this.isTask = false;
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -118,6 +119,9 @@ let CoursePresentation = function (params, id, extras) {
   // Set override for all actions
   this.setElementsOverride(params.override);
 
+  // Inheritance
+  Parent.call(this, Slide, params.presentation.slides);
+
   this.on('resize', this.resize, this);
 
   this.on('printing', function (event) {
@@ -132,7 +136,7 @@ let CoursePresentation = function (params, id, extras) {
   });
 };
 
-CoursePresentation.prototype = Object.create(EventDispatcher.prototype);
+CoursePresentation.prototype = Object.create(Parent.prototype);
 CoursePresentation.prototype.constructor = CoursePresentation;
 
 /**
@@ -271,7 +275,7 @@ CoursePresentation.prototype.attach = function ($container) {
   this.isSolutionMode = false;
 
   // Create slides and retrieve keyword title details
-  this.createSlides(this.slides);
+  this.createSlides();
 
   // We have always attached all elements on current slide
   this.elementsAttached[this.currentSlideIndex] = true;
@@ -298,7 +302,7 @@ CoursePresentation.prototype.attach = function ($container) {
     };
     this.slides.push(summarySlideParams);
 
-    $summarySlide = H5P.jQuery(CoursePresentation.createSlide(summarySlideParams)).appendTo(this.$slidesWrapper);
+    $summarySlide = H5P.jQuery(Slide.createHTML(summarySlideParams)).appendTo(this.$slidesWrapper);
     $summarySlide.addClass('h5p-summary-slide');
 
     if (this.isCurrentSlide(this.slides.length - 1)) {
@@ -437,20 +441,21 @@ CoursePresentation.prototype.hasKeywords = function (slide) {
  *
  * @param {Array} slidesParams
  */
-CoursePresentation.prototype.createSlides = function (slidesParams) {
-  for (var i = 0; i < slidesParams.length; i++) {
-    var slideParams = slidesParams[i];
+CoursePresentation.prototype.createSlides = function () {
+  var self = this;
+  for (let i = 0; i < self.children.length; i++) {
+    const isCurrentSlide = (i === self.currentSlideIndex);
 
-    // Create slide element
-    var $slide = $(CoursePresentation.createSlide(slideParams)).appendTo(this.$slidesWrapper);
+    // Create and append DOM Elements
+    self.children[i].getElement().appendTo(self.$slidesWrapper);
 
-    // Set as current
-    if (i === this.currentSlideIndex) {
-      this.$current = $slide.addClass('h5p-current');
+    if (isCurrentSlide) {
+      self.children[i].setCurrent();
     }
 
-    // Add elements to slide
-    this.addElements(slideParams, $slide, i);
+    if (self.isEditor() || i === 0 || i === 1 || isCurrentSlide) {
+      self.children[i].appendElements();
+    }
   }
 };
 
@@ -728,39 +733,6 @@ CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
 };
 
 /**
- * Add all element to the given slide.
- *
- * @param {Object} slide
- * @param {jQuery} $slide
- * @param {Number} index
- */
-CoursePresentation.prototype.addElements = function (slide, $slide, index) {
-  if (slide.elements === undefined) {
-    return;
-  }
-  var attach = (this.isEditor() || index === 0 || index === 1 || this.isCurrentSlide(index));
-
-  for (var i = 0; i < slide.elements.length; i++) {
-    var element = slide.elements[i];
-    var instance = this.addElement(element, $slide, index);
-
-    if (attach) {
-      // The editor requires all fields to be attached/rendered right away
-      this.attachElement(element, instance, $slide, index);
-    }
-  }
-
-  if (attach) {
-    this.elementsAttached[index] = true;
-    this.trigger('domChanged', {
-      '$target': $slide,
-      'library': 'CoursePresentation',
-      'key': 'newSlide'
-    }, {'bubbles': true, 'external': true});
-  }
-};
-
-/**
  * Set the default behaviour override for all actions.
  *
  * @param {Object} override
@@ -787,106 +759,6 @@ CoursePresentation.prototype.setElementsOverride = function (override) {
           (override.retryButton === 'on' ? true : false);
     }
   }
-};
-
-/**
- * Add element to the given slide and stores elements with solutions.
- *
- * @param {Object} element The Element to add.
- * @param {jQuery} $slide Optional, the slide. Defaults to current.
- * @param {Number} index Optional, the index of the slide we're adding elements to.
- * @returns {unresolved}
- */
-CoursePresentation.prototype.addElement = function (element, $slide, index) {
-  var instance;
-  if (element.action === undefined) {
-    // goToSlide, internal element
-    instance = new GoToSlide(element, {
-      l10n: this.l10n,
-      currentIndex: index
-    });
-
-    if (!this.isEditor()) {
-      instance.on('navigate', event => {
-        const index = event.data;
-        this.jumpToSlide(index);
-      });
-    }
-  }
-  else {
-    // H5P library
-    var library;
-    if (this.editor !== undefined) {
-      // Clone the whole tree to avoid libraries accidentally changing params while running.
-      library = H5P.jQuery.extend(true, {}, element.action, this.elementsOverride);
-    }
-    else {
-      // Add defaults
-      library = H5P.jQuery.extend(true, element.action, this.elementsOverride);
-    }
-
-    /* If library allows autoplay, control this from CP */
-    if (library.params.autoplay) {
-      library.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.playback && library.params.playback.autoplay) {
-      library.params.playback.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.params &&
-      library.params.media.params.playback &&
-      library.params.media.params.playback.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.params.playback.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.params &&
-      library.params.media.params.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-
-    var internalSlideId = this.elementInstances[index] ? this.elementInstances[index].length : 0;
-    if (this.previousState && this.previousState.answers && this.previousState.answers[index] && this.previousState.answers[index][internalSlideId]) {
-      // Restore previous state
-      library.userDatas = {
-        state: this.previousState.answers[index][internalSlideId]
-      };
-    }
-
-    // Override child settings
-    library.params = library.params || {};
-    instance = H5P.newRunnable(library, this.contentId, undefined, undefined, {parent: this});
-    if (instance.preventResize !== undefined) {
-      instance.preventResize = true;
-    }
-  }
-
-  if (this.elementInstances[index] === undefined) {
-    this.elementInstances[index] = [instance];
-  }
-  else {
-    this.elementInstances[index].push(instance);
-  }
-
-  if (this.checkForSolutions(instance)) {
-    instance.coursePresentationIndexOnSlide = this.elementInstances[index].length - 1;
-    if (this.slidesWithSolutions[index] === undefined) {
-      this.slidesWithSolutions[index] = [];
-    }
-    this.slidesWithSolutions[index].push(instance);
-  }
-
-  //Check if it is a exportable text area
-  if (instance.exportAnswers !== undefined && instance.exportAnswers) {
-    this.hasAnswerElements = true;
-  }
-
-  return instance;
 };
 
 /**
@@ -1900,16 +1772,6 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
   if (handleFocus) {
     this.$slideTop.focus();
   }
-};
-
-/**
- * Create HTML for a slide.
- *
- * @param {object} slide Params.
- * @returns {String} HTML.
- */
-CoursePresentation.createSlide = function (slide) {
-  return '<div role="document" class="h5p-slide"' + (slide.background !== undefined ? ' style="background:' + slide.background + '"' : '') + '></div>';
 };
 
 /**
