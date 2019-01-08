@@ -14,7 +14,7 @@ function Element(parameters) {
     });
 
     if (!self.parent.parent.isEditor()) {
-      instance.on('navigate', event => {
+      self.instance.on('navigate', event => {
         const index = event.data;
         self.parent.parent.jumpToSlide(index);
       });
