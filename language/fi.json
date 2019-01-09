@@ -83,7 +83,7 @@
         },
         {},
         {
-          "label": "Avainsanalista"
+          "label": "Sisällysluettelo"
         },
         {
           "label": "Näytä aina"
@@ -148,12 +148,12 @@
           "default": "Vie tekstiä"
         },
         {
-          "label": "\"Piilota Avainsanalista\"-painikkeen teksti",
-          "default": "Piilota avainsanalista"
+          "label": "\"Piilota sisällysluettelo\"-painikkeen teksti",
+          "default": "Piilota sisällysluettelo"
         },
         {
-          "label": "\"Näytä avainsanalista\"painikkeen teksti",
-          "default": "Näytä avainsanalista"
+          "label": "\"Näytä sisällysluettelo\"painikkeen teksti",
+          "default": "Näytä sisällysluettelo"
         },
         {
           "label": "\"Koko ruutu\"-painikkeen teksti",
