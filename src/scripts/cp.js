@@ -863,6 +863,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       }
     }
 
+    // For first slide
     this.setOverflowTabIndex();
   }
 
@@ -1653,6 +1654,9 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   if ($nextSlide.length) {
     this.attachElements($nextSlide, slideNumber + 1);
   }
+
+  // For new slide
+  this.setOverflowTabIndex();
 
   // Stop media on old slide
   // this is done no mather what autoplay says
