@@ -2,8 +2,13 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
+<<<<<<< HEAD
   "minorVersion": 20,
   "patchVersion": 4,
+=======
+  "minorVersion": 21,
+  "patchVersion": 0,
+>>>>>>> HFP-2325-new-default-bgcolor
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -47,7 +52,7 @@
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 20
+      "minorVersion": 21
     }
   ]
 }
