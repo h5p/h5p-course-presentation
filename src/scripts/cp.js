@@ -1296,6 +1296,16 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     })
     .end();
 
+  /*
+   * Add tabindex = 0 to text. Other popup contents get the tabindex on
+   * the 'transitionend' event on the container, but text popups don't transition.
+   * They gradually appear next to the button.
+   */
+  if ($(popupContent).hasClass('h5p-advanced-text')) {
+    $popupWrapper.attr('tabindex', 0);
+    $popupWrapper.focus();
+  }
+
   addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => close(event));
 
   return $popup;
