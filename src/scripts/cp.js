@@ -234,8 +234,13 @@ CoursePresentation.prototype.attach = function ($container) {
     }
   }).click(function (event) {
     var $target = H5P.jQuery(event.target);
-    if (!$target.is('input, textarea, a') && !that.editor) {
-      // Add focus to the wrapper so that it may capture keyboard events
+
+    /*
+     * Add focus to the wrapper so that it may capture keyboard events unless
+     * the target or one of its parents should handle focus themselves.
+     */
+    const focussableElements = ['input', 'textarea', 'a'];
+    if (!that.belongsToTagName(event.target, focussableElements, event.currentTarget) && !that.editor) {
       that.$wrapper.focus();
     }
 
@@ -375,6 +380,40 @@ CoursePresentation.prototype.attach = function ($container) {
   if (this.previousState && this.previousState.progress) {
     this.jumpToSlide(this.previousState.progress);
   }
+};
+
+/**
+ * Check if a node or one of its parents has a particular tag name.
+ *
+ * @param {HTMLElement} node Node to check.
+ * @param {string|string[]} tagNames Tag name(s).
+ * @param {HTMLElement} [stop] Optional node to stop. Defaults to body node.
+ * @return {boolean} True, if node belongs to a node with one of the tag names.
+ */
+CoursePresentation.prototype.belongsToTagName = function (node, tagNames, stop) {
+  if (!node) {
+    return false;
+  }
+
+  // Stop check at DOM tree root
+  stop = stop || document.body;
+
+  if (typeof tagNames === 'string') {
+    tagNames = [tagNames];
+  }
+  tagNames = tagNames.map(tagName => tagName.toLowerCase());
+
+  const tagName = node.tagName.toLowerCase();
+  if (tagNames.indexOf(tagName) !== -1) {
+    return true;
+  }
+
+  // Having stop can prevent always parsing DOM tree to root
+  if (stop === node) {
+    return false;
+  }
+
+  return this.belongsToTagName(node.parentNode, tagNames, stop);
 };
 
 /**
