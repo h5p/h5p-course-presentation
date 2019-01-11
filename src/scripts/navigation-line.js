@@ -371,6 +371,7 @@ const NavigationLine = (function ($) {
       this.cp.$exitSolutionModeButton = $('<div/>', {
         'role': 'button',
         'class': 'h5p-footer-exit-solution-mode',
+        'aria-label': this.cp.l10n.solutionModeTitle,
         'title': this.cp.l10n.solutionModeTitle,
         'tabindex': '0'
       }).appendTo($rightFooter);
