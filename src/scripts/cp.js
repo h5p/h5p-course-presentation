@@ -651,7 +651,7 @@ CoursePresentation.prototype.fitCT = function () {
  * @returns {undefined}
  */
 CoursePresentation.prototype.resize = function () {
-  var fullscreenOn = H5P.$body.hasClass('h5p-fullscreen') || H5P.$body.hasClass('h5p-semi-fullscreen');
+  var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
     return; // When printing.
