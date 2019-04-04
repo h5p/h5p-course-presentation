@@ -1373,6 +1373,11 @@ CoursePresentation.prototype.initKeyEvents = function () {
       return;
     }
 
+    // Some presentation device sticks trigger F5 on activating the laser pointer
+    if (event.keyCode === 116) {
+      event.preventDefault();
+    }
+
     // Left
     if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide()) {
       event.preventDefault();
