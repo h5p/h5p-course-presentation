@@ -193,7 +193,7 @@
         },
         {
           "label": "Scoretekst",
-          "default": "Je hebt gescoord:"
+          "default": "Jouw score:"
         },
         {
           "label": "Deel op Facebook tekst",
@@ -269,7 +269,7 @@
         },
         {
           "label": "Aankondiging totaalscore van ondersteunende technologieën",
-          "default": "You got @score of @maxScore points in total",
+          "default": "Je hebt @score van @maxScore punten in totaal",
           "description": "Beschikbare variabelen zijn @score en @maxScore"
         }
       ]
