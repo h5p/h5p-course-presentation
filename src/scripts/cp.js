@@ -94,6 +94,10 @@ let CoursePresentation = function (params, id, extras) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
     this.enablePrintButton = !!params.override.enablePrintButton;
+    this.showSummarySlideSolutionButton = params.override.summarySlideSolutionButton !== undefined
+      ? params.override.summarySlideSolutionButton : true;
+    this.showSummarySlideRetryButton = params.override.summarySlideRetryButton !== undefined
+      ? params.override.summarySlideRetryButton : true;
 
     if (!!params.override.social) {
       this.enableTwitterShare = !!params.override.social.showTwitterShare;

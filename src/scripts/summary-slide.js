@@ -97,30 +97,34 @@ const SummarySlide = (function () {
     var $summaryFooter = $('.h5p-summary-footer', that.$summarySlide);
 
     // Show solutions button
-    JoubelUI.createButton({
-      'class': 'h5p-show-solutions',
-      html: that.cp.l10n.showSolutions,
-      on: {
-        click: function () {
-          // Enable solution mode
-          that.toggleSolutionMode(true);
-        }
-      },
-      appendTo: $summaryFooter
-    });
+    if (this.cp.showSummarySlideSolutionButton) {
+      JoubelUI.createButton({
+        'class': 'h5p-show-solutions',
+        html: that.cp.l10n.showSolutions,
+        on: {
+          click: function () {
+            // Enable solution mode
+            that.toggleSolutionMode(true);
+          }
+        },
+        appendTo: $summaryFooter
+      });
+    }
 
     // Show solutions button
-    JoubelUI.createButton({
-      'class': 'h5p-cp-retry-button',
-      html: that.cp.l10n.retry,
-      on: {
-        click: function () {
-          that.cp.resetTask();
-          // event.preventDefault();
-        }
-      },
-      appendTo: $summaryFooter
-    });
+    if (this.cp.showSummarySlideRetryButton) {
+      JoubelUI.createButton({
+        'class': 'h5p-cp-retry-button',
+        html: that.cp.l10n.retry,
+        on: {
+          click: function () {
+            that.cp.resetTask();
+            // event.preventDefault();
+          }
+        },
+        appendTo: $summaryFooter
+      });
+    }
 
     // Only make export button if there is an export area in CP
     if (that.cp.hasAnswerElements) {
