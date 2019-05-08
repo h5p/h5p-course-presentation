@@ -311,12 +311,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Показывать кнопку \"Показать решение\" в итоговом слайдe",
+          "description": "Если этот параметр включен, учащийся сможет показать решения по всем вопросам, при достижении итогового слайда."
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Показывать кнопку \"Повторить\" в итоговом слайде",
+          "description": "Если этот параметр включен, учащийся сможет повторить все вопросы, при достижении итогового слайда. Имейте в виду, что при обновлении страницы учащиеся смогут повторить попытку, даже если эта кнопка не отображается."
         },
         {
           "label": "Включить кнопку печати",
