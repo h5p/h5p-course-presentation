@@ -59,7 +59,7 @@
                       "description": "Прилага се единствено, когато е избрана опцията Конкретен номер на слайд"
                     },
                     {
-                      "label": "Невидим курсов",
+                      "label": "Невидим курсор",
                       "description": "Курсор по подразбиране, няма наименование, не е индексиран. Внимание: Потребители със СОП или които ползват единствено клавиатура ще имат проблеми да ползват този елемент."
                     }
                   ]
@@ -316,10 +316,10 @@
         },
         {
           "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "description": "Тези опции ще ви позволят да отмените настройките за социално поведение. Автоматично ще бъдат попълнени  празни стойности, ако е осигурена връзка, в противен случай ще бъдат генерирани всички стойности.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Показване на иконата за споделяне във Facebook"
             },
             {
               "label": "Настройки за споделяне във Facebook",
