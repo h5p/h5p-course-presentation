@@ -57,6 +57,7 @@
                       "H5P.AdvancedText 1.1",
                       "H5P.Link 1.3",
                       "H5P.Image 1.1",
+                      "H5P.Shape 1.0",
                       "H5P.Video 1.5",
                       "H5P.Audio 1.3",
                       "H5P.Blanks 1.11",
@@ -685,6 +686,40 @@
             "label": "Disabled"
           }
         ]
+      },
+      {
+        "name": "summarySlideSolutionButton",
+        "type": "boolean",
+        "label": "Show \"Show solution\" button in the summary slide",
+        "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide",
+        "default": true,
+        "importance": "low",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "hideSummarySlide",
+              "equals": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "summarySlideRetryButton",
+        "type": "boolean",
+        "label": "Show \"Retry\" button in the summary slide",
+        "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing.",
+        "default": true,
+        "importance": "low",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "hideSummarySlide",
+              "equals": false
+            }
+          ]
+        }
       },
       {
         "name": "enablePrintButton",
