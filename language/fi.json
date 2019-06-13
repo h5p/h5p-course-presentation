@@ -56,11 +56,11 @@
                     },
                     {
                       "label": "Siirry sivulle",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "description": "Käytössä vain kun 'määritä sivunumero' -asetus on valittuna"
                     },
                     {
                       "label": "Näkymätön",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "description": "Ankkuriruutu ei näy kun hiirenkursori viedään sen päälle. Varoitus: Esteettömyys toteutuu huonommin tällä vaihtoehdolla ja tämän lisäksi pelkkää näppäimistöä navigoimiseen käyttävät henkilöt eivät voi käyttää tätä elementtiä helposti."
                     }
                   ]
                 }
@@ -236,47 +236,47 @@
           "default": "Ei otsikkoa"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "Navigaation selite avustaville teknologioille",
+          "default": "Käytä vasenta tai oikeaa nuolinäppäintä siirtyäksesi eteen- tai taaksepäin tässä esityksessä silloin kun dia on valittuna."
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "Piirtoalueen slite avustaville teknologioille",
+          "default": "Piirtoalue. Käytä vasenta tai oikeaa nuolinäppäintä siirtyäksesi eteen- tai taaksepäin tässä esityksessä silloin kun dia on valittuna."
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "Selite suorittamatta oleville interaktioille",
+          "default": "@slideName sisältää suorittamattoman interaktion"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "Selite suoritetuille interaktioille",
+          "default": "@slideName sisältää suoritetun interaktion"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "Selite dialaskurille. Muuttujat ovat @index, @total",
+          "default": "Dia @index kautta @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "Selite dialle joka sisältää vain oikeita vastauksia",
+          "default": "@slideName sisältää vain oikeita vastauksia"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "Selite dialle joka sisältää vääriä vastauksia",
+          "default": "@slideName sisältää vääriä vastauksia"
         },
         {
-          "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "label": "Selite sosiaalisen jakamisen palkille",
+          "default": "Jaa tuloksesi sosiaaliseen mediaan"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
-          "description": "Available variables are @score and @maxScore"
+          "label": "Kokonaispisteiden ilmoittaminen avustaville teknologioille",
+          "default": "Sait @score pistettä @maxScore pisteestä",
+          "description": "Käytässä olevat muuttujat ovat @score ja @maxScore"
         }
       ]
     },
     {
       "label": "Asetukset",
-      "description": "These options will let you override behaviour settings.",
+      "description": "Nämä asetukset mahdollistavat oletusasetusten yliajamisen.",
       "fields": [
         {
           "label": "Ota käyttöön Active Surface -tila",
@@ -311,12 +311,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Näytä \"Show solution\" painike yhteenvetosivulla",
+          "description": "Jos asetus otetaan käyttöön niin opiskelija näkee "näytä oikeat vastaukset" -painikkeen yhteenvetosivulla."
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Näytä \"Retry\" painike yhteenvetosivulla",
+          "description": "Jos asetus otetaan käyttöön niin opiskelijalle näytetään "yritä uudelleen" -painike yhteenvetosivulla. Kannattaa huomioida että vaikka painiketta ei näytettäisi niin opiskelijat voivat aina halutessaan päivittää selaimensa näkymän ja yrittää kysymystä uudelleen."
         },
         {
           "label": "Näytä tulostuspainike",
@@ -324,7 +324,7 @@
         },
         {
           "label": "Sosiaalisen median asetukset",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "description": "Nämä asetukset mahdollistavat sosiaalisen median asetusten yliajamisen. Tyhjät arvot täytetään automaattisesti jos tarjolla on linkki, muutoin arvot generoidaan",
           "fields": [
             {
               "label": "Näytä jaa Facebookissa-ikoni"
