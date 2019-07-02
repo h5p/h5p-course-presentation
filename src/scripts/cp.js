@@ -243,9 +243,33 @@ CoursePresentation.prototype.attach = function ($container) {
      * Add focus to the wrapper so that it may capture keyboard events unless
      * the target or one of its parents should handle focus themselves.
      */
-    const focussableElements = ['input', 'textarea', 'a'];
-    if (!that.belongsToTagName(event.target, focussableElements, event.currentTarget) && !that.editor) {
-      that.$wrapper.focus();
+    const isFocusableElement = that.belongsToTagName(
+      event.target, ['input', 'textarea', 'a', 'button'], event.currentTarget);
+    // Does the target element have a tabIndex set?
+    const hasTabIndex = (event.target.tabIndex !== -1);
+    // The dialog container (if within a dialog)
+    const $dialogParent = $target.closest('.h5p-popup-container');
+    // Is target within a dialog
+    const isWithinDialog = $dialogParent.length !== 0;
+
+    if (!isFocusableElement && !hasTabIndex && !that.editor) {
+      if (!isWithinDialog) {
+        // We're not within a dialog, so we can seafely put focus on wrapper
+        that.$wrapper.focus();
+      }
+      else {
+        // Find the closest tabbable parent element
+        const $tabbable = $target.closest('[tabindex]');
+        // Is the parent tabbable element inside the popup?
+        if ($tabbable.closest('.h5p-popup-container').length === 1) {
+          // We'll set focus here
+          $tabbable.focus();
+        }
+        else {
+          // Fallback: set focus on close button
+          $dialogParent.find('.h5p-close-popup').focus();
+        }
+      }
     }
 
     if (that.presentation.keywordListEnabled &&
