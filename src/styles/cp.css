@@ -396,12 +396,14 @@
   color: #fff;
   font-size: 1em;
   border-radius: 50%;
+  /* Border used for focus - setting default properties here*/
+  border: 0px solid #70b0ff;
   line-height: 1.5em;
   box-shadow: 0 0.15em 0.25em 0 rgba(0, 0, 0, 0.5);
   text-align: center;
   text-decoration: none;
-  border: 0;
   background: #1d5cff;
+  cursor: pointer;
 
   transition: background 0.3s, box-shadow 0.3s;
 
@@ -417,7 +419,10 @@
 }
 
 .h5p-course-presentation .h5p-element-button:focus {
-  outline: 2px solid #79abfd;
+  outline: none;
+  top: -0.167em;
+  left: -0.167em;
+  border-width: 0.167em;
 }
 
 .h5p-course-presentation .h5p-element-button:before {
@@ -428,9 +433,11 @@
 }
 
 .h5p-course-presentation .h5p-element-button.h5p-element-button-big {
-  width: 2.334em;
-  height: 2.334em;
-  line-height: 2.334em;
+  font-size: 1.5em;
+  line-height: 1.4;
+}
+.h5p-course-presentation .h5p-element-button.h5p-element-button-big:before {
+  font-size: 0.87em;
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button,
@@ -445,6 +452,7 @@
 .h5p-course-presentation .h5p-interactivevideo-button,
 .h5p-course-presentation .h5p-truefalse-button {
   background: #981d99;
+  border-color: #e489f3; /* Used by focus effect */
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button:hover,
