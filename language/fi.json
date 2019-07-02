@@ -312,11 +312,11 @@
         },
         {
           "label": "Näytä \"Show solution\" painike yhteenvetosivulla",
-          "description": "Jos asetus otetaan käyttöön niin opiskelija näkee "näytä oikeat vastaukset" -painikkeen yhteenvetosivulla."
+          "description": "Jos asetus otetaan käyttöön niin opiskelija näkee \"näytä oikeat vastaukset\"-painikkeen yhteenvetosivulla."
         },
         {
           "label": "Näytä \"Retry\" painike yhteenvetosivulla",
-          "description": "Jos asetus otetaan käyttöön niin opiskelijalle näytetään "yritä uudelleen" -painike yhteenvetosivulla. Kannattaa huomioida että vaikka painiketta ei näytettäisi niin opiskelijat voivat aina halutessaan päivittää selaimensa näkymän ja yrittää kysymystä uudelleen."
+          "description": "Jos asetus otetaan käyttöön niin opiskelijalle näytetään \"yritä uudelleen\"-painike yhteenvetosivulla. Kannattaa huomioida että vaikka painiketta ei näytettäisi niin opiskelijat voivat aina halutessaan päivittää selaimensa näkymän ja yrittää kysymystä uudelleen."
         },
         {
           "label": "Näytä tulostuspainike",
