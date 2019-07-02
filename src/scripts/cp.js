@@ -1081,7 +1081,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     var $container = $buttonElement.closest('.h5p-popup-container');
 
     // Focus directly on content when popup is opened
-    $container.on('transitionend', function () {
+    setTimeout(() => {
       var $tabbables = $buttonElement.find(':input').add($buttonElement.find('[tabindex]'));
       if ($tabbables.length) {
         $tabbables[0].focus();
@@ -1090,7 +1090,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
         $buttonElement.attr('tabindex', 0);
         $buttonElement.focus();
       }
-    });
+    }, 200);
 
     // start activity
     if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
