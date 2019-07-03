@@ -165,7 +165,7 @@
         },
         {
           "label": "Tittel for \"Forrige side\"-knapp",
-          "default": "Forrige side"
+          "default": "Førre side"
         },
         {
           "label": "Tittel for \"Neste side\"-knapp",
@@ -173,7 +173,7 @@
         },
         {
           "label": "Tittel for \"Denne side\"-knapp",
-          "default": "Denne side"
+          "default": "Denne sida"
         },
         {
           "label": "Tittel for \"Siste side\"-knapp",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Tekst ved flere oppgaver på en side",
-          "default": "Flere oppgaver"
+          "default": "Fleire oppgåver"
         },
         {
           "label": "poengTekst",
@@ -221,7 +221,7 @@
         },
         {
           "label": "Skriv ut dialog ingress",
-          "default": "Hvordan vil du skrive ut denne presentasjonen?"
+          "default": "Korleis vil du skrive ut denne presentasjonen?"
         },
         {
           "label": "Tittel for \"Skriv ut alle sider\"-knapp",
@@ -229,7 +229,7 @@
         },
         {
           "label": "Tittel for \"Skriv ut nåværende side\"-knapp",
-          "default": "Skriv ut nåværende side"
+          "default": "Skriv ut nåværande side"
         },
         {
           "label": "Label for slides without a title",
