@@ -14,53 +14,53 @@
                     {},
                     {},
                     {
-                      "label": "Comments",
-                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                      "label": "Σχόλια",
+                      "description": "Tα σχόλια εμφανίζονται όταν ο χρήστης προβάλλει τις προτεινόμενες απαντήσεις για όλες τις διαφάνειες."
                     },
                     {
-                      "label": "Always display comments"
+                      "label": "Να γίνεται πάντα εμφάνιση σχολίων "
                     },
                     {
-                      "label": "Background Opacity"
+                      "label": "Διαφάνεια φόντου"
                     },
                     {
-                      "label": "Display as button"
+                      "label": "Κουμπί \"εμφάνιση ως\""
                     },
                     {
-                      "label": "Button size",
+                      "label": "Μέγεθος κουμπιού",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Μικρό"
                         },
                         {
-                          "label": "Big"
+                          "label": "Μεγάλο"
                         }
                       ]
                     },
                     {
-                      "label": "Title"
+                      "label": "Τίτλος"
                     },
                     {
-                      "label": "Go to",
+                      "label": "Μετάβαση σε",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Συγκεκριμένος αριθμός διαφάνειας"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "Επόμενη διαφάνεια"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "Προηγούμενη διαφάνεια"
                         }
                       ]
                     },
                     {
-                      "label": "Specific slide number",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "label": "Συγκεκριμένος αριθμός διαφάνειας",
+                      "description": "Μπορεί να εφαρμοστεί μόνο όταν έχει επιλεγεί o \"Συγκεκριμένος αριθμός διαφάνειας\""
                     },
                     {
-                      "label": "Invisible",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label": "Αόρατο",
+                      "description": "Βασικό, χωρίς τίτλο, χωρίς λίστα καρτελών. Προσοχή: Χρήστες με αναπηρίες ή χρήστες μόνο πληκτρολογίου θα δυσκολευτούν να χρησιμοποιήσουν αυτό το στοιχείο."
                     }
                   ]
                 }
@@ -69,11 +69,11 @@
               {
                 "fields": [
                   {
-                    "label": "Image",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "label": "Εικόνα",
+                    "description": "Η εικόνα φόντου θα πρέπει να έχει αναλογία ύψους/πλάτους 2:1 για την αποφυγή παραμόρφωσης. Εικόνες υψηλής ανάλυσης θα εμφανίζονται καλύτερα σε μεγαλύτερες οθόνες."
                   },
                   {
-                    "label": "Pick a color",
+                    "label": "Επιλογή χρώματος",
                     "default": ""
                   }
                 ]
@@ -83,25 +83,25 @@
         },
         {},
         {
-          "label": "Keyword list"
+          "label": "Λίστα λέξεων - κλειδιά"
         },
         {
-          "label": "Always show"
+          "label": "Να εμφανίζεται πάντα"
         },
         {
-          "label": "Auto hide"
+          "label": "Αυτόματη απόκρυψη"
         },
         {
-          "label": "Opacity"
+          "label": "Διαφάνεια"
         },
         {
           "fields": [
             {
-              "label": "Image",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+              "label": "Εικόνα",
+              "description": "Η εικόνα φόντου θα πρέπει να έχει αναλογία ύψους/πλάτους 2:1 για την αποφυγή παραμόρφωσης. Εικόνες υψηλής ανάλυσης θα εμφανίζονται καλύτερα σε μεγαλύτερες οθόνες."
             },
             {
-              "label": "Pick a color",
+              "label": "Επιλογή χρώματος",
               "default": ""
             }
           ]
@@ -109,264 +109,256 @@
       ]
     },
     {
-      "label": "Localize",
+      "label": "Προσαρμογή",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
-          "default": "Slide"
+          "label": "Μετάφραση για \"Διαφάνεια\"",
+          "default": "Διαφάνεια"
         },
         {
-          "label": "Translation for \"Score\"",
-          "default": "Score"
+          "label": "Μετάφραση για \"Βαθμολογία\"",
+          "default": "Βαθμολογία"
         },
         {
-          "label": "Translation for \"Your Score\"",
-          "default": "Your Score"
+          "label": "Μετάφραση για \"Η βαθμολογία σου\"",
+          "default": "Η βαθμολογία σου"
         },
         {
-          "label": "Translation for \"Max Score\"",
-          "default": "Max Score"
+          "label": "Μετάφραση για \"Μέγιστη βαθμολογία\"",
+          "default": "Μέγιστη βαθμολογία"
         },
         {
-          "label": "Translation for \"Total\"",
-          "default": "Total"
+          "label": "Μετάφραση για \"Σύνολο\"",
+          "default": "Σύνολο"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "Μετάφραση για \"Συνολική βαθμολογία\"",
+          "default": "Συνολική βαθμολογία"
         },
         {
-          "label": "Title for show solutions button",
-          "default": "Show solutions"
+          "label": "Ετικέτα κουμπιού εμφάνισης λύσης",
+          "default": "Λύση"
         },
         {
-          "label": "Text for the retry button",
+          "label": "Ετικέτα κουμπιού νέας προσπάθειας",
           "default": "Επανάληψη"
         },
         {
-          "label": "Text for the export text button",
-          "default": "Export text"
+          "label": "Ετικέτα κουμπιού εξαγωγής κειμένου",
+          "default": "Εξαγωγή κειμένου"
         },
         {
-          "label": "Hide keywords list button title",
-          "default": "Hide keywords list"
+          "label": "Ετικέτα κουμπιού απόκρυψης λίστας λέξεων - κλειδιά",
+          "default": "Απόκρυψη λίστας λέξεων - κλειδιά"
         },
         {
-          "label": "Show keywords list button title",
-          "default": "Show keywords list"
+          "label": "Ετικέτα κουμπιού εμφάνισης λίστας λέξεων - κλειδιά ",
+          "default": "Εμφάνιση λίστας λέξεων - κλειδιά "
         },
         {
-          "label": "Fullscreen label",
-          "default": "Fullscreen"
+          "label": "Ετικέτα προβολής πλήρους οθόνης",
+          "default": "Πλήρης οθόνη"
         },
         {
-          "label": "Exit fullscreen label",
-          "default": "Exit fullscreen"
+          "label": "Ετικέτα κλεισίματος προβολής πλήρους οθόνης",
+          "default": "Κλείσιμο προβολής πλήρους οθόνης"
         },
         {
-          "label": "Previous slide label",
-          "default": "Previous slide"
+          "label": "Ετικέτα προηγούμενης διαφάνειας",
+          "default": "Προηγούμενη διαφάνεια"
         },
         {
-          "label": "Next slide label",
-          "default": "Next slide"
+          "label": "Ετικέτα επόμενης διαφάνειας ",
+          "default": "Επόμενη διαφάνεια"
         },
         {
-          "label": "Current slide label",
-          "default": "Current slide"
+          "label": "Ετικέτα τρέχουσας διαφάνειας",
+          "default": "Τρέχουσα διαφάνεια"
         },
         {
-          "label": "Last slide label",
-          "default": "Last slide"
+          "label": "Ετικέτα τελευταίας διαφάνειας",
+          "default": "Τελευταία διαφάνεια"
         },
         {
-          "label": "Exit solution mode text",
-          "default": "Exit solution mode"
+          "label": "Κείμενο για έξοδο από λειτουργία λύσης",
+          "default": "Έξοδος από λειτουργία λύσης"
         },
         {
-          "label": "Solution mode text",
-          "default": "Solution Mode"
+          "label": "Κείμενο λειτουργίας λύσης",
+          "default": "Λειτουργία λύσης"
         },
         {
-          "label": "Text when multiple tasks on a page",
-          "default": "Multiple tasks"
+          "label": "Κείμενο όταν υπάρχουν πολλαπλές ασκήσεις σε μια σελίδα",
+          "default": "Πολλαπλές ασκήσεις"
         },
         {
-          "label": "Score message text",
-          "default": "You achieved:"
+          "label": "Κείμενο μηνύματος βαθμολογίας",
+          "default": "Έχεις πετύχει:"
         },
         {
-          "label": "Share to Facebook text",
-          "default": "Share on Facebook"
+          "label": "Κείμενο για κοινοποίηση στο Facebook",
+          "default": "Κοινοποίηση στο Facebook"
         },
         {
-          "label": "Share to Twitter text",
-          "default": "Share on Twitter"
+          "label": "Κείμενο για κοινοποίηση στο Twitter",
+          "default": "Κοινοποίηση στο Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "Κείμενο για κοινοποίηση στο Google+",
+          "default": "Κοινοποίηση στο Google+"
         },
         {
-          "label": "Title for summary slide",
-          "default": "Summary"
+          "label": "Τίτλος διαφάνειας σύνοψης",
+          "default": "Σύνοψη"
         },
         {
-          "label": "Title for the comments icon",
-          "default": "Show comments"
+          "label": "Τίτλος εικονιδίου σχολίων",
+          "default": "Εμφάνιση σχολίων"
         },
         {
-          "label": "Title for print button",
-          "default": "Print"
+          "label": "Ετικέτα για κουμπί εκτύπωσης",
+          "default": "Εκτύπωση"
         },
         {
-          "label": "Print dialog ingress",
-          "default": "How would you like to print this presentation?"
+          "label": "Παράθυρο διαλόγου: Εκτύπωση",
+          "default": "Πώς θέλετε να εκτυπώσετε την παρουσίαση;"
         },
         {
-          "label": "Label for \"Print all slides\" button",
-          "default": "Print all slides"
+          "label": "Ετικέτα για κουμπί \"Εκτύπωση όλων των διαφανειών\"",
+          "default": "Εκτύπωση όλων των διαφανειών"
         },
         {
-          "label": "Label for \"Print current slide\" button",
-          "default": "Print current slide"
+          "label": "Ετικέτα για κουμπί \"Εκτύπωση τρέχουσας διαφάνειας\"",
+          "default": "Εκτύπωση τρέχουσας διαφάνειας"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Ετικέτα για διαφάνειες χωρίς τίτλο",
+          "default": "Χωρίς τίτλο"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "Επεξήγηση πλοήγησης στις διαφάνειες για υποστηρικτικές τεχνολογίες",
+          "default": "Χρησιμοποίησε το δεξί και το αριστερό βέλος για εναλλαγή διαφανειών προς την αντίστοιχη κατεύθυνση"
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "Ετικέτα επιφάνειας προβολής διαφανειών για υποστηρικτικές τεχνολογίες",
+          "default": "Επιφάνειας προβολής διαφανειών. Χρησιμοποίησε το αριστερό και το δεξί βέλος για την πλοήγηση στις διαφάνειες."
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "Ετικέτα για μη ολοκληρωμένα διαδραστικά στοιχεία",
+          "default": "H διαφάνεια @slideName έχει μη ολοκληρωμένο διαδραστικό στοιχείο"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "Ετικέτα για ολοκληρωμένα διαδραστικά στοιχεία",
+          "default": "H διαφάνεια @slideName έχει ολοκληρωμένο διαδραστικό στοιχείο"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "Ετικέτα για μετρητή διαφανειών. Διαθέσιμες μεταβλητές οι @index, @total",
+          "default": "Διαφάνεια @index από @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "Ετικέτα για διαφάνεια που περιέχει μόνο σωστές απαντήσεις",
+          "default": "Η διαφάνεια @slideName έχει μόνο σωστές απαντήσεις"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "Ετικέτα για διαφάνεια που περιέχει λάθος απαντήσεις",
+          "default": "Η διαφάνεια @slideName έχει λάθος απαντήσεις"
         },
         {
-          "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "label": "Ετικέτα κουμπιών κοινοποίησης στα μέσα κοινωνικής δικτύωσης",
+          "default": "Κοινοποίηση αποτελέσματος"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
-          "description": "Available variables are @score and @maxScore"
+          "label": "Ανακοίνωση συνολικής βαθμολογίας για υποστηρικτικές τεχνολογίες",
+          "description": "Διαθέσιμες μεταβλητές οι @score και @maxScore",
+          "default": "Η βαθμολογία σου είναι @score από @maxScore"
         }
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "Ρυθμίσεις",
+      "description": "Αυτές οι ρυθμίσεις σας επιτρέπουν να αντικαταστήσετε τις προκαθορισμένες ρυθμίσεις λειτουργίας.",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "Ενεργοποίηση Λειτουργίας Ενεργούς Επιφάνειας",
+          "description": "Αφαιρεί τα κουμπιά πλοήγησης για τον τελικό χρήστη. Χρησιμοποιήστε για πλοήγηση το \"Μετάβαση στη Διαφάνεια\"."
         },
         {
-          "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "label": "Απόκρυψη διαφάνειας σύνοψης",
+          "description": "Αποκρύπτει τη διαφάνεια σύνοψης."
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Αντικατάσταση προκαθορισμένων ρυθμίσεων κουμπιού \"Λύση\"",
+          "description": "Αυτή η επιλογή καθορίζει εάν το κουμπί \"Λύση\" θα εμφανίζεται σε όλες τις ερωτήσεις, εάν θα είναι απενεργοποιημένο για όλες τις ερωτήσεις ή θα ρυθμίζεται για κάθε ερώτηση χωριστά.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Ενεργοποιημένη"
             },
             {
-              "label": "Disabled"
+              "label": "Απενεργοποιημένη"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Αντικατάσταση προκαθορισμένων ρυθμίσεων κουμπιού \"Επανάληψη\"",
+          "description": "Αυτή η επιλογή καθορίζει εάν το κουμπί \"Επανάληψη\" θα εμφανίζεται σε όλες τις ερωτήσεις, εάν θα είναι απενεργοποιημένο για όλες τις ερωτήσεις ή θα ρυθμίζεται για κάθε ερώτηση χωριστά.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Ενεργοποιημένη"
             },
             {
-              "label": "Disabled"
+              "label": "Απενεργοποιημένη"
             }
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Ενεργοποίηση κουμπιού εκτύπωσης",
+          "description": "Ενεργοποιεί το κουμπί εκτύπωσης."
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
-        },
-        {
-          "label": "Enable print button",
-          "description": "Enables the print button."
-        },
-        {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "Ρυθμίσεις για μέσα κοινωνικής δικτύωσης",
+          "description": "Αυτές οι επιλογές θα σας επιτρέψουν να αντικαταστήσετε τις προεπιλεγμένες ρυθμίσεις για τα μέσα κοινωνικής δικτύωσης. Οι κενές τιμές θα συμπληρωθούν αυτόματα εάν δοθεί ένας σύνδεσμος, αλλιώς οι τιμές θα παραχθούν.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Εμφάνιση εικονιδίου κοινοποίησης στο Facebook"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Ρυθμίσεις κοινοποίησης στο Facebook",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Σύνδεσμος κοινοποίησης στο Facebook",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Κείμενο κοινοποίησης στο Facebook",
+                  "default": "Πέτυχα @score στα @maxScore σε αυτή την άσκηση: @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Εμφάνιση εικονιδίου κοινοποίησης στο Twitter"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Ρυθμίσεις κοινοποίησης στο Twitter",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Κείμενο κοινοποίησης στο Twitter",
+                  "default": "Πέτυχα @score στα @maxScore σε αυτή την άσκηση: @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Σύνδεσμος κοινοποίησης στο Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "Hashtags κοινοποίησης στο Twitter",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Εμφάνιση εικονιδίου κοινοποίησης στο Google+"
             },
             {
-              "label": "Share to Google link",
+              "label": "Κοινοποίηση στο Google+",
               "default": "@currentpageurl"
             }
           ]
