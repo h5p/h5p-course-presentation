@@ -14,26 +14,26 @@
                     {},
                     {},
                     {
-                      "label": "Comments",
+                      "label": "Komentari",
                       "description": "The comments are shown when the user displays the suggested answers for all slides."
                     },
                     {
-                      "label": "Always display comments"
+                      "label": "Uvijek prikaži komentare"
                     },
                     {
                       "label": "Pozadinska zamućenost"
                     },
                     {
-                      "label": "Display as button"
+                      "label": "Prikaži kao dugme"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Veličina dugmeta",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Malo"
                         },
                         {
-                          "label": "Big"
+                          "label": "Veliko"
                         }
                       ]
                     },
@@ -41,25 +41,25 @@
                       "label": "Naziv"
                     },
                     {
-                      "label": "Go to",
+                      "label": "Idi na",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Broj određenog slajda"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "Sljedeći slajd"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "prethodni slajd"
                         }
                       ]
                     },
                     {
-                      "label": "Specific slide number",
+                      "label": "Broj određenog slajda",
                       "description": "Only applicable when 'Specific slide number' is selected"
                     },
                     {
-                      "label": "Invisible",
+                      "label": "Nevidljivo",
                       "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     }
                   ]
@@ -70,10 +70,10 @@
                 "fields": [
                   {
                     "label": "Slika",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
                   },
                   {
-                    "label": "Pick a color",
+                    "label": "Odaberi boju",
                     "default": ""
                   }
                 ]
@@ -83,25 +83,25 @@
         },
         {},
         {
-          "label": "Keyword list"
+          "label": "Lista ključnih riječi"
         },
         {
-          "label": "Always show"
+          "label": "Uvijek prikaži"
         },
         {
-          "label": "Auto hide"
+          "label": "Automatsko skrivanje"
         },
         {
-          "label": "Opacity"
+          "label": "Prozirnost"
         },
         {
           "fields": [
             {
               "label": "Slika",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+              "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
             },
             {
-              "label": "Pick a color",
+              "label": "Odaberi boju",
               "default": ""
             }
           ]
@@ -112,48 +112,48 @@
       "label": "Podešavanje ponašanja",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
-          "default": "Slide"
+          "label": "Prijevod za \"Slajd\"",
+          "default": "Slajd"
         },
         {
-          "label": "Translation for \"Score\"",
-          "default": "Score"
+          "label": "Prijevod za \"Rezultat\"",
+          "default": "Rezultat"
         },
         {
-          "label": "Translation for \"Your Score\"",
-          "default": "Your Score"
+          "label": "prijevod za \"Vaš rezultat\"",
+          "default": "Vaš rezultat"
         },
         {
-          "label": "Translation for \"Max Score\"",
-          "default": "Max Score"
+          "label": "Prijevod za \"Max rezultat\"",
+          "default": "Max rezultat"
         },
         {
-          "label": "Translation for \"Total\"",
-          "default": "Total"
+          "label": "Prijevod za \"Ukupno\"",
+          "default": "Ukupno"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "Prijevod za \"Ukupno rezultat\"",
+          "default": "Ukupno rezultat"
         },
         {
-          "label": "Title for show solutions button",
-          "default": "Show solutions"
+          "label": "Naziv za dugme prikaži rješenja",
+          "default": "Prikaži rješenja"
         },
         {
-          "label": "Text for the retry button",
+          "label": "Tekst za dugme ponovi",
           "default": "Ponovi"
         },
         {
-          "label": "Text for the export text button",
-          "default": "Export text"
+          "label": "Tekst za ekportiraj tekst dugme",
+          "default": "Exportiraj tekst"
         },
         {
-          "label": "Hide keywords list button title",
-          "default": "Hide keywords list"
+          "label": "Naziv za dugme sakrij listu ključnih riječi",
+          "default": "Sakrij listu ključnih riječi"
         },
         {
-          "label": "Show keywords list button title",
-          "default": "Show keywords list"
+          "label": "Naziv za dugme prikaži listu ključnih riječi",
+          "default": "Prikaži listu ključnih riječi"
         },
         {
           "label": "Omogući \"Ponovi\"",
@@ -164,127 +164,127 @@
           "default": "Izađi iz cijelog ekrana"
         },
         {
-          "label": "Previous slide label",
-          "default": "Previous slide"
+          "label": "Oznaka za prethodni slajd",
+          "default": "Prethodni slajd"
         },
         {
-          "label": "Next slide label",
-          "default": "Next slide"
+          "label": "Oznaka za sljedeći slajd",
+          "default": "Sljedeći slajd"
         },
         {
-          "label": "Current slide label",
-          "default": "Current slide"
+          "label": "Oznaka za trenutni slajd",
+          "default": "Trenutni slajd"
         },
         {
-          "label": "Last slide label",
-          "default": "Last slide"
+          "label": "Oznaka za zadnji slajd",
+          "default": "Zadnji slajd"
         },
         {
-          "label": "Exit solution mode text",
-          "default": "Exit solution mode"
+          "label": "Tekst za režim izla kao rješenje",
+          "default": "Režim izlaz kao rješenje"
         },
         {
-          "label": "Solution mode text",
-          "default": "Solution Mode"
+          "label": "Tekst za režim rješenja",
+          "default": "Režim rješenja"
         },
         {
           "label": "Text when multiple tasks on a page",
-          "default": "Multiple tasks"
+          "default": "Višestruki zadaci"
         },
         {
           "label": "Score message text",
-          "default": "You achieved:"
+          "default": "Postigli ste:"
         },
         {
           "label": "Share to Facebook text",
-          "default": "Share on Facebook"
+          "default": "Podijeli na Facebook"
         },
         {
           "label": "Share to Twitter text",
-          "default": "Share on Twitter"
+          "default": "Podijeli na Twitter"
         },
         {
           "label": "Share to Google text",
           "default": "Share on Google+"
         },
         {
-          "label": "Title for summary slide",
-          "default": "Summary"
+          "label": "Naziv za slajd rezimea",
+          "default": "Rezime"
         },
         {
           "label": "Title for the comments icon",
-          "default": "Show comments"
+          "default": "Prikaži komentare"
         },
         {
           "label": "Title for print button",
-          "default": "Print"
+          "default": "Štampaj"
         },
         {
           "label": "Print dialog ingress",
-          "default": "How would you like to print this presentation?"
+          "default": "Kako želite štampati ovu prezentaciju?"
         },
         {
           "label": "Label for \"Print all slides\" button",
-          "default": "Print all slides"
+          "default": "Štampaj sve slajdove"
         },
         {
           "label": "Label for \"Print current slide\" button",
-          "default": "Print current slide"
+          "default": "Štampaj ovaj slajd"
         },
         {
           "label": "Label for slides without a title",
-          "default": "No title"
+          "default": "Bez naziva"
         },
         {
           "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "default": "Koristi strelice lijevo i desno za listanje slajdova"
         },
         {
           "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "default": "Prezentacijsko platno. Koristi strelice desno i lijevo da listaš slajdove."
         },
         {
           "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "default": "@slideName sadrži nekompletnu interakciju"
         },
         {
           "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "default": "@slideName sadrži kompletnu interakciju"
         },
         {
           "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "default": "Slajd @index od @total"
         },
         {
           "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "default": "@slideName ima samo tačne odgovore"
         },
         {
           "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "default": "@slideName ima netačne odgovore"
         },
         {
           "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "default": "Podijeli rezultat"
         },
         {
           "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
+          "default": "Postigli ste @score od @maxScore bodova",
           "description": "Available variables are @score and @maxScore"
         }
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "Podešavanje ponašanja.",
+      "description": "Ova opcija će vam omogućiti da preskočite podešavanja ponašanja.",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
+          "label": "Aktivirajte režim active surface",
           "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
         },
         {
           "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "description": "Sakrij slajd rezimea."
         },
         {
           "label": "Poništi dugme \"Prikaži rješenje\"",
@@ -309,6 +309,14 @@
               "label": "Nemoj prikazati"
             }
           ]
+        },
+        {
+          "label": "Show \"Show solution\" button in the summary slide",
+          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+        },
+        {
+          "label": "Show \"Retry\" button in the summary slide",
+          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
         },
         {
           "label": "Enable print button",

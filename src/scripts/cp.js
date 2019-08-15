@@ -94,6 +94,10 @@ let CoursePresentation = function (params, id, extras) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
     this.enablePrintButton = !!params.override.enablePrintButton;
+    this.showSummarySlideSolutionButton = params.override.summarySlideSolutionButton !== undefined
+      ? params.override.summarySlideSolutionButton : true;
+    this.showSummarySlideRetryButton = params.override.summarySlideRetryButton !== undefined
+      ? params.override.summarySlideRetryButton : true;
 
     if (!!params.override.social) {
       this.enableTwitterShare = !!params.override.social.showTwitterShare;
@@ -239,9 +243,33 @@ CoursePresentation.prototype.attach = function ($container) {
      * Add focus to the wrapper so that it may capture keyboard events unless
      * the target or one of its parents should handle focus themselves.
      */
-    const focussableElements = ['input', 'textarea', 'a'];
-    if (!that.belongsToTagName(event.target, focussableElements, event.currentTarget) && !that.editor) {
-      that.$wrapper.focus();
+    const isFocusableElement = that.belongsToTagName(
+      event.target, ['input', 'textarea', 'a', 'button'], event.currentTarget);
+    // Does the target element have a tabIndex set?
+    const hasTabIndex = (event.target.tabIndex !== -1);
+    // The dialog container (if within a dialog)
+    const $dialogParent = $target.closest('.h5p-popup-container');
+    // Is target within a dialog
+    const isWithinDialog = $dialogParent.length !== 0;
+
+    if (!isFocusableElement && !hasTabIndex && !that.editor) {
+      if (!isWithinDialog) {
+        // We're not within a dialog, so we can seafely put focus on wrapper
+        that.$wrapper.focus();
+      }
+      else {
+        // Find the closest tabbable parent element
+        const $tabbable = $target.closest('[tabindex]');
+        // Is the parent tabbable element inside the popup?
+        if ($tabbable.closest('.h5p-popup-container').length === 1) {
+          // We'll set focus here
+          $tabbable.focus();
+        }
+        else {
+          // Fallback: set focus on close button
+          $dialogParent.find('.h5p-close-popup').focus();
+        }
+      }
     }
 
     if (that.presentation.keywordListEnabled &&
@@ -872,11 +900,6 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       'class': 'h5p-element-inner'
     }).appendTo($outerElementContainer);
 
-    if (libTypePmz === 'h5p-advancedtext' ||
-        libTypePmz === 'h5p-table') {
-      $innerElementContainer.attr('tabindex', 0);
-    }
-
     // H5P.Shape sets it's own size when line in selected
     instance.on('set-size', function (event) {
       for (let property in event.data) {
@@ -906,6 +929,9 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
         instance.on('controls', handleIV);
       }
     }
+
+    // For first slide
+    this.setOverflowTabIndex();
   }
 
   if (this.editor !== undefined) {
@@ -1079,7 +1105,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     var $container = $buttonElement.closest('.h5p-popup-container');
 
     // Focus directly on content when popup is opened
-    $container.on('transitionend', function () {
+    setTimeout(() => {
       var $tabbables = $buttonElement.find(':input').add($buttonElement.find('[tabindex]'));
       if ($tabbables.length) {
         $tabbables[0].focus();
@@ -1088,7 +1114,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
         $buttonElement.attr('tabindex', 0);
         $buttonElement.focus();
       }
-    });
+    }, 200);
 
     // start activity
     if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
@@ -1686,6 +1712,9 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     this.attachElements($nextSlide, slideNumber + 1);
   }
 
+  // For new slide
+  this.setOverflowTabIndex();
+
   // Stop media on old slide
   // this is done no mather what autoplay says
   var instances = this.elementInstances[previousSlideIndex];
@@ -1785,6 +1814,27 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
+};
+
+/**
+ * Set tab index for text containers that overflow with a scrollbar
+ */
+CoursePresentation.prototype.setOverflowTabIndex = function () {
+  this.$current.find('.h5p-element-inner').each( function () {
+    const $inner = $(this);
+
+    // Currently, this rule is for tables only
+    let innerHeight;
+    if (this.classList.contains('h5p-table')) {
+      innerHeight = $inner.find('.h5p-table').outerHeight();
+    }
+
+    // Add tabindex if there's an overflow (scrollbar depending on CSS)
+    const outerHeight = $inner.closest('.h5p-element-outer').innerHeight();
+    if (innerHeight !== undefined && outerHeight !== null && innerHeight > outerHeight) {
+      $inner.attr('tabindex', 0);
+    }
+  });
 };
 
 /**

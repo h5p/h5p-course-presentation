@@ -311,6 +311,14 @@
           ]
         },
         {
+          "label": "Show \"Show solution\" button in the summary slide",
+          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+        },
+        {
+          "label": "Show \"Retry\" button in the summary slide",
+          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+        },
+        {
           "label": "Habilitar botão de impressão",
           "description": "Habilita o botão de impressão."
         },

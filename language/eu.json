@@ -67,7 +67,7 @@
               },
               {},
               {
-                "eremuak": [
+                "fields": [
                   {
                     "label": "Irudia",
                     "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan."
@@ -300,7 +300,7 @@
         },
         {
           "label": "\"Saiatu berriro\" agertzeko botoia",
-          "description": "Aukera honen bidez erabikitzen da \"Saiatu berriro\" botoia galdetegi guztietan agertu behar den, inongo galdetegitan ez edo galdetegi bakoitzean ezarri behar den agertzea ala ez.",
+          "description": "Aukera honen bidez erabakitzen da \"Saiatu berriro\" botoia galdetegi guztietan agertu behar den, inongo galdetegitan ez edo galdetegi bakoitzean ezarri behar den agertzea ala ez.",
           "options": [
             {
               "label": "Gaitua"
@@ -309,6 +309,14 @@
               "label": "Desgaitua"
             }
           ]
+        },
+        {
+          "label": "Erakutsi \"Erakutsi emaitza\" botoia laburpen-diapositiban",
+          "description": "Gaituz gero, ikaslea galdera guztien emaitzak erakusteko aukera izango du laburpen-diapositibara heltzean"
+        },
+        {
+          "label": "Erakutsi \"Berriz saiatu\" botoia laburpen-diapositiban",
+          "description": "Gaituz gero, ikaslea galdera guztiak berriz saiatzeko aukera izango du laburpen-diapositibara heltzean. Kontuan izan botoia erakusten ez bada ere ikasleek galderak berriz saiatzeko aukera izango duela orria freskatuz gero."
         },
         {
           "label": "Gaitu inprimatzeko botoia",
@@ -350,7 +358,7 @@
                 },
                 {
                   "label": "Txiokatu Twitter hashtag-ak",
-                  "default": "h5p, course"
+                  "default": "h5p, ikastaroa"
                 }
               ]
             },
