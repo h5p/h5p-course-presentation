@@ -14,7 +14,7 @@
   "license": "MIT",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 19
+    "minorVersion": 22
   },
   "preloadedJs": [
     {
