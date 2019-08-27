@@ -1820,6 +1820,11 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
  * Set tab index for text containers that overflow with a scrollbar
  */
 CoursePresentation.prototype.setOverflowTabIndex = function () {
+  // On resume, this is not set yet, but it will be iovoked later
+  if (this.$current === undefined) {
+    return;
+  }
+
   this.$current.find('.h5p-element-inner').each( function () {
     const $inner = $(this);
 
