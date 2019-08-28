@@ -311,12 +311,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Εμφάνιση κουμπιού \"Εμφάνιση λύσης\" στη διαφάνεια σύνοψης",
+          "description": "Αν ενεργοποιηθεί, ο χρήστης φτάνοντας στη διαφάνεια σύνοψης θα μπορεί να δει τις λύσεις για όλες τις απαντήσεις"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Εμφάνιση κουμπιού \"Επανάληψη\" στη διαφάνεια σύνοψης",
+          "description": "Αν ενεργοποιηθεί, ο χρήστης φτάνοντας στη διαφάνεια σύνοψης θα μπορεί να επαναλάβει όλες τις ερωτήσεις. Σημειώνεται πως σε κάθε περίπτωση ο χρήστης θα μπορεί να επαναλάβει τις ερωτήσεις ανανεώνοντας (refresh) τη σελίδα."
         },
         {
           "label": "Ενεργοποίηση κουμπιού εκτύπωσης",
