@@ -625,12 +625,21 @@ CoursePresentation.prototype.hideKeywords = function () {
  * Show keywords
  */
 CoursePresentation.prototype.showKeywords = function () {
+  if (this.$keywordsWrapper.hasClass('h5p-open')) {
+    // Already showing
+    return;
+  }
+
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-expanded', 'true');
   }
   this.$keywordsWrapper.addClass('h5p-open');
-  this.$keywordsWrapper.find('li[tabindex="0"]').focus();
+
+  // Do not focus if always showing
+  if (!this.presentation.keywordListAlwaysShow) {
+    this.$keywordsWrapper.find('li[tabindex="0"]').focus();
+  }
 };
 
 /**
