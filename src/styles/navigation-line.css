@@ -367,6 +367,11 @@
   background-color: rgba(121, 171, 253, 0.2);
 }
 
+.using-mouse .h5p-course-presentation .h5p-footer .h5p-footer-button.h5p-footer-toggle-keywords:focus {
+  outline: none;
+  background-color: transparent;
+}
+
 .h5p-course-presentation .h5p-footer [aria-disabled="true"].h5p-footer-button:before,
 .h5p-course-presentation .h5p-footer [aria-disabled="true"].h5p-footer-button:after {
   color: #999;
