@@ -57,8 +57,8 @@ let CoursePresentation = function (params, id, extras) {
     retry: 'Retry',
     exportAnswers: 'Export text',
     close: 'Close',
-    hideKeywords: 'Hide keywords list',
-    showKeywords: 'Show keywords list',
+    hideKeywords: 'Hide sidebar navigation menu',
+    showKeywords: 'Show sidebar navigation menu',
     fullscreen: 'Fullscreen',
     exitFullscreen: 'Exit fullscreen',
     prevSlide: 'Previous slide',
@@ -87,7 +87,9 @@ let CoursePresentation = function (params, id, extras) {
     containsOnlyCorrect: "@slideName only has correct answers",
     containsIncorrectAnswers: '@slideName has incorrect answers',
     shareResult: 'Share Result',
-    accessibilityTotalScore: 'You got @score of @maxScore points in total'
+    accessibilityTotalScore: 'You got @score of @maxScore points in total',
+    accessibilityEnteredFullscreen: 'Entered fullscreen',
+    accessibilityExitedFullscreen: 'Exited fullscreen',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -206,6 +208,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
+          '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
           '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
@@ -228,6 +231,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   this.$container = $container;
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
+  this.$fullscreenAnnouncer = $container.find('.h5p-fullscreen-announcer');
   this.$slideTop = this.$slideAnnouncer.next();
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
@@ -278,6 +282,14 @@ CoursePresentation.prototype.attach = function ($container) {
         !$target.is('textarea, .h5p-icon-pencil, span')) {
       that.hideKeywords(); // Auto-hide keywords
     }
+  });
+
+  this.on('exitFullScreen', () => {
+    this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
+  });
+
+  this.on('enterFullScreen', () => {
+    this.$fullscreenAnnouncer.html(this.l10n.accessibilityEnteredFullscreen);
   });
 
   // Get intended base width from CSS.
@@ -614,6 +626,7 @@ CoursePresentation.prototype.hideKeywords = function () {
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     if (this.$keywordsButton !== undefined) {
       this.$keywordsButton.attr('title', this.l10n.showKeywords);
+      this.$keywordsButton.attr('aria-label', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-expanded', 'false');
       this.$keywordsButton.focus();
     }
@@ -632,6 +645,7 @@ CoursePresentation.prototype.showKeywords = function () {
 
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.hideKeywords);
+    this.$keywordsButton.attr('aria-label', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-expanded', 'true');
   }
   this.$keywordsWrapper.addClass('h5p-open');
@@ -798,7 +812,7 @@ CoursePresentation.prototype.keywordClick = function (index) {
     // Auto-hide keywords list
     this.hideKeywords();
   }
-  this.jumpToSlide(index, true, this.editor === undefined);
+  this.jumpToSlide(index, true);
 };
 
 CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
@@ -1088,6 +1102,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
   const exitFullScreen = () => {
     this.$footer.removeClass('footer-full-screen');
     this.$fullScreenButton.attr('title', this.l10n.fullscreen);
+    this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
     instance.trigger('resize');
   };
 
@@ -1692,7 +1707,7 @@ CoursePresentation.prototype.attachAllElements = function () {
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = true) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1854,9 +1869,9 @@ CoursePresentation.prototype.setOverflowTabIndex = function () {
 /**
  * Set slide number so it can be announced to assistive technologies
  * @param {number} slideNumber Index of slide that should have its' title announced
- * @param {boolean} [handleFocus=true] Moves focus to the top of the slide
+ * @param {boolean} [handleFocus=false] Moves focus to the top of the slide
  */
-CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = true) {
+CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = false) {
   let slideTitle = '';
 
   if (!this.navigationLine) {
