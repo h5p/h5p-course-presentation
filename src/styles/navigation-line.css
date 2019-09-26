@@ -368,7 +368,6 @@
 }
 
 .using-mouse .h5p-course-presentation .h5p-footer .h5p-footer-button.h5p-footer-toggle-keywords:focus {
-  outline: none;
   background-color: transparent;
 }
 
