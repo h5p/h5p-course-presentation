@@ -14,53 +14,53 @@
                     {},
                     {},
                     {
-                      "label": "Comments",
-                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                      "label": "Yorumlar",
+                      "description": "Yorumlar, kullanıcı bütün slaytlar için tavsiye edilen cevapları görüntülediği zaman gösterilir."
                     },
                     {
-                      "label": "Always display comments"
+                      "label": "Yorumları her zaman göster"
                     },
                     {
-                      "label": "Background Opacity"
+                      "label": "Arkaplan Opaklığı"
                     },
                     {
-                      "label": "Display as button"
+                      "label": "Düğme olarak göster"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Düğme boyutu",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Küçük"
                         },
                         {
-                          "label": "Big"
+                          "label": "Büyük"
                         }
                       ]
                     },
                     {
-                      "label": "Title"
+                      "label": "Başlık"
                     },
                     {
-                      "label": "Go to",
+                      "label": "Şuraya git",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Belli bir slayt numarası"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "Sonraki slayt"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "Önceki slayt"
                         }
                       ]
                     },
                     {
-                      "label": "Specific slide number",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "label": "Belli bir slayt numarası",
+                      "description": "Sadece 'Belli bir slayt numarası' seçiilyken uygulanır"
                     },
                     {
-                      "label": "Invisible",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label": "Görünmez",
+                      "description": "Varsayılan imleç, başlıksız ve sekme indeksi olmadan. Uyarı: Engelli kullanıcılar veya sadece klavyeden kullanan kullanıcılar bu elemanı kullanırken zorlanır."
                     }
                   ]
                 }
@@ -69,11 +69,11 @@
               {
                 "fields": [
                   {
-                    "label": "Image",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "label": "Görsel",
+                    "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
                   },
                   {
-                    "label": "Pick a color",
+                    "label": "Bir renk seçin",
                     "default": ""
                   }
                 ]
@@ -83,25 +83,25 @@
         },
         {},
         {
-          "label": "Keyword list"
+          "label": "Anahtar kelime listesi"
         },
         {
-          "label": "Always show"
+          "label": "Her zaman göster"
         },
         {
-          "label": "Auto hide"
+          "label": "Otomatik olarak gizle"
         },
         {
-          "label": "Opacity"
+          "label": "Opaklık"
         },
         {
           "fields": [
             {
-              "label": "Image",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+             "label": "Görsel",
+             "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
             },
             {
-              "label": "Pick a color",
+              "label": "Bir renk seçin",
               "default": ""
             }
           ]
@@ -109,264 +109,263 @@
       ]
     },
     {
-      "label": "Localize",
+      "label": "Yerelleştirin",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
-          "default": "Slide"
+          "label": "\"Slide\" çevirisi",
+          "default": "Slayt"
         },
         {
-          "label": "Translation for \"Score\"",
-          "default": "Score"
+          "label": "\"Score\" çevirisi",
+          "default": "Puan"
         },
         {
-          "label": "Translation for \"Your Score\"",
-          "default": "Your Score"
+          "label": "\"Your Score\" çevirisi",
+          "default": "Puanınız"
         },
         {
-          "label": "Translation for \"Max Score\"",
-          "default": "Max Score"
+          "label": "\"Max Score\" çevirisi",
+          "default": "En fazla Puam"
         },
         {
-          "label": "Translation for \"Total\"",
-          "default": "Total"
+          "label": "\"Total\" çevirisi",
+          "default": "Toplam"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "\"Total Score\" çevirisi",
+          "default": "Toplam Puan"
         },
         {
-          "label": "Title for show solutions button",
-          "default": "Show solutions"
+          "label": "Çözümleri göster düğmesinin başlığı",
+          "default": "Çözümleri göster"
         },
         {
-          "label": "Text for the retry button",
+          "label": "Yeniden dene düğmesinin metni",
           "default": "Yeniden dene"
         },
         {
-          "label": "Text for the export text button",
-          "default": "Export text"
+          "label": "Metni dışarıya aktar düğmesinin metni",
+          "default": "Metni dışarıya aktar"
         },
         {
-          "label": "Hide keywords list button title",
-          "default": "Hide keywords list"
+          "label": "Anahtar kelimeler listesini gizle düğmesi metni",
+          "default": "Anahtar kelimeler listesini gizle"
         },
         {
-          "label": "Show keywords list button title",
-          "default": "Show keywords list"
+          "label": "Anahtar kelimeler listesini göster düğmesi başlığı",
+          "default": "Anahtar kelimeler listesini göster"
         },
         {
-          "label": "Fullscreen label",
-          "default": "Fullscreen"
+          "label": "Tam ekran etiketi",
+          "default": "Tam ekran"
         },
         {
-          "label": "Exit fullscreen label",
-          "default": "Exit fullscreen"
+          "label": "Tam ekrandan çık etiketi",
+          "default": "Tam ekrandan çık"
         },
         {
-          "label": "Previous slide label",
-          "default": "Previous slide"
+          "label": "Önceki slayt etiketi",
+          "default": "Önceki slayt"
         },
         {
-          "label": "Next slide label",
-          "default": "Next slide"
+          "label": "Sonraki slayt etiketi",
+          "default": "Sonraki slayt"
         },
         {
-          "label": "Current slide label",
-          "default": "Current slide"
+          "label": "Geçerli slayt etiketi",
+          "default": "Geçerli slayt"
         },
         {
-          "label": "Last slide label",
-          "default": "Last slide"
+          "label": "Son slayt etiketi",
+          "default": "Sonraki slayt"         },
+        {
+          "label": "Çözüm kipinden çık metni",
+          "default": "Çözüm kipinden çık"
         },
         {
-          "label": "Exit solution mode text",
-          "default": "Exit solution mode"
+          "label": "Çözüm kipi metni",
+          "default": "Çözüm kipi"
         },
         {
-          "label": "Solution mode text",
-          "default": "Solution Mode"
+          "label": "Bir sayfada birden çok görev olduğu zaman gösterilecek metin",
+          "default": "Birden çok görev"
         },
         {
-          "label": "Text when multiple tasks on a page",
-          "default": "Multiple tasks"
+          "label": "Score message metni",
+          "default": "Başardınız:"
         },
         {
-          "label": "Score message text",
-          "default": "You achieved:"
+          "label": "Facebook'ta paylaş metni",
+          "default": "Facebook'ta paylaş"
         },
         {
-          "label": "Share to Facebook text",
-          "default": "Share on Facebook"
+          "label": "Twitter'de paylaş metni",
+          "default": "Twitter'de paylaş"
         },
         {
-          "label": "Share to Twitter text",
-          "default": "Share on Twitter"
+          "label": "Google+'da paylaş metni",
+          "default": "Google+'da paylaş"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
-        },
-        {
-          "label": "Title for summary slide",
+          "label": "Özet slaytının başlığı",
           "default": "Özet"
         },
         {
-          "label": "Title for the comments icon",
-          "default": "Show comments"
+          "label": "Yorumları göster simgesinin başlığı",
+          "default": "Yorumları göster"
         },
         {
-          "label": "Title for print button",
-          "default": "Print"
+          "label": "Yazdır düğmesinin başlığı",
+          "default": "Yazdır"
         },
         {
-          "label": "Print dialog ingress",
-          "default": "How would you like to print this presentation?"
+          "label": "Yazdırma diyalog kutucuğunun girişi",
+          "default": "Bu sunumu nasıl yazdırmak istersiniz?"
         },
         {
-          "label": "Label for \"Print all slides\" button",
-          "default": "Print all slides"
+          "label": "\"Bütün slaytları yazdır\" düğmesinin etiketi",
+          "default": "Bütün slaytları yazdır"
         },
         {
-          "label": "Label for \"Print current slide\" button",
-          "default": "Print current slide"
+          "label": "\"Geçerli slaytı yazdır\" düğmesinin etiketi",
+          "default": "Geçerli slaytı yazdır"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Başlığı olmayan slaytlar için etiket",
+          "default": "Başlıksız"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "Yardımcı teknolojiler için slayt gezintisinin açıklaması",
+          "default": "Kanvas seçili olduğunda slaytı o yönde değiştirmek için sol ve sağ yön oklarını kullanın"
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "Yardımcı teknolojiler için kanvas etiketi",
+          "default": "Sunum kanvası. Slaytlar arası geçiş yapmak için sol ve sağ yön oklarını kullanın."
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "Tamamlanmamış etkileşim olduğunda gösterilecek etiket",
+          "default": "@slideName tamamlanmamış etkileşim içermektedir"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "Tamamlanmış etkileşim olduğunda gösterilecek etiket",
+          "default": "@slideName tamamlanmış etkileşim içermektedir"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "Slayt sayacı etileti. Değişkenler: @index, @total",
+          "default": "Slayt @index / @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "Sadece doğru cevap içeren slaytlar için etiket",
+          "default": "@slideName sadece doğru cevap içerir"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "Sadece yanlış cevap içeren slaytlar için etiket",
+          "default": "@slideName sadece yanlış cevap içerir"
         },
         {
-          "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "label": "Sosyal paylaşım etiketi",
+          "default": "Sonucu Paylaş"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
-          "description": "Available variables are @score and @maxScore"
+          "label": "Yardımcı teknolojiler için toplam puan duyurusu",
+          "default": "Toplamda @score / @maxScore puan aldınız",
+          "description": "Mevcut değişkenler: @score ve @maxScore"
         }
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "Davranış ayarları.",
+      "description": "Bu seçenekler davranış ayarlarını geçersiz kılmanızı sağlar.",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "Etkin Yüzey Kipini Etkinleştirin",
+          "description": "Son kullanıcı için gezinti kontrollerini kaldırır. Gezinmek için Slayta Git'i kullanın."
         },
         {
-          "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "label": "Özet Slaytını Gizleyin",
+          "description": "Özet slaytını gizler."
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "\"Çözümü Göster\" düğmesini geçersiz kıl",
+          "description": "Bu seçeneğe göre \"Çözümü Göster\" düğmesi her soru için gösterilir, bütün sorular için etkisizleştirilir veya her bir soru için ayrı ayrı yapılandırılır. This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Etkinleştirildi"
             },
             {
-              "label": "Disabled"
+              "label": "Etkisizleştirildi"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "\"Yeniden dene\" düğmesini geçersiz kıl",
+          "description": "Bu seçeneğe göre \"Yeniden dene\" düğmesi her soru için gösterilir, bütün sorular için etkisizleştirilir veya her bir soru için ayrı ayrı yapılandırılır. This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Etkinleştirildi"
             },
             {
-              "label": "Disabled"
+              "label": "Etkisizleştirildi"
             }
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Özet slaytta \"Çözümü göster\" düğmesini göster",
+          "description": "Etkinleştirilirse, öğrenci özet slaytına ulaştığında bütün sorular için çözümü gösterebilecek"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Özet slaytta \"Yeniden dene\" düğmesini göster",
+          "description": "Etkinleştirilirse, öğrenci özet slaytına ulaştığında bütün soruları tekrar deneyebilecek. Bilginiz olsun, bu düğme görünmüyorsa bile öğrenciler sayfayı yenileyerek tekrar deneyebilirler."
         },
         {
-          "label": "Enable print button",
-          "description": "Enables the print button."
+          "label": "Yazdırma düğmesini etkinleştir",
+          "description": "Yazdırma düğmesini etkinleştirir."
         },
         {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "Sosyal Ayarlar",
+          "description": "Bu seçenekler sosyal davranış ayarlarını geçersiz kılmanıza izin verir. Eğer bir bağlantı sağlanırsa boş değerler otomatik olarak doldurulur, aksi takdirde bütün değerler oluşturulur.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Facebook paylaşım simgesini göster"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Facebook paylaşım ayarları",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Facebook'ta paylaşılacak bağlantı",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Facebook'ta paylaşılacak alıntı",
+                  "default": "@currentpageurl sayfasındaki bir görevde @maxScore üzerinden @score puan yaptım."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Twitter paylaşım sigesini göster"
             },
             {
               "label": "Twitter share settings",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Twitter'da paylaşılacak ifade",
+                  "default": "@currentpageurl sayfasındaki bir görevde @maxScore üzerinden @score puan yaptım."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Twitter'de paylaşılacak bağlantı",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
-                  "default": "h5p, course"
+                  "label": "Twitter'de paylaşılacak etiketler",
+                  "default": "h5p, ders"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Google+ paylaşım sigesini göster"
             },
             {
-              "label": "Share to Google link",
+              "label": "Google'de paylaşılacak bağlantı",
               "default": "@currentpageurl"
             }
           ]
