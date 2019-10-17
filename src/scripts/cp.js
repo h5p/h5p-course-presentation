@@ -1456,6 +1456,7 @@ CoursePresentation.prototype.initKeyEvents = function () {
 CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
+  var touchStarted = false;
   // var containerWidth = this.$slidesWrapper.width();
   // var containerPercentageForScrolling = 0.6; // 60% of container width used to reach endpoints with touch
   // var slidesNumbers = this.slides.length;
@@ -1474,33 +1475,32 @@ CoursePresentation.prototype.initTouchEvents = function () {
     };
   };
   var reset = transform('');
-  var getTranslateX = function ($element) {
-    var prefixes = ['', '-webkit-', '-moz-', '-ms-'];
-    for (var i = 0; i < prefixes.length; i++) {
-      var matrix = $element.css(prefixes[i] + 'transform');
-      if (matrix !== undefined) {
-        return parseInt(matrix.match(/\d+/g)[4]);
-      }
-    }
-  };
 
   this.$slidesWrapper.bind('touchstart', function (event) {
     isTouchJump = false;
     // Set start positions
     lastX = startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
+    const slideWidth = that.$slidesWrapper.width();
 
     // Set classes for slide movement and remember how much they move
-    prevX = -getTranslateX(that.$current.prev().addClass('h5p-touch-move'));
-    nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
+    prevX = (that.currentSlideIndex === 0 ? 0 : - slideWidth);
+    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth)
 
     // containerWidth = H5P.jQuery(this).width();
     // startTime = new Date().getTime();
 
     scroll = null;
+    touchStarted = true;
 
   }).bind('touchmove', function (event) {
     var touches = event.originalEvent.touches;
+
+    if (touchStarted) {
+      that.$current.prev().addClass('h5p-touch-move');
+      that.$current.next().addClass('h5p-touch-move');
+      touchStarted = false;
+    }
 
     // Determine horizontal movement
     lastX = touches[0].pageX;
@@ -1529,12 +1529,10 @@ CoursePresentation.prototype.initTouchEvents = function () {
       // Fast swipe to next slide
       if (movedX < 0) {
         // Move previous slide
-        that.$current.next().css(reset);
         that.$current.prev().css(transform('translateX(' + (prevX - movedX) + 'px'));
       }
       else {
         // Move next slide
-        that.$current.prev().css(reset);
         that.$current.next().css(transform('translateX(' + (nextX - movedX) + 'px)'));
       }
 
@@ -1563,6 +1561,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
         that.updateTouchPopup();
         return;
       }*/
+
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
       if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
