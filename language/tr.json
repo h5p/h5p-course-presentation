@@ -97,8 +97,8 @@
         {
           "fields": [
             {
-             "label": "Görsel",
-             "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
+              "label": "Görsel",
+              "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
             },
             {
               "label": "Bir renk seçin",
@@ -177,7 +177,8 @@
         },
         {
           "label": "Son slayt etiketi",
-          "default": "Sonraki slayt"         },
+          "default": "Sonraki slayt"
+        },
         {
           "label": "Çözüm kipinden çık metni",
           "default": "Çözüm kipinden çık"
@@ -270,6 +271,14 @@
           "label": "Yardımcı teknolojiler için toplam puan duyurusu",
           "default": "Toplamda @score / @maxScore puan aldınız",
           "description": "Mevcut değişkenler: @score ve @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },
