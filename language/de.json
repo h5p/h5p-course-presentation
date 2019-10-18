@@ -271,6 +271,14 @@
           "label": "Text der von Vorlesewerkzeugen für die Gesamtpunktzahl vorgelesen wird (Barrierefreiheit)",
           "default": "Du hast insgesamt @score von @maxScore Punkten erreicht.",
           "description": "Verfügbare Platzhalter sind @score und @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

@@ -271,6 +271,14 @@
           "label": "Оповещение об общем счете для вспомогательных технологий",
           "default": "Вы получили @score из @maxScore всего баллов",
           "description": "Доступные переменные @score и @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

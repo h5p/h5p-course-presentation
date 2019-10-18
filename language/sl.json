@@ -271,6 +271,14 @@
           "label": "Besedilo, ki ga bralnik zaslona uporabi za izražanje seštevka točk",
           "default": "Seštevek točk: @score od @maxScore točk",
           "description": "Spremenljivki sta @score in @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },
