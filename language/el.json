@@ -269,8 +269,16 @@
         },
         {
           "label": "Ανακοίνωση συνολικής βαθμολογίας για υποστηρικτικές τεχνολογίες",
-          "description": "Διαθέσιμες μεταβλητές οι @score και @maxScore",
-          "default": "Η βαθμολογία σου είναι @score από @maxScore"
+          "default": "Η βαθμολογία σου είναι @score από @maxScore",
+          "description": "Διαθέσιμες μεταβλητές οι @score και @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

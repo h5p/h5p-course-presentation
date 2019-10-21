@@ -271,6 +271,14 @@
           "label": "Laguntza teknologietarako puntuazio orokorraren iragarkia",
           "default": "@maxScore puntutik denetara @score puntu lortu dituzu",
           "description": "Aldagaiak dira @maxScore eta @score"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

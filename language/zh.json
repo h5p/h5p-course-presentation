@@ -271,6 +271,14 @@
           "label": "得分宣告",
           "default": "你得到 @score 分，總分是 @maxScore。",
           "description": "可用的變數為得分 @score 與總分 @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

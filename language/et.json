@@ -271,6 +271,14 @@
           "label": "Kogupunktisumma teavitus assisteeriva tehnoloogia puhul",
           "default": "Sinu punktisumma on @score punkti (maksimaalne võimalik on @maxScore)",
           "description": "Kasutatavad muutujad on @score ja @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

@@ -271,6 +271,14 @@
           "label": "Сповіщення про загальний рахунок для допоміжних технологій",
           "default": "Ви отримали @score із @maxScore всього балів",
           "description": "Доступні змінні @score і @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

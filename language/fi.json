@@ -271,6 +271,14 @@
           "label": "Kokonaispisteiden ilmoittaminen avustaville teknologioille",
           "default": "Sait @score pistettä @maxScore pisteestä",
           "description": "Käytässä olevat muuttujat ovat @score ja @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },
