@@ -103,6 +103,7 @@ const NavigationLine = (function ($) {
       const index = $(this).data('slideNumber');
       that.progresbarKeyboardControls.setTabbableByIndex(index);
       that.displaySlide(index);
+      that.cp.focus();
     };
 
     for (let i = 0; i < this.cp.slides.length; i += 1) {
