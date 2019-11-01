@@ -271,6 +271,14 @@
           "label": "Total score announcement for assistive technologies",
           "default": "You got @score of @maxScore points in total",
           "description": "Available variables are @score and @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

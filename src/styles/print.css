@@ -116,13 +116,6 @@
 .h5p-print-dialog .h5p-inner {
   display: inline-block;
   text-align: left;
-  height: auto;
-
-  /* Vertical center dialog */
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 .h5p-print-dialog .h5p-joubelui-button {
   display: block;

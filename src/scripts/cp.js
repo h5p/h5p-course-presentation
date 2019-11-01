@@ -57,8 +57,8 @@ let CoursePresentation = function (params, id, extras) {
     retry: 'Retry',
     exportAnswers: 'Export text',
     close: 'Close',
-    hideKeywords: 'Hide keywords list',
-    showKeywords: 'Show keywords list',
+    hideKeywords: 'Hide sidebar navigation menu',
+    showKeywords: 'Show sidebar navigation menu',
     fullscreen: 'Fullscreen',
     exitFullscreen: 'Exit fullscreen',
     prevSlide: 'Previous slide',
@@ -87,7 +87,9 @@ let CoursePresentation = function (params, id, extras) {
     containsOnlyCorrect: "@slideName only has correct answers",
     containsIncorrectAnswers: '@slideName has incorrect answers',
     shareResult: 'Share Result',
-    accessibilityTotalScore: 'You got @score of @maxScore points in total'
+    accessibilityTotalScore: 'You got @score of @maxScore points in total',
+    accessibilityEnteredFullscreen: 'Entered fullscreen',
+    accessibilityExitedFullscreen: 'Exited fullscreen',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -206,6 +208,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
+          '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
           '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
@@ -228,6 +231,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   this.$container = $container;
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
+  this.$fullscreenAnnouncer = $container.find('.h5p-fullscreen-announcer');
   this.$slideTop = this.$slideAnnouncer.next();
   this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
     that.initKeyEvents();
@@ -278,6 +282,14 @@ CoursePresentation.prototype.attach = function ($container) {
         !$target.is('textarea, .h5p-icon-pencil, span')) {
       that.hideKeywords(); // Auto-hide keywords
     }
+  });
+
+  this.on('exitFullScreen', () => {
+    this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
+  });
+
+  this.on('enterFullScreen', () => {
+    this.$fullscreenAnnouncer.html(this.l10n.accessibilityEnteredFullscreen);
   });
 
   // Get intended base width from CSS.
@@ -614,6 +626,7 @@ CoursePresentation.prototype.hideKeywords = function () {
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     if (this.$keywordsButton !== undefined) {
       this.$keywordsButton.attr('title', this.l10n.showKeywords);
+      this.$keywordsButton.attr('aria-label', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-expanded', 'false');
       this.$keywordsButton.focus();
     }
@@ -625,12 +638,22 @@ CoursePresentation.prototype.hideKeywords = function () {
  * Show keywords
  */
 CoursePresentation.prototype.showKeywords = function () {
+  if (this.$keywordsWrapper.hasClass('h5p-open')) {
+    // Already showing
+    return;
+  }
+
   if (this.$keywordsButton !== undefined) {
     this.$keywordsButton.attr('title', this.l10n.hideKeywords);
+    this.$keywordsButton.attr('aria-label', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-expanded', 'true');
   }
   this.$keywordsWrapper.addClass('h5p-open');
-  this.$keywordsWrapper.find('li[tabindex="0"]').focus();
+
+  // Do not focus if always showing
+  if (!this.presentation.keywordListAlwaysShow) {
+    this.$keywordsWrapper.find('li[tabindex="0"]').focus();
+  }
 };
 
 /**
@@ -789,7 +812,7 @@ CoursePresentation.prototype.keywordClick = function (index) {
     // Auto-hide keywords list
     this.hideKeywords();
   }
-  this.jumpToSlide(index, true, this.editor === undefined);
+  this.jumpToSlide(index, true);
 };
 
 CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
@@ -1079,6 +1102,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
   const exitFullScreen = () => {
     this.$footer.removeClass('footer-full-screen');
     this.$fullScreenButton.attr('title', this.l10n.fullscreen);
+    this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
     instance.trigger('resize');
   };
 
@@ -1432,6 +1456,7 @@ CoursePresentation.prototype.initKeyEvents = function () {
 CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
+  var touchStarted = false;
   // var containerWidth = this.$slidesWrapper.width();
   // var containerPercentageForScrolling = 0.6; // 60% of container width used to reach endpoints with touch
   // var slidesNumbers = this.slides.length;
@@ -1450,33 +1475,32 @@ CoursePresentation.prototype.initTouchEvents = function () {
     };
   };
   var reset = transform('');
-  var getTranslateX = function ($element) {
-    var prefixes = ['', '-webkit-', '-moz-', '-ms-'];
-    for (var i = 0; i < prefixes.length; i++) {
-      var matrix = $element.css(prefixes[i] + 'transform');
-      if (matrix !== undefined) {
-        return parseInt(matrix.match(/\d+/g)[4]);
-      }
-    }
-  };
 
   this.$slidesWrapper.bind('touchstart', function (event) {
     isTouchJump = false;
     // Set start positions
     lastX = startX = event.originalEvent.touches[0].pageX;
     startY = event.originalEvent.touches[0].pageY;
+    const slideWidth = that.$slidesWrapper.width();
 
     // Set classes for slide movement and remember how much they move
-    prevX = -getTranslateX(that.$current.prev().addClass('h5p-touch-move'));
-    nextX = getTranslateX(that.$current.next().addClass('h5p-touch-move'));
+    prevX = (that.currentSlideIndex === 0 ? 0 : - slideWidth);
+    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth)
 
     // containerWidth = H5P.jQuery(this).width();
     // startTime = new Date().getTime();
 
     scroll = null;
+    touchStarted = true;
 
   }).bind('touchmove', function (event) {
     var touches = event.originalEvent.touches;
+
+    if (touchStarted) {
+      that.$current.prev().addClass('h5p-touch-move');
+      that.$current.next().addClass('h5p-touch-move');
+      touchStarted = false;
+    }
 
     // Determine horizontal movement
     lastX = touches[0].pageX;
@@ -1505,12 +1529,10 @@ CoursePresentation.prototype.initTouchEvents = function () {
       // Fast swipe to next slide
       if (movedX < 0) {
         // Move previous slide
-        that.$current.next().css(reset);
         that.$current.prev().css(transform('translateX(' + (prevX - movedX) + 'px'));
       }
       else {
         // Move next slide
-        that.$current.prev().css(reset);
         that.$current.next().css(transform('translateX(' + (nextX - movedX) + 'px)'));
       }
 
@@ -1539,6 +1561,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
         that.updateTouchPopup();
         return;
       }*/
+
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
       if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
@@ -1683,7 +1706,7 @@ CoursePresentation.prototype.attachAllElements = function () {
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = true) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1845,9 +1868,9 @@ CoursePresentation.prototype.setOverflowTabIndex = function () {
 /**
  * Set slide number so it can be announced to assistive technologies
  * @param {number} slideNumber Index of slide that should have its' title announced
- * @param {boolean} [handleFocus=true] Moves focus to the top of the slide
+ * @param {boolean} [handleFocus=false] Moves focus to the top of the slide
  */
-CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = true) {
+CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = false) {
   let slideTitle = '';
 
   if (!this.navigationLine) {

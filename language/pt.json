@@ -271,6 +271,14 @@
           "label": "Mensagem de resultado para tecnologias de apoio",
           "default": "You got @score of @maxScore points in total",
           "description": "Variáveis disponíveis são @score e @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },

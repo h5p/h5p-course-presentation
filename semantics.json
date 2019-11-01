@@ -410,16 +410,16 @@
       {
         "name": "hideKeywords",
         "type": "text",
-        "label": "Hide keywords list button title",
+        "label": "Hide sidebar navigation menu button title",
         "importance": "low",
-        "default": "Hide keywords list"
+        "default": "Hide sidebar navigation menu"
       },
       {
         "name": "showKeywords",
         "type": "text",
-        "label": "Show keywords list button title",
+        "label": "Show sidebar navigation menu button title",
         "importance": "low",
-        "default": "Show keywords list"
+        "default": "Show sidebar navigation menu"
       },
       {
         "name": "fullscreen",
@@ -623,6 +623,18 @@
         "label": "Total score announcement for assistive technologies",
         "default": "You got @score of @maxScore points in total",
         "description": "Available variables are @score and @maxScore"
+      },
+      {
+        "name": "accessibilityEnteredFullscreen",
+        "type": "text",
+        "label": "Entered fullscreen announcement for assistive technologies",
+        "default": "Entered fullscreen"
+      },
+      {
+        "name": "accessibilityExitedFullscreen",
+        "type": "text",
+        "label": "Exited fullscreen announcement for assistive technologies",
+        "default": "Exited fullscreen"
       }
     ]
   },
