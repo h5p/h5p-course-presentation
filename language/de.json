@@ -273,12 +273,12 @@
           "description": "Verfügbare Platzhalter sind @score und @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "\"Vollbild aktiviert\"-Hinweis für Vorlesewerkzeuge",
+          "default": "Vollbild aktiviert"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "\"Vollbild deaktiviert\"-Hinweis für Vorlesewerkzeuge",
+          "default": "Vollbild deaktiviert"
         }
       ]
     },
