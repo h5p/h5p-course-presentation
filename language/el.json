@@ -273,12 +273,12 @@
           "description": "Διαθέσιμες μεταβλητές οι @score και @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Είσοδος σε πλήρη οθόνη ανακοίνωσης (κείμενο για υποστηρικτικές τεχνολογίες)",
+          "default": "Είσοδος σε πλήρη οθόνη"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Έξοδος από πλήρη οθόνη ανακοίνωσης (κείμενο για υποστηρικτικές τεχνολογίες)",
+          "default": "Έξοδος από πλήρη οθόνη"
         }
       ]
     },
