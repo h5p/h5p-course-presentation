@@ -14,53 +14,53 @@
                     {},
                     {},
                     {
-                      "label": "Comments",
-                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                      "label": "Kommentarer",
+                      "description": "Dessa kommentarer visas när användaren visar föreslagna svar för alla presentationsbilder."
                     },
                     {
-                      "label": "Always display comments"
+                      "label": "Visa alltid kommentarer"
                     },
                     {
-                      "label": "Background Opacity"
+                      "label": "Bakgrunds-opacitet"
                     },
                     {
-                      "label": "Display as button"
+                      "label": "Visa som knapp"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Knappstorlek",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Liten"
                         },
                         {
-                          "label": "Big"
+                          "label": "Stor"
                         }
                       ]
                     },
                     {
-                      "label": "Title"
+                      "label": "Titel"
                     },
                     {
-                      "label": "Go to",
+                      "label": "Gå till",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Specifik sida"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "Nästa sida"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "Föregående sida"
                         }
                       ]
                     },
                     {
-                      "label": "Specific slide number",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "label": "Specifik sida",
+                      "description": "Endast tillgänglig om 'Specifik sida' är valt"
                     },
                     {
-                      "label": "Invisible",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label": "Osynlig",
+                      "description": "Standardmarkör, ingen titel och inget tabb-index. Varning: Användare med funktionsvariation eller som endast använder tangentbord kan få problem."
                     }
                   ]
                 }
@@ -69,11 +69,11 @@
               {
                 "fields": [
                   {
-                    "label": "Image",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "label": "Bild",
+                    "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
                   },
                   {
-                    "label": "Pick a color",
+                    "label": "Välj en färg",
                     "default": ""
                   }
                 ]
@@ -83,25 +83,25 @@
         },
         {},
         {
-          "label": "Keyword list"
+          "label": "Lista med nyckelord"
         },
         {
-          "label": "Always show"
+          "label": "Visa alltid"
         },
         {
-          "label": "Auto hide"
+          "label": "Dölj automatiskt"
         },
         {
-          "label": "Opacity"
+          "label": "Opacitet"
         },
         {
           "fields": [
             {
-              "label": "Image",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+              "label": "Bild",
+              "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
             },
             {
-              "label": "Pick a color",
+              "label": "Välj en färg",
               "default": ""
             }
           ]
@@ -109,272 +109,272 @@
       ]
     },
     {
-      "label": "Localize",
+      "label": "Lokalisera",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
-          "default": "Slide"
+          "label": "Översättning för \"Sida\"",
+          "default": "Sida"
         },
         {
-          "label": "Translation for \"Score\"",
-          "default": "Score"
+          "label": "Översättning för \"Poäng\"",
+          "default": "Poäng"
         },
         {
-          "label": "Translation for \"Your Score\"",
-          "default": "Your Score"
+          "label": "Översättning för \"Din poäng\"",
+          "default": "Din poäng"
         },
         {
-          "label": "Translation for \"Max Score\"",
-          "default": "Max Score"
+          "label": "Översättning för \"Max poäng\"",
+          "default": "Max poäng"
         },
         {
-          "label": "Translation for \"Total\"",
+          "label": "Översättning för \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "Översättning för \"Total poäng\"",
+          "default": "Total poäng"
         },
         {
-          "label": "Title for show solutions button",
-          "default": "Show solutions"
+          "label": "Titel för knappen Visa lösningar",
+          "default": "Visa lösningar"
         },
         {
-          "label": "Text for the retry button",
-          "default": "Försök på nytt"
+          "label": "Text för knappen Försök igen",
+          "default": "Försök igen"
         },
         {
-          "label": "Text for the export text button",
-          "default": "Export text"
+          "label": "Text för knappen Exportera text",
+          "default": "Exportera text"
         },
         {
-          "label": "Hide keywords list button title",
-          "default": "Hide keywords list"
+          "label": "Titel för knappen Dölj nyckelordslista",
+          "default": "Dölj nyckelordslista"
         },
         {
-          "label": "Show keywords list button title",
-          "default": "Show keywords list"
+          "label": "Titel för knappen Visa nyckelordslista",
+          "default": "Visa nyckelordslista"
         },
         {
-          "label": "Fullscreen label",
-          "default": "Fullscreen"
+          "label": "Etikett för Helskärm",
+          "default": "Helskärm"
         },
         {
-          "label": "Exit fullscreen label",
-          "default": "Exit fullscreen"
+          "label": "Etikett för Avsluta helskärm",
+          "default": "Avsluta helskärm"
         },
         {
-          "label": "Previous slide label",
-          "default": "Previous slide"
+          "label": "Etikett för Föregående sida",
+          "default": "Föregående sida"
         },
         {
-          "label": "Next slide label",
-          "default": "Next slide"
+          "label": "Etikett för Nästa sida",
+          "default": "Nästa sida"
         },
         {
-          "label": "Current slide label",
-          "default": "Current slide"
+          "label": "Etikett för Aktuell sida",
+          "default": "Aktuell sida"
         },
         {
-          "label": "Last slide label",
-          "default": "Last slide"
+          "label": "Etikett för Sista sida",
+          "default": "Sista sida"
         },
         {
-          "label": "Exit solution mode text",
-          "default": "Exit solution mode"
+          "label": "Text för Avsluta lösningsläge",
+          "default": "Avsluta lösningsläge"
         },
         {
-          "label": "Solution mode text",
-          "default": "Solution Mode"
+          "label": "Text för Lösningsläge",
+          "default": "Lösningsläge"
         },
         {
-          "label": "Text when multiple tasks on a page",
-          "default": "Multiple tasks"
+          "label": "Text vid flera uppgifter på en sida",
+          "default": "Flera uppgifter"
         },
         {
-          "label": "Score message text",
-          "default": "You achieved:"
+          "label": "Text för meddelande om poäng",
+          "default": "Du fick:"
         },
         {
-          "label": "Share to Facebook text",
-          "default": "Share on Facebook"
+          "label": "Text för Dela på Facebook",
+          "default": "Dela på Facebook"
         },
         {
-          "label": "Share to Twitter text",
-          "default": "Share on Twitter"
+          "label": "Text för Dela på Twitter",
+          "default": "Dela på Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "Text för Dela på Google+",
+          "default": "Dela på Google+"
         },
         {
-          "label": "Title for summary slide",
-          "default": "Summary"
+          "label": "Titel för sammanfattningssida",
+          "default": "Sammanfattning"
         },
         {
-          "label": "Title for the comments icon",
-          "default": "Show comments"
+          "label": "Titel för kommentarsikon",
+          "default": "Visa kommentarer"
         },
         {
-          "label": "Title for print button",
-          "default": "Print"
+          "label": "Titel för skriv ut-knapp",
+          "default": "Skriv ut"
         },
         {
-          "label": "Print dialog ingress",
-          "default": "How would you like to print this presentation?"
+          "label": "Intro till skriva ut",
+          "default": "Hur vill du skriva ut denna presentation?"
         },
         {
-          "label": "Label for \"Print all slides\" button",
-          "default": "Print all slides"
+          "label": "Etikett för knappen \"Skriv ut alla sidor\" ",
+          "default": "Skriv ut alla sidor"
         },
         {
-          "label": "Label for \"Print current slide\" button",
-          "default": "Print current slide"
+          "label": "Etikett för knappen \"Skriv ut aktuell sida\" ",
+          "default": "Skriv ut aktuell sida"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Etikett för sidor utan titel",
+          "default": "Utan titel"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "Förklaring till navigering mellan sidor för tillgänglighetshjälpmede",
+          "default": "Använd pilarna vänster och höger för att byta sida åt olika håll"
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "Etikett för tillgänglighetshjälpmedel",
+          "default": "Använd pilarna vänster och höger för att byta sida"
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "Etikett för aktiviteter som inte är genomförda",
+          "default": "@slideName innehåller inte genomförda aktiviteter"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "Etikett för genomförda aktiviteter",
+          "default": "@slideName innehåller genomförda aktiviteter"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "Etikett för sidräknare. Variabler är @index, @total",
+          "default": "Sida @index av @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "Etikett för sidor som endast innehåller rätta svar",
+          "default": "@slideName har enbart rätta svar"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "Etikett för sidor som har felaktiga svar",
+          "default": "@slideName har felaktiga svar"
         },
         {
-          "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "label": "Etikett för socialt delande",
+          "default": "Dela resultat"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
-          "description": "Available variables are @score and @maxScore"
+          "label": "Meddelande om poäng för tillgänglighetshjälpmedel",
+          "default": "Du fick @score av @maxScore poäng totalt",
+          "description": "Tillgängliga variabler är @score och @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Meddelande om helskärmsläge för tillgänglighetshjälpmedel",
+          "default": "Aktiverat helskärmsläge"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Meddelande om avslutat helskärmsläge för  tillgänglighetshjälpmedel",
+          "default": "Avslutat helskärmsläge"
         }
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "Beteende-inställningar.",
+      "description": "Dessa inställningar gör det möjligt att ignorera beteende-inställningar.",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "Aktivera Active Surface Mode",
+          "description": "Tar bort navigeringskontroller för slutanvändaren. Använd Gå till sida för att navigera."
         },
         {
-          "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "label": "Dölj Sammanfattningssida",
+          "description": "Döljer sammanfattningssidan."
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Ignorera knappen \"Visa lösning\" ",
+          "description": "Denna inställning avgör om knappen \"Show Solution\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Aktiverad"
             },
             {
-              "label": "Disabled"
+              "label": "Inaktiverad"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Ignorera knappen \"Försök igen\" ",
+          "description": "Denna inställning avgör om knappen \"Försök igen\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Aktiverad"
             },
             {
-              "label": "Disabled"
+              "label": "Inaktiverad"
             }
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Visa knappen \"Visa lösning\" på sammanfattningssidan",
+          "description": "Om aktiverat, så kommer deltagaren kunna se lösningarna för alla frågor när de kommer till sammanfattningssidan"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Visa knappen \"Försök igen\" på sammanfattningssidan",
+          "description": "Om aktiverat, så kommer deltagaren kunna välja Försök igen på alla frågor när de kommer till sammanfattningssidan. Genom att uppdatera sidan kommer de kunna göra detta även om knappen inte visas."
         },
         {
-          "label": "Enable print button",
-          "description": "Enables the print button."
+          "label": "Aktivera knappen Skriv ut",
+          "description": "Aktiverar knappen Skriv ut."
         },
         {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "Sociala inställningar",
+          "description": "Dessa inställningar gör det möjligt att ignorera inställningar för sociala media.  Tomma värden kommer fyllas i automatiskt om en länk anges, alla övriga värden kommer att genereras.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Visa ikon för dela på Facebook"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Inställningar för att dela på Facebook",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Länk för dela på Facebook",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Citat för dela på Facebook",
+                  "default": "Jag fick @score av @maxScore på en uppgift på @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Visa ikon för dela på Twitter"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Inställningar för dela på Twitter",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Citat för dela på Twitter",
+                  "default": "Jag fick @score av @maxScore på en uppgift på @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Länk för dela på Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
-                  "default": "h5p, course"
+                  "label": "Hashtags för dela på Twitter",
+                  "default": "h5p, kurs"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Visa ikon för dela på Google+"
             },
             {
-              "label": "Share to Google link",
+              "label": "Länk för dela på Google",
               "default": "@currentpageurl"
             }
           ]
