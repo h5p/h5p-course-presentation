@@ -209,7 +209,7 @@
         },
         {
           "label": "Название для итогового слайда",
-          "default": "Сводка"
+          "default": "Итоги"
         },
         {
           "label": "Название для иконки комментария",
@@ -273,12 +273,12 @@
           "description": "Доступные переменные @score и @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Уведомлении о входе полноэкранный режим для вспомогательных технологий",
+          "default": "Вход в полноэкранный режим"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Уведомление о выходе из полноэкранного режима для вспомогательных технологий",
+          "default": "Выход из полноэкранного режима"
         }
       ]
     },
