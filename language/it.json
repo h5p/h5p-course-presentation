@@ -193,7 +193,7 @@
         },
         {
           "label": "Testo del messaggio del punteggio",
-          "default": "Hai ottenuto:"
+          "default": "Hai ottenuto: "
         },
         {
           "label": "Testo di condivisione su Facebook",
@@ -204,8 +204,8 @@
           "default": "Condividi su Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "Testo di condivisione su Google",
+          "default": "Condividi su Google+"
         },
         {
           "label": "Titolo della diapositiva di riepilogo",
@@ -273,12 +273,12 @@
           "description": "Le variabili disponibili sono @score e @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Annuncio di entrata a schermo intero per tecnologie assistive",
+          "default": "Entrata a schermo intero"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Annuncio di uscita da schermo intero per tecnologie assistive",
+          "default": "Uscita da schermo intero"
         }
       ]
     },
@@ -319,12 +319,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Mostra il pulsante \"Mostra soluzione\" nella slide di riepilogo",
+          "description": "Se abilitato, l'apprendente potrà vedere le soluzioni di tutte le domande quando arriva alla slide di riepilogo"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Mostra il pulsante \"Riprova\" nella slide di riepilogo",
+          "description": "Se abilitato, l'apprendente potrà riprovare tutte le domande quando arriva la slide di riepilogo. Dovrà essere avvertito che aggiornando la pagina potrà riprovare anche se questo pulsante non è mostrato."
         },
         {
           "label": "Attiva il pulsante di stampa",
