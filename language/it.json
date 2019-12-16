@@ -15,16 +15,16 @@
                     {},
                     {
                       "label": "Commenti",
-                      "description": "I commenti vengono mostrati quando l'utente visualizza le risposte suggerite per tutte le diapositive."
+                      "description": "I commenti sono mostrati quando l'apprendente vede le risposte suggerite per tutte le slide"
                     },
                     {
-                      "label": "Visualizza sempre i commenti"
+                      "label": "Mostra sempre i commenti"
                     },
                     {
                       "label": "Opacità dello sfondo"
                     },
                     {
-                      "label": "Visualizza come pulsante"
+                      "label": "Mostra come pulsante"
                     },
                     {
                       "label": "Dimensione del pulsante",
@@ -44,23 +44,23 @@
                       "label": "Vai a",
                       "options": [
                         {
-                          "label": "Numero diapositiva specifica"
+                          "label": "Numero slide specifica"
                         },
                         {
-                          "label": "Prossima diapositiva"
+                          "label": "Prossima slide"
                         },
                         {
-                          "label": "Diapositiva precedente"
+                          "label": "Slide precedente"
                         }
                       ]
                     },
                     {
-                      "label": "Numero diapositiva specifica",
-                      "description": "Applicabile soltanto quando è selezionato 'Numero diapositiva specifica'"
+                      "label": "Numero slide specifica",
+                      "description": "Applicabile soltanto quando è selezionato 'Numero slide specifica'"
                     },
                     {
                       "label": "Invisibile",
-                      "description": "Cursore predefinito, nessun titolo e nessun indice di scheda. Attenzione: gli utenti con disabilità o che utilizzano solo la tastiera avranno problemi con questo elemento."
+                      "description": "Cursore predefinito, nessun titolo e nessun indice di scheda. Attenzione: gli apprendenti con disabilità o che utilizzano solo la tastiera avranno problemi con questo elemento."
                     }
                   ]
                 }
@@ -70,7 +70,7 @@
                 "fields": [
                   {
                     "label": "Immagine",
-                    "description": "L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione avranno miglior resa sugli schermi più grandi."
+                    "description": "L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione avranno miglior resa sugli schermi più grandi"
                   },
                   {
                     "label": "Scegli un colore",
@@ -98,7 +98,7 @@
           "fields": [
             {
               "label": "Immagine",
-              "description": "L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione avranno miglior resa sugli schermi più grandi."
+              "description": "L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione avranno miglior resa sugli schermi più grandi"
             },
             {
               "label": "Scegli un colore",
@@ -109,11 +109,11 @@
       ]
     },
     {
-      "label": "Impostazioni di esecuzione",
+      "label": "Localizza",
       "fields": [
         {
-          "label": "Traduzione per \"Diapositiva\"",
-          "default": "Diapositiva"
+          "label": "Traduzione per \"Slide\"",
+          "default": "Slide"
         },
         {
           "label": "Traduzione per \"Punteggio\"",
@@ -148,11 +148,11 @@
           "default": "Esporta testo"
         },
         {
-          "label": "Nascondi il titolo del pulsante dell'elenco delle parole chiave",
+          "label": "Nascondi il titolo per il pulsante dell'elenco delle parole chiave",
           "default": "Nascondi l'elenco delle parole chiave"
         },
         {
-          "label": "Mostra il titolo del pulsante dell'elenco delle parole chiave",
+          "label": "Mostra il titolo per il pulsante dell'elenco delle parole chiave",
           "default": "Mostra l'elenco delle parole chiave"
         },
         {
@@ -164,20 +164,20 @@
           "default": "Esci da schermo intero"
         },
         {
-          "label": "Etichetta \"Diapositiva precedente\"",
-          "default": "Diapositiva precedente"
+          "label": "Etichetta \"Slide precedente\"",
+          "default": "Slide precedente"
         },
         {
-          "label": "Etichetta \"Prossima diapositiva\"",
-          "default": "Prossima diapositiva"
+          "label": "Etichetta \"Prossima slide\"",
+          "default": "Prossima slide"
         },
         {
-          "label": "Etichetta \"Diapositiva corrente\"",
-          "default": "Diapositiva corrente"
+          "label": "Etichetta \"Slide corrente\"",
+          "default": "Slide corrente"
         },
         {
-          "label": "Etichetta \"Ultima diapositiva\"",
-          "default": "Ultima diapositiva"
+          "label": "Etichetta \"Ultima slide\"",
+          "default": "Ultima slide"
         },
         {
           "label": "Testo di uscita dalla modalità di soluzione",
@@ -192,24 +192,24 @@
           "default": "Attività multiple"
         },
         {
-          "label": "Testo del messaggio del punteggio",
-          "default": "Hai ottenuto: "
+          "label": "Testo per il messaggio del punteggio",
+          "default": "Hai ottenuto:"
         },
         {
-          "label": "Testo di condivisione su Facebook",
+          "label": "Testo per la condivisione su Facebook",
           "default": "Condividi su Facebook"
         },
         {
-          "label": "Testo di condivisione su Twitter",
+          "label": "Testo per la condivisione su Twitter",
           "default": "Condividi su Twitter"
         },
         {
-          "label": "Testo di condivisione su Google",
+          "label": "Testo per la condivisione su Google+",
           "default": "Condividi su Google+"
         },
         {
-          "label": "Titolo della diapositiva di riepilogo",
-          "default": "Sommario"
+          "label": "Titolo della slide di riepilogo",
+          "default": "Riepilogo"
         },
         {
           "label": "Titolo dell'icona dei commenti",
@@ -220,16 +220,16 @@
           "default": "Stampa"
         },
         {
-          "label": "Stampa la finestra di dialogo d'ingresso",
+          "label": "Conferma di stampa",
           "default": "Come vorresti stampare questa presentazione?"
         },
         {
-          "label": "Etichetta per il pulsante \"Stampa tutte le diapositive\"",
-          "default": "Stampa tutte le diapositive"
+          "label": "Etichetta per il pulsante \"Stampa tutte le slide\"",
+          "default": "Stampa tutte le slide"
         },
         {
-          "label": "Etichetta per il pulsante \"Stampa la diapositiva corrente\"",
-          "default": "Stampa la diapositiva corrente"
+          "label": "Etichetta per il pulsante \"Stampa la slide corrente\"",
+          "default": "Stampa la slide corrente"
         },
         {
           "label": "Etichetta per slide senza titolo",
@@ -241,7 +241,7 @@
         },
         {
           "label": "Etichetta del canvas per tecnologie assistive",
-          "default": "Canvas di presentazione. Usa le frecce destra e sinistra per muoverti tra le slide."
+          "default": "Canvas di presentazione. Usa le frecce destra e sinistra per muoverti tra le slide"
         },
         {
           "label": "Etichetta per interazioni non completate",
@@ -268,38 +268,38 @@
           "default": "Condividi risultato"
         },
         {
-          "label": "Affermazione di punteggio totale per tecnologie assistive",
+          "label": "Avviso di punteggio totale per tecnologie assistive",
           "default": "Il tuo punteggio complessivo è @score su @maxScore",
           "description": "Le variabili disponibili sono @score e @maxScore"
         },
         {
-          "label": "Annuncio di entrata a schermo intero per tecnologie assistive",
+          "label": "Avviso di entrata a schermo intero per tecnologie assistive",
           "default": "Entrata a schermo intero"
         },
         {
-          "label": "Annuncio di uscita da schermo intero per tecnologie assistive",
+          "label": "Avviso di uscita da schermo intero per tecnologie assistive",
           "default": "Uscita da schermo intero"
         }
       ]
     },
     {
-      "label": "Impostazioni di esecuzione.",
-      "description": "Queste opzioni ti consentono di ignorare le impostazioni di esecuzione.",
+      "label": "Impostazioni di esecuzione",
+      "description": "Queste opzioni ti consentono di ignorare le impostazioni di esecuzione",
       "fields": [
         {
           "label": "Attiva la modalità di superficie attiva",
-          "description": "Rimuove i controlli di navigazione per l'utente finale. Per navigare usa l'opzione \"Vai alla diapositiva\"."
+          "description": "Rimuove i controlli di navigazione per l'utente finale. Per navigare usa l'opzione \"Vai alla slide\""
         },
         {
-          "label": "Nascondi la diapositiva di riepilogo",
-          "description": "Nasconde la diapositiva di riepilogo."
+          "label": "Nascondi la slide di riepilogo",
+          "description": "Nasconde la slide di riepilogo"
         },
         {
           "label": "Sovrascrivi il pulsante Mostra soluzione",
-          "description": "Questa opzione determina se il pulsante \"Mostra soluzione\" sarà visualizzato per tutte le domande, disabilitato per tutti o configurato individualmente per ogni domanda.",
+          "description": "Questa opzione permette di stabilire se il pulsante \"Mostra soluzione\" sarà mostrato o disabilitato per tutte le domande, o se sarà configurato individualmente per ciascuna",
           "options": [
             {
-              "label": "Attivato"
+              "label": "Abilitato"
             },
             {
               "label": "Disabilitato"
@@ -308,10 +308,10 @@
         },
         {
           "label": "Sovrascrivi il pulsante \"Riprova\"",
-          "description": "Questa opzione determina se il pulsante \"Riprova\" sarà visualizzato per tutte le domande, disabilitato per tutti o configurato individualmente per ogni domanda.",
+          "description": "Questa opzione permette di stabilire se il pulsante \"Riprova\" sarà mostrato o disabilitato per tutte le domande, o se sarà configurato individualmente per ciascuna",
           "options": [
             {
-              "label": "Attivato"
+              "label": "Abilitato"
             },
             {
               "label": "Disabilitato"
@@ -324,15 +324,15 @@
         },
         {
           "label": "Mostra il pulsante \"Riprova\" nella slide di riepilogo",
-          "description": "Se abilitato, l'apprendente potrà riprovare tutte le domande quando arriva la slide di riepilogo. Dovrà essere avvertito che aggiornando la pagina potrà riprovare anche se questo pulsante non è mostrato."
+          "description": "Se abilitato, l'apprendente potrà riprovare tutte le domande quando arriva la slide di riepilogo; inoltre, dovrà essere avvertito che aggiornando la pagina potrà riprovare anche se questo pulsante non è mostrato"
         },
         {
           "label": "Attiva il pulsante di stampa",
-          "description": "Attiva il pulsante di stampa."
+          "description": "Attiva il pulsante di stampa"
         },
         {
           "label": "Impostazioni social",
-          "description": "Queste opzioni ti permetteranno di sovrascrivere il comportamento delle tue impostazioni social. Valori vuoti saranno riempiti automaticamente se viene fornito un link, altrimenti tutti i valori saranno generati.",
+          "description": "Queste opzioni ti permetteranno di sovrascrivere il comportamento delle tue impostazioni social. Valori vuoti saranno riempiti automaticamente se viene fornito un link. Altrimenti tutti i valori saranno generati",
           "fields": [
             {
               "label": "Mostra l'icona di condivisione Facebook"
@@ -341,12 +341,12 @@
               "label": "Impostazioni di condivisione Facebook",
               "fields": [
                 {
-                  "label": "Condividi come link a Facebook",
+                  "label": "Link di condivisione a Facebook",
                   "default": "@currentpageurl"
                 },
                 {
                   "label": "Condividi come citazione su Facebook",
-                  "default": "Ho fatto @score su @maxScore in un compito a @currentpageurl."
+                  "default": "Ho fatto @score su @maxScore in un compito a @currentpageurl"
                 }
               ]
             },
@@ -357,15 +357,15 @@
               "label": "Impostazioni di condivisione Twitter",
               "fields": [
                 {
-                  "label": "Condividi su Twitter",
-                  "default": "Ho fatto @score su @maxScore in un compito a @currentpageurl."
+                  "label": "Condividi enunciato su Twitter",
+                  "default": "Ho fatto @score su @maxScore in un compito a @currentpageurl"
                 },
                 {
-                  "label": "Condividi come link a Twitter",
+                  "label": "Link di condivisione a Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Condividi come hashtag a Twitter",
+                  "label": "Condividi come hashtag su Twitter",
                   "default": "h5p, course"
                 }
               ]
@@ -374,7 +374,7 @@
               "label": "Mostra l'icona di condivisione Google+"
             },
             {
-              "label": "Condividi come link a Google",
+              "label": "Link di condivisione a Google+",
               "default": "@currentpageurl"
             }
           ]
