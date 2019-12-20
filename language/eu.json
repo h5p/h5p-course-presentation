@@ -273,12 +273,12 @@
           "description": "Aldagaiak dira @maxScore eta @score"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Laguntza teknologietarako pantaila-osoko iragarkian sartzea",
+          "default": "Pantaila-osoan sartzea"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Laguntza teknologietarako pantaila-osoko iragarkitik ateratzea",
+          "default": "Pantaila-osotik ateratzea"
         }
       ]
     },
