@@ -285,6 +285,8 @@ CoursePresentation.prototype.attach = function ($container) {
   });
 
   this.on('exitFullScreen', () => {
+    this.$footer.removeClass('footer-full-screen');
+    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
     this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
   });
 
