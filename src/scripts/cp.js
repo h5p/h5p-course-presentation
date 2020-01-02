@@ -757,10 +757,6 @@ CoursePresentation.prototype.resize = function () {
  */
 CoursePresentation.prototype.toggleFullScreen = function () {
   if (H5P.isFullscreen || this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
-    // Downscale fullscreen font size
-    this.$footer.removeClass('footer-full-screen');
-    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
-
     // Cancel fullscreen
     if (H5P.exitFullScreen !== undefined && H5P.fullScreenBrowserPrefix !== undefined) {
       H5P.exitFullScreen();
@@ -1101,10 +1097,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback, popupPosition = null) {
 
   // Handle exit fullscreen
-  const exitFullScreen = () => {
-    this.$footer.removeClass('footer-full-screen');
-    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
-    this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
+  const exitFullScreen = () => {    
     instance.trigger('resize');
   };
 
