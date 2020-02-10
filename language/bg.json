@@ -1,4 +1,4 @@
-﻿{
+{
   "semantics": [
     {
       "fields": [
@@ -271,6 +271,14 @@
           "label": "Анонс на резултата",
           "default": "Вие имате @score от общо @maxScore максимален брой точки",
           "description": "Възможните променливи за @score и @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "Entered fullscreen"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "Exited fullscreen"
         }
       ]
     },
@@ -309,6 +317,14 @@
               "label": "Неактивен"
             }
           ]
+        },
+        {
+          "label": "Show \"Show solution\" button in the summary slide",
+          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+        },
+        {
+          "label": "Show \"Retry\" button in the summary slide",
+          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
         },
         {
           "label": "Активирай бутона за принтиране",
