@@ -117,7 +117,7 @@
         },
         {
           "label": "Traducción para \"Score\"",
-          "default": "Score"
+          "default": "Puntaje"
         },
         {
           "label": "Traduction para \"Puntaje\"",
@@ -149,7 +149,7 @@
         },
         {
           "label": "Ocultar el botón de lista de palabras claves",
-          "default": "Ocultar lista de plalabras claves"
+          "default": "Ocultar lista de palabras claves"
         },
         {
           "label": "Mostrar el botón de lista de palabras claves",
@@ -181,7 +181,7 @@
         },
         {
           "label": "Etiqueta de Salir del modo de solución",
-          "default": "salir del modo de solución"
+          "default": "Salir del modo de solución"
         },
         {
           "label": "Etiqueta del Modo de solución",
@@ -273,12 +273,12 @@
           "description": "Las variables disponibles son @score y @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Anuncio que entró a pantalla completa para tecnologías asistivas",
+          "default": "Entró a pantalla completa"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Anuncio que salió de pantalla completa para tecnologías asistivas",
+          "default": "Salió de pantalla completa"
         }
       ]
     },
