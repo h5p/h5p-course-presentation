@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Komentari",
-                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                      "description": "Komentari se prikazuju kada se korisniku prikažu predloženi odgovori za sve slajdove."
                     },
                     {
                       "label": "Uvijek prikaži komentare"
@@ -50,7 +50,7 @@
                           "label": "Sljedeći slajd"
                         },
                         {
-                          "label": "prethodni slajd"
+                          "label": "Prethodni slajd"
                         }
                       ]
                     },
@@ -120,7 +120,7 @@
           "default": "Rezultat"
         },
         {
-          "label": "prijevod za \"Vaš rezultat\"",
+          "label": "Prijevod za \"Vaš rezultat\"",
           "default": "Vaš rezultat"
         },
         {
@@ -188,7 +188,7 @@
           "default": "Režim rješenja"
         },
         {
-          "label": "Text when multiple tasks on a page",
+          "label": "Tekst kada su višestruki zadaci na stranici",
           "default": "Višestruki zadaci"
         },
         {
@@ -205,7 +205,7 @@
         },
         {
           "label": "Share to Google text",
-          "default": "Share on Google+"
+          "default": "Podijeli na Google"
         },
         {
           "label": "Naziv za slajd rezimea",
@@ -274,11 +274,11 @@
         },
         {
           "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "default": "Odabran cijeli ekran"
         },
         {
           "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "default": "Napustanje cijelog ekrana"
         }
       ]
     },
@@ -287,8 +287,8 @@
       "description": "Ova opcija će vam omogućiti da preskočite podešavanja ponašanja.",
       "fields": [
         {
-          "label": "Aktivirajte režim active surface",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "Aktivirajte režim aktivne površine",
+          "description": "Uklanja navigaciju za krajnjeg korisnika. Koristi navigaciju Idi na slajd."
         },
         {
           "label": "Hide Summary Slide",
@@ -319,62 +319,62 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Prikaži \"Prikaži rješenje\" dugme u slajdu sažetka",
+          "description": "Ako je omogućeno, učenik će moći pokazati rješenja za sva pitanja kada se dođe do slajda sažetka"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Prikaži \"Ponovi\" dugme u slajdu sažetka",
+          "description": "Ako je omogućeno, učenik će moći ponovo dati odgovor na sva pitanja kada se dođe do slajda sažetka. Ako ovo dugme i ne postoji, učenik će sa osvježavanjem stranice moći početi ispočetka."
         },
         {
-          "label": "Enable print button",
-          "description": "Enables the print button."
+          "label": "Omogući dugme za štampanje",
+          "description": "Omogućava dugme za štampanje."
         },
         {
-          "label": "Social Settings",
+          "label": "Podešavanje društvenog ponašanja",
           "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Prikaži Facebook ikonu za dijeljenje"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Podešavanje dijeljenja na Facebooku",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Link za dijeljenje na Facebooku",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Podijeli na Facebooku",
+                  "default": "Osvojio sam @score od @maxScore u zadatku @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Prikaži Twitter ikonu za dijeljenje"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Podešavanje dijeljenja na Twitteru",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Podijeli na Twitteru",
+                  "default": "Osvojio sam @score od @maxScore u zadatku @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Link za dijeljenje na Twitteru",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "Haštag za dijeljenje na Twitteru",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Prikaži Google ikonu za dijeljenje"
             },
             {
-              "label": "Share to Google link",
+              "label": "Link za dijejenje na Google",
               "default": "@currentpageurl"
             }
           ]
