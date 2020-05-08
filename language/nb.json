@@ -128,12 +128,12 @@
           "default": "Topp poengsum"
         },
         {
-          "label": "Translation for \"Total\"",
+          "label": "Oversettelse for \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "Oversettelse for \"Total Score\"",
+          "default": "Total poengsum"
         },
         {
           "label": "\"Vis svar\" knapp",
@@ -232,8 +232,8 @@
           "default": "Skriv ut nåværende side"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Navn på slides uten tittel",
+          "default": "Ingen tittel"
         },
         {
           "label": "Explanation of slide navigation for assistive technologies",
@@ -253,19 +253,19 @@
         },
         {
           "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "default": "Slide @index av @total"
         },
         {
           "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "default": "@slideName har bare korrekte svar"
         },
         {
           "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "default": "@slideName har ukorrekte svar"
         },
         {
           "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "default": "Del resultater"
         },
         {
           "label": "Total score announcement for assistive technologies",
@@ -274,11 +274,11 @@
         },
         {
           "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "default": "Åpnet i fullskjerm"
         },
         {
           "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "default": "Avsluttet fullskjerm"
         }
       ]
     },
