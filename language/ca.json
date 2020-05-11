@@ -14,53 +14,53 @@
                     {},
                     {},
                     {
-                      "label": "Comments",
-                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                      "label": "Comentaris",
+                      "description": "Els comentaris són mostrats quan l'usuari desvetlla les respostes suggerides de totes les diapositives."
                     },
                     {
-                      "label": "Always display comments"
+                      "label": "Sempre mostra els comentaris"
                     },
                     {
-                      "label": "Background Opacity"
+                      "label": "Opacitat del fons"
                     },
                     {
-                      "label": "Display as button"
+                      "label": "Mostra com a botó"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Mida del botó",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Gran"
                         },
                         {
-                          "label": "Big"
+                          "label": "Petit"
                         }
                       ]
                     },
                     {
-                      "label": "Title"
+                      "label": "Títol"
                     },
                     {
-                      "label": "Go to",
+                      "label": "Ves a",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Especifica número de diapositiva"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "Diapositiva següent"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "Diapositiva anterior"
                         }
                       ]
                     },
                     {
-                      "label": "Specific slide number",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "label": "Especifica número de diapositiva",
+                      "description": "Només aplicable quan 'Especifica el número de diapositiva' està seleccionat."
                     },
                     {
                       "label": "Invisible",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "description": "Cursor per defecte, sense títol ni índex de pestanyes. Advertència: Els usuaris amb discapacitat o que només usen el teclat, poden tenir problemes utitlitzant aquest element."
                     }
                   ]
                 }
@@ -69,11 +69,11 @@
               {
                 "fields": [
                   {
-                    "label": "Image",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "label": "Imatge",
+                    "description": "La imatge de fons ha de tenir una ràtio amplada-alçada de 2:1 per evitar l'allargament . Les imatges amb alta resolució es mostraran millor en pantalles grans."
                   },
                   {
-                    "label": "Pick a color",
+                    "label": "Agafa un color",
                     "default": ""
                   }
                 ]
@@ -83,25 +83,25 @@
         },
         {},
         {
-          "label": "Keyword list"
+          "label": "Llista de paraules clau"
         },
         {
-          "label": "Always show"
+          "label": "Mostra sempre"
         },
         {
-          "label": "Auto hide"
+          "label": "Oculta automàticament"
         },
         {
-          "label": "Opacity"
+          "label": "Opacitat"
         },
         {
           "fields": [
             {
-              "label": "Image",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+              "label": "Imatge",
+              "description": "La imatge de fons ha de tenir una ràtio amplada-alçada de 2:1 per evitar l'allargament . Les imatges amb alta resolució es mostraran millor en pantalles grans."
             },
             {
-              "label": "Pick a color",
+              "label": "Agafa un color",
               "default": ""
             }
           ]
@@ -109,272 +109,272 @@
       ]
     },
     {
-      "label": "Localize",
+      "label": "Localitza",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
-          "default": "Slide"
+          "label": "Traducció per a \"Diapositiva\"",
+          "default": "Pàgina"
         },
         {
-          "label": "Translation for \"Score\"",
-          "default": "Score"
+          "label": "Traducció per a \"Puntuació\"",
+          "default": "Qualificació"
         },
         {
-          "label": "Translation for \"Your Score\"",
-          "default": "Your Score"
+          "label": "Traducció per a \"La teva puntuació\"",
+          "default": "La teva qualificació"
         },
         {
-          "label": "Translation for \"Max Score\"",
-          "default": "Max Score"
+          "label": "Traducció per a \"Màxima puntuació\"",
+          "default": "Màxima qualificació"
         },
         {
-          "label": "Translation for \"Total\"",
+          "label": "TTraducció per a \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Translation for \"Total Score\"",
-          "default": "Total Score"
+          "label": "Traducció per a \"Puntuació total\"",
+          "default": "Qualificació total"
         },
         {
-          "label": "Title for show solutions button",
-          "default": "Show solutions"
+          "label": "Títol pel botó de les solucions",
+          "default": "Mostra solucions"
         },
         {
-          "label": "Text for the retry button",
+          "label": "Text pel botó de reintent",
           "default": "Tornar-ho a provar"
         },
         {
-          "label": "Text for the export text button",
-          "default": "Export text"
+          "label": "Text per al botó d'exportar text",
+          "default": "Exporta text"
         },
         {
-          "label": "Hide keywords list button title",
-          "default": "Hide keywords list"
+          "label": "Amaga el títol del botó de llista de paraules clau",
+          "default": "Amaga la llista de paraules clau"
         },
         {
-          "label": "Show keywords list button title",
-          "default": "Show keywords list"
+          "label": "Mostra el títol del botó de llista de paraules clau",
+          "default": "Mostra la llista de paraules clau"
         },
         {
-          "label": "Fullscreen label",
-          "default": "Fullscreen"
+          "label": "Etiqueta de pantalla completa",
+          "default": "Pantalla completa"
         },
         {
-          "label": "Exit fullscreen label",
-          "default": "Exit fullscreen"
+          "label": "Etiqueta de sortir de paraula completa",
+          "default": "Surt de la Pantalla completa"
         },
         {
-          "label": "Previous slide label",
-          "default": "Previous slide"
+          "label": "Etiqueta de diapositiva anterior",
+          "default": "Diapositiva anterior"
         },
         {
-          "label": "Next slide label",
-          "default": "Next slide"
+          "label": "Etiqueta de diapositiva següent",
+          "default": "Diapositiva següent"
         },
         {
-          "label": "Current slide label",
-          "default": "Current slide"
+          "label": "Etiqueta de diapositiva actual",
+          "default": "Diapositiva actual"
         },
         {
-          "label": "Last slide label",
-          "default": "Last slide"
+          "label": "Etiqueta d'útlima diapositiva",
+          "default": "Última diapositiva"
         },
         {
-          "label": "Exit solution mode text",
-          "default": "Exit solution mode"
+          "label": "Text de Sortida del mode solucionari",
+          "default": "Sortir del mode solucionari"
         },
         {
-          "label": "Solution mode text",
-          "default": "Solution Mode"
+          "label": "Text del Mode Solucionari",
+          "default": "Mode Solucionari"
         },
         {
-          "label": "Text when multiple tasks on a page",
-          "default": "Multiple tasks"
+          "label": "Text de diverses tasques en una pàgina",
+          "default": "Diverses activitats"
         },
         {
-          "label": "Score message text",
-          "default": "You achieved:"
+          "label": "Text del missatge de puntuació",
+          "default": "Has aconseguit:"
         },
         {
-          "label": "Share to Facebook text",
-          "default": "Share on Facebook"
+          "label": "Text de Comparteix a Facebook",
+          "default": "Comparteix a Facebook"
         },
         {
-          "label": "Share to Twitter text",
-          "default": "Share on Twitter"
+          "label": "Text de Comparteix a Twitter",
+          "default": "Comparteix a Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
+          "label": "Text de Comparteix a Google",
+          "default": "Comparteix a Google+"
         },
         {
-          "label": "Title for summary slide",
+          "label": "Títol de la diapositiva resum",
           "default": "Resum"
         },
         {
-          "label": "Title for the comments icon",
-          "default": "Show comments"
+          "label": "Títol per a mostrar comentaris",
+          "default": "Mostra comentaris"
         },
         {
-          "label": "Title for print button",
-          "default": "Print"
+          "label": "Títol pel botó d'imprimir",
+          "default": "Imprimir"
         },
         {
-          "label": "Print dialog ingress",
-          "default": "How would you like to print this presentation?"
+          "label": "Diàleg d'impressió",
+          "default": "Esteu segurs d'imprimir aquesta presentació?"
         },
         {
-          "label": "Label for \"Print all slides\" button",
-          "default": "Print all slides"
+          "label": "Etiqueta pel botó \"Imprimeix totes les diapositives\" ",
+          "default": "Imprimeix totes les diapositives"
         },
         {
-          "label": "Label for \"Print current slide\" button",
-          "default": "Print current slide"
+          "label": "Etiqueta pel botó \"Imprimeix la diapositiva actual\" ",
+          "default": "Imprimeix la diapositiva actual"
         },
         {
-          "label": "Label for slides without a title",
-          "default": "No title"
+          "label": "Etiqueta per a les diapositives sense títol",
+          "default": "Sense títol"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "label": "Explicació de la navegació de diapositives per a tecnologies d'assistència",
+          "default": "Utilitzeu la fletxa esquerra i dreta per canviar la diapositiva en aquesta direcció cada vegada que seleccioneu el llenç"
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "label": "Etiqueta de llenç per a tecnologies assistencials",
+          "default": "Presentació del llenç. Utilitzeu la fletxa esquerra i dreta per desplaçar-se entre les diapositives."
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "label": "Etiqueta per a interaccions incompletes",
+          "default": "@slideName conté interaccions incompletes"
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "label": "Etiqueta per a interaccions completes",
+          "default": "@slideName conté interaccions completes"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "label": "Etiqueta per al ccomptador de diapositives. Les variables són @index, @total",
+          "default": "Diapositiva @index de @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "label": "Etiqueta per les diapositives que només contenen respostes correctes",
+          "default": "@slideName té totes les respostes correctes"
         },
         {
-          "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "label": "Etiqueta per les diapositives que contenen respostes incorrectes",
+          "default": "@slideName te respostes incorrectes"
         },
         {
-          "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "label": "Etiqueta per a la barra Social",
+          "default": "Comparteix els resultats"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
-          "description": "Available variables are @score and @maxScore"
+          "label": "Anunci de puntuació total de tecnologies d'assistència",
+          "default": "Has aconseguit @score de @maxScore punts en total",
+          "description": "Les variable disponibles són @score i @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Anunci d'entrada a pantalla completa per a tecnologies assistives",
+          "default": "Heu entrat a pantalla completa"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Anunci de sortida a pantalla completa per a tecnologies assistives",
+          "default": "Heu sortit de pantalla completa"
         }
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "Configuració de  la retroacció.",
+      "description": "Aquestes opcions et permeten modificar el comportament de les retroaccions.",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "Activa el mode de superfície activa",
+          "description": "Elimina els controls de navegació per a l’usuari final. Utilitzeu 'ves a la diapositiva' per navegar."
         },
         {
-          "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "label": "Amagueu la diapositiva resum",
+          "description": "Amaga la diapositiva resum."
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Anula el botó \"Mostra solució\"",
+          "description": "Aquesta opció determina si es mostrarà el botó \"Mostra solució\" per a totes les preguntes, desactivades, per a totes o configurades de manera individual per a cada pregunta.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Activat"
             },
             {
-              "label": "Disabled"
+              "label": "Desactivat"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Anula el botó \"Reintenta\"",
+          "description": "Aquesta opció determina si es mostrarà el botó \"Reintenta\" per a totes les preguntes, desactivades, per a totes o configurades de manera individual per a cada pregunta.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Activat"
             },
             {
-              "label": "Disabled"
+              "label": "Desactivat"
             }
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Mostra \"Mostra solució\" a la diapositiva del resum",
+          "description": "Si està activat, l’aprenent podrà mostrar les solucions per a totes les preguntes quan arribin a la diapositiva resum"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Mostra \"Reintenta\" a la diapositiva del resum",
+          "description": "Si està activat, l’aprenent podrà tornar a intentar totes les preguntes quan arribin a la diapositiva resum. Tingueu en compte que, actualitzant la pàgina, els estudiants podran tornar a intentar-ho, fins i tot si aquest botó no es mostra."
         },
         {
-          "label": "Enable print button",
-          "description": "Enables the print button."
+          "label": "Activa el botó Imprimir",
+          "description": "Activa el botó Imprimir."
         },
         {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "Configuració Social",
+          "description": "Aquestes opcions us permetran substituir la configuració de comportament social. Els valors buits s'emplenaran automàticament si es proporciona un enllaç, si no, es generaran tots els valors.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Mostra la icona per compartir a Facebook"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Configuració de compartir a Facebook",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Comparteix a l’enllaç de Facebook",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Comparteix a la cita de Facebook",
+                  "default": "He obtingut @score de @maxScore en una tasca a @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Mostra la icona per compartir a Twitter"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Configuració de compartir a Twitter",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Declaració a Twitter",
+                  "default": "He obtingut @score de @maxScore en una tasca a @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Comparteix l’enllaç a Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "Comparteix als hashtags de Twitter",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Mostra la icona per compartir contingut de Google+"
             },
             {
-              "label": "Share to Google link",
+              "label": "Comparteix l’enllaç a Google",
               "default": "@currentpageurl"
             }
           ]
