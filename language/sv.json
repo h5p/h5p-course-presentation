@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Kommentarer",
-                      "description": "Dessa kommentarer visas när användaren visar föreslagna svar för alla presentationsbilder."
+                      "description": "Dessa kommentarer visas när användaren visar föreslagna svar för alla sidor."
                     },
                     {
                       "label": "Visa alltid kommentarer"
