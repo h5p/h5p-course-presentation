@@ -181,7 +181,7 @@
         },
         {
           "label": "Tittel for \"Avslutt fasit modus\"-knapp",
-          "default": "Avslutt fasit modus"
+          "default": "Avslutt fasitmodus"
         },
         {
           "label": "Avslutt fasit modus tekst",
@@ -205,7 +205,7 @@
         },
         {
           "label": "Share to Google text",
-          "default": "Share on Google+"
+          "default": "Del på Google+"
         },
         {
           "label": "Tittel for \"Oppsummering\" siden",
@@ -229,56 +229,56 @@
         },
         {
           "label": "Tittel for \"Skriv ut nåværende side\"-knapp",
-          "default": "Skriv ut nåværande side"
+          "default": "Skriv ut noverande side"
         },
         {
           "label": "Label for slides without a title",
-          "default": "No title"
+          "default": "Ingen tittel"
         },
         {
           "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "default": "Bruk venstre og høgre piltast for å skifte lysbilete i den retninga når lerret er valt"
         },
         {
           "label": "Canvas label for assistive technologies",
-          "default": "Presentation canvas. Use left and right arrow to move between slides."
+          "default": "Presentasjonslerret. Bruk høgre og venstre piltast til å navigere mellom lysbilete."
         },
         {
           "label": "Label for uncompleted interactions",
-          "default": "@slideName contains not completed interaction"
+          "default": "@slideName inneheld ikkje avslutta interaksjon"
         },
         {
           "label": "Label for completed interactions",
-          "default": "@slideName contains completed interaction"
+          "default": "@slideName inneheld avslutta interaksjon"
         },
         {
           "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Slide @index of @total"
+          "default": "Lysbilete @index av @total"
         },
         {
           "label": "Label for slides that only contains correct answers",
-          "default": "@slideName only has correct answers"
+          "default": "@slideName har berre rette svar"
         },
         {
           "label": "Label for slides that has incorrect answers",
-          "default": "@slideName has incorrect answers"
+          "default": "@slideName har feil svar"
         },
         {
           "label": "Label for social sharing bar",
-          "default": "Share Result"
+          "default": "Del resultat"
         },
         {
           "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
+          "default": "Du fekk @score av totalt @maxScore poeng",
           "description": "Available variables are @score and @maxScore"
         },
         {
           "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "default": "Går inn i fullskjerm"
         },
         {
           "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "default": "Gjekk ut av fullskjerm"
         }
       ]
     },
