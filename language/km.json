@@ -1,0 +1,385 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Comments",
+                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                    },
+                    {
+                      "label": "Always display comments"
+                    },
+                    {
+                      "label": "Background Opacity"
+                    },
+                    {
+                      "label": "Display as button"
+                    },
+                    {
+                      "label": "Button size",
+                      "options": [
+                        {
+                          "label": "Small"
+                        },
+                        {
+                          "label": "Big"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Title"
+                    },
+                    {
+                      "label": "Go to",
+                      "options": [
+                        {
+                          "label": "Specific slide number"
+                        },
+                        {
+                          "label": "Next slide"
+                        },
+                        {
+                          "label": "Previous slide"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Specific slide number",
+                      "description": "Only applicable when 'Specific slide number' is selected"
+                    },
+                    {
+                      "label": "Invisible",
+                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "label": "Image",
+                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                  },
+                  {
+                    "label": "Pick a color",
+                    "default": ""
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Keyword list"
+        },
+        {
+          "label": "Always show"
+        },
+        {
+          "label": "Auto hide"
+        },
+        {
+          "label": "Opacity"
+        },
+        {
+          "fields": [
+            {
+              "label": "Image",
+              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+            },
+            {
+              "label": "Pick a color",
+              "default": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Localize",
+      "fields": [
+        {
+          "label": "Translation for \"Slide\"",
+          "default": "ស្លាយ"
+        },
+        {
+          "label": "Translation for \"Score\"",
+          "default": "ពិន្ទុ"
+        },
+        {
+          "label": "Translation for \"Your Score\"",
+          "default": "ពិន្ទុរបស់អ្នក"
+        },
+        {
+          "label": "Translation for \"Max Score\"",
+          "default": "ពិន្ទុអតិបរមា"
+        },
+        {
+          "label": "Translation for \"Total\"",
+          "default": "សរុប"
+        },
+        {
+          "label": "Translation for \"Total Score\"",
+          "default": "ពិន្ទុសរុប"
+        },
+        {
+          "label": "Title for show solutions button",
+          "default": "បង្ហាញចម្លើយត្រូវ"
+        },
+        {
+          "label": "Text for the retry button",
+          "default": "សាកម្តងទៀត"
+        },
+        {
+          "label": "Text for the export text button",
+          "default": "នាំចេញអត្ថបទ"
+        },
+        {
+          "label": "Hide keywords list button title",
+          "default": "លាក់បញ្ជីពាក្យគន្លឹះ"
+        },
+        {
+          "label": "Show keywords list button title",
+          "default": "បង្ហាញបញ្ជីពាក្យគន្លឹះ"
+        },
+        {
+          "label": "Fullscreen label",
+          "default": "ពេញអេក្រង់"
+        },
+        {
+          "label": "Exit fullscreen label",
+          "default": "បិទពេញអេក្រង់"
+        },
+        {
+          "label": "Previous slide label",
+          "default": "ស្លាយមុន"
+        },
+        {
+          "label": "Next slide label",
+          "default": "ស្លាយបន្ទាប់"
+        },
+        {
+          "label": "Current slide label",
+          "default": "ស្លាយបច្ចុប្បន្ន"
+        },
+        {
+          "label": "Last slide label",
+          "default": "ស្លាយចុងក្រោយ"
+        },
+        {
+          "label": "Exit solution mode text",
+          "default": "ចាកចេញពីម៉ូត «ចម្លើយត្រឹមត្រូវ»"
+        },
+        {
+          "label": "Solution mode text",
+          "default": "ម៉ូត «ចម្លើយត្រឹមត្រូវ»"
+        },
+        {
+          "label": "Text when multiple tasks on a page",
+          "default": "កិច្ចការច្រើន"
+        },
+        {
+          "label": "Score message text",
+          "default": "អ្នកទទួលបាន:"
+        },
+        {
+          "label": "Share to Facebook text",
+          "default": "ចែករំលែកនៅលើហ្វេសប៊ូក"
+        },
+        {
+          "label": "Share to Twitter text",
+          "default": "ចែករំលែកនៅលើធ្វីតធឺរ"
+        },
+        {
+          "label": "Share to Google text",
+          "default": "ចែករំលែកនៅលើ Google+"
+        },
+        {
+          "label": "Title for summary slide",
+          "default": "សង្ខេប"
+        },
+        {
+          "label": "Title for the comments icon",
+          "default": "បង្ហាញមតិ"
+        },
+        {
+          "label": "Title for print button",
+          "default": "បោះពុម្ភ"
+        },
+        {
+          "label": "Print dialog ingress",
+          "default": "តើអ្នកចង់បោះពុម្ពបទបង្ហាញរបស់អ្នករបៀបណា?"
+        },
+        {
+          "label": "Label for \"Print all slides\" button",
+          "default": "បោះពុម្ពស្លាយទាំងអស់"
+        },
+        {
+          "label": "Label for \"Print current slide\" button",
+          "default": "បោះពុម្ភស្លាយបច្ចុប្បន្ន"
+        },
+        {
+          "label": "Label for slides without a title",
+          "default": "គ្មានចំណងជើង"
+        },
+        {
+          "label": "Explanation of slide navigation for assistive technologies",
+          "default": "ប្រើច្នុចព្រួញឆ្វេងស្តាំដើម្បីផ្លាស់ប្តូរស្លាយ។"
+        },
+        {
+          "label": "Canvas label for assistive technologies",
+          "default": "ផ្ទាំងបទបង្ហាញ។ ប្រើច្នុចព្រួញឆ្វេងស្តាំដើម្បីផ្លាស់ប្តូរស្លាយ។"
+        },
+        {
+          "label": "Label for uncompleted interactions",
+          "default": "ស្លាយ «@slideName» មានកិច្ចការអន្តរកម្មដែលមិនបានបញ្ចប់"
+        },
+        {
+          "label": "Label for completed interactions",
+          "default": "ស្លាយ «@slideName» មានកិច្ចការអន្តរកម្មដែលបានបញ្ចប់"
+        },
+        {
+          "label": "Label for slide counter. Variables are @index, @total",
+          "default": "ស្លាយ @index ក្នុងចំណោម @total"
+        },
+        {
+          "label": "Label for slides that only contains correct answers",
+          "default": "ស្លាយ «@slideName» មានតែចម្លើយដែលត្រឹមត្រូវ។"
+        },
+        {
+          "label": "Label for slides that has incorrect answers",
+          "default": "ស្លាយ «@slideName» មានចម្លើយមិនត្រឹមត្រូវ។"
+        },
+        {
+          "label": "Label for social sharing bar",
+          "default": "ចែករំលែកលទ្ធផល"
+        },
+        {
+          "label": "Total score announcement for assistive technologies",
+          "default": "អ្នកទទួលបានពិន្ទុ @score លើ @maxScore",
+          "description": "Available variables are @score and @maxScore"
+        },
+        {
+          "label": "Entered fullscreen announcement for assistive technologies",
+          "default": "បានបើក «ពេញអេក្រង់»"
+        },
+        {
+          "label": "Exited fullscreen announcement for assistive technologies",
+          "default": "បានបិទ «ពេញអេក្រង់»"
+        }
+      ]
+    },
+    {
+      "label": "Behaviour settings.",
+      "description": "These options will let you override behaviour settings.",
+      "fields": [
+        {
+          "label": "Activate Active Surface Mode",
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+        },
+        {
+          "label": "Hide Summary Slide",
+          "description": "Hides the summary slide."
+        },
+        {
+          "label": "Override \"Show Solution\" button",
+          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "label": "Override \"Retry\" button",
+          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "options": [
+            {
+              "label": "Enabled"
+            },
+            {
+              "label": "Disabled"
+            }
+          ]
+        },
+        {
+          "label": "Show \"Show solution\" button in the summary slide",
+          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+        },
+        {
+          "label": "Show \"Retry\" button in the summary slide",
+          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+        },
+        {
+          "label": "Enable print button",
+          "description": "Enables the print button."
+        },
+        {
+          "label": "Social Settings",
+          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "fields": [
+            {
+              "label": "Display Facebook share icon"
+            },
+            {
+              "label": "Facebook share settings",
+              "fields": [
+                {
+                  "label": "Share to Facebook link",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Share to Facebook quote",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label": "Display Twitter share icon"
+            },
+            {
+              "label": "Twitter share settings",
+              "fields": [
+                {
+                  "label": "Share to Twitter statement",
+                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                },
+                {
+                  "label": "Share to Twitter link",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Share to Twitter hashtags",
+                  "default": "h5p, course"
+                }
+              ]
+            },
+            {
+              "label": "Display Google+ share icon"
+            },
+            {
+              "label": "Share to Google link",
+              "default": "@currentpageurl"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
