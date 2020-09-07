@@ -1097,7 +1097,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback, popupPosition = null) {
 
   // Handle exit fullscreen
-  const exitFullScreen = () => {    
+  const exitFullScreen = () => {
     instance.trigger('resize');
   };
 
