@@ -70,7 +70,7 @@
                 "fields": [
                   {
                     "label": "Imagen",
-                    "description": "El fondo de la imagen debería tener una proporción ancho a alto de 2:1 para evitar estiramiento. Imágenes de alta resolución se mostrarpan mejor en pantallas más grandes."
+                    "description": "El fondo de la imagen debería tener una proporción ancho a alto de 2:1 para evitar estiramiento. Imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
                   },
                   {
                     "label": "Elegir un color",
@@ -324,7 +324,7 @@
         },
         {
           "label": "Mostrar botón \"Reintentar\" en la diapositiva de resumen",
-          "description": "Si se habilita, el estudiante podrá reintentar todas las preguntas cuando llegue a la diapositiva del resumen. Tenga en cuenta que  al refrescar la página los estudiantespodrán reintentarlas aunque no se esté mostrando este botón."
+          "description": "Si se habilita, el estudiante podrá reintentar todas las preguntas cuando llegue a la diapositiva del resumen. Tenga en cuenta que  al refrescar la página los estudiantes podrán reintentarlas aunque no se esté mostrando este botón."
         },
         {
           "label": "Habilitar botón Imprimir",
@@ -332,7 +332,7 @@
         },
         {
           "label": "Configuraciones Sociales",
-          "description": "Estas opciones le permiten anular las configuraciones de comportamiento social. Los valores vacíos serán llenados automáticamente sis e proporciona un enlace, en caso contrario todos los valores serán generados.",
+          "description": "Estas opciones le permiten anular las configuraciones de comportamiento social. Los valores vacíos serán llenados automáticamente si se proporciona un enlace, en caso contrario todos los valores serán generados.",
           "fields": [
             {
               "label": "Mostrar ícono para compartir en Facebook"
