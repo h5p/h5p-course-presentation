@@ -269,8 +269,8 @@
         },
         {
           "label": "הודעת ציון סופי עבור טכנולוגיות מסייעות",
-          "default": "",
-          "description": ""
+          "default": "קיבלת @score מתוך @maxScore נקודות סך הכול",
+          "description": "משתנים זמינים הם @socre ו- @maxScore"
         },
         {
           "label": "נכנסת להודעת מסך מלא עבור טכנולוגיות מסייעות",
@@ -319,12 +319,12 @@
           ]
         },
         {
-          "label": "",
-          "description": ""
+          "label": "הצגת כפתור \"הצגת פתרון\" בשקופית התקציר",
+          "description": "אם מאופשר, הלומדים יוכלו להציג את הפתרונות לכל השאלות כאשר הם מגיעים לשקופית התקציר"
         },
         {
-          "label": "",
-          "description": ""
+          "label": "הצגת כפתור \"ניסיון חוזר\" בשקופית התקציר",
+          "description": "אם מאופשר, הלומדים יוכלו לנסות שוב את כלל השאלות כאשר הם מגיעים לשקופית התקציר. שימו לב שברענון הדף הלומדים יוכלו לנסות שוב גם אם כפתור זה אינו מוצג."
         },
         {
           "label": "הפעלת כפתור הדפסה",
@@ -358,14 +358,14 @@
               "fields": [
                 {
                   "label": "שתפו הצהרה בטוויטר",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "default": "קיבלתי score@ מתוך maxScore@ במשימה ב- currentpageurl@."
                 },
                 {
                   "label": "שתפו לקישור טוויטר",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "שתפו להאשטאג בטוויטר",
                   "default": "h5p, course"
                 }
               ]
