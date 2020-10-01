@@ -30,10 +30,10 @@
                       "label": "버튼 크기",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "작음"
                         },
                         {
-                          "label": "Big"
+                          "label": "큼"
                         }
                       ]
                     },
@@ -69,7 +69,7 @@
               {
                 "fields": [
                   {
-                    "label": "Image",
+                    "label": "이미지",
                     "description": "늘어남을 방지하기 위해 넓이와 길이 비율을 2:1로 지정하세요. 고해상도 이미지는 큰 화면에서 더 잘 보입니다"
                   },
                   {
@@ -148,63 +148,63 @@
           "default": "텍스트 내보내기"
         },
         {
-          "label": "Hide keywords list button title",
+          "label": "키워드 목록 버튼 숨기기",
           "default": "키워드 목록 숨기기"
         },
         {
-          "label": "Show keywords list button title",
+          "label": "키워드 목록 버튼 제목 보이기",
           "default": "키워드 목록 보이기"
         },
         {
-          "label": "Fullscreen label",
+          "label": "전체화면 레이블",
           "default": "전체화면"
         },
         {
-          "label": "Exit fullscreen label",
+          "label": "전체화면 해제",
           "default": "전체화면 해제"
         },
         {
-          "label": "Previous slide label",
+          "label": "이전 슬라이드 레이블",
           "default": "이전 슬라이드"
         },
         {
-          "label": "Next slide label",
+          "label": "다음 슬라이드 레이블",
           "default": "다음 슬라이드"
         },
         {
-          "label": "Current slide label",
+          "label": "현재 슬라이드 레이블",
           "default": "현재 슬라이드"
         },
         {
-          "label": "Last slide label",
+          "label": "마지막 슬라이드 레이블",
           "default": "마지막 슬라이드"
         },
         {
-          "label": "Exit solution mode text",
+          "label": "해답 모드 나가기 텍스트",
           "default": "해답 모드 나가기"
         },
         {
-          "label": "Solution mode text",
+          "label": "해답모드 텍스트",
           "default": "해답 모드"
         },
         {
-          "label": "Text when multiple tasks on a page",
+          "label": "두 개 이상의 과제가 있는 경우 텍스트",
           "default": "두 개 이상의 과제가 있습니다"
         },
         {
-          "label": "Score message text",
-          "default": "성공:"
+          "label": "점수 메시지 텍스트",
+          "default": "획득한 점수:"
         },
         {
-          "label": "Share to Facebook text",
+          "label": "페이스북 공유 텍스트,
           "default": "페이스북에 공유하기"
         },
         {
-          "label": "Share to Twitter text",
+          "label": "트위터 공유 텍스트",
           "default": "트위터에 공유하기"
         },
         {
-          "label": "Share to Google text",
+          "label": "구글 공유 텍스트",
           "default": "구글플러스에 공유하기"
         },
         {
@@ -224,61 +224,61 @@
           "default": "인쇄 범위 지정"
         },
         {
-          "label": "Label for \"Print all slides\" button",
+          "label": "\"Print all slides\" (모든 슬라이드 인쇄) 버튼 텍스트",
           "default": "모든 슬라이드 인쇄"
         },
         {
-          "label": "Label for \"Print current slide\" button",
+          "label": "\"Print current slide\" (현재 슬라이드 인쇄) 버튼 라벨",
           "default": "현재 슬라이드 인쇄"
         },
         {
-          "label": "Label for slides without a title",
+          "label": "제목없는 슬라이드 라벨",
           "default": "제목없음"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
+          "label": "보조 기술용 슬라이드 탐색 설명",
           "default": "캔버스가 선택된 상태에서 왼쪽, 오른쪽 화살표 키로 슬라이드를 이동할 수 있습니다."
         },
         {
-          "label": "Canvas label for assistive technologies",
+          "label": "보조 기술용 캔버스 레이블",
           "default": "캔버스가 선택된 상태에서 왼쪽, 오른쪽 화살표 키로 슬라이드를 이동할 수 있습니다."
         },
         {
-          "label": "Label for uncompleted interactions",
+          "label": "완료되지 않은 상호작용에 대한 레이블",
           "default": "@slideName 에 수행하지 않은 상호작용이 있습니다."
         },
         {
-          "label": "Label for completed interactions",
+          "label": "완료된 상호작용에 대한 레이블",
           "default": "@slideName 의 상호작용을 마쳤습니다."
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "슬라이드 @index of @total"
+          "label": "슬라이드 카운터의 레이블. 변수는 @index, @total",
+          "default": " 총 @total 에서 슬라이드 @index"
         },
         {
-          "label": "Label for slides that only contains correct answers",
+          "label": "정답만 포함된 슬라이드의 레이블",
           "default": "@slideName 의 답을 모두 맞췄습니다"
         },
         {
-          "label": "Label for slides that has incorrect answers",
+          "label": "오답이 있는 슬라이드의 레이블",
           "default": "@slideName 에 오답이 있습니다"
         },
         {
-          "label": "Label for social sharing bar",
+          "label": "소셜 공유 표시줄의 레이블",
           "default": "결과 공유하기"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
-          "description": "Available variables are @score and @maxScore"
+          "label": "보조 기술을 위한 총점 발표",
+          "default": "총점 @maxScore 에서 점수 @점수",
+          "description": "사용 가능한 변수는 @core 및 @maxScore 입니다."
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "보조 기술에 대한 전체 화면 공지 입력",
+          "default": "전체 화면입니다."
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "보조 기술에 대한 전체 화면 공지 종료",
+          "default": "전체화면 종료됨"
         }
       ]
     },
@@ -287,16 +287,16 @@
       "description": "이 옵션들은 동작 설정을 덮어쓰기 합니다",
       "fields": [
         {
-          "label": "액티브 서페이스 모드 활성화",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "액티브 서피스 모드 활성화",
+          "description": "최종 사용자에 대한 탐색 컨트롤 제거. 슬라이드로 이동 기능을 사용하여 탐색하십시오."
         },
         {
           "label": "요약 슬라이드 숨기기",
           "description": "요약 슬라이드 숨기기"
         },
         {
-          "label": "\"해답 보이기\" 버튼 덮어쓰기",
-          "description": "이 옵션은 \"해답 보이기 \" 버튼을 모든 문제에 보이게 할지, 모두 숨길지, 각 문제마다 개별적으로 설정할지를 결정합니다.",
+          "label": "\"Show Solution\" (해답 보이기) 버튼 덮어쓰기",
+          "description": "이 옵션은 \"Show Solution\" 버튼을 모든 문제에 보이게 할지, 모두 숨길지, 각 문제마다 개별적으로 설정할지를 결정합니다.",
           "options": [
             {
               "label": "활성화"
@@ -307,8 +307,8 @@
           ]
         },
         {
-          "label": "\"재시도\" 버튼 덮어쓰기",
-          "description": "이 옵션은 \"재시도\" 버튼을 모든 문제에 보이게 할지, 모두 숨길지, 각 문제마다 개별적으로 설정할지를 결정합니다",
+          "label": "\"Retry\" (재시도) 버튼 덮어쓰기",
+          "description": "이 옵션은 \"Retry\" (재시도) 버튼을 모든 문제에 보이게 할지, 모두 숨길지, 각 문제마다 개별적으로 설정할지를 결정합니다",
           "options": [
             {
               "label": "활성화"
@@ -319,12 +319,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "요약 슬라이드에 \"Show solution\" (해답표시) 표시 단추",
+          "description": "활성화된 경우 학습자가 요약 슬라이드에 도달하면 모든 질문에 대한 해결책을 보여줄 수 있다."
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "\"Retry\" 버튼 요약 슬라이드에 보이기",
+          "description": "활성화된 경우 학습자는 요약 슬라이드에 도달하면 모든 질문을 다시 시도할 수 있다. 페이지를 새로 고침으로써 학습자가 이 버튼이 표시되지 않더라도 재시도할 수 있다는 점을 유념하십시오."
         },
         {
           "label": "인쇄 버튼 활성화",
@@ -332,7 +332,7 @@
         },
         {
           "label": "소셜 공유 설정",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "description": "이 선택사항들은 당신이 SNS 설정을 덮어쓸 수 있게 해줄 것이다. 링크가 제공되면 빈 값이 자동으로 입력되며, 그렇지 않으면 모든 값이 생성된다.",
           "fields": [
             {
               "label": "페이스북 공유 아이콘 보이기"
@@ -346,7 +346,7 @@
                 },
                 {
                   "label": "페이스북에 문장을 공유",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "default": "@currentpageurl 과제에서 총점 @maxScore 중에서 @core를 득점했다."
                 }
               ]
             },
@@ -358,7 +358,7 @@
               "fields": [
                 {
                   "label": "트위터에 문장을 공유",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "default": "@currentpageurl 과제에서 총점 @maxScore 중에서 @core를 득점했다."
                 },
                 {
                   "label": "트위터에 링크를 공유",
