@@ -113,11 +113,11 @@
       "fields": [
         {
           "label": "Oversettelse for \"Slide\"",
-          "default": "Slide"
+          "default": "Side"
         },
         {
           "label": "Translation for \"Score\"",
-          "default": "Score"
+          "default": "Poengsum"
         },
         {
           "label": "Oversettelse for \"Din poengsum\"",
