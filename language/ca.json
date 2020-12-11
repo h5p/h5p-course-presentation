@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Comentaris",
-                      "description": "Els comentaris són mostrats quan l'usuari desvetlla les respostes suggerides de totes les diapositives."
+                      "description": "Els comentaris són mostrats quan l’usuari desvetlla les respostes suggerides de totes les diapositives."
                     },
                     {
                       "label": "Sempre mostra els comentaris"
@@ -30,10 +30,10 @@
                       "label": "Mida del botó",
                       "options": [
                         {
-                          "label": "Gran"
+                          "label": "Petit"
                         },
                         {
-                          "label": "Petit"
+                          "label": "Gran"
                         }
                       ]
                     },
@@ -56,11 +56,11 @@
                     },
                     {
                       "label": "Especifica número de diapositiva",
-                      "description": "Només aplicable quan 'Especifica el número de diapositiva' està seleccionat."
+                      "description": "Només aplicable quan ’Especifica el número de diapositiva’ està seleccionat."
                     },
                     {
                       "label": "Invisible",
-                      "description": "Cursor per defecte, sense títol ni índex de pestanyes. Advertència: Els usuaris amb discapacitat o que només usen el teclat, poden tenir problemes utitlitzant aquest element."
+                      "description": "Cursor predeterminat, sense títol ni índex de pestanyes. Advertència: Els usuaris amb discapacitat o que només usen el teclat, poden tenir problemes utitlitzant aquest element."
                     }
                   ]
                 }
@@ -70,7 +70,7 @@
                 "fields": [
                   {
                     "label": "Imatge",
-                    "description": "La imatge de fons ha de tenir una ràtio amplada-alçada de 2:1 per evitar l'allargament . Les imatges amb alta resolució es mostraran millor en pantalles grans."
+                    "description": "La imatge de fons ha de tenir una proporció entre l’alçada i l’amplada de 2:1 perquè no quedi estirada. Les imatges en alta resolució es veuen millor en pantalles grans."
                   },
                   {
                     "label": "Agafa un color",
@@ -98,7 +98,7 @@
           "fields": [
             {
               "label": "Imatge",
-              "description": "La imatge de fons ha de tenir una ràtio amplada-alçada de 2:1 per evitar l'allargament . Les imatges amb alta resolució es mostraran millor en pantalles grans."
+              "description": "La imatge de fons ha de tenir una proporció entre l’alçada i l’amplada de 2:1 perquè no quedi estirada. Les imatges en alta resolució es veuen millor en pantalles grans."
             },
             {
               "label": "Agafa un color",
@@ -112,27 +112,27 @@
       "label": "Localitza",
       "fields": [
         {
-          "label": "Traducció per a \"Diapositiva\"",
+          "label": "Translation for \"Slide\"",
           "default": "Pàgina"
         },
         {
-          "label": "Traducció per a \"Puntuació\"",
-          "default": "Qualificació"
+          "label": "Translation for \"Score\"",
+          "default": "Puntuació"
         },
         {
-          "label": "Traducció per a \"La teva puntuació\"",
+          "label": "Translation for \"Your Score\"",
           "default": "La teva qualificació"
         },
         {
-          "label": "Traducció per a \"Màxima puntuació\"",
+          "label": "Translation for \"Max Score\"",
           "default": "Màxima qualificació"
         },
         {
-          "label": "TTraducció per a \"Total\"",
+          "label": "Translation for \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Traducció per a \"Puntuació total\"",
+          "label": "Translation for \"Total Score\"",
           "default": "Qualificació total"
         },
         {
@@ -140,11 +140,11 @@
           "default": "Mostra solucions"
         },
         {
-          "label": "Text pel botó de reintent",
-          "default": "Tornar-ho a provar"
+          "label": "Text del botó de reintent",
+          "default": "Torna-ho a provar"
         },
         {
-          "label": "Text per al botó d'exportar text",
+          "label": "Text del botó d’exportar text",
           "default": "Exporta text"
         },
         {
@@ -160,8 +160,8 @@
           "default": "Pantalla completa"
         },
         {
-          "label": "Etiqueta de sortir de paraula completa",
-          "default": "Surt de la Pantalla completa"
+          "label": "Etiqueta de sortir de la pantalla completa",
+          "default": "Surt de la pantalla completa"
         },
         {
           "label": "Etiqueta de diapositiva anterior",
@@ -176,7 +176,7 @@
           "default": "Diapositiva actual"
         },
         {
-          "label": "Etiqueta d'útlima diapositiva",
+          "label": "Etiqueta d’útlima diapositiva",
           "default": "Última diapositiva"
         },
         {
@@ -216,19 +216,19 @@
           "default": "Mostra comentaris"
         },
         {
-          "label": "Títol pel botó d'imprimir",
+          "label": "Títol pel botó d’imprimir",
           "default": "Imprimir"
         },
         {
-          "label": "Diàleg d'impressió",
-          "default": "Esteu segurs d'imprimir aquesta presentació?"
+          "label": "Diàleg d’impressió",
+          "default": "Com voleu imprimir aquesta presentació?"
         },
         {
-          "label": "Etiqueta pel botó \"Imprimeix totes les diapositives\" ",
+          "label": "Label for \"Print all slides\" button",
           "default": "Imprimeix totes les diapositives"
         },
         {
-          "label": "Etiqueta pel botó \"Imprimeix la diapositiva actual\" ",
+          "label": "Label for \"Print current slide\" button",
           "default": "Imprimeix la diapositiva actual"
         },
         {
@@ -236,12 +236,12 @@
           "default": "Sense títol"
         },
         {
-          "label": "Explicació de la navegació de diapositives per a tecnologies d'assistència",
+          "label": "Explicació de la navegació de diapositives per a tecnologies d’assistència",
           "default": "Utilitzeu la fletxa esquerra i dreta per canviar la diapositiva en aquesta direcció cada vegada que seleccioneu el llenç"
         },
         {
           "label": "Etiqueta de llenç per a tecnologies assistencials",
-          "default": "Presentació del llenç. Utilitzeu la fletxa esquerra i dreta per desplaçar-se entre les diapositives."
+          "default": "Llenç de la presentació. Utilitzeu les fletxes esquerra i dreta per desplaçar-vos per les diapositives."
         },
         {
           "label": "Etiqueta per a interaccions incompletes",
@@ -268,12 +268,12 @@
           "default": "Comparteix els resultats"
         },
         {
-          "label": "Anunci de puntuació total de tecnologies d'assistència",
+          "label": "Anunci de puntuació total de tecnologies d’assistència",
           "default": "Has aconseguit @score de @maxScore punts en total",
           "description": "Les variable disponibles són @score i @maxScore"
         },
         {
-          "label": "Anunci d'entrada a pantalla completa per a tecnologies assistives",
+          "label": "Anunci d’entrada a pantalla completa per a tecnologies assistives",
           "default": "Heu entrat a pantalla completa"
         },
         {
@@ -284,19 +284,19 @@
     },
     {
       "label": "Configuració de  la retroacció.",
-      "description": "Aquestes opcions et permeten modificar el comportament de les retroaccions.",
+      "description": "Aquestes opcions us permeten modificar el comportament dels suggeriments.",
       "fields": [
         {
           "label": "Activa el mode de superfície activa",
-          "description": "Elimina els controls de navegació per a l’usuari final. Utilitzeu 'ves a la diapositiva' per navegar."
+          "description": "Elimina els controls de navegació per a l’usuari final. Utilitzeu ’ves a la diapositiva’ per navegar."
         },
         {
           "label": "Amagueu la diapositiva resum",
           "description": "Amaga la diapositiva resum."
         },
         {
-          "label": "Anula el botó \"Mostra solució\"",
-          "description": "Aquesta opció determina si es mostrarà el botó \"Mostra solució\" per a totes les preguntes, desactivades, per a totes o configurades de manera individual per a cada pregunta.",
+          "label": "Override \"Show Solution\" button",
+          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
           "options": [
             {
               "label": "Activat"
@@ -307,8 +307,8 @@
           ]
         },
         {
-          "label": "Anula el botó \"Reintenta\"",
-          "description": "Aquesta opció determina si es mostrarà el botó \"Reintenta\" per a totes les preguntes, desactivades, per a totes o configurades de manera individual per a cada pregunta.",
+          "label": "Override \"Retry\" button",
+          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
           "options": [
             {
               "label": "Activat"
@@ -319,20 +319,20 @@
           ]
         },
         {
-          "label": "Mostra \"Mostra solució\" a la diapositiva del resum",
+          "label": "Show \"Show solution\" button in the summary slide",
           "description": "Si està activat, l’aprenent podrà mostrar les solucions per a totes les preguntes quan arribin a la diapositiva resum"
         },
         {
-          "label": "Mostra \"Reintenta\" a la diapositiva del resum",
-          "description": "Si està activat, l’aprenent podrà tornar a intentar totes les preguntes quan arribin a la diapositiva resum. Tingueu en compte que, actualitzant la pàgina, els estudiants podran tornar a intentar-ho, fins i tot si aquest botó no es mostra."
+          "label": "Show \"Retry\" button in the summary slide",
+          "description": "Si s’activa aquesta opció, l’alumne podrà tornar a provar de respondre totes les preguntes quan arribi a la diapositiva de resum. Tingueu en compte que, si s’actualitza la pàgina, l’alumne pot tornar a provar-ho encara que no es mostri aquest botó."
         },
         {
           "label": "Activa el botó Imprimir",
-          "description": "Activa el botó Imprimir."
+          "description": "Activa el botó Imprimeix."
         },
         {
           "label": "Configuració Social",
-          "description": "Aquestes opcions us permetran substituir la configuració de comportament social. Els valors buits s'emplenaran automàticament si es proporciona un enllaç, si no, es generaran tots els valors.",
+          "description": "Aquestes opcions us permetran substituir la configuració de comportament social. Els valors buits s’emplenaran automàticament si es proporciona un enllaç, si no, es generaran tots els valors.",
           "fields": [
             {
               "label": "Mostra la icona per compartir a Facebook"
@@ -341,7 +341,7 @@
               "label": "Configuració de compartir a Facebook",
               "fields": [
                 {
-                  "label": "Comparteix a l’enllaç de Facebook",
+                  "label": "Comparteix l’enllaç a Facebook",
                   "default": "@currentpageurl"
                 },
                 {
