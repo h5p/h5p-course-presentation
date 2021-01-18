@@ -1,5 +1,5 @@
 {
-  "title": "Course Presentation",
+  "title": "Course Presentation Alpha",
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 22,
@@ -9,7 +9,7 @@
   "embedTypes": [
     "iframe"
   ],
-  "machineName": "H5P.CoursePresentation",
+  "machineName": "H5P.CoursePresentationAlpha",
   "author": "Joubel",
   "license": "MIT",
   "coreApi": {
