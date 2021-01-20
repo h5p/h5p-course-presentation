@@ -273,12 +273,12 @@
           "description": "Възможните променливи за @score и @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Известие на цял екран за помощни технологии",
+          "default": "Цял екран"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Известие за изход от целия екран за помощни технологии",
+          "default": "Изход от целия екран"
         }
       ]
     },
@@ -299,10 +299,10 @@
           "description": "Тази опция  определя дали бутона \"Покажи решението\" ще бъде показван за всички въпроси, ще бъде скрит за всички въпроси или ще бъде настойван за всеки поотделно.",
           "options": [
             {
-              "label": "Enabled"
+              "label": "Активен"
             },
             {
-              "label": "Disabled"
+              "label": "Неактивен"
             }
           ]
         },
@@ -319,12 +319,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Показване на бутона \"Показване на решението\" в обобщаващия слайд",
+          "description": "Ако е активиран, учащият, ще може да покаже решенията на всички въпроси, когато стигне до слайда с обобщението"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Показване на бутона \"Опитай пак\" в обобщаващия слайд",
+          "description": "Ако е активиран, учащият, ще може да отговори отново на всички въпроси, когато достигне до обобщаващия слайд. При опресняване на страницата учащите ще могат да отговарят на въпросите отново, дори и ако този бутон не се показва."
         },
         {
           "label": "Активирай бутона за принтиране",
@@ -366,7 +366,7 @@
                 },
                 {
                   "label": "Сподели хаштага в Twitter",
-                  "default": "h5p, course"
+                  "default": "h5p, курс"
                 }
               ]
             },

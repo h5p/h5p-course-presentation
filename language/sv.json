@@ -21,7 +21,7 @@
                       "label": "Visa alltid kommentarer"
                     },
                     {
-                      "label": "Bakgrunds-opacitet"
+                      "label": "Opacitet för bakgrund"
                     },
                     {
                       "label": "Visa som knapp"
@@ -55,12 +55,12 @@
                       ]
                     },
                     {
-                      "label": "Specifik sida",
-                      "description": "Endast tillgänglig om 'Specifik sida' är valt"
+                      "label": "Specifikt sidonummer",
+                      "description": "Endast tillgänglig om 'Specifikt sidonummer' är valt"
                     },
                     {
                       "label": "Osynlig",
-                      "description": "Standardmarkör, ingen titel och inget tabb-index. Varning: Användare med funktionsvariation eller som endast använder tangentbord kan få problem."
+                      "description": "Standardmarkör, ingen titel och inget tabb-index. Varning: Användare med funktionsvariation eller som endast använder tangentbord kan få problem med denna funktion."
                     }
                   ]
                 }
@@ -204,7 +204,7 @@
           "default": "Dela på Twitter"
         },
         {
-          "label": "Text för Dela på Google+",
+          "label": "Text för Dela på Google",
           "default": "Dela på Google+"
         },
         {
@@ -220,7 +220,7 @@
           "default": "Skriv ut"
         },
         {
-          "label": "Intro till skriva ut",
+          "label": "Skriv ut intro",
           "default": "Hur vill du skriva ut denna presentation?"
         },
         {
@@ -236,7 +236,7 @@
           "default": "Utan titel"
         },
         {
-          "label": "Förklaring till navigering mellan sidor för tillgänglighetshjälpmede",
+          "label": "Förklaring till navigering mellan sidor för tillgänglighetshjälpmedel",
           "default": "Använd pilarna vänster och höger för att byta sida åt olika håll"
         },
         {
@@ -273,11 +273,11 @@
           "description": "Tillgängliga variabler är @score och @maxScore"
         },
         {
-          "label": "Meddelande om helskärmsläge för tillgänglighetshjälpmedel",
+          "label": "Meddelande om aktiverat helskärmsläge för tillgänglighetshjälpmedel",
           "default": "Aktiverat helskärmsläge"
         },
         {
-          "label": "Meddelande om avslutat helskärmsläge för  tillgänglighetshjälpmedel",
+          "label": "Meddelande om avslutat helskärmsläge för tillgänglighetshjälpmedel",
           "default": "Avslutat helskärmsläge"
         }
       ]
@@ -296,7 +296,7 @@
         },
         {
           "label": "Ignorera knappen \"Visa lösning\" ",
-          "description": "Denna inställning avgör om knappen \"Show Solution\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
+          "description": "Denna inställning avgör om knappen \"Visa lösning\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
           "options": [
             {
               "label": "Aktiverad"
@@ -332,49 +332,49 @@
         },
         {
           "label": "Sociala inställningar",
-          "description": "Dessa inställningar gör det möjligt att ignorera inställningar för sociala media.  Tomma värden kommer fyllas i automatiskt om en länk anges, alla övriga värden kommer att genereras.",
+          "description": "Dessa inställningar gör det möjligt att ignorera inställningar för sociala media.  Tomma värden kommer fyllas i automatiskt om en länk anges, alla övriga värden kommer att genereras automatiskt.",
           "fields": [
             {
-              "label": "Visa ikon för dela på Facebook"
+              "label": "Visa ikon för delning på Facebook"
             },
             {
-              "label": "Inställningar för att dela på Facebook",
+              "label": "Inställningar för delning på Facebook",
               "fields": [
                 {
                   "label": "Länk för dela på Facebook",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Citat för dela på Facebook",
+                  "label": "Citat för delning på Facebook",
                   "default": "Jag fick @score av @maxScore på en uppgift på @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Visa ikon för dela på Twitter"
+              "label": "Visa ikon för delning på Twitter"
             },
             {
-              "label": "Inställningar för dela på Twitter",
+              "label": "Inställningar för delning på Twitter",
               "fields": [
                 {
-                  "label": "Citat för dela på Twitter",
+                  "label": "Citat för delning på Twitter",
                   "default": "Jag fick @score av @maxScore på en uppgift på @currentpageurl."
                 },
                 {
-                  "label": "Länk för dela på Twitter",
+                  "label": "Länk för delning på Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Hashtags för dela på Twitter",
+                  "label": "Hashtags för delning på Twitter",
                   "default": "h5p, kurs"
                 }
               ]
             },
             {
-              "label": "Visa ikon för dela på Google+"
+              "label": "Visa ikon för delning på Google+"
             },
             {
-              "label": "Länk för dela på Google",
+              "label": "Länk för delning på Google",
               "default": "@currentpageurl"
             }
           ]

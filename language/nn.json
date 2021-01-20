@@ -113,11 +113,11 @@
       "fields": [
         {
           "label": "Oversetting for \"Lysbilete\"",
-          "default": "Lysbilete"
+          "default": "Side"
         },
         {
           "label": "Translation for \"Score\"",
-          "default": "Score"
+          "default": "Poengsum"
         },
         {
           "label": "Oversetting for \"Din poengsum\"",
