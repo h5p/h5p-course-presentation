@@ -14,53 +14,53 @@
                     {},
                     {},
                     {
-                      "label": "Comments",
-                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                      "label": "មតិ",
+                      "description": "មតិត្រូវបានបង្ហាញនៅពេលដែលគេមើលចម្លើយដែលត្រូវបានណែនាំសម្រាប់ស្លាយទាំងអស់។"
                     },
                     {
-                      "label": "Always display comments"
+                      "label": "បង្ហាញមតិរហូត"
                     },
                     {
-                      "label": "Background Opacity"
+                      "label": "កម្រិតថ្លានៃផ្ទៃខាងក្រោយ"
                     },
                     {
-                      "label": "Display as button"
+                      "label": "បង្ហាញជាប៊ូតុង"
                     },
                     {
-                      "label": "Button size",
+                      "label": "ទំហំប៊ូតុង",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "តូច"
                         },
                         {
-                          "label": "Big"
+                          "label": "ធំ"
                         }
                       ]
                     },
                     {
-                      "label": "Title"
+                      "label": "ចំណងជើង"
                     },
                     {
-                      "label": "Go to",
+                      "label": "ទៅ",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "លេខស្លាយជាក់លាក់"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "ស្លាយបន្ទាប់"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "ស្លាយមុន"
                         }
                       ]
                     },
                     {
-                      "label": "Specific slide number",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "label": "លេខស្លាយជាក់លាក់",
+                      "description": "មានប្រសិទ្ធភាពតែនៅពេលដែល 'លេខស្លាយជាក់លាក់' ត្រូវបានជ្រើសរើស"
                     },
                     {
-                      "label": "Invisible",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label": "មើលមិនឃើញ",
+                      "description": "រូបម៉ៅស៍ធម្មតា គ្មានចំណងជើង ហើយមិនអាចប្រើគ្រាប់ចុច tab ទេ។ ប្រយ័ត្ន៖ ជនពិការ ឫអ្នកដែលប្រើតែក្តារចុចនឹងមានបញ្ហាប្រើប្រាស់ធាតុនេះទេ។"
                     }
                   ]
                 }
@@ -69,11 +69,11 @@
               {
                 "fields": [
                   {
-                    "label": "Image",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "label": "រូបភាព",
+                    "description": "រូបភាពផ្ទៃខាងក្រោយគួរមានសមាមាត្រ 2:1 ដើម្បីកុំឲ្យវាខុសទ្រង់ទ្រាយ។ រូបភាពដែលមានគុណភាពកាន់តែខ្ពស់នឹងបង្ហាញកាន់តែល្អនៅលើអេក្រង់ធំ។"
                   },
                   {
-                    "label": "Pick a color",
+                    "label": "រើសពណ៌",
                     "default": ""
                   }
                 ]
@@ -83,25 +83,25 @@
         },
         {},
         {
-          "label": "Keyword list"
+          "label": "បញ្ជីពាក្យគន្លឹះ"
         },
         {
-          "label": "Always show"
+          "label": "បង្ហាញរហូត"
         },
         {
-          "label": "Auto hide"
+          "label": "លាក់ស្វ័យប្រវត្តិ"
         },
         {
-          "label": "Opacity"
+          "label": "កម្រិតថ្លា"
         },
         {
           "fields": [
             {
-              "label": "Image",
-              "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+              "label": "រូបភាព",
+              "description": "រូបភាពផ្ទៃខាងក្រោយគួរមានសមាមាត្រ 2:1 ដើម្បីកុំឲ្យវាខុសទ្រង់ទ្រាយ។ រូបភាពដែលមានគុណភាពកាន់តែខ្ពស់នឹងបង្ហាញកាន់តែល្អនៅលើអេក្រង់ធំ។"
             },
             {
-              "label": "Pick a color",
+              "label": "រើសពណ៌",
               "default": ""
             }
           ]
@@ -112,269 +112,269 @@
       "label": "Localize",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
+          "label": "ពាក្យប្រើសម្រាប់ \"ស្លាយ (Slide)\"",
           "default": "ស្លាយ"
         },
         {
-          "label": "Translation for \"Score\"",
+          "label": "ពាក្យប្រើសម្រាប់ \"ពិន្ទុ (Score)\"",
           "default": "ពិន្ទុ"
         },
         {
-          "label": "Translation for \"Your Score\"",
+          "label": "ពាក្យប្រើសម្រាប់ \"ពិន្ទុរបស់អ្នក (Your Score)\"",
           "default": "ពិន្ទុរបស់អ្នក"
         },
         {
-          "label": "Translation for \"Max Score\"",
+          "label": "ពាក្យប្រើសម្រាប់ \"ពិន្ទុអតិបរមា (Max Score)\"",
           "default": "ពិន្ទុអតិបរមា"
         },
         {
-          "label": "Translation for \"Total\"",
+          "label": "ពាក្យប្រើសម្រាប់ \"សរុប (Total)\"",
           "default": "សរុប"
         },
         {
-          "label": "Translation for \"Total Score\"",
+          "label": "ពាក្យប្រើសម្រាប់ \"ពិន្ទុសរុប (Total Score)\"",
           "default": "ពិន្ទុសរុប"
         },
         {
-          "label": "Title for show solutions button",
+          "label": "ពាក្យប្រើសម្រាប់ប៊ូតុង \"បង្ហាញចម្លើយត្រូវ\"",
           "default": "បង្ហាញចម្លើយត្រូវ"
         },
         {
-          "label": "Text for the retry button",
+          "label": "ពាក្យប្រើសម្រាប់ប៊ូតុង \"សាកម្តងទៀត\"",
           "default": "សាកម្តងទៀត"
         },
         {
-          "label": "Text for the export text button",
+          "label": "ពាក្យប្រើសម្រាប់ប៊ូតុង \"នាំចេញអត្ថបទ\"",
           "default": "នាំចេញអត្ថបទ"
         },
         {
-          "label": "Hide keywords list button title",
+          "label": "ចំណងជើងសម្រាប់ប៊ូតុង \"លាក់បញ្ជីពាក្យគន្លឹះ\"",
           "default": "លាក់បញ្ជីពាក្យគន្លឹះ"
         },
         {
-          "label": "Show keywords list button title",
+          "label": "ចំណងជើងសម្រាប់ប៊ូតុង \"បង្ហាញបញ្ជីពាក្យគន្លឹះ\"",
           "default": "បង្ហាញបញ្ជីពាក្យគន្លឹះ"
         },
         {
-          "label": "Fullscreen label",
+          "label": "ពាក្យប្រើសម្រាប់ \"ពេញអេក្រង់\"",
           "default": "ពេញអេក្រង់"
         },
         {
-          "label": "Exit fullscreen label",
+          "label": "ពាក្យប្រើសម្រាប់ «បិទពេញអេក្រង់»",
           "default": "បិទពេញអេក្រង់"
         },
         {
-          "label": "Previous slide label",
+          "label": "ពាក្យប្រើសម្រាប់ «ស្លាយមុន»",
           "default": "ស្លាយមុន"
         },
         {
-          "label": "Next slide label",
+          "label": "ពាក្យប្រើសម្រាប់ «ស្លាយបន្ទាប់»",
           "default": "ស្លាយបន្ទាប់"
         },
         {
-          "label": "Current slide label",
+          "label": "ពាក្យប្រើសម្រាប់ «ស្លាយបច្ចុប្បន្ន»",
           "default": "ស្លាយបច្ចុប្បន្ន"
         },
         {
-          "label": "Last slide label",
+          "label": "ពាក្យប្រើសម្រាប់ «ស្លាយចុងក្រោយ»",
           "default": "ស្លាយចុងក្រោយ"
         },
         {
-          "label": "Exit solution mode text",
+          "label": "ពាក្យប្រើសម្រាប់ ចាកចេញពីម៉ូត «ចម្លើយត្រឹមត្រូវ»",
           "default": "ចាកចេញពីម៉ូត «ចម្លើយត្រឹមត្រូវ»"
         },
         {
-          "label": "Solution mode text",
+          "label": "ពាក្យប្រើសម្រាប់ ម៉ូត «ចម្លើយត្រឹមត្រូវ»",
           "default": "ម៉ូត «ចម្លើយត្រឹមត្រូវ»"
         },
         {
-          "label": "Text when multiple tasks on a page",
+          "label": "អត្ថបទសម្រាប់ពេលដែលមានកិច្ចការច្រើនលើទំព័រមួយ",
           "default": "កិច្ចការច្រើន"
         },
         {
-          "label": "Score message text",
+          "label": "អត្ថបទសម្រាប់សារអំពីពិន្ទុ",
           "default": "អ្នកទទួលបាន:"
         },
         {
-          "label": "Share to Facebook text",
+          "label": "ពាក្យប្រើសម្រាប់ «ចែករំលែកនៅលើហ្វេសប៊ូក»",
           "default": "ចែករំលែកនៅលើហ្វេសប៊ូក"
         },
         {
-          "label": "Share to Twitter text",
+          "label": "ពាក្យប្រើសម្រាប់ «ចែករំលែកនៅលើធ្វីតធឺរ»",
           "default": "ចែករំលែកនៅលើធ្វីតធឺរ"
         },
         {
-          "label": "Share to Google text",
+          "label": "ពាក្យប្រើសម្រាប់ «ចែករំលែកនៅលើ Google+»",
           "default": "ចែករំលែកនៅលើ Google+"
         },
         {
-          "label": "Title for summary slide",
+          "label": "ចំណងជើងសម្រាប់ស្លាយសង្ខេប",
           "default": "សង្ខេប"
         },
         {
-          "label": "Title for the comments icon",
+          "label": "ចំណងជើងសម្រាប់រូបតំណងមតិ",
           "default": "បង្ហាញមតិ"
         },
         {
-          "label": "Title for print button",
+          "label": "ចំណងជើងសម្រាប់ប៊ូតុងបោះពុម្ភ",
           "default": "បោះពុម្ភ"
         },
         {
-          "label": "Print dialog ingress",
+          "label": "សំណួរក្នុងផ្ទាំងពេលបោះពុម្ភ",
           "default": "តើអ្នកចង់បោះពុម្ពបទបង្ហាញរបស់អ្នករបៀបណា?"
         },
         {
-          "label": "Label for \"Print all slides\" button",
+          "label": "ពាក្យប្រើសម្រាប់ប៊ូតុង \"បោះពុម្ពស្លាយទាំងអស់ (Print all slides)\"",
           "default": "បោះពុម្ពស្លាយទាំងអស់"
         },
         {
-          "label": "Label for \"Print current slide\" button",
+          "label": "ពាក្យប្រើសម្រាប់ប៊ូតុង \"បោះពុម្ភស្លាយបច្ចុប្បន្ន (Print current slide)\"",
           "default": "បោះពុម្ភស្លាយបច្ចុប្បន្ន"
         },
         {
-          "label": "Label for slides without a title",
+          "label": "ពាក្យប្រើសម្រាប់ស្លាយគ្មានចំណងជើង",
           "default": "គ្មានចំណងជើង"
         },
         {
-          "label": "Explanation of slide navigation for assistive technologies",
+          "label": "ពាក្យពន្យល់សម្រាប់ការផ្លាស់ទីរវាងស្លាយ",
           "default": "ប្រើច្នុចព្រួញឆ្វេងស្តាំដើម្បីផ្លាស់ប្តូរស្លាយ។"
         },
         {
-          "label": "Canvas label for assistive technologies",
+          "label": "ពាក្យប្រើសម្រាប់ ផ្ទាំងបទបង្ហាញ សម្រាប់បច្ចេកវិទ្យាជំនួយ",
           "default": "ផ្ទាំងបទបង្ហាញ។ ប្រើច្នុចព្រួញឆ្វេងស្តាំដើម្បីផ្លាស់ប្តូរស្លាយ។"
         },
         {
-          "label": "Label for uncompleted interactions",
+          "label": "ពាក្យប្រើសម្រាប់អន្តរកម្មដែលមិនបានបញ្ចប់",
           "default": "ស្លាយ «@slideName» មានកិច្ចការអន្តរកម្មដែលមិនបានបញ្ចប់"
         },
         {
-          "label": "Label for completed interactions",
+          "label": "ពាក្យប្រើសម្រាប់អន្តរកម្មដែលបានបញ្ចប់",
           "default": "ស្លាយ «@slideName» មានកិច្ចការអន្តរកម្មដែលបានបញ្ចប់"
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
+          "label": "ពាក្យប្រើសម្រាប់របាប់ស្លាយ។ អនុញ្ញាតមាន @index, @total",
           "default": "ស្លាយ @index ក្នុងចំណោម @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
+          "label": "ពាក្យប្រើសម្រាប់ស្លាយដែលមានតែចម្លើយត្រឹមត្រូវ",
           "default": "ស្លាយ «@slideName» មានតែចម្លើយដែលត្រឹមត្រូវ។"
         },
         {
-          "label": "Label for slides that has incorrect answers",
+          "label": "ពាក្យប្រើសម្រាប់ស្លាយណាដែលគ្មានត្រឹមត្រូវ",
           "default": "ស្លាយ «@slideName» មានចម្លើយមិនត្រឹមត្រូវ។"
         },
         {
-          "label": "Label for social sharing bar",
+          "label": "ពាក្យប្រើសម្រាប់របារបណ្តាញសង្គម",
           "default": "ចែករំលែកលទ្ធផល"
         },
         {
-          "label": "Total score announcement for assistive technologies",
+          "label": "ពាក្យប្រកាសអំពីពិន្ទុ សម្រាប់បច្ចេកវិទ្យាជំនួយ",
           "default": "អ្នកទទួលបានពិន្ទុ @score លើ @maxScore",
-          "description": "Available variables are @score and @maxScore"
+          "description": "អនុញ្ញាតដែលអាចប្រើបាន @score និង @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
+          "label": "ពាក្យប្រកាសនៅពេលពេញអេក្រង់ត្រូវបានចូលសម្រាប់បច្ចេកវិទ្យាជំនួយ",
           "default": "បានបើក «ពេញអេក្រង់»"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
+          "label": "ពាក្យប្រកាសនៅពេលពេញអេក្រង់ត្រូវបានចាកចេញសម្រាប់បច្ចេកវិទ្យាជំនួយ",
           "default": "បានបិទ «ពេញអេក្រង់»"
         }
       ]
     },
     {
-      "label": "Behaviour settings.",
-      "description": "These options will let you override behaviour settings.",
+      "label": "ការកំណត់មុខងារ",
+      "description": "ជម្រើសទាំងនេះនឹងអនុញ្ញាតឲ្យអ្នកបង្ខំការកំណត់ផ្សេងៗ។",
       "fields": [
         {
-          "label": "Activate Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate."
+          "label": "បើកម៉ូត Active Surface",
+          "description": "ដកប៊ូតុងផ្លាស់ទីសម្រាប់អ្នកប្រើប្រាស់។ ប្រើធាតុ «ទៅស្លាយ» ដើម្បីផ្លាស់ទីរវាងស្លាយ"
         },
         {
-          "label": "Hide Summary Slide",
-          "description": "Hides the summary slide."
+          "label": "លាក់ស្លាយសង្ខេប",
+          "description": "លាក់ស្លាយសង្ខេប។"
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "បង្ខំប៊ូតុង \"បង្ហាញចម្លើយត្រឹមត្រូវ\"",
+          "description": "ជម្រើសនេះកំណត់ថាតើប៊ូតុង \"បង្ហាញចម្លើយត្រឹមត្រូវ\" នឹងត្រូវបង្ហាញសម្រាប់សំណួរទាំងអស់ បិទទាំងអស់ ឬ ត្រូវកំណត់សម្រាប់សំណួរមួយៗ ។",
           "options": [
             {
-              "label": "Enabled"
+              "label": "បើក"
             },
             {
-              "label": "Disabled"
+              "label": "បិទ"
             }
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "បង្ខំប៊ូតុង \"សាកម្ដងទៀត\"",
+          "description": "ជម្រើសនេះកំណត់ថាតើប៊ូតុង \"សាកម្ដងទៀត\" នឹងត្រូវបង្ហាញសម្រាប់សំណួរទាំងអស់ បិទទាំងអស់ ឬ ត្រូវកំណត់សម្រាប់សំណួរមួយៗ ។",
           "options": [
             {
-              "label": "Enabled"
+              "label": "បើក"
             },
             {
-              "label": "Disabled"
+              "label": "បិទ"
             }
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "បង្ហាញប៊ូតុង \"បង្ហាញចម្លើយត្រឹមត្រូវ\" ក្នុងស្លាយសង្ខេប",
+          "description": "ប្រសិនបើបើក នោះសិស្សនឹងអាចមើលចម្លើយសម្រាប់សំណួរទាំងអស់នៅពេលដែលគេមកដល់ស្លាយសង្ខេប។"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "បង្ហាញប៊ូតុង \"សាកម្តងទៀត\" ក្នុងស្លាយសង្ខេប",
+          "description": "ប្រសិនបើបើក នោះសិស្សនឹងអាចធ្វើសំណួរទាំងអស់ម្តងទៀតនៅពេលដែលគេមកដល់ស្លាយសង្ខេប។ សូមបញ្ជាក់ថាបើទោះជាប៊ូតុងមិនបង្ហាញក័ដោយក៏សិស្សនៅតែអាចធ្វើលំហាត់ម្តងទៀតបានដែរដោយគ្រាប់តែដំណើរការទំព័រឡើងវិញ ។"
         },
         {
-          "label": "Enable print button",
-          "description": "Enables the print button."
+          "label": "បើកប៊ូតុងបោះពុម្ភ",
+          "description": "បើកប៊ូតុងបោះពុម្ភ"
         },
         {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "ការកំណត់សម្រាប់បណ្តាញសង្គម",
+          "description": "ជម្រើសទាំងនេះនឹងឲ្យអ្នកបង្ខំនូវការកំណត់បណ្តាញសង្គមទាំងអស់។ តម្លៃទទេនឹងត្រូវបានបំពេញដោយស្វ័យប្រវត្តិប្រសិនបើតំណត្រូវបានផ្តល់ឲ្យ បើមិនដូច្នោះទេតម្លៃទាំងឡាយនឹងត្រូវបានបង្កើតឡើង។",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "បង្ហាញរូបតំណាងចែករំលែកទៅ Facebook"
             },
             {
-              "label": "Facebook share settings",
+              "label": "ការកំណត់សម្រាប់ការចែករំលែកទៅ Facebook",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "តំណសម្រាប់ចែករំលែកទៅ Facebook",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "ពាក្យពេជន៍នៅពេលចែករំលែកទៅ Facebook",
+                  "default": "ខ្ញុំបានពិន្ទុ @score លើ @maxScore លើកិច្ចការនៅ @currentpageurl ។"
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "បង្ហាញរូបតំណាងចែករំលែកទៅ Twitter"
             },
             {
-              "label": "Twitter share settings",
+              "label": "ការកំណត់សម្រាប់ការចែករំលែកទៅ Twitter",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "ពាក្យពេជន៍នៅពេលចែករំលែកទៅ Twitter",
+                  "default": "ខ្ញុំបានពិន្ទុ @score លើ @maxScore លើកិច្ចការនៅ @currentpageurl ។"
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "តំណសម្រាប់ចែករំលែកទៅ Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
+                  "label": "hashtags សម្រាប់ចែករំលែកទៅ Twitter",
                   "default": "h5p, course"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "បង្ហាញរូបតំណាងចែករំលែកទៅ Google+"
             },
             {
-              "label": "Share to Google link",
+              "label": "តំណសម្រាប់ចែករំលែកទៅ Google",
               "default": "@currentpageurl"
             }
           ]
