@@ -1,0 +1,385 @@
+{
+    "semantics": [
+        {
+            "fields": [
+                {
+                    "field": {
+                        "fields": [
+                            {
+                                "field": {
+                                    "fields": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {
+                                            "label": "",
+                                            "description": ""
+                                        },
+                                        {
+                                            "label": ""
+                                        },
+                                        {
+                                            "label": ""
+                                        },
+                                        {
+                                            "label": ""
+                                        },
+                                        {
+                                            "label": "",
+                                            "options": [
+                                                {
+                                                    "label": ""
+                                                },
+                                                {
+                                                    "label": ""
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": ""
+                                        },
+                                        {
+                                            "label": "",
+                                            "options": [
+                                                {
+                                                    "label": ""
+                                                },
+                                                {
+                                                    "label": ""
+                                                },
+                                                {
+                                                    "label": ""
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "",
+                                            "description": ""
+                                        },
+                                        {
+                                            "label": "",
+                                            "description": ""
+                                        }
+                                    ]
+                                }
+                            },
+                            {},
+                            {
+                                "fields": [
+                                    {
+                                        "label": "",
+                                        "description": ""
+                                    },
+                                    {
+                                        "label": "",
+                                        "default": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {},
+                {
+                    "label": ""
+                },
+                {
+                    "label": ""
+                },
+                {
+                    "label": ""
+                },
+                {
+                    "label": ""
+                },
+                {
+                    "fields": [
+                        {
+                            "label": "",
+                            "description": ""
+                        },
+                        {
+                            "label": "",
+                            "default": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "",
+            "fields": [
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": "",
+                    "description": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                },
+                {
+                    "label": "",
+                    "default": ""
+                }
+            ]
+        },
+        {
+            "label": "",
+            "description": "",
+            "fields": [
+                {
+                    "label": "",
+                    "description": ""
+                },
+                {
+                    "label": "",
+                    "description": ""
+                },
+                {
+                    "label": "",
+                    "description": "",
+                    "options": [
+                        {
+                            "label": ""
+                        },
+                        {
+                            "label": ""
+                        }
+                    ]
+                },
+                {
+                    "label": "",
+                    "description": "",
+                    "options": [
+                        {
+                            "label": ""
+                        },
+                        {
+                            "label": ""
+                        }
+                    ]
+                },
+                {
+                    "label": "",
+                    "description": ""
+                },
+                {
+                    "label": "",
+                    "description": ""
+                },
+                {
+                    "label": "",
+                    "description": ""
+                },
+                {
+                    "label": "",
+                    "description": "",
+                    "fields": [
+                        {
+                            "label": ""
+                        },
+                        {
+                            "label": "",
+                            "fields": [
+                                {
+                                    "label": "",
+                                    "default": ""
+                                },
+                                {
+                                    "label": "",
+                                    "default": ""
+                                }
+                            ]
+                        },
+                        {
+                            "label": ""
+                        },
+                        {
+                            "label": "",
+                            "fields": [
+                                {
+                                    "label": "",
+                                    "default": ""
+                                },
+                                {
+                                    "label": "",
+                                    "default": ""
+                                },
+                                {
+                                    "label": "",
+                                    "default": ""
+                                }
+                            ]
+                        },
+                        {
+                            "label": ""
+                        },
+                        {
+                            "label": "",
+                            "default": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
