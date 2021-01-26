@@ -6,6 +6,13 @@
     "widget": "coursepresentation",
     "fields": [
       {
+        "name": "defaultAspectRatio",
+        "importance": "high",
+        "type": "text",
+        "optional": true,
+        "label": "Aspect Ratio"
+      },
+      {
         "name": "slides",
         "importance": "high",
         "type": "list",
@@ -14,6 +21,13 @@
           "importance": "high",
           "type": "group",
           "fields": [
+            {
+              "name": "aspectRatio",
+              "importance": "high",
+              "type": "text",
+              "optional": true,
+              "label": "Aspect Ratio"
+            },
             {
               "name": "elements",
               "importance": "high",
