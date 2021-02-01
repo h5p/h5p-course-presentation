@@ -301,7 +301,7 @@ CoursePresentation.prototype.attach = function ($container) {
   var wrapperHeight = parseInt(this.$wrapper.css('height'));
   this.height = wrapperHeight !== 0 ? wrapperHeight : 400;
 
-  this.ratio = 16/9;
+  this.ratio = 16/9;//9/16;//16/9;
   // Intended base font size cannot be read from CSS, as it might be modified
   // by mobile browsers already. (The Android native browser does this.)
   this.fontSize = 16;
@@ -698,6 +698,32 @@ CoursePresentation.prototype.fitCT = function () {
 };
 
 /**
+ * Set ratio from current slide.
+ *
+ * @param {Boolean} fullscreen
+ * @returns {undefined}
+ */
+CoursePresentation.prototype.resetRatio = function () {
+  const slide = this.slides[this.$current.index()];
+  switch(slide.aspectRatio){
+    case "16-9":
+      this.ratio = (16/9);
+      break;
+    case "9-16":
+      this.ratio = (9/16);
+      break;
+    case "4-3":
+      this.ratio = (4/3);
+      break;
+    case "3-4":
+      this.ratio = (3/4);
+      break;
+    default:
+      this.ratio = (16/9);
+  }
+}
+
+/**
  * Resize handling.
  *
  * @param {Boolean} fullscreen
@@ -706,9 +732,12 @@ CoursePresentation.prototype.fitCT = function () {
 CoursePresentation.prototype.resize = function () {
   var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
 
+  
   if (this.ignoreResize) {
     return; // When printing.
   }
+
+  this.resetRatio();
 
   // Fill up all available width
   this.$wrapper.css('width', 'auto');
@@ -726,7 +755,7 @@ CoursePresentation.prototype.resize = function () {
 
   // TODO: Add support for -16 when content conversion script is created?
   var widthRatio = width / this.width;
-  style.height = (width / this.ratio) + 'px';
+  style.height = this.width / this.ratio;
   style.fontSize = (this.fontSize * widthRatio) + 'px';
 
   if (this.editor !== undefined) {
