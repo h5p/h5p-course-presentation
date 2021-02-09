@@ -20,7 +20,7 @@ jobs:
         npm install
         npm run build
     - run: |
-        npm install -g h5p
+        
         mkdir -p dist
         cd dist
         
@@ -43,9 +43,11 @@ jobs:
         
         git clone https://github.com/NDLANO/h5p-editor-course-presentation.git
         
-        mv ../h5p-course-presentation .
-
-
+        cp -r ../h5p-course-presentation .
+    - run: |
+        cd dist
+        ls
+        npm install -g h5p
         h5p pack -r h5p-course-presentation interaktiv_tavle.h5p
         h5p validate interaktiv_tavle.h5p
     - name: Archive code coverage results
