@@ -9,8 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with: h5p-course-presentation
-      path: main
+      with: 
+        path: h5p-course-presentation
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
