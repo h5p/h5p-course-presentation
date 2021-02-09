@@ -15,9 +15,6 @@ jobs:
         node-version: '15.x'
     - run: npm install
     - run: npm run build
-    - run: npm test
-      env:
-        CI: true
     - run: |
         npm install -g h5p
         mkdir -p dist
