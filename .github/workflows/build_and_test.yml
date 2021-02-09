@@ -19,7 +19,8 @@ jobs:
         npm install -g h5p
         mkdir -p dist
         cd dist
-        while read -r repo; do git clone ${repo}; done < ../repos
+
+        while read -r repo; do git clone ${repo}; done < ../build_info/repos
         if [ -d "h5p-editor-color-selector" ]; then cd h5p-editor-color-selector && git checkout b0ae8c941cedcec73df6b186663eae6df8679810; fi
         if [ -d "h5p-dialogcards" ]; then cd h5p-dialogcards && npm install && npm run build; fi
         if [ -d "h5p-drag-text" ]; then cd h5p-drag-text && npm install && npm run build; fi
