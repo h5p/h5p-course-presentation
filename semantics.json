@@ -1,11 +1,9 @@
-[
-  {
+[{
     "name": "presentation",
     "type": "group",
     "importance": "high",
     "widget": "coursepresentation",
-    "fields": [
-      {
+    "fields": [{
         "name": "defaultAspectRatio",
         "importance": "high",
         "type": "text",
@@ -20,8 +18,7 @@
           "name": "slide",
           "importance": "high",
           "type": "group",
-          "fields": [
-            {
+          "fields": [{
               "name": "aspectRatio",
               "importance": "high",
               "type": "text",
@@ -36,8 +33,7 @@
                 "name": "element",
                 "importance": "high",
                 "type": "group",
-                "fields": [
-                  {
+                "fields": [{
                     "name": "x",
                     "importance": "low",
                     "type": "number",
@@ -93,34 +89,70 @@
                     "optional": true
                   },
                   {
-                    "name": "solution",
-                    "type": "text",
-                    "widget": "html",
-                    "optional": true,
+                    "name": "solutionGroup",
+                    "type": "group",
+                    "expanded": true,
+                    "widget": "showWhen",
                     "label": "Comments",
                     "importance": "low",
-                    "description": "The comments are shown when the user displays the suggested answers for all slides.",
-                    "enterMode": "p",
-                    "tags": [
-                      "strong",
-                      "em",
-                      "del",
-                      "a",
-                      "ul",
-                      "ol",
-                      "h2",
-                      "h3",
-                      "hr",
-                      "pre",
-                      "code"
+                    "showWhen": {
+                      "rules": [{
+                        "field": "action",
+                        "equals": [
+                          "H5P.AdvancedText",
+                          "H5P.Audio",
+                          "H5P.Blanks",
+                          "H5P.Chart",
+                          "H5P.ContinuousText",
+                          "H5P.Dialogcards",
+                          "H5P.DragQuestion",
+                          "H5P.DragText",
+                          "H5P.ExportableTextArea",
+                          "H5P.Image",
+                          "H5P.InteractiveVideo",
+                          "H5P.Link",
+                          "H5P.MarkTheWords",
+                          "H5P.MultiChoice",
+                          "H5P.SingleChoiceSet",
+                          "H5P.Summary",
+                          "H5P.Table",
+                          "H5P.TrueFalse",
+                          "H5P.TwitterUserFeed",
+                          "H5P.Video"
+                        ]
+                      }]
+                    },
+                    "fields": [{
+                        "name": "solution",
+                        "type": "text",
+                        "widget": "html",
+                        "optional": true,
+                        "label": "Comments",
+                        "importance": "low",
+                        "description": "The comments are shown when the user displays the suggested answers for all slides.",
+                        "enterMode": "p",
+                        "tags": [
+                          "strong",
+                          "em",
+                          "del",
+                          "a",
+                          "ul",
+                          "ol",
+                          "h2",
+                          "h3",
+                          "hr",
+                          "pre",
+                          "code"
+                        ]
+                      },
+                      {
+                        "name": "alwaysDisplayComments",
+                        "type": "boolean",
+                        "label": "Always display comments",
+                        "importance": "low",
+                        "optional": true
+                      }
                     ]
-                  },
-                  {
-                    "name": "alwaysDisplayComments",
-                    "type": "boolean",
-                    "label": "Always display comments",
-                    "importance": "low",
-                    "optional": true
                   },
                   {
                     "name": "backgroundOpacity",
@@ -131,40 +163,110 @@
                     "max": 100,
                     "step": 5,
                     "default": 0,
-                    "optional": true
+                    "optional": true,
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "action",
+                        "equals": [
+                          "H5P.AdvancedText",
+                          "H5P.Audio",
+                          "H5P.Blanks",
+                          "H5P.Chart",
+                          "H5P.ContinuousText",
+                          "H5P.Dialogcards",
+                          "H5P.DragQuestion",
+                          "H5P.DragText",
+                          "H5P.ExportableTextArea",
+                          "H5P.Image",
+                          "H5P.InteractiveVideo",
+                          "H5P.Link",
+                          "H5P.MarkTheWords",
+                          "H5P.MultiChoice",
+                          "H5P.SingleChoiceSet",
+                          "H5P.Summary",
+                          "H5P.Table",
+                          "H5P.TrueFalse",
+                          "H5P.TwitterUserFeed",
+                          "H5P.Video"
+                        ]
+                      }]
+                    }
                   },
                   {
-                    "name": "displayAsButton",
-                    "type": "boolean",
-                    "label": "Display as button",
-                    "importance": "medium",
-                    "default": false,
-                    "optional": true
-                  },
-                  {
-                    "name": "buttonSize",
-                    "type": "select",
-                    "label": "Button size",
+                    "name": "buttonGroup",
+                    "type": "group",
+                    "label": "Button options",
+                    "expanded": true,
                     "importance": "low",
-                    "optional": false,
-                    "default": "big",
-                    "options": [
-                      {
-                        "value": "small",
-                        "label": "Small"
+                    "fields": [{
+                        "name": "displayAsButton",
+                        "type": "boolean",
+                        "label": "Display as button",
+                        "importance": "medium",
+                        "default": false,
+                        "optional": false
                       },
                       {
-                        "value": "big",
-                        "label": "Big"
+                        "name": "buttonSize",
+                        "type": "select",
+                        "label": "Button size",
+                        "importance": "low",
+                        "optional": false,
+                        "default": "big",
+                        "options": [{
+                            "value": "small",
+                            "label": "Small"
+                          },
+                          {
+                            "value": "big",
+                            "label": "Big"
+                          }
+                        ]
                       }
-                    ]
+                    ],
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "action",
+                        "equals": [
+                          "H5P.AdvancedText",
+                          "H5P.Blanks",
+                          "H5P.Chart",
+                          "H5P.Dialogcards",
+                          "H5P.DragQuestion",
+                          "H5P.DragText",
+                          "H5P.ExportableTextArea",
+                          "H5P.Image",
+                          "H5P.InteractiveVideo",
+                          "H5P.Link",
+                          "H5P.MarkTheWords",
+                          "H5P.MultiChoice",
+                          "H5P.SingleChoiceSet",
+                          "H5P.Summary",
+                          "H5P.Table",
+                          "H5P.TrueFalse",
+                          "H5P.TwitterUserFeed",
+                          "H5P.Video"
+                        ]
+                      }]
+                    }
                   },
                   {
                     "name": "title",
                     "type": "text",
                     "optional": true,
                     "label": "Title",
-                    "importance": "medium"
+                    "importance": "medium",
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "action",
+                        "equals": [
+                          "goToSlide"
+                        ]
+                      }]
+                    }
                   },
                   {
                     "name": "goToSlideType",
@@ -172,8 +274,7 @@
                     "label": "Go to",
                     "importance": "medium",
                     "optional": false,
-                    "options": [
-                      {
+                    "options": [{
                         "value": "specified",
                         "label": "Specific slide number"
                       },
@@ -186,7 +287,16 @@
                         "label": "Previous slide"
                       }
                     ],
-                    "default": "specified"
+                    "default": "specified",
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "action",
+                        "equals": [
+                          "goToSlide"
+                        ]
+                      }]
+                    }
                   },
                   {
                     "name": "goToSlide",
@@ -195,7 +305,16 @@
                     "description": "Only applicable when 'Specific slide number' is selected",
                     "importance": "low",
                     "min": 1,
-                    "optional": true
+                    "optional": true,
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "action",
+                        "equals": [
+                          "goToSlide"
+                        ]
+                      }]
+                    }
                   },
                   {
                     "name": "invisible",
@@ -203,7 +322,16 @@
                     "label": "Invisible",
                     "importance": "low",
                     "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
-                    "default": false
+                    "default": false,
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "action",
+                        "equals": [
+                          "goToSlide"
+                        ]
+                      }]
+                    }
                   }
                 ]
               }
@@ -218,8 +346,7 @@
                 "importance": "low",
                 "type": "group",
                 "optional": true,
-                "fields": [
-                  {
+                "fields": [{
                     "name": "main",
                     "importance": "low",
                     "type": "text",
@@ -244,8 +371,7 @@
               "importance": "medium",
               "type": "group",
               "widget": "radioSelector",
-              "fields": [
-                {
+              "fields": [{
                   "name": "imageSlideBackground",
                   "type": "image",
                   "label": "Image",
@@ -327,8 +453,7 @@
         "importance": "medium",
         "type": "group",
         "widget": "radioSelector",
-        "fields": [
-          {
+        "fields": [{
             "name": "imageGlobalBackground",
             "type": "image",
             "label": "Image",
@@ -361,8 +486,7 @@
     "label": "Localize",
     "importance": "low",
     "common": true,
-    "fields": [
-      {
+    "fields": [{
         "name": "slide",
         "type": "text",
         "label": "Translation for \"Slide\"",
@@ -664,8 +788,7 @@
     "importance": "low",
     "description": "These options will let you override behaviour settings.",
     "optional": true,
-    "fields": [
-      {
+    "fields": [{
         "name": "activeSurface",
         "type": "boolean",
         "widget": "disposableBoolean",
@@ -689,8 +812,7 @@
         "importance": "low",
         "description": "This option determines if the \"Show Solution\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled) ",
         "optional": true,
-        "options": [
-          {
+        "options": [{
             "value": "on",
             "label": "Enabled"
           },
@@ -707,8 +829,7 @@
         "importance": "low",
         "description": "This option determines if the \"Retry\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled)",
         "optional": true,
-        "options": [
-          {
+        "options": [{
             "value": "on",
             "label": "Enabled"
           },
@@ -727,12 +848,10 @@
         "importance": "low",
         "widget": "showWhen",
         "showWhen": {
-          "rules": [
-            {
-              "field": "hideSummarySlide",
-              "equals": false
-            }
-          ]
+          "rules": [{
+            "field": "hideSummarySlide",
+            "equals": false
+          }]
         }
       },
       {
@@ -744,12 +863,10 @@
         "importance": "low",
         "widget": "showWhen",
         "showWhen": {
-          "rules": [
-            {
-              "field": "hideSummarySlide",
-              "equals": false
-            }
-          ]
+          "rules": [{
+            "field": "hideSummarySlide",
+            "equals": false
+          }]
         }
       },
       {
@@ -766,18 +883,15 @@
         "label": "Social Settings",
         "widget": "showWhen",
         "showWhen": {
-          "rules": [
-            {
-              "field": "hideSummarySlide",
-              "equals": false
-            }
-          ]
+          "rules": [{
+            "field": "hideSummarySlide",
+            "equals": false
+          }]
         },
         "importance": "low",
         "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
         "optional": true,
-        "fields": [
-          {
+        "fields": [{
             "name": "showFacebookShare",
             "type": "boolean",
             "label": "Display Facebook share icon",
@@ -792,15 +906,12 @@
             "label": "Facebook share settings",
             "widget": "showWhen",
             "showWhen": {
-              "rules": [
-                {
-                  "field": "showFacebookShare",
-                  "equals": true
-                }
-              ]
+              "rules": [{
+                "field": "showFacebookShare",
+                "equals": true
+              }]
             },
-            "fields": [
-              {
+            "fields": [{
                 "name": "url",
                 "type": "text",
                 "label": "Share to Facebook link",
@@ -831,15 +942,12 @@
             "label": "Twitter share settings",
             "widget": "showWhen",
             "showWhen": {
-              "rules": [
-                {
-                  "field": "showTwitterShare",
-                  "equals": true
-                }
-              ]
+              "rules": [{
+                "field": "showTwitterShare",
+                "equals": true
+              }]
             },
-            "fields": [
-              {
+            "fields": [{
                 "name": "statement",
                 "type": "text",
                 "label": "Share to Twitter statement",
@@ -877,12 +985,10 @@
             "default": "@currentpageurl",
             "widget": "showWhen",
             "showWhen": {
-              "rules": [
-                {
-                  "field": "showGoogleShare",
-                  "equals": true
-                }
-              ]
+              "rules": [{
+                "field": "showGoogleShare",
+                "equals": true
+              }]
             }
           }
         ]
