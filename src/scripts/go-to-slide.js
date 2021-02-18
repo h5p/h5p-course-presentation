@@ -1,5 +1,10 @@
-import { addClickAndKeyboardListeners } from './utils';
-import { jQuery as $, EventDispatcher } from './globals';
+import {
+  addClickAndKeyboardListeners
+} from './utils';
+import {
+  jQuery as $,
+  EventDispatcher
+} from './globals';
 
 /**
  * Enum containing possible navigation types
@@ -12,22 +17,29 @@ const navigationType = {
   PREVIOUS: 'previous'
 };
 
-/**
- * @class
- */
 export default class GoToSlide {
   /**
    * Element for linking between slides in presentations.
    *
-   * @constructor
-   * @param {string} title
-   * @param {number} goToSlide
-   * @param {boolean} invisible
-   * @param {string} goToSlideType
-   * @param {object} l10n
-   * @param {number} currentIndex
+   * @param {Object} param0
+   * @param {string} param0.title
+   * @param {number} param0.goToSlide
+   * @param {boolean} param0.invisible
+   * @param {string} param0.goToSlideType
+   * @param {Object} param1 
+   * @param {Object} param1.l10n
+   * @param {number} param1.currentIndex
+   * @param {JQuery<HTMLElement>} content
    */
-  constructor({ title, goToSlide = 1, invisible, goToSlideType  = navigationType.SPECIFIED }, { l10n, currentIndex }) {
+  constructor({
+    title,
+    goToSlide = 1,
+    invisible,
+    goToSlideType = navigationType.SPECIFIED
+  }, {
+    l10n,
+    currentIndex
+  }, content = null) {
     this.eventDispatcher = new EventDispatcher();
     let classes = 'h5p-press-to-go';
     let tabindex = 0;
@@ -35,8 +47,7 @@ export default class GoToSlide {
     if (invisible) {
       title = undefined;
       tabindex = -1;
-    }
-    else {
+    } else {
       if (!title) {
         // No title so use the slide number, prev, or next.
         switch (goToSlideType) {
@@ -60,8 +71,7 @@ export default class GoToSlide {
     // Check if previous or next is selected.
     if (goToSlideType === navigationType.NEXT) {
       goTo = currentIndex + 1;
-    }
-    else if (goToSlideType === navigationType.PREVIOUS) {
+    } else if (goToSlideType === navigationType.PREVIOUS) {
       goTo = currentIndex - 1;
     }
 
@@ -77,6 +87,10 @@ export default class GoToSlide {
       this.eventDispatcher.trigger('navigate', goTo);
       event.preventDefault();
     });
+
+    if (content) {
+      this.attachContent(content);
+    }
   }
 
   /**
@@ -97,5 +111,13 @@ export default class GoToSlide {
    */
   on(name, callback) {
     this.eventDispatcher.on(name, callback);
+  }
+
+  /**
+   * 
+   * @param {$} content 
+   */
+  attachContent(content) {
+    this.$element.append(content);
   }
 }
