@@ -55,7 +55,15 @@ function Slide(parameters) {
  * @returns {string} HTML.
  */
 Slide.createHTML = function (parameters) {
-  return '<div role="document" class="h5p-slide"' + (parameters.background !== undefined ? ' style="background:' + parameters.background + '"' : '') + '></div>';
+  const classNames = `h5p-slide ${parameters.aspectRatio ? ` h5p-slide-${parameters.aspectRatio}` : ''}`;
+  const style = `${parameters.background ? 
+  	`style="background:${parameters.background}"` : ''}`;
+
+  return `<div
+  	role="document"
+  	class="${classNames}"
+  	${style}
+  	></div>`;
 };
 
 export default Slide;

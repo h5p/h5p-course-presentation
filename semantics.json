@@ -6,6 +6,13 @@
     "widget": "coursepresentation",
     "fields": [
       {
+        "name": "defaultAspectRatio",
+        "importance": "high",
+        "type": "text",
+        "optional": true,
+        "label": "Aspect Ratio"
+      },
+      {
         "name": "slides",
         "importance": "high",
         "type": "list",
@@ -14,6 +21,13 @@
           "importance": "high",
           "type": "group",
           "fields": [
+            {
+              "name": "aspectRatio",
+              "importance": "high",
+              "type": "text",
+              "optional": true,
+              "label": "Aspect Ratio"
+            },
             {
               "name": "elements",
               "importance": "high",
@@ -73,7 +87,8 @@
                       "H5P.ExportableTextArea 1.3",
                       "H5P.Table 1.1",
                       "H5P.InteractiveVideo 1.22",
-                      "H5P.TwitterUserFeed 1.0"
+                      "H5P.TwitterUserFeed 1.0",
+                      "H5P.Chart 1.2"
                     ],
                     "optional": true
                   },
