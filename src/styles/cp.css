@@ -414,7 +414,9 @@
 
 .h5p-interaktivtavle .h5p-element-button:hover {
   box-shadow: 0 0.3em 0.25em 0 rgba(0, 0, 0, 0.5);
-  background: #003fdf;
+ /**TODO: Remove this comment, only for remembering the hex/
+  /* background: #003fdf;*/
+  background: #2f2f2f !important;
 }
 
 .h5p-interaktivtavle .h5p-element-button:focus {

@@ -160,6 +160,57 @@
                     ]
                   },
                   {
+                    "name": "buttonIcon",
+                    "type": "select",
+                    "label": "Button icon",
+                    "importance": "low",
+                    "optional": false,
+                    "default": "big",
+                    "options": [
+                      {
+                        "value": "&#xf028;",
+                        "label": "&#xf028;"
+                      },
+                      {
+                        "value": "big",
+                        "label": "Big"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "buttonColor",
+                    "type": "text",
+                    "widget": "colorSelector",
+                    "label": "Button Color",
+                    "importance": "low",
+                    "default": "#1d5cff",
+                    "optional": true,
+                    "spectrum": {
+                      "showInput": true,
+                      "preferredFormat": "hex"
+                    }
+                  },
+                  {
+                    "name": "correct",
+                    "type": "select",
+                    "widget": "imageRadioGroup",
+                    "alignment": "horizontal",
+                    "bomba" : "test",
+                    "label": "Correct answer",
+                    "options": [
+                      {
+                        "value": "true",
+                        "label": "True"
+                      },
+                      {
+                        "value": "false",
+                        "label": "False"
+                      }
+                    ],
+                    "default": "true"
+                  },
+
+                  {
                     "name": "title",
                     "type": "text",
                     "optional": true,

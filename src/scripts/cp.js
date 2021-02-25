@@ -1085,6 +1085,10 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
    * @return {Function}
    */
   const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
+  const ActionIcon = {
+    "h5p-advancedtext": "f05a"
+  };
+
 
   const $button = $('<div>', {
     role: 'button',
@@ -1092,10 +1096,15 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     'aria-label': label,
     'aria-popup': true,
     'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`,
+    'style' : `background: ${element.buttonColor};`
   });
-
+  console.log(element)
+  const buttonIconUnicode = "&#x" + (ActionIcon[libTypePmz]) + ";";
+  const $buttonIcon = $('<icon class="fa"></icon>');
+  $buttonIcon.html(buttonIconUnicode)
   const $buttonElement = $('<div class="h5p-button-element"></div>');
+  $button.html($buttonIcon)
   instance.attach($buttonElement);
 
   const parentPosition = libTypePmz === 'h5p-advancedtext' ? {
