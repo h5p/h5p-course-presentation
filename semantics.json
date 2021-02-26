@@ -165,15 +165,23 @@
                     "label": "Button icon",
                     "importance": "low",
                     "optional": false,
-                    "default": "big",
+                    "default": "&#xf05a;",
                     "options": [
                       {
-                        "value": "&#xf028;",
-                        "label": "&#xf028;"
+                        "value": "&#xf05a;",
+                        "label": "Text"
                       },
                       {
-                        "value": "big",
-                        "label": "Big"
+                        "value": "&#xf0c1;",
+                        "label": "Link"
+                      },
+                      {
+                        "value": "&#xf008;",
+                        "label": "Video"
+                      },
+                      {
+                        "value": "&#xf0ce;",
+                        "label": "Table button"
                       }
                     ]
                   },
@@ -190,26 +198,6 @@
                       "preferredFormat": "hex"
                     }
                   },
-                  {
-                    "name": "correct",
-                    "type": "select",
-                    "widget": "imageRadioGroup",
-                    "alignment": "horizontal",
-                    "bomba" : "test",
-                    "label": "Correct answer",
-                    "options": [
-                      {
-                        "value": "true",
-                        "label": "True"
-                      },
-                      {
-                        "value": "false",
-                        "label": "False"
-                      }
-                    ],
-                    "default": "true"
-                  },
-
                   {
                     "name": "title",
                     "type": "text",
