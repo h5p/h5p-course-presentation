@@ -1085,29 +1085,26 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
    * @return {Function}
    */
   const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
-  const ActionIcon = {
-    "h5p-advancedtext": "f05a"
-  };
-
-
+  var colorType = lightOrDark(element.buttonColor);
   const $button = $('<div>', {
     role: 'button',
     tabindex: 0,
     'aria-label': label,
     'aria-popup': true,
     'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-buttona`,
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${colorType === "light" ? "light-bg" : "" }`,
     'style' : `background: ${element.buttonColor};`
   });
-  console.log(element)
-//  const buttonIconUnicode = "&#x" + (ActionIcon[libTypePmz]) + ";";
-  const buttonIconUnicode = element.buttonIcon;
-  const $buttonIcon = $('<icon class="fa"></icon>');
-  $buttonIcon.html(buttonIconUnicode)
   const $buttonElement = $('<div class="h5p-button-element"></div>');
-  $button.html($buttonIcon)
+  if(element.useButtonIcon && element.buttonIcon !== "") {
+    const buttonIconUnicode = element.buttonIcon ? "&#x" + element.buttonIcon + ";" : "";
+    const $buttonIcon = $('<icon class="fa h5p-element-button-icon"></icon>');
+    $buttonIcon.html(buttonIconUnicode)
+    $button.html($buttonIcon);
+  } else {
+    $button.addClass(libTypePmz + "-button");
+  }
   instance.attach($buttonElement);
-
   const parentPosition = libTypePmz === 'h5p-advancedtext' ? {
     x: element.x,
     y: element.y
@@ -1128,7 +1125,46 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 
   return $button;
 };
+function lightOrDark (originalColor) {
+  // Variables for red, green, blue values
+  var r, g, b, hsp
+  var hashtag = '#'
+  var color = originalColor
 
+  if (!originalColor.includes(hashtag)) { color = hashtag.concat(originalColor) }
+  // Check the format of the color, HEX or RGB?
+  if (color && color.match(/^rgb/)) {
+    // If HEX --> store the red, green, blue values in separate variables
+    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/)
+
+    r = color[1];
+    g = color[2];
+    b = color[3];
+  } else {
+
+    color = +('0x' + color.slice(1).replace(
+        color.length < 5 && /./g, '$&$&'))
+
+    r = color >> 16;
+    g = color >> 8 & 255;
+    b = color & 255;
+  }
+  hsp = Math.sqrt(
+      0.299 * (r * r) +
+      0.587 * (g * g) +
+      0.114 * (b * b)
+  );
+  // Using the HSP value, determine whether the color is light or dark
+  if (hsp > 127.5) {
+    return 'light';
+  } else if (originalColor === '#000000') {
+    return 'light';
+  } else if (hsp === 0) {
+    return 'light';
+  } else if (hsp < 127.5) {
+    return 'dark';
+  }
+}
 /**
  * Shows the interaction popup on button press
  *

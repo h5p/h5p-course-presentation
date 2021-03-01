@@ -416,7 +416,18 @@
   box-shadow: 0 0.3em 0.25em 0 rgba(0, 0, 0, 0.5);
  /**TODO: Remove this comment, only for remembering the hex/
   /* background: #003fdf;*/
-  background: #2f2f2f !important;
+  background: #474747 !important;
+}
+.h5p-element-button.light-bg > .h5p-element-button-icon {
+  color: #474747;
+  transition: all ease-in-out .2s;
+}
+.h5p-element-button.light-bg:hover > * {
+  color: #fff;
+}
+
+.h5p-element-button.dark-bg {
+  background: #ffffff;
 }
 
 .h5p-interaktivtavle .h5p-element-button:focus {

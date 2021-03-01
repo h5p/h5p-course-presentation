@@ -160,32 +160,6 @@
                     ]
                   },
                   {
-                    "name": "buttonIcon",
-                    "type": "select",
-                    "label": "Button icon",
-                    "importance": "low",
-                    "optional": false,
-                    "default": "&#xf05a;",
-                    "options": [
-                      {
-                        "value": "&#xf05a;",
-                        "label": "Text"
-                      },
-                      {
-                        "value": "&#xf0c1;",
-                        "label": "Link"
-                      },
-                      {
-                        "value": "&#xf008;",
-                        "label": "Video"
-                      },
-                      {
-                        "value": "&#xf0ce;",
-                        "label": "Table button"
-                      }
-                    ]
-                  },
-                  {
                     "name": "buttonColor",
                     "type": "text",
                     "widget": "colorSelector",
@@ -197,6 +171,75 @@
                       "showInput": true,
                       "preferredFormat": "hex"
                     }
+                  },
+                  {
+                    "name": "useButtonIcon",
+                    "type": "boolean",
+                    "label": "Use different icon",
+                    "importance": "medium",
+                    "default": false,
+                    "optional": false
+                  },
+                  {
+                    "name": "buttonIcon",
+                    "type": "select",
+                    "widget": "imageRadioGroup",
+                    "alignment": "horizontal",
+                    "label": "Button icon",
+                    "default": "f05a",
+                    "optional": false,
+                    "options": [
+                      {
+                        "fontIcon" : "f05a",
+                        "value": "f05a",
+                        "label": "Information icon"
+                      },
+                      {
+                        "fontIcon" : "f008",
+                        "value": "f008",
+                        "label": "Video icon"
+                      },
+                      {
+                        "fontIcon" : "f03e",
+                        "value": "f03e",
+                        "label": "Image icon"
+                      },
+                      {
+                        "fontIcon" : "f028",
+                        "value": "f028",
+                        "label": "Audio icon"
+                      },
+                      {
+                        "fontIcon" : "f200",
+                        "value": "f200",
+                        "label": "Chart icon"
+                      },
+                      {
+                        "fontIcon" : "f03d",
+                        "value": "f03d",
+                        "label": "Video icon"
+                      },
+                      {
+                        "fontIcon" : "f065",
+                        "value": "f065",
+                        "label": "Fullscreen icon"
+                      },
+                      {
+                        "fontIcon" : "f066",
+                        "value": "f066",
+                        "label": "Semi-fullscreen icon"
+                      },
+                      {
+                        "fontIcon" : "f099",
+                        "value": "f099",
+                        "label": "Twitter icon"
+                      },
+                      {
+                        "fontIcon" : "f0c1",
+                        "value": "f0c1",
+                        "label": "Link icon"
+                      }
+                    ]
                   },
                   {
                     "name": "title",
