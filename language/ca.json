@@ -112,27 +112,27 @@
       "label": "Localitza",
       "fields": [
         {
-          "label": "Translation for \"Slide\"",
+          "label": "Traducció de \"Diapositiva\"",
           "default": "Pàgina"
         },
         {
-          "label": "Translation for \"Score\"",
+          "label": "Traducció de \"Qualificació\"",
           "default": "Puntuació"
         },
         {
-          "label": "Translation for \"Your Score\"",
+          "label": "Traducció de \"La vostra qualificació\"",
           "default": "La teva qualificació"
         },
         {
-          "label": "Translation for \"Max Score\"",
+          "label": "Traducció de \"Qualificació màxima\"",
           "default": "Màxima qualificació"
         },
         {
-          "label": "Translation for \"Total\"",
+          "label": "Traducció per a \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Translation for \"Total Score\"",
+          "label": "Traducció de \"Qualificació total\"",
           "default": "Qualificació total"
         },
         {
@@ -224,11 +224,11 @@
           "default": "Com voleu imprimir aquesta presentació?"
         },
         {
-          "label": "Label for \"Print all slides\" button",
+          "label": "Etiqueta del botó \"Imprimeix totes les diapositives\"",
           "default": "Imprimeix totes les diapositives"
         },
         {
-          "label": "Label for \"Print current slide\" button",
+          "label": "Etiqueta del botó \"Imprimeix la diapositiva actual\"",
           "default": "Imprimeix la diapositiva actual"
         },
         {
@@ -295,8 +295,8 @@
           "description": "Amaga la diapositiva resum."
         },
         {
-          "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Substitueix el botó \"Mostra la solució\"",
+          "description": "Aquesta opció determina si es mostrarà el botó \"Mostra la solució\" per a totes les preguntes, es desactivarà per a totes o es configurarà per a cada pregunta individualment.",
           "options": [
             {
               "label": "Activat"
@@ -307,8 +307,8 @@
           ]
         },
         {
-          "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "label": "Substitueix el botó \"Torna-ho a provar\"",
+          "description": "Aquesta opció determina si es mostrarà el botó \"Torna-ho a provar\" per a totes les preguntes, es desactivarà per a totes o es configurarà per a cada pregunta individualment.",
           "options": [
             {
               "label": "Activat"
@@ -319,11 +319,11 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
+          "label": "Mostra el botó \"Mostra solució\" a la diapositiva de resum",
           "description": "Si està activat, l’aprenent podrà mostrar les solucions per a totes les preguntes quan arribin a la diapositiva resum"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
+          "label": "Mostra el botó \"Torna-ho a provar\" a la diapositiva de resume",
           "description": "Si s’activa aquesta opció, l’alumne podrà tornar a provar de respondre totes les preguntes quan arribi a la diapositiva de resum. Tingueu en compte que, si s’actualitza la pàgina, l’alumne pot tornar a provar-ho encara que no es mostri aquest botó."
         },
         {
