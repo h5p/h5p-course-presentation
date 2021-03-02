@@ -425,6 +425,12 @@
 .h5p-element-button.light-bg:hover > * {
   color: #fff;
 }
+.h5p-element-button.light-bg:before{
+  color: #474747;
+}
+.h5p-element-button.light-bg:hover {
+  color: #fff;
+}
 
 .h5p-element-button.dark-bg {
   background: #ffffff;
