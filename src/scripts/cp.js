@@ -736,7 +736,6 @@ CoursePresentation.prototype.resetRatio = function () {
  */
 CoursePresentation.prototype.resize = function () {
   var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
-
   
   if (this.ignoreResize) {
     return; // When printing.
@@ -751,16 +750,29 @@ CoursePresentation.prototype.resize = function () {
 
   if (fullscreenOn) {
     var maxHeight = this.$container.height();
-    if (width / maxHeight > this.ratio) {
-      // Top and bottom would be cut off so scale down.
-      width = maxHeight * this.ratio;
-      style.width = width + 'px';
+    var maxWidth = this.$container.width();
+    if(this.ratio > 1){
+      style.width = maxWidth;
+      style.height = maxWidth / this.ratio;
+      if(style.height > maxHeight){
+        style.height = maxHeight;
+        style.width = maxHeight * this.ratio;
+      }
+    } else {
+      style.height = maxHeight;
+      style.width = maxHeight * this.ratio;
+      if(style.width > maxWidth){
+        style.width = maxWidth;
+        style.height = maxWidth / this.ratio;
+      }
     }
+
+  }else {
+    // TODO: Add support for -16 when content conversion script is created?
+    style.height = this.width / this.ratio;
   }
 
-  // TODO: Add support for -16 when content conversion script is created?
   var widthRatio = width / this.width;
-  style.height = this.width / this.ratio;
   style.fontSize = (this.fontSize * widthRatio) + 'px';
 
   if (this.editor !== undefined) {
@@ -815,10 +827,12 @@ CoursePresentation.prototype.toggleFullScreen = function () {
     }
   }
   else {
+   
     // Rescale footer buttons
     this.$footer.addClass('footer-full-screen');
 
     this.$fullScreenButton.attr('title', this.l10n.exitFullscreen);
+
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
