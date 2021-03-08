@@ -29,6 +29,7 @@ const KEYWORD_TITLE_SKIP = null;
 let CoursePresentation = function (params, id, extras) {
   var that = this;
   this.presentation = params.presentation;
+  this.defaultAspectRatio = this.presentation.slides[0].aspectRatio;
   this.slides = this.presentation.slides;
   this.contentId = id;
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
