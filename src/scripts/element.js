@@ -9,7 +9,7 @@ import GoToSlide from './go-to-slide';
  */
 function Element(parameters) {
   const {
-    showAsAnchor
+    showAsHotspot
   } = parameters;
 
   const isAnchor = parameters.action === undefined;
@@ -17,7 +17,7 @@ function Element(parameters) {
   if (isAnchor) {
     this.instance = Element.createGoToSlide(parameters, this.parent.parent.l10n, this.parent.index, this.parent.parent);
 
-  } else if (showAsAnchor) {
+  } else if (showAsHotspot) {
     this.instance = Element.createGoToSlide(parameters, this.parent.parent.l10n, this.parent.index, this.parent.parent);
 
     const content = Element.createContent(this.parent, parameters);
@@ -104,9 +104,7 @@ Element.createContent = function (parent, parameters) {
     // Add defaults
     h5pLibrary = H5P.jQuery.extend(true, parameters.action, parent.parent.elementsOverride);
   }
-  console.log({
-    h5pLibrary
-  })
+
   h5pLibrary = Element.overrideAutoplay(h5pLibrary);
 
   const internalSlideId = parent.parent.elementInstances[parent.index] ? parent.parent.elementInstances[parent.index].length : 0;
@@ -128,10 +126,6 @@ Element.createContent = function (parent, parameters) {
     parent: parent.parent
   });
 
-  console.log({
-    instance
-  })
-
   if (instance.preventResize !== undefined) {
     instance.preventResize = true;
   }
@@ -146,7 +140,7 @@ Element.createGoToSlide = function (parameters, l10n, currentIndex, grandparent)
   });
 
   if (!grandparent.isEditor()) {
-    this.instance.on('navigate', event => {
+    goToSlide.on('navigate', event => {
       const index = event.data;
       grandparent.jumpToSlide(index);
     });

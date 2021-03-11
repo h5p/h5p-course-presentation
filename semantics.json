@@ -92,36 +92,8 @@
                     "name": "solutionGroup",
                     "type": "group",
                     "expanded": true,
-                    "widget": "showWhen",
                     "label": "Comments",
                     "importance": "low",
-                    "showWhen": {
-                      "rules": [{
-                        "field": "action",
-                        "equals": [
-                          "H5P.AdvancedText",
-                          "H5P.Audio",
-                          "H5P.Blanks",
-                          "H5P.Chart",
-                          "H5P.ContinuousText",
-                          "H5P.Dialogcards",
-                          "H5P.DragQuestion",
-                          "H5P.DragText",
-                          "H5P.ExportableTextArea",
-                          "H5P.Image",
-                          "H5P.InteractiveVideo",
-                          "H5P.Link",
-                          "H5P.MarkTheWords",
-                          "H5P.MultiChoice",
-                          "H5P.SingleChoiceSet",
-                          "H5P.Summary",
-                          "H5P.Table",
-                          "H5P.TrueFalse",
-                          "H5P.TwitterUserFeed",
-                          "H5P.Video"
-                        ]
-                      }]
-                    },
                     "fields": [{
                         "name": "solution",
                         "type": "text",
@@ -163,35 +135,7 @@
                     "max": 100,
                     "step": 5,
                     "default": 0,
-                    "optional": true,
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [{
-                        "field": "action",
-                        "equals": [
-                          "H5P.AdvancedText",
-                          "H5P.Audio",
-                          "H5P.Blanks",
-                          "H5P.Chart",
-                          "H5P.ContinuousText",
-                          "H5P.Dialogcards",
-                          "H5P.DragQuestion",
-                          "H5P.DragText",
-                          "H5P.ExportableTextArea",
-                          "H5P.Image",
-                          "H5P.InteractiveVideo",
-                          "H5P.Link",
-                          "H5P.MarkTheWords",
-                          "H5P.MultiChoice",
-                          "H5P.SingleChoiceSet",
-                          "H5P.Summary",
-                          "H5P.Table",
-                          "H5P.TrueFalse",
-                          "H5P.TwitterUserFeed",
-                          "H5P.Video"
-                        ]
-                      }]
-                    }
+                    "optional": true
                   },
                   {
                     "name": "buttonGroup",
@@ -224,49 +168,22 @@
                           }
                         ]
                       }
-                    ],
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [{
-                        "field": "action",
-                        "equals": [
-                          "H5P.AdvancedText",
-                          "H5P.Blanks",
-                          "H5P.Chart",
-                          "H5P.Dialogcards",
-                          "H5P.DragQuestion",
-                          "H5P.DragText",
-                          "H5P.ExportableTextArea",
-                          "H5P.Image",
-                          "H5P.InteractiveVideo",
-                          "H5P.Link",
-                          "H5P.MarkTheWords",
-                          "H5P.MultiChoice",
-                          "H5P.SingleChoiceSet",
-                          "H5P.Summary",
-                          "H5P.Table",
-                          "H5P.TrueFalse",
-                          "H5P.TwitterUserFeed",
-                          "H5P.Video"
-                        ]
-                      }]
-                    }
+                    ]
+                  },
+                  {
+                    "name": "showAsHotspot",
+                    "type": "boolean",
+                    "label": "Display as hotspot",
+                    "importance": "medium",
+                    "default": false,
+                    "optional": false
                   },
                   {
                     "name": "title",
                     "type": "text",
                     "optional": true,
                     "label": "Title",
-                    "importance": "medium",
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [{
-                        "field": "action",
-                        "equals": [
-                          "goToSlide"
-                        ]
-                      }]
-                    }
+                    "importance": "medium"
                   },
                   {
                     "name": "goToSlideType",
@@ -287,16 +204,7 @@
                         "label": "Previous slide"
                       }
                     ],
-                    "default": "specified",
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [{
-                        "field": "action",
-                        "equals": [
-                          "goToSlide"
-                        ]
-                      }]
-                    }
+                    "default": "specified"
                   },
                   {
                     "name": "goToSlide",
@@ -305,16 +213,7 @@
                     "description": "Only applicable when 'Specific slide number' is selected",
                     "importance": "low",
                     "min": 1,
-                    "optional": true,
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [{
-                        "field": "action",
-                        "equals": [
-                          "goToSlide"
-                        ]
-                      }]
-                    }
+                    "optional": true
                   },
                   {
                     "name": "invisible",
@@ -322,16 +221,7 @@
                     "label": "Invisible",
                     "importance": "low",
                     "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
-                    "default": false,
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [{
-                        "field": "action",
-                        "equals": [
-                          "goToSlide"
-                        ]
-                      }]
-                    }
+                    "default": false                    
                   }
                 ]
               }
