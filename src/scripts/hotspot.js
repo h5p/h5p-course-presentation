@@ -30,7 +30,7 @@ const navigationType = {
  * @param {number} param1.currentIndex
  * @param {JQuery<HTMLElement>} content
  */
-export default function GoToSlide({
+export default function Hotspot({
   title,
   goToSlide = 1,
   invisible,

@@ -1,4 +1,4 @@
-import GoToSlide from './go-to-slide';
+import Hotspot from './hotspot';
 
 /**
  * @class
@@ -14,11 +14,8 @@ function Element(parameters) {
 
   const isAnchor = parameters.action === undefined;
 
-  if (isAnchor) {
-    this.instance = Element.createGoToSlide(parameters, this.parent.parent.l10n, this.parent.index, this.parent.parent);
-
-  } else if (showAsHotspot) {
-    this.instance = Element.createGoToSlide(parameters, this.parent.parent.l10n, this.parent.index, this.parent.parent);
+  if (showAsHotspot) {
+    this.instance = Element.createHotspot(parameters, this.parent.parent.l10n, this.parent.index, this.parent.parent);
 
     const content = Element.createContent(this.parent, parameters);
     this.instance.attachContent(content);
@@ -133,8 +130,8 @@ Element.createContent = function (parent, parameters) {
   return instance;
 }
 
-Element.createGoToSlide = function (parameters, l10n, currentIndex, grandparent) {
-  const goToSlide = new GoToSlide(parameters, {
+Element.createHotspot = function (parameters, l10n, currentIndex, grandparent) {
+  const goToSlide = new Hotspot(parameters, {
     l10n,
     currentIndex,
   });
