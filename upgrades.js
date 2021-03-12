@@ -377,7 +377,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
        * @param {Object} parameters
        * @param {function} finished
        */
-      24: function (parameters, finished) {
+      23: function (parameters, finished) {
         const hasSlides = parameters && parameters.presentation && !!parameters.presentation.slides;
 
         if (!hasSlides) {
