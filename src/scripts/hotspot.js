@@ -94,8 +94,8 @@ export default function Hotspot({
     this.attachContent(content);
   }
 
-  GoToSlide.prototype = Object.create(EventDispatcher.prototype);
-  GoToSlide.prototype.constructor = GoToSlide;
+  Hotspot.prototype = Object.create(EventDispatcher.prototype);
+  Hotspot.prototype.constructor = Hotspot;
 
   /**
    * Attach element to the given container.
