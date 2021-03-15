@@ -1125,6 +1125,11 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 
   return $button;
 };
+/**
+ * Checks whether a color is defined as dark or light 
+* @param originalColor, hex color code
+ * @return string, 'light' or 'dark'
+* */
 function lightOrDark (originalColor) {
   // Variables for red, green, blue values
   var r, g, b, hsp
