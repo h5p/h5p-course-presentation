@@ -727,6 +727,8 @@ CoursePresentation.prototype.resetRatio = function () {
     default:
       this.ratio = (16/9);
   }
+
+  this.$wrapper.css({paddingTop: `${100/this.ratio}%`});
 }
 
 /**
@@ -736,7 +738,7 @@ CoursePresentation.prototype.resetRatio = function () {
  * @return {undefined}
  */
 CoursePresentation.prototype.resize = function () {
-  var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
+  // var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
   
   if (this.ignoreResize) {
     return; // When printing.
@@ -745,33 +747,33 @@ CoursePresentation.prototype.resize = function () {
   this.resetRatio();
 
   // Fill up all available width
-  this.$wrapper.css('width', 'auto');
+  // this.$wrapper.css('width', 'auto');
   var width = this.$container.width();
   var style = {};
 
-  if (fullscreenOn) {
-    var maxHeight = this.$container.height();
-    var maxWidth = this.$container.width();
-    if(this.ratio > 1){
-      style.width = maxWidth;
-      style.height = maxWidth / this.ratio;
-      if(style.height > maxHeight){
-        style.height = maxHeight;
-        style.width = maxHeight * this.ratio;
-      }
-    } else {
-      style.height = maxHeight;
-      style.width = maxHeight * this.ratio;
-      if(style.width > maxWidth){
-        style.width = maxWidth;
-        style.height = maxWidth / this.ratio;
-      }
-    }
+  // if (fullscreenOn) {
+  //   var maxHeight = this.$container.height();
+  //   var maxWidth = this.$container.width();
+  //   if(this.ratio > 1){
+  //     style.width = maxWidth;
+  //     style.height = maxWidth / this.ratio;
+  //     if(style.height > maxHeight){
+  //       style.height = maxHeight;
+  //       style.width = maxHeight * this.ratio;
+  //     }
+  //   } else {
+  //     style.height = maxHeight;
+  //     style.width = maxHeight * this.ratio;
+  //     if(style.width > maxWidth){
+  //       style.width = maxWidth;
+  //       style.height = maxWidth / this.ratio;
+  //     }
+  //   }
 
-  }else {
-    // TODO: Add support for -16 when content conversion script is created?
-    style.height = this.width / this.ratio;
-  }
+  // }else {
+  //   // TODO: Add support for -16 when content conversion script is created?
+  //   style.height = this.width / this.ratio;
+  // }
 
   var widthRatio = width / this.width;
   style.fontSize = (this.fontSize * widthRatio) + 'px';

@@ -87,19 +87,24 @@
 .h5p-interaktivtavle .h5p-wrapper {
   margin: 0 auto;
   position: relative;
-  width: 640px;
-  height: 440px;
+  max-height: calc(100% - 2rem);
   text-align: center;
   font-size: 16px;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
 }
 .h5p-interaktivtavle .h5p-wrapper:focus {
   outline: none;
 }
+
+/**
+ * {1} The container's height - (the height of the cp navigation + the height of the footer)
+ */
 .h5p-interaktivtavle .h5p-box-wrapper {
   width: 100%;
-  height: calc(100% - 2.5em);
+  height: calc(100% - 35px); /* {1} */
+  position: absolute;
+  left: 0;
+  top: 0;
   overflow: hidden;
   background: #666666;
   box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
