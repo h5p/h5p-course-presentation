@@ -1,4 +1,4 @@
-import "../styles/cp.css";
+import "../styles/cp.scss";
 import "../styles/go-to-slide.scss";
 import "../styles/keyword-menu.css";
 import "../styles/summary-slide.css";
