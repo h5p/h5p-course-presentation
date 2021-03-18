@@ -1128,7 +1128,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 /**
  * Checks whether a color is defined as dark or light 
 * @param originalColor, hex color code
- * @return string, 'light' or 'dark'
+ * @return {'light' | 'dark'}
 * */
 function lightOrDark (originalColor) {
   // Variables for red, green, blue values
@@ -1140,11 +1140,7 @@ function lightOrDark (originalColor) {
   // Check the format of the color, HEX or RGB?
   if (color && color.match(/^rgb/)) {
     // If HEX --> store the red, green, blue values in separate variables
-    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/)
-
-    r = color[1];
-    g = color[2];
-    b = color[3];
+    [_, r, g, b] = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
   } else {
 
     color = +('0x' + color.slice(1).replace(
