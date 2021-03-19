@@ -89,42 +89,34 @@
                     "optional": true
                   },
                   {
-                    "name": "solutionGroup",
-                    "type": "group",
-                    "expanded": true,
+                    "name": "solution",
+                    "type": "text",
+                    "widget": "html",
+                    "optional": true,
                     "label": "Comments",
                     "importance": "low",
-                    "fields": [{
-                        "name": "solution",
-                        "type": "text",
-                        "widget": "html",
-                        "optional": true,
-                        "label": "Comments",
-                        "importance": "low",
-                        "description": "The comments are shown when the user displays the suggested answers for all slides.",
-                        "enterMode": "p",
-                        "tags": [
-                          "strong",
-                          "em",
-                          "del",
-                          "a",
-                          "ul",
-                          "ol",
-                          "h2",
-                          "h3",
-                          "hr",
-                          "pre",
-                          "code"
-                        ]
-                      },
-                      {
-                        "name": "alwaysDisplayComments",
-                        "type": "boolean",
-                        "label": "Always display comments",
-                        "importance": "low",
-                        "optional": true
-                      }
+                    "description": "The comments are shown when the user displays the suggested answers for all slides.",
+                    "enterMode": "p",
+                    "tags": [
+                      "strong",
+                      "em",
+                      "del",
+                      "a",
+                      "ul",
+                      "ol",
+                      "h2",
+                      "h3",
+                      "hr",
+                      "pre",
+                      "code"
                     ]
+                  },
+                  {
+                    "name": "alwaysDisplayComments",
+                    "type": "boolean",
+                    "label": "Always display comments",
+                    "importance": "low",
+                    "optional": true
                   },
                   {
                     "name": "backgroundOpacity",
@@ -138,35 +130,27 @@
                     "optional": true
                   },
                   {
-                    "name": "buttonGroup",
-                    "type": "group",
-                    "label": "Button options",
-                    "expanded": true,
+                    "name": "displayAsButton",
+                    "type": "boolean",
+                    "label": "Display as button",
+                    "importance": "medium",
+                    "default": false,
+                    "optional": false
+                  },
+                  {
+                    "name": "buttonSize",
+                    "type": "select",
+                    "label": "Button size",
                     "importance": "low",
-                    "fields": [{
-                        "name": "displayAsButton",
-                        "type": "boolean",
-                        "label": "Display as button",
-                        "importance": "medium",
-                        "default": false,
-                        "optional": false
+                    "optional": false,
+                    "default": "big",
+                    "options": [{
+                        "value": "small",
+                        "label": "Small"
                       },
                       {
-                        "name": "buttonSize",
-                        "type": "select",
-                        "label": "Button size",
-                        "importance": "low",
-                        "optional": false,
-                        "default": "big",
-                        "options": [{
-                            "value": "small",
-                            "label": "Small"
-                          },
-                          {
-                            "value": "big",
-                            "label": "Big"
-                          }
-                        ]
+                        "value": "big",
+                        "label": "Big"
                       }
                     ]
                   },
@@ -183,7 +167,14 @@
                     "type": "text",
                     "optional": true,
                     "label": "Title",
-                    "importance": "medium"
+                    "importance": "medium",
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }
                   },
                   {
                     "name": "goToSlideType",
@@ -204,7 +195,14 @@
                         "label": "Previous slide"
                       }
                     ],
-                    "default": "specified"
+                    "default": "specified",
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }
                   },
                   {
                     "name": "goToSlide",
@@ -213,7 +211,14 @@
                     "description": "Only applicable when 'Specific slide number' is selected",
                     "importance": "low",
                     "min": 1,
-                    "optional": true
+                    "optional": true,
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }
                   },
                   {
                     "name": "invisible",
@@ -221,7 +226,13 @@
                     "label": "Invisible",
                     "importance": "low",
                     "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
-                    "default": false                    
+                    "default": false,
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }               
                   }
                 ]
               }
