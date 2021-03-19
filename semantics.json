@@ -1,11 +1,9 @@
-[
-  {
+[{
     "name": "presentation",
     "type": "group",
     "importance": "high",
     "widget": "coursepresentation",
-    "fields": [
-      {
+    "fields": [{
         "name": "defaultAspectRatio",
         "importance": "high",
         "type": "text",
@@ -20,8 +18,7 @@
           "name": "slide",
           "importance": "high",
           "type": "group",
-          "fields": [
-            {
+          "fields": [{
               "name": "aspectRatio",
               "importance": "high",
               "type": "text",
@@ -36,8 +33,7 @@
                 "name": "element",
                 "importance": "high",
                 "type": "group",
-                "fields": [
-                  {
+                "fields": [{
                     "name": "x",
                     "importance": "low",
                     "type": "number",
@@ -139,7 +135,7 @@
                     "label": "Display as button",
                     "importance": "medium",
                     "default": false,
-                    "optional": true
+                    "optional": false
                   },
                   {
                     "name": "buttonSize",
@@ -148,8 +144,7 @@
                     "importance": "low",
                     "optional": false,
                     "default": "big",
-                    "options": [
-                      {
+                    "options": [{
                         "value": "small",
                         "label": "Small"
                       },
@@ -160,11 +155,26 @@
                     ]
                   },
                   {
+                    "name": "showAsHotspot",
+                    "type": "boolean",
+                    "label": "Display as hotspot",
+                    "importance": "medium",
+                    "default": false,
+                    "optional": false
+                  },
+                  {
                     "name": "title",
                     "type": "text",
                     "optional": true,
                     "label": "Title",
-                    "importance": "medium"
+                    "importance": "medium",
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }
                   },
                   {
                     "name": "goToSlideType",
@@ -172,8 +182,7 @@
                     "label": "Go to",
                     "importance": "medium",
                     "optional": false,
-                    "options": [
-                      {
+                    "options": [{
                         "value": "specified",
                         "label": "Specific slide number"
                       },
@@ -186,7 +195,14 @@
                         "label": "Previous slide"
                       }
                     ],
-                    "default": "specified"
+                    "default": "specified",
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }
                   },
                   {
                     "name": "goToSlide",
@@ -195,7 +211,14 @@
                     "description": "Only applicable when 'Specific slide number' is selected",
                     "importance": "low",
                     "min": 1,
-                    "optional": true
+                    "optional": true,
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }
                   },
                   {
                     "name": "invisible",
@@ -203,7 +226,13 @@
                     "label": "Invisible",
                     "importance": "low",
                     "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
-                    "default": false
+                    "default": false,
+                    "showWhen": {
+                      "rules": [{
+                        "field": "showAsHotspot",
+                        "equals": true
+                      }]
+                    }               
                   }
                 ]
               }
@@ -218,8 +247,7 @@
                 "importance": "low",
                 "type": "group",
                 "optional": true,
-                "fields": [
-                  {
+                "fields": [{
                     "name": "main",
                     "importance": "low",
                     "type": "text",
@@ -244,8 +272,7 @@
               "importance": "medium",
               "type": "group",
               "widget": "radioSelector",
-              "fields": [
-                {
+              "fields": [{
                   "name": "imageSlideBackground",
                   "type": "image",
                   "label": "Image",
@@ -327,8 +354,7 @@
         "importance": "medium",
         "type": "group",
         "widget": "radioSelector",
-        "fields": [
-          {
+        "fields": [{
             "name": "imageGlobalBackground",
             "type": "image",
             "label": "Image",
@@ -361,8 +387,7 @@
     "label": "Localize",
     "importance": "low",
     "common": true,
-    "fields": [
-      {
+    "fields": [{
         "name": "slide",
         "type": "text",
         "label": "Translation for \"Slide\"",
@@ -664,8 +689,7 @@
     "importance": "low",
     "description": "These options will let you override behaviour settings.",
     "optional": true,
-    "fields": [
-      {
+    "fields": [{
         "name": "activeSurface",
         "type": "boolean",
         "widget": "disposableBoolean",
@@ -689,8 +713,7 @@
         "importance": "low",
         "description": "This option determines if the \"Show Solution\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled) ",
         "optional": true,
-        "options": [
-          {
+        "options": [{
             "value": "on",
             "label": "Enabled"
           },
@@ -707,8 +730,7 @@
         "importance": "low",
         "description": "This option determines if the \"Retry\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled)",
         "optional": true,
-        "options": [
-          {
+        "options": [{
             "value": "on",
             "label": "Enabled"
           },
@@ -727,12 +749,10 @@
         "importance": "low",
         "widget": "showWhen",
         "showWhen": {
-          "rules": [
-            {
-              "field": "hideSummarySlide",
-              "equals": false
-            }
-          ]
+          "rules": [{
+            "field": "hideSummarySlide",
+            "equals": false
+          }]
         }
       },
       {
@@ -744,12 +764,10 @@
         "importance": "low",
         "widget": "showWhen",
         "showWhen": {
-          "rules": [
-            {
-              "field": "hideSummarySlide",
-              "equals": false
-            }
-          ]
+          "rules": [{
+            "field": "hideSummarySlide",
+            "equals": false
+          }]
         }
       },
       {
@@ -766,18 +784,15 @@
         "label": "Social Settings",
         "widget": "showWhen",
         "showWhen": {
-          "rules": [
-            {
-              "field": "hideSummarySlide",
-              "equals": false
-            }
-          ]
+          "rules": [{
+            "field": "hideSummarySlide",
+            "equals": false
+          }]
         },
         "importance": "low",
         "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
         "optional": true,
-        "fields": [
-          {
+        "fields": [{
             "name": "showFacebookShare",
             "type": "boolean",
             "label": "Display Facebook share icon",
@@ -792,15 +807,12 @@
             "label": "Facebook share settings",
             "widget": "showWhen",
             "showWhen": {
-              "rules": [
-                {
-                  "field": "showFacebookShare",
-                  "equals": true
-                }
-              ]
+              "rules": [{
+                "field": "showFacebookShare",
+                "equals": true
+              }]
             },
-            "fields": [
-              {
+            "fields": [{
                 "name": "url",
                 "type": "text",
                 "label": "Share to Facebook link",
@@ -831,15 +843,12 @@
             "label": "Twitter share settings",
             "widget": "showWhen",
             "showWhen": {
-              "rules": [
-                {
-                  "field": "showTwitterShare",
-                  "equals": true
-                }
-              ]
+              "rules": [{
+                "field": "showTwitterShare",
+                "equals": true
+              }]
             },
-            "fields": [
-              {
+            "fields": [{
                 "name": "statement",
                 "type": "text",
                 "label": "Share to Twitter statement",
@@ -877,12 +886,10 @@
             "default": "@currentpageurl",
             "widget": "showWhen",
             "showWhen": {
-              "rules": [
-                {
-                  "field": "showGoogleShare",
-                  "equals": true
-                }
-              ]
+              "rules": [{
+                "field": "showGoogleShare",
+                "equals": true
+              }]
             }
           }
         ]
