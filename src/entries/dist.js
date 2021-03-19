@@ -1,5 +1,5 @@
-import "../styles/cp.css";
-import "../styles/go-to-slide.scss";
+import "../styles/cp.scss";
+import "../styles/hotspot.scss";
 import "../styles/keyword-menu.css";
 import "../styles/summary-slide.css";
 import "../styles/navigation-line.css";

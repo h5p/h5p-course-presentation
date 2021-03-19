@@ -29,6 +29,7 @@ const KEYWORD_TITLE_SKIP = null;
 let CoursePresentation = function (params, id, extras) {
   var that = this;
   this.presentation = params.presentation;
+  this.defaultAspectRatio = this.presentation.slides[0].aspectRatio || "4-3";
   this.slides = this.presentation.slides;
   this.contentId = id;
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
@@ -726,42 +727,29 @@ CoursePresentation.prototype.resetRatio = function () {
     default:
       this.ratio = (16/9);
   }
+  this.$container.attr('data-ratio', slide.aspectRatio);
+
+  const footerHeight = '35px';
+  this.$wrapper.css({
+    paddingTop: `calc(${100/this.ratio}% - ${footerHeight})`,
+  });
 }
 
 /**
  * Resize handling.
- *
- * @param {boolean} fullscreen
- * @return {undefined}
  */
-CoursePresentation.prototype.resize = function () {
-  var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
-
-  
+CoursePresentation.prototype.resize = function () {  
   if (this.ignoreResize) {
     return; // When printing.
   }
 
   this.resetRatio();
 
-  // Fill up all available width
-  this.$wrapper.css('width', 'auto');
   var width = this.$container.width();
   var style = {};
 
-  if (fullscreenOn) {
-    var maxHeight = this.$container.height();
-    if (width / maxHeight > this.ratio) {
-      // Top and bottom would be cut off so scale down.
-      width = maxHeight * this.ratio;
-      style.width = width + 'px';
-    }
-  }
-
-  // TODO: Add support for -16 when content conversion script is created?
   var widthRatio = width / this.width;
-  style.height = this.width / this.ratio;
-  style.fontSize = (this.fontSize * widthRatio) + 'px';
+  style.fontSize = `${this.fontSize * widthRatio}px`;
 
   if (this.editor !== undefined) {
     this.editor.setContainerEm(this.fontSize * widthRatio * 0.75);
@@ -815,10 +803,12 @@ CoursePresentation.prototype.toggleFullScreen = function () {
     }
   }
   else {
+   
     // Rescale footer buttons
     this.$footer.addClass('footer-full-screen');
 
     this.$fullScreenButton.attr('title', this.l10n.exitFullscreen);
+
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
@@ -1085,26 +1075,19 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
    * @return {Function}
    */
   const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
-  var colorType = lightOrDark(element.buttonColor);
+
   const $button = $('<div>', {
     role: 'button',
     tabindex: 0,
     'aria-label': label,
     'aria-popup': true,
     'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${colorType === "light" ? "light-bg" : "" }`,
-    'style' : `background: ${element.buttonColor};`
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
   });
+
   const $buttonElement = $('<div class="h5p-button-element"></div>');
-  if(element.useButtonIcon && element.buttonIcon !== "") {
-    const buttonIconUnicode = element.buttonIcon ? "&#x" + element.buttonIcon + ";" : "";
-    const $buttonIcon = $('<icon class="fa h5p-element-button-icon"></icon>');
-    $buttonIcon.html(buttonIconUnicode)
-    $button.html($buttonIcon);
-  } else {
-    $button.addClass(libTypePmz + "-button");
-  }
   instance.attach($buttonElement);
+
   const parentPosition = libTypePmz === 'h5p-advancedtext' ? {
     x: element.x,
     y: element.y
@@ -1125,47 +1108,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
 
   return $button;
 };
-/**
- * Checks whether a color is defined as dark or light 
-* @param originalColor, hex color code
- * @return {'light' | 'dark'}
-* */
-function lightOrDark (originalColor) {
-  // Variables for red, green, blue values
-  var r, g, b, hsp
-  var hashtag = '#'
-  var color = originalColor
 
-  if (!originalColor.includes(hashtag)) { color = hashtag.concat(originalColor) }
-  // Check the format of the color, HEX or RGB?
-  if (color && color.match(/^rgb/)) {
-    // If HEX --> store the red, green, blue values in separate variables
-    [_, r, g, b] = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
-  } else {
-
-    color = +('0x' + color.slice(1).replace(
-        color.length < 5 && /./g, '$&$&'))
-
-    r = color >> 16;
-    g = color >> 8 & 255;
-    b = color & 255;
-  }
-  hsp = Math.sqrt(
-      0.299 * (r * r) +
-      0.587 * (g * g) +
-      0.114 * (b * b)
-  );
-  // Using the HSP value, determine whether the color is light or dark
-  if (hsp > 127.5) {
-    return 'light';
-  } else if (originalColor === '#000000') {
-    return 'light';
-  } else if (hsp === 0) {
-    return 'light';
-  } else if (hsp < 127.5) {
-    return 'dark';
-  }
-}
 /**
  * Shows the interaction popup on button press
  *
