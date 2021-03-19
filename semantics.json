@@ -292,7 +292,7 @@
                   "name": "goToSlide",
                   "type": "number",
                   "label": "Specific slide number",
-                  "description": "Only applicable when 'Specific slide number' is selected",
+                  "description": "Type a slide number to go to",
                   "importance": "low",
                   "min": 1,
                   "optional": true,

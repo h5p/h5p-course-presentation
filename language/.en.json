@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Specific slide number",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "description": "Type a slide number to go to"
                     },
                     {
                       "label": "Invisible",
