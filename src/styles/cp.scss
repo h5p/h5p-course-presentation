@@ -49,7 +49,7 @@ $footer-height: 2.2em;
   p {
     line-height: 150%;
     padding: 0.5em;
-  }  
+  }
 }
 
 .h5p-interaktivtavle h2 {
@@ -98,28 +98,33 @@ $footer-height: 2.2em;
 }
 
 .h5p-interaktivtavle.h5p-fullscreen {
-  $aspect-ratios: ("4-3": 4/3, "3-4": 3/4, "16-9": 16/9, "9-16": 9/16);
+  $aspect-ratios: (
+    "4-3": 4/3,
+    "3-4": 3/4,
+    "16-9": 16/9,
+    "9-16": 9/16,
+  );
   margin: 0 auto;
-  
+
   @each $name, $ratio in $aspect-ratios {
     &[data-ratio="#{$name}"] {
       max-width: calc(#{100 * $ratio}vh - #{$footer-height});
     }
   }
-  
-  [data-ratio="4-3"] {
+
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 
-  [data-ratio="4-3"] {
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 
-  [data-ratio="4-3"] {
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 
-  [data-ratio="4-3"] {
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 }
@@ -450,7 +455,24 @@ $footer-height: 2.2em;
 
 .h5p-interaktivtavle .h5p-element-button:hover {
   box-shadow: 0 0.3em 0.25em 0 rgba(0, 0, 0, 0.5);
-  background: #003fdf;
+  background: #474747 !important;
+}
+.h5p-element-button.light-bg > .h5p-element-button-icon {
+  color: #474747;
+  transition: all ease-in-out 0.2s;
+}
+.h5p-element-button.light-bg:hover > * {
+  color: #fff;
+}
+.h5p-element-button.light-bg:before {
+  color: #474747;
+}
+.h5p-element-button.light-bg:hover {
+  color: #fff;
+}
+
+.h5p-element-button.dark-bg {
+  background: #ffffff;
 }
 
 .h5p-interaktivtavle .h5p-element-button:focus {
@@ -463,7 +485,6 @@ $footer-height: 2.2em;
 .h5p-interaktivtavle .h5p-element-button:before {
   text-decoration: none;
   font-family: "H5PFontAwesome4";
-  content: "\f119";
   font-size: 0.875em;
 }
 
