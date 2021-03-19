@@ -378,6 +378,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
        * @param {function} finished
        */
       23: function (parameters, finished) {
+        console.log("pre-upgrade", {parameters, finished})
         const hasSlides = parameters && parameters.presentation && !!parameters.presentation.slides;
 
         if (!hasSlides) {
@@ -412,6 +413,8 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
             }
           });
         });
+
+        console.log("post-upgrade", {parameters})
         
         finished(null, parameters);
       }
