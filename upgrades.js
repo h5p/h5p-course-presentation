@@ -309,7 +309,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
        * @param {Object} parameters
        * @param {function} finished
        */
-      21: function (parameters, finished) {
+       21: function (parameters, finished) {
         if (parameters && parameters.presentation) {
           const presentation = parameters.presentation;
 
@@ -332,6 +332,90 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
         }
 
         // Done
+        finished(null, parameters);
+      },
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.21.
+       *
+       * Set bgcolor hard to old default bgcolor if not set and no global background set
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+       22: function (parameters, finished) {
+        if (parameters && parameters.presentation) {
+          const presentation = parameters.presentation;
+
+          // Check for global background
+          const globalBackground = presentation && presentation.globalBackgroundSelector &&
+            (presentation.globalBackgroundSelector.fillGlobalBackground || presentation.globalBackgroundSelector.imageGlobalBackground);
+
+          if (globalBackground === undefined && presentation.slides) {
+            const slides = presentation.slides;
+            slides.forEach(function (slide) {
+              if (slide.slideBackgroundSelector) {
+                // Old CPs should keep the previous default bgcolor
+                const bg = slide.slideBackgroundSelector;
+                if (!bg.fillSlideBackground && !bg.imageSlideBackground) {
+                  bg.fillSlideBackground = '#e8e6e7';
+                }
+              }
+            });
+          }
+        }
+
+        // Done
+        finished(null, parameters);
+      },
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.24.
+       *
+       * Upgrades goToSlide elements to rectangular shape elements with hotspots
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      23: function (parameters, finished) {
+        console.log("pre-upgrade", {parameters, finished})
+        const hasSlides = parameters && parameters.presentation && !!parameters.presentation.slides;
+
+        if (!hasSlides) {
+          return;
+        }
+
+        parameters.presentation.slides.forEach(slide => {
+          const hasElements = !!slide.elements;
+          if (!hasElements) {
+            return;
+          }
+
+          slide.elements && slide.elements.forEach(element => {
+            const isGoToSlide = !element.action;
+            if (isGoToSlide) {
+              element.action = {
+                library: "H5P.Shape 1.1",
+                metadata: {contentType: "Shapes"},
+                params: {
+                  shape: {
+                    borderColor: "#000",
+                    borderRadius: 0,
+                    borderStyle: "solid",
+                    borderWidth: 0,
+                    fillColor: "transparent"
+                  },
+                  type: "rectangle"
+                },
+              };
+
+              element.showAsHotspot = true;
+            }
+          });
+        });
+
+        console.log("post-upgrade", {parameters})
+        
         finished(null, parameters);
       }
     }
