@@ -12,8 +12,6 @@ function Element(parameters) {
     showAsHotspot
   } = parameters;
 
-  const isAnchor = parameters.action === undefined;
-
   if (showAsHotspot) {
     this.instance = Element.createHotspot(parameters, this.parent.parent.l10n, this.parent.index, this.parent.parent);
 
