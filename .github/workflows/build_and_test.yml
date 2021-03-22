@@ -34,6 +34,7 @@ jobs:
         if [ -d "h5p-interactive-video" ]; then pushd h5p-interactive-video && npm install && npm run build; popd; fi
         if [ -d "h5p-open-ended-question" ]; then pushd h5p-open-ended-question && npm install && npm run build; popd; fi
         if [ -d "h5p-simple-multiple-choice" ]; then pushd h5p-simple-multiple-choice && npm install && npm run build; popd; fi
+        if [ -d "h5p-editor-course-presentation" ]; then pushd h5p-editor-course-presentation && npm install && npm run build; popd; fi
         
 
         rm -rf h5p-course-presentation h5p-editor-course-presentation h5p-chart h5p-shape h5p-editor-shape
