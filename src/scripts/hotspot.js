@@ -11,10 +11,10 @@ import {
  * @readonly
  * @enum {string}
  */
-const navigationType = {
-  SPECIFIED: 'specified',
-  NEXT: 'next',
-  PREVIOUS: 'previous'
+const hotspotType = {
+  GO_TO_SPECIFIED: 'specified',
+  GO_TO_NEXT: 'next',
+  GO_TO_PREVIOUS: 'previous',
 };
 
 /**
@@ -34,7 +34,7 @@ export default function Hotspot({
   title,
   goToSlide = 1,
   invisible,
-  goToSlideType = navigationType.SPECIFIED
+  goToSlideType = hotspotType.GO_TO_SPECIFIED
 }, {
   l10n,
   currentIndex
@@ -51,13 +51,13 @@ export default function Hotspot({
     if (!title) {
       // No title so use the slide number, prev, or next.
       switch (goToSlideType) {
-        case navigationType.SPECIFIED:
+        case hotspotType.GO_TO_SPECIFIED:
           title = l10n.goToSlide.replace(':num', goToSlide.toString());
           break;
-        case navigationType.NEXT:
+        case hotspotType.GO_TO_NEXT:
           title = l10n.goToSlide.replace(':num', l10n.nextSlide);
           break;
-        case navigationType.PREVIOUS:
+        case hotspotType.GO_TO_PREVIOUS:
           title = l10n.goToSlide.replace(':num', l10n.prevSlide);
           break;
       }
@@ -71,9 +71,9 @@ export default function Hotspot({
   let goTo = goToSlide - 1;
 
   // Check if previous or next is selected.
-  if (goToSlideType === navigationType.NEXT) {
+  if (goToSlideType === hotspotType.GO_TO_NEXT) {
     goTo = currentIndex + 1;
-  } else if (goToSlideType === navigationType.PREVIOUS) {
+  } else if (goToSlideType === hotspotType.GO_TO_PREVIOUS) {
     goTo = currentIndex - 1;
   }
 
