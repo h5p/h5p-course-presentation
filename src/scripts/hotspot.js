@@ -1,10 +1,7 @@
-import {
-  addClickAndKeyboardListeners
-} from './utils';
-import {
-  jQuery as $,
-  EventDispatcher
-} from './globals';
+// @ts-check
+
+import { addClickAndKeyboardListeners } from "./utils";
+import { jQuery as $, EventDispatcher } from "./globals";
 
 /**
  * Enum containing possible navigation types
@@ -12,9 +9,9 @@ import {
  * @enum {string}
  */
 const hotspotType = {
-  GO_TO_SPECIFIED: 'specified',
-  GO_TO_NEXT: 'next',
-  GO_TO_PREVIOUS: 'previous',
+  GO_TO_SPECIFIED: "specified",
+  GO_TO_NEXT: "next",
+  GO_TO_PREVIOUS: "previous",
 };
 
 /**
@@ -25,44 +22,43 @@ const hotspotType = {
  * @param {number} param0.goToSlide
  * @param {boolean} param0.invisible
  * @param {string} param0.goToSlideType
- * @param {Object} param1 
+ * @param {Object} param1
  * @param {Object} param1.l10n
  * @param {number} param1.currentIndex
- * @param {JQuery<HTMLElement>} content
+ * @param {$<HTMLElement>} content
  */
-export default function Hotspot({
-  title,
-  goToSlide = 1,
-  invisible,
-  goToSlideType = hotspotType.GO_TO_SPECIFIED
-}, {
-  l10n,
-  currentIndex
-}, content = null) {
-
+export default function Hotspot(
+  {
+    title,
+    goToSlide = 1,
+    invisible,
+    goToSlideType = hotspotType.GO_TO_SPECIFIED,
+  },
+  { l10n, currentIndex },
+  content = null
+) {
   this.eventDispatcher = new EventDispatcher();
-  let classes = 'h5p-press-to-go';
-  let tabindex = 0;
+  const classes = `h5p-press-to-go${invisible ? "" : " h5p-visible"}`;
+  const tabindex = invisible ? -1 : 0;
 
   if (invisible) {
     title = undefined;
-    tabindex = -1;
   } else {
-    if (!title) {
+    const useDefaultTitle = !title;
+    if (useDefaultTitle) {
       // No title so use the slide number, prev, or next.
       switch (goToSlideType) {
         case hotspotType.GO_TO_SPECIFIED:
-          title = l10n.goToSlide.replace(':num', goToSlide.toString());
+          title = l10n.goToSlide.replace(":num", goToSlide.toString());
           break;
         case hotspotType.GO_TO_NEXT:
-          title = l10n.goToSlide.replace(':num', l10n.nextSlide);
+          title = l10n.goToSlide.replace(":num", l10n.nextSlide);
           break;
         case hotspotType.GO_TO_PREVIOUS:
-          title = l10n.goToSlide.replace(':num', l10n.prevSlide);
+          title = l10n.goToSlide.replace(":num", l10n.prevSlide);
           break;
       }
     }
-    classes += ' h5p-visible';
   }
 
   this.action = "goToSlide";
@@ -78,15 +74,15 @@ export default function Hotspot({
   }
 
   // Create button that leads to another slide
-  this.$element = $('<a/>', {
-    href: '#',
-    'class': classes,
+  this.$element = $("<a/>", {
+    href: "#",
+    class: classes,
     tabindex: tabindex,
-    title: title
+    title: title,
   });
 
-  addClickAndKeyboardListeners(this.$element, event => {
-    this.eventDispatcher.trigger('navigate', goTo);
+  addClickAndKeyboardListeners(this.$element, (event) => {
+    this.eventDispatcher.trigger("navigate", goTo);
     event.preventDefault();
   });
 
@@ -101,11 +97,11 @@ export default function Hotspot({
    * Attach element to the given container.
    *
    * @public
-   * @param {jQuery} $container
+   * @param {$} $container
    */
   this.attach = ($container) => {
-    $container.html('').addClass('h5p-go-to-slide').append(this.$element);
-  }
+    $container.html("").addClass("h5p-go-to-slide").append(this.$element);
+  };
 
   /**
    * Register an event listener
@@ -115,13 +111,13 @@ export default function Hotspot({
    */
   this.on = (name, callback) => {
     this.eventDispatcher.on(name, callback);
-  }
-
-  /**
-   * 
-   * @param {$} content 
-   */
-  this.attachContent = (content) => {
-    content.attach(this.$element);
-  }
+  };
 }
+
+/**
+ *
+ * @param {$} content
+ */
+Hotspot.prototype.attachContent = function (content) {
+  content.attach(this.$element);
+};
