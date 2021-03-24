@@ -15,7 +15,7 @@ const hotspotType = {
 };
 
 /**
- * Element for linking between slides in presentations.
+ * Wrapper for elements with click actions
  *
  * @param {Object} param0
  * @param {string} param0.title
