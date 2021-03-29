@@ -1,4 +1,4 @@
-import Hotspot from './hotspot';
+import { Hotspot } from './hotspot';
 
 /**
  * @class
@@ -13,11 +13,8 @@ function Element(parameters) {
   } = parameters;
 
   if (showAsHotspot) {
-    this.instance = Element.createHotspot(parameters, this.parent.parent.l10n, this.parent.index, this.parent.parent);
-
     const content = Element.createContent(this.parent, parameters);
-    this.instance.attachContent(content);
-
+    this.instance = Element.createHotspot(parameters, this.parent.parent.l10n, this.parent.index, this.parent,this.parent.parent, content);
   } else {
     const content = Element.createContent(this.parent, parameters);
     this.instance = content;
@@ -128,20 +125,20 @@ Element.createContent = function (parent, parameters) {
   return instance;
 }
 
-Element.createHotspot = function (parameters, l10n, currentIndex, grandparent) {
-  const goToSlide = new Hotspot(parameters, {
+Element.createHotspot = function (parameters, l10n, currentIndex, parent, grandparent, content) {  
+  const hotspot = new Hotspot(parameters, {
     l10n,
     currentIndex,
-  });
+  }, content);
 
   if (!grandparent.isEditor()) {
-    goToSlide.on('navigate', event => {
+    hotspot.on('navigate', event => {
       const index = event.data;
       grandparent.jumpToSlide(index);
     });
   }
 
-  return goToSlide;
+  return hotspot;
 }
 
 export default Element;

@@ -1,127 +1,191 @@
-import {
-  addClickAndKeyboardListeners
-} from './utils';
-import {
-  jQuery as $,
-  EventDispatcher
-} from './globals';
+// @ts-check
+
+import { addClickAndKeyboardListeners } from "./utils";
+import { jQuery as $, EventDispatcher } from "./globals";
+import { InformationDialog } from "./information-dialog";
 
 /**
  * Enum containing possible navigation types
  * @readonly
  * @enum {string}
  */
-const navigationType = {
-  SPECIFIED: 'specified',
-  NEXT: 'next',
-  PREVIOUS: 'previous'
+const hotspotType = {
+  GO_TO_SPECIFIED: "specified",
+  GO_TO_NEXT: "next",
+  GO_TO_PREVIOUS: "previous",
+  INFORMATION_DIALOG: "information-dialog",
 };
 
-/**
- * Element for linking between slides in presentations.
- *
- * @param {Object} param0
- * @param {string} param0.title
- * @param {number} param0.goToSlide
- * @param {boolean} param0.invisible
- * @param {string} param0.goToSlideType
- * @param {Object} param1 
- * @param {Object} param1.l10n
- * @param {number} param1.currentIndex
- * @param {JQuery<HTMLElement>} content
- */
-export default function Hotspot({
-  title,
-  goToSlide = 1,
-  invisible,
-  goToSlideType = navigationType.SPECIFIED
-}, {
-  l10n,
-  currentIndex
-}, content = null) {
+export class Hotspot extends EventDispatcher {
+  /**
+   * Wrapper for elements with click actions
+   *
+   * @param {Object} semanticParameters
+   * @param {string} semanticParameters.title
+   * @param {number} semanticParameters.goToSlide
+   * @param {boolean} semanticParameters.invisible
+   * @param {string} semanticParameters.goToSlideType
+   * @param {string} semanticParameters.dialogContent
+   * @param {Object} param1
+   * @param {Object} param1.l10n
+   * @param {number} param1.currentIndex
+   * @param {$} param1.$h5pElement
+   * @param {$<HTMLElement>} $content
+   */
+  constructor(
+    {
+      title,
+      goToSlide = 1,
+      invisible,
+      goToSlideType = hotspotType.GO_TO_SPECIFIED,
+      dialogContent,
+    },
+    { l10n, currentIndex, $h5pElement },
+    $content = null
+  ) {
+    super(
+      {
+        title,
+        goToSlide,
+        invisible,
+        goToSlideType,
+        dialogContent,
+      },
+      { l10n, currentIndex, $h5pElement },
+      $content
+    );
 
-  this.eventDispatcher = new EventDispatcher();
-  let classes = 'h5p-press-to-go';
-  let tabindex = 0;
+    this.eventDispatcher = new EventDispatcher();
+    const classes = `h5p-press-to-go${invisible ? "" : " h5p-visible"}`;
+    const tabindex = invisible ? -1 : 0;
 
-  if (invisible) {
-    title = undefined;
-    tabindex = -1;
-  } else {
-    if (!title) {
-      // No title so use the slide number, prev, or next.
-      switch (goToSlideType) {
-        case navigationType.SPECIFIED:
-          title = l10n.goToSlide.replace(':num', goToSlide.toString());
-          break;
-        case navigationType.NEXT:
-          title = l10n.goToSlide.replace(':num', l10n.nextSlide);
-          break;
-        case navigationType.PREVIOUS:
-          title = l10n.goToSlide.replace(':num', l10n.prevSlide);
-          break;
+    if (invisible) {
+      title = undefined;
+    } else {
+      const useDefaultTitle = !title;
+      if (useDefaultTitle) {
+        // No title so use the slide number, prev, or next.
+        switch (goToSlideType) {
+          case hotspotType.GO_TO_SPECIFIED:
+            title = l10n.goToSlide.replace(":num", goToSlide.toString());
+            break;
+          case hotspotType.GO_TO_NEXT:
+            title = l10n.goToSlide.replace(":num", l10n.nextSlide);
+            break;
+          case hotspotType.GO_TO_PREVIOUS:
+            title = l10n.goToSlide.replace(":num", l10n.prevSlide);
+            break;
+        }
       }
     }
-    classes += ' h5p-visible';
+
+    this.action = "goToSlide";
+
+    const goToActions = [
+      hotspotType.GO_TO_NEXT,
+      hotspotType.GO_TO_PREVIOUS,
+      hotspotType.GO_TO_SPECIFIED,
+    ];
+    const isGoToLink = goToActions.includes(goToSlideType);
+    const isInformationDialogTrigger =
+      goToSlideType === hotspotType.INFORMATION_DIALOG;
+
+    if (isGoToLink) {
+      this.$element = this.createGoToLink(
+        goToSlide,
+        goToSlideType,
+        currentIndex
+      );
+    } else if (isInformationDialogTrigger) {
+      this.$element = this.createButton(() => {
+        const horizontalOffset = "50%";
+        const verticalOffset = "50%";
+
+        this.dialog = this.dialog || new InformationDialog({
+          content: $(dialogContent).get(0),
+          parent: this.$element.closest(".h5p-presentation-wrapper").get(0),
+          l10n,
+          horizontalOffset,
+          verticalOffset,
+        });
+        this.dialog.show();
+      });
+    }
+
+    this.$element.addClass(classes);
+    this.$element.attr("tabindex", tabindex);
+    this.$element.attr("title", title);
+
+    if ($content) {
+      this.attachContent($content);
+    }
   }
+  /**
+   * @param {number} goToSlide
+   * @param {string} goToSlideType
+   * @param {number} currentIndex
+   * @returns {$}
+   */
+  createGoToLink(goToSlide, goToSlideType, currentIndex) {
+    // Default goes to the set number
+    let goTo = goToSlide - 1;
 
-  this.action = "goToSlide";
+    // Check if previous or next is selected.
+    if (goToSlideType === hotspotType.GO_TO_NEXT) {
+      goTo = currentIndex + 1;
+    } else if (goToSlideType === hotspotType.GO_TO_PREVIOUS) {
+      goTo = currentIndex - 1;
+    }
 
-  // Default goes to the set number
-  let goTo = goToSlide - 1;
+    // Create button that leads to another slide
+    const $element = $("<a/>", {
+      href: "#",
+    });
 
-  // Check if previous or next is selected.
-  if (goToSlideType === navigationType.NEXT) {
-    goTo = currentIndex + 1;
-  } else if (goToSlideType === navigationType.PREVIOUS) {
-    goTo = currentIndex - 1;
+    addClickAndKeyboardListeners($element, (event) => {
+      this.eventDispatcher.trigger("navigate", goTo);
+      event.preventDefault();
+    });
+
+    return $element;
   }
-
-  // Create button that leads to another slide
-  this.$element = $('<a/>', {
-    href: '#',
-    'class': classes,
-    tabindex: tabindex,
-    title: title
-  });
-
-  addClickAndKeyboardListeners(this.$element, event => {
-    this.eventDispatcher.trigger('navigate', goTo);
-    event.preventDefault();
-  });
-
-  if (content) {
-    this.attachContent(content);
-  }
-
-  Hotspot.prototype = Object.create(EventDispatcher.prototype);
-  Hotspot.prototype.constructor = Hotspot;
 
   /**
-   * Attach element to the given container.
-   *
-   * @public
-   * @param {jQuery} $container
+   * @param {(event: MouseEvent | TouchEvent) => void} action
+   * @returns {$}
    */
-  this.attach = ($container) => {
-    $container.html('').addClass('h5p-go-to-slide').append(this.$element);
-  }
+  createButton(action) {
+    const $element = $("<button/>", {
+      type: "button",
+    });
 
+    addClickAndKeyboardListeners($element, action);
+
+    return $element;
+  }
   /**
    * Register an event listener
    *
    * @param {string} name
    * @param {function} callback
    */
-  this.on = (name, callback) => {
+  on(name, callback) {
     this.eventDispatcher.on(name, callback);
+  }
+  /**
+   * Attach element to the given container.
+   *
+   * @public
+   * @param {$} $container
+   */
+  attach($container) {
+    $container.html("").addClass("h5p-go-to-slide").append(this.$element);
   }
 
   /**
-   * 
-   * @param {$} content 
+   * @param {$} $content
    */
-  this.attachContent = (content) => {
-    content.attach(this.$element);
+  attachContent($content) {
+    $content.attach(this.$element);
   }
 }
