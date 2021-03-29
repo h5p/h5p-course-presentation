@@ -1,4 +1,5 @@
 // @ts-check
+import { createFocusTrap } from "focus-trap";
 
 export class InformationDialog {
   /**
@@ -39,14 +40,15 @@ export class InformationDialog {
       if (backdropWasClicked) {
         this.hide();
       }
-
-      event.stopPropagation();
     });
 
     const modal = document.createElement("section");
     modal.className = "h5p-information-dialog";
     modal.style.left = horizontalOffset;
     modal.style.top = verticalOffset;
+    this.focusTrap = createFocusTrap(modal, {
+      allowOutsideClick: true,
+    });
     container.appendChild(modal);
 
     const mainContainer = document.createElement("div");
@@ -92,10 +94,12 @@ export class InformationDialog {
    */
   show() {
     this.modal.removeAttribute("hidden");
+    this.focusTrap.activate();
   }
 
   hide() {
     this.modal.setAttribute("hidden", "true");
+    this.focusTrap.deactivate();
   }
 
   onCloseClick() {
