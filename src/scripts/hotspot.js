@@ -98,17 +98,10 @@ export class Hotspot extends EventDispatcher {
       );
     } else if (isInformationDialogTrigger) {
       this.$element = this.createButton(() => {
-        const h5pElement = this.$element.closest(".h5p-element").get(0);
-        const { left, top } = h5pElement.style;
-        const { width, height } = h5pElement.getBoundingClientRect();
-
-        // const horizontalOffset = `calc(${left} + ${width / 2}px)`;
-        // const verticalOffset = `calc(${top} + ${height / 2}px)`;
-
         const horizontalOffset = "50%";
         const verticalOffset = "50%";
 
-        this.dialog = new InformationDialog({
+        this.dialog = this.dialog || new InformationDialog({
           content: $(dialogContent).get(0),
           parent: this.$element.closest(".h5p-presentation-wrapper").get(0),
           l10n,
