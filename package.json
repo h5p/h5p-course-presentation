@@ -30,10 +30,10 @@
     "file-loader": "^0.11.2",
     "h5p-lib-controls": "0.0.13",
     "h5p-parent": "0.0.2",
-    "node-sass": "^4.14.1",
     "resolve-url-loader": "^2.3.1",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
+    "sass": "^1.32.8",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^0.23.1",
     "webpack": "^3.12.0"
   }
 }
