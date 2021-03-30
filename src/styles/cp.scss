@@ -1,23 +1,28 @@
+/**
+ *  The container's height - (the height of the cp navigation + the height of the footer)
+ */
+$footer-height: 2.2em;
+
 /* DroidSans font by Steve Matteson licensed under Apache License, version 2.0 - See DroidSans/LICENSE.txt */
 @font-face {
-  font-family: 'H5PDroidSans';
-  src: url('../fonts/DroidSans.ttf') format('truetype');
+  font-family: "H5PDroidSans";
+  src: url("../fonts/DroidSans.ttf") format("truetype");
   font-weight: normal;
 }
 @font-face {
-  font-family: 'H5PDroidSans';
-  src: url('../fonts/DroidSans-Bold.ttf') format('truetype');
+  font-family: "H5PDroidSans";
+  src: url("../fonts/DroidSans-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 
 /* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
 @font-face {
-  font-family: 'H5PCoursePresentation';
-  src:url('../fonts/H5P.eot?7pqlet');
-  src:url('../fonts/H5P.eot?7pqlet#iefix') format('embedded-opentype'),
-  url('../fonts/H5P.ttf?7pqlet') format('truetype'),
-  url('../fonts/H5P.woff?7pqlet') format('woff'),
-  url('../fonts/H5P.svg?7pqlet#H5P') format('svg');
+  font-family: "H5PCoursePresentation";
+  src: url("../fonts/H5P.eot?7pqlet");
+  src: url("../fonts/H5P.eot?7pqlet#iefix") format("embedded-opentype"),
+    url("../fonts/H5P.ttf?7pqlet") format("truetype"),
+    url("../fonts/H5P.woff?7pqlet") format("woff"),
+    url("../fonts/H5P.svg?7pqlet#H5P") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -27,24 +32,24 @@
 }
 
 .h5p-container.h5p-interaktivtavle {
-  margin-bottom: 0em;
-}
-
-.h5p-interaktivtavle h1,
-.h5p-interaktivtavle h2,
-.h5p-interaktivtavle h3,
-.h5p-interaktivtavle h4,
-.h5p-interaktivtavle h5,
-.h5p-interaktivtavle h6,
-.h5p-interaktivtavle p {
-  line-height: 150%;
-  padding: 0.5em;
+  margin-bottom: 0;
 }
 
 .h5p-interaktivtavle {
   font-family: H5PDroidSans, sans-serif;
   color: #323232;
   line-height: 1.25;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    line-height: 150%;
+    padding: 0.5em;
+  }
 }
 
 .h5p-interaktivtavle h2 {
@@ -87,19 +92,53 @@
 .h5p-interaktivtavle .h5p-wrapper {
   margin: 0 auto;
   position: relative;
-  width: 640px;
-  height: 440px;
   text-align: center;
   font-size: 16px;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
 }
+
+.h5p-interaktivtavle.h5p-fullscreen {
+  $aspect-ratios: (
+    "4-3": 4/3,
+    "3-4": 3/4,
+    "16-9": 16/9,
+    "9-16": 9/16,
+  );
+  margin: 0 auto;
+
+  @each $name, $ratio in $aspect-ratios {
+    &[data-ratio="#{$name}"] {
+      max-width: calc(#{100 * $ratio}vh - #{$footer-height});
+    }
+  }
+
+  [data-ratio="4-3"]  {
+    max-width: calc(75vh - #{$footer-height});
+  }
+
+  [data-ratio="4-3"]  {
+    max-width: calc(75vh - #{$footer-height});
+  }
+
+  [data-ratio="4-3"]  {
+    max-width: calc(75vh - #{$footer-height});
+  }
+
+  [data-ratio="4-3"]  {
+    max-width: calc(75vh - #{$footer-height});
+  }
+}
+
 .h5p-interaktivtavle .h5p-wrapper:focus {
   outline: none;
 }
+
 .h5p-interaktivtavle .h5p-box-wrapper {
   width: 100%;
-  height: calc(100% - 2.5em);
+  height: calc(100% - #{$footer-height});
+  position: absolute;
+  left: 0;
+  top: 0;
   overflow: hidden;
   background: #666666;
   box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
@@ -107,7 +146,8 @@
 
 /* Disable fullscreen buttons inside Course Presentation when it is in full screen */
 .h5p-interaktivtavle.h5p-fullscreen video .controlBar > .fullscreenButton,
-.h5p-interaktivtavle.h5p-fullscreen video::-webkit-media-controls-fullscreen-button {
+.h5p-interaktivtavle.h5p-fullscreen
+  video::-webkit-media-controls-fullscreen-button {
   display: none;
 }
 .h5p-interaktivtavle .h5p-presentation-wrapper {
@@ -128,19 +168,12 @@
   left: 0;
   z-index: 1;
   display: none;
-  -webkit-transform: translateX(100%) translate3d(100%, 0, 0);
-  -moz-transform: translateX(100%) translate3d(100%, 0, 0);
-  -ms-transform: translateX(100%) translate3d(100%, 0, 0);
   transform: translateX(100%) translate3d(100%, 0, 0);
-
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .h5p-interaktivtavle .h5p-slide.h5p-animate {
   display: block;
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  -moz-transition: -moz-transform 0.25s ease-in-out;
-  -ms-transition: -ms-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
 }
 .h5p-interaktivtavle .h5p-slide.h5p-touch-move {
@@ -148,19 +181,12 @@
 }
 .h5p-interaktivtavle .h5p-current {
   display: block;
-  -webkit-transform: translateX(0) translateZ(0);
-  -moz-transform: translateX(0) translateZ(0);
-  -ms-transform: translateX(0) translateZ(0);
   transform: translateX(0) translateZ(0);
   z-index: 2;
 }
 .h5p-interaktivtavle .h5p-previous {
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
   transform: translateX(-100%);
 }
-
 
 .h5p-interaktivtavle .h5p-action-foo {
   position: absolute;
@@ -183,7 +209,7 @@
 }
 
 .h5p-interaktivtavle .h5p-cp-show-solutions:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f06e";
   margin-right: 0.5em;
 }
@@ -204,10 +230,7 @@
 .h5p-interaktivtavle .h5p-slide-button.h5p-current a {
   color: #ffffff;
   background: #0097fd;
-  background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
-  background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
   background-image: linear-gradient(to bottom, #0097fd, #096bcb);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0097fd', endColorstr='#096bcb', GradientType=0);
 }
 .h5p-interaktivtavle .h5p-slide-button a:hover {
   color: #525252;
@@ -216,7 +239,8 @@
   color: #ffffff;
 }
 
-.h5p-interaktivtavle .h5p-has-solutions a, .h5p-interaktivtavle .h5p-has-solutions a:hover {
+.h5p-interaktivtavle .h5p-has-solutions a,
+.h5p-interaktivtavle .h5p-has-solutions a:hover {
   text-decoration: underline;
 }
 
@@ -237,7 +261,8 @@
   z-index: 2;
 }
 
-.h5p-interaktivtavle .h5p-element.h5p-element-button-wrapper.h5p-element-button-big {
+.h5p-interaktivtavle
+  .h5p-element.h5p-element-button-wrapper.h5p-element-button-big {
   width: 2.334em !important;
   height: 2.334em !important;
   line-height: 2.334em !important;
@@ -265,24 +290,18 @@
 
 .h5p-interaktivtavle .h5p-popup-overlay {
   background-color: rgba(44, 44, 44, 0.5);
-  -moz-transition: background-color 0.2s;
-  -webkit-transition: background-color 0.2s;
-  -o-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 
 .h5p-interaktivtavle .h5p-popup-overlay.h5p-animate {
   background-color: transparent;
-  -moz-transition: background-color 0.2s;
-  -webkit-transition: background-color 0.2s;
-  -o-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 
 .h5p-interaktivtavle .h5p-popup-container {
   background-color: #fff;
   border: none;
-  box-shadow: 0 0 0.625em 0 rgba(0,0,0,.25);
+  box-shadow: 0 0 0.625em 0 rgba(0, 0, 0, 0.25);
   left: 5%;
   position: absolute;
   top: 10%;
@@ -308,7 +327,10 @@
   top: 100%;
 }
 
-.h5p-interaktivtavle .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper {
+.h5p-interaktivtavle
+  .h5p-popup-overlay
+  .h5p-popup-container
+  .h5p-popup-wrapper {
   box-sizing: border-box;
   max-height: 22em;
   overflow: hidden;
@@ -316,12 +338,18 @@
   overflow-y: auto;
 }
 
-.h5p-interaktivtavle .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper::-webkit-scrollbar {
+.h5p-interaktivtavle
+  .h5p-popup-overlay
+  .h5p-popup-container
+  .h5p-popup-wrapper::-webkit-scrollbar {
   width: 0.6em;
   background: #fff;
 }
 
-.h5p-interaktivtavle .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper::-webkit-scrollbar-thumb {
+.h5p-interaktivtavle
+  .h5p-popup-overlay
+  .h5p-popup-container
+  .h5p-popup-wrapper::-webkit-scrollbar-thumb {
   background: #ddd;
 }
 
@@ -335,9 +363,18 @@
   padding: 2em 0;
 }
 
-.h5p-interaktivtavle .h5p-popup-overlay.h5p-advancedtext .h5p-popup-container .h5p-popup-wrapper,
-.h5p-interaktivtavle .h5p-popup-overlay.h5p-link .h5p-popup-container .h5p-popup-wrapper,
-.h5p-interaktivtavle .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container .h5p-popup-wrapper {
+.h5p-interaktivtavle
+  .h5p-popup-overlay.h5p-advancedtext
+  .h5p-popup-container
+  .h5p-popup-wrapper,
+.h5p-interaktivtavle
+  .h5p-popup-overlay.h5p-link
+  .h5p-popup-container
+  .h5p-popup-wrapper,
+.h5p-interaktivtavle
+  .h5p-popup-overlay.h5p-popup-comment-field
+  .h5p-popup-container
+  .h5p-popup-wrapper {
   padding: 0.5em;
   overflow: auto;
   text-align: left;
@@ -418,7 +455,24 @@
 
 .h5p-interaktivtavle .h5p-element-button:hover {
   box-shadow: 0 0.3em 0.25em 0 rgba(0, 0, 0, 0.5);
-  background: #003fdf;
+  background: #474747 !important;
+}
+.h5p-element-button.light-bg > .h5p-element-button-icon {
+  color: #474747;
+  transition: all ease-in-out 0.2s;
+}
+.h5p-element-button.light-bg:hover > * {
+  color: #fff;
+}
+.h5p-element-button.light-bg:before {
+  color: #474747;
+}
+.h5p-element-button.light-bg:hover {
+  color: #fff;
+}
+
+.h5p-element-button.dark-bg {
+  background: #ffffff;
 }
 
 .h5p-interaktivtavle .h5p-element-button:focus {
@@ -430,8 +484,7 @@
 
 .h5p-interaktivtavle .h5p-element-button:before {
   text-decoration: none;
-  font-family: 'H5PFontAwesome4';
-  content: "\f119";
+  font-family: "H5PFontAwesome4";
   font-size: 0.875em;
 }
 
@@ -481,7 +534,7 @@
 .h5p-interaktivtavle .h5p-dragtext-button:before,
 .h5p-interaktivtavle .h5p-dialogcards-button:before,
 .h5p-interaktivtavle .h5p-markthewords-button:before {
-  font-family: 'H5PCoursePresentation';
+  font-family: "H5PCoursePresentation";
 }
 
 .h5p-interaktivtavle .h5p-advancedtext-button:before {
@@ -521,7 +574,7 @@
 }
 
 .h5p-interaktivtavle .h5p-truefalse-button:before {
-  font-family: 'H5PFontIcons';
+  font-family: "H5PFontIcons";
   font-size: 1.2em;
   content: "\e902";
 }
@@ -578,7 +631,7 @@
 }
 
 .h5p-interaktivtavle .h5p-close-popup:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f057";
   color: #757575;
   vertical-align: middle;
@@ -588,7 +641,8 @@
   color: #555;
 }
 
-.h5p-interaktivtavle .h5p-element-inner.h5p-video, .h5p-interaktivtavle .h5p-element-inner.h5p-audio {
+.h5p-interaktivtavle .h5p-element-inner.h5p-video,
+.h5p-interaktivtavle .h5p-element-inner.h5p-audio {
   background-color: #000;
   width: 100%;
 }
@@ -624,12 +678,16 @@
   overflow-y: auto;
 }
 
-.h5p-interaktivtavle .h5p-element .h5p-element-outer.h5p-advancedtext-outer-element,
+.h5p-interaktivtavle
+  .h5p-element
+  .h5p-element-outer.h5p-advancedtext-outer-element,
 .h5p-interaktivtavle .h5p-element .h5p-element-outer.h5p-audio-outer-element {
   overflow-y: hidden;
 }
 
-.h5p-interaktivtavle .h5p-element .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
+.h5p-interaktivtavle
+  .h5p-element
+  .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
   position: absolute;
   top: 0;
   left: 0;
@@ -638,7 +696,9 @@
   padding: 0;
 }
 
-.h5p-interaktivtavle .h5p-element .h5p-element-inner:not(.h5p-interactive-video) {
+.h5p-interaktivtavle
+  .h5p-element
+  .h5p-element-inner:not(.h5p-interactive-video) {
   overflow: hidden;
   overflow-y: auto;
   background: transparent;
@@ -663,12 +723,17 @@
   padding: 0.375em 0.5em;
 }
 
-.h5p-interaktivtavle .h5p-element.h5p-transparent .h5p-element-inner.h5p-advanced-text,
+.h5p-interaktivtavle
+  .h5p-element.h5p-transparent
+  .h5p-element-inner.h5p-advanced-text,
 .h5p-interaktivtavle .h5p-element.h5p-transparent .h5p-element-inner.h5p-link {
   padding: 0;
 }
 
-.h5p-interaktivtavle .h5p-element.h5p-transparent .h5p-element-inner.h5p-ct > .ct {
+.h5p-interaktivtavle
+  .h5p-element.h5p-transparent
+  .h5p-element-inner.h5p-ct
+  > .ct {
   padding: 0;
 }
 
@@ -696,7 +761,9 @@
   border-bottom: 0;
 }
 
-.h5p-interaktivtavle .cke_editable .h5p-table, .h5p-interaktivtavle .cke_editable .h5p-table th, .h5p-interaktivtavle .cke_editable .h5p-table td {
+.h5p-interaktivtavle .cke_editable .h5p-table,
+.h5p-interaktivtavle .cke_editable .h5p-table th,
+.h5p-interaktivtavle .cke_editable .h5p-table td {
   border: 0.083em dashed #999;
 }
 
@@ -731,9 +798,9 @@
 
 /* Hides full screen button like in IV, uses own full screen button */
 .h5p-interaktivtavle .h5p-content-controls {
-  visibility:hidden;
+  visibility: hidden;
   position: absolute;
-  top:0;
+  top: 0;
 }
 
 .h5p-interaktivtavle .h5p-presentation-wrapper .h5p-touch-popup {
@@ -749,7 +816,7 @@
   overflow: hidden;
 
   background: #000;
-  color: #FFF;
+  color: #fff;
 }
 .h5p-interaktivtavle .h5p-toggle-full-screen {
   position: absolute;
@@ -767,7 +834,7 @@
   opacity: 0.6;
 }
 .h5p-interaktivtavle .h5p-toggle-full-screen:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   content: "\f065";
 }
 .h5p-interaktivtavle.h5p-fullscreen .h5p-toggle-full-screen:before,
@@ -821,7 +888,7 @@
 
 .h5p-interaktivtavle .h5p-dialog-title:before {
   content: " ";
-  font-family: 'H5PFontAwesome4';
+  font-family: "H5PFontAwesome4";
   color: #313131;
   margin-right: 0.5em;
   margin-left: 0.1em;
