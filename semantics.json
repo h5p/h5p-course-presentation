@@ -246,7 +246,6 @@
 
                 },
                 {
-
                   "name": "title",
                   "type": "text",
                   "optional": true,
@@ -277,6 +276,10 @@
                     {
                       "value": "previous",
                       "label": "Previous slide"
+                    },
+                    {
+                      "value": "information-dialog",
+                      "label": "Dialog window"
                     }
                   ],
                   "default": "specified",
@@ -303,6 +306,36 @@
                       "equals": true
                     }]
                   }
+                },
+                {
+                  "name": "dialogContent",
+                  "type": "text",
+                  "label": "Dialog content",
+                  "importance": "low",
+                  "optional": true,
+                  "widget": "showWhen",
+                  "showWhen": {
+                    "rules": [{
+                      "field": "showAsHotspot",
+                      "equals": true
+                    }],
+                    "widget": "html"
+                  },
+                  "enterMode": "p",
+                  "tags": [
+                    "strong",
+                    "em",
+                    "del",
+                    "a",
+                    "ul",
+                    "ol",
+                    "h2",
+                    "h3",
+                    "hr",
+                    "pre",
+                    "code",
+                    "img"
+                  ]
                 },
                 {
                   "name": "invisible",
@@ -763,6 +796,12 @@
       "type": "text",
       "label": "Exited fullscreen announcement for assistive technologies",
       "default": "Exited fullscreen"
+    },
+    {
+      "name": "informationDialogClose",
+      "type": "text",
+      "label": "Exit dialog action for assistive technologies",
+      "default": "Exit dialog"
     }
   ]
 },
