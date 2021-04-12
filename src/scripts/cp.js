@@ -1743,19 +1743,17 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     }
   }
 
+  const animateTransition = !this.activeSurface;
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
     $slides.css({
-      '-webkit-transform': '',
-      '-moz-transform': '',
-      '-ms-transform': '',
       'transform': ''
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
     that.trigger('changedSlide', that.$current.index());
-  }, 1);
+  }, animateTransition ? 1 : 0);
 
   setTimeout(function () {
     // Done animating
@@ -1787,7 +1785,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
         }
       }
     }
-  }, 250);
+  }, animateTransition ? 250 : 0);
 
   // Jump keywords
   if (this.$keywords !== undefined) {
