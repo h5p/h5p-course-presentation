@@ -41,22 +41,25 @@
                       "label": "Tittel"
                     },
                     {
-                      "label": "Go to to",
+                      "label": "Type",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Spesifikk side"
                         },
                         {
                           "label": "Neste side"
                         },
                         {
                           "label": "Forrige side"
+                        },
+                        {
+                          "label": "Dialogvindu"
                         }
                       ]
                     },
                     {
                       "label": "Gå til lysbilete",
-                      "description": "Type a slide number to go to"
+                      "description": "Skriv sidenummer ein skal gå til"
                     },
                     {
                       "label": "Usynlig",
