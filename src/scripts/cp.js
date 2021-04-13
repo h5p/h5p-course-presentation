@@ -307,7 +307,7 @@ CoursePresentation.prototype.attach = function ($container) {
   var wrapperHeight = parseInt(this.$wrapper.css('height'));
   this.height = wrapperHeight !== 0 ? wrapperHeight : 400;
 
-  this.ratio = 16/9;//9/16;//16/9;
+  this.ratio = 16 / 9;
   // Intended base font size cannot be read from CSS, as it might be modified
   // by mobile browsers already. (The Android native browser does this.)
   this.fontSize = 16;
@@ -1477,20 +1477,9 @@ CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
   var touchStarted = false;
-  // var containerWidth = this.$slidesWrapper.width();
-  // var containerPercentageForScrolling = 0.6; // 60% of container width used to reach endpoints with touch
-  // var slidesNumbers = this.slides.length;
-  // var pixelsPerSlide = (containerWidth * containerPercentageForScrolling) / slidesNumbers;
-  // var startTime;
-  // var currentTime;
-  // var navigateTimer = 500; // 500ms before navigation popup starts.
   var isTouchJump = false;
-  // var nextSlide;
   var transform = function (value) {
     return {
-      '-webkit-transform': value,
-      '-moz-transform': value,
-      '-ms-transform': value,
       'transform': value
     };
   };
@@ -1505,10 +1494,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
     // Set classes for slide movement and remember how much they move
     prevX = (that.currentSlideIndex === 0 ? 0 : - slideWidth);
-    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth)
-
-    // containerWidth = H5P.jQuery(this).width();
-    // startTime = new Date().getTime();
+    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth);
 
     scroll = null;
     touchStarted = true;
@@ -1527,7 +1513,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
     var movedX = startX - lastX;
 
     if (scroll === null) {
-      // Detemine if we're scrolling horizontally or changing slide
+      // Determine if we're scrolling horizontally or changing slide
       scroll = Math.abs(startY - event.originalEvent.touches[0].pageY) > Math.abs(movedX);
     }
     if (touches.length !== 1 || scroll) {
@@ -1540,12 +1526,6 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
     // Create popup longer time than navigateTimer has passed
     if (!isTouchJump) {
-      /*currentTime = new Date().getTime();
-      var timeLapsed = currentTime - startTime;
-      if (timeLapsed > navigateTimer) {
-        isTouchJump = true;
-      }*/
-
       // Fast swipe to next slide
       if (movedX < 0) {
         // Move previous slide
@@ -1576,12 +1556,6 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
   }).bind('touchend', function () {
     if (!scroll) {
-      /*if (isTouchJump) {
-        that.jumpToSlide(nextSlide);
-        that.updateTouchPopup();
-        return;
-      }*/
-
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
       if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
@@ -1770,19 +1744,17 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     }
   }
 
+  const animateTransition = !this.activeSurface;
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
     $slides.css({
-      '-webkit-transform': '',
-      '-moz-transform': '',
-      '-ms-transform': '',
       'transform': ''
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
     that.trigger('changedSlide', that.$current.index());
-  }, 1);
+  }, animateTransition ? 1 : 0);
 
   setTimeout(function () {
     // Done animating
@@ -1814,7 +1786,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
         }
       }
     }
-  }, 250);
+  }, animateTransition ? 250 : 0);
 
   // Jump keywords
   if (this.$keywords !== undefined) {

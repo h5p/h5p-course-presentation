@@ -101,13 +101,15 @@ export class Hotspot extends EventDispatcher {
         const horizontalOffset = "50%";
         const verticalOffset = "50%";
 
-        this.dialog = this.dialog || new InformationDialog({
-          content: $(dialogContent).get(0),
-          parent: this.$element.closest(".h5p-presentation-wrapper").get(0),
-          l10n,
-          horizontalOffset,
-          verticalOffset,
-        });
+        this.dialog =
+          this.dialog ||
+          new InformationDialog({
+            content: $(dialogContent).get(0),
+            parent: this.$element.closest(".h5p-presentation-wrapper").get(0),
+            l10n,
+            horizontalOffset,
+            verticalOffset,
+          });
         this.dialog.show();
       });
     }
@@ -119,6 +121,18 @@ export class Hotspot extends EventDispatcher {
     if ($content) {
       this.attachContent($content);
     }
+
+    // Create `on` method in constructor to avoid it being overwritten
+    this.on =
+      /**
+       * Register an event listener
+       *
+       * @param {string} name
+       * @param {function} callback
+       */
+      function on(name, callback) {
+        this.eventDispatcher.on(name, callback);
+      };
   }
   /**
    * @param {number} goToSlide
@@ -163,15 +177,7 @@ export class Hotspot extends EventDispatcher {
 
     return $element;
   }
-  /**
-   * Register an event listener
-   *
-   * @param {string} name
-   * @param {function} callback
-   */
-  on(name, callback) {
-    this.eventDispatcher.on(name, callback);
-  }
+
   /**
    * Attach element to the given container.
    *
