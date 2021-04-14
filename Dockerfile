@@ -110,7 +110,7 @@ RUN cd h5p-course-presentation && npm install && npm run build
 # RUN cd h5p-drag-question && npm install && npm run build
 # RUN cd h5p-drag-text && npm install && npm run build
 # RUN cd h5p-editor-color-selector && npm install && npm run build
-# RUN cd h5p-editor-course-presentation && npm install && npm run build
+RUN cd h5p-editor-course-presentation && npm install && npm run build
 # RUN cd h5p-editor-drag-question && npm install && npm run build
 # RUN cd h5p-editor-duration && npm install && npm run build
 # RUN cd h5p-editor-interactive-video && npm install && npm run build
