@@ -41,7 +41,7 @@
                       "label": "Title"
                     },
                     {
-                      "label": "Go to",
+                      "label": "Type",
                       "options": [
                         {
                           "label": "Specific slide number"
@@ -51,6 +51,9 @@
                         },
                         {
                           "label": "Previous slide"
+                        },
+                        {
+                          "label": "Dialog window"
                         }
                       ]
                     },
