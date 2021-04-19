@@ -1421,10 +1421,12 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
  *  false otherwise
  */
 CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
-  return (elementInstance.showSolutions !== undefined ||
-          elementInstance.showCPComments !== undefined);
+  return (
+    elementInstance.showSolutions !== undefined ||
+    elementInstance.showCPComments !== undefined ||
+    elementInstance.answerType && elementInstance.answerType !== "none"
+  );
 };
-
 
 /**
  * Initialize key press events.
@@ -1936,6 +1938,12 @@ CoursePresentation.prototype.showSolutions = function () {
         if (elementInstance.showCPComments) {
           elementInstance.showCPComments();
         }
+
+        const isAnswerHotspot = elementInstance.answerType && elementInstance.answerType !== "none";
+        if (isAnswerHotspot) {
+
+        }
+        
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
@@ -2148,5 +2156,16 @@ CoursePresentation.prototype.getXAPIData = function () {
     children: childrenXAPIData
   };
 };
+
+/**
+ * 
+ * @param {"true" | "false"} answerType 
+ */
+CoursePresentation.prototype.answer = function(answerType) {
+  this.answers = {
+    ...(this.answers || {}),
+    [this.slide]
+  }
+}
 
 export default CoursePresentation;

@@ -89,6 +89,18 @@
                   "optional": true
                 },
                 {
+                  "name": "answerType",
+                  "importance": "low",
+                  "type": "number",
+                  "widget": "none",
+                  "optional": true,
+                  "options": [
+                    "none",
+                    "true",
+                    "false"
+                  ]
+                },
+                {
                   "name": "solution",
                   "type": "text",
                   "widget": "html",
