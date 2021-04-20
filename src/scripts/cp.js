@@ -1703,11 +1703,8 @@ CoursePresentation.prototype.attachAllElements = function () {
  */
 CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
   var that = this;
-  if (this.editor === undefined && (this.contentId || this.contentId === undefined)) { // Content ID avoids crash when previewing in editor before saving
+  if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
-    if (progressedEvent.data.statement.object.definition.extensions === undefined){
-      progressedEvent.data.statement.object.definition.extensions = {};
-    }
     progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = slideNumber + 1;
     this.trigger(progressedEvent);
   }
