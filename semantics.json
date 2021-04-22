@@ -269,7 +269,7 @@
                 {
                   "name": "goToSlideType",
                   "type": "select",
-                  "label": "Go to",
+                  "label": "Type",
                   "importance": "medium",
                   "optional": false,
                   "options": [{

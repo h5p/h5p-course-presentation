@@ -41,7 +41,7 @@
                       "label": "Tittel"
                     },
                     {
-                      "label": "Slide vi skal gå til",
+                      "label": "Type",
                       "options": [
                         {
                           "label": "Spesifisert slide"
@@ -51,12 +51,15 @@
                         },
                         {
                           "label": "Forrige side"
+                        },
+                        {
+                          "label": "Dialogvindu"
                         }
                       ]
                     },
                     {
                       "label": "Spesifisert slide",
-                      "description": "Type a slide number to go to"
+                      "description": "Skriv inn sidenummer en skal gå til"
                     },
                     {
                       "label": "Usynlig",

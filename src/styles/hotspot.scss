@@ -6,7 +6,6 @@ $navigation-element-background-color: #0580e2;
   }
 
   .h5p-press-to-go {
-    display: block;
     width: 100%;
     height: 100%;
 
@@ -31,5 +30,17 @@ $navigation-element-background-color: #0580e2;
         box-shadow: inset 0 0 0 2px #79abfd;
       }
     }
+  }
+
+  a.h5p-press-to-go {
+    display: block;
+  }
+
+  button.h5p-press-to-go {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    padding: 0;
   }
 }
