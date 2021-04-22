@@ -17,34 +17,43 @@ jobs:
         node-version: '15.x'
     - run: |
         cd h5p-course-presentation
-        npm install
+        npm ci
         npm run build
     - run: |
         
         mkdir -p dist
         cd dist
         
-
+        # Clone dependencies
         while read -r repo; do git clone ${repo}; done < ../h5p-course-presentation/build_info/repos
+        
+        # Install local dependencies and build distribution versions
         if [ -d "h5p-editor-color-selector" ]; then pushd h5p-editor-color-selector && git checkout b0ae8c941cedcec73df6b186663eae6df8679810; popd; fi
-        if [ -d "h5p-dialogcards" ]; then pushd h5p-dialogcards && npm install && npm run build; popd; fi
-        if [ -d "h5p-drag-text" ]; then pushd h5p-drag-text && npm install && npm run build; popd; fi
-        if [ -d "h5p-questionnaire" ]; then pushd h5p-questionnaire && npm install && npm run build; popd; fi
-        if [ -d "h5p-drag-question" ]; then pushd h5p-drag-question && npm install && npm run build; popd; fi
-        if [ -d "h5p-interactive-video" ]; then pushd h5p-interactive-video && npm install && npm run build; popd; fi
-        if [ -d "h5p-open-ended-question" ]; then pushd h5p-open-ended-question && npm install && npm run build; popd; fi
-        if [ -d "h5p-simple-multiple-choice" ]; then pushd h5p-simple-multiple-choice && npm install && npm run build; popd; fi
+        if [ -d "h5p-dialogcards" ]; then pushd h5p-dialogcards && npm ci && npm run build; popd; fi
+        if [ -d "h5p-drag-text" ]; then pushd h5p-drag-text && npm ci && npm run build; popd; fi
+        if [ -d "h5p-questionnaire" ]; then pushd h5p-questionnaire && npm ci && npm run build; popd; fi
+        if [ -d "h5p-drag-question" ]; then pushd h5p-drag-question && npm ci && npm run build; popd; fi
+        if [ -d "h5p-interactive-video" ]; then pushd h5p-interactive-video && npm ci && npm run build; popd; fi
+        if [ -d "h5p-open-ended-question" ]; then pushd h5p-open-ended-question && npm ci && npm run build; popd; fi
+        if [ -d "h5p-simple-multiple-choice" ]; then pushd h5p-simple-multiple-choice && npm ci && npm run build; popd; fi
         
-
-        rm -rf h5p-course-presentation h5p-editor-course-presentation h5p-chart h5p-shape h5p-editor-shape
+        # Remove projects that we want to override
+        rm -rf \
+          h5p-course-presentation \
+          h5p-editor-course-presentation \
+          h5p-chart \
+          h5p-shape \
+          h5p-editor-shape \
+          h5p-font-icons
         
-        
+        # Clone override projects
         git clone https://github.com/NDLANO/h5p-chart.git
         git clone https://github.com/NDLANO/h5p-shape.git
         git clone https://github.com/NDLANO/h5p-editor-shape.git
-        git clone https://github.com/NDLANO/h5p-editor-image-radio-group
+        git clone https://github.com/NDLANO/h5p-editor-image-radio-group.git
+        git clone https://github.com/NDLANO/h5p-font-icons.git
         
-        git clone https://github.com/NDLANO/h5p-editor-course-presentation.git
+        git clone https://github.com/NDLANO/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
         
         cp -r ../h5p-course-presentation .
     - run: |
