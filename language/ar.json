@@ -273,12 +273,12 @@
           "description": "Available variables are @score and @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "أُدخلت إلى تصريح ملء الشاشة للتقنيات المساعدة",
+          "default": "أُدخلت وضعية ملء الشاشة"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "أُخرجت من تصريح ملء الشاشة للتقنيات المساعدة",
+          "default": "أُخرجت من ملء الشاشة"
         }
       ]
     },
@@ -358,7 +358,7 @@
               "fields": [
                 {
                   "label": "مشاركة بيان على تويتر",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "default": "لقد أحرزتُ @score من أصل @maxScore في مهمة ضمن @currentpageurl."
                 },
                 {
                   "label": "مشاركة رابط على تويتر",
@@ -366,7 +366,7 @@
                 },
                 {
                   "label": "مشاركة هاشتاغ على تويتر",
-                  "default": "h5p, course"
+                  "default": "h5p، مساق"
                 }
               ]
             },
