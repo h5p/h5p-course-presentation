@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Especifica número de diapositiva",
-                      "description": "Només aplicable quan ’Especifica el número de diapositiva’ està seleccionat."
+                      "description": "Només aplicable quan ’Especifica el número de diapositiva’ està seleccionat"
                     },
                     {
                       "label": "Invisible",
@@ -124,15 +124,15 @@
           "default": "La teva qualificació"
         },
         {
-          "label": "Traducció de \"Qualificació màxima\"",
-          "default": "Màxima qualificació"
+          "label": "Traducció de “Qualificació màxima”",
+          "default": "Puntuació màxima"
         },
         {
-          "label": "Traducció per a \"Total\"",
+          "label": "Traducció per \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Traducció de \"Qualificació total\"",
+          "label": "Traducció de “Qualificació total”",
           "default": "Qualificació total"
         },
         {
@@ -274,11 +274,11 @@
         },
         {
           "label": "Anunci d’entrada a pantalla completa per a tecnologies assistives",
-          "default": "Heu entrat a pantalla completa"
+          "default": "Heu entrat en el mode pantalla completa"
         },
         {
-          "label": "Anunci de sortida a pantalla completa per a tecnologies assistives",
-          "default": "Heu sortit de pantalla completa"
+          "label": "Anunci de sortida de la pantalla completa per a les tecnologies d’assistència",
+          "default": "Heu sortit de la pantalla completa"
         }
       ]
     },
@@ -365,7 +365,7 @@
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Comparteix als hashtags de Twitter",
+                  "label": "Comparteix a les etiquetes de Twitter",
                   "default": "h5p, course"
                 }
               ]

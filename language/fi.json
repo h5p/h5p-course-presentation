@@ -273,12 +273,12 @@
           "description": "Käytässä olevat muuttujat ovat @score ja @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Koko näytön tila käytössä -ilmoitus avustavalle teknologialle",
+          "default": "Koko näytön tila käytössä"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Koko näytön tilasta poistuttu -ilmoitus avustavalle teknologialle",
+          "default": "Koko näytön tilasta poistuttu"
         }
       ]
     },
@@ -332,7 +332,7 @@
         },
         {
           "label": "Sosiaalisen median asetukset",
-          "description": "Nämä asetukset mahdollistavat sosiaalisen median asetusten yliajamisen. Tyhjät arvot täytetään automaattisesti jos tarjolla on linkki, muutoin arvot generoidaan",
+          "description": "Nämä asetukset mahdollistavat sosiaalisen median asetusten yliajamisen. Tyhjät arvot täytetään automaattisesti jos tarjolla on linkki, muutoin arvot generoidaan.",
           "fields": [
             {
               "label": "Näytä jaa Facebookissa-ikoni"
@@ -366,7 +366,7 @@
                 },
                 {
                   "label": "Jaa twitteriin seuraavilla hashtageilla/aihetunnisteilla",
-                  "default": "h5p, course"
+                  "default": "h5p, kurssi"
                 }
               ]
             },
