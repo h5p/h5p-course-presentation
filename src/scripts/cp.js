@@ -30,6 +30,8 @@ let CoursePresentation = function (params, id, extras) {
   var that = this;
   this.presentation = params.presentation;
   this.defaultAspectRatio = this.presentation.slides[0].aspectRatio || "4-3";
+
+  /** @type {Slide[]} */
   this.slides = this.presentation.slides;
   this.contentId = id;
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
@@ -205,7 +207,7 @@ CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
  * @return {undefined} Nothing.
  */
 CoursePresentation.prototype.attach = function ($container) {
-  var that = this;
+  const that = this;
 
   // isRoot is undefined in the editor
   if (this.isRoot !== undefined && this.isRoot()) {
@@ -342,8 +344,8 @@ CoursePresentation.prototype.attach = function ($container) {
   }
   else {
     // Determine by checking for slides with tasks
-    this.slidesWithSolutions.forEach(function (slide) {
-      that.showSummarySlide = slide.length;
+    this.slidesWithSolutions.forEach((slide) => {
+      this.showSummarySlide = slide.length;
     });
   }
 
@@ -419,7 +421,7 @@ CoursePresentation.prototype.attach = function ($container) {
         appendTo: this.$wrapper
       });
 
-      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
+      addClickAndKeyboardListeners(this.$fullScreenButton, () => this.toggleFullScreen());
     }
   }
 
@@ -554,6 +556,8 @@ CoursePresentation.prototype.createSlides = function () {
  * @return {boolean}
  */
 CoursePresentation.prototype.hasScoreData = function (obj) {
+  console.log("has score data", obj)
+  
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
@@ -568,10 +572,8 @@ CoursePresentation.prototype.hasScoreData = function (obj) {
  * @return {number}
  */
 CoursePresentation.prototype.getScore = function () {
-  var self = this;
-
-  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide) {
-    return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
+  return flattenArray(this.slidesWithSolutions).reduce((sum, slide) => {
+    return sum + (this.hasScoreData(slide) ? slide.getScore() : 0);
   }, 0);
 };
 
@@ -582,10 +584,8 @@ CoursePresentation.prototype.getScore = function () {
  * @return {number}
  */
 CoursePresentation.prototype.getMaxScore = function () {
-  var self = this;
-
-  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide) {
-    return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
+  return flattenArray(this.slidesWithSolutions).reduce((sum, slide) => {
+    return sum + (this.hasScoreData(slide) ? slide.getMaxScore() : 0);
   }, 0);
 };
 
@@ -677,8 +677,6 @@ CoursePresentation.prototype.setKeywordsOpacity = function (value) {
 /**
  * Makes continuous text smaller if it does not fit inside its container.
  * Only works in view mode.
- *
- * @return {undefined}
  */
 CoursePresentation.prototype.fitCT = function () {
   if (this.editor !== undefined) {
@@ -1425,7 +1423,7 @@ CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
   return (
     elementInstance.showSolutions !== undefined ||
     elementInstance.showCPComments !== undefined ||
-    elementInstance.answerType && elementInstance.answerType !== "none"
+    elementInstance.answerType
   );
 };
 
@@ -1912,53 +1910,59 @@ CoursePresentation.prototype.resetTask = function () {
  * @return {undefined}
  */
 CoursePresentation.prototype.showSolutions = function () {
-  var jumpedToFirst = false;
-  var slideScores = [];
-  var hasScores = false;
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    if (this.slidesWithSolutions[i] !== undefined) {
-      if (!this.elementsAttached[i]) {
-        // Attach elements before showing solutions
-        this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
-      }
-      if (!jumpedToFirst) {
-        this.jumpToSlide(i, false);
-        jumpedToFirst = true; // TODO: Explain what this really does.
-      }
-      var slideScore = 0;
-      var slideMaxScore = 0;
-      var indexes = [];
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
-        if (elementInstance.addSolutionButton !== undefined) {
-          elementInstance.addSolutionButton();
-        }
-        if (elementInstance.showSolutions) {
-          elementInstance.showSolutions();
-        }
-        if (elementInstance.showCPComments) {
-          elementInstance.showCPComments();
-        }
+  
+  const slideScores = [];
+  let jumpedToFirst = false;
+  let hasScores = false;
 
-        const isAnswerHotspot = elementInstance.answerType && elementInstance.answerType !== "none";
-        if (isAnswerHotspot) {
-
-        }
-        
-        if (elementInstance.getMaxScore !== undefined) {
-          slideMaxScore += elementInstance.getMaxScore();
-          slideScore += elementInstance.getScore();
-          hasScores = true;
-          indexes.push(elementInstance.coursePresentationIndexOnSlide);
-        }
-      }
-      slideScores.push({
-        indexes: indexes,
-        slide: (i + 1),
-        score: slideScore,
-        maxScore: slideMaxScore
-      });
+  const slidesWithSolutions = this.slidesWithSolutions.filter(slide => !!slide);
+  
+  for (let i = 0; i < slidesWithSolutions.length; i++) {
+    if (!this.elementsAttached[i]) {
+      // Attach elements before showing solutions
+      this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
     }
+    if (!jumpedToFirst) {
+      this.jumpToSlide(i, false);
+      jumpedToFirst = true; // TODO: Explain what this really does.
+    }
+
+    const indexes = [];
+    let slideScore = 0;
+    let slideMaxScore = 0;
+
+    for (let j = 0; j < this.slidesWithSolutions[i].length; j++) {
+      const elementInstance = this.slidesWithSolutions[i][j];
+      if (elementInstance.addSolutionButton !== undefined) {
+        elementInstance.addSolutionButton();
+      }
+      if (elementInstance.showSolutions) {
+        elementInstance.showSolutions();
+      }
+      if (elementInstance.showCPComments) {
+        elementInstance.showCPComments();
+      }
+
+
+      console.log("isanswerhotspot", elementInstance)
+
+      const isAnswerHotspot = elementInstance.answerType;
+      if (isAnswerHotspot) {
+      }
+      
+      if (elementInstance.getMaxScore !== undefined) {
+        slideMaxScore += elementInstance.getMaxScore();
+        slideScore += elementInstance.getScore();
+        hasScores = true;
+        indexes.push(elementInstance.coursePresentationIndexOnSlide);
+      }
+    }
+    slideScores.push({
+      indexes: indexes,
+      slide: (i + 1),
+      score: slideScore,
+      maxScore: slideMaxScore
+    });
   }
   if (hasScores) {
     return slideScores;
@@ -1967,6 +1971,9 @@ CoursePresentation.prototype.showSolutions = function () {
 
 /**
  * Gets slides scores for whole cp
+ * 
+ * @param {boolean} noJump
+ * 
  * @return {Array<{
  *   indexes: string,
  *   slide: number,
@@ -1975,11 +1982,13 @@ CoursePresentation.prototype.showSolutions = function () {
  * >} slideScores Array containing scores for all slides.
  */
 CoursePresentation.prototype.getSlideScores = function (noJump) {
-  var jumpedToFirst = (noJump === true);
-  var slideScores = [];
-  var hasScores = false;
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
+  const slideScores = [];
+  let jumpedToFirst = noJump === true;
+  let hasScores = false;
+
+  for (let i = 0; i < this.slidesWithSolutions.length; i++) {    
     if (this.slidesWithSolutions[i] !== undefined) {
+      const slideElements = this.slidesWithSolutions[i];
       if (!this.elementsAttached[i]) {
         // Attach elements before showing solutions
         this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
@@ -1988,22 +1997,49 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
         this.jumpToSlide(i, false);
         jumpedToFirst = true; // TODO: Explain what this really does.
       }
-      var slideScore = 0;
-      var slideMaxScore = 0;
-      var indexes = [];
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
+
+      const indeces = [];
+      let slideScore = 0;
+      let slideMaxScore = 0;
+      for (let j = 0; j < this.slidesWithSolutions[i].length; j++) {
+        let elementInstance = this.slidesWithSolutions[i][j];
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
+          console.log("get max score not undefined")
           slideScore += elementInstance.getScore();
           hasScores = true;
-          indexes.push(elementInstance.coursePresentationIndexOnSlide);
+          indeces.push(elementInstance.coursePresentationIndexOnSlide);
         }
       }
+
+      let answerHotspotCorrectAnswers = 0;
+      let answerHotspotFalseAnswers = 0;
+
+      /** @type {Slide} */
+      const answerHotspotsConnectedToSlide = slideElements.filter(element => element.answerHotspotType);
+      for (const element of answerHotspotsConnectedToSlide) {
+        const isCorrectAnswer = element.answerHotspotType === "true";
+        if (isCorrectAnswer) {
+          slideMaxScore++;
+          
+          if (element.isChecked) {
+            answerHotspotCorrectAnswers++;
+          }
+        } else {
+          if (element.isChecked) {
+            answerHotspotFalseAnswers++;
+          }
+        }
+
+        hasScores = true;
+      }
+
+      const answerHotspotScore = Math.max(0, answerHotspotCorrectAnswers - answerHotspotFalseAnswers);
+
       slideScores.push({
-        indexes: indexes,
+        indexes: indeces,
         slide: (i + 1),
-        score: slideScore,
+        score: slideScore + answerHotspotScore,
         maxScore: slideMaxScore
       });
     }
@@ -2019,8 +2055,8 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
  * @return {H5P.ContentCopyrights}
  */
 CoursePresentation.prototype.getCopyrights = function () {
-  var info = new H5P.ContentCopyrights();
-  var elementCopyrights;
+  const info = new H5P.ContentCopyrights();
+  let elementCopyrights;
 
   // Check for a common background image shared by all slides
   if (this.presentation && this.presentation.globalBackgroundSelector &&
@@ -2157,16 +2193,5 @@ CoursePresentation.prototype.getXAPIData = function () {
     children: childrenXAPIData
   };
 };
-
-/**
- * 
- * @param {"true" | "false"} answerType 
- */
-CoursePresentation.prototype.answer = function(answerType) {
-  this.answers = {
-    ...(this.answers || {}),
-    [this.slide]
-  }
-}
 
 export default CoursePresentation;

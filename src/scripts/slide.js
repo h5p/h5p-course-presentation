@@ -8,6 +8,8 @@ function Slide(parameters) {
   const self = this;
   Parent.call(self, Element, parameters.elements);
 
+  this.uniqueId = this.uniqueId || Slide.createUniqueId();
+  
   // The slide DOM element when attached
   let $wrapper;
 
@@ -49,6 +51,16 @@ function Slide(parameters) {
 }
 
 /**
+ * Create a unique six-digit ID
+ *
+ * @returns {string}
+ */
+Slide.createUniqueId = function() {
+  const numberOfDigits = 6;
+  return (Math.random() * 10**numberOfDigits).toString(36).replace(".", "").slice(0, numberOfDigits);
+}
+
+/**
  * Creates the HTML for a single slide.
  *
  * @param {Object} params Slide parameters.
@@ -65,5 +77,15 @@ Slide.createHTML = function (parameters) {
   	${style}
   	></div>`;
 };
+
+Slide.prototype.showSolutions = function() {
+  console.log("show solutionsdsads", this);
+  
+  const answerButtons = this.getElement().find('.h5p-hotspot-answer');
+  const slideHasAnswerButtons = answerButtons.length > 0;
+  if (slideHasAnswerButtons) {
+    this.isTask = true;
+  }
+}
 
 export default Slide;

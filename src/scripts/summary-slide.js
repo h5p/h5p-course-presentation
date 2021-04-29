@@ -5,7 +5,7 @@ const SummarySlide = (function () {
 
   /**
    * Constructor for summary slide
-   * @param {H5P.CoursePresentation} coursePresentation Course presentation parent of summary slide
+   * @param {import("./cp").default} coursePresentation Course presentation parent of summary slide
    * @param {$} $summarySlide Summary slide element
    * @constructor
    */
@@ -142,100 +142,126 @@ const SummarySlide = (function () {
     }
   };
 
-  /**
-   * Gets html for summary slide.
-   *
-   * @param slideScores Scores for all pages
-   * @returns {string} html
-   */
-  SummarySlide.prototype.outputScoreStats = function (slideScores) {
-    var self = this;
-    if (slideScores === undefined) {
-      this.$summarySlide.addClass('h5p-summary-only-export');
-      return '<div class="h5p-summary-footer"></div>';
-    }
-    var that = this;
-    var totalScore = 0;
-    var totalMaxScore = 0;
-    var tds = ''; // For saving the main table rows
-    var i;
-    var slidePercentageScore = 0;
-    var slideDescription = '';
-    for (i = 0; i < slideScores.length; i += 1) {
-      slideDescription = self.getSlideDescription(slideScores[i]);
+/**
+ * Gets html for summary slide.
+ *
+ * @param slideScores Scores for all pages
+ * @returns {string} html
+ */
+ SummarySlide.prototype.outputScoreStats = function (slideScores) {
+  if (slideScores === undefined) {
+    this.$summarySlide.addClass('h5p-summary-only-export');
+    return '<div class="h5p-summary-footer"></div>';
+  }
 
-      // Get percentage score for slide
-      slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
-      if (isNaN(slidePercentageScore)) {
-        slidePercentageScore = 0;
-      }
-      tds +=
-        '<tr>' +
-          '<td class="h5p-td h5p-summary-task-title">' +
-            '<a href="#" class="h5p-slide-link"  aria-label=" ' +
-              that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + ' ' +
-              slidePercentageScore + '%' +
-              '" data-slide="' +
-              slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) +
-            '</a>' +
-          '</td>' +
-          '<td class="h5p-td h5p-summary-score-bar">' +
-            '<p class="hidden-but-read">' + slidePercentageScore + '%' + '</p>' +
-            '<p>' + slideScores[i].score + '<span>/</span>' + slideScores[i].maxScore + '</p>' +
-          '</td>' +
-        '</tr>';
-      totalScore += slideScores[i].score;
-      totalMaxScore += slideScores[i].maxScore;
+  let totalScore = 0;
+  let totalMaxScore = 0;
+  let tableRows = '';
+  let slidePercentageScore = 0;
+  let slideDescription = '';
+
+  for (let i = 0; i < slideScores.length; i += 1) {
+    slideDescription = this.getSlideDescription(slideScores[i]);
+
+    // Get percentage score for slide
+    slidePercentageScore = Math.round(
+      (slideScores[i].score / slideScores[i].maxScore) * 100,
+    );
+
+    if (isNaN(slidePercentageScore)) {
+      slidePercentageScore = 0;
     }
 
-    that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
-    var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
-    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
-    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
-    var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
+    const td = `<tr>
+      <td class="h5p-td h5p-summary-task-title">
+        <a
+          href="#"
+          class="h5p-slide-link"
+          aria-label=" ${this.cp.l10n.slide} ${slideScores[i]
+            .slide}: ${slideDescription.replace(
+            /(<([^>]+)>)/gi,
+            '',
+          )} ${slidePercentageScore}%"
+          data-slide="${slideScores[i].slide}"
+          >${this.cp.l10n.slide} ${slideScores[i].slide}:
+          ${slideDescription.replace(/(<([^>]+)>)/gi, '')}</a
+        >
+      </td>
+      <td class="h5p-td h5p-summary-score-bar">
+        <p class="hidden-but-read">${slidePercentageScore}%</p>
+        <p>${slideScores[i].score}<span>/</span>${slideScores[i].maxScore}</p>
+      </td>
+    </tr>`;
 
-    var html =
-      '<div class="h5p-summary-table-holder">' +
-        '<div class="h5p-summary-table-pages">' +
-          '<table class="h5p-score-table">' +
-            '<thead><tr>' +
-              '<th class="h5p-summary-table-header slide">' + that.cp.l10n.slide + '</th>' +
-              '<th class="h5p-summary-table-header score">' + that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total.toLowerCase() + '</th>' +
-            '</tr></thead>' +
-            '<tbody>' + tds + '</tbody>' +
-          '</table>' +
-        '</div>' +
-        '<div class="h5p-summary-total-table">' +
-          '<div class="h5p-summary-social">' +
-            shareResultContainer +
-            facebookContainer +
-            twitterContainer +
-            googleContainer +
-          '</div>' +
-          '<div class="h5p-summary-total-score">' +
-            '<p>' + that.cp.l10n.totalScore + '</p>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="h5p-summary-footer">' +
-      '</div>';
+    tableRows += td;
+    totalScore += slideScores[i].score;
+    totalMaxScore += slideScores[i].maxScore;
+  }
 
-    return html;
+  this.cp.triggerXAPICompleted(totalScore, totalMaxScore);
+  const shareResultContainer =
+    this.cp.enableTwitterShare ||
+    this.cp.enableFacebookShare ||
+    this.cp.enableGoogleShare
+      ? `<span class="h5p-show-results-text">${this.cp.l10n.shareResult}</span>`
+      : '';
+  const twitterContainer =
+    this.cp.enableTwitterShare == true
+      ? `<span class="h5p-summary-twitter-message" aria-label="${this.cp.l10n.shareTwitter}"></span>`
+      : '';
+  const facebookContainer =
+    this.cp.enableFacebookShare == true
+      ? `<span class="h5p-summary-facebook-message" aria-label="${this.cp.l10n.shareFacebook}"></span>`
+      : '';
+  const googleContainer =
+    this.cp.enableGoogleShare == true
+      ? `<span class="h5p-summary-google-message" aria-label="${this.cp.l10n.shareGoogle}"></span>`
+      : '';
+
+  return `<div class="h5p-summary-table-holder">
+      <div class="h5p-summary-table-pages">
+        <table class="h5p-score-table">
+          <thead>
+            <tr>
+              <th class="h5p-summary-table-header slide">
+                ${this.cp.l10n.slide}
+              </th>
+              <th class="h5p-summary-table-header score">
+                ${this.cp.l10n
+                  .score}<span>/</span>${this.cp.l10n.total.toLowerCase()}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            ${tableRows}
+          </tbody>
+        </table>
+      </div>
+      <div class="h5p-summary-total-table">
+        <div class="h5p-summary-social">
+          ${shareResultContainer}${facebookContainer}${twitterContainer}${googleContainer}
+        </div>
+        <div class="h5p-summary-total-score">
+          <p>${this.cp.l10n.totalScore}</p>
+        </div>
+      </div>
+    </div>
+    <div class="h5p-summary-footer"></div>`;
   };
 
   SummarySlide.prototype.getSlideDescription = function (slideScoresSlide) {
-    var self = this;
-
     // Get task description, task name or identify multiple tasks:
-    var slideDescription, action;
-    var slideElements = self.cp.slides[slideScoresSlide.slide - 1].elements;
+    let slideDescription = "";
+    let action;
+    
+    var slideElements = this.cp.slides[slideScoresSlide.slide - 1].elements;
     if (slideScoresSlide.indexes.length > 1) {
-      slideDescription = self.cp.l10n.summaryMultipleTaskText;
+      slideDescription = this.cp.l10n.summaryMultipleTaskText;
     }
     else if (slideElements[slideScoresSlide.indexes[0]] !== undefined && slideElements[0]) {
       action = slideElements[slideScoresSlide.indexes[0]].action;
-      if (typeof self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle === 'function') {
-        slideDescription = self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle();
+      if (typeof this.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle === 'function') {
+        slideDescription = this.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle();
       }
       else if (action.library !== undefined && action.library) {
 
@@ -247,7 +273,7 @@ const SummarySlide = (function () {
         var humanReadableString = '';
 
         // Make library human readable
-        humanReadableLibrary.forEach(function (readableWord, index) {
+        humanReadableLibrary.forEach((readableWord, index) => {
 
           // Make sequential words lowercase
           if (index !== 0) {
@@ -416,7 +442,7 @@ const SummarySlide = (function () {
 
   /**
    * Gets total scores for all slides
-   * @param {Array} slideScores
+   * @param {Array<{score: number, maxScore: number}>} slideScores
    * @returns {{totalScore: number, totalMaxScore: number, totalPercentage: number}} totalScores Total scores object
    */
   SummarySlide.prototype.totalScores = function (slideScores) {
@@ -424,27 +450,27 @@ const SummarySlide = (function () {
       return {
         totalScore: 0,
         totalMaxScore: 0,
-        totalPercentage: 0
+        totalPercentage: 0,
       };
     }
-    var totalScore = 0;
-    var totalMaxScore = 0;
-    var i;
-    for (i = 0; i < slideScores.length; i += 1) {
-      // Get percentage score for slide
-      totalScore += slideScores[i].score;
-      totalMaxScore += slideScores[i].maxScore;
-    }
 
-    var totalPercentage = Math.round((totalScore / totalMaxScore) * 100);
-    if (isNaN(totalPercentage)) {
+    let totalScore = 0;
+    let totalMaxScore = 0;
+
+    for (const slideScore of slideScores) {
+      totalScore += slideScore.score;
+      totalMaxScore += slideScore.maxScore;
+    }
+    
+    let totalPercentage = Math.round((totalScore / totalMaxScore) * 100);
+    if (Number.isNaN(totalPercentage)) {
       totalPercentage = 0;
     }
 
     return {
-      totalScore: totalScore,
-      totalMaxScore: totalMaxScore,
-      totalPercentage: totalPercentage
+      totalScore,
+      totalMaxScore,
+      totalPercentage,
     };
   };
 
@@ -464,10 +490,12 @@ const SummarySlide = (function () {
       // Update feedback icons in solution mode
       this.cp.setProgressBarFeedback(slideScores);
       this.cp.$footer.addClass('h5p-footer-solution-mode');
+      this.cp.$boxWrapper.addClass('h5p-solution-mode');
       this.setFooterSolutionModeText(this.cp.l10n.solutionModeText);
     }
     else {
       this.cp.$footer.removeClass('h5p-footer-solution-mode');
+      this.cp.$boxWrapper.removeClass('h5p-solution-mode');
       this.setFooterSolutionModeText();
       this.cp.setProgressBarFeedback();
     }

@@ -1,5 +1,11 @@
-import CoursePresentation from './cp';
+// @ts-check
+
+import { jQuery as $ } from "./globals";
+import { initAnswerHotspot } from "./answer-hotspot";
+import CoursePresentation from "./cp";
 import { Hotspot } from "./hotspot";
+
+const H5P = window.H5P || {};
 
 /**
  * @class
@@ -10,58 +16,66 @@ import { Hotspot } from "./hotspot";
  */
 function Element(parameters) {
   const { showAsHotspot, answerType } = parameters;
-  const coursePresentation = this.parent.parent;
+
+  // @ts-expect-error Element extends Parent
+  const slide = this.parent;
+  const coursePresentation = slide.parent;
 
   if (showAsHotspot) {
-    const content = Element.createContent(this.parent, parameters);
+    const content = Element.createContent(
+      slide,
+      coursePresentation,
+      parameters
+    );
     this.instance = Element.createHotspot(
       parameters,
       coursePresentation.l10n,
-      this.parent.index,
-      this.parent,
+      slide.index,
       coursePresentation,
       content
     );
   } else {
-    const content = Element.createContent(this.parent, parameters);
+    const content = Element.createContent(
+      slide,
+      coursePresentation,
+      parameters
+    );
     this.instance = content;
   }
 
-  const isAnswerHotspot = answerType && answerType !== "none";
+  const isAnswerHotspot = !!answerType;
   if (isAnswerHotspot) {
-    Element.registerAnswerHotspot(this.instance, answerType, coursePresentation);
+    Element.registerAnswerHotspot(this.instance, answerType);
   }
 
-  if (coursePresentation.elementInstances[this.parent.index] === undefined) {
-    coursePresentation.elementInstances[this.parent.index] = [this.instance];
+  const slideHasElements = !!coursePresentation.elementInstances[slide.index];
+  if (slideHasElements) {
+    coursePresentation.elementInstances[slide.index].push(this.instance);
   } else {
-    coursePresentation.elementInstances[this.parent.index].push(this.instance);
+    coursePresentation.elementInstances[slide.index] = [this.instance];
   }
 
-  if (
+  const slideIsTask =
     this.instance.showCPComments !== undefined ||
     this.instance.isTask ||
     (this.instance.isTask === undefined &&
-      this.instance.showSolutions !== undefined)
-  ) {
+      this.instance.showSolutions !== undefined);
+  if (slideIsTask) {
     // Mark slide as task in CP navigation bar
     this.instance.coursePresentationIndexOnSlide =
-      coursePresentation.elementInstances[this.parent.index].length - 1;
-    if (
-      coursePresentation.slidesWithSolutions[this.parent.index] === undefined
-    ) {
-      coursePresentation.slidesWithSolutions[this.parent.index] = [];
+      coursePresentation.elementInstances[slide.index].length - 1;
+
+    const { slidesWithSolutions } = coursePresentation;
+    const slideAlreadyHasTasks = !!slidesWithSolutions[slide.index];
+    if (!slideAlreadyHasTasks) {
+      slidesWithSolutions[slide.index] = [];
     }
-    coursePresentation.slidesWithSolutions[this.parent.index].push(
-      this.instance
-    );
+
+    slidesWithSolutions[slide.index].push(this.instance);
   }
 
-  // Check if this is an Exportable Text Area
-  if (
-    this.instance.exportAnswers !== undefined &&
-    this.instance.exportAnswers
-  ) {
+  const isExportableTextArea = this.instance.exportAnswers;
+  if (isExportableTextArea) {
     coursePresentation.hasAnswerElements = true;
   }
 
@@ -113,35 +127,43 @@ Element.overrideAutoplay = function (h5pLibrary) {
   return h5pLibrary;
 };
 
-Element.createContent = function (parent, parameters) {
+/**
+ *
+ * @param {Object} slide
+ * @param {CoursePresentation} coursePresentation
+ * @param {*} parameters
+ * @returns
+ */
+Element.createContent = function (slide, coursePresentation, parameters) {
   let h5pLibrary;
-  if (parent.parent.isEditor()) {
+
+  if (coursePresentation.isEditor()) {
     // Clone the whole tree to avoid libraries accidentally changing params while running.
     h5pLibrary = H5P.jQuery.extend(
       true,
       {},
       parameters.action,
-      parent.parent.elementsOverride
+      coursePresentation.elementsOverride
     );
   } else {
     // Add defaults
     h5pLibrary = H5P.jQuery.extend(
       true,
       parameters.action,
-      parent.parent.elementsOverride
+      coursePresentation.elementsOverride
     );
   }
 
   h5pLibrary = Element.overrideAutoplay(h5pLibrary);
 
-  const internalSlideId = parent.parent.elementInstances[parent.index]
-    ? parent.parent.elementInstances[parent.index].length
+  const internalSlideId = coursePresentation.elementInstances[slide.index]
+    ? coursePresentation.elementInstances[slide.index].length
     : 0;
   const state =
-    parent.parent.previousState &&
-    parent.parent.previousState.answers &&
-    parent.parent.previousState.answers[parent.index] &&
-    parent.parent.previousState.answers[parent.index][internalSlideId];
+    coursePresentation.previousState &&
+    coursePresentation.previousState.answers &&
+    coursePresentation.previousState.answers[slide.index] &&
+    coursePresentation.previousState.answers[slide.index][internalSlideId];
 
   if (state) {
     // Restore previous state
@@ -154,11 +176,11 @@ Element.createContent = function (parent, parameters) {
   h5pLibrary.params = h5pLibrary.params || {};
   const instance = H5P.newRunnable(
     h5pLibrary,
-    parent.parent.contentId,
+    coursePresentation.contentId,
     undefined,
     true,
     {
-      parent: parent.parent,
+      parent: coursePresentation,
     }
   );
 
@@ -169,11 +191,24 @@ Element.createContent = function (parent, parameters) {
   return instance;
 };
 
+/**
+ *
+ * @param {Object} parameters
+ * @param {string} parameters.title
+ * @param {number} parameters.goToSlide
+ * @param {boolean} parameters.invisible
+ * @param {string} parameters.goToSlideType
+ * @param {string} parameters.dialogContent
+ * @param {Object} l10n
+ * @param {number} currentIndex
+ * @param {CoursePresentation} coursePresentation
+ * @param {$<HTMLElement>} content
+ * @returns {Hotspot}
+ */
 Element.createHotspot = function (
   parameters,
   l10n,
   currentIndex,
-  parent,
   coursePresentation,
   content
 ) {
@@ -197,18 +232,12 @@ Element.createHotspot = function (
 };
 
 /**
- * 
- * @param {Hotspot} instance 
- * @param {"true" | "false" | "none"} answerType 
- * @param {CoursePresentation} coursePresentation 
+ *
+ * @param {Hotspot} instance
+ * @param {"true" | "false"} answerType
  */
-Element.registerAnswerHotspot = function (
-  instance,
-  answerType,
-  coursePresentation
-) {
-  instance.$element.addClass(`h5p-hotspot-answer--${answerType}`);
-  instance.$element.on("click", () => coursePresentation.answer(answerType));
+Element.registerAnswerHotspot = function (instance, answerType) {
+  initAnswerHotspot(instance, answerType);
 };
 
 export default Element;
