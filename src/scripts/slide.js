@@ -66,9 +66,7 @@ Slide.createHTML = function (parameters) {
   	></div>`;
 };
 
-Slide.prototype.showSolutions = function() {
-  console.log("show solutionsdsads", this);
-  
+Slide.prototype.showSolutions = function() {  
   const answerButtons = this.getElement().find('.h5p-hotspot-answer');
   const slideHasAnswerButtons = answerButtons.length > 0;
   if (slideHasAnswerButtons) {

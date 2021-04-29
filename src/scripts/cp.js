@@ -555,9 +555,7 @@ CoursePresentation.prototype.createSlides = function () {
  * @param obj The object to investigate
  * @return {boolean}
  */
-CoursePresentation.prototype.hasScoreData = function (obj) {
-  console.log("has score data", obj)
-  
+CoursePresentation.prototype.hasScoreData = function (obj) {  
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
@@ -1949,9 +1947,6 @@ CoursePresentation.prototype.showSolutions = function () {
         elementInstance.showCPComments();
       }
 
-
-      console.log("isanswerhotspot", elementInstance)
-
       const isAnswerHotspot = elementInstance.answerType;
       if (isAnswerHotspot) {
       }
@@ -2011,7 +2006,6 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
         let elementInstance = this.slidesWithSolutions[i][j];
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
-          console.log("get max score not undefined")
           slideScore += elementInstance.getScore();
           hasScores = true;
           indeces.push(elementInstance.coursePresentationIndexOnSlide);

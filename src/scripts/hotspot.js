@@ -120,8 +120,6 @@ export class Hotspot extends EventDispatcher {
     } else if (isAnswerHotspotWithoutAction) {
       this.$element = this.createButton();
     }
-
-    console.log({el: this.$element})
     
     this.$element.addClass(classes);
     this.$element.attr("tabindex", tabindex);
