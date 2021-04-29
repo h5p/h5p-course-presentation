@@ -234,7 +234,7 @@ Element.createHotspot = function (
 /**
  *
  * @param {Hotspot} instance
- * @param {"true" | "false"} answerType
+ * @param {"true" | "false"} answerType
  */
 Element.registerAnswerHotspot = function (instance, answerType) {
   initAnswerHotspot(instance, answerType);

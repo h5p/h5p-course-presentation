@@ -893,13 +893,3 @@ $footer-height: 2.2em;
   margin-left: 0.1em;
   vertical-align: middle;
 }
-
-.h5p-solution-mode {
-  .h5p-hotspot-answer--true {
-    background-color: hsla(164, 95%, 43%, 0.333);
-  }
-   
-  .h5p-hotspot-answer--false {
-    background-color: hsla(345, 100%, 49%, 0.333);
-  }
-}

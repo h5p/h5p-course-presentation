@@ -7,8 +7,6 @@ import Parent from 'h5p-parent';
 function Slide(parameters) {
   const self = this;
   Parent.call(self, Element, parameters.elements);
-
-  this.uniqueId = this.uniqueId || Slide.createUniqueId();
   
   // The slide DOM element when attached
   let $wrapper;
@@ -48,16 +46,6 @@ function Slide(parameters) {
       'key': 'newSlide'
     }, {'bubbles': true, 'external': true});
   };
-}
-
-/**
- * Create a unique six-digit ID
- *
- * @returns {string}
- */
-Slide.createUniqueId = function() {
-  const numberOfDigits = 6;
-  return (Math.random() * 10**numberOfDigits).toString(36).replace(".", "").slice(0, numberOfDigits);
 }
 
 /**

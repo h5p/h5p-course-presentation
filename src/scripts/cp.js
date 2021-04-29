@@ -394,7 +394,7 @@ CoursePresentation.prototype.attach = function ($container) {
     this.initKeywords = false;
   }
 
-  if (this.editor !== undefined || !this.activeSurface) {
+  if (this.editor || !this.activeSurface) {
     // Initialize touch events
     this.initTouchEvents();
 
@@ -405,8 +405,6 @@ CoursePresentation.prototype.attach = function ($container) {
     if (!this.previousState || !this.previousState.progress) {
       this.setSlideNumberAnnouncer(0, false);
     }
-
-    this.summarySlideObject = new SummarySlide(this, $summarySlide);
   }
   else {
     this.$progressbar.add(this.$footer).remove();
@@ -424,7 +422,9 @@ CoursePresentation.prototype.attach = function ($container) {
       addClickAndKeyboardListeners(this.$fullScreenButton, () => this.toggleFullScreen());
     }
   }
-
+  
+  this.summarySlideObject = new SummarySlide(this, $summarySlide);
+  
   new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
@@ -595,7 +595,7 @@ CoursePresentation.prototype.getMaxScore = function () {
  * @param {array} [slideScores]
  */
 CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
-  if (slideScores !== undefined && slideScores) {
+  if (slideScores) {
     // Set feedback icons for progress bar.
     slideScores.forEach(singleSlide => {
       const $indicator = this.progressbarParts[singleSlide.slide-1]
@@ -610,12 +610,14 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
     });
   }
   else {
-    // Remove all feedback icons.
-    this.progressbarParts.forEach(pbPart => {
-      pbPart.find('.h5p-progressbar-part-has-task')
-        .removeClass('h5p-is-correct')
-        .removeClass('h5p-is-wrong');
-    });
+    if (this.progressbarParts) {
+      // Remove all feedback icons.
+      this.progressbarParts.forEach(pbPart => {
+        pbPart.find('.h5p-progressbar-part-has-task')
+          .removeClass('h5p-is-correct')
+          .removeClass('h5p-is-wrong');
+      });
+    }
   }
 };
 
@@ -1889,17 +1891,21 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
  */
 CoursePresentation.prototype.resetTask = function () {
   this.summarySlideObject.toggleSolutionMode(false);
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    if (this.slidesWithSolutions[i] !== undefined) {
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
+  
+  for (const slide of this.slidesWithSolutions) {
+    if (slide) {
+      for (const elementInstance of slide) {
         if (elementInstance.resetTask) {
           elementInstance.resetTask();
         }
       }
     }
   }
-  this.navigationLine.updateProgressBar(0);
+
+  if (this.navigationLine) {
+    this.navigationLine.updateProgressBar(0);
+  }
+
   this.jumpToSlide(0, false);
   this.$container.find('.h5p-popup-overlay').remove();
 };

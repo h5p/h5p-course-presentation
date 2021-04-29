@@ -44,7 +44,6 @@ $navigation-element-background-color: #0580e2;
     padding: 0;
   }
 
-
   .h5p-press-to-go.h5p-hotspot-answer {
     border: 3px solid transparent;
     box-sizing: border-box;
@@ -53,5 +52,13 @@ $navigation-element-background-color: #0580e2;
 
   .h5p-press-to-go.h5p-hotspot-answer--checked {
     border-color: #79abfd;
+  }
+
+  .h5p-solution-mode .h5p-press-to-go.h5p-hotspot-answer--true {
+    border-color: hsla(164, 95%, 43%, 1);
+  }
+
+  .h5p-solution-mode .h5p-press-to-go.h5p-hotspot-answer--false {
+    border-color: hsla(345, 100%, 49%, 1);
   }
 }

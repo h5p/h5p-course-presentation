@@ -480,20 +480,17 @@ const SummarySlide = (function () {
    * @params {Boolean} enableSolutionMode Enable/disable solution mode
    */
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
-    var that = this;
-
     this.cp.isSolutionMode = enableSolutionMode;
     if (enableSolutionMode) {
       // Get scores for summary slide
-      var slideScores = that.cp.showSolutions();
+      const slideScores = this.cp.showSolutions();
 
       // Update feedback icons in solution mode
       this.cp.setProgressBarFeedback(slideScores);
       this.cp.$footer.addClass('h5p-footer-solution-mode');
       this.cp.$boxWrapper.addClass('h5p-solution-mode');
       this.setFooterSolutionModeText(this.cp.l10n.solutionModeText);
-    }
-    else {
+    } else {
       this.cp.$footer.removeClass('h5p-footer-solution-mode');
       this.cp.$boxWrapper.removeClass('h5p-solution-mode');
       this.setFooterSolutionModeText();
@@ -507,6 +504,10 @@ const SummarySlide = (function () {
    * @param solutionModeText
    */
   SummarySlide.prototype.setFooterSolutionModeText = function (solutionModeText) {
+    if (!this.cp.$exitSolutionModeText) {
+      return;
+    }
+
     if (solutionModeText !== undefined && solutionModeText) {
       this.cp.$exitSolutionModeText.html(solutionModeText);
     }

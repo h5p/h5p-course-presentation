@@ -6,6 +6,7 @@ import { Hotspot } from "./hotspot";
  * @property {boolean} [isChecked]
  * @property {boolean} [isTask]
  * @property {"true" | "false"} [answerHotspotType]
+ * @property {() => void} [resetTask]
  */
 
 /**
@@ -15,15 +16,13 @@ import { Hotspot } from "./hotspot";
  */
 export function initAnswerHotspot(element, answerType) {
   element.isChecked = false;
-  console.log({element})
 
   element.$element.addClass(
     `h5p-hotspot-answer h5p-hotspot-answer--${answerType}`
   );
 
+  const checkedClass = "h5p-hotspot-answer--checked";
   element.$element.on("click", () => {
-    console.log("click", element.isChecked)
-    const checkedClass = "h5p-hotspot-answer--checked";
 
     const wasChecked = element.isChecked;
     if (wasChecked) {
@@ -33,7 +32,13 @@ export function initAnswerHotspot(element, answerType) {
     }
 
     element.isChecked = !wasChecked;
+
   });
+  
+  element.resetTask = () => {
+    element.isChecked = false;
+    element.$element.removeClass(checkedClass);
+  }
 
   element.isTask = true;
   element.answerHotspotType = answerType;
