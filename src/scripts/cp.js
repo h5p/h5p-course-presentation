@@ -748,11 +748,13 @@ CoursePresentation.prototype.resize = function () {
   var width = this.$container.width();
   var style = {};
 
-  var widthRatio = width / this.width;
+  const widthRatio = width / this.width;
+  console.log({widthRatio, fontsize: this.fontSize})
   style.fontSize = `${this.fontSize * widthRatio}px`;
 
+  
   if (this.editor !== undefined) {
-    this.editor.setContainerEm(this.fontSize * widthRatio * 0.75);
+    this.editor.setContainerEm(this.fontSize * widthRatio);
   }
 
   this.$wrapper.css(style);
