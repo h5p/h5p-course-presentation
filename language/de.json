@@ -220,7 +220,7 @@
           "default": "Drucken"
         },
         {
-          "label": "Überschrift des Druck-Dialogs",
+          "label": "Zugriff auf Druck-Dialog",
           "default": "Wie möchtest du diese Präsentation drucken?"
         },
         {
