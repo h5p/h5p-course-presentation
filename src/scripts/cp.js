@@ -301,11 +301,11 @@ CoursePresentation.prototype.attach = function ($container) {
   });
 
   // Get intended base width from CSS.
-  var wrapperWidth = parseInt(this.$wrapper.css('width'));
-  this.width = wrapperWidth !== 0 ? wrapperWidth : 640;
+  const wrapperWidth = parseInt(this.$wrapper.css('width'));
+  this.width = wrapperWidth || 640;
 
-  var wrapperHeight = parseInt(this.$wrapper.css('height'));
-  this.height = wrapperHeight !== 0 ? wrapperHeight : 400;
+  const wrapperHeight = parseInt(this.$wrapper.css('height'));
+  this.height = wrapperHeight || 400;
 
   this.ratio = 16 / 9;
   // Intended base font size cannot be read from CSS, as it might be modified
@@ -313,7 +313,7 @@ CoursePresentation.prototype.attach = function ($container) {
   this.fontSize = 16;
 
   this.$boxWrapper = this.$wrapper.children('.h5p-box-wrapper');
-  var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
+  const $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$progressbar = this.$wrapper.find('.h5p-progressbar');
@@ -745,26 +745,22 @@ CoursePresentation.prototype.resize = function () {
 
   this.resetRatio();
 
-  var width = this.$container.width();
-  var style = {};
-
-  var widthRatio = width / this.width;
-  style.fontSize = `${this.fontSize * widthRatio}px`;
-
+  const width = this.$container.width();
+  const widthRatio = width / this.width;
+  
   if (this.editor !== undefined) {
-    this.editor.setContainerEm(this.fontSize * widthRatio * 0.75);
+    this.editor.setContainerEm(this.fontSize * widthRatio);
   }
-
-  this.$wrapper.css(style);
 
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
 
   // Resize elements
-  var instances = this.elementInstances[this.$current.index()];
+  const instances = this.elementInstances[this.$current.index()];
   if (instances !== undefined) {
-    var slideElements = this.slides[this.$current.index()].elements;
-    for (var i = 0; i < instances.length; i++) {
-      var instance = instances[i];
+    const slideElements = this.slides[this.$current.index()].elements;
+
+    for (let i = 0; i < instances.length; i++) {
+      const instance = instances[i];
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
         H5P.trigger(instance, 'resize');
       }
