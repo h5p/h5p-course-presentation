@@ -96,6 +96,17 @@
                   "optional": true
                 },
                 {
+                  "name": "answerType",
+                  "importance": "low",
+                  "type": "text",
+                  "widget": "none",
+                  "optional": true,
+                  "options": [
+                    "true",
+                    "false"
+                  ]
+                },
+                {
                   "name": "solution",
                   "type": "text",
                   "widget": "html",
@@ -250,7 +261,6 @@
                   "name": "showAsHotspot",
                   "type": "boolean",
                   "label": "Display as hotspot"
-
                 },
                 {
                   "name": "title",
@@ -287,6 +297,10 @@
                     {
                       "value": "information-dialog",
                       "label": "Dialog window"
+                    },
+                    {
+                      "value": "none",
+                      "label": "No action"
                     }
                   ],
                   "default": "specified",

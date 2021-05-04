@@ -5,7 +5,7 @@ export class InformationDialog {
   /**
    *
    * @param {Object} param
-   * @param {HTMLElement | HTMLElement[]} param.content
+   * @param {HTMLElement | HTMLElement[]} param.content
    * @param {HTMLElement} param.parent
    * @param {object} param.l10n
    * @param {string} param.horizontalOffset

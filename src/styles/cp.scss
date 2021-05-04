@@ -112,19 +112,19 @@ $footer-height: 2.2em;
     }
   }
 
-  [data-ratio="4-3"]  {
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 
-  [data-ratio="4-3"]  {
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 
-  [data-ratio="4-3"]  {
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 
-  [data-ratio="4-3"]  {
+  [data-ratio="4-3"]  {
     max-width: calc(75vh - #{$footer-height});
   }
 }
@@ -437,11 +437,10 @@ $footer-height: 2.2em;
   font-size: 1em;
   border-radius: 50%;
   /* Border used for focus - setting default properties here*/
-  border: 0px solid #70b0ff;
+  border: 0 solid #70b0ff;
   line-height: 1.5em;
   box-shadow: 0 0.15em 0.25em 0 rgba(0, 0, 0, 0.5);
   text-align: center;
-  text-decoration: none;
   background: #1d5cff;
   cursor: pointer;
 

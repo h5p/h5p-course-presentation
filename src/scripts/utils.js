@@ -78,7 +78,7 @@ export const keyCode = {
  * keydowns as click
  *
  * @param  {H5P.jQuery} $element The "button" element
- * @param  {(event: MouseEvent | TouchEvent) => void} callback
+ * @param  {(event: MouseEvent | TouchEvent) => void} callback
  * @param  {*} [scope]
  */
 export const addClickAndKeyboardListeners = function ($element, callback, scope) {

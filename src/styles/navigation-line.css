@@ -144,8 +144,6 @@
   left: 3em;
   display: inline-block;
   margin-right: 1em;
-  -ms-transform: rotate(270deg);
-  -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
@@ -306,14 +304,12 @@
 
 /* --------------------------------------------------------- Progressbar with task ---------------------------- */
 .h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task {
+  box-sizing: border-box;
   display: block;
-  width: 0.45em;
-  height: 0.45em;
+  width: 0.5em;
+  height: 0.5em;
 
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
-
   border: 2px solid #D3D3D3;
   cursor: pointer;
 

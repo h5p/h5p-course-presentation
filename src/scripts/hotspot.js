@@ -14,6 +14,7 @@ const hotspotType = {
   GO_TO_NEXT: "next",
   GO_TO_PREVIOUS: "previous",
   INFORMATION_DIALOG: "information-dialog",
+  NONE: "none",
 };
 
 export class Hotspot extends EventDispatcher {
@@ -29,7 +30,6 @@ export class Hotspot extends EventDispatcher {
    * @param {Object} param1
    * @param {Object} param1.l10n
    * @param {number} param1.currentIndex
-   * @param {$} param1.$h5pElement
    * @param {$<HTMLElement>} $content
    */
   constructor(
@@ -40,7 +40,7 @@ export class Hotspot extends EventDispatcher {
       goToSlideType = hotspotType.GO_TO_SPECIFIED,
       dialogContent,
     },
-    { l10n, currentIndex, $h5pElement },
+    { l10n, currentIndex },
     $content = null
   ) {
     super(
@@ -51,7 +51,10 @@ export class Hotspot extends EventDispatcher {
         goToSlideType,
         dialogContent,
       },
-      { l10n, currentIndex, $h5pElement },
+      {
+        l10n,
+        currentIndex,
+      },
       $content
     );
 
@@ -90,6 +93,8 @@ export class Hotspot extends EventDispatcher {
     const isInformationDialogTrigger =
       goToSlideType === hotspotType.INFORMATION_DIALOG;
 
+    const isAnswerHotspotWithoutAction = goToSlideType === hotspotType.NONE;
+      
     if (isGoToLink) {
       this.$element = this.createGoToLink(
         goToSlide,
@@ -112,8 +117,10 @@ export class Hotspot extends EventDispatcher {
           });
         this.dialog.show();
       });
+    } else if (isAnswerHotspotWithoutAction) {
+      this.$element = this.createButton();
     }
-
+    
     this.$element.addClass(classes);
     this.$element.attr("tabindex", tabindex);
     this.$element.attr("title", title);
@@ -165,7 +172,7 @@ export class Hotspot extends EventDispatcher {
   }
 
   /**
-   * @param {(event: MouseEvent | TouchEvent) => void} action
+   * @param {(event: MouseEvent | TouchEvent) => void} [action]
    * @returns {$}
    */
   createButton(action) {
@@ -173,7 +180,9 @@ export class Hotspot extends EventDispatcher {
       type: "button",
     });
 
-    addClickAndKeyboardListeners($element, action);
+    if (action) {
+      addClickAndKeyboardListeners($element, action);
+    }
 
     return $element;
   }
