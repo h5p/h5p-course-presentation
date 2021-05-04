@@ -294,7 +294,7 @@
           "description": "Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
         },
         {
-          "label": "Skjul sammendrag.",
+          "label": "Skjul sammendrag",
           "description": "Aktivering vil føre til at sammendrag siden ikke vises."
         },
         {
