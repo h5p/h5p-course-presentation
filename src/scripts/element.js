@@ -1,144 +1,243 @@
-import { Hotspot } from './hotspot';
+// @ts-check
+
+import { jQuery as $ } from "./globals";
+import { initAnswerHotspot } from "./answer-hotspot";
+import CoursePresentation from "./cp";
+import { Hotspot } from "./hotspot";
+
+const H5P = window.H5P || {};
 
 /**
  * @class
- * 
+ *
  * The Element class' `this` is an instance of `Slide`
- * 
- * @param {*} parameters 
+ *
+ * @param {*} parameters
  */
 function Element(parameters) {
-  const {
-    showAsHotspot
-  } = parameters;
+  const { showAsHotspot, answerType } = parameters;
+
+  // @ts-expect-error Element extends Parent
+  const slide = this.parent;
+  const coursePresentation = slide.parent;
 
   if (showAsHotspot) {
-    const content = Element.createContent(this.parent, parameters);
-    this.instance = Element.createHotspot(parameters, this.parent.parent.l10n, this.parent.index, this.parent,this.parent.parent, content);
+    const content = Element.createContent(
+      slide,
+      coursePresentation,
+      parameters
+    );
+    this.instance = Element.createHotspot(
+      parameters,
+      coursePresentation.l10n,
+      slide.index,
+      coursePresentation,
+      content
+    );
   } else {
-    const content = Element.createContent(this.parent, parameters);
+    const content = Element.createContent(
+      slide,
+      coursePresentation,
+      parameters
+    );
     this.instance = content;
   }
 
-  if (this.parent.parent.elementInstances[this.parent.index] === undefined) {
-    this.parent.parent.elementInstances[this.parent.index] = [this.instance];
+  const isAnswerHotspot = !!answerType;
+  if (isAnswerHotspot) {
+    Element.registerAnswerHotspot(this.instance, answerType);
+  }
+
+  const slideHasElements = !!coursePresentation.elementInstances[slide.index];
+  if (slideHasElements) {
+    coursePresentation.elementInstances[slide.index].push(this.instance);
   } else {
-    this.parent.parent.elementInstances[this.parent.index].push(this.instance);
+    coursePresentation.elementInstances[slide.index] = [this.instance];
   }
 
-  if (this.instance.showCPComments !== undefined || this.instance.isTask || (this.instance.isTask === undefined && this.instance.showSolutions !== undefined)) {
+  const slideIsTask =
+    this.instance.showCPComments !== undefined ||
+    this.instance.isTask ||
+    (this.instance.isTask === undefined &&
+      this.instance.showSolutions !== undefined);
+  if (slideIsTask) {
     // Mark slide as task in CP navigation bar
-    this.instance.coursePresentationIndexOnSlide = this.parent.parent.elementInstances[this.parent.index].length - 1;
-    if (this.parent.parent.slidesWithSolutions[this.parent.index] === undefined) {
-      this.parent.parent.slidesWithSolutions[this.parent.index] = [];
+    this.instance.coursePresentationIndexOnSlide =
+      coursePresentation.elementInstances[slide.index].length - 1;
+
+    const { slidesWithSolutions } = coursePresentation;
+    const slideAlreadyHasTasks = !!slidesWithSolutions[slide.index];
+    if (!slideAlreadyHasTasks) {
+      slidesWithSolutions[slide.index] = [];
     }
-    this.parent.parent.slidesWithSolutions[this.parent.index].push(this.instance);
+
+    slidesWithSolutions[slide.index].push(this.instance);
   }
 
-  // Check if this is an Exportable Text Area
-  if (this.instance.exportAnswers !== undefined && this.instance.exportAnswers) {
-    this.parent.parent.hasAnswerElements = true;
+  const isExportableTextArea = this.instance.exportAnswers;
+  if (isExportableTextArea) {
+    coursePresentation.hasAnswerElements = true;
   }
 
-  if (!this.parent.parent.isTask && !this.parent.parent.hideSummarySlide) {
+  if (!coursePresentation.isTask && !coursePresentation.hideSummarySlide) {
     // CP is not a task by default, but it will be if one of the elements is task or have a solution
-    if (this.instance.isTask || (this.instance.isTask === undefined && this.instance.showSolutions !== undefined)) {
-      this.parent.parent.isTask = true; // (checking for showSolutions will not work for compound content types, which is why we added isTask instead.)
+    if (
+      this.instance.isTask ||
+      (this.instance.isTask === undefined &&
+        this.instance.showSolutions !== undefined)
+    ) {
+      coursePresentation.isTask = true; // (checking for showSolutions will not work for compound content types, which is why we added isTask instead.)
     }
   }
 }
 
 Element.overrideAutoplay = function (h5pLibrary) {
-  const {
-    params
-  } = h5pLibrary;
+  const { params } = h5pLibrary;
 
   /* If library allows autoplay, control this from CP */
   if (params.autoplay) {
     h5pLibrary.params.autoplay = false;
     h5pLibrary.params.cpAutoplay = true;
-
   } else if (params.playback && params.playback.autoplay) {
     h5pLibrary.params.playback.autoplay = false;
     h5pLibrary.params.cpAutoplay = true;
-
-  } else if (params.media &&
+  } else if (
+    params.media &&
     params.media.params &&
     params.media.params.playback &&
-    params.media.params.playback.autoplay) {
+    params.media.params.playback.autoplay
+  ) {
     // Control libraries that has content with autoplay through CP
     h5pLibrary.params.media.params.playback.autoplay = false;
     h5pLibrary.params.cpAutoplay = true;
-
-  } else if (params.media &&
+  } else if (
+    params.media &&
     params.media.params &&
-    params.media.params.autoplay) {
+    params.media.params.autoplay
+  ) {
     // Control libraries that has content with autoplay through CP
     h5pLibrary.params.media.params.autoplay = false;
     h5pLibrary.params.cpAutoplay = true;
-
-  } else if (params.override &&
-    params.override.autoplay) {
+  } else if (params.override && params.override.autoplay) {
     // Control libraries that has content with autoplay through CP
     h5pLibrary.params.override.autoplay = false;
     h5pLibrary.params.cpAutoplay = true;
   }
 
   return h5pLibrary;
-}
+};
 
-Element.createContent = function (parent, parameters) {
+/**
+ *
+ * @param {Object} slide
+ * @param {CoursePresentation} coursePresentation
+ * @param {*} parameters
+ * @returns
+ */
+Element.createContent = function (slide, coursePresentation, parameters) {
   let h5pLibrary;
-  if (parent.parent.isEditor()) {
+
+  if (coursePresentation.isEditor()) {
     // Clone the whole tree to avoid libraries accidentally changing params while running.
-    h5pLibrary = H5P.jQuery.extend(true, {}, parameters.action, parent.parent.elementsOverride);
+    h5pLibrary = H5P.jQuery.extend(
+      true,
+      {},
+      parameters.action,
+      coursePresentation.elementsOverride
+    );
   } else {
     // Add defaults
-    h5pLibrary = H5P.jQuery.extend(true, parameters.action, parent.parent.elementsOverride);
+    h5pLibrary = H5P.jQuery.extend(
+      true,
+      parameters.action,
+      coursePresentation.elementsOverride
+    );
   }
 
   h5pLibrary = Element.overrideAutoplay(h5pLibrary);
 
-  const internalSlideId = parent.parent.elementInstances[parent.index] ? parent.parent.elementInstances[parent.index].length : 0;
-  const state = parent.parent.previousState &&
-    parent.parent.previousState.answers &&
-    parent.parent.previousState.answers[parent.index] &&
-    parent.parent.previousState.answers[parent.index][internalSlideId];
+  const internalSlideId = coursePresentation.elementInstances[slide.index]
+    ? coursePresentation.elementInstances[slide.index].length
+    : 0;
+  const state =
+    coursePresentation.previousState &&
+    coursePresentation.previousState.answers &&
+    coursePresentation.previousState.answers[slide.index] &&
+    coursePresentation.previousState.answers[slide.index][internalSlideId];
 
   if (state) {
     // Restore previous state
     h5pLibrary.userDatas = {
-      state
+      state,
     };
   }
 
   // Override child settings
   h5pLibrary.params = h5pLibrary.params || {};
-  const instance = H5P.newRunnable(h5pLibrary, parent.parent.contentId, undefined, true, {
-    parent: parent.parent
-  });
+  const instance = H5P.newRunnable(
+    h5pLibrary,
+    coursePresentation.contentId,
+    undefined,
+    true,
+    {
+      parent: coursePresentation,
+    }
+  );
 
   if (instance.preventResize !== undefined) {
     instance.preventResize = true;
   }
 
   return instance;
-}
+};
 
-Element.createHotspot = function (parameters, l10n, currentIndex, parent, grandparent, content) {  
-  const hotspot = new Hotspot(parameters, {
-    l10n,
-    currentIndex,
-  }, content);
+/**
+ *
+ * @param {Object} parameters
+ * @param {string} parameters.title
+ * @param {number} parameters.goToSlide
+ * @param {boolean} parameters.invisible
+ * @param {string} parameters.goToSlideType
+ * @param {string} parameters.dialogContent
+ * @param {Object} l10n
+ * @param {number} currentIndex
+ * @param {CoursePresentation} coursePresentation
+ * @param {$<HTMLElement>} content
+ * @returns {Hotspot}
+ */
+Element.createHotspot = function (
+  parameters,
+  l10n,
+  currentIndex,
+  coursePresentation,
+  content
+) {
+  const hotspot = new Hotspot(
+    parameters,
+    {
+      l10n,
+      currentIndex,
+    },
+    content
+  );
 
-  if (!grandparent.isEditor()) {
-    hotspot.on('navigate', event => {
+  if (!coursePresentation.isEditor()) {
+    hotspot.on("navigate", (event) => {
       const index = event.data;
-      grandparent.jumpToSlide(index);
+      coursePresentation.jumpToSlide(index);
     });
   }
 
   return hotspot;
-}
+};
+
+/**
+ *
+ * @param {Hotspot} instance
+ * @param {"true" | "false"} answerType
+ */
+Element.registerAnswerHotspot = function (instance, answerType) {
+  initAnswerHotspot(instance, answerType);
+};
 
 export default Element;

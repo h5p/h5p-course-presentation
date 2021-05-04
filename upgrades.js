@@ -219,7 +219,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
           if (parameters.presentation.globalBackgroundSelector &&
               parameters.presentation.globalBackgroundSelector.fillGlobalBackground) {
             parameters.presentation.globalBackgroundSelector.fillGlobalBackground =
-              '#' + parameters.presentation.globalBackgroundSelector.fillGlobalBackground;
+              `#${parameters.presentation.globalBackgroundSelector.fillGlobalBackground}`;
           }
 
           if (parameters.presentation.slides) {
@@ -227,7 +227,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
               if (slide.slideBackgroundSelector &&
                   slide.slideBackgroundSelector.fillSlideBackground) {
                 slide.slideBackgroundSelector.fillSlideBackground =
-                  '#' + slide.slideBackgroundSelector.fillSlideBackground;
+                  `#${slide.slideBackgroundSelector.fillSlideBackground}`;
               }
             });
           }

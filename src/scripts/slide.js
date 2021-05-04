@@ -7,7 +7,7 @@ import Parent from 'h5p-parent';
 function Slide(parameters) {
   const self = this;
   Parent.call(self, Element, parameters.elements);
-
+  
   // The slide DOM element when attached
   let $wrapper;
 
@@ -65,5 +65,13 @@ Slide.createHTML = function (parameters) {
   	${style}
   	></div>`;
 };
+
+Slide.prototype.showSolutions = function() {  
+  const answerButtons = this.getElement().find('.h5p-hotspot-answer');
+  const slideHasAnswerButtons = answerButtons.length > 0;
+  if (slideHasAnswerButtons) {
+    this.isTask = true;
+  }
+}
 
 export default Slide;
