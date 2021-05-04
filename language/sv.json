@@ -241,7 +241,7 @@
         },
         {
           "label": "Etikett för tillgänglighetshjälpmedel",
-          "default": "Använd pilarna vänster och höger för att byta sida"
+          "default": "Använd pilarna vänster och höger för att byta sida."
         },
         {
           "label": "Etikett för aktiviteter som inte är genomförda",
