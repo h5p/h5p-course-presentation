@@ -93,7 +93,7 @@ $footer-height: 2.2em;
   margin: 0 auto;
   position: relative;
   text-align: center;
-  font-size: 16px;
+  font-size: min(18px, 8px + 1vw);
   box-sizing: border-box;
 }
 
