@@ -277,7 +277,7 @@
           "default": "Aktiverat helskärmsläge"
         },
         {
-          "label": "Meddelande om avslutat helskärmsläge för tillgänglighetshjälpmedel",
+          "label": "Meddelande om avslutat helskärmsläge för  tillgänglighetshjälpmedel",
           "default": "Avslutat helskärmsläge"
         }
       ]
@@ -332,7 +332,7 @@
         },
         {
           "label": "Sociala inställningar",
-          "description": "Dessa inställningar gör det möjligt att ignorera inställningar för sociala media.  Tomma värden kommer fyllas i automatiskt om en länk anges, alla övriga värden kommer att genereras automatiskt.",
+          "description": "Dessa inställningar gör det möjligt att ignorera inställningar för sociala media. Tomma värden kommer fyllas i automatiskt om en länk anges, alla övriga värden kommer att genereras.",
           "fields": [
             {
               "label": "Visa ikon för delning på Facebook"
