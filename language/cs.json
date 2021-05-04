@@ -30,7 +30,7 @@
                       "label": "Velikost tlačítka",
                       "options": [
                         {
-                          "label": "malé"
+                          "label": "Malé"
                         },
                         {
                           "label": "Velké"
@@ -55,8 +55,8 @@
                       ]
                     },
                     {
-                      "label": "Konkrétní číslo snímkur",
-                      "description": "Použije se pouze tehdy, když je vybráno „Konkrétní číslo snímku“"
+                      "label": "Konkrétní číslo snímku",
+                      "description": "Zadejte číslo snímku, na který chcete přejít"
                     },
                     {
                       "label": "Neviditelný",
@@ -86,7 +86,7 @@
           "label": "Seznam klíčových slov"
         },
         {
-          "label": "Vždy  zobrazit"
+          "label": "Vždy zobrazit"
         },
         {
           "label": "Automatické skrývání"
@@ -112,27 +112,27 @@
       "label": "Lokalizovat",
       "fields": [
         {
-          "label": "Překlad pro \"Slide\"",
+          "label": "Překlad pro \"Snímek\"",
           "default": "Snímek"
         },
         {
-          "label": "Překlad pro \"Score\"",
+          "label": "Překlad pro \"Skóre\"",
           "default": "Skóre"
         },
         {
-          "label": "Překlad pro \"Your Score\"",
+          "label": "Překlad pro \"Vaše skóre\"",
           "default": "Vaše skóre"
         },
         {
-          "label": "Překlad pro \"Max Score\"",
+          "label": "Překlad pro \"Maximální skóre\"",
           "default": "Maximální skóre"
         },
         {
-          "label": "Překlad pro \"Total\"",
+          "label": "Překlad pro \"Celkem\"",
           "default": "Celkem"
         },
         {
-          "label": "Překlad pro \"Total Score\"",
+          "label": "Překlad pro \"Celkové skóre\"",
           "default": "Celkové skóre"
         },
         {
@@ -204,7 +204,7 @@
           "default": "Sdílet na Twitteru"
         },
         {
-          "label": "Sdílet na Google+",
+          "label": "Sdílet na Google text",
           "default": "Sdílet na Google+"
         },
         {
@@ -224,11 +224,11 @@
           "default": "Jak si přejete tuto prezentaci vytisknout?"
         },
         {
-          "label": "Popisek tlačítka \"Print all slides\" ",
+          "label": "Popisek tlačítka \"Tisknout všechny snímky\"",
           "default": "Vytisknout všechny snímky"
         },
         {
-          "label": "Popisek tlačítka \"Print current slide\" ",
+          "label": "Popisek tlačítka \"Tisknout aktuální snímek\"",
           "default": "Vytisknout aktuální snímek"
         },
         {
@@ -295,8 +295,8 @@
           "description": "Skryje souhrnný snímek."
         },
         {
-          "label": "Přepsat tlačítko \"Show Solution\" ",
-          "description": "Tato volba určuje, zda se tlačítko \"Show Solution\" zobrazí u všech otázek, deaktivováno pro všechny nebo nakonfigurováno pro každou otázku samostatně.",
+          "label": "Přepsat tlačítko \"Zobrazit řešení\"",
+          "description": "Tato volba určuje, zda se tlačítko \"Zobrazit řešení\" zobrazí u všech otázek, deaktivováno pro všechny nebo nakonfigurováno pro každou otázku samostatně.",
           "options": [
             {
               "label": "Povoleno"
@@ -307,8 +307,8 @@
           ]
         },
         {
-          "label": "Přepsat tlačítko \"Retry\" ",
-          "description": "Tato volba určuje, zda se tlačítko \"Retry\" zobrazí u všech otázek, deaktivováno pro všechny nebo nakonfigurováno pro každou otázku samostatně.",
+          "label": "Přepsat tlačítko \"Opakovat\"",
+          "description": "Tato volba určuje, zda se tlačítko \"Opakovat\" zobrazí u všech otázek, deaktivováno pro všechny nebo nakonfigurováno pro každou otázku samostatně.",
           "options": [
             {
               "label": "Povoleno"
@@ -319,15 +319,15 @@
           ]
         },
         {
-          "label": "Zobrazit tlačítko \"Show solution\" na souhrnném snímku",
+          "label": "Zobrazit tlačítko \"Zobrazit řešení\" na souhrnném snímku",
           "description": "Pokud je povoleno, student bude schopen ukázat řešení pro všechny otázky, když dorazí na souhrnný snímek"
         },
         {
-          "label": "Zobrazit tlačítko \"Retry\"  na souhrnném snímku",
+          "label": "Zobrazit tlačítko \"Opakovat\" na souhrnném snímku",
           "description": "Pokud je povoleno, bude student schopen opakovat všechny otázky, jakmile dorazí na souhrnný snímek. Upozorňujeme, že obnovením stránky se studenti budou moci pokusit opakovat, i když se toto tlačítko nezobrazí."
         },
         {
-          "label": " Povolit tlačítko tisk",
+          "label": "Povolit tlačítko tisk",
           "description": "Povoluje tlačítko tisku."
         },
         {
@@ -341,7 +341,7 @@
               "label": "Nastavení sdílení Facebooku",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Odkaz na Facebook",
                   "default": "@currentpageurl"
                 },
                 {
@@ -361,7 +361,7 @@
                   "default": "Získal jsem skóre @score ze @maxScore v úloze na @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Odkaz na Twitter",
                   "default": "@currentpageurl"
                 },
                 {
