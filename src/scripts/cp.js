@@ -214,28 +214,46 @@ CoursePresentation.prototype.attach = function ($container) {
     this.setActivityStarted();
   }
 
-  var html =
-          '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
-          '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
-          '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
-          '  <div tabindex="-1"></div>' +
-          '  <div class="h5p-box-wrapper">' +
-          '    <div class="h5p-presentation-wrapper">' +
-          '      <div class="h5p-keywords-wrapper"></div>' +
-          '     <div class="h5p-slides-wrapper"></div>' +
-          '    </div>' +
-          '  </div>' +
-          '  <nav class="h5p-cp-navigation">' +
-          '    <ol class="h5p-progressbar list-unstyled"></ol>' +
-          '  </nav>' +
-          '  <div class="h5p-footer"></div>' +
-          '</div>';
+  /** 
+   * When used to wrap template strings, this will let some code editors syntax highlight the text as HTML.
+   * The function itself returns the content of the template string without altering anything. 
+   */
+  const html = String.raw;
+  
+  const markup = html`
+  <div class="h5p-keymap-explanation hidden-but-read">
+    ${this.l10n.accessibilitySlideNavigationExplanation}
+  </div>
+  <div
+    class="h5p-fullscreen-announcer hidden-but-read"
+    aria-live="polite"
+  ></div>
+  <div
+    class="h5p-wrapper"
+    tabindex="0"
+    aria-label="${this.l10n.accessibilityCanvasLabel}"
+  >
+    <div
+      class="h5p-current-slide-announcer hidden-but-read"
+      aria-live="polite"
+    ></div>
+    <div tabindex="-1"></div>
+    <div class="h5p-box-wrapper">
+      <div class="h5p-presentation-wrapper">
+        <div class="h5p-keywords-wrapper"></div>
+        <div class="h5p-slides-wrapper"></div>
+      </div>
+    </div>
+    <nav class="h5p-cp-navigation">
+      <ol class="h5p-progressbar list-unstyled"></ol>
+    </nav>
+    <div class="h5p-footer"></div>
+  </div>`;
 
   $container
     .attr('role', 'application')
     .addClass('h5p-interaktivtavle')
-    .html(html);
+    .html(markup);
 
   this.$container = $container;
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
@@ -904,18 +922,27 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @return {jQuery}
  */
 CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
-  const displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
-  var classes = 'h5p-element' +
-    (displayAsButton ? ' h5p-element-button-wrapper' : '') +
-    (buttonSizeClass.length ? ' ' + buttonSizeClass : '');
-  var $elementContainer = H5P.jQuery('<div>', {
-    'class': classes,
-  }).css({
-    left: element.x + '%',
-    top: element.y + '%',
-    width: element.width + '%',
-    height: element.height + '%',
+  const { displayAsButton, showAsHotspot } = element;
+  const overrideButtonSize = element.buttonSize !== undefined;
+
+  const classes = [
+    'h5p-element',
+    displayAsButton && 'h5p-element-button-wrapper',
+    overrideButtonSize && `h5p-element-button-${element.buttonSize}`,
+    showAsHotspot && 'h5p-element-hotspot-wrapper',
+  ]
+    .filter(className => !!className)
+    .join(' ');
+
+  const $elementContainer = H5P.jQuery('<div>', {
+    class: classes,
+  });
+
+  $elementContainer.css({
+    left: `${element.x}%`,
+    top: `${element.y}%`,
+    width: `${element.width}%`,
+    height: `${element.height}%`,
     transform: element.transform
   }).appendTo($slide);
 
@@ -930,14 +957,14 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     const hasLibrary = element.action && element.action.library;
     const libTypePmz = hasLibrary ? this.getLibraryTypePmz(element.action.library) : 'other';
 
-    var $outerElementContainer = H5P.jQuery('<div>', {
-      'class': `h5p-element-outer ${libTypePmz}-outer-element`
+    const $outerElementContainer = H5P.jQuery('<div>', {
+      class: `h5p-element-outer ${libTypePmz}-outer-element`
     }).css({
       background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($elementContainer);
 
-    var $innerElementContainer = H5P.jQuery('<div>', {
-      'class': 'h5p-element-inner'
+    const $innerElementContainer = H5P.jQuery('<div>', {
+      class: 'h5p-element-inner'
     }).appendTo($outerElementContainer);
 
     // H5P.Shape sets it's own size when line in selected
