@@ -5,6 +5,13 @@ import { jQuery as $, EventDispatcher } from "./globals";
 import { InformationDialog } from "./information-dialog";
 
 /**
+ * @typedef VideoParam
+ * @property {string} copyright
+ * @property {string} mime
+ * @property {string} path
+ */
+
+/**
  * Enum containing possible navigation types
  * @readonly
  * @enum {string}
@@ -27,6 +34,7 @@ export class Hotspot extends EventDispatcher {
    * @param {boolean} semanticParameters.invisible
    * @param {string} semanticParameters.goToSlideType
    * @param {string} semanticParameters.dialogContent
+   * @param {VideoParam[]} semanticParameters.dialogVideo
    * @param {Object} param1
    * @param {Object} param1.l10n
    * @param {number} param1.currentIndex
@@ -39,6 +47,7 @@ export class Hotspot extends EventDispatcher {
       invisible,
       goToSlideType = hotspotType.GO_TO_SPECIFIED,
       dialogContent,
+      dialogVideo,
     },
     { l10n, currentIndex },
     $content = null
@@ -50,6 +59,7 @@ export class Hotspot extends EventDispatcher {
         invisible,
         goToSlideType,
         dialogContent,
+        dialogVideo,
       },
       {
         l10n,
@@ -94,7 +104,7 @@ export class Hotspot extends EventDispatcher {
       goToSlideType === hotspotType.INFORMATION_DIALOG;
 
     const isAnswerHotspotWithoutAction = goToSlideType === hotspotType.NONE;
-      
+
     if (isGoToLink) {
       this.$element = this.createGoToLink(
         goToSlide,
@@ -110,6 +120,7 @@ export class Hotspot extends EventDispatcher {
           this.dialog ||
           new InformationDialog({
             content: $(dialogContent).get(0),
+            dialogVideo,
             parent: this.$element.closest(".h5p-presentation-wrapper").get(0),
             l10n,
             horizontalOffset,
@@ -120,7 +131,7 @@ export class Hotspot extends EventDispatcher {
     } else if (isAnswerHotspotWithoutAction) {
       this.$element = this.createButton();
     }
-    
+
     this.$element.addClass(classes);
     this.$element.attr("tabindex", tabindex);
     this.$element.attr("title", title);
