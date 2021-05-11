@@ -1934,7 +1934,7 @@ CoursePresentation.prototype.resetTask = function () {
 /**
  * Show solutions for all slides that have solutions
  *
- * @return {undefined}
+ * @return {{indexes: number[], slide: number, score: number, maxScore: number}[]}
  */
 CoursePresentation.prototype.showSolutions = function () {
   
