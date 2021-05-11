@@ -31,7 +31,6 @@ jobs:
           if [ -d "h5p-dialogcards" ]; then pushd h5p-dialogcards && npm ci && npm run build; popd; fi
           if [ -d "h5p-drag-text" ]; then pushd h5p-drag-text && npm ci && npm run build; popd; fi
           if [ -d "h5p-questionnaire" ]; then pushd h5p-questionnaire && npm ci && npm run build; popd; fi
-          if [ -d "h5p-drag-question" ]; then pushd h5p-drag-question && npm ci && npm run build; popd; fi
           if [ -d "h5p-interactive-video" ]; then pushd h5p-interactive-video && npm ci && npm run build; popd; fi
           if [ -d "h5p-open-ended-question" ]; then pushd h5p-open-ended-question && npm ci && npm run build; popd; fi
           if [ -d "h5p-simple-multiple-choice" ]; then pushd h5p-simple-multiple-choice && npm ci && npm run build; popd; fi
