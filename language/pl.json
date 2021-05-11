@@ -204,10 +204,6 @@
           "default": "Udostępnij na Twitterze"
         },
         {
-          "label": "Tekst dla przycisku Udostępnij na Google+",
-          "default": "Udostępnij na Google+"
-        },
-        {
           "label": "Tytuł dla slajdu podsumowującego",
           "default": "Podsumowanie"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, szkolenie"
                 }
               ]
-            },
-            {
-              "label": "Wyświetlaj przycisk udostępnij na Google+"
-            },
-            {
-              "label": "Adres do udostępnienia na Google +",
-              "default": "@currentpageurl"
             }
           ]
         }

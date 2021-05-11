@@ -204,10 +204,6 @@
           "default": "在Twitter上分享"
         },
         {
-          "label": "分享到Google",
-          "default": "在Google+上分享"
-        },
-        {
           "label": "總結簡報的標題",
           "default": "總結"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "顯示Google+分享圖示"
-            },
-            {
-              "label": "分享到Google連結",
-              "default": "@currentpageurl"
             }
           ]
         }

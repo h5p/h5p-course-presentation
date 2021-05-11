@@ -204,10 +204,6 @@
           "default": "Dela på Twitter"
         },
         {
-          "label": "Text för Dela på Google",
-          "default": "Dela på Google+"
-        },
-        {
           "label": "Titel för sammanfattningssida",
           "default": "Sammanfattning"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, kurs"
                 }
               ]
-            },
-            {
-              "label": "Visa ikon för delning på Google+"
-            },
-            {
-              "label": "Länk för delning på Google",
-              "default": "@currentpageurl"
             }
           ]
         }

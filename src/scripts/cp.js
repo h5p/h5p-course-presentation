@@ -79,7 +79,6 @@ let CoursePresentation = function (params, id, extras) {
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
-    shareGoogle: 'Share on Google+',
     goToSlide: 'Go to slide :num',
     solutionsButtonTitle: 'Show comments',
     printTitle: 'Print',
@@ -112,7 +111,6 @@ let CoursePresentation = function (params, id, extras) {
     if (!!params.override.social) {
       this.enableTwitterShare = !!params.override.social.showTwitterShare;
       this.enableFacebookShare = !!params.override.social.showFacebookShare;
-      this.enableGoogleShare = !!params.override.social.showGoogleShare;
 
       this.twitterShareStatement = params.override.social.twitterShare.statement;
       this.twitterShareHashtags = params.override.social.twitterShare.hashtags;
@@ -120,8 +118,6 @@ let CoursePresentation = function (params, id, extras) {
 
       this.facebookShareUrl = params.override.social.facebookShare.url;
       this.facebookShareQuote = params.override.social.facebookShare.quote;
-
-      this.googleShareUrl = params.override.social.googleShareUrl;
     }
   }
 

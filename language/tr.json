@@ -204,10 +204,6 @@
           "default": "Twitter'de paylaş"
         },
         {
-          "label": "Google+'da paylaş metni",
-          "default": "Google+'da paylaş"
-        },
-        {
           "label": "Özet slaytının başlığı",
           "default": "Özet"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, ders"
                 }
               ]
-            },
-            {
-              "label": "Google+ paylaşım sigesini göster"
-            },
-            {
-              "label": "Google'de paylaşılacak bağlantı",
-              "default": "@currentpageurl"
             }
           ]
         }

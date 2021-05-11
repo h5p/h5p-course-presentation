@@ -207,10 +207,6 @@
           "default": "Del på Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Del på Google+"
-        },
-        {
           "label": "Tittel for \"Oppsummering\" siden",
           "default": "Oppsummering"
         },
@@ -372,13 +368,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Display Google+ share icon"
-            },
-            {
-              "label": "Share to Google link",
-              "default": "@currentpageurl"
             }
           ]
         }

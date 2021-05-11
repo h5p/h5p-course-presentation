@@ -204,10 +204,6 @@
           "default": "Auf Twitter teilen"
         },
         {
-          "label": "Beschriftung für \"Auf Google+ teilen\"",
-          "default": "Auf Google+ teilen"
-        },
-        {
           "label": "Titel der Zusammenfassungsfolie",
           "default": "Zusammenfassung"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, Kurs"
                 }
               ]
-            },
-            {
-              "label": "Google+-Icon anzeigen"
-            },
-            {
-              "label": "Google+-Link",
-              "default": "@currentpageurl"
             }
           ]
         }

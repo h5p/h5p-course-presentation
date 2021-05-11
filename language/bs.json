@@ -207,10 +207,6 @@
           "default": "Podijeli na Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Podijeli na Google"
-        },
-        {
           "label": "Naziv za slajd rezimea",
           "default": "Rezime"
         },
@@ -372,13 +368,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Prikaži Google ikonu za dijeljenje"
-            },
-            {
-              "label": "Link za dijejenje na Google",
-              "default": "@currentpageurl"
             }
           ]
         }

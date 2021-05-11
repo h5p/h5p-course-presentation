@@ -204,10 +204,6 @@
           "default": "Del på Twitter"
         },
         {
-          "label": "Del på Google tekst",
-          "default": "Del på Google+"
-        },
-        {
           "label": "Titel på resume slide",
           "default": "Resumé"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, øvelse"
                 }
               ]
-            },
-            {
-              "label": "Vis ikon for deling på Google+."
-            },
-            {
-              "label": "Del med Google link",
-              "default": "@currentpageurl"
             }
           ]
         }

@@ -204,10 +204,6 @@
           "default": "Partekatu Twitteren"
         },
         {
-          "label": "Google+en partekatzeko testua",
-          "default": "Partekatu Google+en"
-        },
-        {
           "label": "Aurkibide diapositibaren izenburua",
           "default": "Laburpena"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, ikastaroa"
                 }
               ]
-            },
-            {
-              "label": "Bistaratu Google+en partekatzeko ikonoa"
-            },
-            {
-              "label": "Partekatu Google+eko estekara",
-              "default": "@currentpageurl"
             }
           ]
         }
