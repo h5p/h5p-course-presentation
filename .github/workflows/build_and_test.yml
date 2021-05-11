@@ -46,7 +46,9 @@ jobs:
           h5p-editor-shape \
           h5p-font-icons \
           h5p-drag-n-bar \
-          h5p-drag-n-drop
+          h5p-drag-n-drop \
+          h5p-editor-drag-question \
+          h5p-drag-question
         
         # Clone override projects
         git clone https://github.com/NDLANO/h5p-chart.git
@@ -56,6 +58,8 @@ jobs:
         git clone https://github.com/NDLANO/h5p-font-icons.git
         git clone https://github.com/NDLANO/h5p-drag-n-bar.git
         git clone https://github.com/NDLANO/h5p-drag-n-drop.git
+        git clone https://github.com/NDLANO/h5p-editor-drag-question.git
+        git clone https://github.com/NDLANO/h5p-drag-question.git
         
         git clone https://github.com/NDLANO/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
         
