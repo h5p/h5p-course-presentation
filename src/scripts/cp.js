@@ -1937,7 +1937,6 @@ CoursePresentation.prototype.resetTask = function () {
  * @return {{indexes: number[], slide: number, score: number, maxScore: number}[]}
  */
 CoursePresentation.prototype.showSolutions = function () {
-  
   const slideScores = [];
   let jumpedToFirst = false;
   let hasScores = false;
