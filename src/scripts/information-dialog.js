@@ -1,22 +1,74 @@
 // @ts-check
 import { createFocusTrap } from "focus-trap";
 
+/**
+ * @typedef VideoParam
+ * @property {string} copyright
+ * @property {string} mime
+ * @property {string} path
+ */
+
 export class InformationDialog {
   /**
-   *
+   * @param {string} videoUrl
+   * @return {HTMLIFrameElement}
+   */
+  static createYouTubeEmbed(videoUrl) {
+    const videoId = new URLSearchParams(videoUrl.split("?")[1]).get("v");
+
+    return InformationDialog.createVideoEmbed(
+      `https://www.youtube.com/embed/${videoId}`
+    );
+  }
+
+  /**
+   * @param {string} videoUrl
+   * @return {HTMLIFrameElement}
+   */
+  static createVideoEmbed(videoUrl) {
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", videoUrl);
+    iframe.setAttribute("title", "Video player");
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute(
+      "allow",
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    );
+    iframe.setAttribute("allowfullscreen", "allowfullscreen");
+
+    return iframe;
+  }
+
+  /**
    * @param {Object} param
    * @param {HTMLElement | HTMLElement[]} param.content
+   * @param {VideoParam[]} param.dialogVideo
    * @param {HTMLElement} param.parent
    * @param {object} param.l10n
    * @param {string} param.horizontalOffset
    * @param {string} param.verticalOffset
    */
-  constructor({ content, parent, l10n, horizontalOffset, verticalOffset }) {
+  constructor({
+    content,
+    dialogVideo,
+    parent,
+    l10n,
+    horizontalOffset,
+    verticalOffset,
+  }) {
     const contents = content instanceof Array ? content : [content];
+    const video = dialogVideo instanceof Array ? dialogVideo : [dialogVideo];
 
     this.parent = parent;
     this.l10n = l10n;
-    this.modal = this.createDialog(contents, horizontalOffset, verticalOffset);
+    this.modal = this.createDialog(
+      contents,
+      video.length > 0 ? video[0] : null,
+      horizontalOffset,
+      verticalOffset
+    );
 
     this.attach();
   }
@@ -26,12 +78,13 @@ export class InformationDialog {
    * The modal includes button to set the aspect ratio to either 4/3 or 3/4.
    *
    * @param {HTMLElement[]} contents
+   * @param {VideoParam} dialogVideo
    * @param {string} horizontalOffset Horizontal offset as a percentage of the container width
    * @param {string} verticalOffset Vertical offset as a percentage of the container height
    *
    * @return {HTMLDivElement}
    */
-  createDialog(contents, horizontalOffset, verticalOffset) {
+  createDialog(contents, dialogVideo, horizontalOffset, verticalOffset) {
     const container = document.createElement("div");
     container.className = "h5p-information-dialog-container";
     container.setAttribute("hidden", "true");
@@ -53,6 +106,20 @@ export class InformationDialog {
 
     const mainContainer = document.createElement("div");
     mainContainer.className = "h5p-information-dialog-main";
+
+    if (dialogVideo) {
+      let videoElement;
+
+      const isYouTube = dialogVideo.mime === "video/YouTube";
+      if (isYouTube) {
+        videoElement = InformationDialog.createYouTubeEmbed(dialogVideo.path);
+      } else {
+        videoElement = InformationDialog.createVideoEmbed(dialogVideo.path);
+        console.log({ dialogVideo });
+      }
+
+      mainContainer.appendChild(videoElement);
+    }
 
     for (const contentElement of contents) {
       if (contentElement) {

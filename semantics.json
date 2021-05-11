@@ -329,6 +329,20 @@
                   }
                 },
                 {
+                  "name": "dialogVideo",
+                  "type": "video",
+                  "label": "Dialog video",
+                  "importance": "low",
+                  "optional": true,
+                  "widget": "showWhen",
+                  "showWhen": {
+                    "rules": [{
+                      "field": "showAsHotspot",
+                      "equals": true
+                    }]
+                  }
+                },
+                {
                   "name": "dialogContent",
                   "type": "text",
                   "label": "Dialog content",
@@ -354,8 +368,7 @@
                     "h3",
                     "hr",
                     "pre",
-                    "code",
-                    "img"
+                    "code"
                   ]
                 },
                 {
