@@ -46,7 +46,7 @@ const SummarySlide = (function () {
 
     if (!isExportSlide) {
       // Get total scores and construct progress circle
-      var totalScores = this.totalScores(slideScores);
+      const totalScores = this.totalScores(slideScores);
       if (!isNaN(totalScores.totalPercentage)) {
         var totalScoreBar = JoubelUI.createScoreBar(totalScores.totalMaxScore, "", "", "");
         totalScoreBar.setScore(totalScores.totalScore);
@@ -58,10 +58,9 @@ const SummarySlide = (function () {
           $totalScore.append($('<div/>', {
             'aria-live': 'polite',
             'class': 'hidden-but-read',
-            'html': this.cp.l10n.summary + '. ' +
-              this.cp.l10n.accessibilityTotalScore
-                .replace('@score', totalScores.totalScore)
-                .replace('@maxScore', totalScores.totalMaxScore)
+            'html': `${this.cp.l10n.summary}. ${this.cp.l10n.accessibilityTotalScore
+              .replace('@score', totalScores.totalScore)
+              .replace('@maxScore', totalScores.totalMaxScore)}`
           }));
         }, 100);
       }
@@ -101,7 +100,7 @@ const SummarySlide = (function () {
     if (this.cp.showSummarySlideSolutionButton) {
       JoubelUI.createButton({
         'class': 'h5p-show-solutions',
-        html: that.cp.l10n.showSolutions,
+        html: this.cp.l10n.showSolutions,
         on: {
           click: () => {
             // Enable solution mode
@@ -439,7 +438,9 @@ const SummarySlide = (function () {
    * @param {Array<{score: number, maxScore: number}>} slideScores
    * @returns {{totalScore: number, totalMaxScore: number, totalPercentage: number}} totalScores Total scores object
    */
-  SummarySlide.prototype.totalScores = function (slideScores) {    
+  SummarySlide.prototype.totalScores = function (slideScores) {
+    console.log("total scores", slideScores);
+
     if (slideScores === undefined) {
       return {
         totalScore: 0,

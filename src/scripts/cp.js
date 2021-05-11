@@ -1837,9 +1837,11 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     this.setSlideNumberAnnouncer(slideNumber, handleFocus);
   }
 
-  if (that.summarySlideObject) {
+  if (this.summarySlideObject) {
     // Update summary slide if on last slide, do not jump
-    that.summarySlideObject.updateSummarySlide(slideNumber, true);
+    window.requestAnimationFrame(() =>
+      this.summarySlideObject.updateSummarySlide(slideNumber, true)
+    );
   }
 
   // Editor specific settings
