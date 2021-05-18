@@ -1,3 +1,5 @@
+// @ts-check
+
 import { jQuery as $, JoubelUI } from './globals';
 import {addClickAndKeyboardListeners} from "./utils";
 
@@ -18,10 +20,10 @@ const SummarySlide = (function () {
   /**
    * Updates the provided summary slide with current values.
    *
-   * @param {$} $summarySlide Summary slide that will be updated
+   * @param {number} slideNumber Summary slide that will be updated
+   * @param {boolean} noJump
    */
   SummarySlide.prototype.updateSummarySlide = function (slideNumber, noJump) {
-    var that = this;
     // Validate update.
     var isValidUpdate = (this.cp.editor === undefined) && (this.$summarySlide !== undefined) && (slideNumber >= this.cp.slides.length - 1);
     var isExportSlide = (!this.cp.showSummarySlide && this.cp.hasAnswerElements);
@@ -30,25 +32,25 @@ const SummarySlide = (function () {
     }
 
     // Hide keywordlist on summary slide
-    if (that.cp.presentation.keywordListEnabled && that.cp.presentation.keywordListAlwaysShow) {
-      that.cp.hideKeywords();
+    if (this.cp.presentation.keywordListEnabled && this.cp.presentation.keywordListAlwaysShow) {
+      this.cp.hideKeywords();
     }
 
     // Remove old content
     this.$summarySlide.children().remove();
 
     // Get scores and updated html for summary slide
-    var slideScores = that.cp.getSlideScores(noJump);
-    var htmlText = that.outputScoreStats(slideScores);
-    $(htmlText).appendTo(that.$summarySlide);
+    var slideScores = this.cp.getSlideScores(noJump);
+    var htmlText = this.outputScoreStats(slideScores);
+    $(htmlText).appendTo(this.$summarySlide);
 
     if (!isExportSlide) {
       // Get total scores and construct progress circle
-      var totalScores = that.totalScores(slideScores);
+      const totalScores = this.totalScores(slideScores);
       if (!isNaN(totalScores.totalPercentage)) {
         var totalScoreBar = JoubelUI.createScoreBar(totalScores.totalMaxScore, "", "", "");
         totalScoreBar.setScore(totalScores.totalScore);
-        var $totalScore = $('.h5p-summary-total-score', that.$summarySlide);
+        var $totalScore = $('.h5p-summary-total-score', this.$summarySlide);
         totalScoreBar.appendTo($totalScore);
 
         setTimeout(() => {
@@ -56,49 +58,47 @@ const SummarySlide = (function () {
           $totalScore.append($('<div/>', {
             'aria-live': 'polite',
             'class': 'hidden-but-read',
-            'html': that.cp.l10n.summary + '. ' +
-              that.cp.l10n.accessibilityTotalScore
-                .replace('@score', totalScores.totalScore)
-                .replace('@maxScore', totalScores.totalMaxScore)
+            'html': `${this.cp.l10n.summary}. ${this.cp.l10n.accessibilityTotalScore
+              .replace('@score', totalScores.totalScore)
+              .replace('@maxScore', totalScores.totalMaxScore)}`
           }));
         }, 100);
       }
 
       // Construct twitter share score link
-      if (that.cp.enableTwitterShare == true) {
-        var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
+      if (this.cp.enableTwitterShare == true) {
+        var $twitterContainer = $('.h5p-summary-twitter-message', this.$summarySlide);
         this.addTwitterScoreLinkTo($twitterContainer, totalScores);
       }
 
       // Construct facebook share score link
-      if (that.cp.enableFacebookShare == true) {
-        var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide);
+      if (this.cp.enableFacebookShare == true) {
+        var $facebookContainer = $('.h5p-summary-facebook-message', this.$summarySlide);
         this.addFacebookScoreLinkTo($facebookContainer, totalScores);
       }
 
       // Update slide links
-      var links = that.$summarySlide.find('.h5p-td > .h5p-slide-link');
-      links.each(function () {
-        var slideLink = $(this);
-        slideLink.click(function (event) {
-          that.cp.jumpToSlide(parseInt(slideLink.data('slide'), 10) - 1);
+      var links = this.$summarySlide.find('.h5p-td > .h5p-slide-link');
+      links.each((index, $slideLink) => {
+        $slideLink.click((event) => {
+          this.cp.jumpToSlide(parseInt($slideLink.data('slide'), 10) - 1);
           event.preventDefault();
         });
       });
     }
 
     // Button container ref
-    var $summaryFooter = $('.h5p-summary-footer', that.$summarySlide);
+    var $summaryFooter = $('.h5p-summary-footer', this.$summarySlide);
 
     // Show solutions button
     if (this.cp.showSummarySlideSolutionButton) {
       JoubelUI.createButton({
         'class': 'h5p-show-solutions',
-        html: that.cp.l10n.showSolutions,
+        html: this.cp.l10n.showSolutions,
         on: {
-          click: function () {
+          click: () => {
             // Enable solution mode
-            that.toggleSolutionMode(true);
+            this.toggleSolutionMode(true);
           }
         },
         appendTo: $summaryFooter
@@ -109,10 +109,10 @@ const SummarySlide = (function () {
     if (this.cp.showSummarySlideRetryButton) {
       JoubelUI.createButton({
         'class': 'h5p-cp-retry-button',
-        html: that.cp.l10n.retry,
+        html: this.cp.l10n.retry,
         on: {
           click: function () {
-            that.cp.resetTask();
+            this.cp.resetTask();
             // event.preventDefault();
           }
         },
@@ -121,14 +121,13 @@ const SummarySlide = (function () {
     }
 
     // Only make export button if there is an export area in CP
-    if (that.cp.hasAnswerElements) {
+    if (this.cp.hasAnswerElements) {
       JoubelUI.createButton({
         'class': 'h5p-eta-export',
-        html: that.cp.l10n.exportAnswers,
+        html: this.cp.l10n.exportAnswers,
         on: {
-          click: function () {
-            H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
-            // event.preventDefault();
+          click: () => {
+            H5P.ExportableTextArea.Exporter.run(this.cp.slides, this.cp.elementInstances);
           }
         },
         appendTo: $summaryFooter
@@ -288,12 +287,10 @@ const SummarySlide = (function () {
    * @param {Object} scores totalScores object to pull data from.
    */
   SummarySlide.prototype.addTwitterScoreLinkTo = function ($twitterContainer, scores) {
-    var that = this;
-
     // Get data from the localization object.
-    var twitterShareStatement = that.cp.twitterShareStatement || '';
-    var twitterHashtagList = that.cp.twitterShareHashtags || '';
-    var twitterShareUrl = that.cp.twitterShareUrl || '';
+    var twitterShareStatement = this.cp.twitterShareStatement || '';
+    var twitterHashtagList = this.cp.twitterShareHashtags || '';
+    var twitterShareUrl = this.cp.twitterShareUrl || '';
 
     // Replace any placeholders with variables.
     twitterShareUrl = twitterShareUrl.replace('@currentpageurl', window.location.href);
@@ -328,7 +325,7 @@ const SummarySlide = (function () {
 
     addClickAndKeyboardListeners($twitterContainer, () => {
       window.open(twitterString,
-        that.cp.l10n.shareTwitter,
+        this.cp.l10n.shareTwitter,
         'width=' + popupWidth +
         ',height=' + popupHeight +
         ',left=' + leftPos +
@@ -344,11 +341,9 @@ const SummarySlide = (function () {
    * @param {Object} scores totalScores object to pull data from.
    */
   SummarySlide.prototype.addFacebookScoreLinkTo = function ($facebookContainer, scores) {
-    var that = this;
-
     // Get data from the localization object.
-    var facebookShareUrl = that.cp.facebookShareUrl || '';
-    var facebookShareQuote = that.cp.facebookShareQuote || '';
+    var facebookShareUrl = this.cp.facebookShareUrl || '';
+    var facebookShareQuote = this.cp.facebookShareQuote || '';
 
     // Replace any placeholders with variables.
     facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href);
@@ -378,7 +373,7 @@ const SummarySlide = (function () {
 
     addClickAndKeyboardListeners($facebookContainer, () => {
       window.open(facebookUrl,
-        that.cp.l10n.shareFacebook,
+        this.cp.l10n.shareFacebook,
         'width=' + popupWidth +
         ',height=' + popupHeight +
         ',left=' + leftPos +
@@ -394,6 +389,7 @@ const SummarySlide = (function () {
    * @returns {{totalScore: number, totalMaxScore: number, totalPercentage: number}} totalScores Total scores object
    */
   SummarySlide.prototype.totalScores = function (slideScores) {
+
     if (slideScores === undefined) {
       return {
         totalScore: 0,

@@ -1833,9 +1833,11 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     this.setSlideNumberAnnouncer(slideNumber, handleFocus);
   }
 
-  if (that.summarySlideObject) {
+  if (this.summarySlideObject) {
     // Update summary slide if on last slide, do not jump
-    that.summarySlideObject.updateSummarySlide(slideNumber, true);
+    window.requestAnimationFrame(() =>
+      this.summarySlideObject.updateSummarySlide(slideNumber, true)
+    );
   }
 
   // Editor specific settings
@@ -1930,10 +1932,9 @@ CoursePresentation.prototype.resetTask = function () {
 /**
  * Show solutions for all slides that have solutions
  *
- * @return {undefined}
+ * @return {{indexes: number[], slide: number, score: number, maxScore: number}[]}
  */
 CoursePresentation.prototype.showSolutions = function () {
-  
   const slideScores = [];
   let jumpedToFirst = false;
   let hasScores = false;
