@@ -439,7 +439,6 @@ const SummarySlide = (function () {
    * @returns {{totalScore: number, totalMaxScore: number, totalPercentage: number}} totalScores Total scores object
    */
   SummarySlide.prototype.totalScores = function (slideScores) {
-    console.log("total scores", slideScores);
 
     if (slideScores === undefined) {
       return {
