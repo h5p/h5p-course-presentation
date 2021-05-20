@@ -77,12 +77,6 @@ const SummarySlide = (function () {
         this.addFacebookScoreLinkTo($facebookContainer, totalScores);
       }
 
-      // Construct google share score link
-      if (this.cp.enableGoogleShare == true) {
-        var $googleContainer = $('.h5p-summary-google-message', this.$summarySlide);
-        this.addGoogleScoreLinkTo($googleContainer);
-      }
-
       // Update slide links
       var links = this.$summarySlide.find('.h5p-td > .h5p-slide-link');
       links.each((index, $slideLink) => {
@@ -200,8 +194,7 @@ const SummarySlide = (function () {
   this.cp.triggerXAPICompleted(totalScore, totalMaxScore);
   const shareResultContainer =
     this.cp.enableTwitterShare ||
-    this.cp.enableFacebookShare ||
-    this.cp.enableGoogleShare
+    this.cp.enableFacebookShare
       ? `<span class="h5p-show-results-text">${this.cp.l10n.shareResult}</span>`
       : '';
   const twitterContainer =
@@ -211,10 +204,6 @@ const SummarySlide = (function () {
   const facebookContainer =
     this.cp.enableFacebookShare == true
       ? `<span class="h5p-summary-facebook-message" aria-label="${this.cp.l10n.shareFacebook}"></span>`
-      : '';
-  const googleContainer =
-    this.cp.enableGoogleShare == true
-      ? `<span class="h5p-summary-google-message" aria-label="${this.cp.l10n.shareGoogle}"></span>`
       : '';
 
   return `<div class="h5p-summary-table-holder">
@@ -238,7 +227,7 @@ const SummarySlide = (function () {
       </div>
       <div class="h5p-summary-total-table">
         <div class="h5p-summary-social">
-          ${shareResultContainer}${facebookContainer}${twitterContainer}${googleContainer}
+          ${shareResultContainer}${facebookContainer}${twitterContainer}
         </div>
         <div class="h5p-summary-total-score">
           <p>${this.cp.l10n.totalScore}</p>
@@ -390,45 +379,6 @@ const SummarySlide = (function () {
         ',left=' + leftPos +
         ',top=' + topPos);
 
-      return false;
-    });
-  };
-
-  /**
-   * Adds a link to the given container which will link achieved score to google.
-   *
-   * @param {jQuery} $googleContainer Container that should hold the google link.
-   */
-  SummarySlide.prototype.addGoogleScoreLinkTo = function ($googleContainer) {
-    // Get data from the localization object.
-    var googleShareUrl = this.cp.googleShareUrl || '';
-
-    // Replace any placeholders with variables.
-    googleShareUrl = googleShareUrl.replace('@currentpageurl', window.location.href);
-
-    // Parse data from the localization object.
-    googleShareUrl = encodeURIComponent(googleShareUrl);
-
-    // Add query strings to the URL based on settings.
-    var googleUrl = "https://plus.google.com/share?";
-    googleUrl += (googleShareUrl.length > 0) ? `url=${googleShareUrl}` : "";
-
-    var popupWidth = 401;
-    var popupHeight = 437;
-    var leftPos = (window.innerWidth / 2);
-    var topPos = (window.innerHeight / 2);
-
-    // Create the new Google+ window.
-    $googleContainer.attr('tabindex', '0')
-      .attr('role', 'button');
-
-    addClickAndKeyboardListeners($googleContainer, () => {
-      window.open(googleUrl,
-        this.cp.l10n.shareGoogle,
-        'width=' + popupWidth +
-        ',height=' + popupHeight +
-        ',left=' + leftPos +
-        ',top=' + topPos);
       return false;
     });
   };

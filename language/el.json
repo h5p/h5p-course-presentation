@@ -204,10 +204,6 @@
           "default": "Κοινοποίηση στο Twitter"
         },
         {
-          "label": "Κείμενο για κοινοποίηση στο Google+",
-          "default": "Κοινοποίηση στο Google+"
-        },
-        {
           "label": "Τίτλος διαφάνειας σύνοψης",
           "default": "Σύνοψη"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Εμφάνιση εικονιδίου κοινοποίησης στο Google+"
-            },
-            {
-              "label": "Κοινοποίηση στο Google+",
-              "default": "@currentpageurl"
             }
           ]
         }

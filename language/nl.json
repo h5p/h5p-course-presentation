@@ -204,10 +204,6 @@
           "default": "Deel op Twitter"
         },
         {
-          "label": "Deel op Google+ tekst",
-          "default": "Deel op Google+"
-        },
-        {
           "label": "Titel voor \"Samenvattings\" dia",
           "default": "Samenvatting"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, cursus"
                 }
               ]
-            },
-            {
-              "label": "Toon pictogram delen via Google+"
-            },
-            {
-              "label": "Delen via Googlelink",
-              "default": "@currentpageurl"
             }
           ]
         }

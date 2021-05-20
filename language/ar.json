@@ -204,10 +204,6 @@
           "default": "Share on Twitter"
         },
         {
-          "label": "نص المشاركة على جوجل",
-          "default": "Share on Google+"
-        },
-        {
           "label": "عنوان لشريحة الملخص",
           "default": "Summary"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p، مساق"
                 }
               ]
-            },
-            {
-              "label": "اظهار ايقونة المشاركة على جوجل بلاس"
-            },
-            {
-              "label": "مشاركة رابط على جوجل",
-              "default": "@currentpageurl"
             }
           ]
         }

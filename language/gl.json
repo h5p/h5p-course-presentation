@@ -204,10 +204,6 @@
           "default": "Compartir en Twitter"
         },
         {
-          "label": "Texto para compartir en Google",
-          "default": "Compartir en Google+"
-        },
-        {
           "label": "Ttulo para a diapositiva de resumo",
           "default": "Resumo"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, curso"
                 }
               ]
-            },
-            {
-              "label": "Amosar icona de publicación en Google+"
-            },
-            {
-              "label": "Enlace de publicación en Google",
-              "default": "@currentpageurl"
             }
           ]
         }

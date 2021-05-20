@@ -204,10 +204,6 @@
           "default": "Partager sur Twitter"
         },
         {
-          "label": "Partager sur Google text",
-          "default": "Partager sur Google+"
-        },
-        {
           "label": "Titre de la diapositive récapitulative",
           "default": "Résumé"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Montrer l'icône Partager sur Google+"
-            },
-            {
-              "label": "Lien Partager sur Google",
-              "default": "@currentpageurl"
             }
           ]
         }

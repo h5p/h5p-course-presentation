@@ -204,10 +204,6 @@
           "default": "在 Twitter 上分享"
         },
         {
-          "label": "分享到 Google+",
-          "default": "在 Google+ 上分享"
-        },
-        {
           "label": "結果投影片的標題",
           "default": "結果"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "顯示分享到 Google+ 圖示"
-            },
-            {
-              "label": "分享到 Google 的連結",
-              "default": "@currentpageurl"
             }
           ]
         }

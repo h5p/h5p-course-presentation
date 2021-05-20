@@ -204,10 +204,6 @@
           "default": "Partilhar no Twitter"
         },
         {
-          "label": "Texto para partilha no Google",
-          "default": "Partilhar no Google+"
-        },
-        {
           "label": "Título do slide de resumo",
           "default": "Resumo"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Mostrar o ícone de partilha no Google+"
-            },
-            {
-              "label": "Partilhar através de link no Google",
-              "default": "@currentpageurl"
             }
           ]
         }

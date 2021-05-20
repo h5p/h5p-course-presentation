@@ -204,10 +204,6 @@
           "default": "Jaga Twitteris"
         },
         {
-          "label": "Jaga Googles silt",
-          "default": "Jaga Google+ keskkonnas"
-        },
-        {
           "label": "Kokkuvõtva lehekülje pealkiri",
           "default": "Kokkuvõte"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, e-ope"
                 }
               ]
-            },
-            {
-              "label": "Näita Google+ jagamise ikooni"
-            },
-            {
-              "label": "Jaga Google Plussis link",
-              "default": "@currentpageurl"
             }
           ]
         }

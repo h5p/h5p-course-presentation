@@ -204,10 +204,6 @@
           "default": "Condividi su Twitter"
         },
         {
-          "label": "Testo per la condivisione su Google+",
-          "default": "Condividi su Google+"
-        },
-        {
           "label": "Titolo della slide di riepilogo",
           "default": "Riepilogo"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Mostra l'icona di condivisione Google+"
-            },
-            {
-              "label": "Link di condivisione a Google+",
-              "default": "@currentpageurl"
             }
           ]
         }

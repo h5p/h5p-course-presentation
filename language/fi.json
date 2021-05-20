@@ -204,10 +204,6 @@
           "default": "Jaa Twitterissä"
         },
         {
-          "label": "\"Jaa Google+ palvelussa\" -teksti",
-          "default": "Jaa Google+ palvelussa"
-        },
-        {
           "label": "\"Yhteenveto\"-sivun otsikko",
           "default": "Yhteenveto"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, kurssi"
                 }
               ]
-            },
-            {
-              "label": "Näytä jaa Google+ palveluun -ikoni"
-            },
-            {
-              "label": "Google+ palveluun jaettavan sivuston linkki",
-              "default": "@currentpageurl"
             }
           ]
         }

@@ -204,10 +204,6 @@
           "default": "Comparteix a Twitter"
         },
         {
-          "label": "Text de Comparteix a Google",
-          "default": "Comparteix a Google+"
-        },
-        {
           "label": "Títol de la diapositiva resum",
           "default": "Resum"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Mostra la icona per compartir contingut de Google+"
-            },
-            {
-              "label": "Comparteix l’enllaç a Google",
-              "default": "@currentpageurl"
             }
           ]
         }

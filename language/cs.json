@@ -204,10 +204,6 @@
           "default": "Sdílet na Twitteru"
         },
         {
-          "label": "Sdílet na Google+",
-          "default": "Sdílet na Google+"
-        },
-        {
           "label": "Název souhrnného snímku",
           "default": "Souhrn"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, kurz"
                 }
               ]
-            },
-            {
-              "label": "Zobrazit ikonu sdílení Google+"
-            },
-            {
-              "label": "Sdílet na Google",
-              "default": "@currentpageurl"
             }
           ]
         }

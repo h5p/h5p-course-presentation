@@ -204,10 +204,6 @@
           "default": "Поделиться в Twitter"
         },
         {
-          "label": "Текст Поделиться в Google",
-          "default": "Поделиться в Google+"
-        },
-        {
           "label": "Название для итогового слайда",
           "default": "Итоги"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, курс"
                 }
               ]
-            },
-            {
-              "label": "Показать иконку Поделиться в Google+"
-            },
-            {
-              "label": "Ссылка Поделиться в Google",
-              "default": "@currentpageurl"
             }
           ]
         }

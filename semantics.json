@@ -701,13 +701,6 @@
       "default": "Share on Twitter"
     },
     {
-      "name": "shareGoogle",
-      "type": "text",
-      "label": "Share to Google text",
-      "importance": "low",
-      "default": "Share on Google+"
-    },
-    {
       "name": "summary",
       "type": "text",
       "label": "Title for summary slide",
@@ -1027,27 +1020,6 @@
               "default": "h5p, course"
             }
           ]
-        },
-        {
-          "name": "showGoogleShare",
-          "type": "boolean",
-          "label": "Display Google+ share icon",
-          "importance": "low",
-          "default": false
-        },
-        {
-          "name": "googleShareUrl",
-          "type": "text",
-          "label": "Share to Google link",
-          "importance": "low",
-          "default": "@currentpageurl",
-          "widget": "showWhen",
-          "showWhen": {
-            "rules": [{
-              "field": "showGoogleShare",
-              "equals": true
-            }]
-          }
         }
       ]
     }

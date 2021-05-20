@@ -204,10 +204,6 @@
           "default": "Bagikan di Twitter"
         },
         {
-          "label": "Teks berbagi ke Google",
-          "default": "Bagikan di Google+"
-        },
-        {
           "label": "Judul untuk slide ringkasan",
           "default": "Ringkasan"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Tampilkan ikon berbagi ke Google+"
-            },
-            {
-              "label": "Tautan berbagi ke Google",
-              "default": "@currentpageurl"
             }
           ]
         }

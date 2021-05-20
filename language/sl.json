@@ -204,10 +204,6 @@
           "default": "Deli na omrežju Twitter"
         },
         {
-          "label": "Besedilo za deljenje na omrežju Google",
-          "default": "Deli na omrežju Google+"
-        },
-        {
           "label": "Naslov za stran s povzetkom dosežkov",
           "default": "Povzetek"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Prikaži ikono za deljenje na omrežju Google+"
-            },
-            {
-              "label": "Povezava za deljenje",
-              "default": "@currentpageurl"
             }
           ]
         }

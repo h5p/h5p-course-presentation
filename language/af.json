@@ -204,10 +204,6 @@
           "default": "Deel op Twitter"
         },
         {
-          "label": "Deel na Google teks",
-          "default": "Deel op Google+"
-        },
-        {
           "label": "Titel vir opsommende skyfie",
           "default": "Opsomming"
         },
@@ -369,13 +365,6 @@
                   "default": "h5p, kursus"
                 }
               ]
-            },
-            {
-              "label": "Vertoon Google+ deelikoon"
-            },
-            {
-              "label": "Deel na Google skakel",
-              "default": "@currentpageurl"
             }
           ]
         }
