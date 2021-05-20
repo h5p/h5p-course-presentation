@@ -1,6 +1,6 @@
 var H5PUpgrades = H5PUpgrades || {};
 
-H5PUpgrades['H5P.CoursePresentationWorkseed'] = (function () {
+H5PUpgrades['H5P.CoursePresentation'] = (function () {
   return {
     1: {
       2: function (parameters, finished) {
