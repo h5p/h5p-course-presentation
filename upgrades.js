@@ -1,6 +1,6 @@
 var H5PUpgrades = H5PUpgrades || {};
 
-H5PUpgrades['H5P.CoursePresentation'] = (function () {
+H5PUpgrades['H5P.CoursePresentationWorkseed'] = (function () {
   return {
     1: {
       2: function (parameters, finished) {
@@ -329,6 +329,27 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
               }
             });
           }
+        }
+
+        // Done
+        finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.23.
+       *
+       * Set scoring
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      23: function (parameters, finished) {
+        if (parameters) {
+          parameters.scoring = {
+            passPercentage: 100,
+            overallFeedback: [{from: 0, to: 100}]
+          };
         }
 
         // Done

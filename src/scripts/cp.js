@@ -23,6 +23,20 @@ const KEYWORD_TITLE_SKIP = null;
  */
 let CoursePresentation = function (params, id, extras) {
   var that = this;
+
+  // Sanitize params
+  this.params = $.extend({
+    scoring: {
+      passPercentage: 100,
+      overallFeedback: []
+    }
+  }, params);
+
+  // Sanitize overall feedback
+  if (this.params.scoring.overallFeedback.length === 0) {
+    this.params.scoring.overallFeedback.push({from: 0, to: 100});
+  }
+
   this.presentation = params.presentation;
   this.slides = this.presentation.slides;
   this.contentId = id;
@@ -2130,7 +2144,8 @@ CoursePresentation.prototype.getXAPIData = function () {
 
   var score = this.getScore();
   var maxScore = this.getMaxScore();
-  xAPIEvent.setScoredResult(score, maxScore, this, true, score === maxScore);
+  const success = score * 100 / maxScore >= this.params.scoring.passPercentage;
+  xAPIEvent.setScoredResult(score, maxScore, this, true, success);
 
   var childrenXAPIData = flattenArray(this.slidesWithSolutions).map((child) => {
     if (child && child.getXAPIData) {
