@@ -200,6 +200,7 @@
                   "name": "buttonIcon",
                   "type": "select",
                   "widget": "imageRadioGroup",
+                  "fontFamily": "H5PFontAwesome4",
                   "alignment": "horizontal",
                   "label": "Button icon",
                   "default": "f05a",
