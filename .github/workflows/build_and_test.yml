@@ -17,6 +17,7 @@ jobs:
       - run: |
           cd h5p-course-presentation
           npm ci
+          npm run validate-types
           npm run build
       - run: |
 

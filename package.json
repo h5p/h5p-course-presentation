@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "build": "cross-env NODE_ENV='production' webpack -p",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "validate-types": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
