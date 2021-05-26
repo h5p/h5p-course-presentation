@@ -8,7 +8,7 @@ const SummarySlide = (function () {
   /**
    * Constructor for summary slide
    * @param {import("./cp").default} coursePresentation Course presentation parent of summary slide
-   * @param {$} $summarySlide Summary slide element
+   * @param {jQuery} $summarySlide Summary slide element
    * @constructor
    */
   function SummarySlide(coursePresentation, $summarySlide) {
@@ -191,6 +191,7 @@ const SummarySlide = (function () {
     totalMaxScore += slideScores[i].maxScore;
   }
 
+  // @ts-ignore
   this.cp.triggerXAPICompleted(totalScore, totalMaxScore);
   const shareResultContainer =
     this.cp.enableTwitterShare ||
@@ -421,7 +422,7 @@ const SummarySlide = (function () {
   /**
    * Toggles solution mode on/off.
    *
-   * @params {Boolean} enableSolutionMode Enable/disable solution mode
+   * @param {boolean} enableSolutionMode Enable/disable solution mode
    */
   SummarySlide.prototype.toggleSolutionMode = function (enableSolutionMode) {
     this.cp.isSolutionMode = enableSolutionMode;
@@ -445,7 +446,7 @@ const SummarySlide = (function () {
   /**
    * Sets the solution mode button text in footer.
    *
-   * @param solutionModeText
+   * @param {string} [solutionModeText]
    */
   SummarySlide.prototype.setFooterSolutionModeText = function (solutionModeText) {
     if (!this.cp.$exitSolutionModeText) {

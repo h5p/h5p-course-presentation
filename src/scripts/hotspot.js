@@ -5,13 +5,6 @@ import { jQuery as $, EventDispatcher } from "./globals";
 import { InformationDialog } from "./information-dialog";
 
 /**
- * @typedef VideoParam
- * @property {string} copyright
- * @property {string} mime
- * @property {string} path
- */
-
-/**
  * Enum containing possible navigation types
  * @readonly
  * @enum {string}
@@ -34,7 +27,7 @@ export class Hotspot extends EventDispatcher {
    * @param {boolean} semanticParameters.invisible
    * @param {string} semanticParameters.goToSlideType
    * @param {string} semanticParameters.dialogContent
-   * @param {VideoParam[]} semanticParameters.dialogVideo
+   * @param {VideoParam[]} [semanticParameters.dialogVideo]
    * @param {Object} param1
    * @param {Object} param1.l10n
    * @param {number} param1.currentIndex

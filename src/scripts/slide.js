@@ -8,6 +8,8 @@ function Slide(parameters) {
   const self = this;
   Parent.call(self, Element, parameters.elements);
   
+  this.elements = [];
+  
   // The slide DOM element when attached
   let $wrapper;
 

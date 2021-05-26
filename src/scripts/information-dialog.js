@@ -1,13 +1,6 @@
 // @ts-check
 import { createFocusTrap } from "focus-trap";
 
-/**
- * @typedef VideoParam
- * @property {string} copyright
- * @property {string} mime
- * @property {string} path
- */
-
 export class InformationDialog {
   /**
    * @param {string} videoUrl
