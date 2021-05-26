@@ -335,6 +335,9 @@ CoursePresentation.prototype.attach = function ($container) {
   this.$progressbar = this.$wrapper.find('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
 
+  // Declare for type checking
+  this.$exitSolutionModeText = this.$exitSolutionModeText || null;
+
   // Determine if keywords pane should be initialized
   this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
   if (this.activeSurface && this.editor === undefined) {
