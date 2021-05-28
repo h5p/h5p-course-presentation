@@ -1105,6 +1105,24 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.on('exitFullScreen', exitFullScreen);
 
     this.showPopup($buttonElement, $button, popupPosition, () => {
+
+      // Specific to YT Iframe
+      if (instance.libraryInfo.machineName === "H5P.InteractiveVideo" && instance.video.pressToPlay !== undefined) {
+        // YT iframe does not receive state change event when it opens in a dialog box second time 
+        instance.video.on('ready', function (event) {
+          const videoInstance = this;
+          var playerState = 0;
+          setInterval( function() {
+            var state = videoInstance.getPlayerState();
+            console.log(playerState);
+            if ( playerState !== state ) {
+              videoInstance.trigger('stateChange', state);
+              playerState = state;
+            }
+          }, 10);
+        });
+      }
+      
       this.pauseMedia(instance);
       $buttonElement.detach();
 
