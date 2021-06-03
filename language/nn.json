@@ -3,11 +3,16 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +43,50 @@
                       ]
                     },
                     {
+                      "label": "Button color"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Fullscreen icon"
+                        },
+                        {
+                          "label": "Semi-fullscreen icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "Tittel"
                     },
                     {
@@ -54,12 +103,21 @@
                         },
                         {
                           "label": "Dialogvindu"
+                        },
+                        {
+                          "label": "Ingen handling"
                         }
                       ]
                     },
                     {
                       "label": "Gå til lysbilete",
                       "description": "Skriv sidenummer ein skal gå til"
+                    },
+                    {
+                      "label": "Video i dialog"
+                    },
+                    {
+                      "label": "Innhald i dialog"
                     },
                     {
                       "label": "Usynlig",
@@ -278,6 +336,10 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Gjekk ut av fullskjerm"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
         }
       ]
     },

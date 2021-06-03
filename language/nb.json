@@ -3,11 +3,16 @@
     {
       "fields": [
         {
+          "label": "Størrelsesforhold"
+        },
+        {
           "field": {
             "fields": [
               {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -27,15 +32,59 @@
                       "label": "Vis som knapp"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Størrelse på knapp",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Liten"
                         },
                         {
-                          "label": "Big"
+                          "label": "Stor"
                         }
                       ]
+                    },
+                    {
+                      "label": "Farge på knapp"
+                    },
+                    {
+                      "label": "Bruk et annet ikon"
+                    },
+                    {
+                      "label": "Ikon på knapp",
+                      "options": [
+                        {
+                          "label": "Informasjon"
+                        },
+                        {
+                          "label": "Video"
+                        },
+                        {
+                          "label": "Bilde"
+                        },
+                        {
+                          "label": "Lyd"
+                        },
+                        {
+                          "label": "Graf"
+                        },
+                        {
+                          "label": "Video"
+                        },
+                        {
+                          "label": "Fullskjerm"
+                        },
+                        {
+                          "label": "Bred visning"
+                        },
+                        {
+                          "label": "Twitter"
+                        },
+                        {
+                          "label": "Lenke"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Vis som aktivt felt"
                     },
                     {
                       "label": "Tittel"
@@ -54,12 +103,21 @@
                         },
                         {
                           "label": "Dialogvindu"
+                        },
+                        {
+                          "label": "Ingen handling"
                         }
                       ]
                     },
                     {
                       "label": "Spesifisert slide",
                       "description": "Skriv inn sidenummer en skal gå til"
+                    },
+                    {
+                      "label": "Video i dialogvindu"
+                    },
+                    {
+                      "label": "Innhold i dialogvindu"
                     },
                     {
                       "label": "Usynlig",
@@ -278,6 +336,10 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Avsluttet fullskjerm"
+        },
+        {
+          "label": "Dialogvindu ble lukket – brukes av skjermlesere",
+          "default": "Lukket dialog"
         }
       ]
     },

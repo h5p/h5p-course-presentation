@@ -173,11 +173,10 @@
                   ]
                 },
                 {
-
                   "name": "buttonColor",
                   "type": "text",
                   "widget": "colorSelector",
-                  "label": "Button Color",
+                  "label": "Button color",
                   "importance": "low",
                   "default": "#1d5cff",
                   "optional": true,
@@ -190,13 +189,11 @@
                   "name": "useButtonIcon",
                   "type": "boolean",
                   "label": "Use different icon",
-
                   "importance": "medium",
                   "default": false,
                   "optional": false
                 },
                 {
-
                   "name": "buttonIcon",
                   "type": "select",
                   "widget": "imageRadioGroup",
@@ -207,52 +204,52 @@
                   "optional": false,
                   "options": [
                     {
-                      "fontIcon" : "f05a",
+                      "fontIcon": "f05a",
                       "value": "f05a",
                       "label": "Information icon"
                     },
                     {
-                      "fontIcon" : "f008",
+                      "fontIcon": "f008",
                       "value": "f008",
                       "label": "Video icon"
                     },
                     {
-                      "fontIcon" : "f03e",
+                      "fontIcon": "f03e",
                       "value": "f03e",
                       "label": "Image icon"
                     },
                     {
-                      "fontIcon" : "f028",
+                      "fontIcon": "f028",
                       "value": "f028",
                       "label": "Audio icon"
                     },
                     {
-                      "fontIcon" : "f200",
+                      "fontIcon": "f200",
                       "value": "f200",
                       "label": "Chart icon"
                     },
                     {
-                      "fontIcon" : "f03d",
+                      "fontIcon": "f03d",
                       "value": "f03d",
                       "label": "Video icon"
                     },
                     {
-                      "fontIcon" : "f065",
+                      "fontIcon": "f065",
                       "value": "f065",
                       "label": "Fullscreen icon"
                     },
                     {
-                      "fontIcon" : "f066",
+                      "fontIcon": "f066",
                       "value": "f066",
                       "label": "Semi-fullscreen icon"
                     },
                     {
-                      "fontIcon" : "f099",
+                      "fontIcon": "f099",
                       "value": "f099",
                       "label": "Twitter icon"
                     },
                     {
-                      "fontIcon" : "f0c1",
+                      "fontIcon": "f0c1",
                       "value": "f0c1",
                       "label": "Link icon"
                     }
