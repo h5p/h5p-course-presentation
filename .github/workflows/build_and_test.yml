@@ -74,3 +74,28 @@ jobs:
         with:
           name: interaktiv_tavle.h5p
           path: dist/interaktiv_tavle.h5p
+      - name: Load library.json
+        id: set_library
+        run: |
+          ls
+          JSON=$(cat ./h5p-course-presentation/library.json)
+          JSON="${JSON//'%'/%25}"
+          JSON="${JSON//$'\n'/%0A}"
+          JSON="${JSON//$'\r'/%0D}"
+          echo "::set-output name=library::${JSON}"
+      - uses: "marvinpinto/action-automatic-releases@latest" # https://github.com/marvinpinto/actions/tree/master/packages/automatic-releases
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: |
+            ${{ 
+              format(
+                'v{0}.{1}.{2}',
+                fromJson(steps.set_library.outputs.library).majorVersion,
+                fromJson(steps.set_library.outputs.library).minorVersion,
+                fromJson(steps.set_library.outputs.library).patchVersion
+              )
+            }}
+          prerelease: false
+          files: |
+            dist/interaktiv_tavle.h5p
