@@ -46,7 +46,8 @@
                       ]
                     },
                     {
-                      "label": "Button color"
+                      "label": "Button color",
+                      "default": "#1d5cff"
                     },
                     {
                       "label": "Use different icon"

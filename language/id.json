@@ -46,7 +46,8 @@
                       ]
                     },
                     {
-                      "label": "Button color"
+                      "label": "Button color",
+                      "default": "#1d5cff"
                     },
                     {
                       "label": "Use different icon"
@@ -135,7 +136,7 @@
                   {
                     "label": "Gambar",
                     "description": "Gambar latar harus memiliki rasio 2:1 untuk lebar terhadap tinggi untuk mencegah peregangan. Gambar dalam resolusi tinggi akan tampak lebih baik pada layar yang lebar."
-                   },
+                  },
                   {
                     "label": "Pilih warna",
                     "default": ""
