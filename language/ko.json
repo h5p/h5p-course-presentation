@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,51 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Fullscreen icon"
+                        },
+                        {
+                          "label": "Semi-fullscreen icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "제목"
                     },
                     {
@@ -51,12 +104,24 @@
                         },
                         {
                           "label": "이전"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
                         }
                       ]
                     },
                     {
                       "label": "슬라이드 번호 입력",
                       "description": "'슬라이드 번호로 이동'을 선택했을 때에만 활성화 "
+                    },
+                    {
+                      "label": "Dialog video"
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "투명화",
@@ -204,10 +269,6 @@
           "default": "트위터에 공유하기"
         },
         {
-          "label": "구글 공유 텍스트",
-          "default": "구글플러스에 공유하기"
-        },
-        {
           "label": "요약 슬라이드의 제목",
           "default": "요약"
         },
@@ -279,6 +340,10 @@
         {
           "label": "보조 기술에 대한 전체 화면 공지 종료",
           "default": "전체화면 종료됨"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
         }
       ]
     },
@@ -369,13 +434,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "구글 플러스 공유 아이콘 보이기"
-            },
-            {
-              "label": "구글에 링크를 공유",
-              "default": "@currentpageurl"
             }
           ]
         }

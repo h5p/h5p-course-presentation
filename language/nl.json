@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,51 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Fullscreen icon"
+                        },
+                        {
+                          "label": "Semi-fullscreen icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "Titel"
                     },
                     {
@@ -51,12 +104,24 @@
                         },
                         {
                           "label": "Vorige dia"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
                         }
                       ]
                     },
                     {
                       "label": "Ga naar dia",
                       "description": "Allen mogelijk indien 'Specifieke dia' is geselecteerd"
+                    },
+                    {
+                      "label": "Dialog video"
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "Onzichtbaar",
@@ -275,6 +340,10 @@
         {
           "label": "Volledig scherm beëindigd mededeling voor ondersteunende technologieën",
           "default": "Volledig scherm beëindigd"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
         }
       ]
     },

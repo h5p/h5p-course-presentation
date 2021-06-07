@@ -3,8 +3,14 @@
     {
       "fields": [
         {
+          "label": "Størrelsesforhold"
+        },
+        {
           "field": {
             "fields": [
+              {
+                "label": "Aspect Ratio"
+              },
               {
                 "field": {
                   "fields": [
@@ -13,18 +19,20 @@
                     {},
                     {},
                     {},
+                    {},
+                    {},
                     {
-                      "label": "Kommentarer",
-                      "description": "Kommentarene vises når brukeren ser på fasit."
+                      "label": "Comments",
+                      "description": "The comments are shown when the user displays the suggested answers for all slides."
                     },
                     {
-                      "label": "Alltid vis kommentarer"
+                      "label": "Always display comments"
                     },
                     {
-                      "label": "Opasitet for bakgrunn"
+                      "label": "Background Opacity"
                     },
                     {
-                      "label": "Vis som knapp"
+                      "label": "Display as button"
                     },
                     {
                       "label": "Button size",
@@ -38,32 +46,86 @@
                       ]
                     },
                     {
-                      "label": "Tittel"
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Fullscreen icon"
+                        },
+                        {
+                          "label": "Semi-fullscreen icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
+                      "label": "Title"
                     },
                     {
                       "label": "Type",
                       "options": [
                         {
-                          "label": "Spesifisert slide"
+                          "label": "Specific slide number"
                         },
                         {
-                          "label": "Neste side"
+                          "label": "Next slide"
                         },
                         {
-                          "label": "Forrige side"
+                          "label": "Previous slide"
                         },
                         {
-                          "label": "Dialogvindu"
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
                         }
                       ]
                     },
                     {
-                      "label": "Spesifisert slide",
-                      "description": "Skriv inn sidenummer en skal gå til"
+                      "label": "Specific slide number",
+                      "description": "Type a slide number to go to"
                     },
                     {
-                      "label": "Usynlig",
-                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                      "label": "Dialog video"
+                    },
+                    {
+                      "label": "Dialog content"
+                    },
+                    {
+                      "label": "Invisible",
+                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
                     }
                   ]
                 }
@@ -72,12 +134,12 @@
               {
                 "fields": [
                   {
-                    "label": "Bilde",
-                    "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+                    "label": "Image",
+                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
-                    "label": "Velg farge",
-                    "default": ""
+                    "label": "Pick a color",
+                    "default": null
                   }
                 ]
               }
@@ -278,6 +340,10 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Avsluttet fullskjerm"
+        },
+        {
+          "label": "Dialogvindu ble lukket – brukes av skjermlesere",
+          "default": "Lukket dialog"
         }
       ]
     },
