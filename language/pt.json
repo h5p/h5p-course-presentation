@@ -129,6 +129,10 @@
                       ]
                     },
                     {
+                      "label": "Dialog audio",
+                      "description": "An audio track that will play when the modal opens"
+                    },
+                    {
                       "label": "Dialog content"
                     },
                     {

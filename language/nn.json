@@ -129,6 +129,10 @@
                       ]
                     },
                     {
+                      "label": "Lyd i dialog",
+                      "description": "Eit lydspor som spillast av når dialogen opnar"
+                    },
+                    {
                       "label": "Innhald i dialog"
                     },
                     {
