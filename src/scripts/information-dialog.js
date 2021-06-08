@@ -39,8 +39,8 @@ export class InformationDialog {
    */
   static createVideoEmbed(videoUrl) {
     const iframe = document.createElement("iframe");
-    iframe.setAttribute("width", "560");
-    iframe.setAttribute("height", "315");
+    iframe.setAttribute("width", "500");
+    iframe.setAttribute("height", "281");
     iframe.setAttribute("src", videoUrl);
     iframe.setAttribute("title", "Video player");
     iframe.setAttribute("frameborder", "0");
@@ -104,6 +104,12 @@ export class InformationDialog {
       verticalOffset
     );
 
+    /** @type {HTMLElement} */
+    this.modalElement = this.modalElement || null;
+    
+    /** @type {HTMLIFrameElement} */
+    this.videoEmbedElement = this.videoEmbedElement || null;
+
     this.attach();
   }
 
@@ -134,14 +140,14 @@ export class InformationDialog {
       }
     });
 
-    const modal = document.createElement("section");
-    modal.className = "h5p-information-dialog";
-    modal.style.left = horizontalOffset;
-    modal.style.top = verticalOffset;
-    this.focusTrap = createFocusTrap(modal, {
+    this.modalElement = document.createElement("section");
+    this.modalElement.className = "h5p-information-dialog";
+    this.modalElement.style.left = horizontalOffset;
+    this.modalElement.style.top = verticalOffset;
+    this.focusTrap = createFocusTrap(this.modalElement, {
       allowOutsideClick: true,
     });
-    container.appendChild(modal);
+    container.appendChild(this.modalElement);
 
     const mainContainer = document.createElement("div");
     mainContainer.className = "h5p-information-dialog-main";
@@ -152,18 +158,25 @@ export class InformationDialog {
 
       if (video) {
         let videoElement;
+        let videoUrl;
 
         const isYouTube = video.mime === "video/YouTube";
         if (isYouTube) {
-          videoElement = InformationDialog.createYouTubeEmbed(video.path);
+          videoUrl = video.path;
+          videoElement = InformationDialog.createYouTubeEmbed(videoUrl);
         } else {
-          videoElement = InformationDialog.createVideoEmbed(
-            // @ts-ignore
-            H5P.getPath(video.path, getContentId())
-          );
+          // @ts-ignore
+          videoUrl = H5P.getPath(video.path, getContentId());
+          videoElement = InformationDialog.createVideoEmbed(videoUrl);
         }
 
-        mainContainer.appendChild(videoElement);
+        this.videoEmbedElement = videoElement;
+
+        const videoContainer = document.createElement("div");
+        videoContainer.className = "h5p-information-dialog-video-container";
+        mainContainer.appendChild(videoContainer);
+
+        videoContainer.appendChild(videoElement);
       } else if (dialogImage) {
         const imageElement = InformationDialog.createImageEmbed(dialogImage);
         mainContainer.appendChild(imageElement);
@@ -176,13 +189,13 @@ export class InformationDialog {
       }
     }
 
-    modal.appendChild(mainContainer);
+    this.modalElement.appendChild(mainContainer);
 
     const closeButton = document.createElement("button");
     closeButton.type = "button";
     closeButton.className = "h5p-information-dialog-close-button";
     closeButton.addEventListener("click", () => this.onCloseClick());
-    modal.appendChild(closeButton);
+    this.modalElement.appendChild(closeButton);
 
     const closeButtonIcon = document.createElement("span");
     closeButtonIcon.setAttribute("aria-hidden", "true");
@@ -207,11 +220,24 @@ export class InformationDialog {
   show() {
     this.modal.removeAttribute("hidden");
     this.focusTrap.activate();
+
+    const hasVideo = this.videoEmbedElement;
+    if (hasVideo) {
+      const videoContainer = this.modalElement.querySelector(".h5p-information-dialog-video-container");
+      if (videoContainer) {
+        videoContainer.appendChild(this.videoEmbedElement);
+      }
+    }
   }
 
   hide() {
     this.modal.setAttribute("hidden", "true");
     this.focusTrap.deactivate();
+
+    const hasVideo = this.videoEmbedElement;
+    if (hasVideo) {
+      this.videoEmbedElement.remove();
+    }
   }
 
   onCloseClick() {
