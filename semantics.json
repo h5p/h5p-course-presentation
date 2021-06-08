@@ -339,20 +339,26 @@
                     }
                   },
                   {
-                    "name": "dialogVideo",
-                    "type": "video",
-                    "label": "Dialog video",
-                    "importance": "low",
-                    "optional": true,
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [
-                        {
-                          "field": "showAsHotspot",
-                          "equals": true
-                        }
-                      ]
-                    }
+                    "label": "What to show above the dialog content",
+                    "type": "group",
+                    "name": "dialogHeaderContent",
+                    "widget": "radioSelector",                    
+                    "fields": [
+                      {
+                        "name": "dialogVideo",
+                        "type": "video",
+                        "label": "Dialog video",
+                        "importance": "low",
+                        "optional": true
+                      },                  
+                      {
+                        "name": "dialogImage",
+                        "type": "image",
+                        "label": "Dialog image",
+                        "importance": "low",
+                        "optional": true                        
+                      }
+                    ]
                   },
                   {
                     "name": "dialogContent",

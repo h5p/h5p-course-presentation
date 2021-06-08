@@ -1,11 +1,23 @@
 // @ts-check
 import { createFocusTrap } from "focus-trap";
+import { getContentId } from "./utils";
 
 /**
- * @typedef VideoParam
+ * @typedef Media
  * @property {string} copyright
  * @property {string} mime
  * @property {string} path
+ */
+
+/**
+ * @typedef {Media & {height: number, width: number}} Image
+ */
+
+/**
+ * @typedef {{
+ *   dialogImage?: Image;
+ *   dialogVideo?: Media[];
+ * }} DialogHeaderContent
  */
 
 export class InformationDialog {
@@ -42,9 +54,32 @@ export class InformationDialog {
   }
 
   /**
+   * @param {Image} image
+   */
+  static createImageEmbed(image) {
+    const img = document.createElement("img");
+    img.setAttribute(
+      "src",
+      // @ts-ignore
+      H5P.getPath(image.path, getContentId())
+    );
+    img.setAttribute("alt", "");
+
+    if (image.height) {
+      img.setAttribute("height", image.height.toString());
+    }
+
+    if (image.width) {
+      img.setAttribute("width", image.width.toString());
+    }
+
+    return img;
+  }
+
+  /**
    * @param {Object} param
    * @param {HTMLElement | HTMLElement[]} param.content
-   * @param {VideoParam[]} param.dialogVideo
+   * @param {DialogHeaderContent} param.dialogHeaderContent
    * @param {HTMLElement} param.parent
    * @param {object} param.l10n
    * @param {string} param.horizontalOffset
@@ -52,20 +87,19 @@ export class InformationDialog {
    */
   constructor({
     content,
-    dialogVideo,
+    dialogHeaderContent,
     parent,
     l10n,
     horizontalOffset,
     verticalOffset,
   }) {
     const contents = content instanceof Array ? content : [content];
-    const video = dialogVideo instanceof Array ? dialogVideo : [dialogVideo];
 
     this.parent = parent;
     this.l10n = l10n;
     this.modal = this.createDialog(
       contents,
-      video.length > 0 ? video[0] : null,
+      dialogHeaderContent,
       horizontalOffset,
       verticalOffset
     );
@@ -78,13 +112,18 @@ export class InformationDialog {
    * The modal includes button to set the aspect ratio to either 4/3 or 3/4.
    *
    * @param {HTMLElement[]} contents
-   * @param {VideoParam} dialogVideo
+   * @param {DialogHeaderContent} dialogHeaderContent
    * @param {string} horizontalOffset Horizontal offset as a percentage of the container width
    * @param {string} verticalOffset Vertical offset as a percentage of the container height
    *
    * @return {HTMLDivElement}
    */
-  createDialog(contents, dialogVideo, horizontalOffset, verticalOffset) {
+  createDialog(
+    contents,
+    dialogHeaderContent,
+    horizontalOffset,
+    verticalOffset
+  ) {
     const container = document.createElement("div");
     container.className = "h5p-information-dialog-container";
     container.setAttribute("hidden", "true");
@@ -107,18 +146,28 @@ export class InformationDialog {
     const mainContainer = document.createElement("div");
     mainContainer.className = "h5p-information-dialog-main";
 
-    if (dialogVideo) {
-      let videoElement;
+    if (dialogHeaderContent) {
+      const { dialogImage, dialogVideo } = dialogHeaderContent;
+      const video = dialogVideo instanceof Array ? dialogVideo[0] : dialogVideo;
 
-      const isYouTube = dialogVideo.mime === "video/YouTube";
-      if (isYouTube) {
-        videoElement = InformationDialog.createYouTubeEmbed(dialogVideo.path);
-      } else {
-        videoElement = InformationDialog.createVideoEmbed(dialogVideo.path);
-        console.log({ dialogVideo });
+      if (video) {
+        let videoElement;
+
+        const isYouTube = video.mime === "video/YouTube";
+        if (isYouTube) {
+          videoElement = InformationDialog.createYouTubeEmbed(video.path);
+        } else {
+          videoElement = InformationDialog.createVideoEmbed(
+            // @ts-ignore
+            H5P.getPath(video.path, getContentId())
+          );
+        }
+
+        mainContainer.appendChild(videoElement);
+      } else if (dialogImage) {
+        const imageElement = InformationDialog.createImageEmbed(dialogImage);
+        mainContainer.appendChild(imageElement);
       }
-
-      mainContainer.appendChild(videoElement);
     }
 
     for (const contentElement of contents) {
@@ -129,15 +178,11 @@ export class InformationDialog {
 
     modal.appendChild(mainContainer);
 
-    const modalFooter = document.createElement("footer");
-    modalFooter.className = "h5p-information-dialog-footer";
-    modal.appendChild(modalFooter);
-
     const closeButton = document.createElement("button");
     closeButton.type = "button";
     closeButton.className = "h5p-information-dialog-close-button";
     closeButton.addEventListener("click", () => this.onCloseClick());
-    modalFooter.appendChild(closeButton);
+    modal.appendChild(closeButton);
 
     const closeButtonIcon = document.createElement("span");
     closeButtonIcon.setAttribute("aria-hidden", "true");
