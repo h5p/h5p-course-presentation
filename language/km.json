@@ -118,7 +118,15 @@
                       "description": "មានប្រសិទ្ធភាពតែនៅពេលដែល 'លេខស្លាយជាក់លាក់' ត្រូវបានជ្រើសរើស"
                     },
                     {
-                      "label": "Dialog video"
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
                     },
                     {
                       "label": "Dialog content"

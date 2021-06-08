@@ -118,7 +118,15 @@
                       "description": "Escriba un número de diapositiva para ir a ella"
                     },
                     {
-                      "label": "Dialog video"
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
                     },
                     {
                       "label": "Dialog content"

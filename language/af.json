@@ -118,7 +118,15 @@
                       "description": "Tik die skyfienommer waarheen jy wil gaan"
                     },
                     {
-                      "label": "Dialog video"
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
                     },
                     {
                       "label": "Dialog content"

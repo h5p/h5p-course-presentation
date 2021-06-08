@@ -118,7 +118,15 @@
                       "description": "Skriv sidenummer ein skal gå til"
                     },
                     {
-                      "label": "Video i dialog"
+                      "label": "Video i dialog",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
                     },
                     {
                       "label": "Innhald i dialog"

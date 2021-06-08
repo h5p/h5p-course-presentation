@@ -342,7 +342,7 @@
                     "label": "What to show above the dialog content",
                     "type": "group",
                     "name": "dialogHeaderContent",
-                    "widget": "radioSelector",                    
+                    "widget": "radioSelector",
                     "fields": [
                       {
                         "name": "dialogVideo",
@@ -350,13 +350,13 @@
                         "label": "Dialog video",
                         "importance": "low",
                         "optional": true
-                      },                  
+                      },
                       {
                         "name": "dialogImage",
                         "type": "image",
                         "label": "Dialog image",
                         "importance": "low",
-                        "optional": true                        
+                        "optional": true
                       }
                     ]
                   },
