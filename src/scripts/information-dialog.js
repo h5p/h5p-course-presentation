@@ -22,26 +22,17 @@ import { getContentId } from "./utils";
 
 export class InformationDialog {
   /**
-   * @param {string} videoUrl
+   * @param {string} youtubeUrl
    * @return {HTMLIFrameElement}
    */
-  static createYouTubeEmbed(videoUrl) {
-    const videoId = new URLSearchParams(videoUrl.split("?")[1]).get("v");
+  static createYouTubeEmbed(youtubeUrl) {
+    const videoId = new URLSearchParams(youtubeUrl.split("?")[1]).get("v");
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
 
-    return InformationDialog.createVideoEmbed(
-      `https://www.youtube.com/embed/${videoId}`
-    );
-  }
-
-  /**
-   * @param {string} videoUrl
-   * @return {HTMLIFrameElement}
-   */
-  static createVideoEmbed(videoUrl) {
     const iframe = document.createElement("iframe");
     iframe.setAttribute("width", "500");
     iframe.setAttribute("height", "281");
-    iframe.setAttribute("src", videoUrl);
+    iframe.setAttribute("src", embedUrl);
     iframe.setAttribute("title", "Video player");
     iframe.setAttribute("frameborder", "0");
     iframe.setAttribute(
@@ -51,6 +42,17 @@ export class InformationDialog {
     iframe.setAttribute("allowfullscreen", "allowfullscreen");
 
     return iframe;
+  }
+
+  /**
+   * @param {string} videoUrl
+   * @return {HTMLVideoElement}
+   */
+  static createVideoEmbed(videoUrl) {
+    const videoElement = document.createElement("video");
+    videoElement.src = videoUrl;
+
+    return videoElement;
   }
 
   /**
@@ -106,8 +108,8 @@ export class InformationDialog {
 
     /** @type {HTMLElement} */
     this.modalElement = this.modalElement || null;
-    
-    /** @type {HTMLIFrameElement} */
+
+    /** @type {HTMLIFrameElement | HTMLVideoElement} */
     this.videoEmbedElement = this.videoEmbedElement || null;
 
     this.attach();
@@ -223,8 +225,10 @@ export class InformationDialog {
 
     const hasVideo = this.videoEmbedElement;
     if (hasVideo) {
-      const videoContainer = this.modalElement.querySelector(".h5p-information-dialog-video-container");
-      if (videoContainer) {
+      const videoContainer = this.modalElement.querySelector(
+        ".h5p-information-dialog-video-container"
+      );
+      if (videoContainer) {
         videoContainer.appendChild(this.videoEmbedElement);
       }
     }
