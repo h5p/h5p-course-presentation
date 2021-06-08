@@ -361,6 +361,13 @@
                     ]
                   },
                   {
+                    "name": "dialogAudio",
+                    "type": "audio",
+                    "label": "Dialog audio",
+                    "importance": "low",
+                    "optional": true
+                  },
+                  {
                     "name": "dialogContent",
                     "type": "text",
                     "label": "Dialog content",
