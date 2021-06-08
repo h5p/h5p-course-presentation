@@ -82,7 +82,6 @@ export class Hotspot extends EventDispatcher {
       $content
     );
 
-    console.log("args", arguments[0]);
     this.eventDispatcher = new EventDispatcher();
     const classes = `h5p-press-to-go${invisible ? "" : " h5p-visible"}`;
     const tabindex = invisible ? -1 : 0;
