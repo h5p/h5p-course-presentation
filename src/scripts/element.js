@@ -197,8 +197,10 @@ Element.createContent = function (slide, coursePresentation, parameters) {
  * @param {string} parameters.title
  * @param {number} parameters.goToSlide
  * @param {boolean} parameters.invisible
- * @param {string} parameters.goToSlideType
+ * @param {string} parameters.goToSlideType}
  * @param {string} parameters.dialogContent
+ * @param {Media[]} parameters.dialogAudio
+ * @param {DialogHeaderContent} parameters.dialogHeaderContent
  * @param {Object} l10n
  * @param {number} currentIndex
  * @param {CoursePresentation} coursePresentation
