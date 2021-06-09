@@ -398,6 +398,7 @@
                     "importance": "low",
                     "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
                     "default": false,
+                    "widget": "showWhen",
                     "showWhen": {
                       "rules": [
                         {
