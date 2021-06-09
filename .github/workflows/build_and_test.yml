@@ -47,7 +47,8 @@ jobs:
             h5p-drag-n-bar \
             h5p-drag-n-drop \
             h5p-editor-drag-question \
-            h5p-drag-question
+            h5p-drag-question \
+            h5p-editor-radio-selector
 
           # Clone override projects without build scripts
           git clone https://github.com/NDLANO/h5p-chart.git
@@ -58,6 +59,7 @@ jobs:
           git clone https://github.com/NDLANO/h5p-drag-n-bar.git
           git clone https://github.com/NDLANO/h5p-drag-n-drop.git
           git clone https://github.com/NDLANO/h5p-editor-drag-question.git
+          git clone https://github.com/edh5p/h5p-editor-radio-selector.git
 
           # Clone and build override projects with build scripts
           git clone https://github.com/NDLANO/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
@@ -75,3 +77,28 @@ jobs:
         with:
           name: interaktiv_tavle.h5p
           path: dist/interaktiv_tavle.h5p
+      - name: Load library.json
+        id: set_library
+        run: |
+          ls
+          JSON=$(cat ./h5p-course-presentation/library.json)
+          JSON="${JSON//'%'/%25}"
+          JSON="${JSON//$'\n'/%0A}"
+          JSON="${JSON//$'\r'/%0D}"
+          echo "::set-output name=library::${JSON}"
+      - uses: "marvinpinto/action-automatic-releases@latest" # https://github.com/marvinpinto/actions/tree/master/packages/automatic-releases
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: |
+            ${{ 
+              format(
+                'v{0}.{1}.{2}',
+                fromJson(steps.set_library.outputs.library).majorVersion,
+                fromJson(steps.set_library.outputs.library).minorVersion,
+                fromJson(steps.set_library.outputs.library).patchVersion
+              )
+            }}
+          prerelease: false
+          files: |
+            dist/interaktiv_tavle.h5p

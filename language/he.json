@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,51 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Fullscreen icon"
+                        },
+                        {
+                          "label": "Semi-fullscreen icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "כותרת"
                     },
                     {
@@ -51,12 +104,32 @@
                         },
                         {
                           "label": "עמוד קודם"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
                         }
                       ]
                     },
                     {
                       "label": "מספר עמוד מסויים",
                       "description": "חל רק כאשר נבחר 'מספר עמוד מסויים'"
+                    },
+                    {
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "מוסתר",
@@ -204,10 +277,6 @@
           "default": "שיתוף בטוויטר"
         },
         {
-          "label": "תווית שיתוף בגוגל",
-          "default": "שיתוף בגוגל+"
-        },
-        {
           "label": "כותרת לעמוד סיכום",
           "default": "סיכום"
         },
@@ -279,6 +348,10 @@
         {
           "label": "יצאתם מהודעת מסך מלא עבור טכנולוגיות מסייעות",
           "default": "יצאתם ממסך מלא"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
         }
       ]
     },
@@ -369,13 +442,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "תצוגת סמל של שיתוף גוגל פלוס"
-            },
-            {
-              "label": "שתפו לקישור של גוגל פלוס",
-              "default": "@currentpageurl"
             }
           ]
         }

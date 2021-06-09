@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,51 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Fullscreen icon"
+                        },
+                        {
+                          "label": "Semi-fullscreen icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "Titel"
                     },
                     {
@@ -51,12 +104,32 @@
                         },
                         {
                           "label": "Föregående sida"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
                         }
                       ]
                     },
                     {
                       "label": "Specifikt sidonummer",
                       "description": "Endast tillgänglig om 'Specifikt sidonummer' är valt"
+                    },
+                    {
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "Osynlig",
@@ -237,7 +310,7 @@
         },
         {
           "label": "Etikett för tillgänglighetshjälpmedel",
-          "default": "Använd pilarna vänster och höger för att byta sida"
+          "default": "Använd pilarna vänster och höger för att byta sida."
         },
         {
           "label": "Etikett för aktiviteter som inte är genomförda",
@@ -275,6 +348,10 @@
         {
           "label": "Meddelande om avslutat helskärmsläge för  tillgänglighetshjälpmedel",
           "default": "Avslutat helskärmsläge"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
         }
       ]
     },

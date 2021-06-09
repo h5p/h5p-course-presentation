@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,51 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Fullscreen icon"
+                        },
+                        {
+                          "label": "Semi-fullscreen icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "Tytuł"
                     },
                     {
@@ -51,12 +104,32 @@
                         },
                         {
                           "label": "Poprzedni slajd"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
                         }
                       ]
                     },
                     {
                       "label": "Określony numer slajdu",
                       "description": "Ma zastosowanie tylko wtedy, gdy wybrano „Określony numer slajdu”"
+                    },
+                    {
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "Niewidzialne",
@@ -275,6 +348,10 @@
         {
           "label": "Ogłoszenie wyłączenia trybu pełnoekranowego dla użytkowników, korzystających z technologii wspomagających",
           "default": "Wyłączono tryb pełnoekranowy"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
         }
       ]
     },

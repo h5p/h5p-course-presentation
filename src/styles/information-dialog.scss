@@ -15,10 +15,23 @@
   background-color: #fff;
   left: 50%;
   max-width: 90%;
-  padding: 2rem 3rem;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+
+  img,
+  video {
+    display: block;
+    height: auto;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+}
+
+.h5p-information-dialog-main {
+  max-height: 70vh;
+  overflow: auto;
+  padding: 2rem 3rem;  
 }
 
 .h5p-information-dialog-close-button {
@@ -29,7 +42,7 @@
   font-size: 1.6rem;
   line-height: 0.5;
   padding: 0.5em;
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: 0.5rem;
   top: 0;
 }

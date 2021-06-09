@@ -27,7 +27,8 @@ export class Hotspot extends EventDispatcher {
    * @param {boolean} semanticParameters.invisible
    * @param {string} semanticParameters.goToSlideType
    * @param {string} semanticParameters.dialogContent
-   * @param {VideoParam[]} [semanticParameters.dialogVideo]
+   * @param {Media[]} semanticParameters.dialogAudio
+   * @param {DialogHeaderContent} semanticParameters.dialogHeaderContent
    * @param {Object} param1
    * @param {Object} param1.l10n
    * @param {number} param1.currentIndex
@@ -40,7 +41,8 @@ export class Hotspot extends EventDispatcher {
       invisible,
       goToSlideType = hotspotType.GO_TO_SPECIFIED,
       dialogContent,
-      dialogVideo,
+      dialogAudio,
+      dialogHeaderContent,
     },
     { l10n, currentIndex },
     $content = null
@@ -52,7 +54,8 @@ export class Hotspot extends EventDispatcher {
         invisible,
         goToSlideType,
         dialogContent,
-        dialogVideo,
+        dialogAudio,
+        dialogHeaderContent,
       },
       {
         l10n,
@@ -113,7 +116,7 @@ export class Hotspot extends EventDispatcher {
           this.dialog ||
           new InformationDialog({
             content: $(dialogContent).get(0),
-            dialogVideo,
+            dialogHeaderContent,
             parent: this.$element.closest(".h5p-presentation-wrapper").get(0),
             l10n,
             horizontalOffset,
