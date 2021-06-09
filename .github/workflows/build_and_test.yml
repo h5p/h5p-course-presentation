@@ -46,7 +46,8 @@ jobs:
             h5p-drag-n-bar \
             h5p-drag-n-drop \
             h5p-editor-drag-question \
-            h5p-drag-question
+            h5p-drag-question \
+            h5p-editor-radio-selector
 
           # Clone override projects without build scripts
           git clone https://github.com/NDLANO/h5p-chart.git
@@ -57,6 +58,7 @@ jobs:
           git clone https://github.com/NDLANO/h5p-drag-n-bar.git
           git clone https://github.com/NDLANO/h5p-drag-n-drop.git
           git clone https://github.com/NDLANO/h5p-editor-drag-question.git
+          git clone https://github.com/edh5p/h5p-editor-radio-selector.git
 
           # Clone and build override projects with build scripts
           git clone https://github.com/NDLANO/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd

@@ -118,7 +118,15 @@
                       "description": "Anvendes kun vis 'specifikt slide' er valgt til 'Valg af slide der vises'"
                     },
                     {
-                      "label": "Dialog video"
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
                     },
                     {
                       "label": "Dialog content"

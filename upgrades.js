@@ -417,6 +417,25 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
         console.log("post-upgrade", {parameters})
         
         finished(null, parameters);
+      },
+      24: function(parameters, finished) {
+        if (parameters.presentation && parameters.presentation.slides) {
+          parameters.presentation.slides.forEach(function (slide) {
+            if (slide.elements) {
+              slide.elements.forEach(function (element) {
+                if (element.dialogVideo) {
+                  element.dialogHeaderContent = {
+                    dialogVideo: element.dialogVideo,
+                  };
+
+                  delete element.dialogVideo;
+                }
+              });
+            }
+          });
+        }
+        
+        finished(null, parameters);
       }
     }
   };

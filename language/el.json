@@ -118,7 +118,15 @@
                       "description": "Μπορεί να εφαρμοστεί μόνο όταν έχει επιλεγεί o \"Συγκεκριμένος αριθμός διαφάνειας\""
                     },
                     {
-                      "label": "Dialog video"
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
                     },
                     {
                       "label": "Dialog content"
