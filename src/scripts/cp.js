@@ -29,6 +29,7 @@ let CoursePresentation = function (params, id, extras) {
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
+  this.showCommentsAfterSolution = [];
   this.hasAnswerElements = false;
   this.ignoreResize = false;
   this.isTask = false;
@@ -1969,6 +1970,12 @@ CoursePresentation.prototype.showSolutions = function () {
         score: slideScore,
         maxScore: slideMaxScore
       });
+    }
+    // Show comments of non graded contents
+    if (this.showCommentsAfterSolution[i]) {
+      for (var j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
+        this.showCommentsAfterSolution[i][j].showCPComments();
+      }
     }
   }
   if (hasScores) {
