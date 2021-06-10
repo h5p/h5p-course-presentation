@@ -42,10 +42,7 @@ export class InformationDialog {
    */
   static createImageEmbed(image) {
     const img = document.createElement("img");
-    img.setAttribute(
-      "src",
-      H5P.getPath(image.path, getContentId())
-    );
+    img.setAttribute("src", H5P.getPath(image.path, getContentId()));
     img.setAttribute("alt", "");
 
     if (image.height) {
@@ -60,14 +57,22 @@ export class InformationDialog {
   }
 
   /**
-   * @param {Media} audio
+   * @param {Media[]} audioSources
    */
-  static createAudioPlayer(audio) {
+  static createAudioPlayer(audioSources) {
     const audioElement = document.createElement("audio");
 
-    audioElement.src = H5P.getPath(audio.path, getContentId());
+    if (audioElement.canPlayType !== undefined) {
+      for (const audioSource of audioSources) {
+        var source = document.createElement("source");
+        source.src = H5P.getPath(audioSource.path, getContentId());
+        source.type = audioSource.mime;
+        audioElement.appendChild(source);
+      }
+    }
+
+    audioElement.preload = "auto";
     audioElement.load();
-    audioElement.preload = 'auto';
 
     return audioElement;
   }
@@ -76,7 +81,7 @@ export class InformationDialog {
    * @param {{
    *   content: HTMLElement | HTMLElement[];
    *   dialogHeaderContent: DialogHeaderContent;
-   *   dialogAudio: Media;
+   *   dialogAudio: Media[];
    *   parent: HTMLElement;
    *   l10n: any;
    *   horizontalOffset: string;
@@ -112,7 +117,7 @@ export class InformationDialog {
 
     /** @type {HTMLAudioElement} */
     this.audioElement = this.audioElement || null;
-    
+
     this.attach();
   }
 
@@ -122,7 +127,7 @@ export class InformationDialog {
    *
    * @param {HTMLElement[]} contents
    * @param {DialogHeaderContent} dialogHeaderContent
-   * @param {Media} dialogAudio
+   * @param {Media[]} dialogAudio
    * @param {string} horizontalOffset Horizontal offset as a percentage of the container width
    * @param {string} verticalOffset Vertical offset as a percentage of the container height
    *
@@ -133,7 +138,7 @@ export class InformationDialog {
     dialogHeaderContent,
     dialogAudio,
     horizontalOffset,
-    verticalOffset,
+    verticalOffset
   ) {
     const container = document.createElement("div");
     container.className = "h5p-information-dialog-container";
