@@ -44,7 +44,6 @@ export class InformationDialog {
     const img = document.createElement("img");
     img.setAttribute(
       "src",
-      // @ts-expect-error
       H5P.getPath(image.path, getContentId())
     );
     img.setAttribute("alt", "");
@@ -66,7 +65,6 @@ export class InformationDialog {
   static createAudioPlayer(audio) {
     const audioElement = document.createElement("audio");
 
-    // @ts-expect-error
     audioElement.src = H5P.getPath(audio.path, getContentId());
     audioElement.load();
     audioElement.preload = 'auto';
