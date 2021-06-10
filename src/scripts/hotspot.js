@@ -117,6 +117,7 @@ export class Hotspot extends EventDispatcher {
           new InformationDialog({
             content: $(dialogContent).get(0),
             dialogHeaderContent,
+            dialogAudio: dialogAudio && dialogAudio[0],
             parent: this.$element.closest(".h5p-presentation-wrapper").get(0),
             l10n,
             horizontalOffset,

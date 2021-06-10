@@ -361,6 +361,14 @@
                     ]
                   },
                   {
+                    "name": "dialogAudio",
+                    "type": "audio",
+                    "label": "Dialog audio",
+                    "description": "An audio track that will play when the modal opens",
+                    "importance": "low",
+                    "optional": true
+                  },
+                  {
                     "name": "dialogContent",
                     "type": "text",
                     "label": "Dialog content",

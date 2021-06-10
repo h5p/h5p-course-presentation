@@ -22,118 +22,122 @@
                     {},
                     {},
                     {
-                      "label": "Comments",
-                      "description": "The comments are shown when the user displays the suggested answers for all slides."
+                      "label": "Kommentarer",
+                      "description": "Kommentarene vises når brukeren ser på fasit."
                     },
                     {
-                      "label": "Always display comments"
+                      "label": "Alltid vis kommentarer"
                     },
                     {
-                      "label": "Background Opacity"
+                      "label": "Opasitet for bakgrunn"
                     },
                     {
-                      "label": "Display as button"
+                      "label": "Vis som knapp"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Størrelse på knapp",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Liten"
                         },
                         {
-                          "label": "Big"
+                          "label": "Stor"
                         }
                       ]
                     },
                     {
-                      "label": "Button color",
+                      "label": "Farge på knapp",
                       "default": "#1d5cff"
                     },
                     {
-                      "label": "Use different icon"
+                      "label": "Bruk et annet ikon"
                     },
                     {
-                      "label": "Button icon",
+                      "label": "Ikon på knapp",
                       "options": [
                         {
-                          "label": "Information icon"
+                          "label": "Informasjon"
                         },
                         {
-                          "label": "Video icon"
+                          "label": "Video"
                         },
                         {
-                          "label": "Image icon"
+                          "label": "Bilde"
                         },
                         {
-                          "label": "Audio icon"
+                          "label": "Lyd"
                         },
                         {
-                          "label": "Chart icon"
+                          "label": "Graf"
                         },
                         {
-                          "label": "Video icon"
+                          "label": "Video"
                         },
                         {
-                          "label": "Fullscreen icon"
+                          "label": "Fullskjerm"
                         },
                         {
-                          "label": "Semi-fullscreen icon"
+                          "label": "Bred visning"
                         },
                         {
-                          "label": "Twitter icon"
+                          "label": "Twitter"
                         },
                         {
-                          "label": "Link icon"
+                          "label": "Lenke"
                         }
                       ]
                     },
                     {
-                      "label": "Display as hotspot"
+                      "label": "Vis som aktivt felt"
                     },
                     {
-                      "label": "Title"
+                      "label": "Tittel"
                     },
                     {
                       "label": "Type",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Spesifisert slide"
                         },
                         {
-                          "label": "Next slide"
+                          "label": "Neste side"
                         },
                         {
-                          "label": "Previous slide"
+                          "label": "Forrige side"
                         },
                         {
-                          "label": "Dialog window"
+                          "label": "Dialogvindu"
                         },
                         {
-                          "label": "No action"
+                          "label": "Ingen handling"
                         }
                       ]
                     },
                     {
-                      "label": "Specific slide number",
-                      "description": "Type a slide number to go to"
+                      "label": "Spesifisert slide",
+                      "description": "Skriv inn sidenummer en skal gå til"
                     },
                     {
-                      "label": "What to show above the dialog content",
+                      "label": "Velg mediatype som skal vises over innholdet",
                       "fields": [
                         {
-                          "label": "Dialog video"
+                          "label": "Video"
                         },
                         {
-                          "label": "Dialog image"
+                          "label": "Bilde"
                         }
                       ]
                     },
                     {
-                      "label": "Dialog content"
+                      "label": "Lyd i dialog",
+                      "description": "Et lydspor som spills av når dialogen åpnes"
                     },
                     {
-                      "label": "Invisible",
-                      "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element."
+                      "label": "Innhold i dialogvindu"
+                    },
+                    {
+                      "label": "Usynlig",
+                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
                     }
                   ]
                 }
@@ -142,11 +146,11 @@
               {
                 "fields": [
                   {
-                    "label": "Image",
-                    "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
+                    "label": "Bilde",
+                    "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
                   },
                   {
-                    "label": "Pick a color",
+                    "label": "Velg farge",
                     "default": null
                   }
                 ]
