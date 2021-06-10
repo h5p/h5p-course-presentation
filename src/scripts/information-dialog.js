@@ -62,7 +62,7 @@ export class InformationDialog {
     const img = document.createElement("img");
     img.setAttribute(
       "src",
-      // @ts-ignore
+      // @ts-expect-error
       H5P.getPath(image.path, getContentId())
     );
     img.setAttribute("alt", "");
@@ -79,17 +79,34 @@ export class InformationDialog {
   }
 
   /**
-   * @param {Object} param
-   * @param {HTMLElement | HTMLElement[]} param.content
-   * @param {DialogHeaderContent} param.dialogHeaderContent
-   * @param {HTMLElement} param.parent
-   * @param {object} param.l10n
-   * @param {string} param.horizontalOffset
-   * @param {string} param.verticalOffset
+   * @param {Media} audio
+   */
+  static createAudioPlayer(audio) {
+    const audioElement = document.createElement("audio");
+
+    // @ts-expect-error
+    audioElement.src = H5P.getPath(audio.path, getContentId());
+    audioElement.load();
+    audioElement.preload = 'auto';
+
+    return audioElement;
+  }
+
+  /**
+   * @param {{
+   *   content: HTMLElement | HTMLElement[];
+   *   dialogHeaderContent: DialogHeaderContent;
+   *   dialogAudio: Media;
+   *   parent: HTMLElement;
+   *   l10n: any;
+   *   horizontalOffset: string;
+   *   verticalOffset: string;
+   * }} param
    */
   constructor({
     content,
     dialogHeaderContent,
+    dialogAudio,
     parent,
     l10n,
     horizontalOffset,
@@ -102,6 +119,7 @@ export class InformationDialog {
     this.modal = this.createDialog(
       contents,
       dialogHeaderContent,
+      dialogAudio,
       horizontalOffset,
       verticalOffset
     );
@@ -112,6 +130,9 @@ export class InformationDialog {
     /** @type {HTMLIFrameElement | HTMLVideoElement} */
     this.videoEmbedElement = this.videoEmbedElement || null;
 
+    /** @type {HTMLAudioElement} */
+    this.audioElement = this.audioElement || null;
+    
     this.attach();
   }
 
@@ -121,6 +142,7 @@ export class InformationDialog {
    *
    * @param {HTMLElement[]} contents
    * @param {DialogHeaderContent} dialogHeaderContent
+   * @param {Media} dialogAudio
    * @param {string} horizontalOffset Horizontal offset as a percentage of the container width
    * @param {string} verticalOffset Vertical offset as a percentage of the container height
    *
@@ -129,8 +151,9 @@ export class InformationDialog {
   createDialog(
     contents,
     dialogHeaderContent,
+    dialogAudio,
     horizontalOffset,
-    verticalOffset
+    verticalOffset,
   ) {
     const container = document.createElement("div");
     container.className = "h5p-information-dialog-container";
@@ -183,6 +206,11 @@ export class InformationDialog {
         const imageElement = InformationDialog.createImageEmbed(dialogImage);
         mainContainer.appendChild(imageElement);
       }
+
+      if (dialogAudio) {
+        this.audioElement = InformationDialog.createAudioPlayer(dialogAudio);
+        mainContainer.appendChild(this.audioElement);
+      }
     }
 
     for (const contentElement of contents) {
@@ -232,6 +260,12 @@ export class InformationDialog {
         videoContainer.appendChild(this.videoEmbedElement);
       }
     }
+
+    const hasAudio = this.audioElement;
+    if (hasAudio) {
+      this.audioElement.currentTime = 0;
+      this.audioElement.play();
+    }
   }
 
   hide() {
@@ -241,6 +275,11 @@ export class InformationDialog {
     const hasVideo = this.videoEmbedElement;
     if (hasVideo) {
       this.videoEmbedElement.remove();
+    }
+
+    const hasAudio = this.audioElement;
+    if (hasAudio) {
+      this.audioElement.pause();
     }
   }
 
