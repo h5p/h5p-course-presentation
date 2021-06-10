@@ -1106,10 +1106,10 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   
   let iconContentCode = '';
   let iconClassNameForCSS = '';
-  const isDisplayAsButton = element.displayAsButton;
-  if(isDisplayAsButton) {
-    const isUseDifferentIcon = element.useButtonIcon;
-    if(isUseDifferentIcon) {
+  const isDisplayAsButtonChecked = element.displayAsButton;
+  if(isDisplayAsButtonChecked) {
+    const isUseDifferentIconChecked = element.useButtonIcon;
+    if(isUseDifferentIconChecked) {
       iconContentCode = element.buttonIcon;
     }
   }
