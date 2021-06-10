@@ -5,24 +5,6 @@ import { jQuery as $, EventDispatcher } from "./globals";
 import { InformationDialog } from "./information-dialog";
 
 /**
- * @typedef Media
- * @property {string} copyright
- * @property {string} mime
- * @property {string} path
- */
-
-/**
- * @typedef {Media & {height: number, width: number}} Image
- */
-
-/**
- * @typedef {{
- *   dialogImage?: Image;
- *   dialogVideo?: Media[];
- * }} DialogHeaderContent
- */
-
-/**
  * Enum containing possible navigation types
  * @readonly
  * @enum {string}

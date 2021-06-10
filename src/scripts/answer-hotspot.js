@@ -2,14 +2,6 @@
 import { Hotspot } from "./hotspot";
 
 /**
- * @typedef AnswerHotspot
- * @property {boolean} [isChecked]
- * @property {boolean} [isTask]
- * @property {"true" | "false"} [answerHotspotType]
- * @property {() => void} [resetTask]
- */
-
-/**
  *
  * @param {Hotspot & AnswerHotspot} element
  * @param {'true' | 'false'} answerType
