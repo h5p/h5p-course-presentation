@@ -1089,6 +1089,34 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
+  // When choosing another icon instead of the standard icon for the content-type,
+  // one of these classes will get attached to the element and change the icons with css.
+  const Icons = {
+    f05a: 'h5p-advancedtext-button',
+    f008: 'h5p-video-button',
+    f03e: 'h5p-image-button',
+    f028: 'h5p-audio-button',
+    f200: 'h5p-chart-button',
+    f03d: 'h5p-interactivevideo-button',
+    f065: 'h5p-toggle-full-screen',
+    f066: 'h5p-semi-fullscreen',
+    f099: 'h5p-twitteruserfeed-button',
+    f0c1: 'h5p-link-button'
+  };
+  
+  let iconContentCode = '';
+  let iconClassNameForCSS = '';
+  const isDisplayAsButton = element.displayAsButton;
+  if(isDisplayAsButton) {
+    const isUseDifferentIcon = element.useButtonIcon;
+    if(isUseDifferentIcon) {
+      iconContentCode = element.buttonIcon;
+    }
+  }
+  if(iconContentCode != '') {
+    iconClassNameForCSS = Icons[iconContentCode];
+  }
+
   /**
    * Returns a function that will set [aria-expanded="false"] on the $btn element
    *
@@ -1103,7 +1131,8 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     'aria-label': label,
     'aria-popup': true,
     'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} 
+    ${iconClassNameForCSS != '' ? iconClassNameForCSS : (libTypePmz + '-button')}`
   });
 
   const $buttonElement = $('<div class="h5p-button-element"></div>');
