@@ -1757,7 +1757,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     for (var i = 0; i < instances.length; i++) {
       if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
         // Only pause media elements displayed as posters.
-        that.pauseMedia(instances[i]);
+        that.pauseMedia(instances[i], this.slides[previousSlideIndex].elements[i].action.params);
       }
     }
   }
@@ -2110,11 +2110,19 @@ CoursePresentation.prototype.getCopyrights = function () {
  *
  * @param {object} instance
  */
-CoursePresentation.prototype.pauseMedia = function (instance) {
+CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
   try {
     if (instance.pause !== undefined &&
         (instance.pause instanceof Function ||
           typeof instance.pause === 'function')) {
+      // Don't pause media if the source is not compatible
+      if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
+          instance.video.pressToPlay === undefined &&
+          params.interactiveVideo.video.files && 
+          H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
+        instance.pause();
+        return;
+      }
       instance.pause();
     }
     else if (instance.video !== undefined &&
