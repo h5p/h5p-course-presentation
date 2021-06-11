@@ -15,6 +15,8 @@
   background-color: #fff;
   left: 50%;
   max-width: 90%;
+  min-height: 6.25rem;
+  min-width: 12.5rem;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -31,7 +33,7 @@
 .h5p-information-dialog-main {
   max-height: 70vh;
   overflow: auto;
-  padding: 2rem 3rem;  
+  padding: 2rem 3rem;
 }
 
 .h5p-information-dialog-close-button {
@@ -43,6 +45,45 @@
   line-height: 0.5;
   padding: 0.5em;
   position: fixed;
-  right: 0.5rem;
+  right: 0.15rem;
   top: 0;
+}
+
+.h5p-information-dialog-audio-button {
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  bottom: 0.5rem;
+  cursor: pointer;
+  height: 2em;
+  line-height: 2em;
+  padding: 0;
+  position: fixed;
+  right: 0.5rem;
+  transition: background-color 0.15s ease-in-out;
+  width: 2em;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+  
+  &::before {
+    font-family: "H5PFontIcons";
+    font-size: 1rem;
+  }
+}
+
+[data-is-playing-audio="true"] .h5p-information-dialog-audio-button {
+  $pause-icon: "\e92e";
+  &::before {
+    content: $pause-icon;
+  }
+}
+
+[data-is-playing-audio="false"] .h5p-information-dialog-audio-button {
+  $play-icon: "\e92d";
+
+  &::before {
+    content: $play-icon;
+  }
 }

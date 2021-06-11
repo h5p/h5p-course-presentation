@@ -113,7 +113,7 @@ export const stripHTML = (str) => $STRIP_HTML_HELPER.html(str).text().trim();
 /**
  * Returns the ID of the current course presentation.
  *
- * @returns {number | null}
+ * @returns {number | null}
  */
 export const getContentId = () => {
   const h5pContentWrapper = document.querySelector(".h5p-content");

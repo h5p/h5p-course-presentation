@@ -321,7 +321,7 @@ CoursePresentation.prototype.attach = function ($container) {
   this.width = wrapperWidth || 640;
 
   const wrapperHeight = parseInt(this.$wrapper.css('height'));
-  this.height = wrapperHeight || 400;
+  this.height = wrapperHeight || 400;
 
   this.ratio = 16 / 9;
   // Intended base font size cannot be read from CSS, as it might be modified
