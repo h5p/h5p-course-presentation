@@ -1098,20 +1098,15 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     f028: 'h5p-audio-button',
     f200: 'h5p-chart-button',
     f03d: 'h5p-interactivevideo-button',
-    f065: 'h5p-toggle-full-screen',
-    f066: 'h5p-semi-fullscreen',
     f099: 'h5p-twitteruserfeed-button',
     f0c1: 'h5p-link-button'
   };
   
-  let iconContentCode = '';
   let iconClassNameForCSS = '';
   const isDisplayAsButtonChecked = element.displayAsButton;
   const isUseDifferentIconChecked = element.useButtonIcon;
   if(isDisplayAsButtonChecked && isUseDifferentIconChecked) {
-    iconContentCode = element.buttonIcon;
-  }
-  if(iconContentCode != '') {
+    const iconContentCode = element.buttonIcon;
     iconClassNameForCSS = Icons[iconContentCode];
   }
 
