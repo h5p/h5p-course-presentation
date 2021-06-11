@@ -356,6 +356,16 @@
         {
           "label": "Dialogvindu ble lukket – brukes av skjermlesere",
           "default": "Lukket dialog"
+        },
+        {
+          "label": "Spill av lyd",
+          "description": "Brukes av skjermlesere",
+          "default": "Spill av lyd"
+        },
+        {
+          "label": "Sett lyd på pause",
+          "description": "Brukes av skjermlesere",
+          "default": "Sett lyd på pause"
         }
       ]
     },
