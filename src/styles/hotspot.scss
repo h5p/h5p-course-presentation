@@ -9,10 +9,6 @@ $navigation-element-background-color: #0580e2;
     height: 100%;
     width: 100%;
 
-    &:not(.h5p-visible) {
-      cursor: default;
-    }
-
     &.h5p-visible {
       &:hover {
         background-color: rgba($navigation-element-background-color, 0.2);
@@ -42,6 +38,14 @@ $navigation-element-background-color: #0580e2;
     border-radius: 0;
     display: flex;
     padding: 0;
+  }
+
+  .invisible {
+    cursor: default;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .h5p-press-to-go.h5p-hotspot-answer {
