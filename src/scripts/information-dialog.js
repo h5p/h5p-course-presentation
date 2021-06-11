@@ -79,7 +79,7 @@ export class InformationDialog {
 
   /**
    * @param {{
-   *   content: HTMLElement | HTMLElement[];
+   *   content: HTMLElement | HTMLElement[];
    *   dialogHeaderContent: DialogHeaderContent;
    *   dialogAudio: Media[];
    *   parent: HTMLElement;
@@ -118,7 +118,12 @@ export class InformationDialog {
     /** @type {HTMLAudioElement} */
     this.audioElement = this.audioElement || null;
 
+    /** @type {HTMLButtonElement} */
+    this.audioPlayPauseButton = this.audioPlayPauseButton || null;
+
     this.attach();
+
+    this.isPlayingAudio = false;
   }
 
   /**
@@ -195,6 +200,9 @@ export class InformationDialog {
       if (dialogAudio) {
         this.audioElement = InformationDialog.createAudioPlayer(dialogAudio);
         mainContainer.appendChild(this.audioElement);
+
+        this.audioPlayPauseButton = this.createPlayPauseButton();
+        mainContainer.appendChild(this.audioPlayPauseButton);
       }
     }
 
@@ -246,11 +254,7 @@ export class InformationDialog {
       }
     }
 
-    const hasAudio = this.audioElement;
-    if (hasAudio) {
-      this.audioElement.currentTime = 0;
-      this.audioElement.play();
-    }
+    this.playAudio({ resetTime: true });
   }
 
   hide() {
@@ -262,10 +266,66 @@ export class InformationDialog {
       this.videoEmbedElement.remove();
     }
 
-    const hasAudio = this.audioElement;
+    this.pauseAudio();
+  }
+
+  /**
+   * @param {{resetTime: boolean}} params
+   */
+  playAudio({ resetTime }) {
+    const hasAudio = !!this.audioElement;
+    if (hasAudio) {
+      if (resetTime) {
+        this.audioElement.currentTime = 0;
+      }
+      this.audioElement.play();
+      this.modal.dataset.isPlayingAudio = "true";
+      this.isPlayingAudio = true;
+      this.setPlayPauseButtonLabel(this.audioPlayPauseButton);
+    }
+  }
+
+  pauseAudio() {
+    const hasAudio = !!this.audioElement;
     if (hasAudio) {
       this.audioElement.pause();
+      this.modal.dataset.isPlayingAudio = "false";
+      this.isPlayingAudio = false;
+      this.setPlayPauseButtonLabel(this.audioPlayPauseButton);
     }
+  }
+
+  /**
+   * @returns {HTMLButtonElement}
+   */
+  createPlayPauseButton() {
+    const playPauseButton = document.createElement("button");
+    playPauseButton.type = "button";
+    playPauseButton.className = "h5p-information-dialog-audio-button";
+
+    this.setPlayPauseButtonLabel(playPauseButton);
+
+    playPauseButton.addEventListener("click", () => {
+      if (this.isPlayingAudio) {
+        this.pauseAudio();
+      } else {
+        this.playAudio({ resetTime: false });
+      }
+    });
+
+    return playPauseButton;
+  }
+
+  /**
+   * @param {HTMLButtonElement} button
+   */
+  setPlayPauseButtonLabel(button) {    
+    button.setAttribute(
+      "aria-label",
+      this.isPlayingAudio
+        ? this.l10n.informationDialogPauseAudio
+        : this.l10n.informationDialogPlayAudio
+    );
   }
 
   onCloseClick() {
