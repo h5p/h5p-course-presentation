@@ -1089,6 +1089,27 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
+  // When choosing another icon instead of the standard icon for the content-type,
+  // one of these classes will get attached to the element and change the icons with css.
+  const Icons = {
+    f05a: 'h5p-advancedtext-button',
+    f008: 'h5p-video-button',
+    f03e: 'h5p-image-button',
+    f028: 'h5p-audio-button',
+    f200: 'h5p-chart-button',
+    f03d: 'h5p-interactivevideo-button',
+    f099: 'h5p-twitteruserfeed-button',
+    f0c1: 'h5p-link-button'
+  };
+  
+  let iconClassNameForCSS = '';
+  const isDisplayAsButtonChecked = element.displayAsButton;
+  const isUseDifferentIconChecked = element.useButtonIcon;
+  if(isDisplayAsButtonChecked && isUseDifferentIconChecked) {
+    const iconContentCode = element.buttonIcon;
+    iconClassNameForCSS = Icons[iconContentCode];
+  }
+
   /**
    * Returns a function that will set [aria-expanded="false"] on the $btn element
    *
@@ -1103,8 +1124,11 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     'aria-label': label,
     'aria-popup': true,
     'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} 
+    ${iconClassNameForCSS != '' ? iconClassNameForCSS : (libTypePmz + '-button')}`
   });
+
+  $button.css({"background-color": element.buttonColor});
 
   const $buttonElement = $('<div class="h5p-button-element"></div>');
   instance.attach($buttonElement);

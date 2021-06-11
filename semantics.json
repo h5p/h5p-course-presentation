@@ -239,16 +239,6 @@
                         "label": "Video icon"
                       },
                       {
-                        "fontIcon": "f065",
-                        "value": "f065",
-                        "label": "Fullscreen icon"
-                      },
-                      {
-                        "fontIcon": "f066",
-                        "value": "f066",
-                        "label": "Semi-fullscreen icon"
-                      },
-                      {
                         "fontIcon": "f099",
                         "value": "f099",
                         "label": "Twitter icon"
