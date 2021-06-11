@@ -58,8 +58,9 @@ export class InformationDialog {
 
   /**
    * @param {Media[]} audioSources
+   * @param {(event: Event) => void} onEndCallback
    */
-  static createAudioPlayer(audioSources) {
+  static createAudioPlayer(audioSources, onEndCallback) {
     const audioElement = document.createElement("audio");
 
     if (audioElement.canPlayType !== undefined) {
@@ -73,6 +74,8 @@ export class InformationDialog {
 
     audioElement.preload = "auto";
     audioElement.load();
+
+    audioElement.addEventListener("ended", onEndCallback);
 
     return audioElement;
   }
@@ -198,7 +201,10 @@ export class InformationDialog {
       }
 
       if (dialogAudio) {
-        this.audioElement = InformationDialog.createAudioPlayer(dialogAudio);
+        this.audioElement = InformationDialog.createAudioPlayer(
+          dialogAudio,
+          () => this.pauseAudio(),
+        );
         mainContainer.appendChild(this.audioElement);
 
         this.audioPlayPauseButton = this.createPlayPauseButton();
@@ -319,7 +325,7 @@ export class InformationDialog {
   /**
    * @param {HTMLButtonElement} button
    */
-  setPlayPauseButtonLabel(button) {    
+  setPlayPauseButtonLabel(button) {
     button.setAttribute(
       "aria-label",
       this.isPlayingAudio
