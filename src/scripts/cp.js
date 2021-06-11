@@ -1128,6 +1128,8 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     ${iconClassNameForCSS != '' ? iconClassNameForCSS : (libTypePmz + '-button')}`
   });
 
+  $button.css({"background": element.buttonColor});
+
   const $buttonElement = $('<div class="h5p-button-element"></div>');
   instance.attach($buttonElement);
 
