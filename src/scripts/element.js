@@ -75,10 +75,10 @@ function Element(parameters) {
   }
   // Check for comments to show after solution button is pressed
   else if (parameters.solution) {
-    if (self.parent.parent.showCommentsAfterSolution[self.parent.index] === undefined) {
-      self.parent.parent.showCommentsAfterSolution[self.parent.index] = [];
+    if (slide.parent.showCommentsAfterSolution[slide.index] === undefined) {
+      slide.parent.showCommentsAfterSolution[slide.index] = [];
     }
-    self.parent.parent.showCommentsAfterSolution[self.parent.index].push(self.instance);
+    slide.parent.showCommentsAfterSolution[slide.index].push(this.instance);
   }
 
   const isExportableTextArea = this.instance.exportAnswers;
