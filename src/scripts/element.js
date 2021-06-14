@@ -73,6 +73,13 @@ function Element(parameters) {
 
     slidesWithSolutions[slide.index].push(this.instance);
   }
+  // Check for comments to show after solution button is pressed
+  else if (parameters.solution) {
+    if (self.parent.parent.showCommentsAfterSolution[self.parent.index] === undefined) {
+      self.parent.parent.showCommentsAfterSolution[self.parent.index] = [];
+    }
+    self.parent.parent.showCommentsAfterSolution[self.parent.index].push(self.instance);
+  }
 
   const isExportableTextArea = this.instance.exportAnswers;
   if (isExportableTextArea) {
