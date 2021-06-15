@@ -247,6 +247,11 @@
                         "fontIcon": "f0c1",
                         "value": "f0c1",
                         "label": "Link icon"
+                      },
+                      {
+                        "fontIcon": "f15c",
+                        "value": "f15c",
+                        "label": "Text icon"
                       }
                     ]
                   },
