@@ -1099,7 +1099,8 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     f200: 'h5p-chart-button',
     f03d: 'h5p-interactivevideo-button',
     f099: 'h5p-twitteruserfeed-button',
-    f0c1: 'h5p-link-button'
+    f0c1: 'h5p-link-button',
+    f15c: 'h5p-text-button'
   };
   
   let iconClassNameForCSS = '';
