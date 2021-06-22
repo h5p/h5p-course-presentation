@@ -15,6 +15,7 @@ const hotspotType = {
   GO_TO_PREVIOUS: "previous",
   INFORMATION_DIALOG: "information-dialog",
   NONE: "none",
+  GO_TO_SUMMARY_SLIDE: "go-to-summary-slide",
 };
 
 export class Hotspot extends EventDispatcher {
@@ -65,7 +66,9 @@ export class Hotspot extends EventDispatcher {
     );
 
     this.eventDispatcher = new EventDispatcher();
-    const classes = `h5p-press-to-go ${invisible ? "h5p-invisible" : "h5p-visible"}`;
+    const classes = `h5p-press-to-go ${
+      invisible ? "h5p-invisible" : "h5p-visible"
+    }`;
     const tabindex = invisible ? -1 : 0;
 
     if (invisible) {
@@ -94,6 +97,7 @@ export class Hotspot extends EventDispatcher {
       hotspotType.GO_TO_NEXT,
       hotspotType.GO_TO_PREVIOUS,
       hotspotType.GO_TO_SPECIFIED,
+      hotspotType.GO_TO_SUMMARY_SLIDE,
     ];
     const isGoToLink = goToActions.includes(goToSlideType);
     const isInformationDialogTrigger =
@@ -149,6 +153,7 @@ export class Hotspot extends EventDispatcher {
         this.eventDispatcher.on(name, callback);
       };
   }
+
   /**
    * @param {number} goToSlide
    * @param {string} goToSlideType
@@ -159,11 +164,15 @@ export class Hotspot extends EventDispatcher {
     // Default goes to the set number
     let goTo = goToSlide - 1;
 
-    // Check if previous or next is selected.
-    if (goToSlideType === hotspotType.GO_TO_NEXT) {
-      goTo = currentIndex + 1;
-    } else if (goToSlideType === hotspotType.GO_TO_PREVIOUS) {
-      goTo = currentIndex - 1;
+    switch (goToSlideType) {
+      case hotspotType.GO_TO_NEXT:
+        goTo = currentIndex + 1;
+        break;
+      case hotspotType.GO_TO_PREVIOUS:
+        goTo = currentIndex - 1;
+        break;
+      default:
+        break;
     }
 
     // Create button that leads to another slide
@@ -172,7 +181,13 @@ export class Hotspot extends EventDispatcher {
     });
 
     addClickAndKeyboardListeners($element, (event) => {
-      this.eventDispatcher.trigger("navigate", goTo);
+      const isGoToSummarySlideHotspot =
+        goToSlideType === hotspotType.GO_TO_SUMMARY_SLIDE;
+      if (isGoToSummarySlideHotspot) {
+        this.eventDispatcher.trigger("navigate-to-last-slide");
+      } else {
+        this.eventDispatcher.trigger("navigate", goTo);
+      }
       event.preventDefault();
     });
 

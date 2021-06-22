@@ -188,11 +188,31 @@
                     "spectrum": {
                       "showPalette": true,
                       "palette": [
-                            ["#1d5cff", "black", "white", "gray"],
-                            ["red", "blue", "yellow", "green"],
-                            ["pink", "purple", "brown", "orange"],
-                            ["lime", "violet", "magenta", "cyan"]
+                        [
+                          "#1d5cff",
+                          "black",
+                          "white",
+                          "gray"
+                        ],
+                        [
+                          "red",
+                          "blue",
+                          "yellow",
+                          "green"
+                        ],
+                        [
+                          "pink",
+                          "purple",
+                          "brown",
+                          "orange"
+                        ],
+                        [
+                          "lime",
+                          "violet",
+                          "magenta",
+                          "cyan"
                         ]
+                      ]
                     }
                   },
                   {
@@ -307,6 +327,10 @@
                       {
                         "value": "none",
                         "label": "No action"
+                      },
+                      {
+                        "value": "go-to-summary-slide",
+                        "label": "Go to summary slide"
                       }
                     ],
                     "default": "specified",

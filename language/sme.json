@@ -104,6 +104,9 @@
                         },
                         {
                           "label": "No action"
+                        },
+                        {
+                          "label": "Go to summary slide"
                         }
                       ]
                     },
