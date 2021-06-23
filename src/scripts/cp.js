@@ -37,6 +37,7 @@ let CoursePresentation = function (params, id, extras) {
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
+  this.showCommentsAfterSolution = [];
   this.hasAnswerElements = false;
   this.ignoreResize = false;
   this.isTask = false;
@@ -682,13 +683,12 @@ CoursePresentation.prototype.showKeywords = function () {
 };
 
 /**
- * Change the background opacity of the keywords list.
+ * Change the opacity of the keywords list.
  *
  * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  const [red, green, blue] = this.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
-  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+  this.$keywordsWrapper.css('opacity', value / 100);
 };
 
 /**
@@ -1176,6 +1176,23 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.on('exitFullScreen', exitFullScreen);
 
     this.showPopup($buttonElement, $button, popupPosition, () => {
+
+      // Specific to YT Iframe
+      if (instance.libraryInfo.machineName === "H5P.InteractiveVideo" && instance.video.pressToPlay !== undefined) {
+        // YT iframe does not receive state change event when it opens in a dialog box second time 
+        instance.video.on('ready', function (event) {
+          const videoInstance = this;
+          var playerState = 0;
+          setInterval( function() {
+            var state = videoInstance.getPlayerState();
+            if ( playerState !== state ) {
+              videoInstance.trigger('stateChange', state);
+              playerState = state;
+            }
+          }, 10);
+        });
+      }
+      
       this.pauseMedia(instance);
       $buttonElement.detach();
 
@@ -1786,7 +1803,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     for (var i = 0; i < instances.length; i++) {
       if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
         // Only pause media elements displayed as posters.
-        that.pauseMedia(instances[i]);
+        that.pauseMedia(instances[i], this.slides[previousSlideIndex].elements[i].action.params);
       }
     }
   }
@@ -2006,13 +2023,22 @@ CoursePresentation.prototype.showSolutions = function () {
         indexes.push(elementInstance.coursePresentationIndexOnSlide);
       }
     }
+
     slideScores.push({
       indexes: indexes,
       slide: (i + 1),
       score: slideScore,
       maxScore: slideMaxScore
     });
+    
+    // Show comments of non graded contents
+    if (this.showCommentsAfterSolution[i]) {
+      for (var j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
+        this.showCommentsAfterSolution[i][j].showCPComments();
+      }
+    }
   }
+
   if (hasScores) {
     return slideScores;
   }
@@ -2185,11 +2211,19 @@ CoursePresentation.prototype.getCopyrights = function () {
  * @param {() => void} [instance.video.pause]
  * @param {() => void} [instance.stop]
  */
-CoursePresentation.prototype.pauseMedia = function (instance) {
+CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
   try {
     if (instance.pause !== undefined &&
         (instance.pause instanceof Function ||
           typeof instance.pause === 'function')) {
+      // Don't pause media if the source is not compatible
+      if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
+          instance.video.pressToPlay === undefined &&
+          params.interactiveVideo.video.files && 
+          H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
+        instance.pause();
+        return;
+      }
       instance.pause();
     }
     else if (instance.video !== undefined &&
