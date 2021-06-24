@@ -104,6 +104,9 @@
                         },
                         {
                           "label": "Ingen handling"
+                        },
+                        {
+                          "label": "Gå til lysbilete med samandrag"
                         }
                       ]
                     },

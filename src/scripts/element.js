@@ -45,7 +45,7 @@ function Element(parameters) {
 
   const isAnswerHotspot = !!answerType;
   if (isAnswerHotspot) {
-    Element.registerAnswerHotspot(this.instance, answerType);
+    initAnswerHotspot(this.instance, answerType);
   }
 
   const slideHasElements = !!coursePresentation.elementInstances[slide.index];
@@ -235,18 +235,13 @@ Element.createHotspot = function (
       const index = event.data;
       coursePresentation.jumpToSlide(index);
     });
+
+    hotspot.on("navigate-to-last-slide", () => {
+      coursePresentation.jumpToSlide(coursePresentation.slides.length - 1);
+    })
   }
 
   return hotspot;
-};
-
-/**
- *
- * @param {Hotspot} instance
- * @param {"true" | "false"} answerType
- */
-Element.registerAnswerHotspot = function (instance, answerType) {
-  initAnswerHotspot(instance, answerType);
 };
 
 export default Element;
