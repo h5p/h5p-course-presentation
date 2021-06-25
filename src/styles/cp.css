@@ -824,3 +824,7 @@
   margin-left: 0.1em;
   vertical-align: middle;
 }
+
+.h5p-course-presentation .h5p-dialogcards .h5p-dialogcards-card-text {
+  height: auto;
+}
