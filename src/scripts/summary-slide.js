@@ -111,7 +111,7 @@ const SummarySlide = (function () {
         'class': 'h5p-cp-retry-button',
         html: this.cp.l10n.retry,
         on: {
-          click: function () {
+          click: () => {
             this.cp.resetTask();
             // event.preventDefault();
           }

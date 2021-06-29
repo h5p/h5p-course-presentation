@@ -15,7 +15,6 @@ export function initAnswerHotspot(element, answerType) {
 
   const checkedClass = "h5p-hotspot-answer--checked";
   element.$element.on("click", () => {
-
     const wasChecked = element.isChecked;
     if (wasChecked) {
       element.$element.removeClass(checkedClass);
@@ -24,13 +23,12 @@ export function initAnswerHotspot(element, answerType) {
     }
 
     element.isChecked = !wasChecked;
-
   });
-  
+
   element.resetTask = () => {
     element.isChecked = false;
     element.$element.removeClass(checkedClass);
-  }
+  };
 
   element.isTask = true;
   element.answerHotspotType = answerType;
