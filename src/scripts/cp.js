@@ -754,6 +754,8 @@ CoursePresentation.prototype.resetRatio = function () {
  * Resize handling.
  */
 CoursePresentation.prototype.resize = function () {  
+  var self = this;
+  
   if (this.ignoreResize) {
     return; // When printing.
   }
@@ -776,13 +778,105 @@ CoursePresentation.prototype.resize = function () {
 
     for (let i = 0; i < instances.length; i++) {
       const instance = instances[i];
+      if (instance.libraryInfo.machineName === "H5P.Dialogcards") {
+        instance.on('resize', function () {
+          self.resizeDialogCard(this);
+        });
+      }
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
         H5P.trigger(instance, 'resize');
       }
     }
   }
-
+  
   this.fitCT();
+};
+
+/**
+ * Resize dialog card. Strategy is to resize image, then content and later the card wrapper.
+ * 
+ * @param {Object} instance
+ */
+CoursePresentation.prototype.resizeDialogCard = function (instance) { 
+  var self = this;
+  // In order to resize each cards we need to make it visible first
+  instance.cards.forEach(card => {
+    card.$cardWrapper.css('display', 'block');
+    card.callbacks.onCardTurned = function(turned) {
+      self.resizeDialogCard(instance);
+    };
+  });
+
+  let relativeImageHeight = 15;
+  const cardWrapper = $(instance.cards[instance.currentCardId].$cardWrapper[0]);
+  const $currentCardContent = instance.cards[instance.currentCardId].getDOM().find('.h5p-dialogcards-card-content');
+  const dialog = instance.cards[instance.currentCardId].params.dialogs[instance.getCurrentSelectionIndex()];
+  // Calculate image height
+  let height = dialog.image.height / dialog.image.width * $currentCardContent.get(0).getBoundingClientRect().width;
+  if (height > 0) {
+    height = height / parseFloat(instance.$inner.css('font-size'));
+    if (height > relativeImageHeight) {
+      height = relativeImageHeight;
+    }
+    instance.cards[instance.currentCardId].getImage().parent().css('height', height + 'em');
+  }
+
+  // Determine the height of content
+  const $content = $('.h5p-dialogcards-card-content', cardWrapper);
+  const $text = $('.h5p-dialogcards-card-text-inner-content', $content);
+
+  // Grab size with text
+  const textHeight = $text[0].getBoundingClientRect().height;
+
+  // Change to answer
+  const currentCard = instance.cards[instance.currentCardId];
+  
+  // Grab size with answer
+  let answerHeight = 0;
+  if ($content.hasClass('h5p-dialogcards-turned')) {
+    currentCard.changeText(currentCard.getAnswer());
+    answerHeight = $text[0].getBoundingClientRect().height;
+  }
+
+  // Use highest
+  let useHeight = (textHeight > answerHeight ? textHeight : answerHeight);
+
+  // Min. limit
+  const minHeight = parseFloat($text.parent().parent().css('minHeight'));
+  if (useHeight < minHeight) {
+    useHeight =  minHeight;
+  }
+
+  // Convert to em
+  const fontSize = parseFloat($content.css('fontSize'));
+  useHeight /= fontSize;
+
+  // Set height
+  $text.parent().css('height', useHeight + 'em');
+  
+  // Reset card-wrapper-set height
+  $(instance.$cardwrapperSet[0]).css('height', 'auto');
+  
+  // Card wrapper height
+  let maxHeight = 0;
+  const wrapperHeight = cardWrapper.css('height', 'initial').outerHeight();
+  cardWrapper.css('height', 'inherit');
+  maxHeight = wrapperHeight > maxHeight ? wrapperHeight : maxHeight;
+
+  // Check height
+  const initialHeight = cardWrapper.find('.h5p-dialogcards-cardholder').css('height', 'initial').outerHeight();
+  maxHeight = initialHeight > maxHeight ? initialHeight : maxHeight;
+  cardWrapper.find('.h5p-dialogcards-cardholder').css('height', 'inherit');
+  
+  const relativeMaxHeight = maxHeight / parseFloat(cardWrapper.css('font-size'));
+  $(instance.$cardwrapperSet[0]).css('height', relativeMaxHeight + 'em');
+
+  // CP is setting scrollbar based on peer elements of cards which give unnecessary scrooll where it is not needed so hiden them
+  instance.cards.forEach(card => {
+    if (instance.currentCardId !== card.id) {
+      card.$cardWrapper.css('display', 'none');
+    }
+  });
 };
 
 /**
