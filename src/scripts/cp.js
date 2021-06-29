@@ -8,18 +8,31 @@ import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stri
 import Slide from './slide.js';
 
 /**
- * @const {string}
+ * @type {string}
  */
 const KEYWORD_TITLE_SKIP = null;
 
 /**
- * Constructor.
+ * @typedef {object} Slide
+ * @property {string} indexes,
+ * @property {number} slide
+ * @property {number} score
+ * @property {number} maxScore
+ */
+
+/**
+ * @constructor
  *
  * @param {object} params Start paramteres.
+ * @param {object} [params.presentation]
+ * @param {object} [params.override]
+ * 
  * @param {int} id Content identifier
- * @param {function} editor
- *  Set if an editor is initiating this library
- * @returns {undefined} Nothing.
+ * 
+ * @param {object} extras Set if an editor is initiating this library
+ * @param {object} [extras.cpEditor]
+ * @param {object} [extras.previousState]
+ * @return {undefined} Nothing.
  */
 let CoursePresentation = function (params, id, extras) {
   var that = this;
@@ -197,7 +210,7 @@ CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
  * Render the presentation inside the given container.
  *
  * @param {H5P.jQuery} $container Container for this presentation.
- * @returns {undefined} Nothing.
+ * @return {undefined} Nothing.
  */
 CoursePresentation.prototype.attach = function ($container) {
   var that = this;
@@ -546,7 +559,7 @@ CoursePresentation.prototype.createSlides = function () {
  *
  * @public
  * @param obj The object to investigate
- * @returns {boolean}
+ * @return {boolean}
  */
 CoursePresentation.prototype.hasScoreData = function (obj) {
   return (
@@ -560,7 +573,7 @@ CoursePresentation.prototype.hasScoreData = function (obj) {
  * Return the combined score of all children
  *
  * @public
- * @returns {Number}
+ * @return {number}
  */
 CoursePresentation.prototype.getScore = function () {
   var self = this;
@@ -574,7 +587,7 @@ CoursePresentation.prototype.getScore = function () {
  * Return the combined maxScore of all children
  *
  * @public
- * @returns {Number}
+ * @return {number}
  */
 CoursePresentation.prototype.getMaxScore = function () {
   var self = this;
@@ -672,7 +685,7 @@ CoursePresentation.prototype.setKeywordsOpacity = function (value) {
  * Makes continuous text smaller if it does not fit inside its container.
  * Only works in view mode.
  *
- * @returns {undefined}
+ * @return {undefined}
  */
 CoursePresentation.prototype.fitCT = function () {
   if (this.editor !== undefined) {
@@ -700,8 +713,8 @@ CoursePresentation.prototype.fitCT = function () {
 /**
  * Resize handling.
  *
- * @param {Boolean} fullscreen
- * @returns {undefined}
+ * @param {boolean} fullscreen
+ * @return {undefined}
  */
 CoursePresentation.prototype.resize = function () {
   var self = this;
@@ -946,7 +959,7 @@ CoursePresentation.prototype.setElementsOverride = function (override) {
  * Attach all element instances to slide.
  *
  * @param {jQuery} $slide
- * @param {Number} index
+ * @param {number} index
  */
 CoursePresentation.prototype.attachElements = function ($slide, index) {
   if (this.elementsAttached[index] !== undefined) {
@@ -975,8 +988,8 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @param {Object} element
  * @param {Object} instance
  * @param {jQuery} $slide
- * @param {Number} index
- * @returns {jQuery}
+ * @param {number} index
+ * @return {jQuery}
  */
 CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
   const displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
@@ -1280,8 +1293,8 @@ CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
    * Resize image to fit inside popup.
    *
    * @private
-   * @param {Number} width
-   * @param {Number} height
+   * @param {number} width
+   * @param {number} height
    */
   var resize = function (width, height) {
     if ((height / fontSize) < 18.5) {
@@ -1502,7 +1515,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
  * Checks if an element has a solution
  *
  * @param {H5P library instance} elementInstance
- * @returns {Boolean}
+ * @return {boolean}
  *  true if the element has a solution
  *  false otherwise
  */
@@ -1515,7 +1528,7 @@ CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
 /**
  * Initialize key press events.
  *
- * @returns {undefined} Nothing.
+ * @return {undefined} Nothing.
  */
 CoursePresentation.prototype.initKeyEvents = function () {
   if (this.keydown !== undefined || this.activeSurface) {
@@ -1556,7 +1569,7 @@ CoursePresentation.prototype.initKeyEvents = function () {
 /**
  * Initialize touch events
  *
- * @returns {undefined} Nothing.
+ * @return {undefined} Nothing.
  */
 CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
@@ -1740,8 +1753,8 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
 /**
  * Switch to previous slide
  *
- * @param {Boolean} [noScroll] Skip UI scrolling.
- * @returns {Boolean} Indicates if the move was made.
+ * @param {boolean} [noScroll] Skip UI scrolling.
+ * @return {boolean} Indicates if the move was made.
  */
 CoursePresentation.prototype.previousSlide = function (noScroll) {
   var $prev = this.$current.prev();
@@ -1755,8 +1768,8 @@ CoursePresentation.prototype.previousSlide = function (noScroll) {
 /**
  * Switch to next slide.
  *
- * @param {Boolean} noScroll Skip UI scrolling.
- * @returns {Boolean} Indicates if the move was made.
+ * @param {boolean} noScroll Skip UI scrolling.
+ * @return {boolean} Indicates if the move was made.
  */
 CoursePresentation.prototype.nextSlide = function (noScroll) {
   var $next = this.$current.next();
@@ -1808,8 +1821,8 @@ CoursePresentation.prototype.attachAllElements = function () {
  * Jump to the given slide.
  *
  * @param {number} slideNumber The slide number to jump to.
- * @param {Boolean} [noScroll] Skip UI scrolling.
- * @returns {Boolean} Always true.
+ * @param {boolean} [noScroll] Skip UI scrolling.
+ * @return {boolean} Always true.
  */
 CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
   var that = this;
@@ -2020,7 +2033,7 @@ CoursePresentation.prototype.resetTask = function () {
 /**
  * Show solutions for all slides that have solutions
  *
- * @returns {undefined}
+ * @return {undefined}
  */
 CoursePresentation.prototype.showSolutions = function () {
   var jumpedToFirst = false;
@@ -2078,7 +2091,12 @@ CoursePresentation.prototype.showSolutions = function () {
 
 /**
  * Gets slides scores for whole cp
- * @returns {Array} slideScores Array containing scores for all slides.
+ * @return {Array<{
+ *   indexes: string,
+ *   slide: number,
+ *   score: number,
+ *   maxScore: number
+ * }>} slideScores Array containing scores for all slides.
  */
 CoursePresentation.prototype.getSlideScores = function (noJump) {
   var jumpedToFirst = (noJump === true);
@@ -2122,7 +2140,7 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
 /**
  * Gather copyright information for the current content.
  *
- * @returns {H5P.ContentCopyrights}
+ * @return {H5P.ContentCopyrights}
  */
 CoursePresentation.prototype.getCopyrights = function () {
   var info = new H5P.ContentCopyrights();
@@ -2202,6 +2220,10 @@ CoursePresentation.prototype.getCopyrights = function () {
  * Stop the given element's playback if any.
  *
  * @param {object} instance
+ * @param {() => void} [instance.pause]
+ * @param {object} [instance.video]
+ * @param {() => void} [instance.video.pause]
+ * @param {() => void} [instance.stop]
  */
 CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
   try {
