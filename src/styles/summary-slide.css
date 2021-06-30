@@ -1,11 +1,11 @@
 /* --------------------------------------- Summary slide styling ---------------------------- */
-.h5p-interaktivtavle .h5p-summary-slide {
+.h5p-coursepresentation .h5p-summary-slide {
   background: #fff;
   text-align: center;
   color: #333;
 }
 
-.h5p-interaktivtavle .h5p-summary-slide.h5p-summary-only-export {
+.h5p-coursepresentation .h5p-summary-slide.h5p-summary-only-export {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21,7 +21,7 @@
 }
 
 /* Summary header */
-.h5p-interaktivtavle .h5p-score-message {
+.h5p-coursepresentation .h5p-score-message {
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -ms-flexbox;      /* TWEENER - IE 10 */
   display: -webkit-flex;     /* NEW - Chrome */
@@ -41,7 +41,7 @@
   font-size: 0.8em;
 }
 
-.h5p-interaktivtavle .h5p-score-message-percentage {
+.h5p-coursepresentation .h5p-score-message-percentage {
   display: -moz-inline-box;
   display: -ms-inline-flexbox;
   display: -webkit-inline-flex;
@@ -54,128 +54,128 @@
 }
 
 /* Summary task table */
-.h5p-interaktivtavle .h5p-summary-task-title {
+.h5p-coursepresentation .h5p-summary-task-title {
   width: 60%;
   text-align: left;
   font-size: 0.7em;
 }
 
-.h5p-interaktivtavle .h5p-summary-task-title .h5p-slide-link {
+.h5p-coursepresentation .h5p-summary-task-title .h5p-slide-link {
   color: #333;
   cursor: pointer;
   text-decoration: none;
 }
 
-.h5p-interaktivtavle .h5p-summary-task-title .h5p-slide-link:visited {
+.h5p-coursepresentation .h5p-summary-task-title .h5p-slide-link:visited {
   color: #333;
 }
 
 /* Rectangular summary score meter */
-.h5p-interaktivtavle .h5p-summary-score-bar {
+.h5p-coursepresentation .h5p-summary-score-bar {
   position: relative;
   overflow: hidden;
 }
-.h5p-interaktivtavle .h5p-td.h5p-summary-score-bar {
+.h5p-coursepresentation .h5p-td.h5p-summary-score-bar {
   border-top-width: 2px;
 }
-.h5p-interaktivtavle .h5p-summary-score-meter {
+.h5p-coursepresentation .h5p-summary-score-meter {
   height: 0.4em;
   background: #e0e0e0;
 }
 
-.h5p-interaktivtavle .h5p-summary-score-meter > span {
+.h5p-coursepresentation .h5p-summary-score-meter > span {
   display: block;
   height: 100%;
   background-color: #096bcb;
 }
 
-.h5p-interaktivtavle .h5p-summary-footer {
+.h5p-coursepresentation .h5p-summary-footer {
   height: 12%;
   font-size: 0.75em;
 }
 
 /* ------------------------------- Summary table style -----------------------------------  */
-.h5p-interaktivtavle .h5p-summary-table-holder {
+.h5p-coursepresentation .h5p-summary-table-holder {
   height: calc(100% - 4.5em);
   margin: 1em;
 }
 
-.h5p-interaktivtavle .h5p-summary-table-pages {
+.h5p-coursepresentation .h5p-summary-table-pages {
   overflow: auto;
   clear: right;
   max-height: 86%;
   border-bottom: 1px solid #ddd;
 }
 
-.h5p-interaktivtavle .h5p-score-table tbody {
+.h5p-coursepresentation .h5p-score-table tbody {
   border-top: 1px solid #ddd;
 }
 
-.h5p-interaktivtavle .h5p-summary-total-table {
+.h5p-coursepresentation .h5p-summary-total-table {
   width: 100%;
   position: relative;
   margin-top: 1em;
 }
 
-.h5p-interaktivtavle .h5p-summary-total-table p {
+.h5p-coursepresentation .h5p-summary-total-table p {
   font-weight: bold;
   display: inline;
   margin-right: 1em;
 }
 
-.h5p-interaktivtavle .h5p-summary-total-score {
+.h5p-coursepresentation .h5p-summary-total-score {
   float: right;
   font-size: 0.6em;
 }
 
-.h5p-interaktivtavle .h5p-summary-social {
+.h5p-coursepresentation .h5p-summary-social {
   float: left;
   font-size: 0.75em;
   padding: 0.25em 0em;
 }
 
-.h5p-interaktivtavle .h5p-summary-social .h5p-show-results-text {
+.h5p-coursepresentation .h5p-summary-social .h5p-show-results-text {
   font-size: 0.8em;
   margin-right: 1em;
   color: #999;
 }
 
-.h5p-interaktivtavle .h5p-score-table {
+.h5p-coursepresentation .h5p-score-table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0px;
 }
 
-.h5p-interaktivtavle .h5p-td {
+.h5p-coursepresentation .h5p-td {
   padding: 0.3em;
 }
 
-.h5p-interaktivtavle .h5p-score-table tr:not(:last-child) {
+.h5p-coursepresentation .h5p-score-table tr:not(:last-child) {
   border-bottom: 1px solid #ddd;
 }
 
-.h5p-interaktivtavle .h5p-td p {
+.h5p-coursepresentation .h5p-td p {
   font-size: 0.8em;
   font-weight: bold;
   text-align: right;
   padding-right: 0.5em;
 }
 
-.h5p-interaktivtavle .h5p-summary-table-header {
+.h5p-coursepresentation .h5p-summary-table-header {
   font-size: 0.5em;
   text-transform: capitalize;
   font-weight: normal;
   padding-bottom: 1em;
 }
-.h5p-interaktivtavle .h5p-summary-table-header.slide {
+.h5p-coursepresentation .h5p-summary-table-header.slide {
   text-align: left;
   padding-left: 0.42em;
 }
-.h5p-interaktivtavle .h5p-summary-table-header.score {
+.h5p-coursepresentation .h5p-summary-table-header.score {
   text-align: right;
   padding-right: 1.6em;
 }
-.h5p-interaktivtavle .h5p-summary-table-header.score span {
+.h5p-coursepresentation .h5p-summary-table-header.score span {
   color: #999;
   padding: 0 0.1em;
 }
@@ -183,31 +183,31 @@
 /* ---------------------------- Social media styles ---------------------------------------------- */
 
 /* Facebook and Twitter link styling */
-.h5p-interaktivtavle .h5p-summary-twitter-message,
-.h5p-interaktivtavle .h5p-summary-facebook-message {
+.h5p-coursepresentation .h5p-summary-twitter-message,
+.h5p-coursepresentation .h5p-summary-facebook-message {
   cursor: pointer;
   font-size: 0.7em;
   padding: 0 0.5em;
   color: #999;
 }
 
-.h5p-interaktivtavle .h5p-summary-twitter-message:hover,
-.h5p-interaktivtavle .h5p-summary-facebook-message:hover {
+.h5p-coursepresentation .h5p-summary-twitter-message:hover,
+.h5p-coursepresentation .h5p-summary-facebook-message:hover {
   color: #096bcb;
 }
 
-.h5p-interaktivtavle .h5p-summary-twitter-message > span,
-.h5p-interaktivtavle .h5p-summary-facebook-message > span {
+.h5p-coursepresentation .h5p-summary-twitter-message > span,
+.h5p-coursepresentation .h5p-summary-facebook-message > span {
   text-decoration: none;
 }
 
-.h5p-interaktivtavle .h5p-summary-twitter-message:before {
+.h5p-coursepresentation .h5p-summary-twitter-message:before {
   font-family: 'H5PFontAwesome4';
   content: "\f099";
   padding-right: 0.5em;
 }
 
-.h5p-interaktivtavle .h5p-summary-facebook-message:before {
+.h5p-coursepresentation .h5p-summary-facebook-message:before {
   font-family: 'H5PFontAwesome4';
   content: "\f09a";
   padding-right: 0.5em;
@@ -215,19 +215,19 @@
 
 /* --------------------------------- Button styling ----------------------------------------------- */
 
-.h5p-interaktivtavle .h5p-summary-slide .h5p-eta-export:before {
+.h5p-coursepresentation .h5p-summary-slide .h5p-eta-export:before {
   font-family: 'H5PFontAwesome4';
   content: "\f0f6";
   margin-right: 0.5em;
 }
 
-.h5p-interaktivtavle .h5p-summary-slide .h5p-show-solutions:before {
+.h5p-coursepresentation .h5p-summary-slide .h5p-show-solutions:before {
   font-family: 'H5PFontAwesome4';
   content: "\f06e";
   margin-right: 0.5em;
 }
 
-.h5p-interaktivtavle .h5p-summary-slide .h5p-cp-retry-button:before {
+.h5p-coursepresentation .h5p-summary-slide .h5p-cp-retry-button:before {
   font-family: 'H5PFontAwesome4';
   content: "\f021";
   margin-right: 0.5em;

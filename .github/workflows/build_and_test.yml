@@ -62,7 +62,7 @@ jobs:
           git clone https://github.com/edh5p/h5p-editor-radio-selector.git
 
           # Clone and build override projects with build scripts
-          git clone https://github.com/NDLANO/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
+          git clone https://github.com/NDLANO/h5p-editor-course-presentation.git -b 'meta/rename-interaktiv-tavle-course-presentation' && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
           git clone https://github.com/NDLANO/h5p-drag-question.git && pushd h5p-drag-question && npm ci && npm run build && popd
 
           cp -r ../h5p-course-presentation .
@@ -70,13 +70,13 @@ jobs:
           cd dist
           ls
           npm install -g h5p
-          h5p pack -r h5p-course-presentation interaktiv_tavle.h5p
-          h5p validate interaktiv_tavle.h5p
+          h5p pack -r h5p-course-presentation course-presentation.h5p
+          h5p validate course-presentation.h5p
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
         with:
-          name: interaktiv_tavle.h5p
-          path: dist/interaktiv_tavle.h5p
+          name: course-presentation.h5p
+          path: dist/course-presentation.h5p
       - name: Load library.json
         id: set_library
         run: |
@@ -101,4 +101,4 @@ jobs:
             }}
           prerelease: false
           files: |
-            dist/interaktiv_tavle.h5p
+            dist/course-presentation.h5p
