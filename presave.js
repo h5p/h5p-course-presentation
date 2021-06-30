@@ -3,7 +3,8 @@ var H5PEditor = H5PEditor || {};
 
 
 /**
- * Function to go thr all elements of a Course Presentation and perform the separate calculations before returning a aggregated result
+ * Function to go through all elements of a Course Presentation and perform the separate
+ * calculations before returning a aggregated result
  *
  * @param content
  * @param finished

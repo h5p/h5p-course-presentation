@@ -1,118 +1,247 @@
-import GoToSlide from './go-to-slide';
+// @ts-check
+
+import { jQuery as $ } from "./globals";
+import { initAnswerHotspot } from "./answer-hotspot";
+import CoursePresentation from "./cp";
+import { Hotspot } from "./hotspot";
+
+const H5P = window.H5P || {};
 
 /**
  * @class
+ *
+ * The Element class' `this` is an instance of `Slide`
+ *
+ * @param {*} parameters
  */
 function Element(parameters) {
-  const self = this;
+  const { showAsHotspot, answerType } = parameters;
 
-  if (parameters.action === undefined) {
-    // goToSlide, internal element
-    self.instance = new GoToSlide(parameters, {
-      l10n: self.parent.parent.l10n,
-      currentIndex: self.parent.index
-    });
+  // @ts-expect-error Element extends Parent
+  const slide = this.parent;
+  const coursePresentation = slide.parent;
 
-    if (!self.parent.parent.isEditor()) {
-      self.instance.on('navigate', event => {
-        const index = event.data;
-        self.parent.parent.jumpToSlide(index);
-      });
-    }
-  }
-  else {
-    // H5P library
-    var library;
-    if (self.parent.parent.isEditor()) {
-      // Clone the whole tree to avoid libraries accidentally changing params while running.
-      library = H5P.jQuery.extend(true, {}, parameters.action, self.parent.parent.elementsOverride);
-    }
-    else {
-      // Add defaults
-      library = H5P.jQuery.extend(true, parameters.action, self.parent.parent.elementsOverride);
-    }
-
-    /* If library allows autoplay, control this from CP */
-    if (library.params.autoplay) {
-      library.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.playback && library.params.playback.autoplay) {
-      library.params.playback.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.params &&
-      library.params.media.params.playback &&
-      library.params.media.params.playback.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.params.playback.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.params &&
-      library.params.media.params.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.override &&
-      library.params.override.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.override.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-
-    var internalSlideId = self.parent.parent.elementInstances[self.parent.index] ? self.parent.parent.elementInstances[self.parent.index].length : 0;
-    if (self.parent.parent.previousState && self.parent.parent.previousState.answers && self.parent.parent.previousState.answers[self.parent.index] && self.parent.parent.previousState.answers[self.parent.index][internalSlideId]) {
-      // Restore previous state
-      library.userDatas = {
-        state: self.parent.parent.previousState.answers[self.parent.index][internalSlideId]
-      };
-    }
-
-    // Override child settings
-    library.params = library.params || {};
-    self.instance = H5P.newRunnable(library, self.parent.parent.contentId, undefined, true, {parent: self.parent.parent});
-    if (self.instance.preventResize !== undefined) {
-      self.instance.preventResize = true;
-    }
+  if (showAsHotspot) {
+    const content = Element.createContent(
+      slide,
+      coursePresentation,
+      parameters
+    );
+    this.instance = Element.createHotspot(
+      parameters,
+      coursePresentation.l10n,
+      slide.index,
+      coursePresentation,
+      content
+    );
+  } else {
+    const content = Element.createContent(
+      slide,
+      coursePresentation,
+      parameters
+    );
+    this.instance = content;
   }
 
-  if (self.parent.parent.elementInstances[self.parent.index] === undefined) {
-    self.parent.parent.elementInstances[self.parent.index] = [self.instance];
-  }
-  else {
-    self.parent.parent.elementInstances[self.parent.index].push(self.instance);
+  const isAnswerHotspot = !!answerType;
+  if (isAnswerHotspot) {
+    initAnswerHotspot(this.instance, answerType);
   }
 
-  if (self.instance.showCPComments !== undefined || self.instance.isTask || (self.instance.isTask === undefined && self.instance.showSolutions !== undefined)) {
+  const slideHasElements = !!coursePresentation.elementInstances[slide.index];
+  if (slideHasElements) {
+    coursePresentation.elementInstances[slide.index].push(this.instance);
+  } else {
+    coursePresentation.elementInstances[slide.index] = [this.instance];
+  }
+
+  const slideIsTask =
+    this.instance.showCPComments !== undefined ||
+    this.instance.isTask ||
+    (this.instance.isTask === undefined &&
+      this.instance.showSolutions !== undefined);
+  if (slideIsTask) {
     // Mark slide as task in CP navigation bar
-    self.instance.coursePresentationIndexOnSlide = self.parent.parent.elementInstances[self.parent.index].length - 1;
-    if (self.parent.parent.slidesWithSolutions[self.parent.index] === undefined) {
-      self.parent.parent.slidesWithSolutions[self.parent.index] = [];
+    this.instance.coursePresentationIndexOnSlide =
+      coursePresentation.elementInstances[slide.index].length - 1;
+
+    const { slidesWithSolutions } = coursePresentation;
+    const slideAlreadyHasTasks = !!slidesWithSolutions[slide.index];
+    if (!slideAlreadyHasTasks) {
+      slidesWithSolutions[slide.index] = [];
     }
-    self.parent.parent.slidesWithSolutions[self.parent.index].push(self.instance);
+
+    slidesWithSolutions[slide.index].push(this.instance);
   }
   // Check for comments to show after solution button is pressed
   else if (parameters.solution) {
-    if (self.parent.parent.showCommentsAfterSolution[self.parent.index] === undefined) {
-      self.parent.parent.showCommentsAfterSolution[self.parent.index] = [];
+    if (slide.parent.showCommentsAfterSolution[slide.index] === undefined) {
+      slide.parent.showCommentsAfterSolution[slide.index] = [];
     }
-    self.parent.parent.showCommentsAfterSolution[self.parent.index].push(self.instance);
+    slide.parent.showCommentsAfterSolution[slide.index].push(this.instance);
   }
 
-  // Check if this is an Exportable Text Area
-  if (self.instance.exportAnswers !== undefined && self.instance.exportAnswers) {
-    self.parent.parent.hasAnswerElements = true;
+  const isExportableTextArea = this.instance.exportAnswers;
+  if (isExportableTextArea) {
+    coursePresentation.hasAnswerElements = true;
   }
 
-  if (!self.parent.parent.isTask && !self.parent.parent.hideSummarySlide) {
+  if (!coursePresentation.isTask && !coursePresentation.hideSummarySlide) {
     // CP is not a task by default, but it will be if one of the elements is task or have a solution
-    if (self.instance.isTask || (self.instance.isTask === undefined && self.instance.showSolutions !== undefined)) {
-      self.parent.parent.isTask = true; // (checking for showSolutions will not work for compound content types, which is why we added isTask instead.)
+    if (
+      this.instance.isTask ||
+      (this.instance.isTask === undefined &&
+        this.instance.showSolutions !== undefined)
+    ) {
+      coursePresentation.isTask = true; // (checking for showSolutions will not work for compound content types, which is why we added isTask instead.)
     }
   }
 }
+
+Element.overrideAutoplay = function (h5pLibrary) {
+  const { params } = h5pLibrary;
+
+  /* If library allows autoplay, control this from CP */
+  if (params.autoplay) {
+    h5pLibrary.params.autoplay = false;
+    h5pLibrary.params.cpAutoplay = true;
+  } else if (params.playback && params.playback.autoplay) {
+    h5pLibrary.params.playback.autoplay = false;
+    h5pLibrary.params.cpAutoplay = true;
+  } else if (
+    params.media &&
+    params.media.params &&
+    params.media.params.playback &&
+    params.media.params.playback.autoplay
+  ) {
+    // Control libraries that has content with autoplay through CP
+    h5pLibrary.params.media.params.playback.autoplay = false;
+    h5pLibrary.params.cpAutoplay = true;
+  } else if (
+    params.media &&
+    params.media.params &&
+    params.media.params.autoplay
+  ) {
+    // Control libraries that has content with autoplay through CP
+    h5pLibrary.params.media.params.autoplay = false;
+    h5pLibrary.params.cpAutoplay = true;
+  } else if (params.override && params.override.autoplay) {
+    // Control libraries that has content with autoplay through CP
+    h5pLibrary.params.override.autoplay = false;
+    h5pLibrary.params.cpAutoplay = true;
+  }
+
+  return h5pLibrary;
+};
+
+/**
+ *
+ * @param {Object} slide
+ * @param {CoursePresentation} coursePresentation
+ * @param {*} parameters
+ * @returns
+ */
+Element.createContent = function (slide, coursePresentation, parameters) {
+  let h5pLibrary;
+
+  if (coursePresentation.isEditor()) {
+    // Clone the whole tree to avoid libraries accidentally changing params while running.
+    h5pLibrary = H5P.jQuery.extend(
+      true,
+      {},
+      parameters.action,
+      coursePresentation.elementsOverride
+    );
+  } else {
+    // Add defaults
+    h5pLibrary = H5P.jQuery.extend(
+      true,
+      parameters.action,
+      coursePresentation.elementsOverride
+    );
+  }
+
+  h5pLibrary = Element.overrideAutoplay(h5pLibrary);
+
+  const internalSlideId = coursePresentation.elementInstances[slide.index]
+    ? coursePresentation.elementInstances[slide.index].length
+    : 0;
+  const state =
+    coursePresentation.previousState &&
+    coursePresentation.previousState.answers &&
+    coursePresentation.previousState.answers[slide.index] &&
+    coursePresentation.previousState.answers[slide.index][internalSlideId];
+
+  if (state) {
+    // Restore previous state
+    h5pLibrary.userDatas = {
+      state,
+    };
+  }
+
+  // Override child settings
+  h5pLibrary.params = h5pLibrary.params || {};
+  const instance = H5P.newRunnable(
+    h5pLibrary,
+    coursePresentation.contentId,
+    undefined,
+    true,
+    {
+      parent: coursePresentation,
+    }
+  );
+
+  if (instance.preventResize !== undefined) {
+    instance.preventResize = true;
+  }
+
+  return instance;
+};
+
+/**
+ *
+ * @param {Object} parameters
+ * @param {string} parameters.title
+ * @param {number} parameters.goToSlide
+ * @param {boolean} parameters.invisible
+ * @param {string} parameters.goToSlideType}
+ * @param {string} parameters.dialogContent
+ * @param {Media[]} parameters.dialogAudio
+ * @param {DialogHeaderContent} parameters.dialogHeaderContent
+ * @param {Object} l10n
+ * @param {number} currentIndex
+ * @param {CoursePresentation} coursePresentation
+ * @param {$<HTMLElement>} content
+ * @returns {Hotspot}
+ */
+Element.createHotspot = function (
+  parameters,
+  l10n,
+  currentIndex,
+  coursePresentation,
+  content
+) {
+  const hotspot = new Hotspot(
+    parameters,
+    {
+      l10n,
+      currentIndex,
+    },
+    content
+  );
+
+  if (!coursePresentation.isEditor()) {
+    hotspot.on("navigate", (event) => {
+      const index = event.data;
+      coursePresentation.jumpToSlide(index);
+    });
+
+    hotspot.on("navigate-to-last-slide", () => {
+      coursePresentation.jumpToSlide(coursePresentation.slides.length - 1);
+    })
+  }
+
+  return hotspot;
+};
 
 export default Element;

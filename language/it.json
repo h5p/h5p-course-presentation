@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,45 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "Titolo"
                     },
                     {
@@ -51,12 +98,39 @@
                         },
                         {
                           "label": "Slide precedente"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
+                        },
+                        {
+                          "label": "Go to summary slide"
                         }
                       ]
                     },
                     {
                       "label": "Numero slide specifica",
                       "description": "Applicabile soltanto quando è selezionato 'Numero slide specifica'"
+                    },
+                    {
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Dialog audio",
+                      "description": "An audio track that will play when the modal opens"
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "Invisibile",
@@ -204,10 +278,6 @@
           "default": "Condividi su Twitter"
         },
         {
-          "label": "Testo per la condivisione su Google+",
-          "default": "Condividi su Google+"
-        },
-        {
           "label": "Titolo della slide di riepilogo",
           "default": "Riepilogo"
         },
@@ -279,6 +349,20 @@
         {
           "label": "Avviso di uscita da schermo intero per tecnologie assistive",
           "default": "Uscita da schermo intero"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
+        },
+        {
+          "label": "Play audio",
+          "description": "Used for assistive technologies",
+          "default": "Play audio"
+        },
+        {
+          "label": "Pause audio",
+          "description": "Used for assistive technologies",
+          "default": "Pause audio"
         }
       ]
     },
@@ -369,13 +453,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Mostra l'icona di condivisione Google+"
-            },
-            {
-              "label": "Link di condivisione a Google+",
-              "default": "@currentpageurl"
             }
           ]
         }

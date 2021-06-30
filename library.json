@@ -2,8 +2,8 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 22,
-  "patchVersion": 5,
+  "minorVersion": 24,
+  "patchVersion": 12,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -45,14 +45,19 @@
   ],
   "editorDependencies": [
     {
+      "machineName": "H5PEditor.CoursePresentation",
+      "majorVersion": 1,
+      "minorVersion": 24
+    },
+    {
       "machineName": "H5PEditor.ShowWhen",
       "majorVersion": 1,
       "minorVersion": 0
     },
     {
-      "machineName": "H5PEditor.CoursePresentation",
+      "machineName": "H5PEditor.RadioSelector",
       "majorVersion": 1,
-      "minorVersion": 22
+      "minorVersion": 2
     }
   ]
 }

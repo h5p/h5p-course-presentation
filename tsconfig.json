@@ -1,0 +1,16 @@
+{
+  "include": ["index.d.ts", "src/scripts/**/*"],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowSyntheticDefaultImports": true
+  }
+}

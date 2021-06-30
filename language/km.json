@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,45 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "ចំណងជើង"
                     },
                     {
@@ -51,12 +98,39 @@
                         },
                         {
                           "label": "ស្លាយមុន"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
+                        },
+                        {
+                          "label": "Go to summary slide"
                         }
                       ]
                     },
                     {
                       "label": "លេខស្លាយជាក់លាក់",
                       "description": "មានប្រសិទ្ធភាពតែនៅពេលដែល 'លេខស្លាយជាក់លាក់' ត្រូវបានជ្រើសរើស"
+                    },
+                    {
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Dialog audio",
+                      "description": "An audio track that will play when the modal opens"
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "មើលមិនឃើញ",
@@ -204,10 +278,6 @@
           "default": "ចែករំលែកនៅលើធ្វីតធឺរ"
         },
         {
-          "label": "ពាក្យប្រើសម្រាប់ «ចែករំលែកនៅលើ Google+»",
-          "default": "ចែករំលែកនៅលើ Google+"
-        },
-        {
           "label": "ចំណងជើងសម្រាប់ស្លាយសង្ខេប",
           "default": "សង្ខេប"
         },
@@ -279,6 +349,20 @@
         {
           "label": "ពាក្យប្រកាសនៅពេលពេញអេក្រង់ត្រូវបានចាកចេញសម្រាប់បច្ចេកវិទ្យាជំនួយ",
           "default": "បានបិទ «ពេញអេក្រង់»"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
+        },
+        {
+          "label": "Play audio",
+          "description": "Used for assistive technologies",
+          "default": "Play audio"
+        },
+        {
+          "label": "Pause audio",
+          "description": "Used for assistive technologies",
+          "default": "Pause audio"
         }
       ]
     },
@@ -369,13 +453,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "បង្ហាញរូបតំណាងចែករំលែកទៅ Google+"
-            },
-            {
-              "label": "តំណសម្រាប់ចែករំលែកទៅ Google",
-              "default": "@currentpageurl"
             }
           ]
         }

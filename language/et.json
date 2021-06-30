@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,45 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "Pealkiri"
                     },
                     {
@@ -51,12 +98,39 @@
                         },
                         {
                           "label": "Eelmine lehekülg"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
+                        },
+                        {
+                          "label": "Go to summary slide"
                         }
                       ]
                     },
                     {
                       "label": "Mine leheküljele",
                       "description": "Kasutatav vaid siis, kui 'Määra lehekülje number' on valitud"
+                    },
+                    {
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Dialog audio",
+                      "description": "An audio track that will play when the modal opens"
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "Nähtamatu",
@@ -204,10 +278,6 @@
           "default": "Jaga Twitteris"
         },
         {
-          "label": "Jaga Googles silt",
-          "default": "Jaga Google+ keskkonnas"
-        },
-        {
           "label": "Kokkuvõtva lehekülje pealkiri",
           "default": "Kokkuvõte"
         },
@@ -279,6 +349,20 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Exited fullscreen"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
+        },
+        {
+          "label": "Play audio",
+          "description": "Used for assistive technologies",
+          "default": "Play audio"
+        },
+        {
+          "label": "Pause audio",
+          "description": "Used for assistive technologies",
+          "default": "Pause audio"
         }
       ]
     },
@@ -369,13 +453,6 @@
                   "default": "h5p, e-ope"
                 }
               ]
-            },
-            {
-              "label": "Näita Google+ jagamise ikooni"
-            },
-            {
-              "label": "Jaga Google Plussis link",
-              "default": "@currentpageurl"
             }
           ]
         }

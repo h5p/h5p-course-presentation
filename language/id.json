@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Aspect Ratio"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -38,6 +46,45 @@
                       ]
                     },
                     {
+                      "label": "Button color",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Use different icon"
+                    },
+                    {
+                      "label": "Button icon",
+                      "options": [
+                        {
+                          "label": "Information icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Image icon"
+                        },
+                        {
+                          "label": "Audio icon"
+                        },
+                        {
+                          "label": "Chart icon"
+                        },
+                        {
+                          "label": "Video icon"
+                        },
+                        {
+                          "label": "Twitter icon"
+                        },
+                        {
+                          "label": "Link icon"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Display as hotspot"
+                    },
+                    {
                       "label": "Judul"
                     },
                     {
@@ -51,12 +98,39 @@
                         },
                         {
                           "label": "Slide sebelumnya"
+                        },
+                        {
+                          "label": "Dialog window"
+                        },
+                        {
+                          "label": "No action"
+                        },
+                        {
+                          "label": "Go to summary slide"
                         }
                       ]
                     },
                     {
                       "label": "Nomor slide spesifik",
                       "description": "Hanya bisa diterapkan jika 'Nomor slide spesifik' terpilih"
+                    },
+                    {
+                      "label": "What to show above the dialog content",
+                      "fields": [
+                        {
+                          "label": "Dialog video"
+                        },
+                        {
+                          "label": "Dialog image"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Dialog audio",
+                      "description": "An audio track that will play when the modal opens"
+                    },
+                    {
+                      "label": "Dialog content"
                     },
                     {
                       "label": "Tidak terlihat",
@@ -71,7 +145,7 @@
                   {
                     "label": "Gambar",
                     "description": "Gambar latar harus memiliki rasio 2:1 untuk lebar terhadap tinggi untuk mencegah peregangan. Gambar dalam resolusi tinggi akan tampak lebih baik pada layar yang lebar."
-                   },
+                  },
                   {
                     "label": "Pilih warna",
                     "default": ""
@@ -204,10 +278,6 @@
           "default": "Bagikan di Twitter"
         },
         {
-          "label": "Teks berbagi ke Google",
-          "default": "Bagikan di Google+"
-        },
-        {
           "label": "Judul untuk slide ringkasan",
           "default": "Ringkasan"
         },
@@ -279,6 +349,20 @@
         {
           "label": "Keluar dari pengumuman layar penuh untuk teknologi asistif",
           "default": "Keluar dari layar penuh"
+        },
+        {
+          "label": "Exit dialog action for assistive technologies",
+          "default": "Exit dialog"
+        },
+        {
+          "label": "Play audio",
+          "description": "Used for assistive technologies",
+          "default": "Play audio"
+        },
+        {
+          "label": "Pause audio",
+          "description": "Used for assistive technologies",
+          "default": "Pause audio"
         }
       ]
     },
@@ -369,13 +453,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Tampilkan ikon berbagi ke Google+"
-            },
-            {
-              "label": "Tautan berbagi ke Google",
-              "default": "@currentpageurl"
             }
           ]
         }

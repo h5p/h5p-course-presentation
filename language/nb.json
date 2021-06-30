@@ -3,11 +3,19 @@
     {
       "fields": [
         {
+          "label": "Størrelsesforhold"
+        },
+        {
           "field": {
             "fields": [
               {
+                "label": "Aspect Ratio"
+              },
+              {
                 "field": {
                   "fields": [
+                    {},
+                    {},
                     {},
                     {},
                     {},
@@ -27,21 +35,60 @@
                       "label": "Vis som knapp"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Størrelse på knapp",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Liten"
                         },
                         {
-                          "label": "Big"
+                          "label": "Stor"
                         }
                       ]
+                    },
+                    {
+                      "label": "Farge på knapp",
+                      "default": "#1d5cff"
+                    },
+                    {
+                      "label": "Bruk et annet ikon"
+                    },
+                    {
+                      "label": "Ikon på knapp",
+                      "options": [
+                        {
+                          "label": "Informasjon"
+                        },
+                        {
+                          "label": "Video"
+                        },
+                        {
+                          "label": "Bilde"
+                        },
+                        {
+                          "label": "Lyd"
+                        },
+                        {
+                          "label": "Graf"
+                        },
+                        {
+                          "label": "Video"
+                        },
+                        {
+                          "label": "Twitter"
+                        },
+                        {
+                          "label": "Lenke"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Vis som aktivt felt"
                     },
                     {
                       "label": "Tittel"
                     },
                     {
-                      "label": "Slide vi skal gå til",
+                      "label": "Type",
                       "options": [
                         {
                           "label": "Spesifisert slide"
@@ -51,12 +98,39 @@
                         },
                         {
                           "label": "Forrige side"
+                        },
+                        {
+                          "label": "Dialogvindu"
+                        },
+                        {
+                          "label": "Ingen handling"
+                        },
+                        {
+                          "label": "Gå til oppsummeringsslide"
                         }
                       ]
                     },
                     {
                       "label": "Spesifisert slide",
-                      "description": "Type a slide number to go to"
+                      "description": "Skriv inn sidenummer en skal gå til"
+                    },
+                    {
+                      "label": "Velg mediatype som skal vises over innholdet",
+                      "fields": [
+                        {
+                          "label": "Video"
+                        },
+                        {
+                          "label": "Bilde"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Lyd i dialog",
+                      "description": "Et lydspor som spills av når dialogen åpnes"
+                    },
+                    {
+                      "label": "Innhold i dialogvindu"
                     },
                     {
                       "label": "Usynlig",
@@ -74,7 +148,7 @@
                   },
                   {
                     "label": "Velg farge",
-                    "default": ""
+                    "default": null
                   }
                 ]
               }
@@ -204,10 +278,6 @@
           "default": "Del på Twitter"
         },
         {
-          "label": "Share to Google text",
-          "default": "Share on Google+"
-        },
-        {
           "label": "Tittel for \"Oppsummering\" siden",
           "default": "Oppsummering"
         },
@@ -279,6 +349,20 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Avsluttet fullskjerm"
+        },
+        {
+          "label": "Dialogvindu ble lukket – brukes av skjermlesere",
+          "default": "Lukket dialog"
+        },
+        {
+          "label": "Spill av lyd",
+          "description": "Brukes av skjermlesere",
+          "default": "Spill av lyd"
+        },
+        {
+          "label": "Sett lyd på pause",
+          "description": "Brukes av skjermlesere",
+          "default": "Sett lyd på pause"
         }
       ]
     },
@@ -369,13 +453,6 @@
                   "default": "h5p, course"
                 }
               ]
-            },
-            {
-              "label": "Display Google+ share icon"
-            },
-            {
-              "label": "Share to Google link",
-              "default": "@currentpageurl"
             }
           ]
         }

@@ -1,11 +1,12 @@
 {
-  "name": "h5p-course-presentation",
+  "name": "h5p-course-presentation-alpha",
   "version": "1.20.0",
   "description": "A free HTML5- based presentation content type which allows users to add multiple choice, fill in the blanks, texts and other types of interactions to their presentations using only a web browser.",
   "private": true,
   "scripts": {
     "build": "cross-env NODE_ENV='production' webpack -p",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "validate-types": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -30,10 +31,14 @@
     "file-loader": "^0.11.2",
     "h5p-lib-controls": "0.0.13",
     "h5p-parent": "0.0.2",
-    "node-sass": "^4.14.1",
     "resolve-url-loader": "^2.3.1",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
+    "sass": "^1.32.8",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^0.23.1",
+    "typescript": "^4.2.4",
     "webpack": "^3.12.0"
+  },
+  "dependencies": {
+    "focus-trap": "^6.3.0"
   }
 }

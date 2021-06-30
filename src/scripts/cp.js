@@ -8,22 +8,30 @@ import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stri
 import Slide from './slide.js';
 
 /**
- * @const {string}
+ * @type {string}
  */
 const KEYWORD_TITLE_SKIP = null;
 
 /**
- * Constructor.
+ * @constructor
  *
  * @param {object} params Start paramteres.
+ * @param {object} [params.presentation]
+ * @param {object} [params.override]
+ * 
  * @param {int} id Content identifier
- * @param {function} editor
- *  Set if an editor is initiating this library
- * @returns {undefined} Nothing.
+ * 
+ * @param {object} extras Set if an editor is initiating this library
+ * @param {object} [extras.cpEditor]
+ * @param {object} [extras.previousState]
+ * @return {undefined} Nothing.
  */
 let CoursePresentation = function (params, id, extras) {
   var that = this;
   this.presentation = params.presentation;
+  this.defaultAspectRatio = this.presentation.slides[0].aspectRatio || "4-3";
+
+  /** @type {Slide[]} */
   this.slides = this.presentation.slides;
   this.contentId = id;
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
@@ -72,7 +80,6 @@ let CoursePresentation = function (params, id, extras) {
     scoreMessage: 'You achieved:',
     shareFacebook: 'Share on Facebook',
     shareTwitter: 'Share on Twitter',
-    shareGoogle: 'Share on Google+',
     goToSlide: 'Go to slide :num',
     solutionsButtonTitle: 'Show comments',
     printTitle: 'Print',
@@ -105,7 +112,6 @@ let CoursePresentation = function (params, id, extras) {
     if (!!params.override.social) {
       this.enableTwitterShare = !!params.override.social.showTwitterShare;
       this.enableFacebookShare = !!params.override.social.showFacebookShare;
-      this.enableGoogleShare = !!params.override.social.showGoogleShare;
 
       this.twitterShareStatement = params.override.social.twitterShare.statement;
       this.twitterShareHashtags = params.override.social.twitterShare.hashtags;
@@ -113,8 +119,6 @@ let CoursePresentation = function (params, id, extras) {
 
       this.facebookShareUrl = params.override.social.facebookShare.url;
       this.facebookShareQuote = params.override.social.facebookShare.quote;
-
-      this.googleShareUrl = params.override.social.googleShareUrl;
     }
   }
 
@@ -197,38 +201,56 @@ CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
  * Render the presentation inside the given container.
  *
  * @param {H5P.jQuery} $container Container for this presentation.
- * @returns {undefined} Nothing.
+ * @return {undefined} Nothing.
  */
 CoursePresentation.prototype.attach = function ($container) {
-  var that = this;
+  const that = this;
 
   // isRoot is undefined in the editor
   if (this.isRoot !== undefined && this.isRoot()) {
     this.setActivityStarted();
   }
 
-  var html =
-          '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
-          '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
-          '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
-          '  <div tabindex="-1"></div>' +
-          '  <div class="h5p-box-wrapper">' +
-          '    <div class="h5p-presentation-wrapper">' +
-          '      <div class="h5p-keywords-wrapper"></div>' +
-          '     <div class="h5p-slides-wrapper"></div>' +
-          '    </div>' +
-          '  </div>' +
-          '  <nav class="h5p-cp-navigation">' +
-          '    <ol class="h5p-progressbar list-unstyled"></ol>' +
-          '  </nav>' +
-          '  <div class="h5p-footer"></div>' +
-          '</div>';
+  /** 
+   * When used to wrap template strings, this will let some code editors syntax highlight the text as HTML.
+   * The function itself returns the content of the template string without altering anything. 
+   */
+  const html = String.raw;
+  
+  const markup = html`
+  <div class="h5p-keymap-explanation hidden-but-read">
+    ${this.l10n.accessibilitySlideNavigationExplanation}
+  </div>
+  <div
+    class="h5p-fullscreen-announcer hidden-but-read"
+    aria-live="polite"
+  ></div>
+  <div
+    class="h5p-wrapper"
+    tabindex="0"
+    aria-label="${this.l10n.accessibilityCanvasLabel}"
+  >
+    <div
+      class="h5p-current-slide-announcer hidden-but-read"
+      aria-live="polite"
+    ></div>
+    <div tabindex="-1"></div>
+    <div class="h5p-box-wrapper">
+      <div class="h5p-presentation-wrapper">
+        <div class="h5p-keywords-wrapper"></div>
+        <div class="h5p-slides-wrapper"></div>
+      </div>
+    </div>
+    <nav class="h5p-cp-navigation">
+      <ol class="h5p-progressbar list-unstyled"></ol>
+    </nav>
+    <div class="h5p-footer"></div>
+  </div>`;
 
   $container
     .attr('role', 'application')
-    .addClass('h5p-course-presentation')
-    .html(html);
+    .addClass('h5p-coursepresentation')
+    .html(markup);
 
   this.$container = $container;
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
@@ -296,23 +318,26 @@ CoursePresentation.prototype.attach = function ($container) {
   });
 
   // Get intended base width from CSS.
-  var wrapperWidth = parseInt(this.$wrapper.css('width'));
-  this.width = wrapperWidth !== 0 ? wrapperWidth : 640;
+  const wrapperWidth = parseInt(this.$wrapper.css('width'));
+  this.width = wrapperWidth || 640;
 
-  var wrapperHeight = parseInt(this.$wrapper.css('height'));
-  this.height = wrapperHeight !== 0 ? wrapperHeight : 400;
+  const wrapperHeight = parseInt(this.$wrapper.css('height'));
+  this.height = wrapperHeight || 400;
 
-  this.ratio = 16/9;
+  this.ratio = 16 / 9;
   // Intended base font size cannot be read from CSS, as it might be modified
   // by mobile browsers already. (The Android native browser does this.)
   this.fontSize = 16;
 
   this.$boxWrapper = this.$wrapper.children('.h5p-box-wrapper');
-  var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
+  const $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
   this.$progressbar = this.$wrapper.find('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
+
+  // Declare for type checking
+  this.$exitSolutionModeText = this.$exitSolutionModeText || null;
 
   // Determine if keywords pane should be initialized
   this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
@@ -337,8 +362,8 @@ CoursePresentation.prototype.attach = function ($container) {
   }
   else {
     // Determine by checking for slides with tasks
-    this.slidesWithSolutions.forEach(function (slide) {
-      that.showSummarySlide = slide.length;
+    this.slidesWithSolutions.forEach((slide) => {
+      this.showSummarySlide = slide.length;
     });
   }
 
@@ -387,7 +412,7 @@ CoursePresentation.prototype.attach = function ($container) {
     this.initKeywords = false;
   }
 
-  if (this.editor !== undefined || !this.activeSurface) {
+  if (this.editor || !this.activeSurface) {
     // Initialize touch events
     this.initTouchEvents();
 
@@ -398,8 +423,6 @@ CoursePresentation.prototype.attach = function ($container) {
     if (!this.previousState || !this.previousState.progress) {
       this.setSlideNumberAnnouncer(0, false);
     }
-
-    this.summarySlideObject = new SummarySlide(this, $summarySlide);
   }
   else {
     this.$progressbar.add(this.$footer).remove();
@@ -414,10 +437,12 @@ CoursePresentation.prototype.attach = function ($container) {
         appendTo: this.$wrapper
       });
 
-      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
+      addClickAndKeyboardListeners(this.$fullScreenButton, () => this.toggleFullScreen());
     }
   }
-
+  
+  this.summarySlideObject = new SummarySlide(this, $summarySlide);
+  
   new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
@@ -546,9 +571,9 @@ CoursePresentation.prototype.createSlides = function () {
  *
  * @public
  * @param obj The object to investigate
- * @returns {boolean}
+ * @return {boolean}
  */
-CoursePresentation.prototype.hasScoreData = function (obj) {
+CoursePresentation.prototype.hasScoreData = function (obj) {  
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
@@ -560,13 +585,11 @@ CoursePresentation.prototype.hasScoreData = function (obj) {
  * Return the combined score of all children
  *
  * @public
- * @returns {Number}
+ * @return {number}
  */
 CoursePresentation.prototype.getScore = function () {
-  var self = this;
-
-  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide) {
-    return sum + (self.hasScoreData(slide) ? slide.getScore() : 0);
+  return flattenArray(this.slidesWithSolutions).reduce((sum, slide) => {
+    return sum + (this.hasScoreData(slide) ? slide.getScore() : 0);
   }, 0);
 };
 
@@ -574,13 +597,11 @@ CoursePresentation.prototype.getScore = function () {
  * Return the combined maxScore of all children
  *
  * @public
- * @returns {Number}
+ * @return {number}
  */
 CoursePresentation.prototype.getMaxScore = function () {
-  var self = this;
-
-  return flattenArray(self.slidesWithSolutions).reduce(function (sum, slide) {
-    return sum + (self.hasScoreData(slide) ? slide.getMaxScore() : 0);
+  return flattenArray(this.slidesWithSolutions).reduce((sum, slide) => {
+    return sum + (this.hasScoreData(slide) ? slide.getMaxScore() : 0);
   }, 0);
 };
 
@@ -590,7 +611,7 @@ CoursePresentation.prototype.getMaxScore = function () {
  * @param {array} [slideScores]
  */
 CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
-  if (slideScores !== undefined && slideScores) {
+  if (slideScores) {
     // Set feedback icons for progress bar.
     slideScores.forEach(singleSlide => {
       const $indicator = this.progressbarParts[singleSlide.slide-1]
@@ -605,12 +626,14 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
     });
   }
   else {
-    // Remove all feedback icons.
-    this.progressbarParts.forEach(pbPart => {
-      pbPart.find('.h5p-progressbar-part-has-task')
-        .removeClass('h5p-is-correct')
-        .removeClass('h5p-is-wrong');
-    });
+    if (this.progressbarParts) {
+      // Remove all feedback icons.
+      this.progressbarParts.forEach(pbPart => {
+        pbPart.find('.h5p-progressbar-part-has-task')
+          .removeClass('h5p-is-correct')
+          .removeClass('h5p-is-wrong');
+      });
+    }
   }
 };
 
@@ -671,8 +694,6 @@ CoursePresentation.prototype.setKeywordsOpacity = function (value) {
 /**
  * Makes continuous text smaller if it does not fit inside its container.
  * Only works in view mode.
- *
- * @returns {undefined}
  */
 CoursePresentation.prototype.fitCT = function () {
   if (this.editor !== undefined) {
@@ -698,52 +719,65 @@ CoursePresentation.prototype.fitCT = function () {
 };
 
 /**
- * Resize handling.
+ * Set ratio from current slide.
  *
- * @param {Boolean} fullscreen
- * @returns {undefined}
+ * @param {boolean} fullscreen
+ * @return {undefined}
  */
-CoursePresentation.prototype.resize = function () {
-  var self = this;
-  var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
+CoursePresentation.prototype.resetRatio = function () {
+  const slide = this.slides[this.$current.index()];
+  switch(slide.aspectRatio){
+    case "16-9":
+      this.ratio = (16/9);
+      break;
+    case "9-16":
+      this.ratio = (9/16);
+      break;
+    case "4-3":
+      this.ratio = (4/3);
+      break;
+    case "3-4":
+      this.ratio = (3/4);
+      break;
+    default:
+      this.ratio = (16/9);
+  }
+  this.$container.attr('data-ratio', slide.aspectRatio);
 
+  const footerHeight = '35px';
+  this.$wrapper.css({
+    paddingTop: `calc(${100/this.ratio}% - ${footerHeight})`,
+  });
+}
+
+/**
+ * Resize handling.
+ */
+CoursePresentation.prototype.resize = function () {  
+  var self = this;
+  
   if (this.ignoreResize) {
     return; // When printing.
   }
 
-  // Fill up all available width
-  this.$wrapper.css('width', 'auto');
-  var width = this.$container.width();
-  var style = {};
+  this.resetRatio();
 
-  if (fullscreenOn) {
-    var maxHeight = this.$container.height();
-    if (width / maxHeight > this.ratio) {
-      // Top and bottom would be cut off so scale down.
-      width = maxHeight * this.ratio;
-      style.width = width + 'px';
-    }
-  }
-
-  // TODO: Add support for -16 when content conversion script is created?
-  var widthRatio = width / this.width;
-  style.height = (width / this.ratio) + 'px';
-  style.fontSize = (this.fontSize * widthRatio) + 'px';
-
+  const width = this.$container.width();
+  const widthRatio = width / this.width;
+  
   if (this.editor !== undefined) {
-    this.editor.setContainerEm(this.fontSize * widthRatio * 0.75);
+    this.editor.setContainerEm(this.fontSize * widthRatio);
   }
-
-  this.$wrapper.css(style);
 
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
 
   // Resize elements
-  var instances = this.elementInstances[this.$current.index()];
+  const instances = this.elementInstances[this.$current.index()];
   if (instances !== undefined) {
-    var slideElements = this.slides[this.$current.index()].elements;
-    for (var i = 0; i < instances.length; i++) {
-      var instance = instances[i];
+    const slideElements = this.slides[this.$current.index()].elements;
+
+    for (let i = 0; i < instances.length; i++) {
+      const instance = instances[i];
       if (instance.libraryInfo.machineName === "H5P.Dialogcards") {
         instance.on('resize', function () {
           self.resizeDialogCard(this);
@@ -874,10 +908,12 @@ CoursePresentation.prototype.toggleFullScreen = function () {
     }
   }
   else {
+   
     // Rescale footer buttons
     this.$footer.addClass('footer-full-screen');
 
     this.$fullScreenButton.attr('title', this.l10n.exitFullscreen);
+
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
@@ -946,7 +982,7 @@ CoursePresentation.prototype.setElementsOverride = function (override) {
  * Attach all element instances to slide.
  *
  * @param {jQuery} $slide
- * @param {Number} index
+ * @param {number} index
  */
 CoursePresentation.prototype.attachElements = function ($slide, index) {
   if (this.elementsAttached[index] !== undefined) {
@@ -975,22 +1011,32 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @param {Object} element
  * @param {Object} instance
  * @param {jQuery} $slide
- * @param {Number} index
- * @returns {jQuery}
+ * @param {number} index
+ * @return {jQuery}
  */
 CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
-  const displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
-  var classes = 'h5p-element' +
-    (displayAsButton ? ' h5p-element-button-wrapper' : '') +
-    (buttonSizeClass.length ? ' ' + buttonSizeClass : '');
-  var $elementContainer = H5P.jQuery('<div>', {
-    'class': classes,
-  }).css({
-    left: element.x + '%',
-    top: element.y + '%',
-    width: element.width + '%',
-    height: element.height + '%'
+  const { displayAsButton, showAsHotspot } = element;
+  const overrideButtonSize = element.buttonSize !== undefined;
+
+  const classes = [
+    'h5p-element',
+    displayAsButton && 'h5p-element-button-wrapper',
+    overrideButtonSize && `h5p-element-button-${element.buttonSize}`,
+    showAsHotspot && 'h5p-element-hotspot-wrapper',
+  ]
+    .filter(className => !!className)
+    .join(' ');
+
+  const $elementContainer = H5P.jQuery('<div>', {
+    class: classes,
+  });
+
+  $elementContainer.css({
+    left: `${element.x}%`,
+    top: `${element.y}%`,
+    width: `${element.width}%`,
+    height: `${element.height}%`,
+    transform: element.transform
   }).appendTo($slide);
 
   const isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
@@ -1004,14 +1050,14 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     const hasLibrary = element.action && element.action.library;
     const libTypePmz = hasLibrary ? this.getLibraryTypePmz(element.action.library) : 'other';
 
-    var $outerElementContainer = H5P.jQuery('<div>', {
-      'class': `h5p-element-outer ${libTypePmz}-outer-element`
+    const $outerElementContainer = H5P.jQuery('<div>', {
+      class: `h5p-element-outer ${libTypePmz}-outer-element`
     }).css({
       background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
     }).appendTo($elementContainer);
 
-    var $innerElementContainer = H5P.jQuery('<div>', {
-      'class': 'h5p-element-inner'
+    const $innerElementContainer = H5P.jQuery('<div>', {
+      class: 'h5p-element-inner'
     }).appendTo($outerElementContainer);
 
     // H5P.Shape sets it's own size when line in selected
@@ -1137,6 +1183,28 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
+  // When choosing another icon instead of the standard icon for the content-type,
+  // one of these classes will get attached to the element and change the icons with css.
+  const Icons = {
+    f05a: 'h5p-advancedtext-button',
+    f008: 'h5p-video-button',
+    f03e: 'h5p-image-button',
+    f028: 'h5p-audio-button',
+    f200: 'h5p-chart-button',
+    f03d: 'h5p-interactivevideo-button',
+    f099: 'h5p-twitteruserfeed-button',
+    f0c1: 'h5p-link-button',
+    f15c: 'h5p-text-button'
+  };
+  
+  let iconClassNameForCSS = '';
+  const isDisplayAsButtonChecked = element.displayAsButton;
+  const isUseDifferentIconChecked = element.useButtonIcon;
+  if(isDisplayAsButtonChecked && isUseDifferentIconChecked) {
+    const iconContentCode = element.buttonIcon;
+    iconClassNameForCSS = Icons[iconContentCode];
+  }
+
   /**
    * Returns a function that will set [aria-expanded="false"] on the $btn element
    *
@@ -1151,8 +1219,11 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     'aria-label': label,
     'aria-popup': true,
     'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
+    'class': `h5p-element-button h5p-element-button-${element.buttonSize} 
+    ${iconClassNameForCSS != '' ? iconClassNameForCSS : (libTypePmz + '-button')}`
   });
+
+  $button.css({"background-color": element.buttonColor});
 
   const $buttonElement = $('<div class="h5p-button-element"></div>');
   instance.attach($buttonElement);
@@ -1280,8 +1351,8 @@ CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
    * Resize image to fit inside popup.
    *
    * @private
-   * @param {Number} width
-   * @param {Number} height
+   * @param {number} width
+   * @param {number} height
    */
   var resize = function (width, height) {
     if ((height / fontSize) < 18.5) {
@@ -1502,20 +1573,22 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
  * Checks if an element has a solution
  *
  * @param {H5P library instance} elementInstance
- * @returns {Boolean}
+ * @return {boolean}
  *  true if the element has a solution
  *  false otherwise
  */
 CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
-  return (elementInstance.showSolutions !== undefined ||
-          elementInstance.showCPComments !== undefined);
+  return (
+    elementInstance.showSolutions !== undefined ||
+    elementInstance.showCPComments !== undefined ||
+    elementInstance.answerType
+  );
 };
-
 
 /**
  * Initialize key press events.
  *
- * @returns {undefined} Nothing.
+ * @return {undefined} Nothing.
  */
 CoursePresentation.prototype.initKeyEvents = function () {
   if (this.keydown !== undefined || this.activeSurface) {
@@ -1556,26 +1629,15 @@ CoursePresentation.prototype.initKeyEvents = function () {
 /**
  * Initialize touch events
  *
- * @returns {undefined} Nothing.
+ * @return {undefined} Nothing.
  */
 CoursePresentation.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
   var touchStarted = false;
-  // var containerWidth = this.$slidesWrapper.width();
-  // var containerPercentageForScrolling = 0.6; // 60% of container width used to reach endpoints with touch
-  // var slidesNumbers = this.slides.length;
-  // var pixelsPerSlide = (containerWidth * containerPercentageForScrolling) / slidesNumbers;
-  // var startTime;
-  // var currentTime;
-  // var navigateTimer = 500; // 500ms before navigation popup starts.
   var isTouchJump = false;
-  // var nextSlide;
   var transform = function (value) {
     return {
-      '-webkit-transform': value,
-      '-moz-transform': value,
-      '-ms-transform': value,
       'transform': value
     };
   };
@@ -1590,10 +1652,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
     // Set classes for slide movement and remember how much they move
     prevX = (that.currentSlideIndex === 0 ? 0 : - slideWidth);
-    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth)
-
-    // containerWidth = H5P.jQuery(this).width();
-    // startTime = new Date().getTime();
+    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth);
 
     scroll = null;
     touchStarted = true;
@@ -1612,7 +1671,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
     var movedX = startX - lastX;
 
     if (scroll === null) {
-      // Detemine if we're scrolling horizontally or changing slide
+      // Determine if we're scrolling horizontally or changing slide
       scroll = Math.abs(startY - event.originalEvent.touches[0].pageY) > Math.abs(movedX);
     }
     if (touches.length !== 1 || scroll) {
@@ -1625,12 +1684,6 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
     // Create popup longer time than navigateTimer has passed
     if (!isTouchJump) {
-      /*currentTime = new Date().getTime();
-      var timeLapsed = currentTime - startTime;
-      if (timeLapsed > navigateTimer) {
-        isTouchJump = true;
-      }*/
-
       // Fast swipe to next slide
       if (movedX < 0) {
         // Move previous slide
@@ -1661,12 +1714,6 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
   }).bind('touchend', function () {
     if (!scroll) {
-      /*if (isTouchJump) {
-        that.jumpToSlide(nextSlide);
-        that.updateTouchPopup();
-        return;
-      }*/
-
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
       if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
@@ -1740,8 +1787,8 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
 /**
  * Switch to previous slide
  *
- * @param {Boolean} [noScroll] Skip UI scrolling.
- * @returns {Boolean} Indicates if the move was made.
+ * @param {boolean} [noScroll] Skip UI scrolling.
+ * @return {boolean} Indicates if the move was made.
  */
 CoursePresentation.prototype.previousSlide = function (noScroll) {
   var $prev = this.$current.prev();
@@ -1755,8 +1802,8 @@ CoursePresentation.prototype.previousSlide = function (noScroll) {
 /**
  * Switch to next slide.
  *
- * @param {Boolean} noScroll Skip UI scrolling.
- * @returns {Boolean} Indicates if the move was made.
+ * @param {boolean} noScroll Skip UI scrolling.
+ * @return {boolean} Indicates if the move was made.
  */
 CoursePresentation.prototype.nextSlide = function (noScroll) {
   var $next = this.$current.next();
@@ -1808,8 +1855,8 @@ CoursePresentation.prototype.attachAllElements = function () {
  * Jump to the given slide.
  *
  * @param {number} slideNumber The slide number to jump to.
- * @param {Boolean} [noScroll] Skip UI scrolling.
- * @returns {Boolean} Always true.
+ * @param {boolean} [noScroll] Skip UI scrolling.
+ * @return {boolean} Always true.
  */
 CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
   var that = this;
@@ -1855,19 +1902,17 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     }
   }
 
+  const animateTransition = !this.activeSurface;
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
     $slides.css({
-      '-webkit-transform': '',
-      '-moz-transform': '',
-      '-ms-transform': '',
       'transform': ''
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
     that.trigger('changedSlide', that.$current.index());
-  }, 1);
+  }, animateTransition ? 1 : 0);
 
   setTimeout(function () {
     // Done animating
@@ -1899,7 +1944,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
         }
       }
     }
-  }, 250);
+  }, animateTransition ? 250 : 0);
 
   // Jump keywords
   if (this.$keywords !== undefined) {
@@ -1927,9 +1972,11 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     this.setSlideNumberAnnouncer(slideNumber, handleFocus);
   }
 
-  if (that.summarySlideObject) {
+  if (this.summarySlideObject) {
     // Update summary slide if on last slide, do not jump
-    that.summarySlideObject.updateSummarySlide(slideNumber, true);
+    window.requestAnimationFrame(() =>
+      this.summarySlideObject.updateSummarySlide(slideNumber, true)
+    );
   }
 
   // Editor specific settings
@@ -2002,17 +2049,21 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
  */
 CoursePresentation.prototype.resetTask = function () {
   this.summarySlideObject.toggleSolutionMode(false);
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    if (this.slidesWithSolutions[i] !== undefined) {
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
+  
+  for (const slide of this.slidesWithSolutions) {
+    if (slide) {
+      for (const elementInstance of slide) {
         if (elementInstance.resetTask) {
           elementInstance.resetTask();
         }
       }
     }
   }
-  this.navigationLine.updateProgressBar(0);
+
+  if (this.navigationLine) {
+    this.navigationLine.updateProgressBar(0);
+  }
+
   this.jumpToSlide(0, false);
   this.$container.find('.h5p-popup-overlay').remove();
 };
@@ -2020,50 +2071,60 @@ CoursePresentation.prototype.resetTask = function () {
 /**
  * Show solutions for all slides that have solutions
  *
- * @returns {undefined}
+ * @return {{indexes: number[], slide: number, score: number, maxScore: number}[]}
  */
 CoursePresentation.prototype.showSolutions = function () {
-  var jumpedToFirst = false;
-  var slideScores = [];
-  var hasScores = false;
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    if (this.slidesWithSolutions[i] !== undefined) {
-      if (!this.elementsAttached[i]) {
-        // Attach elements before showing solutions
-        this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
-      }
-      if (!jumpedToFirst) {
-        this.jumpToSlide(i, false);
-        jumpedToFirst = true; // TODO: Explain what this really does.
-      }
-      var slideScore = 0;
-      var slideMaxScore = 0;
-      var indexes = [];
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
-        if (elementInstance.addSolutionButton !== undefined) {
-          elementInstance.addSolutionButton();
-        }
-        if (elementInstance.showSolutions) {
-          elementInstance.showSolutions();
-        }
-        if (elementInstance.showCPComments) {
-          elementInstance.showCPComments();
-        }
-        if (elementInstance.getMaxScore !== undefined) {
-          slideMaxScore += elementInstance.getMaxScore();
-          slideScore += elementInstance.getScore();
-          hasScores = true;
-          indexes.push(elementInstance.coursePresentationIndexOnSlide);
-        }
-      }
-      slideScores.push({
-        indexes: indexes,
-        slide: (i + 1),
-        score: slideScore,
-        maxScore: slideMaxScore
-      });
+  const slideScores = [];
+  let jumpedToFirst = false;
+  let hasScores = false;
+
+  const slidesWithSolutions = this.slidesWithSolutions.filter(slide => !!slide);
+  
+  for (let i = 0; i < slidesWithSolutions.length; i++) {
+    if (!this.elementsAttached[i]) {
+      // Attach elements before showing solutions
+      this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
     }
+    if (!jumpedToFirst) {
+      this.jumpToSlide(i, false);
+      jumpedToFirst = true; // TODO: Explain what this really does.
+    }
+
+    const indexes = [];
+    let slideScore = 0;
+    let slideMaxScore = 0;
+
+    for (let j = 0; j < this.slidesWithSolutions[i].length; j++) {
+      const elementInstance = this.slidesWithSolutions[i][j];
+      if (elementInstance.addSolutionButton !== undefined) {
+        elementInstance.addSolutionButton();
+      }
+      if (elementInstance.showSolutions) {
+        elementInstance.showSolutions();
+      }
+      if (elementInstance.showCPComments) {
+        elementInstance.showCPComments();
+      }
+
+      const isAnswerHotspot = elementInstance.answerType;
+      if (isAnswerHotspot) {
+      }
+      
+      if (elementInstance.getMaxScore !== undefined) {
+        slideMaxScore += elementInstance.getMaxScore();
+        slideScore += elementInstance.getScore();
+        hasScores = true;
+        indexes.push(elementInstance.coursePresentationIndexOnSlide);
+      }
+    }
+
+    slideScores.push({
+      indexes: indexes,
+      slide: (i + 1),
+      score: slideScore,
+      maxScore: slideMaxScore
+    });
+    
     // Show comments of non graded contents
     if (this.showCommentsAfterSolution[i]) {
       for (var j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
@@ -2071,6 +2132,7 @@ CoursePresentation.prototype.showSolutions = function () {
       }
     }
   }
+
   if (hasScores) {
     return slideScores;
   }
@@ -2078,14 +2140,24 @@ CoursePresentation.prototype.showSolutions = function () {
 
 /**
  * Gets slides scores for whole cp
- * @returns {Array} slideScores Array containing scores for all slides.
+ * 
+ * @param {boolean} noJump
+ * 
+ * @return {Array<{
+ *   indexes: string,
+ *   slide: number,
+ *   score: number,
+ *   maxScore: number}
+ * >} slideScores Array containing scores for all slides.
  */
 CoursePresentation.prototype.getSlideScores = function (noJump) {
-  var jumpedToFirst = (noJump === true);
-  var slideScores = [];
-  var hasScores = false;
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
+  const slideScores = [];
+  let jumpedToFirst = noJump === true;
+  let hasScores = false;
+
+  for (let i = 0; i < this.slidesWithSolutions.length; i++) {    
     if (this.slidesWithSolutions[i] !== undefined) {
+      const slideElements = this.slidesWithSolutions[i];
       if (!this.elementsAttached[i]) {
         // Attach elements before showing solutions
         this.attachElements(this.$slidesWrapper.children(':eq(' + i + ')'), i);
@@ -2094,22 +2166,48 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
         this.jumpToSlide(i, false);
         jumpedToFirst = true; // TODO: Explain what this really does.
       }
-      var slideScore = 0;
-      var slideMaxScore = 0;
-      var indexes = [];
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
+
+      const indeces = [];
+      let slideScore = 0;
+      let slideMaxScore = 0;
+      for (let j = 0; j < this.slidesWithSolutions[i].length; j++) {
+        let elementInstance = this.slidesWithSolutions[i][j];
         if (elementInstance.getMaxScore !== undefined) {
           slideMaxScore += elementInstance.getMaxScore();
           slideScore += elementInstance.getScore();
           hasScores = true;
-          indexes.push(elementInstance.coursePresentationIndexOnSlide);
+          indeces.push(elementInstance.coursePresentationIndexOnSlide);
         }
       }
+
+      let answerHotspotCorrectAnswers = 0;
+      let answerHotspotFalseAnswers = 0;
+
+      /** @type {Slide} */
+      const answerHotspotsConnectedToSlide = slideElements.filter(element => element.answerHotspotType);
+      for (const element of answerHotspotsConnectedToSlide) {
+        const isCorrectAnswer = element.answerHotspotType === "true";
+        if (isCorrectAnswer) {
+          slideMaxScore++;
+          
+          if (element.isChecked) {
+            answerHotspotCorrectAnswers++;
+          }
+        } else {
+          if (element.isChecked) {
+            answerHotspotFalseAnswers++;
+          }
+        }
+
+        hasScores = true;
+      }
+
+      const answerHotspotScore = Math.max(0, answerHotspotCorrectAnswers - answerHotspotFalseAnswers);
+
       slideScores.push({
-        indexes: indexes,
+        indexes: indeces,
         slide: (i + 1),
-        score: slideScore,
+        score: slideScore + answerHotspotScore,
         maxScore: slideMaxScore
       });
     }
@@ -2122,11 +2220,11 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
 /**
  * Gather copyright information for the current content.
  *
- * @returns {H5P.ContentCopyrights}
+ * @return {H5P.ContentCopyrights}
  */
 CoursePresentation.prototype.getCopyrights = function () {
-  var info = new H5P.ContentCopyrights();
-  var elementCopyrights;
+  const info = new H5P.ContentCopyrights();
+  let elementCopyrights;
 
   // Check for a common background image shared by all slides
   if (this.presentation && this.presentation.globalBackgroundSelector &&
@@ -2202,6 +2300,10 @@ CoursePresentation.prototype.getCopyrights = function () {
  * Stop the given element's playback if any.
  *
  * @param {object} instance
+ * @param {() => void} [instance.pause]
+ * @param {object} [instance.video]
+ * @param {() => void} [instance.video.pause]
+ * @param {() => void} [instance.stop]
  */
 CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
   try {

@@ -1,0 +1,72 @@
+$navigation-element-background-color: #0580e2;
+
+.h5p-coursepresentation {
+  .h5p-go-to-slide {
+    z-index: 2;
+  }
+
+  .h5p-press-to-go {
+    height: 100%;
+    width: 100%;
+
+    &.h5p-visible {
+      &:hover {
+        background-color: rgba($navigation-element-background-color, 0.2);
+      }
+
+      &:active {
+        background-color: rgba($navigation-element-background-color, 0.4);
+      }
+
+      &:focus {
+        outline: 2px solid #79abfd;
+        outline-offset: -2px;
+
+        /* box-shadow hack for IE11, since outline-offset isn't supported. */
+        box-shadow: inset 0 0 0 2px #79abfd;
+      }
+    }
+  }
+
+  a.h5p-press-to-go {
+    display: block;
+  }
+
+  button.h5p-press-to-go {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    padding: 0;
+  }
+
+  .invisible {
+    cursor: default;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .h5p-press-to-go.h5p-hotspot-answer {
+    border: 3px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .h5p-press-to-go.h5p-hotspot-answer--checked {
+    border-color: #79abfd;
+  }
+
+  .h5p-solution-mode .h5p-press-to-go.h5p-hotspot-answer--true {
+    border-color: hsla(164, 95%, 43%, 1);
+  }
+
+  .h5p-solution-mode .h5p-press-to-go.h5p-hotspot-answer--false {
+    border-color: hsla(345, 100%, 49%, 1);
+  }
+
+  .h5p-element.h5p-element-hotspot-wrapper:not(.h5p-hotspot-answer) {
+    z-index: 2;
+  }
+}
