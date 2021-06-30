@@ -1,15 +1,15 @@
 {
-  "title": "Interaktiv Tavle",
+  "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 24,
-  "patchVersion": 10,
+  "patchVersion": 12,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
     "iframe"
   ],
-  "machineName": "H5P.InteraktivTavle",
+  "machineName": "H5P.CoursePresentation",
   "author": "Joubel",
   "license": "MIT",
   "coreApi": {
@@ -45,7 +45,7 @@
   ],
   "editorDependencies": [
     {
-      "machineName": "H5PEditor.InteraktivTavle",
+      "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
       "minorVersion": 24
     },

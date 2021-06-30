@@ -1,7 +1,7 @@
 /* --------------------------------------- Footer -------------------------------- */
 
 /* Footer */
-.h5p-interaktivtavle .h5p-footer {
+.h5p-coursepresentation .h5p-footer {
   display: flex;
   font-size: 0.75em;
   width: 100%;
@@ -16,7 +16,7 @@
 }
 
 /* Footer buttons */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-button {
+.h5p-coursepresentation .h5p-footer .h5p-footer-button {
   display: inline-block;
   background: transparent;
   border: 0;
@@ -35,17 +35,17 @@
 }
 
 /* Footer containers */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-left-adjusted {
+.h5p-coursepresentation .h5p-footer .h5p-footer-left-adjusted {
   flex: 2;
   text-align: left;
 }
 
-.h5p-interaktivtavle .h5p-footer .h5p-footer-right-adjusted {
+.h5p-coursepresentation .h5p-footer .h5p-footer-right-adjusted {
   flex: 2;
   text-align: right;
 }
 
-.h5p-interaktivtavle .h5p-footer .h5p-footer-center-adjusted {
+.h5p-coursepresentation .h5p-footer .h5p-footer-center-adjusted {
   flex: 1;
   text-align: center;
 }
@@ -53,68 +53,68 @@
 /* ---------------------------- Footer slide information buttons ----------------------- */
 
 /* Prev slide */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-previous-slide:before {
+.h5p-coursepresentation .h5p-footer .h5p-footer-previous-slide:before {
   font-family: 'H5PFontAwesome4';
   content: "\f0d9";
 }
 
 /* Next slide */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-next-slide:after {
+.h5p-coursepresentation .h5p-footer .h5p-footer-next-slide:after {
   font-family: 'H5PFontAwesome4';
   content: "\f0da";
 }
 
 /* Slide counter */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-slide-count,
-.h5p-interaktivtavle .h5p-footer .h5p-footer-slide-count-current,
-.h5p-interaktivtavle .h5p-footer .h5p-footer-slide-count-delimiter,
-.h5p-interaktivtavle .h5p-footer .h5p-footer-slide-count-max {
+.h5p-coursepresentation .h5p-footer .h5p-footer-slide-count,
+.h5p-coursepresentation .h5p-footer .h5p-footer-slide-count-current,
+.h5p-coursepresentation .h5p-footer .h5p-footer-slide-count-delimiter,
+.h5p-coursepresentation .h5p-footer .h5p-footer-slide-count-max {
   display: inline-block;
 }
 
 /* Slide delimiter */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-slide-count-delimiter {
+.h5p-coursepresentation .h5p-footer .h5p-footer-slide-count-delimiter {
   padding: 0 0.5em;
 }
 
 /* ---------------------------------------------- Solution Mode ---------------------------------- */
 
 /* Footer in solution mode */
-.h5p-interaktivtavle .h5p-footer.h5p-footer-solution-mode {
+.h5p-coursepresentation .h5p-footer.h5p-footer-solution-mode {
   background-color: #2b2c30;
   color: #fbfbfb;
 }
 
 /* Only show exit solultion mode button in solution mode */
-.h5p-interaktivtavle .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode {
+.h5p-coursepresentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode {
   display: inline-block;
   cursor: pointer;
 }
 
 /* Hide exit solution mode button initially */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-exit-solution-mode {
+.h5p-coursepresentation .h5p-footer .h5p-footer-exit-solution-mode {
   display: none;
 }
 
 /* Hide exit solution mode button on summary slide */
-.h5p-interaktivtavle .h5p-footer.h5p-footer-solution-mode.summary-slide .h5p-footer-exit-solution-mode {
+.h5p-coursepresentation .h5p-footer.h5p-footer-solution-mode.summary-slide .h5p-footer-exit-solution-mode {
   display: none;
 }
 
 /* Footer solution mode text */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-exit-solution-mode-text {
+.h5p-coursepresentation .h5p-footer .h5p-footer-exit-solution-mode-text {
   display: inline-block;
   padding: 0 0.25em;
 }
 
-.h5p-interaktivtavle .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
+.h5p-coursepresentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
   color: #fbfbfb;
 }
 
 
 /* --------------------------------------------- Footer elements ---------------------------------------- */
 
-.h5p-interaktivtavle .h5p-footer-toggle-keywords .h5p-icon-menu:before {
+.h5p-coursepresentation .h5p-footer-toggle-keywords .h5p-icon-menu:before {
   font-family: 'H5PFontIcons';
   font-size: 1.3em;
   content: "\e90b";
@@ -123,20 +123,20 @@
 }
 
 /* Footer keyword button */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-toggle-keywords {
+.h5p-coursepresentation .h5p-footer .h5p-footer-toggle-keywords {
   display: inline-block;
   width: auto;
   padding-right: 0.4em;
 }
 
-.h5p-interaktivtavle .h5p-footer .h5p-footer-toggle-keywords .current-slide-title {
+.h5p-coursepresentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title {
   vertical-align: top;
   font-size: 0.9em;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.h5p-interaktivtavle .h5p-footer .h5p-footer-toggle-keywords .current-slide-title:before {
+.h5p-coursepresentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title:before {
   font-family: 'h5p';
   font-size: 0.6em;
   content: '\e565';
@@ -147,58 +147,58 @@
   transform: rotate(270deg);
 }
 
-.h5p-interaktivtavle .h5p-footer [aria-expanded="true"].h5p-footer-toggle-keywords .current-slide-title:before {
+.h5p-coursepresentation .h5p-footer [aria-expanded="true"].h5p-footer-toggle-keywords .current-slide-title:before {
   -ms-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 /* Print button and full screen button (in footer) */
-.h5p-interaktivtavle .h5p-footer .h5p-footer-print:before,
-.h5p-interaktivtavle .h5p-footer .h5p-footer-toggle-full-screen:before {
+.h5p-coursepresentation .h5p-footer .h5p-footer-print:before,
+.h5p-coursepresentation .h5p-footer .h5p-footer-toggle-full-screen:before {
   font-family: 'H5PFontAwesome4';
   content: "\f065";
   font-size: 1.2em;
 }
-.h5p-interaktivtavle .h5p-footer .h5p-footer-print:before {
+.h5p-coursepresentation .h5p-footer .h5p-footer-print:before {
   content: "\f02f";
 }
-.h5p-interaktivtavle .h5p-footer .h5p-footer-toggle-full-screen:before {
+.h5p-coursepresentation .h5p-footer .h5p-footer-toggle-full-screen:before {
   content: "\f065";
 }
 
 /* Hide print button on small screens */
 @media screen and (max-device-width: 400px) {
-  .h5p-interaktivtavle .h5p-footer .h5p-footer-print {
+  .h5p-coursepresentation .h5p-footer .h5p-footer-print {
     display: none;
   }
 }
 /* Hide print button in fullscreen */
-.h5p-interaktivtavle.h5p-fullscreen .h5p-footer .h5p-footer-print,
-.h5p-interaktivtavle.h5p-semi-fullscreen .h5p-footer .h5p-footer-print {
+.h5p-coursepresentation.h5p-fullscreen .h5p-footer .h5p-footer-print,
+.h5p-coursepresentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-print {
   display: none;
 }
 
-.h5p-interaktivtavle.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before,
-.h5p-interaktivtavle.h5p-semi-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before {
+.h5p-coursepresentation.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before,
+.h5p-coursepresentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before {
   content: "\f066";
 }
 
 /* ------------------------------------------ Full Screen scaling ------------------------------------- */
 
 /* Solution mode text changes to footer elements */
-.h5p-interaktivtavle .h5p-footer.footer-full-screen button.h5p-footer-button {
+.h5p-coursepresentation .h5p-footer.footer-full-screen button.h5p-footer-button {
   font-size: 1.0em;
 }
 
 /* ----------------------------------------- Progress bar --------------------------------------------- */
 
-.h5p-interaktivtavle .h5p-cp-navigation {
+.h5p-coursepresentation .h5p-cp-navigation {
   width: 100%;
   height: 0.75em;
 }
 
-.h5p-interaktivtavle .h5p-progressbar {
+.h5p-coursepresentation .h5p-progressbar {
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -216,18 +216,18 @@
   box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
 }
 
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
   -webkit-flex: 0;
   flex: 0;
   min-width: 2.2em;
 }
 
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a {
   padding-top: 0;
 }
 
 /* The summary slide icon */
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a:after {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a:after {
   content: "";
   display: block;
   height: 0.8em;
@@ -239,16 +239,16 @@
   margin-right: auto;
 }
 
-.h5p-interaktivtavle .h5p-progressbar li {
+.h5p-coursepresentation .h5p-progressbar li {
   flex: 1;
   position: relative;
 }
 
-.h5p-interaktivtavle .h5p-progressbar li:not(:last-child) {
+.h5p-coursepresentation .h5p-progressbar li:not(:last-child) {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.h5p-interaktivtavle .h5p-progressbar a {
+.h5p-coursepresentation .h5p-progressbar a {
   position: relative; /* needed for z-index */
   z-index: 3;
   display: block;
@@ -257,12 +257,12 @@
   padding-top: 0.1em;
 }
 
-.h5p-interaktivtavle .h5p-progressbar a:focus {
+.h5p-coursepresentation .h5p-progressbar a:focus {
   outline: 2px solid #79abfd;
   outline-offset: 1px;
 }
 
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part-show {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part-show {
   background: #0097fd;
   background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
   background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
@@ -276,7 +276,7 @@
 }
 
 /* -------------------------------------- Feedback for progress bar ------------------------------------- */
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task:after {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task:after {
   position: absolute;
   bottom: 105%;
   left: 50%;
@@ -290,20 +290,20 @@
   font-size: 0.6em;
 }
 
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-correct:after {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-correct:after {
   content: "\f00c";
   color: #6aa81b;
   background-color: #d1e2ce;
 }
 
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-wrong:after {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-wrong:after {
   content: "\f00d";
   color: #c33f62;
   background-color: #e6ced1;
 }
 
 /* --------------------------------------------------------- Progressbar with task ---------------------------- */
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task {
   box-sizing: border-box;
   display: block;
   width: 0.5em;
@@ -318,16 +318,16 @@
   margin-left: auto;
 }
 
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-answered {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-answered {
   background: #D3D3D3;
 }
 
-.h5p-interaktivtavle .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
+.h5p-coursepresentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
   background: #D3D3D3;
 }
 
 /* ----------------------------------------- Progressbar popup ------------------------------------ */
-.h5p-interaktivtavle .h5p-progressbar-popup {
+.h5p-coursepresentation .h5p-progressbar-popup {
   display: none;
   position: absolute;
   bottom: 100%;
@@ -348,33 +348,33 @@
   pointer-events: none;
 }
 
-.h5p-interaktivtavle .h5p-progressbar-part:hover .h5p-progressbar-popup {
+.h5p-coursepresentation .h5p-progressbar-part:hover .h5p-progressbar-popup {
   display: block;
 }
 
 /* -------------------------------------- Footer hover effects ---------------------------------- */
 
-.h5p-interaktivtavle .h5p-footer .h5p-footer-button:hover {
+.h5p-coursepresentation .h5p-footer .h5p-footer-button:hover {
   color: #000;
 }
 
-.h5p-interaktivtavle .h5p-footer .h5p-footer-button:focus {
+.h5p-coursepresentation .h5p-footer .h5p-footer-button:focus {
   outline: 2px solid #79abfd;
   background-color: rgba(121, 171, 253, 0.2);
 }
 
-.using-mouse .h5p-interaktivtavle .h5p-footer .h5p-footer-button.h5p-footer-toggle-keywords:focus {
+.using-mouse .h5p-coursepresentation .h5p-footer .h5p-footer-button.h5p-footer-toggle-keywords:focus {
   background-color: transparent;
 }
 
-.h5p-interaktivtavle .h5p-footer [aria-disabled="true"].h5p-footer-button {
+.h5p-coursepresentation .h5p-footer [aria-disabled="true"].h5p-footer-button {
   visibility: hidden;
 }
-.h5p-interaktivtavle .h5p-footer [aria-disabled="true"].h5p-footer-button:before,
-.h5p-interaktivtavle .h5p-footer [aria-disabled="true"].h5p-footer-button:after {
+.h5p-coursepresentation .h5p-footer [aria-disabled="true"].h5p-footer-button:before,
+.h5p-coursepresentation .h5p-footer [aria-disabled="true"].h5p-footer-button:after {
   color: #999;
 }
 
-.h5p-interaktivtavle .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
+.h5p-coursepresentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
   color: #dbd7d1;
 }

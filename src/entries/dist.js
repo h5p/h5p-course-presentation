@@ -10,4 +10,4 @@ import CoursePresentation from "../scripts/cp";
 
 // Load library
 H5P = H5P || {};
-H5P.InteraktivTavle = CoursePresentation;
+H5P.CoursePresentation = CoursePresentation;
