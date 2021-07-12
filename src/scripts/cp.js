@@ -744,7 +744,7 @@ CoursePresentation.prototype.resize = function () {
     var slideElements = this.slides[this.$current.index()].elements;
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
-      if (instance.libraryInfo.machineName === "H5P.Dialogcards") {
+      if (instance.libraryInfo !== undefined && instance.libraryInfo.machineName === "H5P.Dialogcards") {
         instance.on('resize', function () {
           self.resizeDialogCard(this);
         });
