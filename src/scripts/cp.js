@@ -1850,7 +1850,9 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     for (var i = 0; i < instances.length; i++) {
       if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
         // Only pause media elements displayed as posters.
-        that.pauseMedia(instances[i], this.slides[previousSlideIndex].elements[i].action.params);
+        var params = this.slides[previousSlideIndex].elements[i].action !== undefined 
+          ? this.slides[previousSlideIndex].elements[i].action.params : null;
+        that.pauseMedia(instances[i], params);
       }
     }
   }
