@@ -283,6 +283,43 @@
       ]
     },
     {
+      "label": "Scoring",
+      "description": "These options will let you set score related settings.",
+      "fields": [
+        {
+          "label": "Pass percentage",
+          "description": "Percentage of total score required for passing the course presentation."
+        },
+        {
+          "label": "Overall Feedback",
+          "fields": [
+            {
+              "widgets": [
+                {
+                  "label": "Default"
+                }
+              ],
+              "label": "Define custom feedback for any score range",
+              "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+              "entity": "range",
+              "field": {
+                "fields": [
+                  {
+                    "label": "Score Range"
+                  },
+                  {},
+                  {
+                    "label": "Feedback for defined score range",
+                    "placeholder": "Fill in the feedback"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "label": "行为设定",
       "description": "这些设定会覆盖默认值。",
       "fields": [
