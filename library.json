@@ -3,11 +3,7 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 22,
-<<<<<<< HEAD
-  "patchVersion": 5,
-=======
   "patchVersion": 7,
->>>>>>> release
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
