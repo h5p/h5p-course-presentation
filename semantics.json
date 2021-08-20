@@ -177,19 +177,10 @@
                     "name": "goToSlide",
                     "type": "number",
                     "label": "Specific slide number",
-                    "description": "Type a slide number to go to",
+                    "description": "Only applicable when 'Specific slide number' is selected",
                     "importance": "low",
                     "min": 1,
-                    "optional": true,
-                    "widget": "showWhen",
-                    "showWhen": {
-                      "rules": [
-                        {
-                          "field": "goToSlideType",
-                          "equals": "specified"
-                        }
-                      ]
-                    }
+                    "optional": true
                   },
                   {
                     "name": "invisible",
