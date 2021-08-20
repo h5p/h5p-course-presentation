@@ -3,7 +3,11 @@
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 22,
+<<<<<<< HEAD
   "patchVersion": 5,
+=======
+  "patchVersion": 7,
+>>>>>>> release
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -44,6 +48,11 @@
     }
   ],
   "editorDependencies": [
+    {
+      "machineName": "H5PEditor.ShowWhen",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,

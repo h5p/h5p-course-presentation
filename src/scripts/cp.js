@@ -215,7 +215,7 @@ CoursePresentation.prototype.attach = function ($container) {
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
-          '     <div class="h5p-slides-wrapper"></div>' +
+          '     <div class="h5p-slides-wrapper" aria-live="polite"></div>' +
           '    </div>' +
           '  </div>' +
           '  <nav class="h5p-cp-navigation">' +
@@ -949,6 +949,11 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       else {
         instance.on('controls', handleIV);
       }
+    }
+
+    // Set first slide's tabindex for better accessibility if there are no interactions
+    if (index == 0 && this.slidesWithSolutions.indexOf(index) < 0) {
+      $innerElementContainer.attr('tabindex', '0');
     }
 
     // For first slide
@@ -1748,6 +1753,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
+    $old.find('.h5p-element-inner').attr('tabindex', '-1');
     $slides.css({
       '-webkit-transform': '',
       '-moz-transform': '',
@@ -1756,6 +1762,12 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
+    
+    // Set tabindex for better accessibility if there are no interactions
+    if (typeof that.slidesWithSolutions[that.getCurrentSlideIndex()] === 'undefined') {
+      that.$current.find('.h5p-element-inner').attr('tabindex', '0');
+    }
+
     that.trigger('changedSlide', that.$current.index());
   }, 1);
 
