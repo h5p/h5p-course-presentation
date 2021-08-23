@@ -21,7 +21,7 @@
                       "label": "Visa alltid kommentarer"
                     },
                     {
-                      "label": "Opacitet för bakgrund"
+                      "label": "Genomskinlighet för bakgrund"
                     },
                     {
                       "label": "Visa som knapp"
@@ -55,8 +55,8 @@
                       ]
                     },
                     {
-                      "label": "Specifikt sidonummer",
-                      "description": "Endast tillgänglig om 'Specifikt sidonummer' är valt"
+                      "label": "Specifikt bildnummer",
+                      "description": "Endast tillgänglig om 'Specifikt bildnummer' är valt"
                     },
                     {
                       "label": "Osynlig",
@@ -92,7 +92,7 @@
           "label": "Dölj automatiskt"
         },
         {
-          "label": "Opacitet"
+          "label": "Genomskinlighet"
         },
         {
           "fields": [

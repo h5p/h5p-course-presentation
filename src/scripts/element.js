@@ -94,6 +94,13 @@ function Element(parameters) {
     }
     self.parent.parent.slidesWithSolutions[self.parent.index].push(self.instance);
   }
+  // Check for comments to show after solution button is pressed
+  else if (parameters.solution) {
+    if (self.parent.parent.showCommentsAfterSolution[self.parent.index] === undefined) {
+      self.parent.parent.showCommentsAfterSolution[self.parent.index] = [];
+    }
+    self.parent.parent.showCommentsAfterSolution[self.parent.index].push(self.instance);
+  }
 
   // Check if this is an Exportable Text Area
   if (self.instance.exportAnswers !== undefined && self.instance.exportAnswers) {

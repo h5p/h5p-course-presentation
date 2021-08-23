@@ -1,0 +1,385 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "ความคิดเห็น",
+                      "description": "ความคิดเห็นจะแสดงเมื่อผู้ใช้แสดงคำตอบที่แนะนำสำหรับสไลด์ทั้งหมด"
+                    },
+                    {
+                      "label": "แสดงความคิดเห็นเสมอ"
+                    },
+                    {
+                      "label": "ความทึบของพื้นหลัง"
+                    },
+                    {
+                      "label": "แสดงเป็นปุ่ม"
+                    },
+                    {
+                      "label": "ขนาดปุ่ม",
+                      "options": [
+                        {
+                          "label": "เล็ก"
+                        },
+                        {
+                          "label": "ใหญ่"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "ชื่อ"
+                    },
+                    {
+                      "label": "ไปที่",
+                      "options": [
+                        {
+                          "label": "สไลด์เฉพาะหมายเลข"
+                        },
+                        {
+                          "label": "สไลด์ถัดไป"
+                        },
+                        {
+                          "label": "สไลด์ก่อนหน้า"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "เฉพาะสไลด์หมายเลข",
+                      "description": "พิมพ์หมายเลขสไลด์ที่ต้องการ"
+                    },
+                    {
+                      "label": "ไม่เห็น",
+                      "description": "เคอร์เซอร์เริ่มต้น ไม่มีชื่อและไม่มีดัชนีแท็บ คำเตือน:ผู้ใช้ที่มีความพิการจะมีปัญหาในการใช้"
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "label": "ภาพ",
+                    "description": "พื้นหลังของรูปภาพควรมีอัตราส่วนความกว้างต่อความสูง 2:1 เพื่อหลีกเลี่ยงการบิดเบี้ยวความละเอียดสูงจะแสดงได้ดีกว่าบนหน้าจอขนาดใหญ่"
+                  },
+                  {
+                    "label": "เลือกสี",
+                    "default": ""
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "รายการคำหลัก"
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "fields": [
+            {
+              "label": "",
+              "description": ""
+            },
+            {
+              "label": "",
+              "default": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "",
+      "fields": [
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "label": "",
+      "description": "",
+      "fields": [
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "description": "",
+          "options": [
+            {
+              "label": ""
+            },
+            {
+              "label": ""
+            }
+          ]
+        },
+        {
+          "label": "",
+          "description": "",
+          "options": [
+            {
+              "label": ""
+            },
+            {
+              "label": ""
+            }
+          ]
+        },
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "description": "",
+          "fields": [
+            {
+              "label": ""
+            },
+            {
+              "label": "",
+              "fields": [
+                {
+                  "label": "",
+                  "default": ""
+                },
+                {
+                  "label": "",
+                  "default": ""
+                }
+              ]
+            },
+            {
+              "label": ""
+            },
+            {
+              "label": "",
+              "fields": [
+                {
+                  "label": "",
+                  "default": ""
+                },
+                {
+                  "label": "",
+                  "default": ""
+                },
+                {
+                  "label": "",
+                  "default": ""
+                }
+              ]
+            },
+            {
+              "label": ""
+            },
+            {
+              "label": "",
+              "default": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
