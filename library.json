@@ -1,5 +1,5 @@
 {
-  "title": "Course Presentation",
+  "title": "NDLA Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
   "minorVersion": 24,
@@ -9,7 +9,7 @@
   "embedTypes": [
     "iframe"
   ],
-  "machineName": "H5P.CoursePresentation",
+  "machineName": "H5P.NDLACoursePresentation",
   "author": "Joubel",
   "license": "MIT",
   "coreApi": {
@@ -38,24 +38,24 @@
       "minorVersion": 3
     },
     {
-      "machineName": "H5P.FontIcons",
+      "machineName": "H5P.NDLAFontIcons",
       "majorVersion": 1,
       "minorVersion": 0
     }
   ],
   "editorDependencies": [
     {
-      "machineName": "H5PEditor.CoursePresentation",
+      "machineName": "H5PEditor.NDLACoursePresentation",
       "majorVersion": 1,
       "minorVersion": 24
     },
     {
-      "machineName": "H5PEditor.ShowWhen",
+      "machineName": "H5PEditor.NDLAShowWhen",
       "majorVersion": 1,
       "minorVersion": 0
     },
     {
-      "machineName": "H5PEditor.RadioSelector",
+      "machineName": "H5PEditor.NDLARadioSelector",
       "majorVersion": 1,
       "minorVersion": 2
     }
