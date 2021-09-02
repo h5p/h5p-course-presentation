@@ -2156,4 +2156,19 @@ CoursePresentation.prototype.getXAPIData = function () {
   };
 };
 
+/**
+ * Get context data.
+ * Contract used for confusion report.
+ */
+ CoursePresentation.prototype.getContext = function () {
+  var self = this;
+
+  // Get current slide number here it starts with zero
+  const slide = (self.currentSlideIndex + 1);
+  return {
+    type: 'slide',
+    value: slide
+  };
+};
+
 export default CoursePresentation;
