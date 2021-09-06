@@ -291,7 +291,7 @@
                     "optional": true,
                     "label": "Title",
                     "importance": "medium",
-                    "widget": "showWhen",
+                    "widget": "NDLAShowWhen",
                     "showWhen": {
                       "rules": [
                         {
@@ -334,7 +334,7 @@
                       }
                     ],
                     "default": "specified",
-                    "widget": "showWhen",
+                    "widget": "NDLAShowWhen",
                     "showWhen": {
                       "rules": [
                         {
@@ -352,7 +352,7 @@
                     "importance": "low",
                     "min": 1,
                     "optional": true,
-                    "widget": "showWhen",
+                    "widget": "NDLAShowWhen",
                     "showWhen": {
                       "rules": [
                         {
@@ -398,7 +398,7 @@
                     "label": "Dialog content",
                     "importance": "low",
                     "optional": true,
-                    "widget": "showWhen",
+                    "widget": "NDLAShowWhen",
                     "showWhen": {
                       "rules": [
                         {
@@ -430,7 +430,7 @@
                     "importance": "low",
                     "description": "Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.",
                     "default": false,
-                    "widget": "showWhen",
+                    "widget": "NDLAShowWhen",
                     "showWhen": {
                       "rules": [
                         {
@@ -973,7 +973,7 @@
         "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide",
         "default": true,
         "importance": "low",
-        "widget": "showWhen",
+        "widget": "NDLAShowWhen",
         "showWhen": {
           "rules": [
             {
@@ -990,7 +990,7 @@
         "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing.",
         "default": true,
         "importance": "low",
-        "widget": "showWhen",
+        "widget": "NDLAShowWhen",
         "showWhen": {
           "rules": [
             {
@@ -1012,7 +1012,7 @@
         "name": "social",
         "type": "group",
         "label": "Social Settings",
-        "widget": "showWhen",
+        "widget": "NDLAShowWhen",
         "showWhen": {
           "rules": [
             {
@@ -1038,7 +1038,7 @@
             "type": "group",
             "expanded": true,
             "label": "Facebook share settings",
-            "widget": "showWhen",
+            "widget": "NDLAShowWhen",
             "showWhen": {
               "rules": [
                 {
@@ -1077,7 +1077,7 @@
             "type": "group",
             "expanded": true,
             "label": "Twitter share settings",
-            "widget": "showWhen",
+            "widget": "NDLAShowWhen",
             "showWhen": {
               "rules": [
                 {
