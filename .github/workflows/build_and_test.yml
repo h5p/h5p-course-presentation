@@ -48,7 +48,8 @@ jobs:
             h5p-drag-n-drop \
             h5p-editor-drag-question \
             h5p-drag-question \
-            h5p-editor-radio-selector
+            h5p-editor-radio-selector \
+            h5p-editor-show-when
 
           # Clone override projects without build scripts
           git clone https://github.com/NDLA-H5P/h5p-chart.git
