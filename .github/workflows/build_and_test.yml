@@ -60,7 +60,7 @@ jobs:
           git clone https://github.com/NDLA-H5P/h5p-drag-n-drop.git
           git clone https://github.com/NDLA-H5P/h5p-editor-drag-question.git
           git clone https://github.com/NDLA-H5P/h5p-editor-radio-selector.git
-
+          git clone https://github.com/NDLA-H5P/h5p-editor-show-when.git
           # Clone and build override projects with build scripts
           git clone https://github.com/NDLA-H5P/h5p-editor-course-presentation.git -b 'meta/rename-interaktiv-tavle-course-presentation' && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
           git clone https://github.com/NDLA-H5P/h5p-drag-question.git && pushd h5p-drag-question && npm ci && npm run build && popd
@@ -70,7 +70,7 @@ jobs:
           cd dist
           ls
           npm install -g h5p
-          h5p pack -r h5p-course-presentation course-presentation.h5p
+          h5p pack -r h5p-course-presentation h5p-editor-course-presentation h5p-editor-show-when course-presentation.h5p
           h5p validate course-presentation.h5p
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
