@@ -48,31 +48,32 @@ jobs:
             h5p-drag-n-drop \
             h5p-editor-drag-question \
             h5p-drag-question \
-            h5p-editor-radio-selector
+            h5p-editor-radio-selector \
+            h5p-editor-show-when
 
           # Clone override projects without build scripts
-          git clone https://github.com/NDLANO/h5p-chart.git
-          git clone https://github.com/NDLANO/h5p-shape.git
-          git clone https://github.com/NDLANO/h5p-editor-shape.git
-          git clone https://github.com/NDLANO/h5p-editor-image-radio-group.git
-          git clone https://github.com/NDLANO/h5p-font-icons.git
-          git clone https://github.com/NDLANO/h5p-drag-n-bar.git
-          git clone https://github.com/NDLANO/h5p-drag-n-drop.git
-          git clone https://github.com/NDLANO/h5p-editor-drag-question.git
-          git clone https://github.com/edh5p/h5p-editor-radio-selector.git
-
+          git clone https://github.com/NDLA-H5P/h5p-chart.git
+          git clone https://github.com/NDLA-H5P/h5p-shape.git
+          git clone https://github.com/NDLA-H5P/h5p-editor-shape.git
+          git clone https://github.com/NDLA-H5P/h5p-editor-image-radio-group.git
+          git clone https://github.com/NDLA-H5P/h5p-font-icons.git
+          git clone https://github.com/NDLA-H5P/h5p-drag-n-bar.git
+          git clone https://github.com/NDLA-H5P/h5p-drag-n-drop.git
+          git clone https://github.com/NDLA-H5P/h5p-editor-drag-question.git
+          git clone https://github.com/NDLA-H5P/h5p-editor-radio-selector.git
+          git clone https://github.com/NDLA-H5P/h5p-editor-show-when.git
           # Clone and build override projects with build scripts
-          git clone https://github.com/NDLANO/h5p-editor-course-presentation.git -b 'meta/rename-interaktiv-tavle-course-presentation' && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
-          git clone https://github.com/NDLANO/h5p-drag-question.git && pushd h5p-drag-question && npm ci && npm run build && popd
+          git clone https://github.com/NDLA-H5P/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
+          git clone https://github.com/NDLA-H5P/h5p-drag-question.git && pushd h5p-drag-question && npm ci && npm run build && popd
 
           cp -r ../h5p-course-presentation .
       - run: |
           cd dist
           ls
           npm install -g h5p
-          h5p pack -r h5p-course-presentation course-presentation.h5p
+          h5p pack -r h5p-course-presentation h5p-editor-course-presentation h5p-editor-show-when course-presentation.h5p
           h5p validate course-presentation.h5p
-      - name: Archive code coverage results
+      - name: Store packed H5P as an artifact
         uses: actions/upload-artifact@v2
         with:
           name: course-presentation.h5p
