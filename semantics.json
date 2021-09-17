@@ -95,7 +95,7 @@
                       "H5P.Table 1.1",
                       "H5P.InteractiveVideo 1.22",
                       "H5P.TwitterUserFeed 1.0",
-                      "H5P.Chart 1.2"
+                      "H5P.NDLAChart 1.2"
                     ],
                     "optional": true
                   },
