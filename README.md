@@ -1,4 +1,4 @@
-H5P Course Presentation
+NDLA H5P Course Presentation
 ==========
 
 Combine texts, multimedia and tasks into a presentation.
