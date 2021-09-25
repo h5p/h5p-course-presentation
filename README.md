@@ -3,7 +3,6 @@ NDLA H5P Course Presentation
 
 Combine texts, multimedia and tasks into a presentation.
 
-[See it in action on H5P.org](https://h5p.org/presentation)
 
 ## Getting started
 
