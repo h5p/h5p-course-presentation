@@ -3,7 +3,6 @@ NDLA H5P Course Presentation
 
 Combine texts, multimedia and tasks into a presentation.
 
-
 ## Getting started
 
 Install all the dependencies:
