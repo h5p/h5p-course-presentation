@@ -224,11 +224,11 @@
           "default": "Hur vill du skriva ut denna presentation?"
         },
         {
-          "label": "Etikett för knappen \"Skriv ut alla sidor\" ",
+          "label": "Etikett för knappen \"Skriv ut alla sidor\"",
           "default": "Skriv ut alla sidor"
         },
         {
-          "label": "Etikett för knappen \"Skriv ut aktuell sida\" ",
+          "label": "Etikett för knappen \"Skriv ut aktuell sida\"",
           "default": "Skriv ut aktuell sida"
         },
         {
@@ -277,7 +277,7 @@
           "default": "Aktiverat helskärmsläge"
         },
         {
-          "label": "Meddelande om avslutat helskärmsläge för  tillgänglighetshjälpmedel",
+          "label": "Meddelande om avslutat helskärmsläge för tillgänglighetshjälpmedel",
           "default": "Avslutat helskärmsläge"
         }
       ]
@@ -295,7 +295,7 @@
           "description": "Döljer sammanfattningssidan."
         },
         {
-          "label": "Ignorera knappen \"Visa lösning\" ",
+          "label": "Ignorera knappen \"Visa lösning\"",
           "description": "Denna inställning avgör om knappen \"Visa lösning\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
           "options": [
             {
@@ -307,7 +307,7 @@
           ]
         },
         {
-          "label": "Ignorera knappen \"Försök igen\" ",
+          "label": "Ignorera knappen \"Försök igen\"",
           "description": "Denna inställning avgör om knappen \"Försök igen\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
           "options": [
             {
