@@ -833,3 +833,23 @@
 .h5p-course-presentation .h5p-dialogcards .h5p-dialogcards-card-text {
   height: auto;
 }
+
+/* Custom styles for H5P.AudioRecorder subcontent */
+.h5p-course-presentation .h5p-audio-recorder-view .recording-indicator-wrapper {
+  height: 4.375em;
+  line-height: 4.375em;
+  width: 4.375em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .recording-indicator-wrapper > .fa-microphone {
+  font-size: 1.15em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .audio-recorder-timer {
+  font-size: 1.5em;
+  margin: .5em 0;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .h5p-audio-recorder-download {
+  padding: .5em;
+}
