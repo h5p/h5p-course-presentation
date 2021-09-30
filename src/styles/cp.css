@@ -553,6 +553,11 @@
 .h5p-course-presentation .h5p-chart-button:before {
   content: "\f200";
 }
+.h5p-course-presentation .h5p-audiorecorder-button:before {
+  content: "\f130";
+  position: relative;
+  top: 0.05em;
+}
 
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
