@@ -778,11 +778,14 @@ CoursePresentation.prototype.resize = function () {
 
     for (let i = 0; i < instances.length; i++) {
       const instance = instances[i];
-      if (instance.libraryInfo.machineName === "H5P.Dialogcards") {
+
+      const isDialogCards = instance.libraryInfo && instance.libraryInfo.machineName === "H5P.Dialogcards";
+      if (isDialogCards) {
         instance.on('resize', function () {
           self.resizeDialogCard(this);
         });
       }
+
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
         H5P.trigger(instance, 'resize');
       }
