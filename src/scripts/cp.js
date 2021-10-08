@@ -1071,7 +1071,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     });
 
     instance.attach($innerElementContainer);
-    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+    if (element.action !== undefined && element.action.library.substr(0, 24) === 'H5P.NDLAInteractiveVideo') {
       var handleIV = function () {
         instance.$container.addClass('h5p-fullscreen');
         if (instance.controls.$fullscreen) {
@@ -1241,7 +1241,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
-  if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+  if (element.action !== undefined && element.action.library.substr(0, 24) === 'H5P.NDLAInteractiveVideo') {
     instance.on('controls', function () {
       if (instance.controls.$fullscreen) {
         instance.controls.$fullscreen.remove();
@@ -1275,7 +1275,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.showPopup($buttonElement, $button, popupPosition, () => {
 
       // Specific to YT Iframe
-      if (instance.libraryInfo.machineName === "H5P.InteractiveVideo" && instance.video.pressToPlay !== undefined) {
+      if (instance.libraryInfo.machineName === "H5P.NDLAInteractiveVideo" && instance.video.pressToPlay !== undefined) {
         // YT iframe does not receive state change event when it opens in a dialog box second time 
         instance.video.on('ready', function (event) {
           const videoInstance = this;
@@ -2314,7 +2314,7 @@ CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
         (instance.pause instanceof Function ||
           typeof instance.pause === 'function')) {
       // Don't pause media if the source is not compatible
-      if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
+      if (params && instance.libraryInfo.machineName === "H5P.NDLAInteractiveVideo" &&
           instance.video.pressToPlay === undefined &&
           params.interactiveVideo.video.files && 
           H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
