@@ -64,11 +64,12 @@ jobs:
           git clone https://github.com/NDLA-H5P/h5p-editor-drag-question.git
           git clone https://github.com/NDLA-H5P/h5p-editor-radio-selector.git
           git clone https://github.com/NDLA-H5P/h5p-editor-show-when.git
+          git clone https://github.com/NDLA-H5P/h5p-editor-interactive-video.git
+          
           # Clone and build override projects with build scripts
           git clone https://github.com/NDLA-H5P/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
           git clone https://github.com/NDLA-H5P/h5p-drag-question.git && pushd h5p-drag-question && npm ci && npm run build && popd
           git clone https://github.com/NDLA-H5P/h5p-interactive-video.git && pushd h5p-interactive-video && npm install && npm run build && popd
-          git clone https://github.com/NDLA-H5P/h5p-editor-interactive-video.git && pushd h5p-editor-interactive-video && npm install && npm run build && popd
 
           cp -r ../h5p-course-presentation .
       - run: |
