@@ -53,11 +53,6 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.svg|\.jpg|\.png$/,
-      //   include: path.join(__dirname, 'src/images'),
-      //   type: 'asset/resource'
-      // },
       {
         test: /\.svg|\.eot|\.woff2|\.woff|\.ttf$/,
         include: path.join(__dirname, 'src/fonts'),
