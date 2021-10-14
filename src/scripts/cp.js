@@ -93,7 +93,7 @@ let CoursePresentation = function (params, id, extras) {
     accessibilityEnteredFullscreen: 'Entered fullscreen',
     accessibilityExitedFullscreen: 'Exited fullscreen',
     confirmDialogHeader: 'Submit your answers',
-    confirmDialogText: 'By accessing Summary page, you will submit your current answer. Do you want to continue?',
+    confirmDialogText: 'This will submit your results, do you want to continue?',
     confirmDialogConfirmText: 'Submit and see results',
   }, params.l10n !== undefined ? params.l10n : {});
 

@@ -286,7 +286,7 @@
         },
         {
           "label": "Text of submit result confirmation dialog",
-          "default": "By accessing Summary page, you will submit your current answer. Do you want to continue?"
+          "default": "This will submit your results, do you want to continue?"
         },
         {
           "label": "Confirmation button of submit result confirmation dialog",
