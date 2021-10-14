@@ -279,6 +279,18 @@
         {
           "label": "Avviso di uscita da schermo intero per tecnologie assistive",
           "default": "Uscita da schermo intero"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "By accessing Summary page, you will submit your current answer. Do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
