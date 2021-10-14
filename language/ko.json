@@ -279,6 +279,18 @@
         {
           "label": "보조 기술에 대한 전체 화면 공지 종료",
           "default": "전체화면 종료됨"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "By accessing Summary page, you will submit your current answer. Do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

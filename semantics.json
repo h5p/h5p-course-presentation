@@ -639,6 +639,24 @@
         "type": "text",
         "label": "Exited fullscreen announcement for assistive technologies",
         "default": "Exited fullscreen"
+      },
+      {
+        "name": "confirmDialogHeader",
+        "type": "text",
+        "label": "Header of submit result confirmation dialog",
+        "default": "Submit your answers"
+      },
+      {
+        "name": "confirmDialogText",
+        "type": "text",
+        "label": "Text of submit result confirmation dialog",
+        "default": "By accessing Summary page, you will submit your current answer. Do you want to continue?"
+      },
+      {
+        "name": "confirmDialogConfirmText",
+        "type": "text",
+        "label": "Confirmation button of submit result confirmation dialog",
+        "default": "Submit and see results"
       }
     ]
   },

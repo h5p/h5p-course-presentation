@@ -277,8 +277,20 @@
           "default": "Entered fullscreen"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Volledig scherm beëindigd mededeling voor ondersteunende technologieën",
+          "default": "Volledig scherm beëindigd"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "By accessing Summary page, you will submit your current answer. Do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
