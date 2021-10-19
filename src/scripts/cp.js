@@ -33,6 +33,7 @@ let CoursePresentation = function (params, id, extras) {
   this.hasAnswerElements = false;
   this.ignoreResize = false;
   this.isTask = false;
+  this.standalone = true;
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -40,6 +41,7 @@ let CoursePresentation = function (params, id, extras) {
 
   if (extras) {
     this.previousState = extras.previousState;
+    this.standalone = extras.standalone;
   }
 
   this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
@@ -1858,7 +1860,7 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
  * @returns {Boolean} Always true.
  */
 CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) { 
-  if (this.$container.hasClass('h5p-standalone')
+  if (this.standalone
       && this.showSummarySlide
       && slideNumber == this.slides.length - 1
       && !this.isSolutionMode
