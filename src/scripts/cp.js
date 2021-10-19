@@ -1864,7 +1864,13 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
       && this.showSummarySlide
       && slideNumber == this.slides.length - 1
       && !this.isSolutionMode
-      && this.currentSlideIndex !== this.slides.length - 1) {
+    ) {
+    
+    // Currently in the summary slide
+    if (this.currentSlideIndex == this.slides.length - 1) {
+      return;
+    }
+    
     const confirmationDialog = ConfirmationDialog({
       headerText: this.l10n.confirmDialogHeader,
       dialogText: this.l10n.confirmDialogText,
