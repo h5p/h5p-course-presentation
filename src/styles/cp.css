@@ -835,6 +835,10 @@
 }
 
 /* Custom styles for H5P.AudioRecorder subcontent */
+.h5p-course-presentation .h5p-audio-recorder-view .title {
+  font-size: 1em;
+}
+
 .h5p-course-presentation .h5p-audio-recorder-view .recording-indicator-wrapper {
   height: 4.375em;
   line-height: 4.375em;
@@ -851,5 +855,17 @@
 }
 
 .h5p-course-presentation .h5p-audio-recorder-view .h5p-audio-recorder-download {
+  font-size: .85em;
+  padding: 1em .5em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .button {
+  font-size: .85em;
+  font-weight: 400;
+  line-height: 1.2em;
   padding: .5em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view [role=status] {
+  font-size: .85em;
 }
