@@ -43,7 +43,7 @@ let CoursePresentation = function (params, id, extras) {
   if (extras) {
     this.previousState = extras.previousState;
     this.standalone = extras.standalone;
-    this.isReportingEnabled = extras.isReportingEnabled;
+    this.isReportingEnabled = extras.isReportingEnabled || extras.isScoringEnabled;
   }
 
   this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
@@ -1714,7 +1714,7 @@ CoursePresentation.prototype.attachAllElements = function () {
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) { 
+CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1859,35 +1859,43 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
  *
  * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
- * @returns {Boolean} Always true.
+ * @param {Function|null} [callback] Callback to execute on successfull navigation
+ * @returns {Boolean}
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) { 
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false) {
   if (this.standalone
-      && this.showSummarySlide
-      && slideNumber == this.slides.length - 1
-      && !this.isSolutionMode
-      && this.isReportingEnabled
-    ) {
-    
+    && this.showSummarySlide
+    && slideNumber === this.slides.length - 1
+    && !this.isSolutionMode
+    && this.isReportingEnabled
+  ) {
+
     // Currently in the summary slide
-    if (this.currentSlideIndex == this.slides.length - 1) {
-      return;
+    if (this.currentSlideIndex === this.slides.length - 1) {
+      return false;
     }
-    
+
     const confirmationDialog = ConfirmationDialog({
       headerText: this.l10n.confirmDialogHeader,
       dialogText: this.l10n.confirmDialogText,
-      confirmText: this.l10n.confirmDialogConfirmationText
+      confirmText: this.l10n.confirmDialogConfirmationText,
     });
 
     confirmationDialog.on('canceled', () => {
-      return;
+      return false;
     });
     confirmationDialog.on('confirmed', () => {
-      return this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+      this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+      if (callback) {
+        callback();
+      }
     });
-  } else {
-    return this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+  }
+  else {
+    this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+    if (callback) {
+      callback();
+    }
   }
 };
 
