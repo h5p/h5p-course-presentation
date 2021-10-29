@@ -35,6 +35,7 @@ let CoursePresentation = function (params, id, extras) {
   this.ignoreResize = false;
   this.isTask = false;
   this.standalone = true;
+  this.isReportingEnabled = false;
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -43,6 +44,7 @@ let CoursePresentation = function (params, id, extras) {
   if (extras) {
     this.previousState = extras.previousState;
     this.standalone = extras.standalone;
+    this.isReportingEnabled = extras.isReportingEnabled;
   }
 
   this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
@@ -1976,6 +1978,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
       && this.showSummarySlide
       && slideNumber == this.slides.length - 1
       && !this.isSolutionMode
+      && this.isReportingEnabled
     ) {
     
     // Currently in the summary slide
