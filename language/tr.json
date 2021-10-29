@@ -279,6 +279,18 @@
         {
           "label": "Yardımcı teknolojiler için tam ekrandan çıkıldı duyurusu",
           "default": "Tam ekran modundan çıkıldı."
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
