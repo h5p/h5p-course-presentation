@@ -12,6 +12,6 @@ const ConfirmationDialog = function (options, offset) {
   
   confirmationDialog.show();
   return confirmationDialog;
-}
+};
 
 export default ConfirmationDialog;
