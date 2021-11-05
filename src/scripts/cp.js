@@ -428,7 +428,7 @@ CoursePresentation.prototype.attach = function ($container) {
   new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
-    this.jumpToSlide(this.previousState.progress);
+    this.jumpToSlide(this.previousState.progress, false, null, false, true);
   }
 };
 
@@ -1860,14 +1860,16 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
  * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @param {Function|null} [callback] Callback to execute on successfull navigation
+ * @param {Boolean} [ignoreConfirmationDialog] Will not show confirmation dialog for summary slide
  * @returns {Boolean}
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false, ignoreConfirmationDialog = false) {
   if (this.standalone
     && this.showSummarySlide
     && slideNumber === this.slides.length - 1
     && !this.isSolutionMode
     && this.isReportingEnabled
+    && !ignoreConfirmationDialog
   ) {
 
     // Currently in the summary slide
