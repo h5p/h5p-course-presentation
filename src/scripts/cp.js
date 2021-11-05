@@ -6,6 +6,7 @@ import KeywordsMenu from './keyword-menu';
 import { jQuery as $ } from './globals';
 import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
 import Slide from './slide.js';
+import ConfirmationDialog from './confirmation-dialog';
 
 /**
  * @const {string}
@@ -33,6 +34,8 @@ let CoursePresentation = function (params, id, extras) {
   this.hasAnswerElements = false;
   this.ignoreResize = false;
   this.isTask = false;
+  this.standalone = true;
+  this.isReportingEnabled = false;
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -40,6 +43,8 @@ let CoursePresentation = function (params, id, extras) {
 
   if (extras) {
     this.previousState = extras.previousState;
+    this.standalone = extras.standalone;
+    this.isReportingEnabled = extras.isReportingEnabled || extras.isScoringEnabled;
   }
 
   this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
@@ -91,6 +96,9 @@ let CoursePresentation = function (params, id, extras) {
     accessibilityTotalScore: 'You got @score of @maxScore points in total',
     accessibilityEnteredFullscreen: 'Entered fullscreen',
     accessibilityExitedFullscreen: 'Exited fullscreen',
+    confirmDialogHeader: 'Submit your answers',
+    confirmDialogText: 'This will submit your results, do you want to continue?',
+    confirmDialogConfirmText: 'Submit and see results',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -1810,13 +1818,13 @@ CoursePresentation.prototype.attachAllElements = function () {
 };
 
 /**
- * Jump to the given slide.
+ * Process the jump to slide.
  *
  * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
+CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1956,6 +1964,51 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
+};
+
+/**
+ * Jump to the given slide.
+ *
+ * @param {number} slideNumber The slide number to jump to.
+ * @param {Boolean} [noScroll] Skip UI scrolling.
+ * @param {Function|null} [callback] Callback to execute on successfull navigation
+ * @returns {Boolean}
+ */
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false) {
+  if (this.standalone
+    && this.showSummarySlide
+    && slideNumber === this.slides.length - 1
+    && !this.isSolutionMode
+    && this.isReportingEnabled
+  ) {
+
+    // Currently in the summary slide
+    if (this.currentSlideIndex === this.slides.length - 1) {
+      return false;
+    }
+
+    const confirmationDialog = ConfirmationDialog({
+      headerText: this.l10n.confirmDialogHeader,
+      dialogText: this.l10n.confirmDialogText,
+      confirmText: this.l10n.confirmDialogConfirmationText,
+    });
+
+    confirmationDialog.on('canceled', () => {
+      return false;
+    });
+    confirmationDialog.on('confirmed', () => {
+      this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+      if (callback) {
+        callback();
+      }
+    });
+  }
+  else {
+    this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+    if (callback) {
+      callback();
+    }
+  }
 };
 
 /**

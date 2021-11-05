@@ -279,6 +279,18 @@
         {
           "label": "יצאתם מהודעת מסך מלא עבור טכנולוגיות מסייעות",
           "default": "יצאתם ממסך מלא"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

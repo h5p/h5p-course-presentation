@@ -834,6 +834,12 @@
   height: auto;
 }
 
+.h5p-cp-confirmation-dialog {
+  transform: translateY(-50%) translateX(-50%) !important;
+  top: 50% !important;
+  font-size: 1.3vw;
+}
+
 /* Custom styles for H5P.AudioRecorder subcontent */
 .h5p-course-presentation .h5p-audio-recorder-view .title {
   font-size: 1em;
