@@ -273,12 +273,24 @@
           "description": "Beschikbare variabelen zijn @score en @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Volledig scherm gestart fullscreen mededeling voor ondersteunende technologieën",
+          "default": "Volledig scherm gestart"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Volledig scherm beëindigd mededeling voor ondersteunende technologieën",
+          "default": "Volledig scherm beëindigd"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
@@ -319,12 +331,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Toon \"Oplossing tonen\" knop op de samenvattingsdia",
+          "description": "Indien ingeschakeld kan de student de oplossingen op alle vragen weergeven wanneer hij de samenvattingsdia heeft bereikt."
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Toon \"Opnieuw\" knop op de samenvattingsdia",
+          "description": "Indien ingeschakeld kan de student alle vragen opnieuw proberen wanneer hij de samenvattingsdia heeft bereikt. Wees gewaarschuwd dat studenten door verversen van de pagina tch alle vragen opnieuw kunnen proberen, ook als de knop niet wordt vertoond."
         },
         {
           "label": "Printknop inschakelen",

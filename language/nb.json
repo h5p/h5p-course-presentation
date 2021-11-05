@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Spesifisert slide",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "description": "Type a slide number to go to"
                     },
                     {
                       "label": "Usynlig",
@@ -279,6 +279,18 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Avsluttet fullskjerm"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
@@ -291,7 +303,7 @@
           "description": "Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
         },
         {
-          "label": "Skjul sammendrag.",
+          "label": "Skjul sammendrag",
           "description": "Aktivering vil føre til at sammendrag siden ikke vises."
         },
         {

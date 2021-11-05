@@ -273,12 +273,24 @@
           "description": "Доступные переменные @score и @maxScore"
         },
         {
-          "label": "Уведомлении о входе полноэкранный режим для вспомогательных технологий",
+          "label": "Уведомлении о входе в полноэкранный режим для вспомогательных технологий",
           "default": "Вход в полноэкранный режим"
         },
         {
           "label": "Уведомление о выходе из полноэкранного режима для вспомогательных технологий",
           "default": "Выход из полноэкранного режима"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
@@ -366,7 +378,7 @@
                 },
                 {
                   "label": "Хештеги Поделиться на Twitter",
-                  "default": "h5p, course"
+                  "default": "h5p, курс"
                 }
               ]
             },

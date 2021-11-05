@@ -176,10 +176,19 @@
                     "name": "goToSlide",
                     "type": "number",
                     "label": "Specific slide number",
-                    "description": "Only applicable when 'Specific slide number' is selected",
+                    "description": "Type a slide number to go to",
                     "importance": "low",
                     "min": 1,
-                    "optional": true
+                    "optional": true,
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [
+                        {
+                          "field": "goToSlideType",
+                          "equals": "specified"
+                        }
+                      ]
+                    }
                   },
                   {
                     "name": "invisible",
@@ -638,6 +647,24 @@
         "type": "text",
         "label": "Exited fullscreen announcement for assistive technologies",
         "default": "Exited fullscreen"
+      },
+      {
+        "name": "confirmDialogHeader",
+        "type": "text",
+        "label": "Header of submit result confirmation dialog",
+        "default": "Submit your answers"
+      },
+      {
+        "name": "confirmDialogText",
+        "type": "text",
+        "label": "Text of submit result confirmation dialog",
+        "default": "This will submit your results, do you want to continue?"
+      },
+      {
+        "name": "confirmDialogConfirmText",
+        "type": "text",
+        "label": "Confirmation button of submit result confirmation dialog",
+        "default": "Submit and see results"
       }
     ]
   },

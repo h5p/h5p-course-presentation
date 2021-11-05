@@ -220,7 +220,7 @@
           "default": "Drucken"
         },
         {
-          "label": "Überschrift des Druck-Dialogs",
+          "label": "Zugriff auf Druck-Dialog",
           "default": "Wie möchtest du diese Präsentation drucken?"
         },
         {
@@ -279,6 +279,18 @@
         {
           "label": "\"Vollbild deaktiviert\"-Hinweis für Vorlesewerkzeuge",
           "default": "Vollbild deaktiviert"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

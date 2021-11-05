@@ -6,6 +6,7 @@ import KeywordsMenu from './keyword-menu';
 import { jQuery as $ } from './globals';
 import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
 import Slide from './slide.js';
+import ConfirmationDialog from './confirmation-dialog';
 
 /**
  * @const {string}
@@ -29,9 +30,12 @@ let CoursePresentation = function (params, id, extras) {
   this.elementInstances = []; // elementInstances holds the instances for elements in an array.
   this.elementsAttached = []; // Map to keep track of which slide has attached elements
   this.slidesWithSolutions = [];
+  this.showCommentsAfterSolution = [];
   this.hasAnswerElements = false;
   this.ignoreResize = false;
   this.isTask = false;
+  this.standalone = true;
+  this.isReportingEnabled = false;
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -39,6 +43,8 @@ let CoursePresentation = function (params, id, extras) {
 
   if (extras) {
     this.previousState = extras.previousState;
+    this.standalone = extras.standalone;
+    this.isReportingEnabled = extras.isReportingEnabled || extras.isScoringEnabled;
   }
 
   this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
@@ -90,6 +96,9 @@ let CoursePresentation = function (params, id, extras) {
     accessibilityTotalScore: 'You got @score of @maxScore points in total',
     accessibilityEnteredFullscreen: 'Entered fullscreen',
     accessibilityExitedFullscreen: 'Exited fullscreen',
+    confirmDialogHeader: 'Submit your answers',
+    confirmDialogText: 'This will submit your results, do you want to continue?',
+    confirmDialogConfirmText: 'Submit and see results',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -215,7 +224,7 @@ CoursePresentation.prototype.attach = function ($container) {
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
-          '     <div class="h5p-slides-wrapper"></div>' +
+          '     <div class="h5p-slides-wrapper" aria-live="polite"></div>' +
           '    </div>' +
           '  </div>' +
           '  <nav class="h5p-cp-navigation">' +
@@ -659,13 +668,12 @@ CoursePresentation.prototype.showKeywords = function () {
 };
 
 /**
- * Change the background opacity of the keywords list.
+ * Change the opacity of the keywords list.
  *
  * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  const [red, green, blue] = this.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
-  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+  this.$keywordsWrapper.css('opacity', value / 100);
 };
 
 /**
@@ -704,6 +712,7 @@ CoursePresentation.prototype.fitCT = function () {
  * @returns {undefined}
  */
 CoursePresentation.prototype.resize = function () {
+  var self = this;
   var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
@@ -743,13 +752,105 @@ CoursePresentation.prototype.resize = function () {
     var slideElements = this.slides[this.$current.index()].elements;
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
+      if (instance.libraryInfo !== undefined && instance.libraryInfo.machineName === "H5P.Dialogcards") {
+        instance.on('resize', function () {
+          self.resizeDialogCard(this);
+        });
+      }
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
         H5P.trigger(instance, 'resize');
       }
     }
   }
-
+  
   this.fitCT();
+};
+
+/**
+ * Resize dialog card. Strategy is to resize image, then content and later the card wrapper.
+ * 
+ * @param {Object} instance
+ */
+CoursePresentation.prototype.resizeDialogCard = function (instance) { 
+  var self = this;
+  // In order to resize each cards we need to make it visible first
+  instance.cards.forEach(card => {
+    card.$cardWrapper.css('display', 'block');
+    card.callbacks.onCardTurned = function(turned) {
+      self.resizeDialogCard(instance);
+    };
+  });
+
+  let relativeImageHeight = 15;
+  const cardWrapper = $(instance.cards[instance.currentCardId].$cardWrapper[0]);
+  const $currentCardContent = instance.cards[instance.currentCardId].getDOM().find('.h5p-dialogcards-card-content');
+  const dialog = instance.cards[instance.currentCardId].params.dialogs[instance.getCurrentSelectionIndex()];
+  // Calculate image height
+  let height = dialog.image.height / dialog.image.width * $currentCardContent.get(0).getBoundingClientRect().width;
+  if (height > 0) {
+    height = height / parseFloat(instance.$inner.css('font-size'));
+    if (height > relativeImageHeight) {
+      height = relativeImageHeight;
+    }
+    instance.cards[instance.currentCardId].getImage().parent().css('height', height + 'em');
+  }
+
+  // Determine the height of content
+  const $content = $('.h5p-dialogcards-card-content', cardWrapper);
+  const $text = $('.h5p-dialogcards-card-text-inner-content', $content);
+
+  // Grab size with text
+  const textHeight = $text[0].getBoundingClientRect().height;
+
+  // Change to answer
+  const currentCard = instance.cards[instance.currentCardId];
+  
+  // Grab size with answer
+  let answerHeight = 0;
+  if ($content.hasClass('h5p-dialogcards-turned')) {
+    currentCard.changeText(currentCard.getAnswer());
+    answerHeight = $text[0].getBoundingClientRect().height;
+  }
+
+  // Use highest
+  let useHeight = (textHeight > answerHeight ? textHeight : answerHeight);
+
+  // Min. limit
+  const minHeight = parseFloat($text.parent().parent().css('minHeight'));
+  if (useHeight < minHeight) {
+    useHeight =  minHeight;
+  }
+
+  // Convert to em
+  const fontSize = parseFloat($content.css('fontSize'));
+  useHeight /= fontSize;
+
+  // Set height
+  $text.parent().css('height', useHeight + 'em');
+  
+  // Reset card-wrapper-set height
+  $(instance.$cardwrapperSet[0]).css('height', 'auto');
+  
+  // Card wrapper height
+  let maxHeight = 0;
+  const wrapperHeight = cardWrapper.css('height', 'initial').outerHeight();
+  cardWrapper.css('height', 'inherit');
+  maxHeight = wrapperHeight > maxHeight ? wrapperHeight : maxHeight;
+
+  // Check height
+  const initialHeight = cardWrapper.find('.h5p-dialogcards-cardholder').css('height', 'initial').outerHeight();
+  maxHeight = initialHeight > maxHeight ? initialHeight : maxHeight;
+  cardWrapper.find('.h5p-dialogcards-cardholder').css('height', 'inherit');
+  
+  const relativeMaxHeight = maxHeight / parseFloat(cardWrapper.css('font-size'));
+  $(instance.$cardwrapperSet[0]).css('height', relativeMaxHeight + 'em');
+
+  // CP is setting scrollbar based on peer elements of cards which give unnecessary scrooll where it is not needed so hiden them
+  instance.cards.forEach(card => {
+    if (instance.currentCardId !== card.id) {
+      card.$cardWrapper.css('display', 'none');
+    }
+  });
 };
 
 /**
@@ -951,6 +1052,11 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       }
     }
 
+    // Set first slide's tabindex for better accessibility if there are no interactions
+    if (index == 0 && this.slidesWithSolutions.indexOf(index) < 0) {
+      $innerElementContainer.attr('tabindex', '0');
+    }
+
     // For first slide
     this.setOverflowTabIndex();
   }
@@ -1106,6 +1212,23 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.on('exitFullScreen', exitFullScreen);
 
     this.showPopup($buttonElement, $button, popupPosition, () => {
+
+      // Specific to YT Iframe
+      if (instance.libraryInfo.machineName === "H5P.InteractiveVideo" && instance.video.pressToPlay !== undefined) {
+        // YT iframe does not receive state change event when it opens in a dialog box second time 
+        instance.video.on('ready', function (event) {
+          const videoInstance = this;
+          var playerState = 0;
+          setInterval( function() {
+            var state = videoInstance.getPlayerState();
+            if ( playerState !== state ) {
+              videoInstance.trigger('stateChange', state);
+              playerState = state;
+            }
+          }, 10);
+        });
+      }
+      
       this.pauseMedia(instance);
       $buttonElement.detach();
 
@@ -1695,13 +1818,13 @@ CoursePresentation.prototype.attachAllElements = function () {
 };
 
 /**
- * Jump to the given slide.
+ * Process the jump to slide.
  *
  * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
+CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1740,7 +1863,9 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     for (var i = 0; i < instances.length; i++) {
       if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
         // Only pause media elements displayed as posters.
-        that.pauseMedia(instances[i]);
+        var params = this.slides[previousSlideIndex].elements[i].action !== undefined 
+          ? this.slides[previousSlideIndex].elements[i].action.params : null;
+        that.pauseMedia(instances[i], params);
       }
     }
   }
@@ -1748,6 +1873,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
+    $old.find('.h5p-element-inner').attr('tabindex', '-1');
     $slides.css({
       '-webkit-transform': '',
       '-moz-transform': '',
@@ -1756,6 +1882,12 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
+    
+    // Set tabindex for better accessibility if there are no interactions
+    if (typeof that.slidesWithSolutions[that.getCurrentSlideIndex()] === 'undefined') {
+      that.$current.find('.h5p-element-inner').attr('tabindex', '0');
+    }
+
     that.trigger('changedSlide', that.$current.index());
   }, 1);
 
@@ -1832,6 +1964,51 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
+};
+
+/**
+ * Jump to the given slide.
+ *
+ * @param {number} slideNumber The slide number to jump to.
+ * @param {Boolean} [noScroll] Skip UI scrolling.
+ * @param {Function|null} [callback] Callback to execute on successfull navigation
+ * @returns {Boolean}
+ */
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false) {
+  if (this.standalone
+    && this.showSummarySlide
+    && slideNumber === this.slides.length - 1
+    && !this.isSolutionMode
+    && this.isReportingEnabled
+  ) {
+
+    // Currently in the summary slide
+    if (this.currentSlideIndex === this.slides.length - 1) {
+      return false;
+    }
+
+    const confirmationDialog = ConfirmationDialog({
+      headerText: this.l10n.confirmDialogHeader,
+      dialogText: this.l10n.confirmDialogText,
+      confirmText: this.l10n.confirmDialogConfirmationText,
+    });
+
+    confirmationDialog.on('canceled', () => {
+      return false;
+    });
+    confirmationDialog.on('confirmed', () => {
+      this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+      if (callback) {
+        callback();
+      }
+    });
+  }
+  else {
+    this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+    if (callback) {
+      callback();
+    }
+  }
 };
 
 /**
@@ -1953,6 +2130,12 @@ CoursePresentation.prototype.showSolutions = function () {
         score: slideScore,
         maxScore: slideMaxScore
       });
+    }
+    // Show comments of non graded contents
+    if (this.showCommentsAfterSolution[i]) {
+      for (var j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
+        this.showCommentsAfterSolution[i][j].showCPComments();
+      }
     }
   }
   if (hasScores) {
@@ -2087,11 +2270,19 @@ CoursePresentation.prototype.getCopyrights = function () {
  *
  * @param {object} instance
  */
-CoursePresentation.prototype.pauseMedia = function (instance) {
+CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
   try {
     if (instance.pause !== undefined &&
         (instance.pause instanceof Function ||
           typeof instance.pause === 'function')) {
+      // Don't pause media if the source is not compatible
+      if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
+          instance.video.pressToPlay === undefined &&
+          params.interactiveVideo.video.files && 
+          H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
+        instance.pause();
+        return;
+      }
       instance.pause();
     }
     else if (instance.video !== undefined &&
@@ -2141,6 +2332,21 @@ CoursePresentation.prototype.getXAPIData = function () {
   return {
     statement: xAPIEvent.data.statement,
     children: childrenXAPIData
+  };
+};
+
+/**
+ * Get context data.
+ * Contract used for confusion report.
+ */
+ CoursePresentation.prototype.getContext = function () {
+  var self = this;
+
+  // Get current slide number here it starts with zero
+  const slide = (self.currentSlideIndex + 1);
+  return {
+    type: 'slide',
+    value: slide
   };
 };
 

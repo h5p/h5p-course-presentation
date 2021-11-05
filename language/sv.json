@@ -21,7 +21,7 @@
                       "label": "Visa alltid kommentarer"
                     },
                     {
-                      "label": "Opacitet för bakgrund"
+                      "label": "Genomskinlighet för bakgrund"
                     },
                     {
                       "label": "Visa som knapp"
@@ -55,8 +55,8 @@
                       ]
                     },
                     {
-                      "label": "Specifikt sidonummer",
-                      "description": "Endast tillgänglig om 'Specifikt sidonummer' är valt"
+                      "label": "Specifikt bildnummer",
+                      "description": "Endast tillgänglig om 'Specifikt bildnummer' är valt"
                     },
                     {
                       "label": "Osynlig",
@@ -92,7 +92,7 @@
           "label": "Dölj automatiskt"
         },
         {
-          "label": "Opacitet"
+          "label": "Genomskinlighet"
         },
         {
           "fields": [
@@ -224,11 +224,11 @@
           "default": "Hur vill du skriva ut denna presentation?"
         },
         {
-          "label": "Etikett för knappen \"Skriv ut alla sidor\" ",
+          "label": "Etikett för knappen \"Skriv ut alla sidor\"",
           "default": "Skriv ut alla sidor"
         },
         {
-          "label": "Etikett för knappen \"Skriv ut aktuell sida\" ",
+          "label": "Etikett för knappen \"Skriv ut aktuell sida\"",
           "default": "Skriv ut aktuell sida"
         },
         {
@@ -241,7 +241,7 @@
         },
         {
           "label": "Etikett för tillgänglighetshjälpmedel",
-          "default": "Använd pilarna vänster och höger för att byta sida"
+          "default": "Använd pilarna vänster och höger för att byta sida."
         },
         {
           "label": "Etikett för aktiviteter som inte är genomförda",
@@ -279,6 +279,18 @@
         {
           "label": "Meddelande om avslutat helskärmsläge för tillgänglighetshjälpmedel",
           "default": "Avslutat helskärmsläge"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
@@ -295,7 +307,7 @@
           "description": "Döljer sammanfattningssidan."
         },
         {
-          "label": "Ignorera knappen \"Visa lösning\" ",
+          "label": "Ignorera knappen \"Visa lösning\"",
           "description": "Denna inställning avgör om knappen \"Visa lösning\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
           "options": [
             {
@@ -307,7 +319,7 @@
           ]
         },
         {
-          "label": "Ignorera knappen \"Försök igen\" ",
+          "label": "Ignorera knappen \"Försök igen\"",
           "description": "Denna inställning avgör om knappen \"Försök igen\" ska visas på alla frågor, vara inaktiverad på alla, eller konfigureras individuellt för varje fråga.",
           "options": [
             {
@@ -332,7 +344,7 @@
         },
         {
           "label": "Sociala inställningar",
-          "description": "Dessa inställningar gör det möjligt att ignorera inställningar för sociala media.  Tomma värden kommer fyllas i automatiskt om en länk anges, alla övriga värden kommer att genereras automatiskt.",
+          "description": "Dessa inställningar gör det möjligt att ignorera inställningar för sociala media. Tomma värden kommer fyllas i automatiskt om en länk anges, alla övriga värden kommer att genereras.",
           "fields": [
             {
               "label": "Visa ikon för delning på Facebook"
