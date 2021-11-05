@@ -124,7 +124,7 @@
           "default": "La teva qualificació"
         },
         {
-          "label": "Traducció de “Qualificació màxima”",
+          "label": "Traducció de \"Qualificació màxima\"",
           "default": "Puntuació màxima"
         },
         {
@@ -132,7 +132,7 @@
           "default": "Total"
         },
         {
-          "label": "Traducció de “Qualificació total”",
+          "label": "Traducció de \"Qualificació total\"",
           "default": "Qualificació total"
         },
         {
@@ -279,6 +279,18 @@
         {
           "label": "Anunci de sortida de la pantalla completa per a les tecnologies d’assistència",
           "default": "Heu sortit de la pantalla completa"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

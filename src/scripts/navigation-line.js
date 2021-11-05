@@ -200,19 +200,21 @@ const NavigationLine = (function ($) {
    * @param {number} index
    */
   NavigationLine.prototype.displaySlide = function (index) {
-    const oldIndex = this.cp.getCurrentSlideIndex();
-
-    // update current progress task
-    this.updateSlideTitle(index, { isCurrent: true });
-
-    // update old progress task
-    this.updateSlideTitle(oldIndex, { isCurrent: false });
+    const self = this;
 
     // navigate to slide
-    this.cp.jumpToSlide(index);
+    this.cp.jumpToSlide(index, false, function () {
+      const oldIndex = self.cp.getCurrentSlideIndex();
 
-    // toggle next and prev buttons
-    this.toggleNextAndPreviousButtonDisabled(index);
+      // update current progress task
+      self.updateSlideTitle(index, { isCurrent: true });
+
+      // update old progress task
+      self.updateSlideTitle(oldIndex, { isCurrent: false });
+
+      // toggle next and prev buttons
+      self.toggleNextAndPreviousButtonDisabled(index);
+    });
   };
 
   /**

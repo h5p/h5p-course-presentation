@@ -279,6 +279,18 @@
         {
           "label": "Koko näytön tilasta poistuttu -ilmoitus avustavalle teknologialle",
           "default": "Koko näytön tilasta poistuttu"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
