@@ -1770,7 +1770,7 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
-    
+
     // Set tabindex for better accessibility if there are no interactions
     if (typeof that.slidesWithSolutions[that.getCurrentSlideIndex()] === 'undefined') {
       that.$current.find('.h5p-element-inner').attr('tabindex', '0');
