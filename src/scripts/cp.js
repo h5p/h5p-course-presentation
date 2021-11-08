@@ -1221,6 +1221,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
           var playerState = 0;
           setInterval( function() {
             var state = videoInstance.getPlayerState();
+            console.log(playerState);
             if ( playerState !== state ) {
               videoInstance.trigger('stateChange', state);
               playerState = state;
