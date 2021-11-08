@@ -1434,13 +1434,13 @@ CoursePresentation.prototype.initKeyEvents = function () {
     }
 
     // Left
-    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide()) {
+    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide(undefined, false)) {
       event.preventDefault();
       wait = true;
     }
 
     // Right
-    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide()) {
+    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide(undefined, false)) {
       event.preventDefault();
       wait = true;
     }
@@ -1572,7 +1572,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
-      if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
+      if (moved > that.swipeThreshold && that.nextSlide(undefined, false) || moved < -that.swipeThreshold && that.previousSlide(undefined, false)) {
         return;
       }
     }
@@ -1646,13 +1646,18 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.previousSlide = function (noScroll) {
+CoursePresentation.prototype.previousSlide = function (noScroll, old = true) {
   var $prev = this.$current.prev();
   if (!$prev.length) {
     return false;
   }
 
-  return this.jumpToSlide($prev.index(), noScroll, false);
+  if (old) {
+    return this.processJumpToSlide($prev.index(), noScroll, false);
+  }
+  else {
+    return this.jumpToSlide($prev.index(), noScroll, null, false);
+  }
 };
 
 /**
@@ -1661,13 +1666,18 @@ CoursePresentation.prototype.previousSlide = function (noScroll) {
  * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.nextSlide = function (noScroll) {
+CoursePresentation.prototype.nextSlide = function (noScroll, old = true) {
   var $next = this.$current.next();
   if (!$next.length) {
     return false;
   }
 
-  return this.jumpToSlide($next.index(), noScroll, false);
+  if (old) {
+    return this.processJumpToSlide($next.index(), noScroll, false);
+  }
+  else {
+    return this.jumpToSlide($next.index(), noScroll, null, false);
+  }
 };
 
 /**

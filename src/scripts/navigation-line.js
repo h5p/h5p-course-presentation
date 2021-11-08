@@ -316,7 +316,7 @@ const NavigationLine = (function ($) {
       'aria-disabled': 'true'
     }).appendTo($centerFooter);
 
-    addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide());
+    addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide(undefined, false));
 
     const $slideNumbering = $('<div/>', {
       'class': 'h5p-footer-slide-count'
@@ -361,7 +361,7 @@ const NavigationLine = (function ($) {
       'tabindex': '0'
     }).appendTo($centerFooter);
 
-    addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide());
+    addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide(undefined, false));
 
     // *********************
     // Right footer elements
