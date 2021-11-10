@@ -73,8 +73,7 @@
                     "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
                   },
                   {
-                    "label": "Bir renk seçin",
-                    "default": ""
+                    "label": "Bir renk seçin"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
             },
             {
-              "label": "Bir renk seçin",
-              "default": ""
+              "label": "Bir renk seçin"
             }
           ]
         }

@@ -73,8 +73,7 @@
                     "description": "Das Hintergrundbild sollte ein Seitenverhältnis von 2:1 haben, um Verzerrungen zu vermeiden. Hochauflösende Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
                   },
                   {
-                    "label": "Wähle eine Farbe",
-                    "default": ""
+                    "label": "Wähle eine Farbe"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Das Hintergrundbild sollte ein Seitenverhältnis von 2:1 haben, um Verzerrungen zu vermeiden. Hochauflösende Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
             },
             {
-              "label": "Wähle eine Farbe",
-              "default": ""
+              "label": "Wähle eine Farbe"
             }
           ]
         }

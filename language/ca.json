@@ -73,8 +73,7 @@
                     "description": "La imatge de fons ha de tenir una proporció entre l’alçada i l’amplada de 2:1 perquè no quedi estirada. Les imatges en alta resolució es veuen millor en pantalles grans."
                   },
                   {
-                    "label": "Agafa un color",
-                    "default": ""
+                    "label": "Agafa un color"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "La imatge de fons ha de tenir una proporció entre l’alçada i l’amplada de 2:1 perquè no quedi estirada. Les imatges en alta resolució es veuen millor en pantalles grans."
             },
             {
-              "label": "Agafa un color",
-              "default": ""
+              "label": "Agafa un color"
             }
           ]
         }
