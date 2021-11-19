@@ -281,16 +281,16 @@
           "default": "Salió de pantalla completa"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Encabezado del diálogo de confirmación de envío de resultado",
+          "default": "Enviar sus respuestas"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Texto del diálogo de confirmación de envío de resultado",
+          "default": "Esto enviará sus resultados, ¿desea continuar?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Botón de confirmación del diálogo de confirmación de envío de resultados",
+          "default": "Enviar y ver resultados"
         }
       ]
     },
