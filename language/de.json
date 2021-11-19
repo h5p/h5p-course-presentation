@@ -281,16 +281,16 @@
           "default": "Vollbild deaktiviert"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Überschrift des Bestätigungsdialogs für das Senden des Ergebnisses",
+          "default": "Antworten übermitteln"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Text des Bestätigungsdialogs für das Senden des Ergebnisses",
+          "default": "Damit werden deine Ergebnisse übermittelt. Möchtest du fortfahren?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Bestätigungs-Button des Bestätigungsdialogfelds für das Senden des Ergebnisses",
+          "default": "Senden und Ergebnisse ansehen"
         }
       ]
     },
