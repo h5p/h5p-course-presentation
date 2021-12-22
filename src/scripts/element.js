@@ -71,6 +71,10 @@ function Element(parameters) {
       };
     }
 
+    // Avoid submit buttons inside sub-content
+    library.isReportingAvailable = false;
+    library.isReportingEnabled = false;
+
     // Override child settings
     library.params = library.params || {};
     self.instance = H5P.newRunnable(library, self.parent.parent.contentId, undefined, true, {parent: self.parent.parent});
