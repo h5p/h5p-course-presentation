@@ -1342,15 +1342,24 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
       });
     }
 
-    // Account for overflowing edges
-    const widthPadding = 15 / 2;
-    const leftPosThreshold = 100 - widthPercentage - widthPadding;
-    let leftPos = parentPosition.x;
-    if (parentPosition.x > leftPosThreshold) {
-      leftPos = leftPosThreshold;
+    // Account for overflowing edges, use consistent percentage padding as css
+    const widthPaddingPercentage = 5;
+
+    // Width percentage is capped at min 22 and max 90% in css
+    if (widthPercentage > 90) {
+      widthPercentage = 90;
     }
-    else if (parentPosition.x < widthPadding) {
-      leftPos = widthPadding;
+    else if (widthPercentage < 22) {
+      widthPercentage = 22;
+    }
+
+    const overflowRightSideThreshold = 100 - widthPercentage - widthPaddingPercentage;
+    let leftPos = parentPosition.x;
+    if (parentPosition.x > overflowRightSideThreshold) {
+      leftPos = overflowRightSideThreshold;
+    }
+    else if (parentPosition.x < widthPaddingPercentage) {
+      leftPos = widthPaddingPercentage;
     }
 
     heightPercentage = $popupContainer.height() * (100 / overlayHeight);
