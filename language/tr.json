@@ -73,8 +73,7 @@
                     "description": "En boy oranının korunması için görsel arka plan genişliği, yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüklü görseller daha büyük ekranlarda daha iyi görüntülenecektir."
                   },
                   {
-                    "label": "Bir renk seçin",
-                    "default": ""
+                    "label": "Bir renk seçin"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "En boy oranının korunması için görsel arka plan genişliği, yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüklü görseller daha büyük ekranlarda daha iyi görüntülenecektir."
             },
             {
-              "label": "Bir renk seçin",
-              "default": ""
+              "label": "Bir renk seçin"
             }
           ]
         }

@@ -73,8 +73,7 @@
                     "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
                   },
                   {
-                    "label": "Valitse väri",
-                    "default": ""
+                    "label": "Valitse väri"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
             },
             {
-              "label": "Valitse väri",
-              "default": ""
+              "label": "Valitse väri"
             }
           ]
         }
