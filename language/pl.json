@@ -73,8 +73,7 @@
                     "description": "Zdjęcie w tle powinno mieć proporcje 2:1 aby zapobiec rozciąganiu. Zdjęcia, które mają wysoką rozdzielczość będą lepiej wyświetlane na większych monitorach."
                   },
                   {
-                    "label": "Wybierz kolor",
-                    "default": ""
+                    "label": "Wybierz kolor"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Zdjęcie w tle powinno mieć proporcje 2:1 aby zapobiec rozciąganiu. Zdjęcia, które mają wysoką rozdzielczość będą lepiej wyświetlane na większych monitorach."
             },
             {
-              "label": "Wybierz kolor",
-              "default": ""
+              "label": "Wybierz kolor"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Ogłoszenie wyłączenia trybu pełnoekranowego dla użytkowników, korzystających z technologii wspomagających",
           "default": "Wyłączono tryb pełnoekranowy"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

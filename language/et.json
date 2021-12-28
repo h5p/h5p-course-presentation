@@ -73,8 +73,7 @@
                     "description": "Taustapildi mõõtude suhe peaks olema 2:1, et vältida pildi venimist. Suurtel ekraanidel paistavad kõrge resolutsiooniga pildid paremad välja.."
                   },
                   {
-                    "label": "Vali värv",
-                    "default": ""
+                    "label": "Vali värv"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Taustapildi mõõtude suhe peaks olema 2:1, et vältida pildi venimist. Suurtel ekraanidel paistavad kõrge resolutsiooniga pildid paremad välja."
             },
             {
-              "label": "Vali värv",
-              "default": ""
+              "label": "Vali värv"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Exited fullscreen"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

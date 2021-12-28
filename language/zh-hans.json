@@ -73,8 +73,7 @@
                     "description": "图片宽高比建议为 2：1 可避免延伸时超出。高解析度的图片在大屏幕上显示较佳。"
                   },
                   {
-                    "label": "选择颜色",
-                    "default": ""
+                    "label": "选择颜色"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "图片宽高比建议为 2：1 可避免延伸时超出。高解析度的图片在大屏幕上显示较佳。"
             },
             {
-              "label": "选择颜色",
-              "default": ""
+              "label": "选择颜色"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "残疾辅助的退出全屏",
           "default": "退出全屏"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

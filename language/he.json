@@ -73,8 +73,7 @@
                     "description": "תמונה רקע צריך להיות יחס רוחב גובה 2:1, כדי למנוע מתיחה. תמונות בהפרדה גבוהה יוצגו טוב יותר במסכים גדולים יותר."
                   },
                   {
-                    "label": "יש לבחור צבע",
-                    "default": ""
+                    "label": "יש לבחור צבע"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "תמונה רקע צריך להיות יחס רוחב גובה 2:1, כדי למנוע מתיחה. תמונות בהפרדה גבוהה יוצגו טוב יותר במסכים גדולים יותר."
             },
             {
-              "label": "יש לבחור צבע",
-              "default": ""
+              "label": "יש לבחור צבע"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "יצאתם מהודעת מסך מלא עבור טכנולוגיות מסייעות",
           "default": "יצאתם ממסך מלא"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

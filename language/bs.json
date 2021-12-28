@@ -73,8 +73,7 @@
                     "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
                   },
                   {
-                    "label": "Odaberi boju",
-                    "default": ""
+                    "label": "Odaberi boju"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
             },
             {
-              "label": "Odaberi boju",
-              "default": ""
+              "label": "Odaberi boju"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Napustanje cijelog ekrana"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

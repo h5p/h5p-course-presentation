@@ -73,8 +73,7 @@
                     "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
                   },
                   {
-                    "label": "Valitse väri",
-                    "default": ""
+                    "label": "Valitse väri"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
             },
             {
-              "label": "Valitse väri",
-              "default": ""
+              "label": "Valitse väri"
             }
           ]
         }
@@ -277,8 +275,20 @@
           "default": "Entered fullscreen"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Koko näytön tilasta poistuttu -ilmoitus avustavalle teknologialle",
+          "default": "Koko näytön tilasta poistuttu"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

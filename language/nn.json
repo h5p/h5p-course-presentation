@@ -73,8 +73,7 @@
                     "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
                   },
                   {
-                    "label": "Velg farge",
-                    "default": ""
+                    "label": "Velg farge"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
             },
             {
-              "label": "Velg farge",
-              "default": ""
+              "label": "Velg farge"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Gjekk ut av fullskjerm"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

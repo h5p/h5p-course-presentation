@@ -73,8 +73,7 @@
                     "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
                   },
                   {
-                    "label": "Bir renk seçin",
-                    "default": ""
+                    "label": "Bir renk seçin"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Esnemeyi önlemek için görsel arka plan genişliği yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüğe sahip görseller büyük ekranlarda daha iyi görünür."
             },
             {
-              "label": "Bir renk seçin",
-              "default": ""
+              "label": "Bir renk seçin"
             }
           ]
         }
@@ -277,8 +275,20 @@
           "default": "Entered fullscreen"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Yardımcı teknolojiler için tam ekrandan çıkıldı duyurusu",
+          "default": "Tam ekran modundan çıkıldı."
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

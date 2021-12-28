@@ -73,8 +73,7 @@
                     "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
                   },
                   {
-                    "label": "Kies een kleur",
-                    "default": ""
+                    "label": "Kies een kleur"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
             },
             {
-              "label": "Kies een kleur",
-              "default": ""
+              "label": "Kies een kleur"
             }
           ]
         }
@@ -277,8 +275,20 @@
           "default": "Entered fullscreen"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Volledig scherm beëindigd mededeling voor ondersteunende technologieën",
+          "default": "Volledig scherm beëindigd"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

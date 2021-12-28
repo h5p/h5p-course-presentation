@@ -6,6 +6,7 @@ import KeywordsMenu from './keyword-menu';
 import { jQuery as $ } from './globals';
 import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
 import Slide from './slide.js';
+import ConfirmationDialog from './confirmation-dialog';
 
 /**
  * @const {string}
@@ -32,6 +33,8 @@ let CoursePresentation = function (params, id, extras) {
   this.hasAnswerElements = false;
   this.ignoreResize = false;
   this.isTask = false;
+  this.standalone = true;
+  this.isReportingEnabled = false;
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -39,6 +42,8 @@ let CoursePresentation = function (params, id, extras) {
 
   if (extras) {
     this.previousState = extras.previousState;
+    this.standalone = extras.standalone;
+    this.isReportingEnabled = extras.isReportingEnabled || extras.isScoringEnabled;
   }
 
   this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
@@ -90,6 +95,9 @@ let CoursePresentation = function (params, id, extras) {
     accessibilityTotalScore: 'You got @score of @maxScore points in total',
     accessibilityEnteredFullscreen: 'Entered fullscreen',
     accessibilityExitedFullscreen: 'Exited fullscreen',
+    confirmDialogHeader: 'Submit your answers',
+    confirmDialogText: 'This will submit your results, do you want to continue?',
+    confirmDialogConfirmText: 'Submit and see results',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -420,7 +428,7 @@ CoursePresentation.prototype.attach = function ($container) {
   new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
-    this.jumpToSlide(this.previousState.progress);
+    this.jumpToSlide(this.previousState.progress, false, null, false, true);
   }
 };
 
@@ -1334,15 +1342,24 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
       });
     }
 
-    // Account for overflowing edges
-    const widthPadding = 15 / 2;
-    const leftPosThreshold = 100 - widthPercentage - widthPadding;
-    let leftPos = parentPosition.x;
-    if (parentPosition.x > leftPosThreshold) {
-      leftPos = leftPosThreshold;
+    // Account for overflowing edges, use consistent percentage padding as css
+    const widthPaddingPercentage = 5;
+
+    // Width percentage is capped at min 22 and max 90% in css
+    if (widthPercentage > 90) {
+      widthPercentage = 90;
     }
-    else if (parentPosition.x < widthPadding) {
-      leftPos = widthPadding;
+    else if (widthPercentage < 22) {
+      widthPercentage = 22;
+    }
+
+    const overflowRightSideThreshold = 100 - widthPercentage - widthPaddingPercentage;
+    let leftPos = parentPosition.x;
+    if (parentPosition.x > overflowRightSideThreshold) {
+      leftPos = overflowRightSideThreshold;
+    }
+    else if (parentPosition.x < widthPaddingPercentage) {
+      leftPos = widthPaddingPercentage;
     }
 
     heightPercentage = $popupContainer.height() * (100 / overlayHeight);
@@ -1426,13 +1443,13 @@ CoursePresentation.prototype.initKeyEvents = function () {
     }
 
     // Left
-    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide()) {
+    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide(undefined, false)) {
       event.preventDefault();
       wait = true;
     }
 
     // Right
-    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide()) {
+    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide(undefined, false)) {
       event.preventDefault();
       wait = true;
     }
@@ -1564,7 +1581,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
-      if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
+      if (moved > that.swipeThreshold && that.nextSlide(undefined, false) || moved < -that.swipeThreshold && that.previousSlide(undefined, false)) {
         return;
       }
     }
@@ -1638,13 +1655,18 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.previousSlide = function (noScroll) {
+CoursePresentation.prototype.previousSlide = function (noScroll, old = true) {
   var $prev = this.$current.prev();
   if (!$prev.length) {
     return false;
   }
 
-  return this.jumpToSlide($prev.index(), noScroll, false);
+  if (old) {
+    return this.processJumpToSlide($prev.index(), noScroll, false);
+  }
+  else {
+    return this.jumpToSlide($prev.index(), noScroll, null, false);
+  }
 };
 
 /**
@@ -1653,13 +1675,18 @@ CoursePresentation.prototype.previousSlide = function (noScroll) {
  * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.nextSlide = function (noScroll) {
+CoursePresentation.prototype.nextSlide = function (noScroll, old = true) {
   var $next = this.$current.next();
   if (!$next.length) {
     return false;
   }
 
-  return this.jumpToSlide($next.index(), noScroll, false);
+  if (old) {
+    return this.processJumpToSlide($next.index(), noScroll, false);
+  }
+  else {
+    return this.jumpToSlide($next.index(), noScroll, null, false);
+  }
 };
 
 /**
@@ -1700,13 +1727,13 @@ CoursePresentation.prototype.attachAllElements = function () {
 };
 
 /**
- * Jump to the given slide.
+ * Process the jump to slide.
  *
  * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
+CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -1762,7 +1789,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
-    
+
     // Set tabindex for better accessibility if there are no interactions
     if (typeof that.slidesWithSolutions[that.getCurrentSlideIndex()] === 'undefined') {
       that.$current.find('.h5p-element-inner').attr('tabindex', '0');
@@ -1844,6 +1871,53 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
+};
+
+/**
+ * Jump to the given slide.
+ *
+ * @param {number} slideNumber The slide number to jump to.
+ * @param {Boolean} [noScroll] Skip UI scrolling.
+ * @param {Function|null} [callback] Callback to execute on successfull navigation
+ * @param {Boolean} [ignoreConfirmationDialog] Will not show confirmation dialog for summary slide
+ * @returns {Boolean}
+ */
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false, ignoreConfirmationDialog = false) {
+  if (this.standalone
+    && this.showSummarySlide
+    && slideNumber === this.slides.length - 1
+    && !this.isSolutionMode
+    && this.isReportingEnabled
+    && !ignoreConfirmationDialog
+  ) {
+
+    // Currently in the summary slide
+    if (this.currentSlideIndex === this.slides.length - 1) {
+      return false;
+    }
+
+    const confirmationDialog = ConfirmationDialog({
+      headerText: this.l10n.confirmDialogHeader,
+      dialogText: this.l10n.confirmDialogText,
+      confirmText: this.l10n.confirmDialogConfirmationText,
+    });
+
+    confirmationDialog.on('canceled', () => {
+      return false;
+    });
+    confirmationDialog.on('confirmed', () => {
+      this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+      if (callback) {
+        callback();
+      }
+    });
+  }
+  else {
+    this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+    if (callback) {
+      callback();
+    }
+  }
 };
 
 /**

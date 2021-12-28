@@ -73,8 +73,7 @@
                     "description": "El fondo de la imagen debería tener una proporción ancho a alto de 2:1 para evitar estiramiento. Imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
                   },
                   {
-                    "label": "Elegir un color",
-                    "default": ""
+                    "label": "Elegir un color"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "El fondo de la imagen debería tener una proporción de ancho a alto de 2:1 para evitar estiramiento. Las imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
             },
             {
-              "label": "elegir un color",
-              "default": ""
+              "label": "elegir un color"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Anuncio que salió de pantalla completa para tecnologías asistivas",
           "default": "Salió de pantalla completa"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

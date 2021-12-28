@@ -73,8 +73,7 @@
                     "description": "A imaxe de fondo debería ter unha relación de ancho a alto de 2:1 para evitar o seu estiramento. As imaxes con resolucións altas veranse mellor en pantallas grandes."
                   },
                   {
-                    "label": "Escolle unha cor",
-                    "default": ""
+                    "label": "Escolle unha cor"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "A imaxe de fondo debería ter unha relación de ancho a alto de 2:1 para evitar o seu estiramento. As imaxes con resolucións altas veranse mellor en pantallas grandes."
             },
             {
-              "label": "Escolle unha cor",
-              "default": ""
+              "label": "Escolle unha cor"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Anuncio de saída de pantalla completa para tecnoloxías de asistencia",
           "default": "Saíches de pantalla completa"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

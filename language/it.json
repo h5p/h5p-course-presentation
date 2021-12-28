@@ -73,8 +73,7 @@
                     "description": "L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione avranno miglior resa sugli schermi più grandi"
                   },
                   {
-                    "label": "Scegli un colore",
-                    "default": ""
+                    "label": "Scegli un colore"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "L'immagine di sfondo dovrebbe avere un rapporto 2:1 tra larghezza e altezza per evitare stiramenti. Le immagini ad alta risoluzione avranno miglior resa sugli schermi più grandi"
             },
             {
-              "label": "Scegli un colore",
-              "default": ""
+              "label": "Scegli un colore"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Avviso di uscita da schermo intero per tecnologie assistive",
           "default": "Uscita da schermo intero"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

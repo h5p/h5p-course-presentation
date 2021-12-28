@@ -73,8 +73,7 @@
                     "description": "Slika ozadja naj bo med širino in višino v razmerju 2:1, sicer lahko prihaja do popačenja. Slike z visoko ločljivostjo se bodo na večjih zaslonih odrezale bolje."
                   },
                   {
-                    "label": "Izbor barve",
-                    "default": ""
+                    "label": "Izbor barve"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Slika ozadja naj bo med širino in višino v razmerju 2:1, sicer lahko prihaja do popačenja. Slike z visoko ločljivostjo se bodo na večjih zaslonih odrezale bolje."
             },
             {
-              "label": "Izbor barve",
-              "default": ""
+              "label": "Izbor barve"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Exited fullscreen"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

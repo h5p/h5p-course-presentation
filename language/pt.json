@@ -73,8 +73,7 @@
                     "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
                   },
                   {
-                    "label": "Escolha a cor",
-                    "default": ""
+                    "label": "Escolha a cor"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
             },
             {
-              "label": "Escolha uma cor",
-              "default": ""
+              "label": "Escolha uma cor"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Mensagem quando sair em modo de ecrã completo para tecnologias de acessibilidade",
           "default": "Saiu do modo de ecrã completo"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

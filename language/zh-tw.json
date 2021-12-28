@@ -73,8 +73,7 @@
                     "description": "圖的背景應該有2：1寬高比以避免拉伸. 高解析度的圖像將在較大的螢幕上顯示得更好."
                   },
                   {
-                    "label": "選擇一種顏色",
-                    "default": ""
+                    "label": "選擇一種顏色"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "圖的背景應該有2：1寬高比以避免拉伸. 高解析度的圖像將在較大的螢幕上顯示得更好."
             },
             {
-              "label": "選擇一種顏色",
-              "default": ""
+              "label": "選擇一種顏色"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Exited fullscreen announcement for assistive technologies",
           "default": "Exited fullscreen"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

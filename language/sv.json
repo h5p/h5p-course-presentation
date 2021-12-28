@@ -73,8 +73,7 @@
                     "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
                   },
                   {
-                    "label": "Välj en färg",
-                    "default": ""
+                    "label": "Välj en färg"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
             },
             {
-              "label": "Välj en färg",
-              "default": ""
+              "label": "Välj en färg"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Meddelande om avslutat helskärmsläge för tillgänglighetshjälpmedel",
           "default": "Avslutat helskärmsläge"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

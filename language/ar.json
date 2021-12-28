@@ -73,8 +73,7 @@
                     "description": "صورة الخلفية يجب ان تكون بنسبة 2:1 (عرض الى ارتفاع ) لتجنب التمدد ، سيتم عرض الصر عالية الدقةبشكل افضل على الشاشات الاكبر حجما."
                   },
                   {
-                    "label": "اختر لونا",
-                    "default": ""
+                    "label": "اختر لونا"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "صورة الخلفية يجب ان تكون بنسبة 2:1 (عرض الى ارتفاع ) لتجنب التمدد ، سيتم عرض الصر عالية الدقةبشكل افضل على الشاشات الاكبر حجما."
             },
             {
-              "label": "اختر لونا",
-              "default": ""
+              "label": "اختر لونا"
             }
           ]
         }
@@ -277,8 +275,20 @@
           "default": "Entered fullscreen"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "أُخرجت من تصريح ملء الشاشة للتقنيات المساعدة",
+          "default": "أُخرجت من ملء الشاشة"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },

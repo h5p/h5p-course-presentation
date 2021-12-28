@@ -73,8 +73,7 @@
                     "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan."
                   },
                   {
-                    "label": "Hautatu kolore bat",
-                    "default": ""
+                    "label": "Hautatu kolore bat"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan ."
             },
             {
-              "label": "Hautatu kolere bat",
-              "default": ""
+              "label": "Hautatu kolere bat"
             }
           ]
         }
@@ -279,6 +277,18 @@
         {
           "label": "Laguntza teknologietarako pantaila-osoko iragarkitik ateratzea",
           "default": "Pantaila-osotik ateratzea"
+        },
+        {
+          "label": "Header of submit result confirmation dialog",
+          "default": "Submit your answers"
+        },
+        {
+          "label": "Text of submit result confirmation dialog",
+          "default": "This will submit your results, do you want to continue?"
+        },
+        {
+          "label": "Confirmation button of submit result confirmation dialog",
+          "default": "Submit and see results"
         }
       ]
     },
