@@ -553,6 +553,11 @@
 .h5p-course-presentation .h5p-chart-button:before {
   content: "\f200";
 }
+.h5p-course-presentation .h5p-audiorecorder-button:before {
+  content: "\f130";
+  position: relative;
+  top: 0.05em;
+}
 
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
@@ -833,4 +838,40 @@
   transform: translateY(-50%) translateX(-50%) !important;
   top: 50% !important;
   font-size: 1.3vw;
+}
+
+/* Custom styles for H5P.AudioRecorder subcontent */
+.h5p-course-presentation .h5p-audio-recorder-view .title {
+  font-size: 1em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .recording-indicator-wrapper {
+  height: 4.375em;
+  line-height: 4.375em;
+  width: 4.375em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .recording-indicator-wrapper > .fa-microphone {
+  font-size: 1.15em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .audio-recorder-timer {
+  font-size: 1.5em;
+  margin: .5em 0;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .h5p-audio-recorder-download {
+  font-size: .85em;
+  padding: 1em .5em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .button {
+  font-size: .85em;
+  font-weight: 400;
+  line-height: 1.2em;
+  padding: .5em 1.25em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view [role=status] {
+  font-size: .85em;
 }
