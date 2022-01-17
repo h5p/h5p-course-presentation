@@ -91,7 +91,7 @@
   -moz-box-sizing: border-box;
 }
 .h5p-course-presentation .h5p-wrapper:focus {
-  outline: none;
+  outline: auto;
 }
 .h5p-course-presentation .h5p-box-wrapper {
   width: 100%;

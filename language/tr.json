@@ -18,7 +18,7 @@
                       "description": "Yorumlar, kullanıcı bütün slaytlar için önerilen yanıtları görüntülediğinde gösterilir."
                     },
                     {
-                      "label": "Yorumları her zaman göster."
+                      "label": "Yorumları her zaman göster"
                     },
                     {
                       "label": "Arkaplan Opaklığı"
@@ -44,7 +44,7 @@
                       "label": "Git",
                       "options": [
                         {
-                          "label": "Slayt numarasıyla"
+                          "label": "Özel slayt numarası"
                         },
                         {
                           "label": "Sonraki slayt"
@@ -55,8 +55,8 @@
                       ]
                     },
                     {
-                      "label": "Slayt numarasıyla",
-                      "description": "Gitmek istenilen slaytın numarası biliniyorsa uygulanır."
+                      "label": "Özel slayt numarası",
+                      "description": "Gidilecek slayt numarasını yaz"
                     },
                     {
                       "label": "Görünmez",
@@ -73,8 +73,7 @@
                     "description": "En boy oranının korunması için görsel arka plan genişliği, yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüklü görseller daha büyük ekranlarda daha iyi görüntülenecektir."
                   },
                   {
-                    "label": "Bir renk seçin",
-                    "default": ""
+                    "label": "Bir renk seçin"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "En boy oranının korunması için görsel arka plan genişliği, yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüklü görseller daha büyük ekranlarda daha iyi görüntülenecektir."
             },
             {
-              "label": "Bir renk seçin",
-              "default": ""
+              "label": "Bir renk seçin"
             }
           ]
         }
@@ -133,7 +131,7 @@
         },
         {
           "label": "\"Total Score\" çevirisi",
-          "default": "Toplam puan"
+          "default": "Toplam Puan"
         },
         {
           "label": "Çözümleri göster butonunun başlığı",
@@ -172,12 +170,12 @@
           "default": "Sonraki slayt"
         },
         {
-          "label": "Geçerli slayt etiketi",
-          "default": "Geçerli slayt"
+          "label": "Şu anki slayt etiketi",
+          "default": "Şu anki slayt"
         },
         {
           "label": "Son slayt etiketi",
-          "default": "Sonraki slayt"
+          "default": "Son slayt"
         },
         {
           "label": "Çözüm modundan çık metni",
@@ -185,7 +183,7 @@
         },
         {
           "label": "Çözüm modu metni",
-          "default": "Çözüm modu"
+          "default": "Çözüm Modu"
         },
         {
           "label": "Bir sayfada birden çok görev olduğu zaman gösterilecek metin",
@@ -200,12 +198,12 @@
           "default": "Facebook'ta paylaş"
         },
         {
-          "label": "Twitter'de paylaş metni",
-          "default": "Twitter'de paylaş"
+          "label": "Twitter'da paylaş metni",
+          "default": "Twitter'da paylaş"
         },
         {
-          "label": "Google+'da paylaş metni",
-          "default": "Google+'da paylaş"
+          "label": "Google+'ta paylaş metni",
+          "default": "Google+'ta paylaş"
         },
         {
           "label": "Özet slaytının başlığı",
@@ -228,8 +226,8 @@
           "default": "Bütün slaytları yazdır"
         },
         {
-          "label": "\"Geçerli slaytı yazdır\" butonunun etiketi",
-          "default": "Geçerli slaytı yazdır"
+          "label": "\"Şu anki slaytı yazdır\" butonunun etiketi",
+          "default": "Şu anki slaytı yazdır"
         },
         {
           "label": "Başlığı olmayan slaytlar için etiket",
@@ -245,11 +243,11 @@
         },
         {
           "label": "Tamamlanmamış etkileşim olduğunda gösterilecek etiket",
-          "default": "@slideName etkinliği tamamlanmadı."
+          "default": "@slideName tamamlanmamış etkinlik içeriyor"
         },
         {
           "label": "Tamamlanmış etkileşim olduğunda gösterilecek etiket",
-          "default": "@slideName etkinliği tamamlandı."
+          "default": "@slideName tamamlanmış etkileşim içeriyor"
         },
         {
           "label": "Slayt sayacı etiketi. Değişkenler: @index, @total",
@@ -257,11 +255,11 @@
         },
         {
           "label": "Sadece doğru yanıt içeren slaytlar için etiket",
-          "default": "@slideName sadece doğru yanıtları içerir."
+          "default": "@slideName sadece doğru yanıtları içeriyor"
         },
         {
           "label": "Sadece yanlış cevap içeren slaytlar için etiket",
-          "default": "@slideName sadece yanlış yanıtları içerir."
+          "default": "@slideName sadece yanlış yanıtları içeriyor"
         },
         {
           "label": "Sosyal paylaşım çubuğu etiketi",
@@ -269,12 +267,12 @@
         },
         {
           "label": "Yardımcı teknolojiler için toplam puan duyurusu",
-          "default": "@maxScore üzerinden toplamda @score puan aldınız.",
+          "default": "@maxScore üzerinden toplamda @score puan aldınız",
           "description": "Mevcut değişkenler: @score ve @maxScore"
         },
         {
           "label": "Yardımcı teknolojiler için tam ekrana geçildi duyurusu",
-          "default": "Tam ekran moduna geçildi."
+          "default": "Tam ekran moduna geçildi"
         },
         {
           "label": "Yardımcı teknolojiler için tam ekrandan çıkıldı duyurusu",
@@ -295,38 +293,38 @@
       ]
     },
     {
-      "label": "Çalışma ayarları",
-      "description": "Bu seçenekler uygulamanın çalışma şeklini denetlemenize izin verir.",
+      "label": "Çalışma ayarları.",
+      "description": "Bu seçenekler uygulamanın çalışma ayarlarını değiştirmenize olanak sağlar.",
       "fields": [
         {
           "label": "Etkin Kontrol Modunu Etkinleştirin",
           "description": "Son kullanıcı için gezinti kontrollerini kaldırır. Slaytlarda geçişleri sağlamak için Slayta Git'i kullanın."
         },
         {
-          "label": "Özet Slaytını Gizleyin",
+          "label": "Özet Slaytını Gizle",
           "description": "Özet slaytını gizler."
         },
         {
-          "label": "\"Çözümü Göster\" butonunu aktifleştirin.",
+          "label": "\"Çözümü Göster\" butonu ayarlarını yok say.",
           "description": "Tercihe göre \"Çözümü Göster\" butonu bütün sorular için gösterilir, devre dışı bırakılır veya her bir soru için ayrı ayrı ayarlanır.",
           "options": [
             {
-              "label": "Etkinleştir"
+              "label": "Devrede"
             },
             {
-              "label": "Devre dışı"
+              "label": "Devredışı"
             }
           ]
         },
         {
-          "label": "\"Yeniden dene\"butonunu aktifleştirin.",
+          "label": "\"Yeniden dene\"butonu ayarlarını yoksay.",
           "description": "Tercihe göre \"Yeniden dene\" butonu bütün sorular için gösterilir, devre dışı bırakılır veya her bir soru için ayrı ayrı ayarlanır.",
           "options": [
             {
-              "label": "Etkinleştir"
+              "label": "Devrede"
             },
             {
-              "label": "Devre dışı"
+              "label": "Devredışı"
             }
           ]
         },
@@ -336,7 +334,7 @@
         },
         {
           "label": "Özet slaytta \"Yeniden dene\" butonunu göster",
-          "description": "Etkinleştirilirse, öğrenci özet slaytına ulaştığında tüm soruları yeniden yanıtlayabilirler. Bu buton aktif olmasa bile öğrenciler sayfayı yenileyerek soruları yeniden yanıtlıyabilirler."
+          "description": "Etkinleştirilirse, öğrenci özet slaytına ulaştığında tüm soruları yeniden yanıtlayabilir. Bu buton aktif olmasa bile öğrenciler sayfayı yenileyerek soruları yeniden yanıtlayabilirler."
         },
         {
           "label": "Yazdırma butonunu etkinleştir",
@@ -358,7 +356,7 @@
                 },
                 {
                   "label": "Facebook'ta paylaşılacak metin",
-                  "default": "@currentpageurl sayfasındaki bir etkinlikte @maxScore üzerinden @score puan yaptım."
+                  "default": "@currentpageurl sayfasındaki bir etkinlikte @maxScore üzerinden @score puan aldım."
                 }
               ]
             },
@@ -370,15 +368,15 @@
               "fields": [
                 {
                   "label": "Twitter'da paylaşılacak metin",
-                  "default": "@currentpageurl sayfasındaki bir etkinlikte @maxScore üzerinden @score puan yaptım."
+                  "default": "@currentpageurl sayfasındaki bir etkinlikte @maxScore üzerinden @score puan aldım."
                 },
                 {
-                  "label": "Twitter'de paylaşılacak bağlantı",
+                  "label": "Twitter'da paylaşılacak bağlantı",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Twitter'de paylaşılacak etiketler",
-                  "default": "h5p, ders"
+                  "label": "Twitter'da paylaşılacak etiketler",
+                  "default": "h5p, kurs"
                 }
               ]
             },
@@ -386,7 +384,7 @@
               "label": "Google+ paylaşım simgesini göster"
             },
             {
-              "label": "Google'de paylaşılacak bağlantı",
+              "label": "Google'da paylaşılacak bağlantı",
               "default": "@currentpageurl"
             }
           ]
