@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "スライド番号を指定",
-                      "description": "Type a slide number to go to"
+                      "description": "Only applicable when 'Specific slide number' is selected"
                     },
                     {
                       "label": "非表示",

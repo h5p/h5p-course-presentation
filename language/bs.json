@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Broj određenog slajda",
-                      "description": "Type a slide number to go to"
+                      "description": "Only applicable when 'Specific slide number' is selected"
                     },
                     {
                       "label": "Nevidljivo",
