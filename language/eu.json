@@ -268,7 +268,7 @@
         {
           "label": "Laguntza teknologietarako puntuazio orokorraren iragarkia",
           "default": "@maxScore puntutik denetara @score puntu lortu dituzu",
-          "description": "Aldagaiak dira @maxScore eta @score"
+          "description": "Eskuragarri dauden aldagaiak @maxScore eta @score dira"
         },
         {
           "label": "Laguntza teknologietarako pantaila-osoko iragarkian sartzea",
@@ -279,16 +279,16 @@
           "default": "Pantaila-osotik ateratzea"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Bidali emaitza baieztapen-mezuaren goiburua",
+          "default": "Bidali zure erantzunak"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Bidali emaitza baieztapen-mezuaren testua",
+          "default": "Honek zure emaitzak bidaliko ditu, aurrera egin nahi duzu?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Bidali emaitza baieztapen-mezuaren baieztapen-botoia",
+          "default": "Bidali eta ikusi emaitzak"
         }
       ]
     },

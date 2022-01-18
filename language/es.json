@@ -100,7 +100,7 @@
               "description": "El fondo de la imagen debería tener una proporción de ancho a alto de 2:1 para evitar estiramiento. Las imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
             },
             {
-              "label": "elegir un color"
+              "label": "Elegir un color"
             }
           ]
         }
