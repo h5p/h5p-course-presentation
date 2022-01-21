@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Número específico de diapositiva",
-                      "description": "Escriba un número de diapositiva para ir a ella"
+                      "description": "Solamente aplicable cuando 'Número específico de página' es seleccionado"
                     },
                     {
                       "label": "Invisible",
