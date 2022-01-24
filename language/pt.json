@@ -317,7 +317,7 @@
           ]
         },
         {
-          "label": "Substituir o botão \"Repetir\"",
+          "label": "Sobrepor botão \"Repetir\"",
           "description": "Esta opção determina se o botão \"Repetir\" será apresentado em todas as questões, desativado para todas ou configurado individualmente para cada questão.",
           "options": [
             {
