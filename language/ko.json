@@ -107,7 +107,7 @@
       ]
     },
     {
-      "label": "Localize",
+      "label": "맞춤 설정",
       "fields": [
         {
           "label": "\"Slide\"의 번역",
@@ -279,16 +279,16 @@
           "default": "전체화면 종료됨"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "답 제출 확인 대화창 헤더",
+          "default": "답 제출하기"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "답 제출 확인 대화창 텍스트",
+          "default": "답을 제출합니다. 계속하시겠습니까?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "결과 제출 확인 대화창의 확인 버튼",
+          "default": "제출하고 결과를 확인하세요."
         }
       ]
     },
