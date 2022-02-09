@@ -312,6 +312,9 @@
   text-align: left;
   overflow-y: auto;
 }
+.h5p-course-presentation .h5p-popup-overlay.h5p-video .h5p-popup-container .h5p-popup-wrapper {
+  overflow-y: hidden;
+}
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper::-webkit-scrollbar {
   width: 0.6em;
