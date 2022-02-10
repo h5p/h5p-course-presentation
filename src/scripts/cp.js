@@ -546,14 +546,6 @@ CoursePresentation.prototype.createSlides = function () {
     if (self.isEditor() || i === 0 || i === 1 || isCurrentSlide) {
       self.children[i].appendElements();
     }
-
-    // Stop medias in all other slider
-    self.pauseMediaExceptCurrentSlide();
-
-    // Autoplay media when first time slides load
-    setTimeout(function () {
-      self.autopayMedia();
-    }, 250);
   }
 };
 
@@ -1776,7 +1768,15 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
 
   // Stop media on old slide
   // this is done no mather what autoplay says
-  this.pauseMediaExceptCurrentSlide();
+  var instances = this.elementInstances[previousSlideIndex];
+  if (instances !== undefined) {
+    for (var i = 0; i < instances.length; i++) {
+      if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
+        // Only pause media elements displayed as posters.
+        that.pauseMedia(instances[i], this.slides[previousSlideIndex].elements[i].action.params);
+      }
+    }
+  }
 
   setTimeout(function () {
     // Play animations
@@ -1807,7 +1807,28 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
       return;
     }
 
-    that.autopayMedia();
+    // Start media on new slide for elements beeing setup with autoplay!
+    var instances = that.elementInstances[that.currentSlideIndex];
+    var instanceParams = that.slides[that.currentSlideIndex].elements;
+    if (instances !== undefined) {
+      for (var i = 0; i < instances.length; i++) {
+        // TODO: Check instance type instead to avoid accidents?
+        if (instanceParams[i] &&
+            instanceParams[i].action &&
+            instanceParams[i].action.params &&
+            instanceParams[i].action.params.cpAutoplay &&
+            !instanceParams[i].displayAsButton &&
+            typeof instances[i].play === 'function') {
+
+          // Autoplay media if not button
+          instances[i].play();
+        }
+
+        if (!instanceParams[i].displayAsButton && typeof instances[i].setActivityStarted === 'function' && typeof instances[i].getScore === 'function') {
+          instances[i].setActivityStarted();
+        }
+      }
+    }
   }, 250);
 
   // Jump keywords
@@ -1851,56 +1872,6 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
   this.trigger('resize'); // Triggered to resize elements.
   this.fitCT();
   return true;
-};
-
-/**
- * Check and play media with autoplay flag enebled.
- */
-CoursePresentation.prototype.autopayMedia = function () {
-  var that = this;
-  // Start media on new slide for elements beeing setup with autoplay!
-  var instances = that.elementInstances[that.currentSlideIndex];
-  var instanceParams = that.slides[that.currentSlideIndex].elements;
-  if (instances !== undefined) {
-    for (var i = 0; i < instances.length; i++) {
-      // TODO: Check instance type instead to avoid accidents?
-      if (instanceParams[i] &&
-          instanceParams[i].action &&
-          instanceParams[i].action.params &&
-          instanceParams[i].action.params.cpAutoplay &&
-          !instanceParams[i].displayAsButton &&
-          typeof instances[i].play === 'function' &&
-          !that.isEditor()) {
-
-        // Autoplay media if not button
-        instances[i].play();
-      }
-
-      if (!instanceParams[i].displayAsButton && typeof instances[i].setActivityStarted === 'function' && typeof instances[i].getScore === 'function') {
-        instances[i].setActivityStarted();
-      }
-    }
-  }
-};
-
-/**
- * Check and play media with autoplay flag enebled.
- */
-CoursePresentation.prototype.pauseMediaExceptCurrentSlide = function () {
-  var that = this;
-  for (let i = 0; i < this.children.length; i++) {
-    const isCurrentSlide = (i === that.currentSlideIndex);
-    // Stop medias in all other slides
-    var instances = this.elementInstances[i];
-    if (instances !== undefined && !isCurrentSlide) {
-      for (var count = 0; count < instances.length; count++) {
-        if (instances[count] !== undefined && !this.slides[i].elements[count].displayAsButton) {
-          // Only pause media elements displayed as posters.
-          that.pauseMedia(instances[count], this.slides[i].elements[count].action.params);
-        }
-      }
-    }
-  }
 };
 
 /**
@@ -2216,7 +2187,7 @@ CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
           typeof instance.pause === 'function')) {
       // Don't pause media if the source is not compatible
       if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
-          instance.video && instance.video.pressToPlay === undefined &&
+          instance.video.pressToPlay === undefined &&
           params.interactiveVideo.video.files && 
           H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
         instance.pause();

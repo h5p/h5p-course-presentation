@@ -62,13 +62,6 @@ function Element(parameters) {
       library.params.override.autoplay = false;
       library.params.cpAutoplay = true;
     }
-    else if (library.params.media &&
-      library.params.media.type &&
-      library.params.media.type.params.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.type.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
 
     var internalSlideId = self.parent.parent.elementInstances[self.parent.index] ? self.parent.parent.elementInstances[self.parent.index].length : 0;
     if (self.parent.parent.previousState && self.parent.parent.previousState.answers && self.parent.parent.previousState.answers[self.parent.index] && self.parent.parent.previousState.answers[self.parent.index][internalSlideId]) {
