@@ -56,6 +56,23 @@ function Element(parameters) {
       library.params.media.params.autoplay = false;
       library.params.cpAutoplay = true;
     }
+    else if (library.params.media &&
+      library.params.media.type &&
+      library.params.media.type.params &&
+      library.params.media.type.params.playback &&
+      library.params.media.type.params.playback.autoplay) {
+      // Control libraries that has content with autoplay through CP
+      library.params.media.type.params.playback.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
+    else if (library.params.media &&
+      library.params.media.type &&
+      library.params.media.type.params &&
+      library.params.media.type.params.autoplay) {
+      // Control libraries that has content with autoplay through CP
+      library.params.media.type.params.autoplay = false;
+      library.params.cpAutoplay = true;
+    }
     else if (library.params.override &&
       library.params.override.autoplay) {
       // Control libraries that has content with autoplay through CP
