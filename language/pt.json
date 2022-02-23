@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Número específico do slide",
-                      "description": "Só aplicável quando a opção 'Número específico do slide' está ativada"
+                      "description": "Aplicável apenas quando a opção 'Número específico do slide' está ativada"
                     },
                     {
                       "label": "Invisível",
