@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Konkrēta slaida numurs",
-                      "description": "Ierakstiet slaida numuru, uz kuru doties"
+                      "description": "Piemērojams tikai tad, ja ir atlasīts “Konkrēta slaida numurs”"
                     },
                     {
                       "label": "Neredzams",

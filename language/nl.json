@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Specifiek dianummer",
-                      "description": "Type een dianummer om naartoe te springen"
+                      "description": "Alleen van toepassing als 'Specifiek dianummer' is geselecteerd"
                     },
                     {
                       "label": "Onzichtbaar",
