@@ -794,7 +794,12 @@ CoursePresentation.prototype.toggleFullScreen = function () {
     this.$footer.addClass('footer-full-screen');
 
     this.$fullScreenButton.attr('title', this.l10n.exitFullscreen);
-    H5P.fullScreen(this.$container, this);
+    let container = this.$container;
+    // Avoid body as container for semi fill screen mode
+    if (H5P.fullScreenBrowserPrefix !== undefined && H5PIntegration.context === 'lti') {
+      container = H5P.jQuery('body');
+    }
+    H5P.fullScreen(container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
       H5P.jQuery('.h5p-disable-fullscreen').hide();
