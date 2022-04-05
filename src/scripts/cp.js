@@ -1051,7 +1051,6 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  * @return {jQuery}
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
-  const autoPlay = element.action.params && element.action.params.cpAutoplay;
   let label = element.action.metadata ? element.action.metadata.title : '';
   if (label === '') {
     label = (element.action.params && element.action.params.contentName) || element.action.library.split(' ')[0].split('.')[1];
@@ -1084,7 +1083,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   } : null;
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button), parentPosition);
+    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, setAriaExpandedFalse($button), parentPosition);
     this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
@@ -1104,11 +1103,10 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
  *
  * @param {object} instance
  * @param {string} libTypePmz
- * @param {boolean} autoPlay
  * @param {function} closeCallback
  * @param {Object} [popupPosition] X and Y position of popup
  */
-CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback, popupPosition = null) {
+CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, closeCallback, popupPosition = null) {
 
   // Handle exit fullscreen
   const exitFullScreen = () => {
@@ -1120,7 +1118,6 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.on('exitFullScreen', exitFullScreen);
 
     this.showPopup($buttonElement, $button, popupPosition, () => {
-      this.pauseMedia(instance);
       $buttonElement.detach();
 
       // Remove listener, we only need it for active popups
@@ -1134,8 +1131,6 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     if (libTypePmz === 'h5p-image') {
       this.resizePopupImage($buttonElement);
     }
-
-    var $container = $buttonElement.closest('.h5p-popup-container');
 
     // Focus directly on content when popup is opened
     setTimeout(() => {
@@ -1152,11 +1147,6 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     // start activity
     if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
       instance.setActivityStarted();
-    }
-
-    // Autoplay media
-    if (autoPlay && isFunction(instance.play)) {
-      instance.play();
     }
   }
 };
@@ -1766,18 +1756,6 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
   // For new slide
   this.setOverflowTabIndex();
 
-  // Stop media on old slide
-  // this is done no mather what autoplay says
-  var instances = this.elementInstances[previousSlideIndex];
-  if (instances !== undefined) {
-    for (var i = 0; i < instances.length; i++) {
-      if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
-        // Only pause media elements displayed as posters.
-        that.pauseMedia(instances[i], this.slides[previousSlideIndex].elements[i].action.params);
-      }
-    }
-  }
-
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
@@ -1807,23 +1785,11 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
       return;
     }
 
-    // Start media on new slide for elements beeing setup with autoplay!
+    // Set activity started
     var instances = that.elementInstances[that.currentSlideIndex];
     var instanceParams = that.slides[that.currentSlideIndex].elements;
     if (instances !== undefined) {
       for (var i = 0; i < instances.length; i++) {
-        // TODO: Check instance type instead to avoid accidents?
-        if (instanceParams[i] &&
-            instanceParams[i].action &&
-            instanceParams[i].action.params &&
-            instanceParams[i].action.params.cpAutoplay &&
-            !instanceParams[i].displayAsButton &&
-            typeof instances[i].play === 'function') {
-
-          // Autoplay media if not button
-          instances[i].play();
-        }
-
         if (!instanceParams[i].displayAsButton && typeof instances[i].setActivityStarted === 'function' && typeof instances[i].getScore === 'function') {
           instances[i].setActivityStarted();
         }
@@ -2173,44 +2139,6 @@ CoursePresentation.prototype.getCopyrights = function () {
   }
 
   return info;
-};
-
-/**
- * Stop the given element's playback if any.
- *
- * @param {object} instance
- */
-CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
-  try {
-    if (instance.pause !== undefined &&
-        (instance.pause instanceof Function ||
-          typeof instance.pause === 'function')) {
-      // Don't pause media if the source is not compatible
-      if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
-          instance.video.pressToPlay === undefined &&
-          params.interactiveVideo.video.files && 
-          H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
-        instance.pause();
-        return;
-      }
-      instance.pause();
-    }
-    else if (instance.video !== undefined &&
-             instance.video.pause !== undefined &&
-             (instance.video.pause instanceof Function ||
-               typeof instance.video.pause === 'function')) {
-      instance.video.pause();
-    }
-    else if (instance.stop !== undefined &&
-             (instance.stop instanceof Function ||
-               typeof instance.stop === 'function')) {
-      instance.stop();
-    }
-  }
-  catch (err) {
-    // Prevent crashing, but tell developers there's something wrong.
-    H5P.error(err);
-  }
 };
 
 /**
