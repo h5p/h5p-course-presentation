@@ -2044,7 +2044,9 @@ CoursePresentation.prototype.showSolutions = function () {
     // Show comments of non graded contents
     if (this.showCommentsAfterSolution[i]) {
       for (var j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
-        this.showCommentsAfterSolution[i][j].showCPComments();
+        if (typeof this.showCommentsAfterSolution[i][j].showCPComments === 'function') {
+          this.showCommentsAfterSolution[i][j].showCPComments();
+        }
       }
     }
   }
