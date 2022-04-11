@@ -32,54 +32,6 @@ function Element(parameters) {
       library = H5P.jQuery.extend(true, parameters.action, self.parent.parent.elementsOverride);
     }
 
-    /* If library allows autoplay, control this from CP */
-    if (library.params.autoplay) {
-      library.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.playback && library.params.playback.autoplay) {
-      library.params.playback.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.params &&
-      library.params.media.params.playback &&
-      library.params.media.params.playback.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.params.playback.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.params &&
-      library.params.media.params.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.type &&
-      library.params.media.type.params &&
-      library.params.media.type.params.playback &&
-      library.params.media.type.params.playback.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.type.params.playback.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.media &&
-      library.params.media.type &&
-      library.params.media.type.params &&
-      library.params.media.type.params.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.media.type.params.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-    else if (library.params.override &&
-      library.params.override.autoplay) {
-      // Control libraries that has content with autoplay through CP
-      library.params.override.autoplay = false;
-      library.params.cpAutoplay = true;
-    }
-
     var internalSlideId = self.parent.parent.elementInstances[self.parent.index] ? self.parent.parent.elementInstances[self.parent.index].length : 0;
     if (self.parent.parent.previousState && self.parent.parent.previousState.answers && self.parent.parent.previousState.answers[self.parent.index] && self.parent.parent.previousState.answers[self.parent.index][internalSlideId]) {
       // Restore previous state
