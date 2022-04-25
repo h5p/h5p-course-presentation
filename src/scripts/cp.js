@@ -686,8 +686,9 @@ CoursePresentation.prototype.showKeywords = function () {
  *
  * @param {number} value 0 - 100
  */
-CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  this.$keywordsWrapper.css('opacity', value / 100);
+CoursePresentation.prototype.setKeywordsOpacity = function (value) { 
+  const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
+  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
 
 /**
