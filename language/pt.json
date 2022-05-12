@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Número específico do slide",
-                      "description": "Só aplicável quando a opção 'Número específico do slide' está ativada"
+                      "description": "Aplicável apenas quando a opção 'Número específico do slide' está ativada"
                     },
                     {
                       "label": "Invisível",
@@ -73,8 +73,7 @@
                     "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
                   },
                   {
-                    "label": "Escolha a cor",
-                    "default": ""
+                    "label": "Escolha a cor"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
             },
             {
-              "label": "Escolha uma cor",
-              "default": ""
+              "label": "Escolha uma cor"
             }
           ]
         }
@@ -153,7 +151,7 @@
         },
         {
           "label": "Título do botão de mostrar a lista de palavras-chave",
-          "default": "Mostrar palavras-chave"
+          "default": "Mostrar lista de palavras chave"
         },
         {
           "label": "Etiqueta para ecrã completo",
@@ -192,7 +190,7 @@
           "default": "Múltipla atividades"
         },
         {
-          "label": "Texto para a mensagem do resultado obtido.",
+          "label": "Texto da mensagem de pontuação",
           "default": "Obteve:"
         },
         {
@@ -237,7 +235,7 @@
         },
         {
           "label": "Explicação da navegação entre slides para tecnologias de apoio",
-          "default": "Utilize as setas da direita e da esquerda para navegar entre slides."
+          "default": "Use as setas para a esquerda e para a direita para alterar o slide nessa direção sempre que a tela for selecionada"
         },
         {
           "label": "Etiqueta da tela para tecnologias de apoio",
@@ -273,24 +271,24 @@
           "description": "Variáveis disponíveis são @score e @maxScore"
         },
         {
-          "label": "Mensagem quando entrar em modo de ecrã completo para tecnologias de acessibilidade",
-          "default": "Em modo de ecrã completo"
+          "label": "Mensagem quando entrar em modo de tela cheia para tecnologias de acessibilidade",
+          "default": "Em modo de tela cheia"
         },
         {
-          "label": "Mensagem quando sair em modo de ecrã completo para tecnologias de acessibilidade",
-          "default": "Saiu do modo de ecrã completo"
+          "label": "Mensagem quando sair em modo de tela cheia para tecnologias de acessibilidade",
+          "default": "Saiu do modo de tela cheia"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Cabeçalho da caixa de diálogo de confirmação de envio de resultados",
+          "default": "Envie suas respostas"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Texto da caixa de diálogo de confirmação de envio do resultado",
+          "default": "Isto irá apresentar seus resultados, você quer continuar?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Botão de confirmação da caixa de diálogo de confirmação de envio do resultado",
+          "default": "Enviar e ver resultados"
         }
       ]
     },
@@ -332,7 +330,7 @@
       ]
     },
     {
-      "label": "Definições de funcionamento",
+      "label": "Definições de comportamento",
       "description": "Estas opções vão sobrepor as definições de funcionamento por defeito.",
       "fields": [
         {
@@ -356,7 +354,7 @@
           ]
         },
         {
-          "label": "Substituir o botão \"Repetir\"",
+          "label": "Sobrepor botão \"Repetir\"",
           "description": "Esta opção determina se o botão \"Repetir\" será apresentado em todas as questões, desativado para todas ou configurado individualmente para cada questão.",
           "options": [
             {
@@ -415,7 +413,7 @@
                 },
                 {
                   "label": "Partilhar hashtags através do Twitter",
-                  "default": "h5p, course"
+                  "default": "h5p, curso"
                 }
               ]
             },

@@ -27,7 +27,7 @@
                       "label": "Tonen als knop"
                     },
                     {
-                      "label": "Grootte knop",
+                      "label": "Knopgrootte",
                       "options": [
                         {
                           "label": "Klein"
@@ -44,7 +44,7 @@
                       "label": "Ga naar",
                       "options": [
                         {
-                          "label": "Specifieke dia"
+                          "label": "Specifiek dianummer"
                         },
                         {
                           "label": "Volgende dia"
@@ -55,8 +55,8 @@
                       ]
                     },
                     {
-                      "label": "Ga naar dia",
-                      "description": "Allen mogelijk indien 'Specifieke dia' is geselecteerd"
+                      "label": "Specifiek dianummer",
+                      "description": "Alleen van toepassing als 'Specifiek dianummer' is geselecteerd"
                     },
                     {
                       "label": "Onzichtbaar",
@@ -73,8 +73,7 @@
                     "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
                   },
                   {
-                    "label": "Kies een kleur",
-                    "default": ""
+                    "label": "Kies een kleur"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
             },
             {
-              "label": "Kies een kleur",
-              "default": ""
+              "label": "Kies een kleur"
             }
           ]
         }
@@ -120,12 +118,12 @@
           "default": "Score"
         },
         {
-          "label": "Vertaling voor \"Jouw score\"",
-          "default": "Jouw score"
+          "label": "Vertaling voor \"Je score\"",
+          "default": "Je score"
         },
         {
           "label": "Vertaling voor \"Maximale score\"",
-          "default": "Max score"
+          "default": "Max. score"
         },
         {
           "label": "Vertaling voor \"Totaal\"",
@@ -140,8 +138,8 @@
           "default": "Toon oplossing"
         },
         {
-          "label": "Tekst voor de knop Opnieuw",
-          "default": "Opnieuw proberen"
+          "label": "Tekst voor \"Opnieuw\"-knop",
+          "default": "Opnieuw"
         },
         {
           "label": "Vertaling voor \"Exporteer tekst\"",
@@ -192,27 +190,27 @@
           "default": "Meerdere taken"
         },
         {
-          "label": "Scoretekst",
-          "default": "Jouw score:"
+          "label": "Tekstbericht voor score",
+          "default": "Je score:"
         },
         {
-          "label": "Deel op Facebook tekst",
+          "label": "\"Deel op Facebook\"-tekst",
           "default": "Deel op Facebook"
         },
         {
-          "label": "Deel op Twitter tekst",
+          "label": "\"Deel op Twitter\"-tekst",
           "default": "Deel op Twitter"
         },
         {
-          "label": "Deel op Google+ tekst",
+          "label": "\"Deel op Google+\"-tekst",
           "default": "Deel op Google+"
         },
         {
-          "label": "Titel voor \"Samenvattings\" dia",
+          "label": "Titel voor \"Samenvatting\"-dia",
           "default": "Samenvatting"
         },
         {
-          "label": "Titel voor opmerkingenicoon",
+          "label": "Titel voor opmerkingenpictogram",
           "default": "Toon opmerkingen"
         },
         {
@@ -220,7 +218,7 @@
           "default": "Afdrukken"
         },
         {
-          "label": "Afdrukken dialoog ingress",
+          "label": "Toegang tot de Print-dialoog",
           "default": "Hoe wil je deze presentatie afdrukken?"
         },
         {
@@ -237,7 +235,7 @@
         },
         {
           "label": "Uitleg dia-navigatie voor ondersteunende technologieën",
-          "default": "Gebruik de pijl-links en pijl-rechts om de dia in die richting te veranderen als je het canvas selecteert."
+          "default": "Gebruik de pijl-links en pijl-rechts om de dia in die richting te veranderen als je het canvas selecteert"
         },
         {
           "label": "Canvaslabel voor ondersteunende technologieën",
@@ -260,7 +258,7 @@
           "default": "@slideName heeft alleen juiste antwoorden"
         },
         {
-          "label": "Label voor dia's met de onjuiste antwoorden",
+          "label": "Label voor dia's met onjuiste antwoorden",
           "default": "@slideName heeft onjuiste antwoorden"
         },
         {
@@ -268,12 +266,12 @@
           "default": "Deel resultaat"
         },
         {
-          "label": "Aankondiging totaalscore van ondersteunende technologieën",
+          "label": "Melding totaalscore van ondersteunende technologieën",
           "default": "Je hebt @score van @maxScore punten in totaal",
           "description": "Beschikbare variabelen zijn @score en @maxScore"
         },
         {
-          "label": "Volledig scherm gestart fullscreen mededeling voor ondersteunende technologieën",
+          "label": "Volledig scherm gestart mededeling voor ondersteunende technologieën",
           "default": "Volledig scherm gestart"
         },
         {
@@ -281,16 +279,16 @@
           "default": "Volledig scherm beëindigd"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Kop van de bevestigingsdialoog voor de verzending van resultaten",
+          "default": "Verzend je antwoorden"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Tekst van bevestigingsdialoog voor het verzenden van resultaten",
+          "default": "Hiermee verzend je je resultaten, wil je doorgaan?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Bevestigingsknop van de bevestigingsdialoog voor het verzenden van resultaten",
+          "default": "Verzenden en resultaten bekijken"
         }
       ]
     },
@@ -340,12 +338,12 @@
           "description": "Verwijdert navigatieregelaars voor de eindgebruiker. Gebruik 'Ga naar dia' om te navigeren."
         },
         {
-          "label": "Verberg samenvatting",
+          "label": "Verberg Samenvattingsdia",
           "description": "Verbergt de samenvattingsdia."
         },
         {
-          "label": "\"Toon oplossing\" knop instellen",
-          "description": "Deze optie bepaalt of de \"Toon oplossing\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
+          "label": "Overschrijf \"Toon oplossing\"-knop",
+          "description": "Deze optie bepaalt of de \"Toon oplossing\"-knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
           "options": [
             {
               "label": "Ingeschakeld"
@@ -356,8 +354,8 @@
           ]
         },
         {
-          "label": "\"Opnieuw proberen\" knop instellen",
-          "description": "Deze optie bepaalt of de \"Opnieuw proberen\" knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
+          "label": "Overschrijf \"Opnieuw\"-knop",
+          "description": "Deze optie bepaalt of de \"Opnieuw\"-knop voor alle vragen wordt getoond, uitgeschakeld of voor iedere vraag afzonderlijk wordt geconfigureerd.",
           "options": [
             {
               "label": "Ingeschakeld"
@@ -368,20 +366,20 @@
           ]
         },
         {
-          "label": "Toon \"Oplossing tonen\" knop op de samenvattingsdia",
-          "description": "Indien ingeschakeld kan de student de oplossingen op alle vragen weergeven wanneer hij de samenvattingsdia heeft bereikt."
+          "label": "Toon \"Oplossing tonen\"-knop op de samenvattingsdia",
+          "description": "Indien ingeschakeld, kan de student de oplossingen op alle vragen bekijken zodra hij de samenvattingsdia heeft bereikt"
         },
         {
-          "label": "Toon \"Opnieuw\" knop op de samenvattingsdia",
-          "description": "Indien ingeschakeld kan de student alle vragen opnieuw proberen wanneer hij de samenvattingsdia heeft bereikt. Wees gewaarschuwd dat studenten door verversen van de pagina tch alle vragen opnieuw kunnen proberen, ook als de knop niet wordt vertoond."
+          "label": "Toon \"Opnieuw\"-knop op de samenvattingsdia",
+          "description": "Indien ingeschakeld, kan de student alle vragen opnieuw proberen zodra hij de samenvattingsdia heeft bereikt. Pas op dat studenten door verversen van de pagina toch alle vragen opnieuw kunnen proberen, ook als de knop niet wordt vertoond."
         },
         {
-          "label": "Printknop inschakelen",
-          "description": "Schakelt printknop in"
+          "label": "Schakel \"Afdrukken\"-knop in",
+          "description": "Schakelt afdrukknop in."
         },
         {
           "label": "Instellingen sociale media",
-          "description": "Met deze opties kun je de sociale media gedragsinstellingen overschrijven. Lege waarden worden automatisch ingevuld als er een link wordt aangeboden, anders worden alle waarden gegenereerd",
+          "description": "Met deze opties kun je de sociale media gedragsinstellingen overschrijven. Lege waarden worden automatisch ingevuld als er een link wordt aangeboden, anders worden alle waarden gegenereerd.",
           "fields": [
             {
               "label": "Toon pictogram delen via Facebook"

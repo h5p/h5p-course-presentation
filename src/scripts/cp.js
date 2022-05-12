@@ -443,7 +443,7 @@ CoursePresentation.prototype.attach = function ($container) {
   new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
-    this.jumpToSlide(this.previousState.progress);
+    this.jumpToSlide(this.previousState.progress, false, null, false, true);
   }
 };
 
@@ -682,12 +682,13 @@ CoursePresentation.prototype.showKeywords = function () {
 };
 
 /**
- * Change the opacity of the keywords list.
+ * Change the background opacity of the keywords list.
  *
  * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  this.$keywordsWrapper.css('opacity', value / 100);
+  const [red, green, blue] = this.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
+  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
 
 /**
@@ -726,7 +727,6 @@ CoursePresentation.prototype.fitCT = function () {
  * @returns {undefined}
  */
 CoursePresentation.prototype.resize = function () {
-  var self = this;
   var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
@@ -766,105 +766,13 @@ CoursePresentation.prototype.resize = function () {
     var slideElements = this.slides[this.$current.index()].elements;
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
-      if (instance.libraryInfo !== undefined && instance.libraryInfo.machineName === "H5P.Dialogcards") {
-        instance.on('resize', function () {
-          self.resizeDialogCard(this);
-        });
-      }
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
         H5P.trigger(instance, 'resize');
       }
     }
   }
-  
+
   this.fitCT();
-};
-
-/**
- * Resize dialog card. Strategy is to resize image, then content and later the card wrapper.
- * 
- * @param {Object} instance
- */
-CoursePresentation.prototype.resizeDialogCard = function (instance) { 
-  var self = this;
-  // In order to resize each cards we need to make it visible first
-  instance.cards.forEach(card => {
-    card.$cardWrapper.css('display', 'block');
-    card.callbacks.onCardTurned = function(turned) {
-      self.resizeDialogCard(instance);
-    };
-  });
-
-  let relativeImageHeight = 15;
-  const cardWrapper = $(instance.cards[instance.currentCardId].$cardWrapper[0]);
-  const $currentCardContent = instance.cards[instance.currentCardId].getDOM().find('.h5p-dialogcards-card-content');
-  const dialog = instance.cards[instance.currentCardId].params.dialogs[instance.getCurrentSelectionIndex()];
-  // Calculate image height
-  let height = dialog.image.height / dialog.image.width * $currentCardContent.get(0).getBoundingClientRect().width;
-  if (height > 0) {
-    height = height / parseFloat(instance.$inner.css('font-size'));
-    if (height > relativeImageHeight) {
-      height = relativeImageHeight;
-    }
-    instance.cards[instance.currentCardId].getImage().parent().css('height', height + 'em');
-  }
-
-  // Determine the height of content
-  const $content = $('.h5p-dialogcards-card-content', cardWrapper);
-  const $text = $('.h5p-dialogcards-card-text-inner-content', $content);
-
-  // Grab size with text
-  const textHeight = $text[0].getBoundingClientRect().height;
-
-  // Change to answer
-  const currentCard = instance.cards[instance.currentCardId];
-  
-  // Grab size with answer
-  let answerHeight = 0;
-  if ($content.hasClass('h5p-dialogcards-turned')) {
-    currentCard.changeText(currentCard.getAnswer());
-    answerHeight = $text[0].getBoundingClientRect().height;
-  }
-
-  // Use highest
-  let useHeight = (textHeight > answerHeight ? textHeight : answerHeight);
-
-  // Min. limit
-  const minHeight = parseFloat($text.parent().parent().css('minHeight'));
-  if (useHeight < minHeight) {
-    useHeight =  minHeight;
-  }
-
-  // Convert to em
-  const fontSize = parseFloat($content.css('fontSize'));
-  useHeight /= fontSize;
-
-  // Set height
-  $text.parent().css('height', useHeight + 'em');
-  
-  // Reset card-wrapper-set height
-  $(instance.$cardwrapperSet[0]).css('height', 'auto');
-  
-  // Card wrapper height
-  let maxHeight = 0;
-  const wrapperHeight = cardWrapper.css('height', 'initial').outerHeight();
-  cardWrapper.css('height', 'inherit');
-  maxHeight = wrapperHeight > maxHeight ? wrapperHeight : maxHeight;
-
-  // Check height
-  const initialHeight = cardWrapper.find('.h5p-dialogcards-cardholder').css('height', 'initial').outerHeight();
-  maxHeight = initialHeight > maxHeight ? initialHeight : maxHeight;
-  cardWrapper.find('.h5p-dialogcards-cardholder').css('height', 'inherit');
-  
-  const relativeMaxHeight = maxHeight / parseFloat(cardWrapper.css('font-size'));
-  $(instance.$cardwrapperSet[0]).css('height', relativeMaxHeight + 'em');
-
-  // CP is setting scrollbar based on peer elements of cards which give unnecessary scrooll where it is not needed so hiden them
-  instance.cards.forEach(card => {
-    if (instance.currentCardId !== card.id) {
-      card.$cardWrapper.css('display', 'none');
-    }
-  });
 };
 
 /**
@@ -1157,7 +1065,6 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  * @return {jQuery}
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
-  const autoPlay = element.action.params && element.action.params.cpAutoplay;
   let label = element.action.metadata ? element.action.metadata.title : '';
   if (label === '') {
     label = (element.action.params && element.action.params.contentName) || element.action.library.split(' ')[0].split('.')[1];
@@ -1190,7 +1097,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   } : null;
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, autoPlay, setAriaExpandedFalse($button), parentPosition);
+    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, setAriaExpandedFalse($button), parentPosition);
     this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
@@ -1210,11 +1117,10 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
  *
  * @param {object} instance
  * @param {string} libTypePmz
- * @param {boolean} autoPlay
  * @param {function} closeCallback
  * @param {Object} [popupPosition] X and Y position of popup
  */
-CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback, popupPosition = null) {
+CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, closeCallback, popupPosition = null) {
 
   // Handle exit fullscreen
   const exitFullScreen = () => {
@@ -1226,24 +1132,6 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.on('exitFullScreen', exitFullScreen);
 
     this.showPopup($buttonElement, $button, popupPosition, () => {
-
-      // Specific to YT Iframe
-      if (instance.libraryInfo.machineName === "H5P.InteractiveVideo" && instance.video.pressToPlay !== undefined) {
-        // YT iframe does not receive state change event when it opens in a dialog box second time 
-        instance.video.on('ready', function (event) {
-          const videoInstance = this;
-          var playerState = 0;
-          setInterval( function() {
-            var state = videoInstance.getPlayerState();
-            if ( playerState !== state ) {
-              videoInstance.trigger('stateChange', state);
-              playerState = state;
-            }
-          }, 10);
-        });
-      }
-      
-      this.pauseMedia(instance);
       $buttonElement.detach();
 
       // Remove listener, we only need it for active popups
@@ -1257,8 +1145,6 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     if (libTypePmz === 'h5p-image') {
       this.resizePopupImage($buttonElement);
     }
-
-    var $container = $buttonElement.closest('.h5p-popup-container');
 
     // Focus directly on content when popup is opened
     setTimeout(() => {
@@ -1275,11 +1161,6 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     // start activity
     if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
       instance.setActivityStarted();
-    }
-
-    // Autoplay media
-    if (autoPlay && isFunction(instance.play)) {
-      instance.play();
     }
   }
 };
@@ -1466,15 +1347,24 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
       });
     }
 
-    // Account for overflowing edges
-    const widthPadding = 15 / 2;
-    const leftPosThreshold = 100 - widthPercentage - widthPadding;
-    let leftPos = parentPosition.x;
-    if (parentPosition.x > leftPosThreshold) {
-      leftPos = leftPosThreshold;
+    // Account for overflowing edges, use consistent percentage padding as css
+    const widthPaddingPercentage = 5;
+
+    // Width percentage is capped at min 22 and max 90% in css
+    if (widthPercentage > 90) {
+      widthPercentage = 90;
     }
-    else if (parentPosition.x < widthPadding) {
-      leftPos = widthPadding;
+    else if (widthPercentage < 22) {
+      widthPercentage = 22;
+    }
+
+    const overflowRightSideThreshold = 100 - widthPercentage - widthPaddingPercentage;
+    let leftPos = parentPosition.x;
+    if (parentPosition.x > overflowRightSideThreshold) {
+      leftPos = overflowRightSideThreshold;
+    }
+    else if (parentPosition.x < widthPaddingPercentage) {
+      leftPos = widthPaddingPercentage;
     }
 
     heightPercentage = $popupContainer.height() * (100 / overlayHeight);
@@ -1558,13 +1448,13 @@ CoursePresentation.prototype.initKeyEvents = function () {
     }
 
     // Left
-    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide()) {
+    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide(undefined, false)) {
       event.preventDefault();
       wait = true;
     }
 
     // Right
-    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide()) {
+    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide(undefined, false)) {
       event.preventDefault();
       wait = true;
     }
@@ -1696,7 +1586,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
       // If we're not scrolling detemine if we're changing slide
       var moved = startX - lastX;
-      if (moved > that.swipeThreshold && that.nextSlide() || moved < -that.swipeThreshold && that.previousSlide()) {
+      if (moved > that.swipeThreshold && that.nextSlide(undefined, false) || moved < -that.swipeThreshold && that.previousSlide(undefined, false)) {
         return;
       }
     }
@@ -1770,13 +1660,18 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.previousSlide = function (noScroll) {
+CoursePresentation.prototype.previousSlide = function (noScroll, old = true) {
   var $prev = this.$current.prev();
   if (!$prev.length) {
     return false;
   }
 
-  return this.jumpToSlide($prev.index(), noScroll, false);
+  if (old) {
+    return this.processJumpToSlide($prev.index(), noScroll, false);
+  }
+  else {
+    return this.jumpToSlide($prev.index(), noScroll, null, false);
+  }
 };
 
 /**
@@ -1785,13 +1680,18 @@ CoursePresentation.prototype.previousSlide = function (noScroll) {
  * @param {Boolean} noScroll Skip UI scrolling.
  * @returns {Boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.nextSlide = function (noScroll) {
+CoursePresentation.prototype.nextSlide = function (noScroll, old = true) {
   var $next = this.$current.next();
   if (!$next.length) {
     return false;
   }
 
-  return this.jumpToSlide($next.index(), noScroll, false);
+  if (old) {
+    return this.processJumpToSlide($next.index(), noScroll, false);
+  }
+  else {
+    return this.jumpToSlide($next.index(), noScroll, null, false);
+  }
 };
 
 /**
@@ -1870,20 +1770,6 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
   // For new slide
   this.setOverflowTabIndex();
 
-  // Stop media on old slide
-  // this is done no mather what autoplay says
-  var instances = this.elementInstances[previousSlideIndex];
-  if (instances !== undefined) {
-    for (var i = 0; i < instances.length; i++) {
-      if (!this.slides[previousSlideIndex].elements[i].displayAsButton) {
-        // Only pause media elements displayed as posters.
-        var params = this.slides[previousSlideIndex].elements[i].action !== undefined 
-          ? this.slides[previousSlideIndex].elements[i].action.params : null;
-        that.pauseMedia(instances[i], params);
-      }
-    }
-  }
-
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
@@ -1896,7 +1782,7 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
-    
+
     // Set tabindex for better accessibility if there are no interactions
     if (typeof that.slidesWithSolutions[that.getCurrentSlideIndex()] === 'undefined') {
       that.$current.find('.h5p-element-inner').attr('tabindex', '0');
@@ -1913,23 +1799,11 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
       return;
     }
 
-    // Start media on new slide for elements beeing setup with autoplay!
+    // Set activity started
     var instances = that.elementInstances[that.currentSlideIndex];
     var instanceParams = that.slides[that.currentSlideIndex].elements;
     if (instances !== undefined) {
       for (var i = 0; i < instances.length; i++) {
-        // TODO: Check instance type instead to avoid accidents?
-        if (instanceParams[i] &&
-            instanceParams[i].action &&
-            instanceParams[i].action.params &&
-            instanceParams[i].action.params.cpAutoplay &&
-            !instanceParams[i].displayAsButton &&
-            typeof instances[i].play === 'function') {
-
-          // Autoplay media if not button
-          instances[i].play();
-        }
-
         if (!instanceParams[i].displayAsButton && typeof instances[i].setActivityStarted === 'function' && typeof instances[i].getScore === 'function') {
           instances[i].setActivityStarted();
         }
@@ -1986,14 +1860,16 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
  * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @param {Function|null} [callback] Callback to execute on successfull navigation
+ * @param {Boolean} [ignoreConfirmationDialog] Will not show confirmation dialog for summary slide
  * @returns {Boolean}
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false) {
+CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false, ignoreConfirmationDialog = false) {
   if (this.standalone
     && this.showSummarySlide
     && slideNumber === this.slides.length - 1
     && !this.isSolutionMode
     && this.isReportingEnabled
+    && !ignoreConfirmationDialog
   ) {
 
     // Currently in the summary slide
@@ -2148,7 +2024,9 @@ CoursePresentation.prototype.showSolutions = function () {
     // Show comments of non graded contents
     if (this.showCommentsAfterSolution[i]) {
       for (var j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
-        this.showCommentsAfterSolution[i][j].showCPComments();
+        if (typeof this.showCommentsAfterSolution[i][j].showCPComments === 'function') {
+          this.showCommentsAfterSolution[i][j].showCPComments();
+        }
       }
     }
   }
@@ -2277,44 +2155,6 @@ CoursePresentation.prototype.getCopyrights = function () {
   }
 
   return info;
-};
-
-/**
- * Stop the given element's playback if any.
- *
- * @param {object} instance
- */
-CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
-  try {
-    if (instance.pause !== undefined &&
-        (instance.pause instanceof Function ||
-          typeof instance.pause === 'function')) {
-      // Don't pause media if the source is not compatible
-      if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
-          instance.video.pressToPlay === undefined &&
-          params.interactiveVideo.video.files && 
-          H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
-        instance.pause();
-        return;
-      }
-      instance.pause();
-    }
-    else if (instance.video !== undefined &&
-             instance.video.pause !== undefined &&
-             (instance.video.pause instanceof Function ||
-               typeof instance.video.pause === 'function')) {
-      instance.video.pause();
-    }
-    else if (instance.stop !== undefined &&
-             (instance.stop instanceof Function ||
-               typeof instance.stop === 'function')) {
-      instance.stop();
-    }
-  }
-  catch (err) {
-    // Prevent crashing, but tell developers there's something wrong.
-    H5P.error(err);
-  }
 };
 
 /**

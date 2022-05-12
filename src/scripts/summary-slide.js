@@ -202,8 +202,11 @@ const SummarySlide = (function () {
       totalMaxScore += slideScores[i].maxScore;
     }
 
-    const success = totalScore * 100 / totalMaxScore >= that.cp.params.scoring.passPercentage;
-    that.cp.triggerXAPICompleted(totalScore, totalMaxScore, success);
+    if (!this.cp.isSolutionMode) {
+      const success = totalScore * 100 / totalMaxScore >= that.cp.params.scoring.passPercentage;
+      that.cp.triggerXAPICompleted(totalScore, totalMaxScore, success);
+    }
+
     var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
     var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
     var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';

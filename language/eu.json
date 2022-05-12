@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Erantzunak",
-                      "description": "Erantzunak erakusten dira erbiltzaileak  diapositiba guztien proposatutako erantzunak bistaratzen dituenean."
+                      "description": "Erantzunak erakusten dira erabiltzaileak diapositiba guztien proposatutako erantzunak bistaratzen dituenean."
                     },
                     {
                       "label": "Erakutsi beti erantzunak"
@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Diapositibaren zenbakia",
-                      "description": "Bakarrik aplikatuko da  'Diapositibaren zenbakia' hautatua badago"
+                      "description": "Soilik aplikatzen da 'Diapositibaren zenbakia' aukeratuta dagoenean"
                     },
                     {
                       "label": "Ezkutuan",
@@ -73,8 +73,7 @@
                     "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan."
                   },
                   {
-                    "label": "Hautatu kolore bat",
-                    "default": ""
+                    "label": "Hautatu kolore bat"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan ."
             },
             {
-              "label": "Hautatu kolere bat",
-              "default": ""
+              "label": "Hautatu kolere bat"
             }
           ]
         }
@@ -153,7 +151,7 @@
         },
         {
           "label": "Erakutsi gako-hitzen zerrenda botoiaren titulua",
-          "default": "Erakutsi gako-hitzen zerrenda"
+          "default": "Erakutsi hitz-gakoen zerrenda"
         },
         {
           "label": "Pantaila osoa etiketa",
@@ -270,7 +268,7 @@
         {
           "label": "Laguntza teknologietarako puntuazio orokorraren iragarkia",
           "default": "@maxScore puntutik denetara @score puntu lortu dituzu",
-          "description": "Aldagaiak dira @maxScore eta @score"
+          "description": "Eskuragarri dauden aldagaiak @maxScore eta @score dira"
         },
         {
           "label": "Laguntza teknologietarako pantaila-osoko iragarkian sartzea",
@@ -281,16 +279,16 @@
           "default": "Pantaila-osotik ateratzea"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Bidali emaitza baieztapen-mezuaren goiburua",
+          "default": "Bidali zure erantzunak"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Bidali emaitza baieztapen-mezuaren testua",
+          "default": "Honek zure emaitzak bidaliko ditu, aurrera egin nahi duzu?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Bidali emaitza baieztapen-mezuaren baieztapen-botoia",
+          "default": "Bidali eta ikusi emaitzak"
         }
       ]
     },
@@ -332,7 +330,7 @@
       ]
     },
     {
-      "label": "Portaera ezarpenak.",
+      "label": "Portaeraren ezarpenak.",
       "description": "Aukera hauen bidez zuzendu ahal izango dituzu portaera ezarpenak.",
       "fields": [
         {
@@ -369,7 +367,7 @@
         },
         {
           "label": "Erakutsi \"Erakutsi emaitza\" botoia laburpen-diapositiban",
-          "description": "Gaituz gero, ikaslea galdera guztien emaitzak erakusteko aukera izango du laburpen-diapositibara heltzean"
+          "description": "Gaituz gero, ikaslea galdera guztien erantzunak erakusteko aukera izango du laburpen-diapositibara heltzean"
         },
         {
           "label": "Erakutsi \"Berriz saiatu\" botoia laburpen-diapositiban",

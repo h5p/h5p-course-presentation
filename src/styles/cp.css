@@ -91,7 +91,7 @@
   -moz-box-sizing: border-box;
 }
 .h5p-course-presentation .h5p-wrapper:focus {
-  outline: none;
+  outline: auto;
 }
 .h5p-course-presentation .h5p-box-wrapper {
   width: 100%;
@@ -240,8 +240,7 @@
   line-height: 2.334em !important;
 }
 
-.h5p-course-presentation .h5p-element.h5p-blanks,
-.h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
+.h5p-course-presentation .h5p-element.h5p-blanks {
   overflow: auto;
 }
 
@@ -311,6 +310,9 @@
   overflow: hidden;
   text-align: left;
   overflow-y: auto;
+}
+.h5p-course-presentation .h5p-popup-overlay.h5p-video .h5p-popup-container .h5p-popup-wrapper {
+  overflow-y: hidden;
 }
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper::-webkit-scrollbar {
@@ -547,11 +549,13 @@
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
 }
-.h5p-course-presentation .h5p-twitteruserfeed-button:before {
-  content: "\f099";
-}
 .h5p-course-presentation .h5p-chart-button:before {
   content: "\f200";
+}
+.h5p-course-presentation .h5p-audiorecorder-button:before {
+  content: "\f130";
+  position: relative;
+  top: 0.05em;
 }
 
 .h5p-course-presentation .h5p-no-solution {
@@ -825,12 +829,44 @@
   vertical-align: middle;
 }
 
-.h5p-course-presentation .h5p-dialogcards .h5p-dialogcards-card-text {
-  height: auto;
-}
-
 .h5p-cp-confirmation-dialog {
   transform: translateY(-50%) translateX(-50%) !important;
   top: 50% !important;
   font-size: 1.3vw;
+}
+
+/* Custom styles for H5P.AudioRecorder subcontent */
+.h5p-course-presentation .h5p-audio-recorder-view .title {
+  font-size: 1em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .recording-indicator-wrapper {
+  height: 4.375em;
+  line-height: 4.375em;
+  width: 4.375em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .recording-indicator-wrapper > .fa-microphone {
+  font-size: 1.15em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .audio-recorder-timer {
+  font-size: 1.5em;
+  margin: .5em 0;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .h5p-audio-recorder-download {
+  font-size: .85em;
+  padding: 1em .5em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view .button {
+  font-size: .85em;
+  font-weight: 400;
+  line-height: 1.2em;
+  padding: .5em 1.25em;
+}
+
+.h5p-course-presentation .h5p-audio-recorder-view [role=status] {
+  font-size: .85em;
 }

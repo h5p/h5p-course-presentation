@@ -73,8 +73,7 @@
                     "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
                   },
                   {
-                    "label": "Sélectionnez une couleur",
-                    "default": ""
+                    "label": "Sélectionnez une couleur"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
             },
             {
-              "label": "Sélectionnez une couleur",
-              "default": ""
+              "label": "Sélectionnez une couleur"
             }
           ]
         }
@@ -268,29 +266,29 @@
           "default": "Partager le résultat"
         },
         {
-          "label": "Total score announcement for assistive technologies",
-          "default": "You got @score of @maxScore points in total",
+          "label": "Annonce de score total pour les technologies d'accessibilité",
+          "default": "Vous avez obtenu @score sur @maxScore points au total",
           "description": "Available variables are @score and @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Annonce d'activation du mode plein-écran pour les technologies d'accessibilité",
+          "default": "Mode plein-écran activé"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Annonce de désactivation du mode plein-écran pour les technologies d'accessibilité",
+          "default": "Mode plein-écran désactivé"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Entête du dialogue de confirmation d'envoi des réponses",
+          "default": "Envoyer vos réponses"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Texte du dialogue de confirmation d'envoi des réponses",
+          "default": "Cette action va envoyer vos réponses, voulez-vous continuer?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Bouton de confirmation  du dialogue de confirmation d'envoi des réponses",
+          "default": "Envoyer et voir les résultats"
         }
       ]
     },
@@ -368,12 +366,12 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Afficher le bouton \"Afficher la solution\" dans la diapositive de résumé",
+          "description": "Si activé, l'apprenant pourra afficher toutes les réponses lorsqu'il arrivera à la diapositive Résumé."
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Afficher le bouton \"Réessayer\" dans la diapositive de résumé",
+          "description": "Si activé, l'apprenant pourra réessayer toutes les questions lorsqu'il arrivera à la diapositive Résumé. Veuillez noter que l'apprenant peut réessayer les questions même si cette option n'est pas activée en utilisant le bouton Rafraîchir de son navigateur."
         },
         {
           "label": "Activer le bouton \"Imprimer\"",

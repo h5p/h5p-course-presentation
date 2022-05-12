@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Número específico de diapositiva",
-                      "description": "Escriba un número de diapositiva para ir a ella"
+                      "description": "Solamente aplicable cuando 'Número específico de página' es seleccionado"
                     },
                     {
                       "label": "Invisible",
@@ -73,8 +73,7 @@
                     "description": "El fondo de la imagen debería tener una proporción ancho a alto de 2:1 para evitar estiramiento. Imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
                   },
                   {
-                    "label": "Elegir un color",
-                    "default": ""
+                    "label": "Elegir un color"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "El fondo de la imagen debería tener una proporción de ancho a alto de 2:1 para evitar estiramiento. Las imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
             },
             {
-              "label": "Elegir un color",
-              "default": ""
+              "label": "Elegir un color"
             }
           ]
         }
@@ -281,16 +279,16 @@
           "default": "Salió de pantalla completa"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Encabezado del diálogo de confirmación de envío de resultado",
+          "default": "Enviar sus respuestas"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Texto del diálogo de confirmación de envío de resultado",
+          "default": "Esto enviará sus resultados, ¿desea continuar?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Botón de confirmación del diálogo de confirmación de envío de resultados",
+          "default": "Enviar y ver resultados"
         }
       ]
     },
