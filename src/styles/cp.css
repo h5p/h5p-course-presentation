@@ -240,7 +240,8 @@
   line-height: 2.334em !important;
 }
 
-.h5p-course-presentation .h5p-element.h5p-blanks {
+.h5p-course-presentation .h5p-element.h5p-blanks,
+.h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
   overflow: auto;
 }
 
