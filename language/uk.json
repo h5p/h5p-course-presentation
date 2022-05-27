@@ -271,24 +271,24 @@
           "description": "Доступні змінні @score і @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Повідомлення про вхід у повноекранний режим для допоміжних технологій",
+          "default": "Перейти у повноекранний режим"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Вихід із повноекранного режиму для допоміжних технологій",
+          "default": "Вийшли з повноекранного режиму"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Заголовок діалогового вікна підтвердження результату надсилання",
+          "default": "Відправити ваші відповіді"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Текст діалогового вікна підтвердження результату надсилання",
+          "default": "Ваші результати будуть представлені. Продовжити?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Кнопка підтвердження діалогового вікна підтвердження надсилання результату",
+          "default": "Відправити та подивіться результати"
         }
       ]
     },
@@ -372,7 +372,7 @@
                 },
                 {
                   "label": "Посилання Поділитися на Twitter",
-                  "default": "@currentpageurl"
+                  "default": "URL-адреса поточної сторінки"
                 },
                 {
                   "label": "Хештеги Поділитися на Twitter",
@@ -385,7 +385,7 @@
             },
             {
               "label": "Посилання Поділитися в Google",
-              "default": "@currentpageurl"
+              "default": "URL-адреса поточної сторінки"
             }
           ]
         }
