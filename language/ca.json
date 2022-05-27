@@ -280,7 +280,7 @@
         },
         {
           "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "default": "Enviar les seves respostes"
         },
         {
           "label": "Text of submit result confirmation dialog",
