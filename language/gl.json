@@ -279,16 +279,16 @@
           "default": "Saíches de pantalla completa"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Cabeceira do diálogo de confirmación de envío de resultado",
+          "default": "Envía as túas respostas"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Texto para o diálogo de confirmación de envío de resultados",
+          "default": "Vas enviar os teus resultados, queres continuar?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Botón de confirmación para o diálogo de confirmación de envío de resultados",
+          "default": "Envía e ve os resultados"
         }
       ]
     },
