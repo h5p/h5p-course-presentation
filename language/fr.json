@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Aller à la diapositive",
-                      "description": "N'est appliquable qu'avec le bouton 'Le numéro de diapositive spécifique' séléctionné"
+                      "description": "N'est applicable que si le bouton 'Le numéro de diapositive spécifique' est sélectionné"
                     },
                     {
                       "label": "Invisible",
@@ -230,16 +230,16 @@
           "default": "Imprimer la diapositive courante"
         },
         {
-          "label": "Etiquette pour des diapositives sans intitulé",
+          "label": "Étiquette pour des diapositives sans intitulé",
           "default": "Sans intitulé"
         },
         {
           "label": "Explication de la navigation par diapositive pour les technologies d'assistance",
-          "default": "Utilisez les fleches gauche et droite pour pour naviguer entre les diapositives"
+          "default": "Utilisez les flèches gauche et droite pour pour naviguer entre les diapositives"
         },
         {
           "label": "Etiquette de champs pour les technologies d'assistance",
-          "default": "Le champs de présentation. Utilisez les fleches gauche et droite pour naviguer entre les diapositives."
+          "default": "Zone de présentation. Utilisez les flèches gauche et droite pour naviguer entre les diapositives."
         },
         {
           "label": "Etiquette pour des interactions incomplètes",
@@ -250,15 +250,15 @@
           "default": "@slideName ccontient des interactions complètes"
         },
         {
-          "label": "Etiquette pour le compteur de diapositive. Variables sont @index, @total",
+          "label": "Étiquette pour le compteur de diapositive. Variables sont @index, @total",
           "default": "Diapositive a @index de @total"
         },
         {
-          "label": "Etiquette pour les diapositives qui n'ont que de réponses correctes",
+          "label": "Étiquette pour les diapositives qui n'ont que de réponses correctes",
           "default": "toutes les réponses sont bonnes sur @slideName"
         },
         {
-          "label": "Etiquette pour les diapositives qui ont des réponses incorrectes",
+          "label": "Étiquette pour les diapositives qui ont des réponses incorrectes",
           "default": "@slideName contient des réponses incorrectes"
         },
         {
