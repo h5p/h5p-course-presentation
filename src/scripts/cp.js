@@ -1254,7 +1254,7 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {object} [instance] H5P library instance
  * @param {boolean} [keepInDOM] Hide the popup instead of removing it when it gets closed
  */
-CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field', instance, keepInDOM = true) {
+CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field', instance, keepInDOM = false) {
   var self = this;
   var doNotClose;
 
