@@ -36,6 +36,7 @@ let CoursePresentation = function (params, id, extras) {
   this.isTask = false;
   this.standalone = true;
   this.isReportingEnabled = false;
+  this.popups = {};
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -1117,13 +1118,15 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     // Listen for exit fullscreens not triggered by button, for instance using 'esc'
     this.on('exitFullScreen', exitFullScreen);
 
-    this.showPopup($buttonElement, $button, popupPosition, () => {
-      $buttonElement.detach();
+    this.showPopup($buttonElement, $button, popupPosition, (keepInDOM = false) => {
+      if (!keepInDOM) {
+        $buttonElement.detach();
+      }
 
       // Remove listener, we only need it for active popups
       this.off('exitFullScreen', exitFullScreen);
       closeCallback();
-    }, libTypePmz);
+    }, libTypePmz, instance, libTypePmz === 'h5p-interactivevideo');
 
     H5P.trigger(instance, 'resize');
 
@@ -1248,8 +1251,10 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {object} [parentPosition] x and y coordinates of parent
  * @param {Function} [remove] Gets called before the popup is removed.
  * @param {string} [classes]
+ * @param {object} [instance] H5P library instance
+ * @param {boolean} [keepInDOM] Hide the popup instead of removing it when it gets closed
  */
-CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field') {
+CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field', instance, keepInDOM = true) {
   var self = this;
   var doNotClose;
 
@@ -1264,7 +1269,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     // Remove popup
     if (remove !== undefined) {
       setTimeout(function () {
-        remove();
+        remove(keepInDOM);
         self.restoreTabIndexes();
       }, 100);
     }
@@ -1273,29 +1278,50 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     $popup.find('.h5p-popup-container').addClass('h5p-animate');
 
     setTimeout(function () {
-      $popup.remove();
+      if (keepInDOM) {
+        $popup.hide();
+      }
+      else {
+        $popup.remove();
+      }
     }, 100);
 
     $focusOnClose.focus();
   };
 
-  const $popup = $(
-    '<div class="h5p-popup-overlay ' + classes + '">' +
-      '<div class="h5p-popup-container" role="dialog">' +
-        '<div class="h5p-cp-dialog-titlebar">' +
-          '<div class="h5p-dialog-title"></div>' +
-          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
-        '</div>' +
-        '<div class="h5p-popup-wrapper" role="document"></div>' +
-      '</div>' +
-    '</div>');
+  let $popup;
 
-  const $popupWrapper = $popup.find('.h5p-popup-wrapper');
-  if (popupContent instanceof H5P.jQuery) {
-    $popupWrapper.append(popupContent);
+  if (keepInDOM && instance && self.popups[instance.subContentId]) {
+    // The popup already exists in the DOM, but is hidden
+    $popup = self.popups[instance.subContentId];
   }
-  else {
-    $popupWrapper.html(popupContent);
+
+  if ($popup === undefined) {
+    // The popup must be created and added to the DOM
+    $popup = $(
+      '<div class="h5p-popup-overlay ' + classes + '">' +
+        '<div class="h5p-popup-container" role="dialog">' +
+          '<div class="h5p-cp-dialog-titlebar">' +
+            '<div class="h5p-dialog-title"></div>' +
+            '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+          '</div>' +
+          '<div class="h5p-popup-wrapper" role="document"></div>' +
+        '</div>' +
+      '</div>'
+    );
+
+    const $popupWrapper = $popup.find('.h5p-popup-wrapper');
+    if (popupContent instanceof H5P.jQuery) {
+      $popupWrapper.append(popupContent);
+    }
+    else {
+      $popupWrapper.html(popupContent);
+    }
+
+    if (instance && instance.subContentId) {
+      // Keep a reference to this popup
+      self.popups[instance.subContentId] = $popup;
+    }
   }
 
   const $popupContainer = $popup.find('.h5p-popup-container');
@@ -1378,9 +1404,16 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     'visibility': '',
   }).addClass('h5p-animate');
 
+  if ($popup.parent().length === 0) {
+    // Having no parent means the popup has not yet been added to the DOM
+    $popup.prependTo(this.$wrapper);
+  }
+  else {
+    $popup.show();
+  }
+
   // Insert popup ready for use
   $popup
-    .prependTo(this.$wrapper)
     .focus()
     .removeClass('h5p-animate')
     .click(close)
