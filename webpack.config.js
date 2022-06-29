@@ -4,31 +4,17 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = (nodeEnv === 'production');
+const libraryName = process.env.npm_package_name;
 
 module.exports = {
   mode: nodeEnv,
-  optimization: {
-    minimize: isProd,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          compress:{
-            drop_console: true,
-          }
-        }
-      }),
-    ],
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'h5p-course-presentation.css'
-    })
-  ],
+  context: path.resolve(__dirname, 'src'),
   entry: {
-    dist: './src/entries/dist.js'
+    dist: './entries/dist.js'
   },
+  devtool: (isProd) ? undefined : 'eval-source-map',
   output: {
-    filename: 'h5p-course-presentation.js',
+    filename: `${libraryName}.js`,
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -60,10 +46,26 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    minimize: isProd,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress:{
+            drop_console: true,
+          }
+        }
+      }),
+    ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: `${libraryName}.css`
+    })
+  ],
   stats: {
     colors: true,
     children: true,
     errorDetails: true
-  },
-  devtool: (isProd) ? undefined : 'eval-cheap-module-source-map'
+  }
 };
