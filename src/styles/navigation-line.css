@@ -204,7 +204,7 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  background: #999;
+  background: #666;
 
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -ms-flexbox;      /* TWEENER - IE 10 */
@@ -265,11 +265,11 @@
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
-  background: #0097fd;
-  background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
-  background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
-  background-image: linear-gradient(to bottom, #0097fd, #096bcb);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0097fd', endColorstr='#096bcb', GradientType=0);
+  background: #0085FF;
+  background-image: -webkit-linear-gradient(top, #0085FF, #1a73d9);
+  background-image: -moz-linear-gradient(top, #0085FF, #1a73d9);
+  background-image: linear-gradient(to bottom, #0085FF, #1a73d9);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0085FF', endColorstr='#1a73d9', GradientType=0);
 
   -webkit-transition: width 0.25s ease-in-out;
   -moz-transition: width 0.25s ease-in-out;
@@ -314,7 +314,7 @@
   -moz-border-radius: 50%;
   border-radius: 50%;
 
-  border: 2px solid #D3D3D3;
+  border: 2px solid #f5f5f5;
   cursor: pointer;
 
   background: transparent;
@@ -323,11 +323,11 @@
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-answered {
-  background: #D3D3D3;
+  background: #f5f5f5;
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show .h5p-progressbar-part-has-task.h5p-answered {
-  background: #D3D3D3;
+  background: #f5f5f5;
 }
 
 /* ----------------------------------------- Progressbar popup ------------------------------------ */
