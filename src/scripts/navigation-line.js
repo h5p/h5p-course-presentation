@@ -279,7 +279,6 @@ const NavigationLine = (function ($) {
       'class': "h5p-footer-button h5p-footer-toggle-keywords",
       'aria-expanded': 'false',
       'aria-label': this.cp.l10n.showKeywords,
-      'title': this.cp.l10n.showKeywords,
       'role': 'button',
       'tabindex': '0',
       'html': '<span class="h5p-icon-menu"></span><span class="current-slide-title"></span>'
@@ -310,7 +309,6 @@ const NavigationLine = (function ($) {
     this.cp.$prevSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-previous-slide',
       'aria-label': this.cp.l10n.prevSlide,
-      'title': this.cp.l10n.prevSlide,
       'role': 'button',
       'tabindex': '-1',
       'aria-disabled': 'true'
@@ -356,7 +354,6 @@ const NavigationLine = (function ($) {
     this.cp.$nextSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-next-slide',
       'aria-label': this.cp.l10n.nextSlide,
-      'title': this.cp.l10n.nextSlide,
       'role': 'button',
       'tabindex': '0'
     }).appendTo($centerFooter);
@@ -375,7 +372,6 @@ const NavigationLine = (function ($) {
         'role': 'button',
         'class': 'h5p-footer-exit-solution-mode',
         'aria-label': this.cp.l10n.solutionModeTitle,
-        'title': this.cp.l10n.solutionModeTitle,
         'tabindex': '0'
       }).appendTo($rightFooter);
 
@@ -385,7 +381,6 @@ const NavigationLine = (function ($) {
         this.cp.$printButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-print',
           'aria-label': this.cp.l10n.printTitle,
-          'title': this.cp.l10n.printTitle,
           'role': 'button',
           'tabindex': '0'
         }).appendTo($rightFooter);
@@ -398,7 +393,6 @@ const NavigationLine = (function ($) {
         this.cp.$fullScreenButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
           'aria-label': this.cp.l10n.fullscreen,
-          'title': this.cp.l10n.fullscreen,
           'role': 'button',
           'tabindex': '0'
         });

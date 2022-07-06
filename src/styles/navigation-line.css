@@ -27,7 +27,7 @@
   line-height: 1.4em;
   margin: 0.2em 0.4em;
   text-align: center;
-
+  position: relative;
 
   -webkit-transition: color 0.2s ease-in-out;
   -moz-transition: color 0.2s ease-in-out;
@@ -89,6 +89,7 @@
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-exit-solution-mode {
   display: inline-block;
   cursor: pointer;
+  position: relative;
 }
 
 /* Hide exit solution mode button initially */
@@ -381,4 +382,46 @@
 
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
   color: #dbd7d1;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label]:not(.h5p-footer-next-slide):after,
+.h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label].h5p-footer-next-slide:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:before {
+  content: attr(aria-label);
+  display: none;
+  position: absolute;
+  z-index: 5000;
+  pointer-events: none;
+  padding: 8px 10px;
+  line-height: 15px;
+  white-space: nowrap;
+  overflow: visible;
+  font-size: .9em;
+  color: #fff;
+  background-color: #412917;
+  border-radius: 2px;
+  top: -10%;
+}
+
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode  .h5p-footer-button[aria-label]:not(.h5p-footer-next-slide):after,
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode  .h5p-footer-button[aria-label].h5p-footer-next-slide:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:before {
+  color: #412917;
+  background-color: #dbd7d1;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label]:not(.h5p-footer-next-slide):not(.h5p-footer-toggle-keywords):after,
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:before {
+  right: 100%;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label].h5p-footer-next-slide:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label].h5p-footer-toggle-keywords:after {
+  left: 100%;
+}
+
+.h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label]:not(.h5p-footer-next-slide):hover:after,
+.h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label].h5p-footer-next-slide:hover:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:hover:before {
+  display: block;
 }

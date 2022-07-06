@@ -637,7 +637,6 @@ CoursePresentation.prototype.toggleKeywords = function () {
 CoursePresentation.prototype.hideKeywords = function () {
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     if (this.$keywordsButton !== undefined) {
-      this.$keywordsButton.attr('title', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-label', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-expanded', 'false');
       this.$keywordsButton.focus();
@@ -656,7 +655,6 @@ CoursePresentation.prototype.showKeywords = function () {
   }
 
   if (this.$keywordsButton !== undefined) {
-    this.$keywordsButton.attr('title', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-label', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-expanded', 'true');
   }
