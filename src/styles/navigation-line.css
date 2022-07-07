@@ -398,7 +398,7 @@
   overflow: visible;
   font-size: .9em;
   color: #fff;
-  background-color: #412917;
+  background-color: #000;
   border-radius: 2px;
   top: -10%;
 }
@@ -406,8 +406,8 @@
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode  .h5p-footer-button[aria-label]:not(.h5p-footer-next-slide):after,
 .h5p-course-presentation .h5p-footer.h5p-footer-solution-mode  .h5p-footer-button[aria-label].h5p-footer-next-slide:before,
 .h5p-course-presentation .h5p-footer .h5p-footer-exit-solution-mode:before {
-  color: #412917;
-  background-color: #dbd7d1;
+  color: #000;
+  background-color: #fff;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-button[aria-label]:not(.h5p-footer-next-slide):not(.h5p-footer-toggle-keywords):after,
