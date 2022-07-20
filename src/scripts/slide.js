@@ -18,7 +18,7 @@ function Slide(parameters) {
    */
   self.getElement = function () {
     if (!$wrapper) {
-      $wrapper = H5P.jQuery(Slide.createHTML(parameters));
+      $wrapper = H5P.jQuery(Slide.createHTML({...parameters, index: self.index}));
     }
     return $wrapper;
   };
@@ -55,7 +55,13 @@ function Slide(parameters) {
  * @returns {string} HTML.
  */
 Slide.createHTML = function (parameters) {
-  return '<div role="document" class="h5p-slide"' + (parameters.background !== undefined ? ' style="background:' + parameters.background + '"' : '') + '></div>';
+  return '<div ' +
+      'role="tabpanel" ' +
+      'id="slide-' + parameters.index + '" ' +
+      'aria-labelledby="progressbar-part-' + parameters.index + '" ' +
+      'class="h5p-slide"' + 
+      (parameters.background !== undefined ? ' style="background:' + parameters.background + '"' : '') + '>' +
+    '</div>';
 };
 
 export default Slide;

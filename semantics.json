@@ -581,6 +581,13 @@
         "default": "Presentation canvas. Use left and right arrow to move between slides."
       },
       {
+        "name": "accessibilityProgressBarLabel",
+        "type": "text",
+        "label": "Progressbar label for assistive technologies",
+        "importance": "low",
+        "default": "Choose slide to display"
+      },
+      {
         "name": "containsNotCompleted",
         "type": "text",
         "label": "Label for uncompleted interactions",

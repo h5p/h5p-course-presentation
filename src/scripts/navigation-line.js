@@ -27,11 +27,11 @@ const NavigationLine = (function ($) {
      * @property {Object.<answeredState, string>} answeredLabels
      */
     this.answeredLabels = {
-      [answeredState.NOT_ANSWERED]: this.cp.l10n.containsNotCompleted,
-      [answeredState.ANSWERED]: this.cp.l10n.containsCompleted,
-      [answeredState.CORRECT]: this.cp.l10n.containsOnlyCorrect,
-      [answeredState.INCORRECT]: this.cp.l10n.containsIncorrectAnswers,
-      [answeredState.NO_INTERACTIONS]: '@slideName',
+      [answeredState.NOT_ANSWERED]: this.cp.l10n.containsNotCompleted + '.',
+      [answeredState.ANSWERED]: this.cp.l10n.containsCompleted + '.',
+      [answeredState.CORRECT]: this.cp.l10n.containsOnlyCorrect + '.',
+      [answeredState.INCORRECT]: this.cp.l10n.containsIncorrectAnswers + '.',
+      [answeredState.NO_INTERACTIONS]: '',
     };
 
     this.initProgressbar(this.cp.slidesWithSolutions);
@@ -110,9 +110,14 @@ const NavigationLine = (function ($) {
       const slide = this.cp.slides[i];
       const progressbarPartTitle = this.createSlideTitle(i);
 
-      // create list item
-      const $li = $('<li>', {
-        'class': 'h5p-progressbar-part'
+      // create tab item
+      const $li = $('<div>', {
+        'class': 'h5p-progressbar-part',
+        'id': 'progressbar-part-' + i,
+        'role': 'tab',
+        'aria-label': progressbarPartTitle,
+        'aria-controls': 'slide-' + i,
+        'aria-selected': false,
       })
         .appendTo(that.cp.$progressbar);
 
@@ -149,7 +154,8 @@ const NavigationLine = (function ($) {
       }
 
       if (i === currentSlideIndex) {
-        $li.addClass('h5p-progressbar-part-selected');
+        $li.addClass('h5p-progressbar-part-selected')
+          .attr('aria-selected', true)
       }
 
       that.cp.progressbarParts.push($li);
@@ -441,7 +447,10 @@ const NavigationLine = (function ($) {
 
     that.cp.progressbarParts[slideNumber]
       .addClass("h5p-progressbar-part-selected")
-      .siblings().removeClass("h5p-progressbar-part-selected");
+      .attr('aria-selected', true)
+      .siblings()
+        .removeClass("h5p-progressbar-part-selected")
+        .attr('aria-selected', false);
 
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (part, i) {
@@ -496,9 +505,8 @@ const NavigationLine = (function ($) {
     const $partTitle = $part.find('.h5p-progressbar-part-title');
     const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total);
     const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
-    const currentSlideLabel = isCurrent ? this.cp.l10n['currentSlide'] : '';
-
-    $partTitle.html(`${numberedLabel}: ${answeredLabel}. ${currentSlideLabel}`);
+    
+    $partTitle.html(`${numberedLabel}: ${answeredLabel}`);
   };
 
   /**

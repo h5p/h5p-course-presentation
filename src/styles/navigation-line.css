@@ -242,12 +242,12 @@
   margin-right: auto;
 }
 
-.h5p-course-presentation .h5p-progressbar li {
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
   flex: 1;
   position: relative;
 }
 
-.h5p-course-presentation .h5p-progressbar li:not(:last-child) {
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part:not(:last-child) {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
