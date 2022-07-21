@@ -485,10 +485,9 @@ const NavigationLine = (function ($) {
    * @param {answeredState} [config.state]
    * @param {boolean} [config.isCurrent]
    */
-  NavigationLine.prototype.updateSlideTitle = function (index, { state, isCurrent } = {}) {
+  NavigationLine.prototype.updateSlideTitle = function (index, { state } = {}) {
     this.setSlideTitle(index, {
       state: defaultValue(state, this.getAnsweredState(index)),
-      isCurrent: defaultValue(isCurrent, this.cp.isCurrentSlide(index))
     });
   };
 
@@ -499,14 +498,12 @@ const NavigationLine = (function ($) {
    * @param {answeredState} [state]
    * @param {boolean} [isCurrent]
    */
-  NavigationLine.prototype.setSlideTitle = function (index, { state = answeredState.NO_INTERACTIONS, isCurrent = false}) {
-    const total =  this.cp.slides.length;
+  NavigationLine.prototype.setSlideTitle = function (index, { state = answeredState.NO_INTERACTIONS }) {
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
-    const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total);
     const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
     
-    $partTitle.html(`${numberedLabel}: ${answeredLabel}`);
+    $partTitle.html(`${answeredLabel}`);
   };
 
   /**
