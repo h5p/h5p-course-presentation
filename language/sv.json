@@ -73,7 +73,8 @@
                     "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
                   },
                   {
-                    "label": "Välj en färg"
+                    "label": "Välj en färg",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
             },
             {
-              "label": "Välj en färg"
+              "label": "Välj en färg",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Etikett för tillgänglighetshjälpmedel",
           "default": "Använd pilarna vänster och höger för att byta sida."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Etikett för aktiviteter som inte är genomförda",

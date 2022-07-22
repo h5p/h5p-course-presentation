@@ -73,7 +73,8 @@
                     "description": "画像の背景は、伸びを避けるために2：1の幅と高さの比にする必要があります。高解像度の画像は、大画面でよりきれいに表示されます。"
                   },
                   {
-                    "label": "色を選択"
+                    "label": "色を選択",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "画像の背景は、伸びを避けるために2：1の幅と高さの比にする必要があります。高解像度の画像は、大画面でよりきれいに表示されます。"
             },
             {
-              "label": "色を選択"
+              "label": "色を選択",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Canvas label for assistive technologies",
           "default": "Presentation canvas. Use left and right arrow to move between slides."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Label for uncompleted interactions",

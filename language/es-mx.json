@@ -73,7 +73,8 @@
                     "description": "El fondo de la imagen debería tener una proporción ancho a alto de 2:1 para evitar estiramiento. Imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
                   },
                   {
-                    "label": "Elegir un color"
+                    "label": "Elegir un color",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "El fondo de la imagen debería tener una proporción de ancho a alto de 2:1 para evitar estiramiento. Las imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
             },
             {
-              "label": "Elegir un color"
+              "label": "Elegir un color",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Etiqueta del lienzo para tecnologías asistivas",
           "default": "Lienzo de Presentación. Use flechas izquierda y derecha para moverse entre diapositivas."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Etiqueta para interacciones no completadas",

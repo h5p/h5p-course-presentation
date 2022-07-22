@@ -73,7 +73,8 @@
                     "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções. Imagens com alta resolução aparecerão melhor em telas maiores."
                   },
                   {
-                    "label": "Escolha uma cor"
+                    "label": "Escolha uma cor",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções. Imagens com alta resolução aparecerão melhor em telas maiores."
             },
             {
-              "label": "Escolha uma cor"
+              "label": "Escolha uma cor",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Tela de apresentação para tecnologias assistência",
           "default": "Tela de apresentação. Use a seta à direita e a seta à esquerda para mudar de slide."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Rótulo para interações incompletas",

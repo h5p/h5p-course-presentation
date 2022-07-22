@@ -73,7 +73,8 @@
                     "description": "Das Hintergrundbild sollte ein Seitenverhältnis von 2:1 haben, um Verzerrungen zu vermeiden. Hochauflösende Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
                   },
                   {
-                    "label": "Wähle eine Farbe"
+                    "label": "Wähle eine Farbe",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Das Hintergrundbild sollte ein Seitenverhältnis von 2:1 haben, um Verzerrungen zu vermeiden. Hochauflösende Bilder sehen auf Bildschirmen mit hoher Auflösung besser aus."
             },
             {
-              "label": "Wähle eine Farbe"
+              "label": "Wähle eine Farbe",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Beschriftung des Präsentationsbereichs für Vorlesewerkzeuge (Barrierefreiheit)",
           "default": "Präsentationsbereich. Verwende die linke oder rechte Cursortaste, um zwischen den Folien zu navigieren."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Beschriftung für nicht abgeschlossene Interaktionen",

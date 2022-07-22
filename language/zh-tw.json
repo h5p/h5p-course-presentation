@@ -73,7 +73,8 @@
                     "description": "圖的背景應該有2：1寬高比以避免拉伸. 高解析度的圖像將在較大的螢幕上顯示得更好."
                   },
                   {
-                    "label": "選擇一種顏色"
+                    "label": "選擇一種顏色",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "圖的背景應該有2：1寬高比以避免拉伸. 高解析度的圖像將在較大的螢幕上顯示得更好."
             },
             {
-              "label": "選擇一種顏色"
+              "label": "選擇一種顏色",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "輔助操作說明",
           "default": "簡報播放時可使用左右箭頭來切換簡報頁."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "未完成互動的簡報頁名稱",

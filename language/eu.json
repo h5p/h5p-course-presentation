@@ -73,7 +73,8 @@
                     "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan."
                   },
                   {
-                    "label": "Hautatu kolore bat"
+                    "label": "Hautatu kolore bat",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan ."
             },
             {
-              "label": "Hautatu kolere bat"
+              "label": "Hautatu kolere bat",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Laguntza teknologietako Oihalaren etiketa",
           "default": "Aurkezpenaren ohiala. Erabili ezkerreko eta eskuineko gezia mugitzeko diapositiben artean."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Bukatu gabeko ariketen etiketa",

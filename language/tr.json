@@ -73,7 +73,8 @@
                     "description": "En boy oranının korunması için görsel arka plan genişliği, yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüklü görseller daha büyük ekranlarda daha iyi görüntülenecektir."
                   },
                   {
-                    "label": "Bir renk seçin"
+                    "label": "Bir renk seçin",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "En boy oranının korunması için görsel arka plan genişliği, yüksekliğinin iki katı olmalıdır. Yüksek çözünürlüklü görseller daha büyük ekranlarda daha iyi görüntülenecektir."
             },
             {
-              "label": "Bir renk seçin"
+              "label": "Bir renk seçin",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Yardımcı teknolojiler için kanvas etiketi",
           "default": "Sunum kanvası. Slaytlar arası geçiş yapmak için sol ve sağ yön oklarını kullanın."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Tamamlanmamış etkileşim olduğunda gösterilecek etiket",

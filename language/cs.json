@@ -73,7 +73,8 @@
                     "description": "Obrázek by měl mít poměr šířky k výšce 2: 1, aby nedošlo k roztažení. Obrázky s vysokým rozlišením se budou lépe zobrazovat na větších obrazovkách."
                   },
                   {
-                    "label": "Vybrat barvu"
+                    "label": "Vybrat barvu",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Obrázek by měl mít poměr šířky k výšce 2: 1, aby nedošlo k roztažení. Obrázky s vysokým rozlišením se budou lépe zobrazovat na větších obrazovkách."
             },
             {
-              "label": "Vybrat barvu"
+              "label": "Vybrat barvu",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Plocha pro pomocné technologie",
           "default": "Prezentační plocha. Mezi snímky se můžete pohybovat pomocí levé a pravé šipky."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Popisek pro nedokončené interakce",

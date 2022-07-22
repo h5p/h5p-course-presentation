@@ -73,7 +73,8 @@
                     "description": "Beeldagtergrond moet 'n 2:1 breedte-tot-hoogte-verhouding hê om te verhoed dat dit rek. Beelde met hoë resolusie sal beter op groter skerms vertoon word."
                   },
                   {
-                    "label": "Kies 'n kleur"
+                    "label": "Kies 'n kleur",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Beeldagtergrond moet 'n 2:1 breedte-tot-hoogte-verhouding hê om te verhoed dat dit rek. Beelde met hoë resolusie sal beter op groter skerms vertoon word."
             },
             {
-              "label": "Kies 'n kleur"
+              "label": "Kies 'n kleur",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Tekendoeketiket vir hulptegnologieë",
           "default": "Aanbieding tekendoek. Gebruik linker en regter pyltjies om tussen skyfies te beweeg."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Etiket vir onvoltooide interaksies",

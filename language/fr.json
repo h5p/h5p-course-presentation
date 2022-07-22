@@ -73,7 +73,8 @@
                     "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
                   },
                   {
-                    "label": "Sélectionnez une couleur"
+                    "label": "Sélectionnez une couleur",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
             },
             {
-              "label": "Sélectionnez une couleur"
+              "label": "Sélectionnez une couleur",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Etiquette de champs pour les technologies d'assistance",
           "default": "Zone de présentation. Utilisez les flèches gauche et droite pour naviguer entre les diapositives."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Etiquette pour des interactions incomplètes",

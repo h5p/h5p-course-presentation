@@ -73,7 +73,8 @@
                     "description": "Taustapildi mõõtude suhe peaks olema 2:1, et vältida pildi venimist. Suurtel ekraanidel paistavad kõrge resolutsiooniga pildid paremad välja.."
                   },
                   {
-                    "label": "Vali värv"
+                    "label": "Vali värv",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Taustapildi mõõtude suhe peaks olema 2:1, et vältida pildi venimist. Suurtel ekraanidel paistavad kõrge resolutsiooniga pildid paremad välja."
             },
             {
-              "label": "Vali värv"
+              "label": "Vali värv",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Taustasilt assisteerivale tehnoloogiale",
           "default": "Esitluse taust. Kasuta nooleklahve vasakule ja paremale lehekülgede vahel liikumiseks."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Lõpetamata tegevuse silt",

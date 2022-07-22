@@ -73,7 +73,8 @@
                     "description": "A imaxe de fondo debería ter unha relación de ancho a alto de 2:1 para evitar o seu estiramento. As imaxes con resolucións altas veranse mellor en pantallas grandes."
                   },
                   {
-                    "label": "Escolle unha cor"
+                    "label": "Escolle unha cor",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "A imaxe de fondo debería ter unha relación de ancho a alto de 2:1 para evitar o seu estiramento. As imaxes con resolucións altas veranse mellor en pantallas grandes."
             },
             {
-              "label": "Escolle unha cor"
+              "label": "Escolle unha cor",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Etiqueta do lenzo para tecnoloxías de asistencia",
           "default": "Lenzo da presentación. Usa as frechas esquerda e dereita para moverte entre diapositivas."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Etiqueta para interaccións incompletas",

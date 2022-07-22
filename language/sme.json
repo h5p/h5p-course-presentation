@@ -73,7 +73,8 @@
                     "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
-                    "label": "Pick a color"
+                    "label": "Pick a color",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
-              "label": "Pick a color"
+              "label": "Pick a color",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Canvas label for assistive technologies",
           "default": "Presentation canvas. Use left and right arrow to move between slides."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Label for uncompleted interactions",

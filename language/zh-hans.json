@@ -73,7 +73,8 @@
                     "description": "图片宽高比建议为 2：1 可避免延伸时超出。高解析度的图片在大屏幕上显示较佳。"
                   },
                   {
-                    "label": "选择颜色"
+                    "label": "选择颜色",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "图片宽高比建议为 2：1 可避免延伸时超出。高解析度的图片在大屏幕上显示较佳。"
             },
             {
-              "label": "选择颜色"
+              "label": "选择颜色",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "辅助操作说明",
           "default": "播放時可使用左右方向鍵來切換投影片"
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "未完成互动的幻灯片名称",

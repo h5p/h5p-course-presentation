@@ -73,7 +73,8 @@
                     "description": "Attēla fona platuma un augstuma attiecībai jābūt 2:1, lai izvairītos no izstiepšanas. Augstas izšķirtspējas attēli tiks labāk parādīti lielākos ekrānos."
                   },
                   {
-                    "label": "Izvēlieties krāsu"
+                    "label": "Izvēlieties krāsu",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Attēla fona platuma un augstuma attiecībai jābūt 2:1, lai izvairītos no izstiepšanas. Augstas izšķirtspējas attēli tiks labāk parādīti lielākos ekrānos."
             },
             {
-              "label": "Izvēlieties krāsu"
+              "label": "Izvēlieties krāsu",
+              "default": null
             }
           ]
         }
@@ -110,8 +112,8 @@
       "label": "Lokalizēt",
       "fields": [
         {
-          "default": "Slaids",
-          "label": "\"Slaids\" tulkojums"
+          "label": "\"Slaids\" tulkojums",
+          "default": "Slaids"
         },
         {
           "label": "\"Rezultāts\" tulkojums",
@@ -122,8 +124,8 @@
           "default": "Tavs rezultāts"
         },
         {
-          "default": "Maksimālais rezultāts",
-          "label": "\"Maksimālais rezultāts\" tulkojums"
+          "label": "\"Maksimālais rezultāts\" tulkojums",
+          "default": "Maksimālais rezultāts"
         },
         {
           "label": "\"Kopā\" tulkojums",
@@ -134,8 +136,8 @@
           "default": "Kopējais rezultāts"
         },
         {
-          "default": "Rādīt risinājumus",
-          "label": "Pogas \"Rādīt risinājumus\" nosaukums"
+          "label": "Pogas \"Rādīt risinājumus\" nosaukums",
+          "default": "Rādīt risinājumus"
         },
         {
           "label": "Pogas \"Mēģināt vēlreiz\" teksts",
@@ -158,8 +160,8 @@
           "default": "Pilnekrāna režīms"
         },
         {
-          "default": "Iziet no pilnekrāna režīma",
-          "label": "Etiķete iziešanai no pilnekrāna režīma"
+          "label": "Etiķete iziešanai no pilnekrāna režīma",
+          "default": "Iziet no pilnekrāna režīma"
         },
         {
           "label": "Iepriekšējā slaida etiķete",
@@ -174,8 +176,8 @@
           "default": "Pašreizējais slaids"
         },
         {
-          "default": "Pēdējais slaids",
-          "label": "Pēdējā slaida etiķete"
+          "label": "Pēdējā slaida etiķete",
+          "default": "Pēdējais slaids"
         },
         {
           "label": "Teksts iziešanai no risinājuma režīma",
@@ -198,8 +200,8 @@
           "default": "Dalīties Facebook"
         },
         {
-          "default": "Dalīties Twitter",
-          "label": "Teksts kopīgošanai Twitter"
+          "label": "Teksts kopīgošanai Twitter",
+          "default": "Dalīties Twitter"
         },
         {
           "label": "Teksts kopīgošanai Google",
@@ -210,12 +212,12 @@
           "default": "Kopsavilkums"
         },
         {
-          "default": "Rādīt komentārus",
-          "label": "Komentāru ikonas nosaukums"
+          "label": "Komentāru ikonas nosaukums",
+          "default": "Rādīt komentārus"
         },
         {
-          "default": "Drukāt",
-          "label": "Drukāšanas pogas nosaukums"
+          "label": "Drukāšanas pogas nosaukums",
+          "default": "Drukāt"
         },
         {
           "label": "Ieiešana drukāšanas dialogā",
@@ -242,6 +244,10 @@
           "default": "Prezentācijas virsma. Izmantojiet kreiso un labo bultiņu, lai pārvietotos starp slaidiem."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Nepabeigtām mijiedarbību etiķete",
           "default": "@slideName satur nepabeigtu mijiedarbību"
         },
@@ -254,8 +260,8 @@
           "default": "Slaids @index no @total"
         },
         {
-          "default": "@slideName ir tikai pareizās atbildes",
-          "label": "Etiķete slaidiem, kuros ir tikai pareizās atbildes"
+          "label": "Etiķete slaidiem, kuros ir tikai pareizās atbildes",
+          "default": "@slideName ir tikai pareizās atbildes"
         },
         {
           "label": "Etiķetes slaidiem, kuros ir nepareizas atbildes",
@@ -266,17 +272,17 @@
           "default": "Kopīgot rezultātu"
         },
         {
+          "label": "Asistīvo tehnoloģiju paziņojums par kopējo punktu skaitu",
           "default": "Jūs ieguvāt @score no @maxScore punktiem",
-          "description": "Pieejamie mainīgie ir @score un @maxScore",
-          "label": "Asistīvo tehnoloģiju paziņojums par kopējo punktu skaitu"
+          "description": "Pieejamie mainīgie ir @score un @maxScore"
         },
         {
           "label": "Asistīvo tehnoloģiju paziņojums par ieiešanu pilnekrāna režīmā",
           "default": "Atvērts pilnekrāna režīms"
         },
         {
-          "default": "Iziets no pilnekrāna režīma",
-          "label": "Asistīvo tehnoloģiju paziņojums par iziešanu no pilnekrāna režīma"
+          "label": "Asistīvo tehnoloģiju paziņojums par iziešanu no pilnekrāna režīma",
+          "default": "Iziets no pilnekrāna režīma"
         },
         {
           "label": "Rezultāta iesniegšanas apstiprināšanas dialoga galvene",
@@ -294,6 +300,7 @@
     },
     {
       "label": "Uzvedības iestatījumi.",
+      "description": "Šīs iestatījumi ļaus ignorēt uzvedības iestatījumus.",
       "fields": [
         {
           "label": "Ieslēgt aktīvās virsmas režīmu",
@@ -305,6 +312,7 @@
         },
         {
           "label": "Ignorēt pogu \"Rādīt risinājumu\"",
+          "description": "Šī opcija nosaka, vai poga \"Rādīt risinājumu\" tiks rādīta visiem jautājumiem, atspējota visiem vai konfigurēta katram jautājumam atsevišķi.",
           "options": [
             {
               "label": "Iespējota"
@@ -312,8 +320,7 @@
             {
               "label": "Atspējota"
             }
-          ],
-          "description": "Šī opcija nosaka, vai poga \"Rādīt risinājumu\" tiks rādīta visiem jautājumiem, atspējota visiem vai konfigurēta katram jautājumam atsevišķi."
+          ]
         },
         {
           "label": "Ignorēt pogu \"Mēģināt vēlreiz\"",
@@ -336,8 +343,8 @@
           "description": "Ja iespējots, izglītojamais, kad sasniegs kopsavilkuma slaidu, varēs vēlreiz mēģināt visus jautājumus. Ņemiet vērā, ka, atsvaidzinot lapu, dalībnieki varēs mēģināt vēlreiz, pat ja šī poga netiek rādīta."
         },
         {
-          "description": "Iespējo drukāšanas pogu.",
-          "label": "Atļaut drukāšanas pogu"
+          "label": "Atļaut drukāšanas pogu",
+          "description": "Iespējo drukāšanas pogu."
         },
         {
           "label": "Sociālie iestatījumi",
@@ -350,8 +357,8 @@
               "label": "Facebook koplietošanas iestatījumi",
               "fields": [
                 {
-                  "default": "@currentpageurl",
-                  "label": "Dalīties ar saiti Facebook"
+                  "label": "Dalīties ar saiti Facebook",
+                  "default": "@currentpageurl"
                 },
                 {
                   "label": "Dalīties ar citātu Facebook",
@@ -366,8 +373,8 @@
               "label": "Twitter kopīgošanas iestatījumi",
               "fields": [
                 {
-                  "default": "Es ieguvu @score no @maxScore par uzdevumu vietnē @currentpageurl.",
-                  "label": "Dalīties Twitter paziņojumā"
+                  "label": "Dalīties Twitter paziņojumā",
+                  "default": "Es ieguvu @score no @maxScore par uzdevumu vietnē @currentpageurl."
                 },
                 {
                   "label": "Dalīties ar saiti Twitter",
@@ -388,8 +395,7 @@
             }
           ]
         }
-      ],
-      "description": "Šīs iestatījumi ļaus ignorēt uzvedības iestatījumus."
+      ]
     }
   ]
 }

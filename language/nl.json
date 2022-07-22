@@ -73,7 +73,8 @@
                     "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
                   },
                   {
-                    "label": "Kies een kleur"
+                    "label": "Kies een kleur",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
             },
             {
-              "label": "Kies een kleur"
+              "label": "Kies een kleur",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Canvaslabel voor ondersteunende technologieën",
           "default": "Presentatiecanvas. Gebruik de pijl naar links en de pijl naar rechts om tussen de dia's te navigeren."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Label voor nog niet voltooide interacties",
