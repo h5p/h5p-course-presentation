@@ -73,7 +73,8 @@
                     "description": "Gambar latar harus memiliki rasio 2:1 untuk lebar terhadap tinggi untuk mencegah peregangan. Gambar dalam resolusi tinggi akan tampak lebih baik pada layar yang lebar."
                   },
                   {
-                    "label": "Pilih warna"
+                    "label": "Pilih warna",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Gambar latar harus memiliki rasio 2:1 untuk lebar terhadap tinggi untuk mencegah peregangan. Gambar dalam resolusi tinggi akan tampak lebih baik pada layar yang lebar."
             },
             {
-              "label": "Pilih warna"
+              "label": "Pilih warna",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Label kanvas untuk teknologi asistif",
           "default": "Kanvas presentasi. Gunakan panah kanan dan kiri untuk berganti slide."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Label untuk interaksi yang belum tuntas",

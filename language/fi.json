@@ -73,7 +73,8 @@
                     "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
                   },
                   {
-                    "label": "Valitse väri"
+                    "label": "Valitse väri",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Venymisen estämiseksi kuvasuhteen tulisi olla 2:1."
             },
             {
-              "label": "Valitse väri"
+              "label": "Valitse väri",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Piirtoalueen slite avustaville teknologioille",
           "default": "Piirtoalue. Käytä vasenta tai oikeaa nuolinäppäintä siirtyäksesi eteen- tai taaksepäin tässä esityksessä silloin kun dia on valittuna."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Selite suorittamatta oleville interaktioille",

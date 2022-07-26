@@ -87,6 +87,7 @@ let CoursePresentation = function (params, id, extras) {
     printCurrentSlide: 'Print current slide',
     noTitle: 'No title',
     accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected.',
+    accessibilityProgressBarLabel: 'Choose slide to display',
     containsNotCompleted: '@slideName contains not completed interaction',
     containsCompleted: '@slideName contains completed interaction',
     slideCount: 'Slide @index of @total',
@@ -219,7 +220,7 @@ CoursePresentation.prototype.attach = function ($container) {
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
           '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
+          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
           '  <div class="h5p-box-wrapper">' +
@@ -229,7 +230,7 @@ CoursePresentation.prototype.attach = function ($container) {
           '    </div>' +
           '  </div>' +
           '  <nav class="h5p-cp-navigation">' +
-          '    <ol class="h5p-progressbar list-unstyled"></ol>' +
+          '    <div class="h5p-progressbar" role="tablist" aria-label="' + this.l10n.accessibilityProgressBarLabel + '"></div>' +
           '  </nav>' +
           '  <div class="h5p-footer"></div>' +
           '</div>';

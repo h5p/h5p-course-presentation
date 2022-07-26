@@ -73,7 +73,8 @@
                     "description": "La imatge de fons ha de tenir una proporció entre l’alçada i l’amplada de 2:1 perquè no quedi estirada. Les imatges en alta resolució es veuen millor en pantalles grans."
                   },
                   {
-                    "label": "Agafa un color"
+                    "label": "Agafa un color",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "La imatge de fons ha de tenir una proporció entre l’alçada i l’amplada de 2:1 perquè no quedi estirada. Les imatges en alta resolució es veuen millor en pantalles grans."
             },
             {
-              "label": "Agafa un color"
+              "label": "Agafa un color",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Etiqueta de llenç per a tecnologies assistencials",
           "default": "Llenç de la presentació. Utilitzeu les fletxes esquerra i dreta per desplaçar-vos per les diapositives."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Etiqueta per a interaccions incompletes",

@@ -73,7 +73,8 @@
                     "description": "Slika ozadja naj bo med širino in višino v razmerju 2:1, sicer lahko prihaja do popačenja. Slike z visoko ločljivostjo se bodo na večjih zaslonih odrezale bolje."
                   },
                   {
-                    "label": "Izbor barve"
+                    "label": "Izbor barve",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Slika ozadja naj bo med širino in višino v razmerju 2:1, sicer lahko prihaja do popačenja. Slike z visoko ločljivostjo se bodo na večjih zaslonih odrezale bolje."
             },
             {
-              "label": "Izbor barve"
+              "label": "Izbor barve",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Oznaka osrednjega okna prosojnice za bralnike zaslona",
           "default": "Osrednje okno prosojnice. Med stranmi se premika s puščicami levo ali desno."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Besedilo za neopravljene aktivnosti",

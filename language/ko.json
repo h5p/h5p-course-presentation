@@ -73,7 +73,8 @@
                     "description": "늘어남을 방지하기 위해 넓이와 길이 비율을 2:1로 지정하세요. 고해상도 이미지는 큰 화면에서 더 잘 보입니다"
                   },
                   {
-                    "label": "색깔을 고르세요"
+                    "label": "색깔을 고르세요",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "늘어남을 방지하기 위해 넓이와 길이 비율을 2:1로 지정하세요. 고해상도 이미지는 큰 화면에서 더 잘 보입니다"
             },
             {
-              "label": "색깔을 고르세요"
+              "label": "색깔을 고르세요",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "보조 기술용 캔버스 레이블",
           "default": "캔버스가 선택된 상태에서 왼쪽, 오른쪽 화살표 키로 슬라이드를 이동할 수 있습니다."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "완료되지 않은 상호작용에 대한 레이블",

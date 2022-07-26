@@ -73,7 +73,8 @@
                     "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
                   },
                   {
-                    "label": "Odaberi boju"
+                    "label": "Odaberi boju",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
             },
             {
-              "label": "Odaberi boju"
+              "label": "Odaberi boju",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Canvas label for assistive technologies",
           "default": "Prezentacijsko platno. Koristi strelice desno i lijevo da listaš slajdove."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Label for uncompleted interactions",

@@ -73,7 +73,8 @@
                     "description": "Zdjęcie w tle powinno mieć proporcje 2:1 aby zapobiec rozciąganiu. Zdjęcia, które mają wysoką rozdzielczość będą lepiej wyświetlane na większych monitorach."
                   },
                   {
-                    "label": "Wybierz kolor"
+                    "label": "Wybierz kolor",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Zdjęcie w tle powinno mieć proporcje 2:1 aby zapobiec rozciąganiu. Zdjęcia, które mają wysoką rozdzielczość będą lepiej wyświetlane na większych monitorach."
             },
             {
-              "label": "Wybierz kolor"
+              "label": "Wybierz kolor",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Nazwa ramki slajdów dla użytkowników, korzystających z technologii wspomagających",
           "default": "Ramka slajdów. Używaj klawiszy w prawo i w lewo aby zmienić slajd."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Tekst dla niedokończonych interakcji w slajdzie",

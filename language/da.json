@@ -73,7 +73,8 @@
                     "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
                   },
                   {
-                    "label": "Valg af farve"
+                    "label": "Valg af farve",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
             },
             {
-              "label": "Valg af farve"
+              "label": "Valg af farve",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Canvas label for assistive technologies",
           "default": "Presentation canvas. Use left and right arrow to move between slides."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Label for uncompleted interactions",

@@ -73,7 +73,8 @@
                     "description": "صورة الخلفية يجب ان تكون بنسبة 2:1 (عرض الى ارتفاع ) لتجنب التمدد ، سيتم عرض الصر عالية الدقةبشكل افضل على الشاشات الاكبر حجما."
                   },
                   {
-                    "label": "اختر لونا"
+                    "label": "اختر لونا",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "صورة الخلفية يجب ان تكون بنسبة 2:1 (عرض الى ارتفاع ) لتجنب التمدد ، سيتم عرض الصر عالية الدقةبشكل افضل على الشاشات الاكبر حجما."
             },
             {
-              "label": "اختر لونا"
+              "label": "اختر لونا",
+              "default": null
             }
           ]
         }
@@ -240,6 +242,10 @@
         {
           "label": "Canvas label for assistive technologies",
           "default": "Presentation canvas. Use left and right arrow to move between slides."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "تسمية لتفاعلات غير مكتملة",
