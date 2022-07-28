@@ -134,14 +134,10 @@ const NavigationLine = (function ($) {
 
       // Add hover effect if not an ipad or iphone.
       if (!isIOS) {
-        // create popup
-        const $popup = $('<div/>', {
-          'class': 'h5p-progressbar-popup',
-          'html': progressbarPartTitle,
-          'aria-hidden': 'true'
-        }).appendTo($li);
-
-        $li.mouseenter(() => this.ensurePopupVisible($popup));
+        new H5P.Tooltip($li.get(0), {
+          'text': progressbarPartTitle,
+          'ariaHidden': true,
+        });
       }
 
       if (this.isSummarySlide(i)) {
@@ -176,27 +172,6 @@ const NavigationLine = (function ($) {
           this.setTaskAnswered(i, isAnswered);
         }
       }
-    }
-  };
-
-  /**
-   * Ensures that all of a popup is visible
-   *
-   * @param {jQuery} $popup
-   */
-  NavigationLine.prototype.ensurePopupVisible = function ($popup) {
-    const availableWidth = this.cp.$container.width();
-    const popupWidth = $popup.outerWidth();
-    const popupOffsetLeft = $popup.offset().left;
-
-    if (popupOffsetLeft < 0) {
-      $popup.css('left', 0);
-      $popup.css('transform', 'translateX(0)');
-    }
-    else if ((popupOffsetLeft + popupWidth) > availableWidth) {
-      $popup.css('left', 'auto');
-      $popup.css('right', 0);
-      $popup.css('transform', 'translateX(0)');
     }
   };
 
