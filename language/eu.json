@@ -295,6 +295,10 @@
         {
           "label": "Bidali emaitza baieztapen-mezuaren baieztapen-botoia",
           "default": "Bidali eta ikusi emaitzak"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

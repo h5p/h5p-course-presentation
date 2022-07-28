@@ -295,6 +295,10 @@
         {
           "label": "Bouton de confirmation  du dialogue de confirmation d'envoi des réponses",
           "default": "Envoyer et voir les résultats"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

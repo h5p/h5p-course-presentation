@@ -295,6 +295,10 @@
         {
           "label": "결과 제출 확인 대화창의 확인 버튼",
           "default": "제출하고 결과를 확인하세요."
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

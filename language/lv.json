@@ -295,6 +295,10 @@
         {
           "label": "Apstiprinājuma poga rezultātu iesniegšanas apstiprināšanas dialogā",
           "default": "Iesniegt un skatīt rezultātus"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

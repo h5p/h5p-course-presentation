@@ -295,6 +295,10 @@
         {
           "label": "Potvrzovací tlačítko dialogu pro potvrzení odeslání výsledku",
           "default": "Odešlete a uvidíte výsledky"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

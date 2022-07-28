@@ -295,6 +295,10 @@
         {
           "label": "Кнопка подтверждения диалога подтверждения результата отправки",
           "default": "Отправить и посмотреть результаты"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

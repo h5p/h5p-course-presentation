@@ -295,6 +295,10 @@
         {
           "label": "Bevestigingsknop van de bevestigingsdialoog voor het verzenden van resultaten",
           "default": "Verzenden en resultaten bekijken"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },
