@@ -449,8 +449,8 @@ const NavigationLine = (function ($) {
       .addClass("h5p-progressbar-part-selected")
       .attr('aria-selected', true)
       .siblings()
-      .removeClass("h5p-progressbar-part-selected")
-      .attr('aria-selected', false);
+        .removeClass("h5p-progressbar-part-selected")
+        .attr('aria-selected', false);
 
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (part, i) {
