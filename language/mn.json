@@ -295,6 +295,10 @@
         {
           "label": "Илгээх үр дүнг баталгаажуулах харилцах цонхны товч",
           "default": "Үр дүнгээ харах болон илгээх"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

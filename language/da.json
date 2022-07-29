@@ -295,6 +295,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Send besvarelse og se resultat"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

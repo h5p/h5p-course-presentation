@@ -295,6 +295,10 @@
         {
           "label": "Botão de confirmação da caixa de diálogo de confirmação de envio do resultado",
           "default": "Enviar e ver resultados"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

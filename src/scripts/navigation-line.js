@@ -155,7 +155,7 @@ const NavigationLine = (function ($) {
 
       if (i === currentSlideIndex) {
         $li.addClass('h5p-progressbar-part-selected')
-          .attr('aria-selected', true)
+          .attr('aria-selected', true);
       }
 
       that.cp.progressbarParts.push($li);

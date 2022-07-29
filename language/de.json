@@ -295,6 +295,10 @@
         {
           "label": "Bestätigungs-Button des Bestätigungsdialogfelds für das Senden des Ergebnisses",
           "default": "Senden und Ergebnisse ansehen"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },
