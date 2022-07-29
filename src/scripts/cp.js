@@ -230,7 +230,7 @@ CoursePresentation.prototype.attach = function ($container) {
           '     <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
           '  </div>' +
-          '  <nav class="h5p-cp-navigation" aria-labelledby="' + this.l10n.slideshowNavigationLabel + '">' +
+          '  <nav class="h5p-cp-navigation" aria-label="' + this.l10n.slideshowNavigationLabel + '">' +
           '    <div class="h5p-progressbar" role="tablist" aria-label="' + this.l10n.accessibilityProgressBarLabel + '"></div>' +
           '  </nav>' +
           '  <div class="h5p-footer"></div>' +
