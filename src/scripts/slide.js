@@ -59,8 +59,12 @@ Slide.createHTML = function (parameters) {
       'role="tabpanel" ' +
       'id="slide-' + parameters.index + '" ' +
       'aria-labelledby="progressbar-part-' + parameters.index + '" ' +
-      'class="h5p-slide"' + 
-      (parameters.background !== undefined ? ' style="background:' + parameters.background + '"' : '') + '>' +
+      'class="h5p-slide"> ' +
+      '<div ' +
+        'role="document" ' +
+        'tabindex="0" ' + 
+        (parameters.background !== undefined ? ' style="background:' + parameters.background + '"' : '') + '>' +
+      '</div>' +
     '</div>';
 };
 
