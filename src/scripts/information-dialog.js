@@ -33,6 +33,14 @@ export class InformationDialog {
   static createVideoEmbed(videoUrl) {
     const videoElement = document.createElement("video");
     videoElement.src = videoUrl;
+    videoElement.setAttribute("webkit-playsinline", "");
+    videoElement.setAttribute("playsinline", "");
+    videoElement.setAttribute("preload", "metadata");
+    videoElement.setAttribute("controlslist", "nodownload");
+    videoElement.setAttribute("disablepictureinpicture", "");
+    videoElement.setAttribute("controls", "");
+    videoElement.setAttribute("class", "h5p-video");
+    videoElement.setAttribute("style", "display: block; width: 100%; height: 100%;");
 
     return videoElement;
   }
@@ -191,7 +199,7 @@ export class InformationDialog {
         this.videoEmbedElement = videoElement;
 
         const videoContainer = document.createElement("div");
-        videoContainer.className = "h5p-information-dialog-video-container";
+        videoContainer.classList.add("h5p-information-dialog-video-container", "h5p-video");
         mainContainer.appendChild(videoContainer);
 
         videoContainer.appendChild(videoElement);
