@@ -908,7 +908,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     top: element.y + '%',
     width: element.width + '%',
     height: element.height + '%'
-  }).appendTo($slide);
+  }).appendTo($slide.children('[role="document"]').first());
 
   const isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
