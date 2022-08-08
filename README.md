@@ -1,4 +1,4 @@
-NDLA H5P Course Presentation
+NDLA H5P Interactive Board
 ==========
 
 Combine texts, multimedia and tasks into a presentation.
