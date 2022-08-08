@@ -25,7 +25,7 @@ jobs:
           cd dist
 
           # Clone dependencies
-          while read -r repo; do git clone ${repo}; done < ../h5p-course-presentation/build_info/repos
+          while read -r repo; do git clone ${repo}; done < ../h5p-interactive-board/build_info/repos
 
           # Install local dependencies and build distribution versions
           if [ -d "h5p-editor-color-selector" ]; then pushd h5p-editor-color-selector && git checkout b0ae8c941cedcec73df6b186663eae6df8679810; popd; fi
@@ -38,8 +38,8 @@ jobs:
 
           # Remove projects that we want to override
           rm -rf \
-            h5p-course-presentation \
-            h5p-editor-course-presentation \
+            h5p-interactive-board \
+            h5p-editor-interactive-board \
             h5p-chart \
             h5p-shape \
             h5p-editor-shape \
@@ -67,7 +67,7 @@ jobs:
           git clone https://github.com/NDLA-H5P/h5p-editor-interactive-video.git
           
           # Clone and build override projects with build scripts
-          git clone https://github.com/NDLANO/h5p-editor-course-presentation.git && pushd h5p-editor-course-presentation && npm ci && npm run build && popd
+          git clone https://github.com/NDLANO/h5p-editor-interactive-board.git && pushd h5p-editor-interactive-board && npm ci && npm run build && popd
           git clone https://github.com/NDLA-H5P/h5p-drag-question.git && pushd h5p-drag-question && npm ci && npm run build && popd
           git clone https://github.com/NDLA-H5P/h5p-interactive-video.git && pushd h5p-interactive-video && npm install && npm run build && popd
 
@@ -76,18 +76,18 @@ jobs:
           cd dist
           ls
           npm install -g h5p
-          h5p pack -r h5p-course-presentation h5p-editor-course-presentation h5p-editor-show-when course-presentation.h5p
-          h5p validate course-presentation.h5p
+          h5p pack -r h5p-interactive-board h5p-editor-interactive-board h5p-editor-show-when interactive-board.h5p
+          h5p validate interactive-board.h5p
       - name: Store packed H5P as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: course-presentation.h5p
-          path: dist/course-presentation.h5p
+          name: interactive-board.h5p
+          path: dist/interactive-board.h5p
       - name: Load library.json
         id: set_library
         run: |
           ls
-          JSON=$(cat ./h5p-course-presentation/library.json)
+          JSON=$(cat ./interactive-board/library.json)
           JSON="${JSON//'%'/%25}"
           JSON="${JSON//$'\n'/%0A}"
           JSON="${JSON//$'\r'/%0D}"
