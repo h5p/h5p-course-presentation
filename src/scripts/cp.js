@@ -687,8 +687,9 @@ CoursePresentation.prototype.showKeywords = function () {
  *
  * @param {number} value 0 - 100
  */
-CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  this.$keywordsWrapper.css('opacity', value / 100);
+CoursePresentation.prototype.setKeywordsOpacity = function (value) { 
+  const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
+  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
 
 /**
@@ -778,11 +779,14 @@ CoursePresentation.prototype.resize = function () {
 
     for (let i = 0; i < instances.length; i++) {
       const instance = instances[i];
-      if (instance.libraryInfo.machineName === "H5P.Dialogcards") {
+
+      const isDialogCards = instance.libraryInfo && instance.libraryInfo.machineName === "H5P.Dialogcards";
+      if (isDialogCards) {
         instance.on('resize', function () {
           self.resizeDialogCard(this);
         });
       }
+
       if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
         H5P.trigger(instance, 'resize');
       }
@@ -1068,7 +1072,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     });
 
     instance.attach($innerElementContainer);
-    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+    if (element.action !== undefined && element.action.library.substr(0, 24) === 'H5P.NDLAInteractiveVideo') {
       var handleIV = function () {
         instance.$container.addClass('h5p-fullscreen');
         if (instance.controls.$fullscreen) {
@@ -1238,7 +1242,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
-  if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+  if (element.action !== undefined && element.action.library.substr(0, 24) === 'H5P.NDLAInteractiveVideo') {
     instance.on('controls', function () {
       if (instance.controls.$fullscreen) {
         instance.controls.$fullscreen.remove();
@@ -1272,7 +1276,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.showPopup($buttonElement, $button, popupPosition, () => {
 
       // Specific to YT Iframe
-      if (instance.libraryInfo.machineName === "H5P.InteractiveVideo" && instance.video.pressToPlay !== undefined) {
+      if (instance.libraryInfo.machineName === "H5P.NDLAInteractiveVideo" && instance.video.pressToPlay !== undefined) {
         // YT iframe does not receive state change event when it opens in a dialog box second time 
         instance.video.on('ready', function (event) {
           const videoInstance = this;
@@ -2311,7 +2315,7 @@ CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
         (instance.pause instanceof Function ||
           typeof instance.pause === 'function')) {
       // Don't pause media if the source is not compatible
-      if (params && instance.libraryInfo.machineName === "H5P.InteractiveVideo" &&
+      if (params && instance.libraryInfo.machineName === "H5P.NDLAInteractiveVideo" &&
           instance.video.pressToPlay === undefined &&
           params.interactiveVideo.video.files && 
           H5P.VideoHtml5.canPlay(params.interactiveVideo.video.files)) {
