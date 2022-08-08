@@ -9,13 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: h5p-course-presentation
+          path: h5p-interactive-board
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: "15.x"
       - run: |
-          cd h5p-course-presentation
+          cd h5p-interactive-board
           npm ci
           npm run validate-types
           npm run build
@@ -71,7 +71,7 @@ jobs:
           git clone https://github.com/NDLA-H5P/h5p-drag-question.git && pushd h5p-drag-question && npm ci && npm run build && popd
           git clone https://github.com/NDLA-H5P/h5p-interactive-video.git && pushd h5p-interactive-video && npm install && npm run build && popd
 
-          cp -r ../h5p-course-presentation .
+          cp -r ../h5p-interactive-board .
       - run: |
           cd dist
           ls
@@ -107,4 +107,4 @@ jobs:
             }}
           prerelease: false
           files: |
-            dist/course-presentation.h5p
+            dist/interactive-board.h5p
