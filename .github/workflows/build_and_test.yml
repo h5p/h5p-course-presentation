@@ -87,7 +87,7 @@ jobs:
         id: set_library
         run: |
           ls
-          JSON=$(cat ./interactive-board/library.json)
+          JSON=$(cat ./h5p-interactive-board/library.json)
           JSON="${JSON//'%'/%25}"
           JSON="${JSON//$'\n'/%0A}"
           JSON="${JSON//$'\r'/%0D}"
