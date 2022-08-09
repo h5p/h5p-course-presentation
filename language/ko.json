@@ -297,8 +297,8 @@
           "default": "제출하고 결과를 확인하세요."
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "슬라이드쇼 탐색",
+          "default": "슬라이드쇼 탐색"
         }
       ]
     },
