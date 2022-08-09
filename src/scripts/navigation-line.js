@@ -135,7 +135,6 @@ const NavigationLine = (function ($) {
       // Add hover effect if not an ipad or iphone.
       if (!isIOS) {
         new H5P.Tooltip($li.get(0), {
-          'text': progressbarPartTitle,
           'ariaHidden': true,
         });
       }
