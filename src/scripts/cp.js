@@ -1080,7 +1080,6 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
   addClickAndKeyboardListeners($button, () => {
     $button.attr('aria-expanded', 'true');
     this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, setAriaExpandedFalse($button), parentPosition);
-    this.disableTabIndexes(); // Disable tabs behind overlay
   });
 
   if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
@@ -1113,15 +1112,23 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     // Listen for exit fullscreens not triggered by button, for instance using 'esc'
     this.on('exitFullScreen', exitFullScreen);
 
-    this.showPopup($buttonElement, $button, popupPosition, (keepInDOM = false) => {
-      if (!keepInDOM) {
-        $buttonElement.detach();
-      }
+    this.showPopup({
+      popupContent: $buttonElement, 
+      $focusOnClose: $button, 
+      parentPosition: popupPosition, 
+      remove: (keepInDOM = false) => {
+        if (!keepInDOM) {
+          $buttonElement.detach();
+        }
 
-      // Remove listener, we only need it for active popups
-      this.off('exitFullScreen', exitFullScreen);
-      closeCallback();
-    }, libTypePmz, instance, libTypePmz === 'h5p-interactivevideo');
+        // Remove listener, we only need it for active popups
+        this.off('exitFullScreen', exitFullScreen);
+        closeCallback();
+      }, 
+      classes: libTypePmz, 
+      instance: instance, 
+      keepInDOM: libTypePmz === 'h5p-interactivevideo'
+    });
 
     H5P.trigger(instance, 'resize');
 
@@ -1214,7 +1221,7 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
         role: 'button',
         tabindex: 0,
         title: this.l10n.solutionsButtonTitle,
-        'aria-popup': true,
+        'aria-haspopup': 'dialog',
         'aria-expanded': false,
         'class': 'h5p-element-solution'
       }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>')
@@ -1229,7 +1236,18 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
         parentPosition.y += element.height - 12;
       }
 
-      addClickAndKeyboardListeners($commentButton, () => this.showPopup(element.solution, $commentButton, parentPosition));
+      addClickAndKeyboardListeners($commentButton, (event) => {
+        this.showPopup({ 
+          popupContent: element.solution, 
+          $focusOnClose: $commentButton, 
+          parentPosition: parentPosition,
+          updateAriaExpanded: true,
+        });
+        $commentButton.attr('aria-expanded', true);
+        
+        // Prevents the wrapper from stealing the focus of screen readers
+        event.stopPropagation();
+      });
     }
   };
 
@@ -1248,10 +1266,23 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {string} [classes]
  * @param {object} [instance] H5P library instance
  * @param {boolean} [keepInDOM] Hide the popup instead of removing it when it gets closed
+ * @param {boolean} [updateAriaExpanded] Set aria-expanded=false on the $focusOnClose element when closing
  */
-CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field', instance, keepInDOM = false) {
+CoursePresentation.prototype.showPopup = function ({
+    popupContent, 
+    $focusOnClose, 
+    parentPosition = null, 
+    remove, 
+    classes = 'h5p-popup-comment-field', 
+    instance, 
+    keepInDOM = false,
+    updateAriaExpanded,
+  }) {
+
   var self = this;
   var doNotClose;
+  // Give the popup elements unique ids
+  this.popupId = this.popupId === undefined ? 0 : this.popupId + 1;
 
   /** @private */
   var close = function (event) {
@@ -1261,11 +1292,18 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
       return;
     }
 
+    // Enable focus to rest of page
+    self.restoreTabIndexes();
+
+    $focusOnClose.focus();
+    if (updateAriaExpanded) {
+      $focusOnClose.attr('aria-expanded', false);
+    }
+
     // Remove popup
     if (remove !== undefined) {
       setTimeout(function () {
         remove(keepInDOM);
-        self.restoreTabIndexes();
       }, 100);
     }
     event.preventDefault();
@@ -1280,8 +1318,6 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
         $popup.remove();
       }
     }, 100);
-
-    $focusOnClose.focus();
   };
 
   let $popup;
@@ -1295,9 +1331,14 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     // The popup must be created and added to the DOM
     $popup = $(
       '<div class="h5p-popup-overlay ' + classes + '">' +
-        '<div class="h5p-popup-container" role="dialog">' +
+        '<div ' + 
+          'class="h5p-popup-container" ' + 
+          'role="dialog"' + 
+          'aria-modal="true" ' + 
+          'aria-live="true" ' + 
+          'aria-labelledby="popup-title-' + this.popupId + '"> ' + 
           '<div class="h5p-cp-dialog-titlebar">' +
-            '<div class="h5p-dialog-title"></div>' +
+            '<div class="h5p-dialog-title" id="popup-title-' + this.popupId + '"></div>' +
             '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
           '</div>' +
           '<div class="h5p-popup-wrapper" role="document"></div>' +
@@ -1312,6 +1353,18 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     else {
       $popupWrapper.html(popupContent);
     }
+
+    // Make sure the content is read by screen readers
+    let idList = '';
+    $popupWrapper
+      .children()
+      .each((index, child) => {
+        child.setAttribute('id', 'popup-content-' + this.popupId + '-' + index);
+        idList += 'popup-content-' + this.popupId + '-' + index + ' ';
+      });
+    $popup
+      .find('.h5p-popup-container')
+      .attr('aria-describedby', idList);
 
     if (instance && instance.subContentId) {
       // Keep a reference to this popup
@@ -1409,20 +1462,23 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
 
   // Insert popup ready for use
   $popup
-    .focus()
     .removeClass('h5p-animate')
     .click(close)
     .find('.h5p-popup-container')
-    .removeClass('h5p-animate')
-    .click(function () {
-      doNotClose = true;
-    })
-    .keydown(function (event) {
-      if (event.which === keyCode.ESC) {
-        close(event);
-      }
-    })
-    .end();
+      .removeClass('h5p-animate')
+      .click(function () {
+        doNotClose = true;
+      })
+      .keydown(function (event) {
+        if (event.which === keyCode.ESC) {
+          close(event);
+        }
+      })
+      .find('.h5p-close-popup')
+        .focus();
+
+  // Hide other elements from the tab order
+  this.disableTabIndexes();
 
   addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => close(event));
 
