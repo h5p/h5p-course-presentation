@@ -1482,6 +1482,16 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
   const $popupContainer = $popup.find('.h5p-popup-container');
 
   const resizePopup = ($popup, $popupContainer, parentPosition) => {
+    // Workaround for NDLA's way of changing height of the slide
+    if ($popupContainer.find('.h5p-button-element.h5p-video > video')) {
+      $popupWrapper.css('max-height', 'inherit');
+      $popupContainer.css('min-height', 'inherit');
+    }
+    else {
+      $popupWrapper.css('max-height', '');
+      $popupContainer.css('min-height', '');
+    }
+
     if (!parentPosition) {
       return;
     }
