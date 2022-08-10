@@ -727,29 +727,15 @@ CoursePresentation.prototype.fitCT = function () {
  */
 CoursePresentation.prototype.resetRatio = function () {
   const slide = this.slides[this.$current.index()];
-  switch(slide.aspectRatio){
-    case "16-9":
-      this.ratio = (16/9);
-      break;
-    case "9-16":
-      this.ratio = (9/16);
-      break;
-    case "4-3":
-      this.ratio = (4/3);
-      break;
-    case "3-4":
-      this.ratio = (3/4);
-      break;
-    default:
-      this.ratio = (16/9);
-  }
-  this.$container.attr('data-ratio', slide.aspectRatio);
 
-  const footerHeight = '35px';
-  this.$wrapper.css({
-    paddingTop: `calc(${100/this.ratio}% - ${footerHeight})`,
-  });
-}
+  const validRatioRegex = /^\d+-\d+$/;
+  if (!validRatioRegex.test(slide.aspectRatio)) {
+    this.ratio = 16 / 9;
+  }
+  else {
+    this.ratio = slide.aspectRatio.split('-')[0] / slide.aspectRatio.split('-')[1];
+  }
+};
 
 /**
  * Resize handling.
@@ -757,18 +743,43 @@ CoursePresentation.prototype.resetRatio = function () {
 CoursePresentation.prototype.resize = function () {  
   var self = this;
   
+  var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
+
   if (this.ignoreResize) {
     return; // When printing.
   }
 
   this.resetRatio();
 
-  const width = this.$container.width();
-  const widthRatio = width / this.width;
-  
+  // Fill up all available width
+  this.$wrapper.css('width', 'auto');
+  var width = this.$container.width();
+  var style = {};
+
+  if (fullscreenOn) {
+    var maxHeight = this.$container.height();
+    if (width / maxHeight > this.ratio) {
+      // Top and bottom would be cut off so scale down.
+      width = maxHeight * this.ratio;
+      style.width = width + 'px';
+    }
+  }
+
+  // TODO: Add support for -16 when content conversion script is created?
+  var widthRatio = width / this.width;
+  style.height = (width / this.ratio) + 'px';
+  style.fontSize = (this.fontSize * widthRatio) + 'px';
+
   if (this.editor !== undefined) {
     this.editor.setContainerEm(this.fontSize * widthRatio);
   }
+
+  this.$wrapper.css(style);
+
+  // Set h5p-box-wrapper height
+  const navigationHeight = this.$container.find('.h5p-cp-navigation').height() || 0;
+  const footerHeight = this.$footer.height() || 0;
+  this.$boxWrapper.css({ 'height': `${(width / this.ratio) - navigationHeight - footerHeight}px` });
 
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
 
