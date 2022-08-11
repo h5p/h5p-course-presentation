@@ -296,7 +296,6 @@
   min-height: 65%;
   max-height: 80%;
   transition: top 0.2s;
-  overflow: hidden;
   font-size: 0.75em;
   display: flex;
   flex-direction: column;
@@ -584,8 +583,8 @@
 
 .h5p-course-presentation .h5p-close-popup {
   position: absolute;
-  top: 0.25em;
-  right: 0.5em;
+  left: 101%;
+  bottom: 101%;
   cursor: pointer;
   padding: 0.4em 0.5em;
   font-size: 1.33em;
@@ -594,13 +593,13 @@
 .h5p-course-presentation .h5p-close-popup:before {
   font-family: 'H5PFontAwesome4';
   content: "\f057";
-  color: #757575;;
+  color: dimgrey;;
 
   vertical-align: middle;
 }
 
 .h5p-course-presentation .h5p-close-popup:hover:before {
-  color: #555;
+  color: black;
 }
 
 .h5p-course-presentation .h5p-element-inner.h5p-video, .h5p-course-presentation .h5p-element-inner.h5p-audio {
