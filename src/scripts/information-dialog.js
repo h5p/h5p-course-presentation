@@ -8,7 +8,16 @@ export class InformationDialog {
    * @return {HTMLIFrameElement}
    */
   static createYouTubeEmbed(youtubeUrl) {
-    const videoId = new URLSearchParams(youtubeUrl.split("?")[1]).get("v");
+
+    // Determine video id from all kinds of possible YouTube URLs
+    const getId = (url) => {
+      const matches = youtubeUrl.match(/(?:(?:youtube.com\/(?:attribution_link\?(?:\S+))?(?:v\/|embed\/|watch\/|(?:user\/(?:\S+)\/)?watch(?:\S+)v\=))|(?:youtu.be\/|y2u.be\/))([A-Za-z0-9_-]{11})/i);
+      if (matches && matches[1]) {
+        return matches[1];
+      }
+    };
+
+    const videoId = getId(youtubeUrl);
     const embedUrl = `https://www.youtube.com/embed/${videoId}`;
 
     const iframe = document.createElement("iframe");
