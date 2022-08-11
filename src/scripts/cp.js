@@ -1300,6 +1300,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
             '<div class="h5p-dialog-title"></div>' +
             '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
           '</div>' +
+          '<div class="h5p-popup-wrapper" role="document"></div>' +
         '</div>' +
       '</div>'
     );
