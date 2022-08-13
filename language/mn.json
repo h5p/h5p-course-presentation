@@ -297,8 +297,8 @@
           "default": "Үр дүнгээ харах болон илгээх"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Слайд шоуны навигаци",
+          "default": "Слайд шоуны навигаци"
         }
       ]
     },
@@ -382,7 +382,7 @@
                 },
                 {
                   "label": "Твиттерт холбоосыг хуваалцах",
-                  "default": "@одоогийнхуудсын линк"
+                  "default": "@currentpageurl"
                 },
                 {
                   "label": "Твиттерт хаштаг хуваалцах",
@@ -395,7 +395,7 @@
             },
             {
               "label": "Google холбоос руу хуваалцах",
-              "default": "@одоогийнхуудсын линк"
+              "default": "@currentpageurl"
             }
           ]
         }
