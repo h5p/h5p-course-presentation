@@ -362,7 +362,7 @@
               "fields": [
                 {
                   "label": "Facebook-ийн холбоосыг хуваалцах",
-                  "default": "@одоогийнхуудсынлинк"
+                  "default": "@currentpageurl"
                 },
                 {
                   "label": "Онч үгийг Facebook дээр хуваалцах",
@@ -382,7 +382,7 @@
                 },
                 {
                   "label": "Твиттерт холбоосыг хуваалцах",
-                  "default": "@одоогийнхуудсын линк"
+                  "default": "@currentpageurl"
                 },
                 {
                   "label": "Твиттерт хаштаг хуваалцах",
@@ -395,7 +395,7 @@
             },
             {
               "label": "Google холбоос руу хуваалцах",
-              "default": "@одоогийнхуудсын линк"
+              "default": "@currentpageurl"
             }
           ]
         }
