@@ -73,8 +73,7 @@
                     "description": "Obrázek by měl mít poměr šířky k výšce 2: 1, aby nedošlo k roztažení. Obrázky s vysokým rozlišením se budou lépe zobrazovat na větších obrazovkách."
                   },
                   {
-                    "label": "Vybrat barvu",
-                    "default": null
+                    "label": "Vybrat barvu"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Obrázek by měl mít poměr šířky k výšce 2: 1, aby nedošlo k roztažení. Obrázky s vysokým rozlišením se budou lépe zobrazovat na větších obrazovkách."
             },
             {
-              "label": "Vybrat barvu",
-              "default": null
+              "label": "Vybrat barvu"
             }
           ]
         }
