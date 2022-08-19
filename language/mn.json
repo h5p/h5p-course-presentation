@@ -360,7 +360,7 @@
               "fields": [
                 {
                   "label": "Facebook-ийн холбоосыг хуваалцах",
-                  "default": "@currentpageurl хуудас"
+                  "default": "@currentpageurl"
                 },
                 {
                   "label": "Онч үгийг Facebook дээр хуваалцах",
@@ -380,7 +380,7 @@
                 },
                 {
                   "label": "Твиттерт холбоосыг хуваалцах",
-                  "default": "@currentpageurl хуудас"
+                  "default": "@currentpageurl"
                 },
                 {
                   "label": "Твиттерт хаштаг хуваалцах",
@@ -392,8 +392,8 @@
               "label": "Google+ д хуваалцах тэмдэгтийг дэлгэцэд харуулах"
             },
             {
-              "default": "@currentpageurl хуудас",
-              "label": "Google холбоос руу хуваалцах"
+              "label": "Google холбоос руу хуваалцах",
+              "default": "@currentpageurl"
             }
           ]
         }
