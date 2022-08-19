@@ -73,8 +73,7 @@
                     "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
                   },
                   {
-                    "label": "Escolha a cor",
-                    "default": null
+                    "label": "Escolha a cor"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "A imagem de fundo deve ter um rácio de 2:1 largura/altura para evitar que seja esticada. Imagens de maior resolução ficaram melhor em dispositivos com ecrãs maiores."
             },
             {
-              "label": "Escolha uma cor",
-              "default": null
+              "label": "Escolha uma cor"
             }
           ]
         }
