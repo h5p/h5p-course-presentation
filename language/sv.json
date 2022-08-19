@@ -73,8 +73,7 @@
                     "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
                   },
                   {
-                    "label": "Välj en färg",
-                    "default": null
+                    "label": "Välj en färg"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
             },
             {
-              "label": "Välj en färg",
-              "default": null
+              "label": "Välj en färg"
             }
           ]
         }
