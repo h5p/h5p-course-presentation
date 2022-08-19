@@ -73,8 +73,7 @@
                     "description": "La imagen de fondo debería tener una ratio de anchura a altura de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
                   },
                   {
-                    "label": "Elije un color",
-                    "default": null
+                    "label": "Elije un color"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "La imagen de fondo debería tener una ratio de anchura a altura de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
             },
             {
-              "label": "Elije un color",
-              "default": null
+              "label": "Elije un color"
             }
           ]
         }
