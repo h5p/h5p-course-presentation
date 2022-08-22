@@ -1269,15 +1269,15 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {boolean} [updateAriaExpanded] Set aria-expanded=false on the $focusOnClose element when closing
  */
 CoursePresentation.prototype.showPopup = function ({
-    popupContent, 
-    $focusOnClose, 
-    parentPosition = null, 
-    remove, 
-    classes = 'h5p-popup-comment-field', 
-    instance, 
-    keepInDOM = false,
-    updateAriaExpanded,
-  }) {
+  popupContent, 
+  $focusOnClose, 
+  parentPosition = null, 
+  remove, 
+  classes = 'h5p-popup-comment-field', 
+  instance, 
+  keepInDOM = false,
+  updateAriaExpanded,
+}) {
 
   var self = this;
   var doNotClose;
@@ -1577,7 +1577,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
 
     // Set classes for slide movement and remember how much they move
     prevX = (that.currentSlideIndex === 0 ? 0 : - slideWidth);
-    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth)
+    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth);
 
     // containerWidth = H5P.jQuery(this).width();
     // startTime = new Date().getTime();
@@ -1688,7 +1688,7 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
     keyword += this.$keywords.children(':eq(' + slideNumber + ')').find('span').html();
   }
   else {
-    var slideIndexToNumber = slideNumber+1;
+    var slideIndexToNumber = slideNumber + 1;
     keyword += this.l10n.slide + ' ' + slideIndexToNumber;
   }
 
@@ -1790,14 +1790,14 @@ CoursePresentation.prototype.getCurrentSlideIndex = function () {
 CoursePresentation.prototype.attachAllElements = function () {
   var $slides = this.$slidesWrapper.children();
 
-  for (var i=0; i<this.slides.length; i++) {
+  for (var i = 0; i < this.slides.length; i++) {
     this.attachElements($slides.eq(i), i);
   }
 
   // Need to force updating summary slide! This is normally done
   // only when summary slide is about to be viewed
   if (this.summarySlideObject !== undefined) {
-    this.summarySlideObject.updateSummarySlide(this.slides.length-1, true);
+    this.summarySlideObject.updateSummarySlide(this.slides.length - 1, true);
   }
 };
 
@@ -2087,7 +2087,7 @@ CoursePresentation.prototype.showSolutions = function () {
     }
     // Show comments of non graded contents
     if (this.showCommentsAfterSolution[i]) {
-      for (var j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
+      for (let j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
         if (typeof this.showCommentsAfterSolution[i][j].showCPComments === 'function') {
           this.showCommentsAfterSolution[i][j].showCPComments();
         }
@@ -2257,7 +2257,7 @@ CoursePresentation.prototype.getXAPIData = function () {
  * Get context data.
  * Contract used for confusion report.
  */
- CoursePresentation.prototype.getContext = function () {
+CoursePresentation.prototype.getContext = function () {
   var self = this;
 
   // Get current slide number here it starts with zero
