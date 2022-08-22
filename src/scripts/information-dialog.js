@@ -7,7 +7,7 @@ export class InformationDialog {
    * Create H5P.Video from video parameters.
    *
    * @param {object} params Video parameters from semantics.json/content.json.
-   * @returns {H5P.Video} Content instance (H5P.Video).
+   * @returns {object} Content instance (H5P.Video).
    */
   static createVideoInstance(params) {
     return new H5P.Video({
@@ -101,7 +101,7 @@ export class InformationDialog {
     /** @type {HTMLElement} */
     this.modalElement = this.modalElement || null;
 
-    /** @type {HTMLIFrameElement | HTMLVideoElement} */
+    /** @type {HTMLElement} */
     this.videoEmbedElement = this.videoEmbedElement || null;
 
     /** @type {HTMLAudioElement} */
