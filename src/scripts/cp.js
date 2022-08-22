@@ -87,6 +87,7 @@ let CoursePresentation = function (params, id, extras) {
     printCurrentSlide: 'Print current slide',
     noTitle: 'No title',
     accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected.',
+    accessibilityProgressBarLabel: 'Choose slide to display',
     containsNotCompleted: '@slideName contains not completed interaction',
     containsCompleted: '@slideName contains completed interaction',
     slideCount: 'Slide @index of @total',
@@ -100,6 +101,7 @@ let CoursePresentation = function (params, id, extras) {
     confirmDialogHeader: 'Submit your answers',
     confirmDialogText: 'This will submit your results, do you want to continue?',
     confirmDialogConfirmText: 'Submit and see results',
+    slideshowNavigationLabel: 'Slideshow navigation',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -219,17 +221,17 @@ CoursePresentation.prototype.attach = function ($container) {
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
           '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
+          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
-          '     <div class="h5p-slides-wrapper" aria-live="polite"></div>' +
+          '     <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
           '  </div>' +
-          '  <nav class="h5p-cp-navigation">' +
-          '    <ol class="h5p-progressbar list-unstyled"></ol>' +
+          '  <nav class="h5p-cp-navigation" aria-label="' + this.l10n.slideshowNavigationLabel + '">' +
+          '    <div class="h5p-progressbar" role="tablist" aria-label="' + this.l10n.accessibilityProgressBarLabel + '"></div>' +
           '  </nav>' +
           '  <div class="h5p-footer"></div>' +
           '</div>';
@@ -637,7 +639,6 @@ CoursePresentation.prototype.toggleKeywords = function () {
 CoursePresentation.prototype.hideKeywords = function () {
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     if (this.$keywordsButton !== undefined) {
-      this.$keywordsButton.attr('title', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-label', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-expanded', 'false');
       this.$keywordsButton.focus();
@@ -656,7 +657,6 @@ CoursePresentation.prototype.showKeywords = function () {
   }
 
   if (this.$keywordsButton !== undefined) {
-    this.$keywordsButton.attr('title', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-label', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-expanded', 'true');
   }
@@ -908,7 +908,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     top: element.y + '%',
     width: element.width + '%',
     height: element.height + '%'
-  }).appendTo($slide);
+  }).appendTo($slide.children('[role="document"]').first());
 
   const isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
@@ -959,11 +959,6 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       else {
         instance.on('controls', handleIV);
       }
-    }
-
-    // Set first slide's tabindex for better accessibility if there are no interactions
-    if (index == 0 && this.slidesWithSolutions.indexOf(index) < 0) {
-      $innerElementContainer.attr('tabindex', '0');
     }
 
     // For first slide
@@ -1792,7 +1787,6 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
-    $old.find('.h5p-element-inner').attr('tabindex', '-1');
     $slides.css({
       '-webkit-transform': '',
       '-moz-transform': '',
@@ -1801,11 +1795,6 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
-
-    // Set tabindex for better accessibility if there are no interactions
-    if (typeof that.slidesWithSolutions[that.getCurrentSlideIndex()] === 'undefined') {
-      that.$current.find('.h5p-element-inner').attr('tabindex', '0');
-    }
 
     that.trigger('changedSlide', that.$current.index());
   }, 1);

@@ -242,6 +242,10 @@
           "default": "Полотно презентації. Використовуйте стрілки вліво і вправо для переміщення між слайдами."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Надпис для незавершених взаємодій",
           "default": "@slideName містить незавершену взаємодію"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Кнопка підтвердження діалогового вікна підтвердження надсилання результату",
           "default": "Відправити та подивіться результати"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

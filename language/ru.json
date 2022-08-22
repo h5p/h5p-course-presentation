@@ -242,6 +242,10 @@
           "default": "Холст презентации. Используйте стрелки влево и вправо для перемещения между слайдами."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Надпись для незавершенных взаимодействий",
           "default": "@slideName содержит не завершенное взаимодействие"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Кнопка подтверждения диалога подтверждения результата отправки",
           "default": "Отправить и посмотреть результаты"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

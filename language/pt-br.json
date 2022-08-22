@@ -242,6 +242,10 @@
           "default": "Tela de apresentação. Use a seta à direita e a seta à esquerda para mudar de slide."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Rótulo para interações incompletas",
           "default": "@slideName contém uma interação incompleta"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Botão de confirmação da caixa de diálogo de confirmação de resultados",
           "default": "Enviar e ver resultados"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

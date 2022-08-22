@@ -242,6 +242,10 @@
           "default": "캔버스가 선택된 상태에서 왼쪽, 오른쪽 화살표 키로 슬라이드를 이동할 수 있습니다."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "완료되지 않은 상호작용에 대한 레이블",
           "default": "@slideName 에 수행하지 않은 상호작용이 있습니다."
         },
@@ -289,6 +293,10 @@
         {
           "label": "결과 제출 확인 대화창의 확인 버튼",
           "default": "제출하고 결과를 확인하세요."
+        },
+        {
+          "label": "슬라이드쇼 탐색",
+          "default": "슬라이드쇼 탐색"
         }
       ]
     },

@@ -242,6 +242,10 @@
           "default": "Lenzo da presentación. Usa as frechas esquerda e dereita para moverte entre diapositivas."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Etiqueta para interaccións incompletas",
           "default": "@slideName contén unha interacción incompleta"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Botón de confirmación para o diálogo de confirmación de envío de resultados",
           "default": "Envía e ve os resultados"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

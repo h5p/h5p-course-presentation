@@ -242,6 +242,10 @@
           "default": "Ramka slajdów. Używaj klawiszy w prawo i w lewo aby zmienić slajd."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Tekst dla niedokończonych interakcji w slajdzie",
           "default": "@slideName zawiera niedokończone interakcje"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

@@ -242,6 +242,10 @@
           "default": "Zone de présentation. Utilisez les flèches gauche et droite pour naviguer entre les diapositives."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Etiquette pour des interactions incomplètes",
           "default": "@slideName contient des interactions incomplètes"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Bouton de confirmation  du dialogue de confirmation d'envoi des réponses",
           "default": "Envoyer et voir les résultats"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },
