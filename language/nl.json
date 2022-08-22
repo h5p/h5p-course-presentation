@@ -242,6 +242,10 @@
           "default": "Presentatiecanvas. Gebruik de pijl naar links en de pijl naar rechts om tussen de dia's te navigeren."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Label voor nog niet voltooide interacties",
           "default": "@slideName bevat een nog niet voltooide interactie"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Bevestigingsknop van de bevestigingsdialoog voor het verzenden van resultaten",
           "default": "Verzenden en resultaten bekijken"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

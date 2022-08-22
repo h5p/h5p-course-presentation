@@ -15,10 +15,10 @@
                     {},
                     {
                       "label": "Comentários",
-                      "description": "Os comentários são mostrados quando o usuário exibe as respostas sugeridas para todos os slides"
+                      "description": "Os comentários são mostrados quando o usuário exibe as respostas sugeridas para todos os slides."
                     },
                     {
-                      "label": "Sempre exibir comentários"
+                      "label": "Sempre exibir os comentários"
                     },
                     {
                       "label": "Opacidade do fundo"
@@ -60,7 +60,7 @@
                     },
                     {
                       "label": "Invisível",
-                      "description": "Cursor padrão, sem título e sem menu de abas. Aviso: Usuários com deficiências ou usuários que utilizam apenas teclado terão problemas ao utilizar este elemento."
+                      "description": "Cursor padrão, sem título e sem menu de abas. Aviso: Usuários com necessidades especiais ou usuários que utilizam apenas teclado terão problemas ao utilizar este elemento."
                     }
                   ]
                 }
@@ -70,7 +70,7 @@
                 "fields": [
                   {
                     "label": "Imagem",
-                    "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções de imagem. Imagens com alta resolução aparecerão melhor em telas maiores."
+                    "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções. Imagens com alta resolução aparecerão melhor em telas maiores."
                   },
                   {
                     "label": "Escolha uma cor"
@@ -97,7 +97,7 @@
           "fields": [
             {
               "label": "Imagem",
-              "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções de imagem. Imagens com alta resolução aparecerão melhor em telas maiores."
+              "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções. Imagens com alta resolução aparecerão melhor em telas maiores."
             },
             {
               "label": "Escolha uma cor"
@@ -114,44 +114,44 @@
           "default": "Slide"
         },
         {
-          "label": "Tradução para \"Score\"",
+          "label": "Tradução para \"Pontuação\"",
           "default": "Pontuação"
         },
         {
-          "label": "Tradução para \"Your Score\"",
+          "label": "Tradução para \"Sua Pontuação\"",
           "default": "Sua pontuação"
         },
         {
-          "label": "Tradução para \"Max Score\"",
-          "default": "Pontuação máxima"
+          "label": "Tradução para \"Pontuação Máxima\"",
+          "default": "Pontuação Máxima"
         },
         {
-          "label": "tradução para \"Total\"",
+          "label": "Tradução para \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Tradução para \"Total Score\"",
-          "default": "Pontuação total"
+          "label": "Tradução para \"Placar Total\"",
+          "default": "Pontuação Total"
         },
         {
-          "label": "Texto para botão \"Mostrar solução\"",
-          "default": "Mostrar solução"
+          "label": "Título para o botão \"Mostrar solução\"",
+          "default": "Mostrar soluções"
         },
         {
-          "label": "Texto para botão \"Tentar novamente\"",
-          "default": "Tentar novamente"
+          "label": "Texto para o botão \"Tentar Novamente\"",
+          "default": "Tentar Novamente"
         },
         {
-          "label": "Texto para botão \"Exportar texto\"",
+          "label": "Texto para o botão \"Exportar texto\"",
           "default": "Exportar texto"
         },
         {
-          "label": "Título de botão para esconder a lista de palavras-chave",
+          "label": "Título do botão para esconder a lista de palavras-chave",
           "default": "Esconder palavras-chave"
         },
         {
-          "label": "Título de botão para exibir a lista de palavras-chave",
-          "default": "Exibir palavras-chave"
+          "label": "Título do botão para exibir a lista de palavras-chave",
+          "default": "Mostrar a lista de palavras-chave"
         },
         {
           "label": "Rótulo de tela cheia",
@@ -162,19 +162,19 @@
           "default": "Sair da tela cheia"
         },
         {
-          "label": "Rótulo de slide anterior",
+          "label": "Rótulo do slide anterior",
           "default": "Slide anterior"
         },
         {
-          "label": "Rótulo de slide seguinte",
+          "label": "Rótulo do slide seguinte",
           "default": "Slide seguinte"
         },
         {
-          "label": "Rótulo de slide atual",
+          "label": "Rótulo do slide atual",
           "default": "Slide atual"
         },
         {
-          "label": "Rótulo de último slide",
+          "label": "Rótulo do último slide",
           "default": "Último slide"
         },
         {
@@ -182,16 +182,16 @@
           "default": "Sair do modo de solução"
         },
         {
-          "label": "Texto de modo de solução",
-          "default": "Modo de solução"
+          "label": "Texto do modo de solução",
+          "default": "Modo de Solução"
         },
         {
           "label": "Texto para quando houver múltiplas tarefas numa página",
           "default": "Múltiplas tarefas"
         },
         {
-          "label": "Texto de pontuação",
-          "default": "Você marcou:"
+          "label": "Texto da mensagem de pontuação",
+          "default": "Você conseguiu:"
         },
         {
           "label": "Texto de compartilhamento no Facebook",
@@ -234,12 +234,16 @@
           "default": "Sem título"
         },
         {
-          "label": "Explicação da navegação de eslides para tecnologias assistivas",
-          "default": "Use a seta direita e a seta esquerda para mudar de slide em qualquer direção em qualquer momento em que a tela de apresentação esteja selecionada"
+          "label": "Explicação da navegação de slides para tecnologias de assistência",
+          "default": "Use a seta à direita e a seta à esquerda para mudar de slide em qualquer direção no momento em que a tela de apresentação esteja selecionada"
         },
         {
-          "label": "Tela de apresentação para tecnologias assistivas",
-          "default": "Tela de apresentação. Use a seta direita e a seta esquerda para mudar de slide."
+          "label": "Tela de apresentação para tecnologias assistência",
+          "default": "Tela de apresentação. Use a seta à direita e a seta à esquerda para mudar de slide."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Rótulo para interações incompletas",
@@ -262,33 +266,37 @@
           "default": "@slideName contém respostas incorretas"
         },
         {
-          "label": "Rótulo da barra de compartilhamento",
-          "default": "Resultado de compartilhamento"
+          "label": "Rótulo da barra de compartilhamento social",
+          "default": "Resultado do compartilhamento"
         },
         {
-          "label": "Anúncio de pontuação total para tecnologias assistivas",
-          "default": "You got @score of @maxScore points in total",
+          "label": "Anúncio de pontuação total para tecnologias de assistência",
+          "default": "Você tem @score do total de @maxScore pontos",
           "description": "Variáveis disponíveis são @score e @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Anúncio em tela cheia para tecnologias de assistência",
+          "default": "Entrou em tela cheia"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Anúncio em tela cheia para tecnologias de assistência",
+          "default": "Saiu da tela cheia"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Cabeçalho do diálogo de confirmação de resultados",
+          "default": "Enviar suas respostas"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Texto do diálogo de confirmação de resultados",
+          "default": "Isto irá enviar seus resultados, você deseja realmente continuar?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Botão de confirmação da caixa de diálogo de confirmação de resultados",
+          "default": "Enviar e ver resultados"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },
@@ -334,15 +342,15 @@
       "description": "Estas opções permitirão que você controle como a tarefa se comporta.",
       "fields": [
         {
-          "label": "Habilitar modo de superfície ativa",
+          "label": "Ativar Modo de Superfície Ativa",
           "description": "Remove os controles de navegação do usuário final. Use Ir para Slide para navegar."
         },
         {
-          "label": "Esconder slide de resumo",
-          "description": "Esconde o slide de resumo."
+          "label": "Esconder Slide de Resumo",
+          "description": "Esconde o Slide de Resumo."
         },
         {
-          "label": "Sobrepor botão \"Mostrar solução\"",
+          "label": "Sobrepor o botão \"Mostrar solução\"",
           "description": "Esta opção determina se o botão \"Mostrar solução\" será mostrado para todas as questões, se estará desativado para todas ou configurado individualmente para cada questão.",
           "options": [
             {
@@ -354,8 +362,8 @@
           ]
         },
         {
-          "label": "Sobrepor botão \"Tentar novamente\"",
-          "description": "Esta opção determina se o botão \"Tentar novamente\" será mostrado para todas as questões, se estará desativado para todas ou configurado individualmente para cada questão.",
+          "label": "Sobrepor o botão \"Tentar Novamente\"",
+          "description": "Esta opção determina se o botão \"Tentar Novamente\" será mostrado para todas as questões, se estará desativado para todas ou configurado individualmente para cada questão.",
           "options": [
             {
               "label": "Ativado"
@@ -366,23 +374,23 @@
           ]
         },
         {
-          "label": "Show \"Show solution\" button in the summary slide",
-          "description": "If enabled, the learner will be able to show the solutions for all question when they reach the summary slide"
+          "label": "Mostrar o botão \"Mostrar solução\" no slide de resumo",
+          "description": "Se ativado, o aluno poderá mostrar as soluções para todas as perguntas quando chegar ao slide resumo"
         },
         {
-          "label": "Show \"Retry\" button in the summary slide",
-          "description": "If enabled, the learner will be able to retry all questions when they reach the summary slide. Be advised that by refreshing the page the learners will be able to retry even if this button isn't showing."
+          "label": "Mostrar o botão \"Tentar Novamente\" no slide de resumo",
+          "description": "Se ativado, o aluno poderá tentar novamente todas as perguntas quando chegar ao slide de resumo. Esteja ciente de que, ao atualizar a página, os alunos poderão tentar novamente, mesmo que este botão não esteja aparecendo."
         },
         {
-          "label": "Habilitar botão de impressão",
-          "description": "Habilita o botão de impressão."
+          "label": "Ativar o botão de impressão",
+          "description": "Ativar o botão de impressão."
         },
         {
-          "label": "Configurações sociais",
-          "description": "Estas opções permitirão que você sobreponha configurações sociais. Valores vazios serão preenchidos automaticamente se um link for fornecido, caso contrário todos os valores serão gerados.",
+          "label": "Configurações Sociais",
+          "description": "Estas opções permitirão que você sobreponha as configurações sociais. Valores vazios serão preenchidos automaticamente se um link for fornecido, caso contrário todos os valores serão gerados.",
           "fields": [
             {
-              "label": "Exibir ícone de compartilhamento do Facebook"
+              "label": "Mostrar ícone de compartilhamento do Facebook"
             },
             {
               "label": "Configurações de compartilhamento do Facebook",
@@ -393,32 +401,32 @@
                 },
                 {
                   "label": "Citação de compartilhamento do Facebook",
-                  "default": "Eu marquei @score de @maxScore numa tarefa em @currentpageurl."
+                  "default": "Eu marquei @score de @maxScore numa tarefa na @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Mostrar ícone de compartilhamento no Twitter"
             },
             {
               "label": "Configurações de compartilhamento do Twitter",
               "fields": [
                 {
-                  "label": "Citação de compartilhamento do Twitter",
-                  "default": "Eu marquei @score de @maxScore numa tarefa em @currentpageurl."
+                  "label": "Declaração de compartilhamento do Twitter",
+                  "default": "Eu marquei @score de @maxScore numa tarefa na @currentpageurl."
                 },
                 {
                   "label": "Compartilhe um link no Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Hashtags de compartilhamento no Twitter",
+                  "label": "Compartilhe nas hashtags do Twitter",
                   "default": "h5p, curso"
                 }
               ]
             },
             {
-              "label": "Exibir ícone de compartilhamento no Google+"
+              "label": "Mostrar ícone de compartilhamento no Google+"
             },
             {
               "label": "Compartilhe um link no Google+",

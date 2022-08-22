@@ -242,6 +242,10 @@
           "default": "Sunum kanvası. Slaytlar arası geçiş yapmak için sol ve sağ yön oklarını kullanın."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Tamamlanmamış etkileşim olduğunda gösterilecek etiket",
           "default": "@slideName tamamlanmamış etkinlik içeriyor"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

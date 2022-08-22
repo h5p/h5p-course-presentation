@@ -50,6 +50,7 @@ let CoursePresentation = function (params, id, extras) {
   this.isTask = false;
   this.standalone = true;
   this.isReportingEnabled = false;
+  this.popups = {};
 
   if (extras.cpEditor) {
     this.editor = extras.cpEditor;
@@ -100,6 +101,7 @@ let CoursePresentation = function (params, id, extras) {
     printCurrentSlide: 'Print current slide',
     noTitle: 'No title',
     accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected.',
+    accessibilityProgressBarLabel: 'Choose slide to display',
     containsNotCompleted: '@slideName contains not completed interaction',
     containsCompleted: '@slideName contains completed interaction',
     slideCount: 'Slide @index of @total',
@@ -113,6 +115,7 @@ let CoursePresentation = function (params, id, extras) {
     confirmDialogHeader: 'Submit your answers',
     confirmDialogText: 'This will submit your results, do you want to continue?',
     confirmDialogConfirmText: 'Submit and see results',
+    slideshowNavigationLabel: 'Slideshow navigation',
   }, params.l10n !== undefined ? params.l10n : {});
 
   if (!!params.override) {
@@ -232,17 +235,17 @@ CoursePresentation.prototype.attach = function ($container) {
   var html =
           '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
           '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
+          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
           '  <div class="h5p-box-wrapper">' +
           '    <div class="h5p-presentation-wrapper">' +
           '      <div class="h5p-keywords-wrapper"></div>' +
-          '     <div class="h5p-slides-wrapper" aria-live="polite"></div>' +
+          '     <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
           '  </div>' +
-          '  <nav class="h5p-cp-navigation">' +
-          '    <ol class="h5p-progressbar list-unstyled"></ol>' +
+          '  <nav class="h5p-cp-navigation" aria-label="' + this.l10n.slideshowNavigationLabel + '">' +
+          '    <div class="h5p-progressbar" role="tablist" aria-label="' + this.l10n.accessibilityProgressBarLabel + '"></div>' +
           '  </nav>' +
           '  <div class="h5p-footer"></div>' +
           '</div>';
@@ -650,7 +653,6 @@ CoursePresentation.prototype.toggleKeywords = function () {
 CoursePresentation.prototype.hideKeywords = function () {
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     if (this.$keywordsButton !== undefined) {
-      this.$keywordsButton.attr('title', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-label', this.l10n.showKeywords);
       this.$keywordsButton.attr('aria-expanded', 'false');
       this.$keywordsButton.focus();
@@ -669,7 +671,6 @@ CoursePresentation.prototype.showKeywords = function () {
   }
 
   if (this.$keywordsButton !== undefined) {
-    this.$keywordsButton.attr('title', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-label', this.l10n.hideKeywords);
     this.$keywordsButton.attr('aria-expanded', 'true');
   }
@@ -687,7 +688,7 @@ CoursePresentation.prototype.showKeywords = function () {
  * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  const [red, green, blue] = this.$keywordsWrapper.css('background-color').split(/\(|\)|,/g);
+  const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
   this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
 
@@ -921,7 +922,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     top: element.y + '%',
     width: element.width + '%',
     height: element.height + '%'
-  }).appendTo($slide);
+  }).appendTo($slide.children('[role="document"]').first());
 
   const isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
@@ -972,11 +973,6 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
       else {
         instance.on('controls', handleIV);
       }
-    }
-
-    // Set first slide's tabindex for better accessibility if there are no interactions
-    if (index == 0 && this.slidesWithSolutions.indexOf(index) < 0) {
-      $innerElementContainer.attr('tabindex', '0');
     }
 
     // For first slide
@@ -1131,13 +1127,15 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     // Listen for exit fullscreens not triggered by button, for instance using 'esc'
     this.on('exitFullScreen', exitFullScreen);
 
-    this.showPopup($buttonElement, $button, popupPosition, () => {
-      $buttonElement.detach();
+    this.showPopup($buttonElement, $button, popupPosition, (keepInDOM = false) => {
+      if (!keepInDOM) {
+        $buttonElement.detach();
+      }
 
       // Remove listener, we only need it for active popups
       this.off('exitFullScreen', exitFullScreen);
       closeCallback();
-    }, libTypePmz);
+    }, libTypePmz, instance, libTypePmz === 'h5p-interactivevideo');
 
     H5P.trigger(instance, 'resize');
 
@@ -1262,8 +1260,10 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {object} [parentPosition] x and y coordinates of parent
  * @param {Function} [remove] Gets called before the popup is removed.
  * @param {string} [classes]
+ * @param {object} [instance] H5P library instance
+ * @param {boolean} [keepInDOM] Hide the popup instead of removing it when it gets closed
  */
-CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field') {
+CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field', instance, keepInDOM = false) {
   var self = this;
   var doNotClose;
 
@@ -1278,7 +1278,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     // Remove popup
     if (remove !== undefined) {
       setTimeout(function () {
-        remove();
+        remove(keepInDOM);
         self.restoreTabIndexes();
       }, 100);
     }
@@ -1287,29 +1287,50 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     $popup.find('.h5p-popup-container').addClass('h5p-animate');
 
     setTimeout(function () {
-      $popup.remove();
+      if (keepInDOM) {
+        $popup.hide();
+      }
+      else {
+        $popup.remove();
+      }
     }, 100);
 
     $focusOnClose.focus();
   };
 
-  const $popup = $(
-    '<div class="h5p-popup-overlay ' + classes + '">' +
-      '<div class="h5p-popup-container" role="dialog">' +
-        '<div class="h5p-cp-dialog-titlebar">' +
-          '<div class="h5p-dialog-title"></div>' +
-          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
-        '</div>' +
-        '<div class="h5p-popup-wrapper" role="document"></div>' +
-      '</div>' +
-    '</div>');
+  let $popup;
 
-  const $popupWrapper = $popup.find('.h5p-popup-wrapper');
-  if (popupContent instanceof H5P.jQuery) {
-    $popupWrapper.append(popupContent);
+  if (keepInDOM && instance && self.popups[instance.subContentId]) {
+    // The popup already exists in the DOM, but is hidden
+    $popup = self.popups[instance.subContentId];
   }
-  else {
-    $popupWrapper.html(popupContent);
+
+  if ($popup === undefined) {
+    // The popup must be created and added to the DOM
+    $popup = $(
+      '<div class="h5p-popup-overlay ' + classes + '">' +
+        '<div class="h5p-popup-container" role="dialog">' +
+          '<div class="h5p-cp-dialog-titlebar">' +
+            '<div class="h5p-dialog-title"></div>' +
+            '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
+          '</div>' +
+          '<div class="h5p-popup-wrapper" role="document"></div>' +
+        '</div>' +
+      '</div>'
+    );
+
+    const $popupWrapper = $popup.find('.h5p-popup-wrapper');
+    if (popupContent instanceof H5P.jQuery) {
+      $popupWrapper.append(popupContent);
+    }
+    else {
+      $popupWrapper.html(popupContent);
+    }
+
+    if (instance && instance.subContentId) {
+      // Keep a reference to this popup
+      self.popups[instance.subContentId] = $popup;
+    }
   }
 
   const $popupContainer = $popup.find('.h5p-popup-container');
@@ -1392,9 +1413,16 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
     'visibility': '',
   }).addClass('h5p-animate');
 
+  if ($popup.parent().length === 0) {
+    // Having no parent means the popup has not yet been added to the DOM
+    $popup.prependTo(this.$wrapper);
+  }
+  else {
+    $popup.show();
+  }
+
   // Insert popup ready for use
   $popup
-    .prependTo(this.$wrapper)
     .focus()
     .removeClass('h5p-animate')
     .click(close)
@@ -1773,7 +1801,6 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
-    $old.find('.h5p-element-inner').attr('tabindex', '-1');
     $slides.css({
       '-webkit-transform': '',
       '-moz-transform': '',
@@ -1782,11 +1809,6 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
     }).removeClass('h5p-touch-move').removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
-
-    // Set tabindex for better accessibility if there are no interactions
-    if (typeof that.slidesWithSolutions[that.getCurrentSlideIndex()] === 'undefined') {
-      that.$current.find('.h5p-element-inner').attr('tabindex', '0');
-    }
 
     that.trigger('changedSlide', that.$current.index());
   }, 1);

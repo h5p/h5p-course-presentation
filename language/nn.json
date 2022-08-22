@@ -242,6 +242,10 @@
           "default": "Presentasjonslerret. Bruk høgre og venstre piltast til å navigere mellom lysbilete."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Label for uncompleted interactions",
           "default": "@slideName inneheld ikkje avslutta interaksjon"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

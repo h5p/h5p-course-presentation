@@ -242,6 +242,10 @@
           "default": "簡報播放時可使用左右箭頭來切換簡報頁."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "未完成互動的簡報頁名稱",
           "default": "@slideName 包含未完成的互動"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

@@ -92,6 +92,11 @@
 }
 .h5p-course-presentation .h5p-wrapper:focus {
   outline: auto;
+  border: 1px solid;
+}
+.h5p-course-presentation .h5p-element .h5p-element-inner:focus-visible {
+  outline: 2px solid #79abfd;
+  outline-offset: -2px;
 }
 .h5p-course-presentation .h5p-box-wrapper {
   width: 100%;
@@ -132,6 +137,10 @@
 
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+.h5p-course-presentation .h5p-slide:focus-within {
+  outline: 2px solid #79abfd;
+  outline-offset: -2px;
 }
 .h5p-course-presentation .h5p-slide.h5p-animate {
   display: block;
@@ -240,7 +249,8 @@
   line-height: 2.334em !important;
 }
 
-.h5p-course-presentation .h5p-element.h5p-blanks {
+.h5p-course-presentation .h5p-element.h5p-blanks,
+.h5p-course-presentation .h5p-element.h5p-twitter-user-feed {
   overflow: auto;
 }
 
@@ -549,6 +559,9 @@
 .h5p-course-presentation .h5p-markthewords-button:before {
   content: "\e601";
 }
+.h5p-course-presentation .h5p-twitteruserfeed-button:before {
+  content: "\f099";
+}
 .h5p-course-presentation .h5p-chart-button:before {
   content: "\f200";
 }
@@ -581,7 +594,8 @@
 .h5p-course-presentation .h5p-close-popup:before {
   font-family: 'H5PFontAwesome4';
   content: "\f057";
-  color: #757575;
+  color: #757575;;
+
   vertical-align: middle;
 }
 

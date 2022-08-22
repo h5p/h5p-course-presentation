@@ -30,7 +30,7 @@
                       "label": "Tamaño del botón",
                       "options": [
                         {
-                          "label": "Chico"
+                          "label": "Pequeño"
                         },
                         {
                           "label": "Grande"
@@ -56,11 +56,11 @@
                     },
                     {
                       "label": "Número específico de diapositiva",
-                      "description": "Solamente aplicable cuando 'Número específico de página' es seleccionado"
+                      "description": "Solamente aplicable cuando 'Número específico de página' está seleccionado"
                     },
                     {
                       "label": "Invisible",
-                      "description": "Cursor por defecto, sin título ni pestaña de índice. Advertencia: Aquellos usuarios con discapacidades o usuarios quienes sólo utilizan teclado tendrán problemas al utilizar este elemento."
+                      "description": "Cursor por defecto, sin título ni pestaña de índice. Advertencia: Los usuarios con discapacidades o quienes sólo utilizan teclado tendrán problemas al utilizar este elemento."
                     }
                   ]
                 }
@@ -70,10 +70,10 @@
                 "fields": [
                   {
                     "label": "Imagen",
-                    "description": "El fondo de la imagen debería tener una proporción ancho a alto de 2:1 para evitar estiramiento. Imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
+                    "description": "La imagen de fondo debería tener una ratio de anchura a altura de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
                   },
                   {
-                    "label": "Elegir un color"
+                    "label": "Elije un color"
                   }
                 ]
               }
@@ -82,7 +82,7 @@
         },
         {},
         {
-          "label": "Lista de palabras claves"
+          "label": "Lista de palabras clave"
         },
         {
           "label": "Mostrar siempre"
@@ -97,10 +97,10 @@
           "fields": [
             {
               "label": "Imagen",
-              "description": "El fondo de la imagen debería tener una proporción de ancho a alto de 2:1 para evitar estiramiento. Las imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
+              "description": "La imagen de fondo debería tener una ratio de anchura a altura de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
             },
             {
-              "label": "Elegir un color"
+              "label": "Elije un color"
             }
           ]
         }
@@ -114,23 +114,23 @@
           "default": "Diapositiva"
         },
         {
-          "label": "Traducción para \"Puntaje\"",
-          "default": "Puntaje"
+          "label": "Traducción para \"Puntuación\"",
+          "default": "Puntuación"
         },
         {
-          "label": "Traducción para \"Su Puntaje\"",
-          "default": "Su Puntaje"
+          "label": "Traducción para \"Tu Puntuación\"",
+          "default": "Tu puntuación"
         },
         {
-          "label": "Traducción para \"Puntaje Máximo\"",
-          "default": "Puntaje Máximo"
+          "label": "Traducción para \"Puntuación Máxima\"",
+          "default": "Puntuación Máxima"
         },
         {
           "label": "Traducción para \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Traducción para \"Puntaje Total\"",
+          "label": "Traducción para \"Puntuación Total\"",
           "default": "Puntuación Total"
         },
         {
@@ -138,27 +138,27 @@
           "default": "Mostrar soluciones"
         },
         {
-          "label": "Texto para el botón de Reintentar",
-          "default": "Reintentar"
+          "label": "Texto para el botón \"Intentar de nuevo\"",
+          "default": "Intentar de nuevo"
         },
         {
           "label": "Texto para el botón de Exportar texto",
           "default": "Exportar texto"
         },
         {
-          "label": "Ocultar título del botón de lista de palabras claves",
-          "default": "Ocultar lista de palabras claves"
+          "label": "Ocultar título del botón de lista de palabras clave",
+          "default": "Ocultar lista de palabras clave"
         },
         {
-          "label": "Mostrar título del botón de lista de palabras claves",
-          "default": "Mostrar lista de palabras claves"
+          "label": "Título del botón mostrar lista de palabras clave",
+          "default": "Mostrar lista de palabras clave"
         },
         {
-          "label": "Etiqueta de PantallaCompleta",
-          "default": "PantallaCompleta"
+          "label": "Etiqueta de Pantalla Completa",
+          "default": "Pantalla Completa"
         },
         {
-          "label": "Etiqueta de salir de PantallaCompleta",
+          "label": "Etiqueta de salir de Pantalla Completa",
           "default": "Salir de Pantalla completa"
         },
         {
@@ -186,12 +186,12 @@
           "default": "Modo de solución"
         },
         {
-          "label": "Texto cuando existen múltiples trabajos en una página",
-          "default": "Trabajos múltiples"
+          "label": "Texto cuando existen múltiples tareas en una página",
+          "default": "Tareas múltiples"
         },
         {
-          "label": "Mensaje de texto de puntaje",
-          "default": "Usted obtuvo:"
+          "label": "Texto de mensaje de puntuación",
+          "default": "Has obtenido:"
         },
         {
           "label": "Texto de Compartir en Facebook",
@@ -210,16 +210,16 @@
           "default": "Resumen"
         },
         {
-          "label": "Título para el ícono de comentarios",
+          "label": "Título para el icono de comentarios",
           "default": "Mostrar comentarios"
         },
         {
-          "label": "Título para el botón de Imprimir",
+          "label": "Título para el botón Imprimir",
           "default": "Imprimir"
         },
         {
-          "label": "Ingresar al diálogo de impresión",
-          "default": "¿Cómo le gustaría imprimir esta presentación?"
+          "label": "Confirmación del diálogo de impresión",
+          "default": "¿Cómo te gustaría imprimir esta presentación?"
         },
         {
           "label": "Etiqueta para el botón \"Imprimir todas las diapositivas\"",
@@ -230,65 +230,73 @@
           "default": "Imprimir diapositiva actual"
         },
         {
-          "label": "Etiqueta para diapositivas sin un título",
+          "label": "Etiqueta para diapositivas sin título",
           "default": "Sin título"
         },
         {
-          "label": "Explicación de navegación de diapositiva para tecnologías asistidas",
-          "default": "Use flecha izquierda y derecha para cambiar diapositiva en esa dirección siempre que esté seleccionado el lienzo"
+          "label": "Explicación de la navegación de diapositivas para las tecnologías de asistencia",
+          "default": "Usa las flecha izquierda y derecha para cambiar la diapositiva en esa dirección siempre que se haya seleccionado el lienzo"
         },
         {
-          "label": "Etiqueta del lienzo para tecnologías asistivas",
-          "default": "Lienzo de Presentación. Use flechas izquierda y derecha para moverse entre diapositivas."
+          "label": "Etiqueta del lienzo para las tecnologías de asistencia",
+          "default": "Lienzo de presentación. Usa las flechas izquierda y derecha para moverte entre diapositivas."
+        },
+        {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
         },
         {
           "label": "Etiqueta para interacciones no completadas",
-          "default": "@slideName contiene interacción no completada"
+          "default": "@slideName contiene una interacción no completada"
         },
         {
           "label": "Etiqueta para interacciones completadas",
-          "default": "@slideName contiene interacción completada"
+          "default": "@slideName contiene una interacción completada"
         },
         {
-          "label": "Etiqueta para contador de diapositiva. Variables son @index, @total",
+          "label": "Etiqueta para contador de diapositivas. Las variables son @index, @total",
           "default": "Diapositiva @index de @total"
         },
         {
           "label": "Etiqueta para diapositivas que contienen solamente respuestas correctas",
-          "default": "@slideName solamente tiene respuestas correctas"
+          "default": "@slideName solamente contiene respuestas correctas"
         },
         {
           "label": "Etiqueta para diapositivas que contienen respuestas incorrectas",
-          "default": "@slideName tiene respuestas incorrectas"
+          "default": "@slideName contiene respuestas incorrectas"
         },
         {
-          "label": "Etiqueta para barra de compartir socialmente",
-          "default": "Mostrar Resultado"
+          "label": "Etiqueta para la barra de redes sociales",
+          "default": "Compartir resultado"
         },
         {
-          "label": "Anuncio de puntaje total para tecnologías asistivas",
-          "default": "Usted obtuvo @score de @maxScore puntos en total",
+          "label": "Anuncio de puntuación total para las tecnologías de asistencia",
+          "default": "Has obtenido @score de un total de @maxScore puntos",
           "description": "Las variables disponibles son @score y @maxScore"
         },
         {
-          "label": "Anuncio que entró a pantalla completa para tecnologías asistivas",
-          "default": "Entró a pantalla completa"
+          "label": "Anuncio que se ha pasado a pantalla completa para tecnologías de asistencia",
+          "default": "Has pasado a pantalla completa"
         },
         {
-          "label": "Anuncio que salió de pantalla completa para tecnologías asistivas",
-          "default": "Salió de pantalla completa"
+          "label": "Anuncio de que se ha salido de pantalla completa para tecnologías de asistencia",
+          "default": "Has salido de pantalla completa"
         },
         {
           "label": "Encabezado del diálogo de confirmación de envío de resultado",
-          "default": "Enviar sus respuestas"
+          "default": "Envía tus respuestas"
         },
         {
           "label": "Texto del diálogo de confirmación de envío de resultado",
-          "default": "Esto enviará sus resultados, ¿desea continuar?"
+          "default": "Esto enviará tus resultados, ¿quieres continuar?"
         },
         {
           "label": "Botón de confirmación del diálogo de confirmación de envío de resultados",
           "default": "Enviar y ver resultados"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },
@@ -330,12 +338,12 @@
       ]
     },
     {
-      "label": "Opciones del comportamiento.",
-      "description": "Estas opciones le permitirán anular los ajustes de comportamiento.",
+      "label": "Configuración del comportamiento.",
+      "description": "Estas opciones te permitirán anular los ajustes de comportamiento.",
       "fields": [
         {
           "label": "Activar el Modo de Superficie Activa",
-          "description": "Suprime los controles de navegación para el usuario final. Utilice Ir A Diapositiva para navegar."
+          "description": "Suprime los controles de navegación para el usuario final. Utiliza Ir A Diapositiva para navegar."
         },
         {
           "label": "Ocultar la Diapositiva de Resumen",
@@ -343,7 +351,7 @@
         },
         {
           "label": "Ocultar el botón \"Mostrar Solución\"",
-          "description": "Esta opción determina si el botón \"Mostrar Solución\" será mostrado para todas las preguntas, deshabilitado para todas, o configurado para cada pregunta individualmente.",
+          "description": "Esta opción determina si el botón \"Mostrar Solución\" se muestra en todas las preguntas, se deshabilita para todas, o se configura para cada pregunta individualmente.",
           "options": [
             {
               "label": "Habilitado"
@@ -354,8 +362,8 @@
           ]
         },
         {
-          "label": "Anular el botón \"Reintentar\"",
-          "description": "Esta opción determina si el botón \"Reintentar\" será mostrado para todas las preguntas, deshabilitado para todas, o configurado para cada pregunta individualmente.",
+          "label": "Anular botón \"Intentar de nuevo\"",
+          "description": "Esta opción determina si el botón \"Intentar de nuevo\" se muestra para todas las preguntas, se desactiva para todas o se configurarpara cada pregunta individualmente.",
           "options": [
             {
               "label": "Habilitado"
@@ -367,25 +375,25 @@
         },
         {
           "label": "Mostrar botón de \"Mostrar solución\" en la diapositiva de resumen",
-          "description": "Si se habilita, el estudiante podrá mostrar las soluciones para todas las preguntas cuando llegue a la diapositiva del resumen"
+          "description": "Si se habilita, el alumno podrá ver las soluciones para todas las preguntas cuando llegue a la diapositiva del resumen"
         },
         {
-          "label": "Mostrar botón \"Reintentar\" en la diapositiva de resumen",
-          "description": "Si se habilita, el estudiante podrá reintentar todas las preguntas cuando llegue a la diapositiva del resumen. Tenga en cuenta que al refrescar la página los estudiantes podrán reintentarlas aunque no se esté mostrando este botón."
+          "label": "Mostrar botón \"Intentar de nuevo\" en la diapositiva de resumen",
+          "description": "Si se habilita, el alumno podrá volver a intentar todas las preguntas cuando llegue a la diapositiva del resumen. Ten en cuenta que al recargar la página los alumnos podrán volver a intentarlas aunque no se esté mostrando este botón."
         },
         {
           "label": "Habilitar botón Imprimir",
           "description": "Habilita el botón Imprimir."
         },
         {
-          "label": "Configuraciones Sociales",
-          "description": "Estas opciones le permiten anular las configuraciones de comportamiento social. Los valores vacíos serán llenados automáticamente si se proporciona un enlace, en caso contrario todos los valores serán generados.",
+          "label": "Configuración de redes sociales",
+          "description": "Estas opciones le permiten anular las configuraciones de comportamiento para redes sociales. Los valores vacíos se completan automáticamente si se proporciona un enlace, en caso contrario todos los valores se generarán.",
           "fields": [
             {
-              "label": "Mostrar ícono para compartir en Facebook"
+              "label": "Mostrar icono para compartir en Facebook"
             },
             {
-              "label": "Configuraciones para compartir en Facebook",
+              "label": "Configuración para compartir en Facebook",
               "fields": [
                 {
                   "label": "Enlace hacia compartir en Facebook",
@@ -393,19 +401,19 @@
                 },
                 {
                   "label": "Mensaje para compartir en Facebook",
-                  "default": "Obtuve @score de @maxScore en un trabajo en @currentpageurl."
+                  "default": "He conseguido @score de @maxScore en una tarea en @currentpageurl."
                 }
               ]
             },
             {
-              "label": "Mostrar ícono para compartir en Twitter"
+              "label": "Mostrar icono para compartir en Twitter"
             },
             {
-              "label": "Configuraciones para compartir en Twitter",
+              "label": "Configuración para compartir en Twitter",
               "fields": [
                 {
                   "label": "Mensaje para compartir en Twitter",
-                  "default": "Yo obtuve @score de @maxScore en un trabajo en @currentpageurl."
+                  "default": "He conseguido @score de @maxScore en una tarea en @currentpageurl."
                 },
                 {
                   "label": "Enlace hacia compartir en Twitter",
@@ -418,10 +426,10 @@
               ]
             },
             {
-              "label": "Mostrar ícono para compartir en Google+"
+              "label": "Mostrar icono para compartir en Google+"
             },
             {
-              "label": "Enlace hacia compartir en Google",
+              "label": "Enlace para compartir en Google",
               "default": "@currentpageurl"
             }
           ]

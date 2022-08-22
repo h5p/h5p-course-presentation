@@ -242,6 +242,10 @@
           "default": "播放時可使用左右方向鍵來切換投影片"
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "未完成互動的投影片名稱",
           "default": "@slideName 未完成互動"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

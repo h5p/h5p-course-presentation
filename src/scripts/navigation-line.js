@@ -27,11 +27,11 @@ const NavigationLine = (function ($) {
      * @property {Object.<answeredState, string>} answeredLabels
      */
     this.answeredLabels = {
-      [answeredState.NOT_ANSWERED]: this.cp.l10n.containsNotCompleted,
-      [answeredState.ANSWERED]: this.cp.l10n.containsCompleted,
-      [answeredState.CORRECT]: this.cp.l10n.containsOnlyCorrect,
-      [answeredState.INCORRECT]: this.cp.l10n.containsIncorrectAnswers,
-      [answeredState.NO_INTERACTIONS]: '@slideName',
+      [answeredState.NOT_ANSWERED]: this.cp.l10n.containsNotCompleted + '.',
+      [answeredState.ANSWERED]: this.cp.l10n.containsCompleted + '.',
+      [answeredState.CORRECT]: this.cp.l10n.containsOnlyCorrect + '.',
+      [answeredState.INCORRECT]: this.cp.l10n.containsIncorrectAnswers + '.',
+      [answeredState.NO_INTERACTIONS]: '',
     };
 
     this.initProgressbar(this.cp.slidesWithSolutions);
@@ -110,9 +110,14 @@ const NavigationLine = (function ($) {
       const slide = this.cp.slides[i];
       const progressbarPartTitle = this.createSlideTitle(i);
 
-      // create list item
-      const $li = $('<li>', {
-        'class': 'h5p-progressbar-part'
+      // create tab item
+      const $li = $('<div>', {
+        'class': 'h5p-progressbar-part',
+        'id': 'progressbar-part-' + i,
+        'role': 'tab',
+        'aria-label': progressbarPartTitle,
+        'aria-controls': 'slide-' + i,
+        'aria-selected': false,
       })
         .appendTo(that.cp.$progressbar);
 
@@ -129,14 +134,7 @@ const NavigationLine = (function ($) {
 
       // Add hover effect if not an ipad or iphone.
       if (!isIOS) {
-        // create popup
-        const $popup = $('<div/>', {
-          'class': 'h5p-progressbar-popup',
-          'html': progressbarPartTitle,
-          'aria-hidden': 'true'
-        }).appendTo($li);
-
-        $li.mouseenter(() => this.ensurePopupVisible($popup));
+        H5P.Tooltip($li.get(0));
       }
 
       if (this.isSummarySlide(i)) {
@@ -149,7 +147,8 @@ const NavigationLine = (function ($) {
       }
 
       if (i === currentSlideIndex) {
-        $li.addClass('h5p-progressbar-part-selected');
+        $li.addClass('h5p-progressbar-part-selected')
+          .attr('aria-selected', true);
       }
 
       that.cp.progressbarParts.push($li);
@@ -170,27 +169,6 @@ const NavigationLine = (function ($) {
           this.setTaskAnswered(i, isAnswered);
         }
       }
-    }
-  };
-
-  /**
-   * Ensures that all of a popup is visible
-   *
-   * @param {jQuery} $popup
-   */
-  NavigationLine.prototype.ensurePopupVisible = function ($popup) {
-    const availableWidth = this.cp.$container.width();
-    const popupWidth = $popup.outerWidth();
-    const popupOffsetLeft = $popup.offset().left;
-
-    if (popupOffsetLeft < 0) {
-      $popup.css('left', 0);
-      $popup.css('transform', 'translateX(0)');
-    }
-    else if ((popupOffsetLeft + popupWidth) > availableWidth) {
-      $popup.css('left', 'auto');
-      $popup.css('right', 0);
-      $popup.css('transform', 'translateX(0)');
     }
   };
 
@@ -279,11 +257,12 @@ const NavigationLine = (function ($) {
       'class': "h5p-footer-button h5p-footer-toggle-keywords",
       'aria-expanded': 'false',
       'aria-label': this.cp.l10n.showKeywords,
-      'title': this.cp.l10n.showKeywords,
       'role': 'button',
       'tabindex': '0',
       'html': '<span class="h5p-icon-menu"></span><span class="current-slide-title"></span>'
     }).appendTo($leftFooter);
+
+    H5P.Tooltip(this.cp.$keywordsButton.get(0));
 
     addClickAndKeyboardListeners(this.cp.$keywordsButton, event => {
       if (!that.cp.presentation.keywordListAlwaysShow) {
@@ -310,11 +289,12 @@ const NavigationLine = (function ($) {
     this.cp.$prevSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-previous-slide',
       'aria-label': this.cp.l10n.prevSlide,
-      'title': this.cp.l10n.prevSlide,
       'role': 'button',
       'tabindex': '-1',
       'aria-disabled': 'true'
     }).appendTo($centerFooter);
+
+    new H5P.Tooltip(this.cp.$prevSlideButton.get(0), {position: 'left'});
 
     addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide(undefined, false));
 
@@ -356,10 +336,11 @@ const NavigationLine = (function ($) {
     this.cp.$nextSlideButton = $('<div/>', {
       'class': 'h5p-footer-button h5p-footer-next-slide',
       'aria-label': this.cp.l10n.nextSlide,
-      'title': this.cp.l10n.nextSlide,
       'role': 'button',
       'tabindex': '0'
     }).appendTo($centerFooter);
+
+    H5P.Tooltip(this.cp.$nextSlideButton.get(0), {position: 'right'});
 
     addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide(undefined, false));
 
@@ -375,9 +356,10 @@ const NavigationLine = (function ($) {
         'role': 'button',
         'class': 'h5p-footer-exit-solution-mode',
         'aria-label': this.cp.l10n.solutionModeTitle,
-        'title': this.cp.l10n.solutionModeTitle,
         'tabindex': '0'
       }).appendTo($rightFooter);
+
+      H5P.Tooltip(this.cp.$exitSolutionModeButton.get(0));
 
       addClickAndKeyboardListeners(this.cp.$exitSolutionModeButton, () => that.cp.jumpToSlide(that.cp.slides.length - 1));
 
@@ -385,10 +367,11 @@ const NavigationLine = (function ($) {
         this.cp.$printButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-print',
           'aria-label': this.cp.l10n.printTitle,
-          'title': this.cp.l10n.printTitle,
           'role': 'button',
           'tabindex': '0'
         }).appendTo($rightFooter);
+
+        H5P.Tooltip(this.cp.$printButton.get(0));
 
         addClickAndKeyboardListeners(this.cp.$printButton, () => that.openPrintDialog());
       }
@@ -398,10 +381,11 @@ const NavigationLine = (function ($) {
         this.cp.$fullScreenButton = $('<div/>', {
           'class': 'h5p-footer-button h5p-footer-toggle-full-screen',
           'aria-label': this.cp.l10n.fullscreen,
-          'title': this.cp.l10n.fullscreen,
           'role': 'button',
           'tabindex': '0'
         });
+
+        H5P.Tooltip(this.cp.$fullScreenButton.get(0));
 
         addClickAndKeyboardListeners(this.cp.$fullScreenButton, () => that.cp.toggleFullScreen());
 
@@ -447,7 +431,10 @@ const NavigationLine = (function ($) {
 
     that.cp.progressbarParts[slideNumber]
       .addClass("h5p-progressbar-part-selected")
-      .siblings().removeClass("h5p-progressbar-part-selected");
+      .attr('aria-selected', true)
+      .siblings()
+        .removeClass("h5p-progressbar-part-selected")
+        .attr('aria-selected', false);
 
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (part, i) {
@@ -482,10 +469,9 @@ const NavigationLine = (function ($) {
    * @param {answeredState} [config.state]
    * @param {boolean} [config.isCurrent]
    */
-  NavigationLine.prototype.updateSlideTitle = function (index, { state, isCurrent } = {}) {
+  NavigationLine.prototype.updateSlideTitle = function (index, { state } = {}) {
     this.setSlideTitle(index, {
       state: defaultValue(state, this.getAnsweredState(index)),
-      isCurrent: defaultValue(isCurrent, this.cp.isCurrentSlide(index))
     });
   };
 
@@ -496,15 +482,12 @@ const NavigationLine = (function ($) {
    * @param {answeredState} [state]
    * @param {boolean} [isCurrent]
    */
-  NavigationLine.prototype.setSlideTitle = function (index, { state = answeredState.NO_INTERACTIONS, isCurrent = false}) {
-    const total =  this.cp.slides.length;
+  NavigationLine.prototype.setSlideTitle = function (index, { state = answeredState.NO_INTERACTIONS }) {
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
-    const numberedLabel = this.cp.l10n.slideCount.replace('@index', (index + 1)).replace('@total', total);
     const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
-    const currentSlideLabel = isCurrent ? this.cp.l10n['currentSlide'] : '';
-
-    $partTitle.html(`${numberedLabel}: ${answeredLabel}. ${currentSlideLabel}`);
+    
+    $partTitle.html(`${answeredLabel}`);
   };
 
   /**

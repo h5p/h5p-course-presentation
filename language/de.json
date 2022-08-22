@@ -242,6 +242,10 @@
           "default": "Präsentationsbereich. Verwende die linke oder rechte Cursortaste, um zwischen den Folien zu navigieren."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Beschriftung für nicht abgeschlossene Interaktionen",
           "default": "@slideName enthält eine nicht abgeschlossene Interaktion"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Bestätigungs-Button des Bestätigungsdialogfelds für das Senden des Ergebnisses",
           "default": "Senden und Ergebnisse ansehen"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

@@ -242,6 +242,10 @@
           "default": "بوم ارائه. از فلش چپ و راست برای حرکت بین اسلایدها استفاده کنید."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "برچسب برای تعاملات تکمیل نشده",
           "default": "@slideName شامل تعامل تکمیل نشده است"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

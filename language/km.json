@@ -242,6 +242,10 @@
           "default": "ផ្ទាំងបទបង្ហាញ។ ប្រើច្នុចព្រួញឆ្វេងស្តាំដើម្បីផ្លាស់ប្តូរស្លាយ។"
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "ពាក្យប្រើសម្រាប់អន្តរកម្មដែលមិនបានបញ្ចប់",
           "default": "ស្លាយ «@slideName» មានកិច្ចការអន្តរកម្មដែលមិនបានបញ្ចប់"
         },
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

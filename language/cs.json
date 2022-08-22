@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "Konkrétní číslo snímku",
-                      "description": "Zadejte číslo snímku, na který chcete přejít"
+                      "description": "Použitelné pouze v případě, že je vybráno \"Konkrétní číslo snímku\""
                     },
                     {
                       "label": "Neviditelný",
@@ -242,6 +242,10 @@
           "default": "Prezentační plocha. Mezi snímky se můžete pohybovat pomocí levé a pravé šipky."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Popisek pro nedokončené interakce",
           "default": "@slideName obsahuje nedokončenou interakci"
         },
@@ -279,16 +283,20 @@
           "default": "Ukončit celou obrazovku"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Záhlaví dialogu pro potvrzení odeslání výsledku",
+          "default": "Odeslat odpovědi"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Text dialogu pro potvrzení odeslání výsledku",
+          "default": "Tím se odešlou vaše výsledky, chcete pokračovat?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Potvrzovací tlačítko dialogu pro potvrzení odeslání výsledku",
+          "default": "Odešlete a uvidíte výsledky"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },

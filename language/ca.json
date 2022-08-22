@@ -242,6 +242,10 @@
           "default": "Llenç de la presentació. Utilitzeu les fletxes esquerra i dreta per desplaçar-vos per les diapositives."
         },
         {
+          "label": "Progressbar label for assistive technologies",
+          "default": "Choose slide to display"
+        },
+        {
           "label": "Etiqueta per a interaccions incompletes",
           "default": "@slideName conté interaccions incompletes"
         },
@@ -280,7 +284,7 @@
         },
         {
           "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "default": "Enviar les seves respostes"
         },
         {
           "label": "Text of submit result confirmation dialog",
@@ -289,6 +293,10 @@
         {
           "label": "Confirmation button of submit result confirmation dialog",
           "default": "Submit and see results"
+        },
+        {
+          "label": "Slideshow navigation",
+          "default": "Slideshow navigation"
         }
       ]
     },
