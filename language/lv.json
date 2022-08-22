@@ -73,8 +73,7 @@
                     "description": "Attēla fona platuma un augstuma attiecībai jābūt 2:1, lai izvairītos no izstiepšanas. Augstas izšķirtspējas attēli tiks labāk parādīti lielākos ekrānos."
                   },
                   {
-                    "label": "Izvēlieties krāsu",
-                    "default": null
+                    "label": "Izvēlieties krāsu"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Attēla fona platuma un augstuma attiecībai jābūt 2:1, lai izvairītos no izstiepšanas. Augstas izšķirtspējas attēli tiks labāk parādīti lielākos ekrānos."
             },
             {
-              "label": "Izvēlieties krāsu",
-              "default": null
+              "label": "Izvēlieties krāsu"
             }
           ]
         }

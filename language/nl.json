@@ -73,8 +73,7 @@
                     "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
                   },
                   {
-                    "label": "Kies een kleur",
-                    "default": null
+                    "label": "Kies een kleur"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Achtergrondafbeelding moet een ratio van 2:1 breedte:hoogte hebben om te voorkomen dat deze wordt uitgerekt. Afbeeldingen met hoge resolutie worden beter getoond op grotere schermen."
             },
             {
-              "label": "Kies een kleur",
-              "default": null
+              "label": "Kies een kleur"
             }
           ]
         }
