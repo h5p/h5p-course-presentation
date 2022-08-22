@@ -4,54 +4,23 @@ import { getContentId } from "./utils";
 
 export class InformationDialog {
   /**
-   * @param {string} youtubeUrl
-   * @return {HTMLIFrameElement}
+   * Create H5P.Video from video parameters.
+   *
+   * @param {object} params Video parameters from semantics.json/content.json.
+   * @returns {H5P.Video} Content instance (H5P.Video).
    */
-  static createYouTubeEmbed(youtubeUrl) {
-
-    // Determine video id from all kinds of possible YouTube URLs
-    const getId = (url) => {
-      const matches = youtubeUrl.match(/(?:(?:youtube.com\/(?:attribution_link\?(?:\S+))?(?:v\/|embed\/|watch\/|(?:user\/(?:\S+)\/)?watch(?:\S+)v\=))|(?:youtu.be\/|y2u.be\/))([A-Za-z0-9_-]{11})/i);
-      if (matches && matches[1]) {
-        return matches[1];
+  static createVideoInstance(params) {
+    return new H5P.Video({
+      sources: [params],
+      visuals: {
+        fit: params.mime !== 'video/YouTube', // Might need adjustment for other handlers like BrightCove
+        controls: true
+      },
+      playback: {
+        autoplay: false,
+        loop: false
       }
-    };
-
-    const videoId = getId(youtubeUrl);
-    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-
-    const iframe = document.createElement("iframe");
-    iframe.setAttribute("width", "500");
-    iframe.setAttribute("height", "281");
-    iframe.setAttribute("src", embedUrl);
-    iframe.setAttribute("title", "Video player");
-    iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute(
-      "allow",
-      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    );
-    iframe.setAttribute("allowfullscreen", "allowfullscreen");
-
-    return iframe;
-  }
-
-  /**
-   * @param {string} videoUrl
-   * @return {HTMLVideoElement}
-   */
-  static createVideoEmbed(videoUrl) {
-    const videoElement = document.createElement("video");
-    videoElement.src = videoUrl;
-    videoElement.setAttribute("webkit-playsinline", "");
-    videoElement.setAttribute("playsinline", "");
-    videoElement.setAttribute("preload", "metadata");
-    videoElement.setAttribute("controlslist", "nodownload");
-    videoElement.setAttribute("disablepictureinpicture", "");
-    videoElement.setAttribute("controls", "");
-    videoElement.setAttribute("class", "h5p-video");
-    videoElement.setAttribute("style", "display: block; width: 100%; height: 100%;");
-
-    return videoElement;
+    }, getContentId());
   }
 
   /**
@@ -192,26 +161,16 @@ export class InformationDialog {
       const video = dialogVideo instanceof Array ? dialogVideo[0] : dialogVideo;
 
       if (video) {
-        let videoElement;
-        let videoUrl;
+        /*
+         * YouTube handler requires wrapping HTMLElement
+         * (this.videoEmbedElement) to be attached to DOM when instantiated, so
+         * create instance here and attach in show()
+         */
+        this.videoInstance = InformationDialog.createVideoInstance(video);
 
-        const isYouTube = video.mime === "video/YouTube";
-        if (isYouTube) {
-          videoUrl = video.path;
-          videoElement = InformationDialog.createYouTubeEmbed(videoUrl);
-        } else {
-          // @ts-ignore
-          videoUrl = H5P.getPath(video.path, getContentId());
-          videoElement = InformationDialog.createVideoEmbed(videoUrl);
-        }
-
-        this.videoEmbedElement = videoElement;
-
-        const videoContainer = document.createElement("div");
-        videoContainer.classList.add("h5p-information-dialog-video-container", "h5p-video");
-        mainContainer.appendChild(videoContainer);
-
-        videoContainer.appendChild(videoElement);
+        this.videoEmbedElement = document.createElement("div");
+        this.videoEmbedElement.classList.add("h5p-information-dialog-video-container");
+        mainContainer.appendChild(this.videoEmbedElement);
       } else if (dialogImage) {
         const imageElement = InformationDialog.createImageEmbed(dialogImage);
         mainContainer.appendChild(imageElement);
@@ -267,14 +226,8 @@ export class InformationDialog {
     this.modal.removeAttribute("hidden");
     this.focusTrap.activate();
 
-    const hasVideo = this.videoEmbedElement;
-    if (hasVideo) {
-      const videoContainer = this.modalElement.querySelector(
-        ".h5p-information-dialog-video-container"
-      );
-      if (videoContainer) {
-        videoContainer.appendChild(this.videoEmbedElement);
-      }
+    if (this.videoEmbedElement && this.videoInstance) {
+      this.videoInstance.attach(H5P.jQuery(this.videoEmbedElement));
     }
 
     this.playAudio({ resetTime: true });
@@ -283,11 +236,6 @@ export class InformationDialog {
   hide() {
     this.modal.setAttribute("hidden", "true");
     this.focusTrap.deactivate();
-
-    const hasVideo = this.videoEmbedElement;
-    if (hasVideo) {
-      this.videoEmbedElement.remove();
-    }
 
     this.pauseAudio();
   }
