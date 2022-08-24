@@ -237,6 +237,10 @@ export class InformationDialog {
     this.modal.setAttribute("hidden", "true");
     this.focusTrap.deactivate();
 
+    if (this.videoInstance && typeof this.videoInstance.pause === 'function') {
+      this.videoInstance.pause();
+    }
+
     this.pauseAudio();
   }
 
