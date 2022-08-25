@@ -34,6 +34,10 @@
   max-height: 70vh;
   overflow: auto;
   padding: 2rem 3rem;
+
+  .h5p-video.h5p-youtube {
+    width: 500px; // Only refactoring, was hardcoded before, see https://github.com/NDLANO/h5p-interactive-board/commit/50e53d141397b3078a0c14cd2863d64bbe94afd9
+  }
 }
 
 .h5p-information-dialog-close-button {
