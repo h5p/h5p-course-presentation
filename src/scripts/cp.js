@@ -1338,11 +1338,8 @@ CoursePresentation.prototype.showPopup = function ({
           'role="dialog"' + 
           'aria-modal="true" ' + 
           'aria-live="true" ' + 
-          'aria-labelledby="popup-title-' + this.popupId + '"> ' + 
-          '<div class="h5p-cp-dialog-titlebar">' +
-            '<div class="h5p-dialog-title" id="popup-title-' + this.popupId + '"></div>' +
-            '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
-          '</div>' +
+          'aria-labelledby="popup-title-' + this.popupId + '"> ' +   
+          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
           '<div class="h5p-popup-wrapper" role="document"></div>' +
         '</div>' +
       '</div>'
