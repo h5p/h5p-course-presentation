@@ -590,18 +590,22 @@
 
 .h5p-course-presentation .h5p-close-popup {
   position: absolute;
-  left: 101%;
-  bottom: 101%;
+  right: -0.5em;
+  top: -0.5em;
   cursor: pointer;
-  padding: 0.4em 0.5em;
   font-size: 1.33em;
+  background: white;
+  border-radius: 50%;
+  width: 1.25em;
+  height: 1.25em;
+  border: 1px solid #eee;
+  text-align: center;
 }
 
 .h5p-course-presentation .h5p-close-popup:before {
   font-family: 'H5PFontAwesome4';
   content: "\f057";
   color: dimgrey;;
-
   vertical-align: middle;
 }
 
