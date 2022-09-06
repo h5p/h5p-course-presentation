@@ -386,7 +386,9 @@ CoursePresentation.prototype.attach = function ($container) {
     this.$keywords = $(this.keywordMenu.getElement()).appendTo(this.$keywordsWrapper);
     this.$currentKeyword = this.$keywords.children('.h5p-current');
 
-    this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
+    if (this.presentation.keywordListOpacity !== undefined) {
+      this.setKeywordsOpacity(this.presentation.keywordListOpacity);
+    }
 
     if (this.presentation.keywordListAlwaysShow) {
       this.showKeywords();
@@ -676,8 +678,10 @@ CoursePresentation.prototype.showKeywords = function () {
  * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
-  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+  if (this.$keywordsWrapper.css('background-color') !== '') {
+    const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
+    this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+  }
 };
 
 /**
