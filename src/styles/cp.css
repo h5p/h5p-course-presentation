@@ -368,12 +368,8 @@
 
 .h5p-popup-overlay.h5p-dialogcards .h5p-popup-container {
   height: 80%;
-  overflow: hidden;
 }
 
-.h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
-  overflow: hidden;
-}
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
   right: 1.2em;
 }
@@ -590,6 +586,7 @@
 
 .h5p-course-presentation .h5p-close-popup {
   position: absolute;
+  z-index: 2;
   right: -0.5em;
   top: -0.5em;
   cursor: pointer;
