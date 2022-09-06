@@ -679,8 +679,8 @@ CoursePresentation.prototype.showKeywords = function () {
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
   if (this.$keywordsWrapper.css('background-color') !== '') {
-     const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
-     this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+    const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
+    this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
   }
 };
 
