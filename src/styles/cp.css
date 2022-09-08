@@ -586,7 +586,7 @@
 
 .h5p-course-presentation .h5p-close-popup {
   position: absolute;
-  z-index: 2;
+  z-index: 52;
   right: -0.5em;
   top: -0.5em;
   cursor: pointer;
