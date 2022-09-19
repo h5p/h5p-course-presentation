@@ -62,7 +62,6 @@ Slide.createHTML = function (parameters) {
       'class="h5p-slide"> ' +
       '<div ' +
         'role="document" ' +
-        'tabindex="0" ' + 
         (parameters.background !== undefined ? ' style="background:' + parameters.background + '"' : '') + '>' +
       '</div>' +
     '</div>';
