@@ -92,14 +92,32 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-.h5p-course-presentation .h5p-wrapper:focus-visible {
-  outline: none;
-  border: 1px solid #457AD1;
+
+.using-mouse .h5p-course-presentation .h5p-wrapper:focus::before {
+  content: " ";
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-sizing: border-box;
 }
-.h5p-course-presentation .h5p-element .h5p-element-inner:focus-visible {
-  outline: 2px solid #457AD1;
-  outline-offset: -2px;
+
+.h5p-content:not(.using-mouse) .h5p-course-presentation .h5p-wrapper:focus::after {
+  content: " ";
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #457AD1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-sizing: border-box;
 }
+
 .h5p-course-presentation .h5p-box-and-nav-wrapper {
   height: 93.5%;
   display: inline-flex;
@@ -145,10 +163,7 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.h5p-course-presentation .h5p-slide:focus-within {
-  outline: 2px solid #457AD1;
-  outline-offset: -2px;
-}
+
 .h5p-course-presentation .h5p-slide.h5p-animate {
   display: block;
   -webkit-transition: -webkit-transform 0.25s ease-in-out;

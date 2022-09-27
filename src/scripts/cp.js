@@ -300,7 +300,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   this.on('exitFullScreen', () => {
     this.$footer.removeClass('footer-full-screen');
-    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
+    this.$fullScreenButton.attr('aria-label', this.l10n.fullscreen);
     this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
   });
 
@@ -423,11 +423,13 @@ CoursePresentation.prototype.attach = function ($container) {
       // Create full screen button
       this.$fullScreenButton = H5P.jQuery('<div/>', {
         'class': 'h5p-toggle-full-screen',
-        title: this.l10n.fullscreen,
+        'aria-label': this.l10n.fullscreen,
         role: 'button',
         tabindex: 0,
         appendTo: this.$wrapper
       });
+
+      H5P.Tooltip(this.$fullScreenButton.get(0), {position: 'left'});
 
       addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
     }
@@ -800,7 +802,7 @@ CoursePresentation.prototype.toggleFullScreen = function () {
     // Rescale footer buttons
     this.$footer.addClass('footer-full-screen');
 
-    this.$fullScreenButton.attr('title', this.l10n.exitFullscreen);
+    this.$fullScreenButton.attr('aria-label', this.l10n.exitFullscreen);
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
