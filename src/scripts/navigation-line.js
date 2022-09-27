@@ -132,15 +132,13 @@ const NavigationLine = (function ($) {
 
       this.progresbarKeyboardControls.addElement($link.get(0));
 
-      let tooltipPosition = 'top';
       if (this.isSummarySlide(i)) {
         $li.addClass('progressbar-part-summary-slide');
-        tooltipPosition = 'left';
       }
 
       // Add hover effect if not an ipad or iphone.
       if (!isIOS) {
-        H5P.Tooltip($li.get(0), {position: tooltipPosition});
+        H5P.Tooltip($li.get(0), {position: 'top'});
       }
 
 
