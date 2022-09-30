@@ -247,7 +247,13 @@ CoursePresentation.prototype.attach = function ($container) {
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
   this.$fullscreenAnnouncer = $container.find('.h5p-fullscreen-announcer');
   this.$slideTop = this.$slideAnnouncer.next();
-  this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
+  this.$wrapper = $container.children('.h5p-wrapper');
+
+  if (this.activeSurface) {
+    this.$wrapper.addClass('h5p-course-presentation-active-surface');
+  }
+
+  this.$wrapper.focus(function () {
     that.initKeyEvents();
   }).blur(function () {
     if (that.keydown !== undefined) {
@@ -315,7 +321,7 @@ CoursePresentation.prototype.attach = function ($container) {
   var wrapperHeight = parseInt(this.$wrapper.css('height'));
   this.height = wrapperHeight !== 0 ? wrapperHeight : 400;
 
-  this.ratio = 16/9;
+  this.ratio = 16 / 9;
   // Intended base font size cannot be read from CSS, as it might be modified
   // by mobile browsers already. (The Android native browser does this.)
   this.fontSize = 16;
@@ -610,7 +616,7 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
   if (slideScores !== undefined && slideScores) {
     // Set feedback icons for progress bar.
     slideScores.forEach(singleSlide => {
-      const $indicator = this.progressbarParts[singleSlide.slide-1]
+      const $indicator = this.progressbarParts[singleSlide.slide - 1]
         .find('.h5p-progressbar-part-has-task');
 
       if ($indicator.hasClass('h5p-answered')) {

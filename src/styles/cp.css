@@ -123,6 +123,15 @@
   display: inline-flex;
   flex-direction: column-reverse;
 }
+.h5p-course-presentation-active-surface .h5p-box-and-nav-wrapper {
+  /* Don't set aside space for navigation line in active surface mode */
+  height: 100%;
+}
+.h5p-course-presentation-active-surface .h5p-cp-navigation {
+  /* Hide navigation line in active surface mode */
+  display: none;
+}
+
 .h5p-course-presentation .h5p-box-wrapper {
   width: 100%;
   height: 96%;
