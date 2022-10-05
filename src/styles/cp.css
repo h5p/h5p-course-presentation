@@ -384,7 +384,7 @@
   top: 2em;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 75%;
+  max-width: 70%;
 }
 
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
