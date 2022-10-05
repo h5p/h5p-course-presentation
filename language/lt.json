@@ -1,0 +1,403 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Komentarai",
+                      "description": "Komentarai rodomi tik tuomet, kai naudotojas peržiūri visų skaidrių galimus atsakymys."
+                    },
+                    {
+                      "label": "Visada rodyti komentarus"
+                    },
+                    {
+                      "label": "Fono dengiamumas"
+                    },
+                    {
+                      "label": "Rodyti kaip mygtuką"
+                    },
+                    {
+                      "label": "Mygtuko dydis",
+                      "options": [
+                        {
+                          "label": "Mažas"
+                        },
+                        {
+                          "label": "Didelis"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Pavadinimas"
+                    },
+                    {
+                      "label": "Pereiti į",
+                      "options": [
+                        {
+                          "label": "Nurodyta skaidrė"
+                        },
+                        {
+                          "label": "Kita skaidrė"
+                        },
+                        {
+                          "label": "Ankstesnė skaidrė"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Nurodytas skaidrės numeris",
+                      "description": "Taikoma tik pasirinkus 'Nurodyta skaidrė'"
+                    },
+                    {
+                      "label": "Nematoma",
+                      "description": "Numatyta, jog elementas bus matomas naudojant žymeklį, be jokio pavadinimo ir skiriamo indekso. Įspėjimas: su negalia ar tik klaviatūrą naudojantys naudotojai turės problemų su šių elementu."
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "label": "Paveikslėlis",
+                    "description": "Foninio paveikslėlio pločio ir aukščio santykis turėtų būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai geriau bus rodomi didesniuose ekranuose."
+                  },
+                  {
+                    "label": "Parinkti spalvą"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Raktažodžių sąrašas"
+        },
+        {
+          "label": "Visada rodyti"
+        },
+        {
+          "label": "Automatiškai slėpti"
+        },
+        {
+          "label": "Dengiamumas"
+        },
+        {
+          "fields": [
+            {
+              "label": "Paveikslėlis",
+              "description": "Foninio paveikslėlio pločio ir aukščio santykis turėtų būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai geriau bus rodomi didesniuose ekranuose."
+            },
+            {
+              "label": "Parinkti spalvą"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Lokalizuoti",
+      "fields": [
+        {
+          "label": "Vertimas \"Skaidrė\"",
+          "default": "Skaidrė"
+        },
+        {
+          "label": "Vertimas \"Balas\"",
+          "default": "Balas"
+        },
+        {
+          "label": "Vertimas \"Jūsų balai\"",
+          "default": "Jūsų balai"
+        },
+        {
+          "label": "Vertimas \"Didžiausias balas\"",
+          "default": "Didžiausias balas"
+        },
+        {
+          "label": "Vertimas \"Viso\"",
+          "default": "Viso"
+        },
+        {
+          "label": "Vertimas \"Viso balų\"",
+          "default": "Viso balų"
+        },
+        {
+          "label": "Tekstas mygtukui rodyti sprendimą",
+          "default": "Rodyti sprendimą"
+        },
+        {
+          "label": "Tekstas kartojimo mygtukui",
+          "default": "Kartoti"
+        },
+        {
+          "label": "Tekstas eksportavimo mygtukui",
+          "default": "Eksportuoti tekstą"
+        },
+        {
+          "label": "Slėpti raktažodžių sąrašą mygtuko pavadinimas",
+          "default": "Slėpti raktažodžių sąrašą"
+        },
+        {
+          "label": "Rodyti raktažodžių sąrašą mygtuko pavadinimas",
+          "default": "Rodyti raktažodžių sąrašą"
+        },
+        {
+          "label": "Viso ekrano etiketė",
+          "default": "Visas ekranas"
+        },
+        {
+          "label": "Išeiti iš viso ekrano etiketė",
+          "default": "Išeiti iš viso ekrano"
+        },
+        {
+          "label": "Ankstesnės skaidrės etiketė",
+          "default": "Ankstesnė skaidrė"
+        },
+        {
+          "label": "Etiketė kitai skaidrei",
+          "default": "Kita skaidrė"
+        },
+        {
+          "label": "Dabartinės skaidrės etiketė",
+          "default": "Dabartinė skaidrė"
+        },
+        {
+          "label": "Paskutinės skaidrės etiketė",
+          "default": "Paskutinė skaidrė"
+        },
+        {
+          "label": "Tekstas išeiti iš sprendimo režimo",
+          "default": "Išeiti iš sprendimo režimo"
+        },
+        {
+          "label": "Tekstas sprendimo režimui",
+          "default": "Sprendimo režimas"
+        },
+        {
+          "label": "Tekstas kai puslapyje yra kelios užduotys",
+          "default": "Kelios užduotys"
+        },
+        {
+          "label": "Tekstas balų pranešimui",
+          "default": "Jūs pasiekėte:"
+        },
+        {
+          "label": "Tekstas bendrinti FACEBOOK",
+          "default": "Bendrinti FACEBOOK"
+        },
+        {
+          "label": "Tekstas bendrinti TWITTER",
+          "default": "Bendrinti TWITTER"
+        },
+        {
+          "label": "Tekstas bendrinti GOOGLE",
+          "default": "Bendrinti GOOGLE+"
+        },
+        {
+          "label": "Pavadinimas santraukos skaidrei",
+          "default": "Santrauka"
+        },
+        {
+          "label": "Komentarų piktogramos pavadinimas",
+          "default": "Rodyti komentarus"
+        },
+        {
+          "label": "Mygtuko \"Spausdinti\" pavadinimas",
+          "default": "Spausdinti"
+        },
+        {
+          "label": "Spausdinimo dialogo lange tekstas",
+          "default": "Kaip norite spausdinti šį pristatymą?"
+        },
+        {
+          "label": "Mygtuko \"Spausdinti visas skaidres\" teksto keitimas",
+          "default": "Spausdinti visas skaidres"
+        },
+        {
+          "label": "Mygtuko \"Spausdinti dabartinę skaidrę\" teksto keitimas",
+          "default": "Spausdinti dabartinę skaidrę"
+        },
+        {
+          "label": "Tekstas skaidrei be pavadinimo",
+          "default": "Nėra pavadinimo"
+        },
+        {
+          "label": "Skaidrių naršymo paaiškinimas pagalbinėse technologijose",
+          "default": "Naudokite rodykles į kairę ir į dešinę, norėdami pakeisti skaidrę ta kryptimi"
+        },
+        {
+          "label": "Pagalbinėse technologijose pristatymo etiketė",
+          "default": "Pristatymas. Norėdami pereiti tarp skaidrių, naudokite rodyklę į kairę ir į dešinę."
+        },
+        {
+          "label": "Pagalbinėse technologijose progreso juostos etiketė",
+          "default": "Pasirinkite skaidrę, kurią norite rodyti"
+        },
+        {
+          "label": "Neužbaigtų sąveikų etiketė",
+          "default": "@slideName yra nebaigta sąveika"
+        },
+        {
+          "label": "Užbaigtų sąveikų etiketė",
+          "default": "@slideName yra užbaigta sąveika"
+        },
+        {
+          "label": "Skaidrės skaitiklio etiketė. Kintamieji yra @index, @total",
+          "default": "@index skaidrė iš @total"
+        },
+        {
+          "label": "Etiketė skaidrėms, kuriose yra tik teisingi atsakymai",
+          "default": "@slideName turi tik teisingus atsakymus"
+        },
+        {
+          "label": "Etiketė skaidrėms, kuriose yra tik neteisingi atsakymai",
+          "default": "@slideName turi neteisingus atsakymus"
+        },
+        {
+          "label": "Etiketė socialinio bendrinimo juostai",
+          "default": "Bendrinti rezultatą"
+        },
+        {
+          "label": "Bendro balo pranešimas pagalbinėse technologijose",
+          "default": "Iš viso surinkote @score iš @maxScore visų galimų balų",
+          "description": "Galimi kintamieji yra @score ir @maxScore"
+        },
+        {
+          "label": "Viso ekrano įvedimo pranešimas pagalbinėse technologijose",
+          "default": "Įvesta per visą ekraną"
+        },
+        {
+          "label": "Išėjimo iš viso ekrano pranešimas pagalbinėse technologijose",
+          "default": "Išeita iš viso ekrano"
+        },
+        {
+          "label": "Pateikti rezultatus patvirtinimo dialogo antraštė",
+          "default": "Pateikti atsakymus"
+        },
+        {
+          "label": "Pateikti rezultatus patvirtinimo dialogo tekstas",
+          "default": "Tai pateiks jūsų rezultatus, ar norite tęsti?"
+        },
+        {
+          "label": "Patvirtinimo mygtuko pateikti rezultatus dialogas",
+          "default": "Pateikti ir žiūrėti rezultatus"
+        },
+        {
+          "label": "Skaidrių demonstravimo naršymas",
+          "default": "Skaidrių demonstravimo naršymas"
+        }
+      ]
+    },
+    {
+      "label": "Elgesio nustatymai",
+      "description": "Parinktys leidžia perrašyti elgesio nustatymus",
+      "fields": [
+        {
+          "label": "Aktyvuoti aktyvaus paviršiaus režimą",
+          "description": "Pašalina galutinio naudotojo naršymo valdiklius. Naršymui naudokite elementą Pereiti į skaidrę."
+        },
+        {
+          "label": "Slėpti santraukos skaidrę",
+          "description": "Paslepiama santraukos skaidrė."
+        },
+        {
+          "label": "Perrašyti \"Rodyti sprendimą\" mygtuką",
+          "description": "Ši parinktis nustato, ar mygtukas \"Rodyti sprendimą\" bus rodomas visiems klausimams, išjungtas visiems, ar nustatytas kiekvienam klausimui atskirai.",
+          "options": [
+            {
+              "label": "Įjungta"
+            },
+            {
+              "label": "Išjungta"
+            }
+          ]
+        },
+        {
+          "label": "Perrašyti \"Kartoti\" mygtuką",
+          "description": "Ši parinktis nustato, ar mygtukas \"Kartoti\" bus rodomas visiems klausimams, išjungtas visiems, ar nustatytas kiekvienam klausimui atskirai.",
+          "options": [
+            {
+              "label": "Įjungta"
+            },
+            {
+              "label": "Išjungta"
+            }
+          ]
+        },
+        {
+          "label": "Rodyti mygtuką \"Rodyti sprendimą\" santraukos skaidrėje",
+          "description": "Jei įjungta, besimokantysis galės matyti visų klausimų sprendimus, pasiekęs santraukos skaidrę"
+        },
+        {
+          "label": "Rodyti mygtuką \"Kartoti\" santraukos skaidrėje",
+          "description": "Jei įjungta, besimokantieji iš naujo bandyti klausimus galės pasiekę santraukos skaidrę. Atminkite, kad besimokantieji atnaujinę puslapį galės bandyti dar kartą, net jei šis mygtukas bus nerodomas"
+        },
+        {
+          "label": "Įjungti spausdinimo mygtuką",
+          "description": "Įjungiamas spausdinimo mygtukas."
+        },
+        {
+          "label": "Socialinių tinklų nustatymai",
+          "description": "Šie nustatymai leidžia keisti socialinių tinklų nustatymus. Jei bus pateikta nuoroda, tuščios reikšmės bus automatiškai užpildomos, priešingu atveju visos reikšmės bus sugeneruotos.",
+          "fields": [
+            {
+              "label": "Rodyti FACEBOOK bendrinimo piktogramą"
+            },
+            {
+              "label": "FACEBOOK bendrinimo nustatymai",
+              "fields": [
+                {
+                  "label": "Bendrinti FACEBOOK nuoroda",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Citata bendrinama FACEBOOK",
+                  "default": "Surinkau @score iš @maxScore užduotyje @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label": "Rodyti TWITTER bendrinimo piktogramą"
+            },
+            {
+              "label": "TWITTER bendrinimo nustatymai",
+              "fields": [
+                {
+                  "label": "Citata bendirinama TWITTERT",
+                  "default": "Surinkau @score iš @maxScore užduotyje @currentpageurl."
+                },
+                {
+                  "label": "Bendrinti TWITTER nuoroda",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Rodyti TWITTER grotažymes",
+                  "default": "h5p, kursas"
+                }
+              ]
+            },
+            {
+              "label": "Rodyti GOOGLE+ bendrinimo piktogramą"
+            },
+            {
+              "label": "Nuoroda bendrinti GOOGLE",
+              "default": "@currentpageurl"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
