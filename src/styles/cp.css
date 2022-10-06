@@ -340,13 +340,19 @@
   max-width: 90%;
 }
 
+.h5p-popup-overlay.h5p-image .h5p-popup-container,
+.h5p-popup-overlay.h5p-video .h5p-popup-container,
+.h5p-popup-overlay.h5p-interactivevideo .h5p-popup-container,
+.h5p-popup-overlay.h5p-dialogcards .h5p-popup-container {
+  min-height: initial;
+}
+
 .h5p-course-presentation .h5p-popup-container.h5p-animate {
   top: 100%;
 }
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper {
   box-sizing: border-box;
-  max-height: 22em;
   overflow: hidden;
   text-align: left;
   overflow-y: auto;
@@ -384,14 +390,10 @@
 
 .h5p-popup-overlay.h5p-interactivevideo .h5p-popup-container,
 .h5p-popup-overlay.h5p-video .h5p-popup-container {
-  top: 5%;
-  left: 17.5%;
-  width: 65%;
-  max-height: 95%;
-}
-
-.h5p-popup-overlay.h5p-dialogcards .h5p-popup-container {
-  height: 80%;
+  top: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 70%;
 }
 
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
@@ -626,8 +628,7 @@
 .h5p-course-presentation .h5p-close-popup:before {
   font-family: 'H5PFontAwesome4';
   content: "\f057";
-  color: dimgrey;;
-  vertical-align: middle;
+  color: dimgrey;
 }
 
 .h5p-course-presentation .h5p-close-popup:hover:before {
