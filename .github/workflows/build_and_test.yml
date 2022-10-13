@@ -58,7 +58,7 @@ jobs:
           git clone https://github.com/NDLA-H5P/h5p-shape.git
           git clone https://github.com/NDLA-H5P/h5p-editor-shape.git
           git clone https://github.com/NDLA-H5P/h5p-editor-image-radio-group.git
-          git clone https://github.com/NDLA-H5P/h5p-font-icons.git
+          git clone https://github.com/NDLANO/h5p-font-icons.git
           git clone https://github.com/NDLA-H5P/h5p-drag-n-bar.git
           git clone https://github.com/NDLA-H5P/h5p-drag-n-drop.git
           git clone https://github.com/NDLA-H5P/h5p-editor-drag-question.git
