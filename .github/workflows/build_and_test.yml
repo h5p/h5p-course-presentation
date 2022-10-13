@@ -63,7 +63,7 @@ jobs:
           git clone https://github.com/NDLA-H5P/h5p-drag-n-drop.git
           git clone https://github.com/NDLA-H5P/h5p-editor-drag-question.git
           git clone https://github.com/NDLA-H5P/h5p-editor-radio-selector.git
-          git clone https://github.com/NDLA-H5P/h5p-editor-show-when.git
+          git clone https://github.com/NDLANO/h5p-editor-show-when.git
           git clone https://github.com/NDLA-H5P/h5p-editor-interactive-video.git
           
           # Clone and build override projects with build scripts
