@@ -9,7 +9,7 @@
   "embedTypes": [
     "iframe"
   ],
-  "machineName": "H5P.NDLACoursePresentation",
+  "machineName": "H5P.NDLAInteractiveBoard",
   "author": "Joubel",
   "license": "MIT",
   "coreApi": {
@@ -50,7 +50,7 @@
   ],
   "editorDependencies": [
     {
-      "machineName": "H5PEditor.NDLACoursePresentation",
+      "machineName": "H5PEditor.NDLAInteractiveBoard",
       "majorVersion": 1,
       "minorVersion": 24
     },
