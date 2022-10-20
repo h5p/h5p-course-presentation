@@ -92,19 +92,46 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-.h5p-course-presentation .h5p-wrapper:focus {
-  outline: auto;
-  border: 1px solid;
+
+.using-mouse .h5p-course-presentation .h5p-wrapper:focus::before {
+  content: " ";
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-sizing: border-box;
 }
-.h5p-course-presentation .h5p-element .h5p-element-inner:focus-visible {
-  outline: 2px solid #79abfd;
-  outline-offset: -2px;
+
+.h5p-content:not(.using-mouse) .h5p-course-presentation .h5p-wrapper:focus::after {
+  content: " ";
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #457AD1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-sizing: border-box;
 }
+
 .h5p-course-presentation .h5p-box-and-nav-wrapper {
   height: 93.5%;
   display: inline-flex;
   flex-direction: column-reverse;
 }
+.h5p-course-presentation-active-surface .h5p-box-and-nav-wrapper {
+  /* Don't set aside space for navigation line in active surface mode */
+  height: 100%;
+}
+.h5p-course-presentation-active-surface .h5p-cp-navigation {
+  /* Hide navigation line in active surface mode */
+  display: none;
+}
+
 .h5p-course-presentation .h5p-box-wrapper {
   width: 100%;
   height: 96%;
@@ -145,10 +172,7 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.h5p-course-presentation .h5p-slide:focus-within {
-  outline: 2px solid #79abfd;
-  outline-offset: -2px;
-}
+
 .h5p-course-presentation .h5p-slide.h5p-animate {
   display: block;
   -webkit-transition: -webkit-transform 0.25s ease-in-out;
@@ -316,13 +340,19 @@
   max-width: 90%;
 }
 
+.h5p-popup-overlay.h5p-image .h5p-popup-container,
+.h5p-popup-overlay.h5p-video .h5p-popup-container,
+.h5p-popup-overlay.h5p-interactivevideo .h5p-popup-container,
+.h5p-popup-overlay.h5p-dialogcards .h5p-popup-container {
+  min-height: initial;
+}
+
 .h5p-course-presentation .h5p-popup-container.h5p-animate {
   top: 100%;
 }
 
 .h5p-course-presentation .h5p-popup-overlay .h5p-popup-container .h5p-popup-wrapper {
   box-sizing: border-box;
-  max-height: 22em;
   overflow: hidden;
   text-align: left;
   overflow-y: auto;
@@ -360,20 +390,12 @@
 
 .h5p-popup-overlay.h5p-interactivevideo .h5p-popup-container,
 .h5p-popup-overlay.h5p-video .h5p-popup-container {
-  top: 5%;
-  left: 17.5%;
-  width: 65%;
-  max-height: 95%;
+  top: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 70%;
 }
 
-.h5p-popup-overlay.h5p-dialogcards .h5p-popup-container {
-  height: 80%;
-  overflow: hidden;
-}
-
-.h5p-popup-overlay.h5p-singlechoiceset .h5p-popup-container {
-  overflow: hidden;
-}
 .h5p-popup-overlay.h5p-singlechoiceset .h5p-sc-sound-control {
   right: 1.2em;
 }
@@ -590,6 +612,7 @@
 
 .h5p-course-presentation .h5p-close-popup {
   position: absolute;
+  z-index: 52;
   right: -0.5em;
   top: -0.5em;
   cursor: pointer;
@@ -605,8 +628,7 @@
 .h5p-course-presentation .h5p-close-popup:before {
   font-family: 'H5PFontAwesome4';
   content: "\f057";
-  color: dimgrey;;
-  vertical-align: middle;
+  color: dimgrey;
 }
 
 .h5p-course-presentation .h5p-close-popup:hover:before {

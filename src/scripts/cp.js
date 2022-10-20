@@ -247,7 +247,13 @@ CoursePresentation.prototype.attach = function ($container) {
   this.$slideAnnouncer = $container.find('.h5p-current-slide-announcer');
   this.$fullscreenAnnouncer = $container.find('.h5p-fullscreen-announcer');
   this.$slideTop = this.$slideAnnouncer.next();
-  this.$wrapper = $container.children('.h5p-wrapper').focus(function () {
+  this.$wrapper = $container.children('.h5p-wrapper');
+
+  if (this.activeSurface) {
+    this.$wrapper.addClass('h5p-course-presentation-active-surface');
+  }
+
+  this.$wrapper.focus(function () {
     that.initKeyEvents();
   }).blur(function () {
     if (that.keydown !== undefined) {
@@ -300,7 +306,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   this.on('exitFullScreen', () => {
     this.$footer.removeClass('footer-full-screen');
-    this.$fullScreenButton.attr('title', this.l10n.fullscreen);
+    this.$fullScreenButton.attr('aria-label', this.l10n.fullscreen);
     this.$fullscreenAnnouncer.html(this.l10n.accessibilityExitedFullscreen);
   });
 
@@ -315,7 +321,7 @@ CoursePresentation.prototype.attach = function ($container) {
   var wrapperHeight = parseInt(this.$wrapper.css('height'));
   this.height = wrapperHeight !== 0 ? wrapperHeight : 400;
 
-  this.ratio = 16/9;
+  this.ratio = 16 / 9;
   // Intended base font size cannot be read from CSS, as it might be modified
   // by mobile browsers already. (The Android native browser does this.)
   this.fontSize = 16;
@@ -386,7 +392,9 @@ CoursePresentation.prototype.attach = function ($container) {
     this.$keywords = $(this.keywordMenu.getElement()).appendTo(this.$keywordsWrapper);
     this.$currentKeyword = this.$keywords.children('.h5p-current');
 
-    this.setKeywordsOpacity(this.presentation.keywordListOpacity === undefined ? 90 : this.presentation.keywordListOpacity);
+    if (this.presentation.keywordListOpacity !== undefined) {
+      this.setKeywordsOpacity(this.presentation.keywordListOpacity);
+    }
 
     if (this.presentation.keywordListAlwaysShow) {
       this.showKeywords();
@@ -421,11 +429,13 @@ CoursePresentation.prototype.attach = function ($container) {
       // Create full screen button
       this.$fullScreenButton = H5P.jQuery('<div/>', {
         'class': 'h5p-toggle-full-screen',
-        title: this.l10n.fullscreen,
+        'aria-label': this.l10n.fullscreen,
         role: 'button',
         tabindex: 0,
         appendTo: this.$wrapper
       });
+
+      H5P.Tooltip(this.$fullScreenButton.get(0), {position: 'left'});
 
       addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
     }
@@ -606,7 +616,7 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
   if (slideScores !== undefined && slideScores) {
     // Set feedback icons for progress bar.
     slideScores.forEach(singleSlide => {
-      const $indicator = this.progressbarParts[singleSlide.slide-1]
+      const $indicator = this.progressbarParts[singleSlide.slide - 1]
         .find('.h5p-progressbar-part-has-task');
 
       if ($indicator.hasClass('h5p-answered')) {
@@ -676,8 +686,10 @@ CoursePresentation.prototype.showKeywords = function () {
  * @param {number} value 0 - 100
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
-  const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
-  this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+  if (this.$keywordsWrapper.css('background-color') !== '') {
+    const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
+    this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+  }
 };
 
 /**
@@ -796,7 +808,7 @@ CoursePresentation.prototype.toggleFullScreen = function () {
     // Rescale footer buttons
     this.$footer.addClass('footer-full-screen');
 
-    this.$fullScreenButton.attr('title', this.l10n.exitFullscreen);
+    this.$fullScreenButton.attr('aria-label', this.l10n.exitFullscreen);
     H5P.fullScreen(this.$container, this);
     if (H5P.fullScreenBrowserPrefix === undefined) {
       // Hide disable full screen button. We have our own!
