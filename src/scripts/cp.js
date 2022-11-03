@@ -779,7 +779,7 @@ CoursePresentation.prototype.resize = function () {
   // Set h5p-box-wrapper height
   const navigationHeight = this.$container.find('.h5p-cp-navigation').height() || 0;
   const footerHeight = this.$footer.height() || 0;
-  this.$boxWrapper.css({ 'height': `${(width / this.ratio) - navigationHeight - footerHeight}px` });
+  this.$boxWrapper.css({ 'height': `${(width / this.ratio) - navigationHeight - footerHeight - 10}px` });
 
   this.swipeThreshold = widthRatio * 100; // Default swipe threshold is 50px.
 
