@@ -7,7 +7,7 @@ export default class SlideBackground {
   /**
    * Create a Slide specific background selector
    *
-   * @param {H5P.CoursePresentation} cp Course Presentation instance
+   * @param {H5P.InteractiveBoard} cp Course Presentation instance
    */
   constructor(cp) {
     var params = cp.presentation;

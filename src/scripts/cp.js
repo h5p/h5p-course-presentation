@@ -26,7 +26,7 @@ const KEYWORD_TITLE_SKIP = null;
  * @param {object} [extras.previousState]
  * @return {undefined} Nothing.
  */
-let CoursePresentation = function (params, id, extras) {
+let InteractiveBoard = function (params, id, extras) {
   var that = this;
   this.presentation = params.presentation;
   this.defaultAspectRatio = this.presentation.slides[0].aspectRatio || "4-3";
@@ -147,14 +147,14 @@ let CoursePresentation = function (params, id, extras) {
   });
 };
 
-CoursePresentation.prototype = Object.create(Parent.prototype);
-CoursePresentation.prototype.constructor = CoursePresentation;
+InteractiveBoard.prototype = Object.create(Parent.prototype);
+InteractiveBoard.prototype.constructor = InteractiveBoard;
 
 /**
  * @public
  * @return {object}
  */
-CoursePresentation.prototype.getCurrentState = function () {
+InteractiveBoard.prototype.getCurrentState = function () {
   var state = this.previousState ? this.previousState : {};
   state.progress = this.getCurrentSlideIndex();
   if (!state.answers) {
@@ -189,7 +189,7 @@ CoursePresentation.prototype.getCurrentState = function () {
  * @param {number} index
  * @return {boolean}
  */
-CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
+InteractiveBoard.prototype.slideHasAnsweredTask = function (index) {
   const tasks = this.slidesWithSolutions[index] || [];
 
   return tasks
@@ -203,7 +203,7 @@ CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
  * @param {H5P.jQuery} $container Container for this presentation.
  * @return {undefined} Nothing.
  */
-CoursePresentation.prototype.attach = function ($container) {
+InteractiveBoard.prototype.attach = function ($container) {
   const that = this;
 
   // isRoot is undefined in the editor
@@ -458,7 +458,7 @@ CoursePresentation.prototype.attach = function ($container) {
  * @param {HTMLElement} [stop] Optional node to stop. Defaults to body node.
  * @return {boolean} True, if node belongs to a node with one of the tag names.
  */
-CoursePresentation.prototype.belongsToTagName = function (node, tagNames, stop) {
+InteractiveBoard.prototype.belongsToTagName = function (node, tagNames, stop) {
   if (!node) {
     return false;
   }
@@ -490,7 +490,7 @@ CoursePresentation.prototype.belongsToTagName = function (node, tagNames, stop) 
  *
  * @return {jQuery}
  */
-CoursePresentation.prototype.updateKeywordMenuFromSlides = function () {
+InteractiveBoard.prototype.updateKeywordMenuFromSlides = function () {
   this.keywordMenu.removeAllMenuItemElements();
   const config = this.getKeywordMenuConfig();
   return $(this.keywordMenu.init(config));
@@ -502,7 +502,7 @@ CoursePresentation.prototype.updateKeywordMenuFromSlides = function () {
  *
  * @return {KeywordMenuItemConfig[]}
  */
-CoursePresentation.prototype.getKeywordMenuConfig = function () {
+InteractiveBoard.prototype.getKeywordMenuConfig = function () {
   return this.slides
     .map((slide, index) => ({
       title: this.createSlideTitle(slide),
@@ -517,7 +517,7 @@ CoursePresentation.prototype.getKeywordMenuConfig = function () {
  *
  * @return {string|null}
  */
-CoursePresentation.prototype.createSlideTitle = function (slide) {
+InteractiveBoard.prototype.createSlideTitle = function (slide) {
   const fallbackTitleForEditor = this.isEditor() ? this.l10n.noTitle : KEYWORD_TITLE_SKIP;
   return this.hasKeywords(slide) ? slide.keywords[0].main : fallbackTitleForEditor;
 };
@@ -527,7 +527,7 @@ CoursePresentation.prototype.createSlideTitle = function (slide) {
  *
  * @return {boolean}
  */
-CoursePresentation.prototype.isEditor = function () {
+InteractiveBoard.prototype.isEditor = function () {
   return this.editor !== undefined;
 };
 
@@ -537,7 +537,7 @@ CoursePresentation.prototype.isEditor = function () {
  * @param {object} slide
  * @return {boolean}
  */
-CoursePresentation.prototype.hasKeywords = function (slide) {
+InteractiveBoard.prototype.hasKeywords = function (slide) {
   return slide.keywords !== undefined && slide.keywords.length > 0;
 };
 
@@ -548,7 +548,7 @@ CoursePresentation.prototype.hasKeywords = function (slide) {
  *
  * @param {Array} slidesParams
  */
-CoursePresentation.prototype.createSlides = function () {
+InteractiveBoard.prototype.createSlides = function () {
   var self = this;
   for (let i = 0; i < self.children.length; i++) {
     const isCurrentSlide = (i === self.currentSlideIndex);
@@ -573,7 +573,7 @@ CoursePresentation.prototype.createSlides = function () {
  * @param obj The object to investigate
  * @return {boolean}
  */
-CoursePresentation.prototype.hasScoreData = function (obj) {  
+InteractiveBoard.prototype.hasScoreData = function (obj) {  
   return (
     (typeof obj !== typeof undefined) &&
     (typeof obj.getScore === 'function') &&
@@ -587,7 +587,7 @@ CoursePresentation.prototype.hasScoreData = function (obj) {
  * @public
  * @return {number}
  */
-CoursePresentation.prototype.getScore = function () {
+InteractiveBoard.prototype.getScore = function () {
   return flattenArray(this.slidesWithSolutions).reduce((sum, slide) => {
     return sum + (this.hasScoreData(slide) ? slide.getScore() : 0);
   }, 0);
@@ -599,7 +599,7 @@ CoursePresentation.prototype.getScore = function () {
  * @public
  * @return {number}
  */
-CoursePresentation.prototype.getMaxScore = function () {
+InteractiveBoard.prototype.getMaxScore = function () {
   return flattenArray(this.slidesWithSolutions).reduce((sum, slide) => {
     return sum + (this.hasScoreData(slide) ? slide.getMaxScore() : 0);
   }, 0);
@@ -610,7 +610,7 @@ CoursePresentation.prototype.getMaxScore = function () {
  *
  * @param {array} [slideScores]
  */
-CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
+InteractiveBoard.prototype.setProgressBarFeedback = function (slideScores) {
   if (slideScores) {
     // Set feedback icons for progress bar.
     slideScores.forEach(singleSlide => {
@@ -640,7 +640,7 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
 /**
  * Toggle keywords list on/off depending on current state
  */
-CoursePresentation.prototype.toggleKeywords = function () {
+InteractiveBoard.prototype.toggleKeywords = function () {
   const keywordsAreShowing = this.$keywordsWrapper.hasClass('h5p-open');
   this[keywordsAreShowing ? 'hideKeywords' : 'showKeywords']();
 };
@@ -648,7 +648,7 @@ CoursePresentation.prototype.toggleKeywords = function () {
 /**
  * Hide keywords
  */
-CoursePresentation.prototype.hideKeywords = function () {
+InteractiveBoard.prototype.hideKeywords = function () {
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     if (this.$keywordsButton !== undefined) {
       this.$keywordsButton.attr('title', this.l10n.showKeywords);
@@ -663,7 +663,7 @@ CoursePresentation.prototype.hideKeywords = function () {
 /**
  * Show keywords
  */
-CoursePresentation.prototype.showKeywords = function () {
+InteractiveBoard.prototype.showKeywords = function () {
   if (this.$keywordsWrapper.hasClass('h5p-open')) {
     // Already showing
     return;
@@ -687,7 +687,7 @@ CoursePresentation.prototype.showKeywords = function () {
  *
  * @param {number} value 0 - 100
  */
-CoursePresentation.prototype.setKeywordsOpacity = function (value) { 
+InteractiveBoard.prototype.setKeywordsOpacity = function (value) { 
   const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
   this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
 };
@@ -696,7 +696,7 @@ CoursePresentation.prototype.setKeywordsOpacity = function (value) {
  * Makes continuous text smaller if it does not fit inside its container.
  * Only works in view mode.
  */
-CoursePresentation.prototype.fitCT = function () {
+InteractiveBoard.prototype.fitCT = function () {
   if (this.editor !== undefined) {
     return;
   }
@@ -725,7 +725,7 @@ CoursePresentation.prototype.fitCT = function () {
  * @param {boolean} fullscreen
  * @return {undefined}
  */
-CoursePresentation.prototype.resetRatio = function () {
+InteractiveBoard.prototype.resetRatio = function () {
   const slide = this.slides[this.$current.index()];
 
   const validRatioRegex = /^\d+-\d+$/;
@@ -740,7 +740,7 @@ CoursePresentation.prototype.resetRatio = function () {
 /**
  * Resize handling.
  */
-CoursePresentation.prototype.resize = function () {  
+InteractiveBoard.prototype.resize = function () {  
   var self = this;
   
   var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
@@ -812,7 +812,7 @@ CoursePresentation.prototype.resize = function () {
  * 
  * @param {Object} instance
  */
-CoursePresentation.prototype.resizeDialogCard = function (instance) { 
+InteractiveBoard.prototype.resizeDialogCard = function (instance) { 
   var self = this;
   // In order to resize each cards we need to make it visible first
   instance.cards.forEach(card => {
@@ -897,7 +897,7 @@ CoursePresentation.prototype.resizeDialogCard = function (instance) {
 /**
  * Enter/exit full screen mode.
  */
-CoursePresentation.prototype.toggleFullScreen = function () {
+InteractiveBoard.prototype.toggleFullScreen = function () {
   if (H5P.isFullscreen || this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
     // Cancel fullscreen
     if (H5P.exitFullScreen !== undefined && H5P.fullScreenBrowserPrefix !== undefined) {
@@ -940,7 +940,7 @@ CoursePresentation.prototype.toggleFullScreen = function () {
 /**
  * Set focus.
  */
-CoursePresentation.prototype.focus = function () {
+InteractiveBoard.prototype.focus = function () {
   this.$wrapper.focus();
 };
 
@@ -949,7 +949,7 @@ CoursePresentation.prototype.focus = function () {
  *
  * @param {number} index
  */
-CoursePresentation.prototype.keywordClick = function (index) {
+InteractiveBoard.prototype.keywordClick = function (index) {
   if (this.shouldHideKeywordsAfterSelect()) {
     // Auto-hide keywords list
     this.hideKeywords();
@@ -957,7 +957,7 @@ CoursePresentation.prototype.keywordClick = function (index) {
   this.jumpToSlide(index, true);
 };
 
-CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
+InteractiveBoard.prototype.shouldHideKeywordsAfterSelect = function () {
   return this.presentation.keywordListEnabled &&
     !this.presentation.keywordListAlwaysShow &&
     this.presentation.keywordListAutoHide &&
@@ -969,7 +969,7 @@ CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
  *
  * @param {Object} override
  */
-CoursePresentation.prototype.setElementsOverride = function (override) {
+InteractiveBoard.prototype.setElementsOverride = function (override) {
   // Create default object
   this.elementsOverride = {
     params: {}
@@ -999,7 +999,7 @@ CoursePresentation.prototype.setElementsOverride = function (override) {
  * @param {jQuery} $slide
  * @param {number} index
  */
-CoursePresentation.prototype.attachElements = function ($slide, index) {
+InteractiveBoard.prototype.attachElements = function ($slide, index) {
   if (this.elementsAttached[index] !== undefined) {
     return; // Already attached
   }
@@ -1013,7 +1013,7 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
   }
   this.trigger('domChanged', {
     '$target': $slide,
-    'library': 'CoursePresentation',
+    'library': 'NDLAInteractiveBoard',
     'key': 'newSlide'
   }, {'bubbles': true, 'external': true});
 
@@ -1029,7 +1029,7 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @param {number} index
  * @return {jQuery}
  */
-CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
+InteractiveBoard.prototype.attachElement = function (element, instance, $slide, index) {
   const { displayAsButton, showAsHotspot } = element;
   const overrideButtonSize = element.buttonSize !== undefined;
 
@@ -1129,7 +1129,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 /**
  * Disables tab indexes behind a popup container
  */
-CoursePresentation.prototype.disableTabIndexes = function () {
+InteractiveBoard.prototype.disableTabIndexes = function () {
   var $popupContainer = this.$container.find('.h5p-popup-container');
 
   this.$tabbables = this.$container.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
@@ -1160,7 +1160,7 @@ CoursePresentation.prototype.disableTabIndexes = function () {
 /**
  * Re-enables tab indexes after a popup container is closed
  */
-CoursePresentation.prototype.restoreTabIndexes = function () {
+InteractiveBoard.prototype.restoreTabIndexes = function () {
   if (this.$tabbables) {
     this.$tabbables.each(function () {
       var $element = $(this);
@@ -1190,7 +1190,7 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  *
  * @return {jQuery}
  */
-CoursePresentation.prototype.createInteractionButton = function (element, instance) {
+InteractiveBoard.prototype.createInteractionButton = function (element, instance) {
   const autoPlay = element.action.params && element.action.params.cpAutoplay;
   let label = element.action.metadata ? element.action.metadata.title : '';
   if (label === '') {
@@ -1273,7 +1273,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
  * @param {function} closeCallback
  * @param {Object} [popupPosition] X and Y position of popup
  */
-CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback, popupPosition = null) {
+InteractiveBoard.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, autoPlay, closeCallback, popupPosition = null) {
 
   // Handle exit fullscreen
   const exitFullScreen = () => {
@@ -1349,7 +1349,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
  * @param {string} library
  * @return {string}
  */
-CoursePresentation.prototype.getLibraryTypePmz = library => kebabCase(library.split(' ')[0]).toLowerCase();
+InteractiveBoard.prototype.getLibraryTypePmz = library => kebabCase(library.split(' ')[0]).toLowerCase();
 
 /**
  * Resize image inside popup dialog.
@@ -1357,7 +1357,7 @@ CoursePresentation.prototype.getLibraryTypePmz = library => kebabCase(library.sp
  * @public
  * @param {H5P.jQuery} $wrapper
  */
-CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
+InteractiveBoard.prototype.resizePopupImage = function ($wrapper) {
   // Get fontsize, needed for scale
   var fontSize = Number($wrapper.css('fontSize').replace('px', ''));
   var $img = $wrapper.find('img');
@@ -1401,7 +1401,7 @@ CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  * @param {Object} elementInstance Instance of the element.
  * @param {jQuery} $elementContainer Wrapper for the element.
  */
-CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
+InteractiveBoard.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
   elementInstance.showCPComments = () => {
     if ($elementContainer.children('.h5p-element-solution').length === 0 && stripHTML(element.solution).length > 0) {
       const $commentButton = $('<div/>', {
@@ -1441,7 +1441,7 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {Function} [remove] Gets called before the popup is removed.
  * @param {string} [classes]
  */
-CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field') {
+InteractiveBoard.prototype.showPopup = function (popupContent, $focusOnClose, parentPosition = null, remove, classes = 'h5p-popup-comment-field') {
   var self = this;
   var doNotClose;
 
@@ -1602,7 +1602,7 @@ CoursePresentation.prototype.showPopup = function (popupContent, $focusOnClose, 
  *  true if the element has a solution
  *  false otherwise
  */
-CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
+InteractiveBoard.prototype.checkForSolutions = function (elementInstance) {
   return (
     elementInstance.showSolutions !== undefined ||
     elementInstance.showCPComments !== undefined ||
@@ -1615,7 +1615,7 @@ CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
  *
  * @return {undefined} Nothing.
  */
-CoursePresentation.prototype.initKeyEvents = function () {
+InteractiveBoard.prototype.initKeyEvents = function () {
   if (this.keydown !== undefined || this.activeSurface) {
     return;
   }
@@ -1656,7 +1656,7 @@ CoursePresentation.prototype.initKeyEvents = function () {
  *
  * @return {undefined} Nothing.
  */
-CoursePresentation.prototype.initTouchEvents = function () {
+InteractiveBoard.prototype.initTouchEvents = function () {
   var that = this;
   var startX, startY, lastX, prevX, nextX, scroll;
   var touchStarted = false;
@@ -1757,7 +1757,7 @@ CoursePresentation.prototype.initTouchEvents = function () {
  * @param xPos
  * @param yPos
  */
-CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
+InteractiveBoard.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
   // Remove popup on no arguments
   if (arguments.length <= 0) {
     if (this.touchPopup !== undefined) {
@@ -1815,7 +1815,7 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
  * @param {boolean} [noScroll] Skip UI scrolling.
  * @return {boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.previousSlide = function (noScroll) {
+InteractiveBoard.prototype.previousSlide = function (noScroll) {
   var $prev = this.$current.prev();
   if (!$prev.length) {
     return false;
@@ -1830,7 +1830,7 @@ CoursePresentation.prototype.previousSlide = function (noScroll) {
  * @param {boolean} noScroll Skip UI scrolling.
  * @return {boolean} Indicates if the move was made.
  */
-CoursePresentation.prototype.nextSlide = function (noScroll) {
+InteractiveBoard.prototype.nextSlide = function (noScroll) {
   var $next = this.$current.next();
   if (!$next.length) {
     return false;
@@ -1845,7 +1845,7 @@ CoursePresentation.prototype.nextSlide = function (noScroll) {
  * @param {number} index
  * @return {boolean}
  */
-CoursePresentation.prototype.isCurrentSlide = function (index) {
+InteractiveBoard.prototype.isCurrentSlide = function (index) {
   return this.currentSlideIndex === index;
 };
 
@@ -1854,7 +1854,7 @@ CoursePresentation.prototype.isCurrentSlide = function (index) {
  *
  * @return {number}
  */
-CoursePresentation.prototype.getCurrentSlideIndex = function () {
+InteractiveBoard.prototype.getCurrentSlideIndex = function () {
   return this.currentSlideIndex;
 };
 
@@ -1862,7 +1862,7 @@ CoursePresentation.prototype.getCurrentSlideIndex = function () {
  * Loads all slides (Needed by print)
  * @method attachAllElements
  */
-CoursePresentation.prototype.attachAllElements = function () {
+InteractiveBoard.prototype.attachAllElements = function () {
   var $slides = this.$slidesWrapper.children();
 
   for (var i=0; i<this.slides.length; i++) {
@@ -1883,7 +1883,7 @@ CoursePresentation.prototype.attachAllElements = function () {
  * @param {boolean} [noScroll] Skip UI scrolling.
  * @return {boolean} Always true.
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
+InteractiveBoard.prototype.jumpToSlide = function (slideNumber, noScroll = false, handleFocus = false) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -2019,7 +2019,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
 /**
  * Set tab index for text containers that overflow with a scrollbar
  */
-CoursePresentation.prototype.setOverflowTabIndex = function () {
+InteractiveBoard.prototype.setOverflowTabIndex = function () {
   // On resume, this is not set yet, but it will be iovoked later
   if (this.$current === undefined) {
     return;
@@ -2047,7 +2047,7 @@ CoursePresentation.prototype.setOverflowTabIndex = function () {
  * @param {number} slideNumber Index of slide that should have its' title announced
  * @param {boolean} [handleFocus=false] Moves focus to the top of the slide
  */
-CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = false) {
+InteractiveBoard.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = false) {
   let slideTitle = '';
 
   if (!this.navigationLine) {
@@ -2072,7 +2072,7 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
  * Reset the content for all slides.
  * @public
  */
-CoursePresentation.prototype.resetTask = function () {
+InteractiveBoard.prototype.resetTask = function () {
   this.summarySlideObject.toggleSolutionMode(false);
   
   for (const slide of this.slidesWithSolutions) {
@@ -2098,7 +2098,7 @@ CoursePresentation.prototype.resetTask = function () {
  *
  * @return {{indexes: number[], slide: number, score: number, maxScore: number}[]}
  */
-CoursePresentation.prototype.showSolutions = function () {
+InteractiveBoard.prototype.showSolutions = function () {
   const slideScores = [];
   let jumpedToFirst = false;
   let hasScores = false;
@@ -2175,7 +2175,7 @@ CoursePresentation.prototype.showSolutions = function () {
  *   maxScore: number}
  * >} slideScores Array containing scores for all slides.
  */
-CoursePresentation.prototype.getSlideScores = function (noJump) {
+InteractiveBoard.prototype.getSlideScores = function (noJump) {
   const slideScores = [];
   let jumpedToFirst = noJump === true;
   let hasScores = false;
@@ -2247,7 +2247,7 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
  *
  * @return {H5P.ContentCopyrights}
  */
-CoursePresentation.prototype.getCopyrights = function () {
+InteractiveBoard.prototype.getCopyrights = function () {
   const info = new H5P.ContentCopyrights();
   let elementCopyrights;
 
@@ -2330,7 +2330,7 @@ CoursePresentation.prototype.getCopyrights = function () {
  * @param {() => void} [instance.video.pause]
  * @param {() => void} [instance.stop]
  */
-CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
+InteractiveBoard.prototype.pauseMedia = function (instance, params = null) {
   try {
     if (instance.pause !== undefined &&
         (instance.pause instanceof Function ||
@@ -2369,7 +2369,7 @@ CoursePresentation.prototype.pauseMedia = function (instance, params = null) {
  *
  * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
  */
-CoursePresentation.prototype.getXAPIData = function () {
+InteractiveBoard.prototype.getXAPIData = function () {
   var xAPIEvent = this.createXAPIEventTemplate('answered');
 
   // Extend definition
@@ -2395,4 +2395,4 @@ CoursePresentation.prototype.getXAPIData = function () {
   };
 };
 
-export default CoursePresentation;
+export default InteractiveBoard;

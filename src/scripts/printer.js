@@ -26,7 +26,7 @@ const Printer = (function ($) {
    *
    * @method print
    * @static
-   * @param  {H5P.CoursePresentation} cp Reference to cp instance
+   * @param  {H5P.InteraectiveBoard} cp Reference to cp instance
    * @param  {H5P.jQuery} $wrapper  The CP dom wrapper
    * @param  {boolean} allSlides If true, all slides are printed. If false or
    *                             undefined, the currentSlide is printed.

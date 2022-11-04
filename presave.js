@@ -10,7 +10,7 @@ var H5PEditor = H5PEditor || {};
  * @param finished
  * @constructor
  */
-H5PPresave['H5P.CoursePresentation'] = function (content, finished) {
+H5PPresave['H5P.NDLAInteractiveBoard'] = function (content, finished) {
   var presave = H5PEditor.Presave;
 
   if (isContentInvalid()) {

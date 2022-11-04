@@ -2,7 +2,7 @@
 
 import { jQuery as $ } from "./globals";
 import { initAnswerHotspot } from "./answer-hotspot";
-import CoursePresentation from "./cp";
+import InteractiveBoard from "./cp";
 import { Hotspot } from "./hotspot";
 
 const H5P = window.H5P || {};
@@ -137,7 +137,7 @@ Element.overrideAutoplay = function (h5pLibrary) {
 /**
  *
  * @param {Object} slide
- * @param {CoursePresentation} coursePresentation
+ * @param {InteractiveBoard} coursePresentation
  * @param {*} parameters
  * @returns
  */
@@ -210,7 +210,7 @@ Element.createContent = function (slide, coursePresentation, parameters) {
  * @param {DialogHeaderContent} parameters.dialogHeaderContent
  * @param {Object} l10n
  * @param {number} currentIndex
- * @param {CoursePresentation} coursePresentation
+ * @param {InteractiveBoard} coursePresentation
  * @param {$<HTMLElement>} content
  * @returns {Hotspot}
  */

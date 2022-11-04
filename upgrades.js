@@ -1,6 +1,6 @@
 var H5PUpgrades = H5PUpgrades || {};
 
-H5PUpgrades['H5P.CoursePresentation'] = (function () {
+H5PUpgrades['H5P.NDLAInteractiveBoard'] = (function () {
   return {
     1: {
       2: function (parameters, finished) {
