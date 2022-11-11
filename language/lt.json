@@ -15,13 +15,13 @@
                     {},
                     {
                       "label": "Komentarai",
-                      "description": "Komentarai rodomi tik tuomet, kai naudotojas peržiūri visų skaidrių galimus atsakymys."
+                      "description": "Komentarai rodomi tik tuomet, kai naudotojas peržiūri visų skaidrių galimus atsakymus."
                     },
                     {
                       "label": "Visada rodyti komentarus"
                     },
                     {
-                      "label": "Fono dengiamumas"
+                      "label": "Fono permatomumas"
                     },
                     {
                       "label": "Rodyti kaip mygtuką"
@@ -44,7 +44,7 @@
                       "label": "Pereiti į",
                       "options": [
                         {
-                          "label": "Nurodyta skaidrė"
+                          "label": "Konkretus skaidrės numeris"
                         },
                         {
                           "label": "Kita skaidrė"
@@ -55,12 +55,12 @@
                       ]
                     },
                     {
-                      "label": "Nurodytas skaidrės numeris",
-                      "description": "Taikoma tik pasirinkus 'Nurodyta skaidrė'"
+                      "label": "Konkretus skaidrės numeris",
+                      "description": "Taikoma tik pasirinkus „Konkretus skaidrės numeris“"
                     },
                     {
                       "label": "Nematoma",
-                      "description": "Numatyta, jog elementas bus matomas naudojant žymeklį, be jokio pavadinimo ir skiriamo indekso. Įspėjimas: su negalia ar tik klaviatūrą naudojantys naudotojai turės problemų su šių elementu."
+                      "description": "Numatytasis žymeklis, be pavadinimo ir skiriamojo indekso. Įspėjimas: naudotojai su negalia arba naudojantys tik klaviatūrą naudotojai turės problemų naudojant šį elementą."
                     }
                   ]
                 }
@@ -70,7 +70,7 @@
                 "fields": [
                   {
                     "label": "Paveikslėlis",
-                    "description": "Foninio paveikslėlio pločio ir aukščio santykis turėtų būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai geriau bus rodomi didesniuose ekranuose."
+                    "description": "Fono paveikslėlio pločio ir aukščio santykis turi būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai bus geriau rodomi didesniuose ekranuose."
                   },
                   {
                     "label": "Parinkti spalvą"
@@ -91,13 +91,13 @@
           "label": "Automatiškai slėpti"
         },
         {
-          "label": "Dengiamumas"
+          "label": "Permatomumas"
         },
         {
           "fields": [
             {
               "label": "Paveikslėlis",
-              "description": "Foninio paveikslėlio pločio ir aukščio santykis turėtų būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai geriau bus rodomi didesniuose ekranuose."
+              "description": "Fono paveikslėlio pločio ir aukščio santykis turi būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai bus geriau rodomi didesniuose ekranuose."
             },
             {
               "label": "Parinkti spalvą"
@@ -126,55 +126,55 @@
           "default": "Didžiausias balas"
         },
         {
-          "label": "Vertimas \"Viso\"",
-          "default": "Viso"
+          "label": "Vertimas \"Iš viso\"",
+          "default": "Iš viso"
         },
         {
-          "label": "Vertimas \"Viso balų\"",
-          "default": "Viso balų"
+          "label": "Vertimas \"Iš viso balų\"",
+          "default": "Iš viso balų"
         },
         {
-          "label": "Tekstas mygtukui rodyti sprendimą",
+          "label": "Tekstas mygtukui „Rodyti sprendimą“",
           "default": "Rodyti sprendimą"
         },
         {
-          "label": "Tekstas kartojimo mygtukui",
-          "default": "Kartoti"
+          "label": "Tekstas mygtukui „Bandyti dar kartą“",
+          "default": "Bandyti dar kartą"
         },
         {
-          "label": "Tekstas eksportavimo mygtukui",
+          "label": "Tekstas mygtukui „Eksportuoti tekstą“",
           "default": "Eksportuoti tekstą"
         },
         {
-          "label": "Slėpti raktažodžių sąrašą mygtuko pavadinimas",
+          "label": "„Slėpti raktažodžių sąrašą“ mygtuko pavadinimas",
           "default": "Slėpti raktažodžių sąrašą"
         },
         {
-          "label": "Rodyti raktažodžių sąrašą mygtuko pavadinimas",
+          "label": "„Rodyti raktažodžių sąrašą“ mygtuko pavadinimas",
           "default": "Rodyti raktažodžių sąrašą"
         },
         {
-          "label": "Viso ekrano etiketė",
+          "label": "„Visas ekranas“ pavadinimas",
           "default": "Visas ekranas"
         },
         {
-          "label": "Išeiti iš viso ekrano etiketė",
+          "label": "„Išeiti iš viso ekrano“ pavadinimas",
           "default": "Išeiti iš viso ekrano"
         },
         {
-          "label": "Ankstesnės skaidrės etiketė",
+          "label": "„Ankstesnė skaidrė“ pavadinimas",
           "default": "Ankstesnė skaidrė"
         },
         {
-          "label": "Etiketė kitai skaidrei",
+          "label": "„Kita skaidrė“ pavadinimas",
           "default": "Kita skaidrė"
         },
         {
-          "label": "Dabartinės skaidrės etiketė",
+          "label": "„Dabartinė skaidrė“ pavadinimas",
           "default": "Dabartinė skaidrė"
         },
         {
-          "label": "Paskutinės skaidrės etiketė",
+          "label": "„Paskutinė skaidrė“ pavadinimas",
           "default": "Paskutinė skaidrė"
         },
         {
@@ -194,15 +194,15 @@
           "default": "Jūs pasiekėte:"
         },
         {
-          "label": "Tekstas bendrinti FACEBOOK",
+          "label": "Tekstas „Bendrinti FACEBOOK“",
           "default": "Bendrinti FACEBOOK"
         },
         {
-          "label": "Tekstas bendrinti TWITTER",
+          "label": "Tekstas „Bendrinti TWITTER“",
           "default": "Bendrinti TWITTER"
         },
         {
-          "label": "Tekstas bendrinti GOOGLE",
+          "label": "Tekstas „Bendrinti GOOGLE“",
           "default": "Bendrinti GOOGLE+"
         },
         {
@@ -214,7 +214,7 @@
           "default": "Rodyti komentarus"
         },
         {
-          "label": "Mygtuko \"Spausdinti\" pavadinimas",
+          "label": "Mygtuko „Spausdinti“ pavadinimas",
           "default": "Spausdinti"
         },
         {
@@ -222,11 +222,11 @@
           "default": "Kaip norite spausdinti šį pristatymą?"
         },
         {
-          "label": "Mygtuko \"Spausdinti visas skaidres\" teksto keitimas",
+          "label": "Mygtuko \"Spausdinti visas skaidres\" pavadinimas",
           "default": "Spausdinti visas skaidres"
         },
         {
-          "label": "Mygtuko \"Spausdinti dabartinę skaidrę\" teksto keitimas",
+          "label": "Mygtuko \"Spausdinti dabartinę skaidrę\" pavadinimas",
           "default": "Spausdinti dabartinę skaidrę"
         },
         {
@@ -238,23 +238,23 @@
           "default": "Naudokite rodykles į kairę ir į dešinę, norėdami pakeisti skaidrę ta kryptimi"
         },
         {
-          "label": "Pagalbinėse technologijose pristatymo etiketė",
-          "default": "Pristatymas. Norėdami pereiti tarp skaidrių, naudokite rodyklę į kairę ir į dešinę."
+          "label": "Pristatymo pavadinimas, skirtas pagalbinėms technologijoms",
+          "default": "Pristatymas. Norėdami pereiti tarp skaidrių, naudokite rodykles į kairę ir į dešinę."
         },
         {
-          "label": "Pagalbinėse technologijose progreso juostos etiketė",
+          "label": "Pagalbinių technologijų progreso juostos pavadinimas",
           "default": "Pasirinkite skaidrę, kurią norite rodyti"
         },
         {
-          "label": "Neužbaigtų sąveikų etiketė",
+          "label": "Neužbaigtų sąveikų pavadinimas",
           "default": "@slideName yra nebaigta sąveika"
         },
         {
-          "label": "Užbaigtų sąveikų etiketė",
+          "label": "Užbaigtų sąveikų pavadinimas",
           "default": "@slideName yra užbaigta sąveika"
         },
         {
-          "label": "Skaidrės skaitiklio etiketė. Kintamieji yra @index, @total",
+          "label": "Skaidrės skaitiklio pavadinimas. Kintamieji yra @index, @total",
           "default": "@index skaidrė iš @total"
         },
         {
@@ -276,19 +276,19 @@
         },
         {
           "label": "Viso ekrano įvedimo pranešimas pagalbinėse technologijose",
-          "default": "Įvesta per visą ekraną"
+          "default": "Įeita į viso ekrano režimą"
         },
         {
           "label": "Išėjimo iš viso ekrano pranešimas pagalbinėse technologijose",
           "default": "Išeita iš viso ekrano"
         },
         {
-          "label": "Pateikti rezultatus patvirtinimo dialogo antraštė",
+          "label": "Pateikimo rezultato patvirtinimo dialogo antraštė",
           "default": "Pateikti atsakymus"
         },
         {
           "label": "Pateikti rezultatus patvirtinimo dialogo tekstas",
-          "default": "Tai pateiks jūsų rezultatus, ar norite tęsti?"
+          "default": "Bus pateikti jūsų rezultatai, ar norite tęsti?"
         },
         {
           "label": "Patvirtinimo mygtuko pateikti rezultatus dialogas",
@@ -301,8 +301,8 @@
       ]
     },
     {
-      "label": "Elgesio nustatymai",
-      "description": "Parinktys leidžia perrašyti elgesio nustatymus",
+      "label": "Veikimo nustatymai.",
+      "description": "Šios parinktys leis keisti veikimo nustatymus.",
       "fields": [
         {
           "label": "Aktyvuoti aktyvaus paviršiaus režimą",
@@ -310,11 +310,11 @@
         },
         {
           "label": "Slėpti santraukos skaidrę",
-          "description": "Paslepiama santraukos skaidrė."
+          "description": "Paslepia santraukos skaidrę."
         },
         {
-          "label": "Perrašyti \"Rodyti sprendimą\" mygtuką",
-          "description": "Ši parinktis nustato, ar mygtukas \"Rodyti sprendimą\" bus rodomas visiems klausimams, išjungtas visiems, ar nustatytas kiekvienam klausimui atskirai.",
+          "label": "Keisti „Rodyti sprendimą“ mygtuką",
+          "description": "Ši parinktis nustato, ar mygtukas „Rodyti sprendimą“ bus rodomas visiems klausimams, išjungtas visiems, ar nustatytas kiekvienam klausimui atskirai.",
           "options": [
             {
               "label": "Įjungta"
@@ -325,8 +325,8 @@
           ]
         },
         {
-          "label": "Perrašyti \"Kartoti\" mygtuką",
-          "description": "Ši parinktis nustato, ar mygtukas \"Kartoti\" bus rodomas visiems klausimams, išjungtas visiems, ar nustatytas kiekvienam klausimui atskirai.",
+          "label": "Keisti \"Bandyti dar kartą\" mygtuką",
+          "description": "Ši parinktis nustato, ar mygtukas \"Bandyti dar kartą\" bus rodomas visiems klausimams, išjungtas visiems, ar nustatytas kiekvienam klausimui atskirai.",
           "options": [
             {
               "label": "Įjungta"
@@ -341,16 +341,16 @@
           "description": "Jei įjungta, besimokantysis galės matyti visų klausimų sprendimus, pasiekęs santraukos skaidrę"
         },
         {
-          "label": "Rodyti mygtuką \"Kartoti\" santraukos skaidrėje",
-          "description": "Jei įjungta, besimokantieji iš naujo bandyti klausimus galės pasiekę santraukos skaidrę. Atminkite, kad besimokantieji atnaujinę puslapį galės bandyti dar kartą, net jei šis mygtukas bus nerodomas"
+          "label": "Rodyti mygtuką „Bandyti dar kartą“ santraukos skaidrėje",
+          "description": "Jei įjungta, besimokantieji iš naujo bandyti klausimus galės pasiekę santraukos skaidrę. Atminkite, kad besimokantieji atnaujinę puslapį galės bandyti dar kartą, net jei šis mygtukas bus nerodomas."
         },
         {
           "label": "Įjungti spausdinimo mygtuką",
-          "description": "Įjungiamas spausdinimo mygtukas."
+          "description": "Įjungia spausdinimo mygtuką."
         },
         {
           "label": "Socialinių tinklų nustatymai",
-          "description": "Šie nustatymai leidžia keisti socialinių tinklų nustatymus. Jei bus pateikta nuoroda, tuščios reikšmės bus automatiškai užpildomos, priešingu atveju visos reikšmės bus sugeneruotos.",
+          "description": "Šie nustatymai leidžia keisti socialinių tinklų veikimo nustatymus. Jei bus pateikta nuoroda, tuščios reikšmės bus automatiškai užpildomos, priešingu atveju visos reikšmės bus sugeneruotos.",
           "fields": [
             {
               "label": "Rodyti FACEBOOK bendrinimo piktogramą"
@@ -359,7 +359,7 @@
               "label": "FACEBOOK bendrinimo nustatymai",
               "fields": [
                 {
-                  "label": "Bendrinti FACEBOOK nuoroda",
+                  "label": "„Bendrinti FACEBOOK“ nuoroda",
                   "default": "@currentpageurl"
                 },
                 {
@@ -375,15 +375,15 @@
               "label": "TWITTER bendrinimo nustatymai",
               "fields": [
                 {
-                  "label": "Citata bendirinama TWITTERT",
+                  "label": "Citata bendrinama TWITTER",
                   "default": "Surinkau @score iš @maxScore užduotyje @currentpageurl."
                 },
                 {
-                  "label": "Bendrinti TWITTER nuoroda",
+                  "label": "„Bendrinti TWITTER“ nuoroda",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Rodyti TWITTER grotažymes",
+                  "label": "Bendrinti su „Twitter“ grotažymėmis",
                   "default": "h5p, kursas"
                 }
               ]
@@ -392,7 +392,7 @@
               "label": "Rodyti GOOGLE+ bendrinimo piktogramą"
             },
             {
-              "label": "Nuoroda bendrinti GOOGLE",
+              "label": "Nuoroda „Bendrinti GOOGLE“",
               "default": "@currentpageurl"
             }
           ]
