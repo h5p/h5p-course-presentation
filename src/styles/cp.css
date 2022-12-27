@@ -13,11 +13,11 @@
 /* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
 @font-face {
   font-family: 'H5PCoursePresentation';
-  src:url('../fonts/H5P.eot?7pqlet');
-  src:url('../fonts/H5P.eot?7pqlet#iefix') format('embedded-opentype'),
-  url('../fonts/H5P.ttf?7pqlet') format('truetype'),
-  url('../fonts/H5P.woff?7pqlet') format('woff'),
-  url('../fonts/H5P.svg?7pqlet#H5P') format('svg');
+  src:url('../fonts/H5P.eot?bupsqs');
+  src:url('../fonts/H5P.eot?bupsqs#iefix') format('embedded-opentype'),
+  url('../fonts/H5P.ttf?bupsqs') format('truetype'),
+  url('../fonts/H5P.woff?bupsqs') format('woff'),
+  url('../fonts/H5P.svg?bupsqs#H5P') format('svg');
   font-weight: normal;
   font-style: normal;
 }
