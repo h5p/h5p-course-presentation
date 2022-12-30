@@ -74,7 +74,8 @@
                       "H5P.Table 1.1",
                       "H5P.InteractiveVideo 1.24",
                       "H5P.TwitterUserFeed 1.0",
-                      "H5P.AudioRecorder 1.0"
+                      "H5P.AudioRecorder 1.0",
+                      "H5P.MultiMediaChoice 0.3"
                     ],
                     "optional": true
                   },
