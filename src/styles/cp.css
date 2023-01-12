@@ -490,6 +490,7 @@
 .h5p-course-presentation .h5p-summary-button,
 .h5p-course-presentation .h5p-dialogcards-button,
 .h5p-course-presentation .h5p-interactivevideo-button,
+.h5p-course-presentation .h5p-multimediachoice-button,
 .h5p-course-presentation .h5p-truefalse-button {
   background: #981d99;
   border-color: #e489f3; /* Used by focus effect */
@@ -505,6 +506,7 @@
 .h5p-course-presentation .h5p-summary-button:hover,
 .h5p-course-presentation .h5p-dialogcards-button:hover,
 .h5p-course-presentation .h5p-interactivevideo-button:hover,
+.h5p-course-presentation .h5p-multimediachoice-button:hover,
 .h5p-course-presentation .h5p-truefalse-button:hover {
   background: #661366;
 }
@@ -517,6 +519,7 @@
 .h5p-course-presentation .h5p-singlechoiceset-button:before,
 .h5p-course-presentation .h5p-dragtext-button:before,
 .h5p-course-presentation .h5p-dialogcards-button:before,
+.h5p-course-presentation .h5p-multimediachoice-button:before,
 .h5p-course-presentation .h5p-markthewords-button:before {
   font-family: 'H5PCoursePresentation';
 }
@@ -597,6 +600,10 @@
   content: "\f130";
   position: relative;
   top: 0.05em;
+}
+
+.h5p-course-presentation .h5p-multimediachoice-button:before {
+  content: "\e901";
 }
 
 .h5p-course-presentation .h5p-no-solution {
