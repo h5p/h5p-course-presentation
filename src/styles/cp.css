@@ -606,6 +606,11 @@
   content: "\e901";
 }
 
+.h5p-multi-media-choice-option-list {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
 .h5p-course-presentation .h5p-no-solution {
   color: #888888;
 }
