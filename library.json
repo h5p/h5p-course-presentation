@@ -2,8 +2,8 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 25,
-  "patchVersion": 3,
+  "minorVersion": 26,
+  "patchVersion": 0,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -47,7 +47,7 @@
     {
       "machineName": "H5P.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 25
+      "minorVersion": 26
     },
     {
       "machineName": "H5PEditor.ShowWhen",
@@ -57,7 +57,7 @@
     {
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 25
+      "minorVersion": 26
     }
   ]
 }
