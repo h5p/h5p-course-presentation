@@ -242,8 +242,8 @@
           "default": "Präsentationsbereich. Verwende die linke oder rechte Cursortaste, um zwischen den Folien zu navigieren."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Beschriftung des Fortschrittsbalkens für Vorlesewerkzeuge",
+          "default": "Wähle das zu zeigende Schaubild"
         },
         {
           "label": "Beschriftung für nicht abgeschlossene Interaktionen",
@@ -295,8 +295,8 @@
           "default": "Senden und Ergebnisse ansehen"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Schaubild-Navigation",
+          "default": "Schaubild-Navigation"
         }
       ]
     },

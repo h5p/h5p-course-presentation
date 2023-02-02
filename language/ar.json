@@ -56,7 +56,7 @@
                     },
                     {
                       "label": "رقم شريحة محددة",
-                      "description": "ينطبق فقط عندما يتم تحديد \"رقم شريحة محددة\"."
+                      "description": "ينطبق عند تحديد ”رقم شريحة محدد“ فحسب"
                     },
                     {
                       "label": "غير مرئى",
@@ -246,7 +246,7 @@
           "default": "Choose slide to display"
         },
         {
-          "label": "تسمية لتفاعلات غير مكتملة",
+          "label": "تسمية التفاعلات المكتملة",
           "default": "@slideName contains not completed interaction"
         },
         {
@@ -401,7 +401,7 @@
                 },
                 {
                   "label": "مشاركة تعليق على الفيس بوك",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "default": "سجلت @score من @maxScore في مهمة في @currentpageurl."
                 }
               ]
             },

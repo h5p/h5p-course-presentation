@@ -242,8 +242,8 @@
           "default": "Lenzo da presentación. Usa as frechas esquerda e dereita para moverte entre diapositivas."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Etiqueta da barra de progreso para as tecnoloxías de asistencia",
+          "default": "Escolle a diapositiva que queres amosar"
         },
         {
           "label": "Etiqueta para interaccións incompletas",
@@ -295,8 +295,8 @@
           "default": "Envía e ve os resultados"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Navegación pola presentación de diapositivas",
+          "default": "Navegación pola presentación de diapositivas"
         }
       ]
     },

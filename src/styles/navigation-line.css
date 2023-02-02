@@ -90,6 +90,7 @@
   display: inline-block;
   cursor: pointer;
   position: relative;
+  line-height: 1.35;
 }
 
 /* Hide exit solution mode button initially */
@@ -198,7 +199,7 @@
 
 .h5p-course-presentation .h5p-cp-navigation {
   width: 100%;
-  height: 3.5%;
+  height: 4%;
 }
 
 .h5p-course-presentation .h5p-progressbar {
@@ -261,7 +262,7 @@
 }
 
 .h5p-course-presentation .h5p-progressbar a:focus {
-  outline: 2px solid #79abfd;
+  outline: 2px solid #457AD1;
   outline-offset: 1px;
 }
 
@@ -333,12 +334,12 @@
 
 /* -------------------------------------- Footer hover effects ---------------------------------- */
 
-.h5p-course-presentation .h5p-footer .h5p-footer-button:hover {
+.h5p-course-presentation .h5p-footer [role="button"]:hover {
   color: #000;
 }
 
-.h5p-course-presentation .h5p-footer .h5p-footer-button:focus {
-  outline: 2px solid #79abfd;
+.h5p-course-presentation .h5p-footer [role="button"]:focus {
+  outline: 2px solid #457AD1;
   background-color: rgba(121, 171, 253, 0.2);
 }
 
@@ -354,6 +355,12 @@
   color: #999;
 }
 
-.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode .h5p-footer-button {
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode [role="button"] {
   color: #dbd7d1;
+}
+
+.h5p-course-presentation .h5p-footer.h5p-footer-solution-mode [role="button"]:focus {
+  color: #dbd7d1;
+  outline: 2px solid #fff;
+  background-color: transparent;
 }

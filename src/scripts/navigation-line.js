@@ -132,13 +132,13 @@ const NavigationLine = (function ($) {
 
       this.progresbarKeyboardControls.addElement($link.get(0));
 
-      // Add hover effect if not an ipad or iphone.
-      if (!isIOS) {
-        H5P.Tooltip($li.get(0));
-      }
-
       if (this.isSummarySlide(i)) {
         $li.addClass('progressbar-part-summary-slide');
+      }
+
+      // Add hover effect if not an ipad or iphone.
+      if (!isIOS) {
+        H5P.Tooltip($li.get(0), {position: 'top'});
       }
 
 
@@ -385,7 +385,7 @@ const NavigationLine = (function ($) {
           'tabindex': '0'
         });
 
-        H5P.Tooltip(this.cp.$fullScreenButton.get(0));
+        H5P.Tooltip(this.cp.$fullScreenButton.get(0), {position: 'left'});
 
         addClickAndKeyboardListeners(this.cp.$fullScreenButton, () => that.cp.toggleFullScreen());
 

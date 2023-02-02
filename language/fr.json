@@ -107,7 +107,7 @@
       ]
     },
     {
-      "label": "Options générales.",
+      "label": "Options générales",
       "fields": [
         {
           "label": "Traduction pour \"Diapositive\"",
@@ -158,7 +158,7 @@
           "default": "Plein écran"
         },
         {
-          "label": "Obliger l'utilisateur à saisir une réponse avant de pouvoir afficher la correction.",
+          "label": "Obliger l'utilisateur à saisir une réponse avant de pouvoir afficher la correction",
           "default": "Quitter le plein écran"
         },
         {
@@ -291,7 +291,7 @@
           "default": "Cette action va envoyer vos réponses, voulez-vous continuer?"
         },
         {
-          "label": "Bouton de confirmation  du dialogue de confirmation d'envoi des réponses",
+          "label": "Bouton de confirmation du dialogue de confirmation d'envoi des réponses",
           "default": "Envoyer et voir les résultats"
         },
         {
@@ -375,7 +375,7 @@
         },
         {
           "label": "Afficher le bouton \"Afficher la solution\" dans la diapositive de résumé",
-          "description": "Si activé, l'apprenant pourra afficher toutes les réponses lorsqu'il arrivera à la diapositive Résumé."
+          "description": "Si activé, l'apprenant pourra afficher toutes les réponses lorsqu'il arrivera à la diapositive Résumé"
         },
         {
           "label": "Afficher le bouton \"Réessayer\" dans la diapositive de résumé",
@@ -421,7 +421,7 @@
                 },
                 {
                   "label": "Les hashtags pour partager sur Twitter",
-                  "default": "h5p, course"
+                  "default": "h5p, cours"
                 }
               ]
             },
