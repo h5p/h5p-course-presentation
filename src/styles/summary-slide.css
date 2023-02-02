@@ -180,6 +180,19 @@
   padding: 0 0.1em;
 }
 
+.h5p-course-presentation .h5p-summary-overall-feedback {
+  margin-top: 4em;
+}
+
+.h5p-course-presentation .h5p-summary-overall-feedback.hidden {
+  display: none;
+}
+
+.h5p-course-presentation .h5p-summary-overall-feedback .h5p-summary-overall-feedback-text {
+  color: #1a73d9;
+  font-weight: bold;
+}
+
 /* ---------------------------- Social media styles ---------------------------------------------- */
 
 /* Facebook and Twitter link styling */

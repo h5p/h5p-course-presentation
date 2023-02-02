@@ -91,6 +91,20 @@ const SummarySlide = (function () {
           event.preventDefault();
         });
       });
+
+      // Update overall feedback
+      const scoreText = H5P.Question.determineOverallFeedback(that.cp.params.scoring.overallFeedback, totalScores.totalScore / totalScores.totalMaxScore)
+        .replace('@score', totalScores.totalScore)
+        .replace('@total', totalScores.totalMaxScore)
+        .trim();
+
+      if (scoreText !== '') {
+        $('.h5p-summary-overall-feedback').removeClass('hidden');
+        $('.h5p-summary-overall-feedback-text', that.$summarySlide).html(scoreText);
+      }
+      else {
+        $('.h5p-summary-overall-feedback').addClass('hidden');
+      }
     }
 
     // Button container ref
@@ -189,8 +203,10 @@ const SummarySlide = (function () {
     }
 
     if (!this.cp.isSolutionMode) {
-      that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
+      const success = totalScore * 100 / totalMaxScore >= that.cp.params.scoring.passPercentage;
+      that.cp.triggerXAPICompleted(totalScore, totalMaxScore, success);
     }
+
     var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
     var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
     var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
@@ -218,6 +234,9 @@ const SummarySlide = (function () {
             '<p>' + that.cp.l10n.totalScore + '</p>' +
           '</div>' +
         '</div>' +
+        '<div class="h5p-summary-overall-feedback">' +
+          '<div class="h5p-summary-overall-feedback-text"></div>' +
+        '</div>' +        
       '</div>' +
       '<div class="h5p-summary-footer">' +
       '</div>';

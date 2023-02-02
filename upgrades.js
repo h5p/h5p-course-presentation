@@ -333,6 +333,27 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
 
         // Done
         finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.26.
+       *
+       * Set scoring
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      26: function (parameters, finished) {
+        if (parameters) {
+          parameters.scoring = {
+            passPercentage: 100,
+            overallFeedback: [{from: 0, to: 100}]
+          };
+        }
+
+        // Done
+        finished(null, parameters);
       }
     }
   };
