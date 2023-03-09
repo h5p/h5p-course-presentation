@@ -291,12 +291,12 @@
           "default": "This will submit your results, do you want to continue?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Knapp för att bekräfta inskickning av resultat.",
+          "default": "Skicka in och se resultat"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Sidnavigering",
+          "default": "Sidnavigering"
         }
       ]
     },
