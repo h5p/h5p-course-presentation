@@ -279,12 +279,12 @@
           "default": "נכנסתם למצב מסך מלא"
         },
         {
-          "label": "יצאתם מהודעת מסך מלא עבור טכנולוגיות מסייעות",
+          "label": "הודעת יצאתם ממצב מסך־מלא עבור טכנולוגיות מסייעות",
           "default": "יצאתם ממסך מלא"
         },
         {
           "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "default": "הגישו את תשובותיכם"
         },
         {
           "label": "Text of submit result confirmation dialog",

@@ -246,7 +246,7 @@
           "default": "Choose slide to display"
         },
         {
-          "label": "Etiqueta para interações incompletas",
+          "label": "Etiqueta para interacções completas",
           "default": "@slideName contém interações incompletas"
         },
         {
@@ -310,7 +310,7 @@
         },
         {
           "label": "Ocultar o slide de resumo",
-          "description": "Ocultar o slide de resumo"
+          "description": "Ocultar o slide de resumo."
         },
         {
           "label": "Substituir o botão \"Mostrar Solução\"",

@@ -27,13 +27,13 @@
                       "label": "Vis som knapp"
                     },
                     {
-                      "label": "Button size",
+                      "label": "Knappestorleik",
                       "options": [
                         {
-                          "label": "Small"
+                          "label": "Liten"
                         },
                         {
-                          "label": "Big"
+                          "label": "Stor"
                         }
                       ]
                     },
@@ -41,7 +41,7 @@
                       "label": "Tittel"
                     },
                     {
-                      "label": "Go to to",
+                      "label": "Gå til",
                       "options": [
                         {
                           "label": "Specific slide number"
@@ -235,34 +235,34 @@
         },
         {
           "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Bruk venstre og høgre piltast for å skifte lysbilete i den retninga når lerret er valt"
+          "default": "Bruk venstrepiltast og høgrepiltast for å navigere."
         },
         {
-          "label": "Canvas label for assistive technologies",
-          "default": "Presentasjonslerret. Bruk høgre og venstre piltast til å navigere mellom lysbilete."
+          "label": "Beskriving for skjermlesar",
+          "default": "Bruk piltast mot høgre eller venstre for å navigere mellom sider."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Beskriving av framdriftslinje for skjermlesar",
+          "default": "Vis sida"
         },
         {
-          "label": "Label for uncompleted interactions",
-          "default": "@slideName inneheld ikkje avslutta interaksjon"
+          "label": "Tekst for oppgåve som ikkje er fullført",
+          "default": "@slideName er ikkje fullført."
         },
         {
-          "label": "Label for completed interactions",
-          "default": "@slideName inneheld avslutta interaksjon"
+          "label": "Tekst for fullført oppgåve",
+          "default": "@slideName er fullført."
         },
         {
-          "label": "Label for slide counter. Variables are @index, @total",
-          "default": "Lysbilete @index av @total"
+          "label": "Tekst for sidenummerering. Variablar er @index, @total.",
+          "default": "Side @index av @total"
         },
         {
-          "label": "Label for slides that only contains correct answers",
-          "default": "@slideName har berre rette svar"
+          "label": "Tekst for sider der alle svara er rette.",
+          "default": "Alle svara på @slideName er rette."
         },
         {
-          "label": "Label for slides that has incorrect answers",
+          "label": "Tekst for sider med ein eller fleire feil",
           "default": "@slideName har feil svar"
         },
         {
@@ -272,7 +272,7 @@
         {
           "label": "Total score announcement for assistive technologies",
           "default": "Du fekk @score av totalt @maxScore poeng",
-          "description": "Available variables are @score and @maxScore"
+          "description": "Tilgjengelege variablar er @score og @maxScore."
         },
         {
           "label": "Entered fullscreen announcement for assistive technologies",
@@ -291,17 +291,17 @@
           "default": "This will submit your results, do you want to continue?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Knapp for å stadfeste vidaresending av resultat",
+          "default": "Send inn og sjå resultat"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Sidenavigering",
+          "default": "Sidenavigering"
         }
       ]
     },
     {
-      "label": "Innstillinger for oppførsel.",
+      "label": "Oppgåveinnstillingar",
       "description": "Disse alternativene vil la deg overstyre innstillinger.",
       "fields": [
         {
@@ -349,42 +349,42 @@
           "description": "Aktiverer print-knappen."
         },
         {
-          "label": "Social Settings",
-          "description": "These options will let you override social behaviour settings. Empty values will be filled in automatically if a link is provided, otherwise all values will be generated.",
+          "label": "Innstillingar for sosiale medium",
+          "description": "Her kan du endre innstillingane for sosiale medium. Tomme felt blir fylte ut automatisk dersom du legg inn ei lenke.",
           "fields": [
             {
-              "label": "Display Facebook share icon"
+              "label": "Vis ikon for deling på Facebook"
             },
             {
-              "label": "Facebook share settings",
+              "label": "Innstillingar for deling på Facebook",
               "fields": [
                 {
-                  "label": "Share to Facebook link",
+                  "label": "Lenke for å dele på Facebook",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Facebook quote",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Tekst som blir vist på Facebook",
+                  "default": "Eg fekk @score av @maxScore poeng på denne oppgåva: @currentpageurl"
                 }
               ]
             },
             {
-              "label": "Display Twitter share icon"
+              "label": "Vis ikon for deling på Twitter"
             },
             {
-              "label": "Twitter share settings",
+              "label": "Innstillinger for deling på Twitter",
               "fields": [
                 {
-                  "label": "Share to Twitter statement",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "label": "Tekst som blir vist på Twitter",
+                  "default": "Eg fekk @score av @maxScore poeng på oppgåva @currentpageurl."
                 },
                 {
-                  "label": "Share to Twitter link",
+                  "label": "Lenke som blir delt på Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Share to Twitter hashtags",
-                  "default": "h5p, course"
+                  "label": "Emneknaggar Twitter",
+                  "default": "H5P, kurs, øving"
                 }
               ]
             },
