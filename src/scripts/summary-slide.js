@@ -227,7 +227,6 @@ const SummarySlide = (function () {
 
   SummarySlide.prototype.getSlideDescription = function (slideScoresSlide) {
     var self = this;
-
     // Get task description, task name or identify multiple tasks:
     var slideDescription, action;
     var slideElements = self.cp.slides[slideScoresSlide.slide - 1].elements;
@@ -240,29 +239,8 @@ const SummarySlide = (function () {
         slideDescription = self.cp.elementInstances[slideScoresSlide.slide - 1][slideScoresSlide.indexes[0]].getTitle();
       }
       else if (action.library !== undefined && action.library) {
-
-        // Remove major, minor version and h5p prefix, Split on uppercase
-        var humanReadableLibrary = action.library
-          .split(' ')[0]
-          .split('.')[1]
-          .split(/(?=[A-Z])/);
-        var humanReadableString = '';
-
-        // Make library human readable
-        humanReadableLibrary.forEach(function (readableWord, index) {
-
-          // Make sequential words lowercase
-          if (index !== 0) {
-            readableWord = readableWord.toLowerCase();
-          }
-          humanReadableString += readableWord;
-
-          // Add space between words
-          if (index <= humanReadableLibrary.length - 1) {
-            humanReadableString += ' ';
-          }
-        });
-        slideDescription = humanReadableString;
+        // Use Metadata to get content type title instead of library name
+        slideDescription = action.metadata.contentType;
       }
     }
     return slideDescription;
