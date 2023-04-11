@@ -15,19 +15,19 @@
                     {},
                     {
                       "label": "Kommentarar",
-                      "description": "Kommentarane visast når brukaren ser på fasit."
+                      "description": "Kommentarane blir viste når brukaren ser på fasit for alle oppgåvene."
                     },
                     {
-                      "label": "Alltid vis kommentarer"
+                      "label": "Vis alltid kommentarar"
                     },
                     {
-                      "label": "Opasitet for bakgrunn"
+                      "label": "Gjennomsiktigheit for bakgrunn"
                     },
                     {
                       "label": "Vis som knapp"
                     },
                     {
-                      "label": "Knappestorleik",
+                      "label": "Knappstorleik",
                       "options": [
                         {
                           "label": "Liten"
@@ -44,23 +44,23 @@
                       "label": "Gå til",
                       "options": [
                         {
-                          "label": "Specific slide number"
+                          "label": "Eksakt sidetal"
                         },
                         {
                           "label": "Neste side"
                         },
                         {
-                          "label": "Forrige side"
+                          "label": "Førre side"
                         }
                       ]
                     },
                     {
-                      "label": "Gå til lysbilete",
-                      "description": "Only applicable when 'Specific slide number' is selected"
+                      "label": "Gå til sidenummer",
+                      "description": "Berre relevant dersom du har valt \"Eksakt sidetal\""
                     },
                     {
-                      "label": "Usynlig",
-                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukarar med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                      "label": "Usynleg",
+                      "description": "Standard musepeikar, ingen tittel og inga tabulatorrekkefølge. Åtvaring: Brukarar som er nøydde til å bruke tastatur, får problem med å bruke elementet."
                     }
                   ]
                 }
@@ -70,10 +70,10 @@
                 "fields": [
                   {
                     "label": "Bilete",
-                    "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+                    "description": "Forholdet mellom breidde og høgde på bakgrunnsbilete bør vere 2 : 1 for å unngå strekking av biletet. Høgoppløyselege bilete gir betre visning på større skjermar."
                   },
                   {
-                    "label": "Velg farge"
+                    "label": "Vel farge"
                   }
                 ]
               }
@@ -82,35 +82,35 @@
         },
         {},
         {
-          "label": "Nøkkelordsliste"
+          "label": "Nøkkelordliste"
         },
         {
           "label": "Vis alltid"
         },
         {
-          "label": "Auto skjul"
+          "label": "Skjul automatisk"
         },
         {
-          "label": "Opasitet"
+          "label": "Gjennomsiktigheit"
         },
         {
           "fields": [
             {
               "label": "Bilete",
-              "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+              "description": "Forholdet mellom breidde og høgde på bakgrunnsbilete bør vere 2 : 1 for å unngå strekking av biletet. Høgoppløyselege bilete gir betre visning på større skjermar."
             },
             {
-              "label": "Velg farge"
+              "label": "Vel farge"
             }
           ]
         }
       ]
     },
     {
-      "label": "Innstillinger for oppgave-oppførsel",
+      "label": "Tilpass språk",
       "fields": [
         {
-          "label": "Oversetting for \"Lysbilete\"",
+          "label": "Omsetting for \"Side\"",
           "default": "Side"
         },
         {
