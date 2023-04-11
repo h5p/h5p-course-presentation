@@ -18,16 +18,16 @@
                       "description": "Kommentarene vises når brukeren ser på fasit."
                     },
                     {
-                      "label": "Alltid vis kommentarer"
+                      "label": "Vis alltid kommentarer"
                     },
                     {
-                      "label": "Opasitet for bakgrunn"
+                      "label": "Gjennomsiktighet for bakgrunn"
                     },
                     {
                       "label": "Vis som knapp"
                     },
                     {
-                      "label": "Knappestørrelse",
+                      "label": "Knappstørrelse",
                       "options": [
                         {
                           "label": "Liten"
