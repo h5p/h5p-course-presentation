@@ -41,7 +41,6 @@
     /* Adding this border makes it work in FF 39 on Linux. I have no
        Idea why, but please don't remove it !! */
     border: 1px solid #ddd;
-    page-break-after: always;
   }
   .h5p-course-presentation .h5p-slide .h5p-element {
     overflow: visible;
