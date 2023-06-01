@@ -27,6 +27,7 @@
   .h5p-course-presentation .h5p-slides-wrapper {
     height: 100%;
     background: transparent;
+    margin-bottom: 100%;
   }
   /* Slide setup - only slides with doprint class is printed */
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide {
@@ -46,9 +47,6 @@
   }
   .h5p-course-presentation .h5p-slide .h5p-element {
     overflow: visible;
-  }
-  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide:last-child {
-    page-break-after: auto;
   }
   /******************************************/
   /* Special handling of elements on slides */
