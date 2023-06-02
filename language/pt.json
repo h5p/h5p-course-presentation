@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Ativar o modo de controlo de superfície",
-          "description": "Remove os controlos de navegação para o utilizador. Utilize Ir para slide para navegar."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Ocultar o slide de resumo",

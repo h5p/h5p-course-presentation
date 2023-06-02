@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Activate Active Surface Mode",
-          "description": "选择使用者是否可用控制项。"
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "隐藏总结幻灯片",

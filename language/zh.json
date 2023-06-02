@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "播放模式設定",
-          "description": "選擇使用者是否可用控制項。"
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "隱藏結果投影片",

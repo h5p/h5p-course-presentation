@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Ieslēgt aktīvās virsmas režīmu",
-          "description": "Lietotājam noņem navigācijas vadīklas. Lai pārvietotos, tiks izmantots \"Pāriet uz slaidu\"."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Paslēpt kopsavilkuma slaidu",

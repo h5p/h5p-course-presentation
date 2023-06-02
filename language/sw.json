@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Amilisha Hali ya Uso wa Kazi",
-          "description": "Inaondoa udhibiti wa urambazaji kwa mtumiaji wa mwisho. Tumia Nenda Kwenye Slaidi ili urambaze."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Ficha Slaidi ya Muhtasari",

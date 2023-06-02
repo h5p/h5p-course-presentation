@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Ενεργοποίηση Λειτουργίας Ενεργούς Επιφάνειας",
-          "description": "Αφαιρεί τα κουμπιά πλοήγησης για τον τελικό χρήστη. Χρησιμοποιήστε για πλοήγηση το \"Μετάβαση στη Διαφάνεια\"."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Απόκρυψη διαφάνειας σύνοψης",

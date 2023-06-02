@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "فعال‌سازی حالت سطح فعال",
-          "description": "کنترل‌های راهبری را برای کاربر نهایی حذف می‌کند. برای راهبری از برو به اسلاید استفاده کنید."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "پنهان کردن اسلاید جمع‌بندی",

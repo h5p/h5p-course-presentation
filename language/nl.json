@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Activeer actieve oppervlaktemodus",
-          "description": "Verwijdert navigatieregelaars voor de eindgebruiker. Gebruik 'Ga naar dia' om te navigeren."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Verberg Samenvattingsdia",

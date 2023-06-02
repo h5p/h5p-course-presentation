@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktivujte režim aktivní plochy",
-          "description": "Odstraní ovládací prvky navigace pro koncového uživatele. Pro navigaci použijte Přejít na snímek."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Skrýt souhrnný snímek",

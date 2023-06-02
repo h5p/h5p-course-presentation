@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Slå på aktiv flate",
-          "description": "Fjerner navigasjonskontroller for sluttbrukeren. Bruk 'Gå Til Lysbilde' for å navigere"
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Skjul sammendrag.",

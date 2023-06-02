@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktifkan mode permukaan aktif",
-          "description": "Menghilangkan kontrol navigasi untuk pengguna. Gunakan pergi ke slide untuk navigasi."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Sembunyikan slide ringkasan",

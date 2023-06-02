@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktivirajte režim aktivne površine",
-          "description": "Uklanja navigaciju za krajnjeg korisnika. Koristi navigaciju Idi na slajd."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Hide Summary Slide",

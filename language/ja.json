@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "アクティブサーフェイスモードをアクティベート",
-          "description": "エンドユーザーのためのナビゲーションコントロールを削除します。移動するには スライドに移動 を使用してください。"
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "サマリースライドを非表示",

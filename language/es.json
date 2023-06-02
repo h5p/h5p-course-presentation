@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Activar el Modo de Superficie Activa",
-          "description": "Suprime los controles de navegación para el usuario final. Utiliza Ir A Diapositiva para navegar."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Ocultar la Diapositiva de Resumen",

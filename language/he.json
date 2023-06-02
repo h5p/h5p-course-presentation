@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "הפעלת מצב משטח מצגת פעיל",
-          "description": "מסיר את פקדי הניווט עבור משתמש הקצה. יש להשתמש ב- Go to Slide כדי לנווט."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "הסתרת עמוד סיכום",

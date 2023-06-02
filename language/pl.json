@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Włącz tryb aktywnej powierzchni",
-          "description": "Wyłącza nawigacje pomiędzy slajdami, dla użytkownika."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Ukryj Slajd Podsumowujący",
