@@ -730,6 +730,8 @@ CoursePresentation.prototype.fitCT = function () {
 CoursePresentation.prototype.resize = function () {
   var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
 
+  const activeSurface = document.querySelectorAll('.h5p-course-presentation-active-surface');
+
   if (this.ignoreResize) {
     return; // When printing.
   }
@@ -750,7 +752,12 @@ CoursePresentation.prototype.resize = function () {
 
   // TODO: Add support for -16 when content conversion script is created?
   var widthRatio = width / this.width;
-  style.height = (width / this.ratio) + 'px';
+
+  if (!activeSurface.length) {
+    style.height = (width / this.ratio) + 'px';
+  } else {
+    style.height = ((width / this.ratio) * (100-6.5)/100) + 'px';
+  }
   style.fontSize = (this.fontSize * widthRatio) + 'px';
 
   if (this.editor !== undefined) {
