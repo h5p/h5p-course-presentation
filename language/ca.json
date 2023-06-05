@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Activa el mode de superfície activa",
-          "description": "Elimina els controls de navegació per a l’usuari final. Utilitzeu ’ves a la diapositiva’ per navegar."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Amagueu la diapositiva resum",

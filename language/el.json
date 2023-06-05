@@ -242,8 +242,8 @@
           "default": "Επιφάνειας προβολής διαφανειών. Χρησιμοποίησε το αριστερό και το δεξί βέλος για την πλοήγηση στις διαφάνειες."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Ετικέτα γραμμής προόδου για υποστηρικτικές τεχνολογίες",
+          "default": "Επιλέξτε διαφάνεια για προβολή"
         },
         {
           "label": "Ετικέτα για μη ολοκληρωμένα διαδραστικά στοιχεία",
@@ -295,8 +295,8 @@
           "default": "Υποβολή απαντήσεων και προβολή αποτελεσμάτων"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Πλοήγηση σε διαφάνειες",
+          "default": "Πλοήγηση σε διαφάνειες"
         }
       ]
     },
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Ενεργοποίηση Λειτουργίας Ενεργούς Επιφάνειας",
-          "description": "Αφαιρεί τα κουμπιά πλοήγησης για τον τελικό χρήστη. Χρησιμοποιήστε για πλοήγηση το \"Μετάβαση στη Διαφάνεια\"."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Απόκρυψη διαφάνειας σύνοψης",

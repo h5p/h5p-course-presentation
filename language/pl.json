@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Komentarze",
-                      "description": "Komentarze, są wyświetlane gdy użytkownik wyświetli proponowane odpowiedzi dla wszystkich slajdów"
+                      "description": "Komentarze, są wyświetlane gdy użytkownik wyświetli proponowane odpowiedzi dla wszystkich slajdów."
                     },
                     {
                       "label": "Zawsze wyświetlaj komentarze"
@@ -60,7 +60,7 @@
                     },
                     {
                       "label": "Niewidzialne",
-                      "description": "Domyślny kursor, brak tytułu oraz numeru strony. Uwaga: Użytkownicy z problemami ze wzrokiem lub tylko klawiaturą, będą mieli problem używając tego elementu. "
+                      "description": "Domyślny kursor, brak tytułu oraz numeru strony. Uwaga: Użytkownicy z problemami ze wzrokiem lub tylko klawiaturą, będą mieli problem używając tego elementu."
                     }
                   ]
                 }
@@ -235,15 +235,15 @@
         },
         {
           "label": "Wytłumaczenie nawigacji slajdów dla użytkowników, korzystających z technologii wspomagających",
-          "default": "Używaj klawiszy w prawo i w lewo aby zmienić slajd."
+          "default": "Używaj klawiszy w prawo i w lewo aby zmienić slajd"
         },
         {
           "label": "Nazwa ramki slajdów dla użytkowników, korzystających z technologii wspomagających",
           "default": "Ramka slajdów. Używaj klawiszy w prawo i w lewo aby zmienić slajd."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Etykieta paska postępu dla technologii wspomagających",
+          "default": "Wybierz slajd do wyświetlenia"
         },
         {
           "label": "Tekst dla niedokończonych interakcji w slajdzie",
@@ -283,20 +283,20 @@
           "default": "Wyłączono tryb pełnoekranowy"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Nagłówek potwierdzenia wysłania wyniku",
+          "default": "Prześlij swoje odpowiedzi"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Tekst potwierdzenia wysłania wyniku",
+          "default": "Twoje wyniki zostaną przesłane, czy chcesz kontynuować?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Przycisk potwierdzenia w oknie dialogowym do zatwierdzenia wysłanych wyników",
+          "default": "Wyślij i zobacz wyniki"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Nawigacja pokazu slajdów",
+          "default": "Nawigacja pokazu slajdów"
         }
       ]
     },
@@ -306,11 +306,11 @@
       "fields": [
         {
           "label": "Włącz tryb aktywnej powierzchni",
-          "description": "Wyłącza nawigacje pomiędzy slajdami, dla użytkownika."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Ukryj Slajd Podsumowujący",
-          "description": "Ukrywa Slajd Podsumowujący"
+          "description": "Ukrywa slajd podsumowujący."
         },
         {
           "label": "Nadpisuje przycisk \"Pokaż rozwiązanie\"",
@@ -338,7 +338,7 @@
         },
         {
           "label": "Pokaż przycisk \"Pokaż rozwiązanie\" w slajdzie podsumowującym",
-          "description": "Po włączeniu, użytkownik będzie mógł pokazać rozwiązania dla wszystkich pytań na slajdzie podsumowującym."
+          "description": "Po włączeniu, użytkownik będzie mógł pokazać rozwiązania dla wszystkich pytań na slajdzie podsumowującym"
         },
         {
           "label": "Pokaż przycisk \"Powtórz\" na slajdzie podsumowującym",
@@ -350,7 +350,7 @@
         },
         {
           "label": "Ustawienia społecznościowe",
-          "description": "Te ustawienia nadpiszą, ustawienia domyślne. ",
+          "description": "Te ustawienia nadpiszą ustawienia domyślne. Puste wartości zostaną uzupełnione automatycznie jeśli zostanie podany link, w przeciwnym wypadku wszystkie wartości zostaną wygenerowane.",
           "fields": [
             {
               "label": "Wyświetlaj przycisk udostępniania na Facebooku"
@@ -364,7 +364,7 @@
                 },
                 {
                   "label": "Zawartość postu na facebooku",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "default": "Zdobyłem/am @score z @maxScore w zadaniu na @currentpageurl."
                 }
               ]
             },
@@ -376,7 +376,7 @@
               "fields": [
                 {
                   "label": "Zawartość udostępnionego postu",
-                  "default": "I scored @score out of @maxScore on a task at @currentpageurl."
+                  "default": "Zdobyłem/am @score z @maxScore w zadaniu na @currentpageurl."
                 },
                 {
                   "label": "Link do udostępnienia na Twitterze",

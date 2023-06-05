@@ -234,16 +234,16 @@
           "default": "Bez názvu"
         },
         {
-          "label": "Vysvětlení posuvné navigace pro asistenční technologie",
+          "label": "Vysvětlení posuvné navigace pro podpůrné technologie",
           "default": "Použijte šipku doleva a doprava pro změnu snímku, kdykoli je vybrána plocha"
         },
         {
-          "label": "Plocha pro pomocné technologie",
+          "label": "Plocha pro podpůrné technologie",
           "default": "Prezentační plocha. Mezi snímky se můžete pohybovat pomocí levé a pravé šipky."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Popisek Ukazatele průběhu pro podpůrné technologie",
+          "default": "Vyberte snímek, který chcete zobrazit"
         },
         {
           "label": "Popisek pro nedokončené interakce",
@@ -270,16 +270,16 @@
           "default": "Sdílet výsledek"
         },
         {
-          "label": "Oznámení o celkovém skóre pro asistenční technologie",
+          "label": "Oznámení o celkovém skóre pro podpůrné technologie",
           "default": "Získal jste @score z @maxScore bodů celkem",
           "description": "Dostupné proměnné jsou @score a @maxScore"
         },
         {
-          "label": "Zadáno celoobrazovkové oznámení pro asistenční technologie",
+          "label": "Zadáno celoobrazovkové oznámení pro podpůrné technologie",
           "default": "Vstup celou obrazovku"
         },
         {
-          "label": "Ukončeno celoobrazovkové oznámení pro asistenční technologie",
+          "label": "Ukončeno celoobrazovkové oznámení pro podpůrné technologie",
           "default": "Ukončit celou obrazovku"
         },
         {
@@ -295,8 +295,8 @@
           "default": "Odešlete a uvidíte výsledky"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Navigace prezentace",
+          "default": "Navigace prezentace"
         }
       ]
     },
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktivujte režim aktivní plochy",
-          "description": "Odstraní ovládací prvky navigace pro koncového uživatele. Pro navigaci použijte Přejít na snímek."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Skrýt souhrnný snímek",

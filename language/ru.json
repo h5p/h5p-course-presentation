@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Активировать режим активной поверхности",
-          "description": "Удаляет элементы навигации для конечного пользователя. Используйте \"Перейти к слайду\" для навигации."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Скрыть итоговый слайд",

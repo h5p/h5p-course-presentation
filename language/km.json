@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "បើកម៉ូត Active Surface",
-          "description": "ដកប៊ូតុងផ្លាស់ទីសម្រាប់អ្នកប្រើប្រាស់។ ប្រើធាតុ «ទៅស្លាយ» ដើម្បីផ្លាស់ទីរវាងស្លាយ"
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "លាក់ស្លាយសង្ខេប",

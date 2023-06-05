@@ -242,8 +242,8 @@
           "default": "Lienzo de Presentación. Use flechas izquierda y derecha para moverse entre diapositivas."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Etiqueta de la barra de progreso para las tecnologías de asistencia",
+          "default": "Elegir diapositiva para mostrar"
         },
         {
           "label": "Etiqueta para interacciones no completadas",
@@ -251,52 +251,52 @@
         },
         {
           "label": "Etiqueta para interacciones completadas",
-          "default": "@slideName contiene interacción completada"
+          "default": "@slideName contiene una interacción completada"
         },
         {
-          "label": "Etiqueta para contador de diapositiva. Variables son @index, @total",
+          "label": "Etiqueta para contador de diapositivas. Las variables son @index, @total",
           "default": "Diapositiva @index de @total"
         },
         {
           "label": "Etiqueta para diapositivas que contienen solamente respuestas correctas",
-          "default": "@slideName solamente tiene respuestas correctas"
+          "default": "@slideName solamente contiene respuestas correctas"
         },
         {
           "label": "Etiqueta para diapositivas que contienen respuestas incorrectas",
-          "default": "@slideName tiene respuestas incorrectas"
+          "default": "@slideName contiene respuestas incorrectas"
         },
         {
-          "label": "Etiqueta para barra de compartir socialmente",
+          "label": "Etiqueta para la barra de redes sociales",
           "default": "Compartir Resultado"
         },
         {
-          "label": "Anuncio de puntaje total para tecnologías asistivas",
-          "default": "Usted obtuvo @score de @maxScore puntos en total",
+          "label": "Anuncio de puntuación total para las tecnologías de asistencia",
+          "default": "Ha obtenido @score de un total de @maxScore puntos",
           "description": "Las variables disponibles son @score y @maxScore"
         },
         {
-          "label": "Anuncio que entró a pantalla completa para tecnologías asistivas",
-          "default": "Entró a pantalla completa"
+          "label": "Anuncio que se ha pasado a pantalla completa para tecnologías de asistencia",
+          "default": "Ha pasado a pantalla completa"
         },
         {
-          "label": "Anuncio que salió de pantalla completa para tecnologías asistivas",
-          "default": "Salió de pantalla completa"
+          "label": "Anuncio de que se ha salido de pantalla completa para tecnologías de asistencia",
+          "default": "Ha salido de pantalla completa"
         },
         {
           "label": "Encabezado del diálogo de confirmación de envío de resultado",
-          "default": "Enviar sus respuestas"
+          "default": "Envíar sus respuestas"
         },
         {
           "label": "Texto del diálogo de confirmación de envío de resultado",
-          "default": "Esto enviará sus resultados, ¿desea continuar?"
+          "default": "Esto enviará sus resultados, ¿quiere continuar?"
         },
         {
           "label": "Botón de confirmación del diálogo de confirmación de envío de resultados",
           "default": "Enviar y ver resultados"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Navegación por la presentación de diapositivas",
+          "default": "Navegación por la presentación de diapositivas"
         }
       ]
     },
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Activar el Modo de Superficie Activa",
-          "description": "Suprime los controles de navegación para el usuario final. Utilice Ir A Diapositiva para navegar."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Ocultar la Diapositiva de Resumen",

@@ -242,8 +242,8 @@
           "default": "מצב מצגת. יש להשתמש בחץ שמאלה וימינה כדי לעבור בין העמודים."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "תווית סרגל התקדמות עבור טכנולוגיות עזר",
+          "default": "בחר שקף להצגה"
         },
         {
           "label": "תווית לשאלות שלא הושלמו",
@@ -279,24 +279,24 @@
           "default": "נכנסתם למצב מסך מלא"
         },
         {
-          "label": "יצאתם מהודעת מסך מלא עבור טכנולוגיות מסייעות",
+          "label": "הודעת יצאתם ממצב מסך־מלא עבור טכנולוגיות מסייעות",
           "default": "יצאתם ממסך מלא"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "כותרת תוצאות הגשה לאישור תיבת הדו-שיח",
+          "default": "הגישו את תשובותיכם"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "טקסט של תיבת הדו-שיח לאישור שליחת התוצאה",
+          "default": "התוצאות שלך יוגשו, האם תרצה להמשיך?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "לחצן אישור של תיבת הדו-שיח לאישור הגשת תוצאות",
+          "default": "הגש ותראה את התשובות"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "ניווט במצגת",
+          "default": "ניווט במצגת"
         }
       ]
     },
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "הפעלת מצב משטח מצגת פעיל",
-          "description": "מסיר את פקדי הניווט עבור משתמש הקצה. יש להשתמש ב- Go to Slide כדי לנווט."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "הסתרת עמוד סיכום",
@@ -314,7 +314,7 @@
         },
         {
           "label": "עקיפת כפתור \"הצגת פתרון\"",
-          "description": "אפשרות זו קובעת אם כפתור \"הצגת  פתרון\" יוצג עבור כל השאלות או יוסתר מכל השאלות או לכאלו שהוגדרו לכל שאלה בנפרד.",
+          "description": "אפשרות זו קובעת אם כפתור \"הצגת פתרון\" יוצג עבור כל השאלות או יוסתר מכל השאלות או לכאלו שהוגדרו לכל שאלה בנפרד.",
           "options": [
             {
               "label": "פעיל"

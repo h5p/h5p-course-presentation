@@ -13,11 +13,11 @@
 /* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
 @font-face {
   font-family: 'H5PCoursePresentation';
-  src:url('../fonts/H5P.eot?7pqlet');
-  src:url('../fonts/H5P.eot?7pqlet#iefix') format('embedded-opentype'),
-  url('../fonts/H5P.ttf?7pqlet') format('truetype'),
-  url('../fonts/H5P.woff?7pqlet') format('woff'),
-  url('../fonts/H5P.svg?7pqlet#H5P') format('svg');
+  src:url('../fonts/H5P.eot?bupsqs');
+  src:url('../fonts/H5P.eot?bupsqs#iefix') format('embedded-opentype'),
+  url('../fonts/H5P.ttf?bupsqs') format('truetype'),
+  url('../fonts/H5P.woff?bupsqs') format('woff'),
+  url('../fonts/H5P.svg?bupsqs#H5P') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -490,6 +490,7 @@
 .h5p-course-presentation .h5p-summary-button,
 .h5p-course-presentation .h5p-dialogcards-button,
 .h5p-course-presentation .h5p-interactivevideo-button,
+.h5p-course-presentation .h5p-multimediachoice-button,
 .h5p-course-presentation .h5p-truefalse-button {
   background: #981d99;
   border-color: #e489f3; /* Used by focus effect */
@@ -505,6 +506,7 @@
 .h5p-course-presentation .h5p-summary-button:hover,
 .h5p-course-presentation .h5p-dialogcards-button:hover,
 .h5p-course-presentation .h5p-interactivevideo-button:hover,
+.h5p-course-presentation .h5p-multimediachoice-button:hover,
 .h5p-course-presentation .h5p-truefalse-button:hover {
   background: #661366;
 }
@@ -517,6 +519,7 @@
 .h5p-course-presentation .h5p-singlechoiceset-button:before,
 .h5p-course-presentation .h5p-dragtext-button:before,
 .h5p-course-presentation .h5p-dialogcards-button:before,
+.h5p-course-presentation .h5p-multimediachoice-button:before,
 .h5p-course-presentation .h5p-markthewords-button:before {
   font-family: 'H5PCoursePresentation';
 }
@@ -597,6 +600,15 @@
   content: "\f130";
   position: relative;
   top: 0.05em;
+}
+
+.h5p-course-presentation .h5p-multimediachoice-button:before {
+  content: "\e901";
+}
+
+.h5p-multi-media-choice-option-list {
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .h5p-course-presentation .h5p-no-solution {

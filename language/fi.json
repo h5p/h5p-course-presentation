@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Ota käyttöön Active Surface -tila",
-          "description": "Piilottaa navigointipalkin loppukäyttäjältä. Jos tämä on valittuna, navigointi täytyy rakentaa \"Siirry sivulle\"-työkalulla. HUOM: tätä asetusta ei ole mahdollista perua jälkikäteen!"
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Piilota yhteenvetosivu",

@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Etkin Kontrol Modunu Etkinleştirin",
-          "description": "Son kullanıcı için gezinti kontrollerini kaldırır. Slaytlarda geçişleri sağlamak için Slayta Git'i kullanın."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Özet Slaytını Gizle",

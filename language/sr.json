@@ -111,7 +111,7 @@
       "fields": [
         {
           "label": "Превод за \"Слајд\"",
-          "default": "Слајд"
+          "default": "Страна"
         },
         {
           "label": "Превод за \"Резултат\"",
@@ -139,7 +139,7 @@
         },
         {
           "label": "Наслов дугмета за Врати",
-          "default": "Врати"
+          "default": "Покушај поново"
         },
         {
           "label": "Наслов дугмета за Експорт текста",
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Активирајте режим активне површине",
-          "description": "Уклања контроле за навигацију за крајњег корисника."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Сакриј слајд сажетка",

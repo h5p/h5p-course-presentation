@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "簡報播放模式設定",
-          "description": "取消提供操作功能列給使用者。使用＂播放簡報＂方式進行內容揭露."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "隱藏總結頁簡報",

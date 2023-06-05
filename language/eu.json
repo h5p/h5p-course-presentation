@@ -242,8 +242,8 @@
           "default": "Aurkezpenaren ohiala. Erabili ezkerreko eta eskuineko gezia mugitzeko diapositiben artean."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Laguntza-teknologien aurrerapen-barra etiketa",
+          "default": "Aukeratu diapositiba bistaratzeko"
         },
         {
           "label": "Bukatu gabeko ariketen etiketa",
@@ -295,8 +295,8 @@
           "default": "Bidali eta ikusi emaitzak"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Diapositiba-aurkezpenaren nabigazioa",
+          "default": "Diapositiba-aurkezpenaren nabigazioa"
         }
       ]
     },
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktibatu Azalera Aktiboko modua",
-          "description": "Erabiltzailerentzat nabigazio kontrolak kendu. Erabili Joan horra diapositiba nabigatzeko."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Ezkutatu aurkibide-diapositiba",
