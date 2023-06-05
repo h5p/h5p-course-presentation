@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "액티브 서피스 모드 활성화",
-          "description": "최종 사용자에 대한 탐색 컨트롤 제거. 슬라이드로 이동 기능을 사용하여 탐색하십시오."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "요약 슬라이드 숨기기",

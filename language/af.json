@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktiveer aktiewe oppervlakte modus",
-          "description": "Verwyder navigasiekontroles vir die eindgebruiker. Gebruik Gaan na Skyfie navigasie."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Versteek opsommende skyfie",

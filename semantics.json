@@ -689,7 +689,7 @@
         "widget": "disposableBoolean",
         "label": "Activate Active Surface Mode",
         "importance": "low",
-        "description": "Removes navigation controls for the end user. Use Go To Slide to navigate.",
+        "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode.",
         "default": false
       },
       {

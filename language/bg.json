@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Активиране на режим Активна повърхност",
-          "description": "Премахнете навигационния контрол за крайните потребители. Използвайте Отидете на слайда, за да навигирате."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Скрий слайда за обобщаване на резултатите",

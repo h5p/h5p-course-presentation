@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Slå på aktiv flate",
-          "description": "Fjerner navigasjonskontroller for bruker. \"Gå til side\" må brukes for å navigere. Obs! Dette valget kan ikke gjøres om."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Skjul sammendrag",

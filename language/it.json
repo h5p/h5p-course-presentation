@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Attiva la modalità di superficie attiva",
-          "description": "Rimuove i controlli di navigazione per l'utente finale. Per navigare usa l'opzione \"Vai alla slide\""
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Nascondi la slide di riepilogo",

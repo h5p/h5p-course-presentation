@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Preklopi v način z aktivno površino",
-          "description": "Nastavitev skrije navigacijsko vrstico, zato je premikanje med stranmi možno le z elementom Pojdi na stran. Nastavitve ni možno preklicati."
+          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
         },
         {
           "label": "Skrij stran s povzetkom rezultatov",
