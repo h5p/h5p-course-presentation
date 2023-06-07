@@ -35,7 +35,7 @@
   }
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint {
     display: inline-flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     position: relative;
     -webkit-transform: none;
     transform: none;
@@ -48,7 +48,10 @@
     margin: 1rem 0;
   }
   .h5p-course-presentation .h5p-summary-table-holder {
-    margin: 0;
+    margin-bottom: 0;
+  }
+  .h5p-course-presentation .h5p-summary-footer {
+    display: none;
   }
   .h5p-course-presentation .h5p-slide .h5p-element {
     overflow: visible;
