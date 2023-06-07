@@ -34,7 +34,8 @@
     display: none;
   }
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint {
-    display: block;
+    display: inline-flex;
+    flex-flow: column nowrap;
     position: relative;
     -webkit-transform: none;
     transform: none;
@@ -42,8 +43,15 @@
     /* Adding this border makes it work in FF 39 on Linux. I have no
        Idea why, but please don't remove it !! */
     border: 1px solid #ddd;
-    page-break-inside: avoid;
+    break-inside: avoid;
+    break-after: auto;
     margin: 1rem 0;
+  }
+  .h5p-course-presentation .h5p-summary-table-holder {
+    margin-bottom: 0;
+  }
+  .h5p-course-presentation .h5p-summary-footer {
+    display: none;
   }
   .h5p-course-presentation .h5p-slide .h5p-element {
     overflow: visible;
