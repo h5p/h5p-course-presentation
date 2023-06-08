@@ -224,17 +224,15 @@ CoursePresentation.prototype.attach = function ($container) {
           '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
-          '  <div class="h5p-box-and-nav-wrapper">' +
-          '    <nav class="h5p-cp-navigation" aria-label="' + this.l10n.slideshowNavigationLabel + '">' +
-          '      <div class="h5p-progressbar" role="tablist" aria-label="' + this.l10n.accessibilityProgressBarLabel + '"></div>' +
-          '    </nav>' +
-          '    <div class="h5p-box-wrapper">' +
-          '      <div class="h5p-presentation-wrapper">' +
-          '        <div class="h5p-keywords-wrapper"></div>' +
-          '        <div class="h5p-slides-wrapper"></div>' +
-          '      </div>' +
+          '  <div class="h5p-box-wrapper">' +
+          '    <div class="h5p-presentation-wrapper">' +
+          '      <div class="h5p-keywords-wrapper"></div>' +
+          '     <div class="h5p-slides-wrapper"></div>' +
           '    </div>' +
           '  </div>' +
+          '  <nav class="h5p-cp-navigation" aria-label="' + this.l10n.slideshowNavigationLabel + '">' +
+          '    <div class="h5p-progressbar" role="tablist" aria-label="' + this.l10n.accessibilityProgressBarLabel + '"></div>' +
+          '  </nav>' +
           '  <div class="h5p-footer"></div>' +
           '</div>';
 
@@ -326,7 +324,7 @@ CoursePresentation.prototype.attach = function ($container) {
   // by mobile browsers already. (The Android native browser does this.)
   this.fontSize = 16;
 
-  this.$boxWrapper = this.$wrapper.find('.h5p-box-wrapper');
+  this.$boxWrapper = this.$wrapper.children('.h5p-box-wrapper');
   var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
   this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
