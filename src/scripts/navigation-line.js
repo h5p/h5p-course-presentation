@@ -192,6 +192,9 @@ const NavigationLine = (function ($) {
 
       // toggle next and prev buttons
       self.toggleNextAndPreviousButtonDisabled(index);
+
+      // focus on current slide
+      self.cp.focus();
     });
   };
 
