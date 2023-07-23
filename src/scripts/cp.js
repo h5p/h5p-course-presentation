@@ -496,7 +496,7 @@ CoursePresentation.prototype.hasTabIndex = (element, stopElement) => {
     if (parents[key].tabIndex !== -1) {
       return true;
     }
-    if (parents[key] === stopElement) {
+    if (stopElement && parents[key] === stopElement) {
       return false;
     }
   }
