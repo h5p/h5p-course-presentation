@@ -267,8 +267,8 @@ CoursePresentation.prototype.attach = function ($container) {
      */
     const isFocusableElement = that.belongsToTagName(
       event.target, ['input', 'textarea', 'a', 'button'], event.currentTarget);
-    // Does the target element have a tabIndex set?
-    const hasTabIndex = (event.target.tabIndex !== -1);
+    // Does the target element (or one of its parents) have a tabIndex set?
+    const hasTabIndex = that.hasTabIndex(event.target, event.currentTarget);
     // The dialog container (if within a dialog)
     const $dialogParent = $target.closest('.h5p-popup-container');
     // Is target within a dialog
@@ -479,6 +479,29 @@ CoursePresentation.prototype.belongsToTagName = function (node, tagNames, stop) 
 
   return this.belongsToTagName(node.parentNode, tagNames, stop);
 };
+
+/**
+ * Check if element or one of its parents has tabIndex !== -1.
+ *
+ * @param {HTMLElement} element Element to check.
+ * @param {HTMLElement} [stopElement] Optional element to stop search and return false if none found.
+ * @return {boolean} True, if one of the element parents has tabIndex !== -1.
+ */
+CoursePresentation.prototype.hasTabIndex = (element, stopElement) => {
+  if (element.tabIndex !== -1) {
+    return true;
+  }
+  const parents = $(element).parents();
+  for (let key in parents) {
+    if (parents[key].tabIndex !== -1) {
+      return true;
+    }
+    if (parents[key] === stopElement) {
+      return false;
+    }
+  }
+  return false;
+}
 
 /**
  * Removes old menu items, and create new ones from slides.
