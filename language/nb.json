@@ -44,7 +44,7 @@
                       "label": "Gå til",
                       "options": [
                         {
-                          "label": "Spesifisert side"
+                          "label": "Eksakt sidetall"
                         },
                         {
                           "label": "Neste side"
@@ -55,12 +55,12 @@
                       ]
                     },
                     {
-                      "label": "Spesifisert slide",
-                      "description": "Bare relevant dersom du har valgt \"Spesifisert side\""
+                      "label": "Spesifisert side",
+                      "description": "Bare relevant dersom du har valgt \"Eksakt sidetall\""
                     },
                     {
                       "label": "Usynlig",
-                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: brukere med funksjonshemminger eller kun tastatur vil ha problemer med å bruke elementet."
+                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: Brukere som bare bruker tastatur, får problemer med å bruke elementet."
                     }
                   ]
                 }
@@ -70,7 +70,7 @@
                 "fields": [
                   {
                     "label": "Bilde",
-                    "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+                    "description": "Forholdet mellom bredde og høyde på bakgrunnsbilder bør være 2 : 1 for å unngå strekking av bildet. Høyoppløselige bilder gir bedre visning på større skjermer."
                   },
                   {
                     "label": "Velg farge"
@@ -82,22 +82,22 @@
         },
         {},
         {
-          "label": "Nøkkelordsliste"
+          "label": "Nøkkelordliste"
         },
         {
           "label": "Vis alltid"
         },
         {
-          "label": "Auto skjul"
+          "label": "Skjul automatisk"
         },
         {
-          "label": "Opasitet"
+          "label": "Gjennomsiktighet"
         },
         {
           "fields": [
             {
               "label": "Bilde",
-              "description": "Bakgrunnsbilder bør ha en 2:1 vidde til høyde ratio for å unngå strekking av bildet. Høyoppløselige bilder vil se bedre ut på større skjermer."
+              "description": "Forholdet mellom bredde og høyde på bakgrunnsbilder bør være 2 : 1 for å unngå strekking av bildet. Høyoppløselige bilder gir bedre visning på større skjermer."
             },
             {
               "label": "Velg farge"
@@ -107,146 +107,146 @@
       ]
     },
     {
-      "label": "Lokaliser",
+      "label": "Tilpass språk",
       "fields": [
         {
-          "label": "Oversettelse for \"Slide\"",
+          "label": "Oversettelse for \"Side\"",
           "default": "Side"
         },
         {
-          "label": "Feltet \"Poengsum\"",
+          "label": "Oversettelse for \"Score\"",
           "default": "Poengsum"
         },
         {
-          "label": "Feltet \"Din poengsum\"",
+          "label": "Oversettelse for \"Your Score\"",
           "default": "Din poengsum"
         },
         {
-          "label": "Tekst \"Maksimal poengsum\"",
-          "default": "Maksimal poengsum"
+          "label": "Oversettelse for \"Max Score\"",
+          "default": "Maks poengsum"
         },
         {
           "label": "Oversettelse for \"Total\"",
-          "default": "Total"
+          "default": "Totalt"
         },
         {
           "label": "Oversettelse for \"Total Score\"",
-          "default": "Total poengsum"
+          "default": "Samlet poengsum"
         },
         {
-          "label": "\"Vis svar\" knapp",
+          "label": "Navn på \"Vis svar\"-knappen",
           "default": "Vis svar"
         },
         {
-          "label": "Tekst til \"Prøv igjen\"-knappen",
+          "label": "Navn på \"Prøv igjen\"-knappen",
           "default": "Prøv igjen"
         },
         {
-          "label": "Tekst på \"Eksporter tekst\"-knapp",
+          "label": "Navn på \"Eksporter tekst\"-knappen",
           "default": "Eksporter tekst"
         },
         {
-          "label": "Tittel for \"Skjul nøkkelordliste\"-knapp",
-          "default": "Skjul nøkkelordliste"
+          "label": "Navn på \"Skjul sidemeny\"-knappen",
+          "default": "Skjul sidemeny"
         },
         {
-          "label": "Tittel for \"Vis nøkkelordliste\"-knapp",
-          "default": "Vis nøkkelordliste"
+          "label": "Navn på \"Vis sidemeny\"-knappen",
+          "default": "Vis sidemeny"
         },
         {
-          "label": "Tittel for \"Full skjerm\"-knapp",
+          "label": "Navn på \"Fullskjerm\"-knapp",
           "default": "Fullskjerm"
         },
         {
-          "label": "Tittel for \"Avslutt fullskjerm\"-knapp",
+          "label": "Navn på \"Avslutt fullskjerm\"-knapp",
           "default": "Avslutt fullskjerm"
         },
         {
-          "label": "Tittel for \"Forrige side\"-knapp",
-          "default": "Forrige slide"
+          "label": "Navn på \"Forrige side\"-knapp",
+          "default": "Forrige side"
         },
         {
-          "label": "Tittel for \"Neste side\"-knapp",
-          "default": "Neste slide"
+          "label": "Navn på \"Neste side\"-knapp",
+          "default": "Neste side"
         },
         {
-          "label": "Tittel for \"Denne side\"-knapp",
-          "default": "Denne side"
+          "label": "Navn på \"Denne sida\"-knapp",
+          "default": "Denne sida"
         },
         {
-          "label": "Tittel for \"Siste side\"-knapp",
+          "label": "Navn på \"Siste side\"-knapp",
           "default": "Siste side"
         },
         {
-          "label": "Tittel for \"Avslutt fasitmodus\"-knapp",
+          "label": "Navn på \"Avslutt fasitmodus\"-knappen",
           "default": "Avslutt fasitmodus"
         },
         {
-          "label": "Avslutt fasitmodus tekst",
+          "label": "Navn på \"Fasitmodus\"",
           "default": "Fasitmodus"
         },
         {
-          "label": "Tekst ved flere oppgaver på en side",
+          "label": "Tekst når det er flere oppgaver på ei side",
           "default": "Flere oppgaver"
         },
         {
-          "label": "Poeng tekst",
+          "label": "Tekst som skal stå sammen med poengsum",
           "default": "Du klarte:"
         },
         {
-          "label": "Del på Facebook tekst",
+          "label": "\"Del på Facebook\"-tekst",
           "default": "Del på Facebook"
         },
         {
-          "label": "Del på Twitter tekst",
+          "label": "\"Del på Twitter\"-tekst",
           "default": "Del på Twitter"
         },
         {
-          "label": "\"Del på Google\"-tekst",
+          "label": "\"Del på Google+\"-tekst",
           "default": "Del på Google+"
         },
         {
-          "label": "Tittel for \"Oppsummering\" siden",
+          "label": "Tittel for oppsummeringssida",
           "default": "Oppsummering"
         },
         {
-          "label": "Tittel for kommentarikonet",
+          "label": "Navn på \"Vis kommentarer\"-ikonet",
           "default": "Vis kommentarer"
         },
         {
-          "label": "Tittel for \"Skriv ut\"-knapp",
+          "label": "Navn på \"Skriv ut\"-knapp",
           "default": "Skriv ut"
         },
         {
-          "label": "Skriv ut dialog ingress",
+          "label": "Valg for utskrift",
           "default": "Hvordan vil du skrive ut denne presentasjonen?"
         },
         {
-          "label": "Tittel for \"Skriv ut alle sider\"-knapp",
+          "label": "Navn på \"Skriv ut alle sider\"-knapp",
           "default": "Skriv ut alle sider"
         },
         {
-          "label": "Tittel for \"Skriv ut nåværende side\"-knapp",
-          "default": "Skriv ut nåværende side"
+          "label": "Navn på \"Skriv ut denne sida\"-knappen",
+          "default": "Skriv ut denne sida"
         },
         {
-          "label": "Navn på slides uten tittel",
-          "default": "Ingen tittel"
+          "label": "Navn på sider uten tittel",
+          "default": "Uten tittel"
         },
         {
           "label": "Forklaring av sidenavigering for skjermlesere",
-          "default": "Bruk pil mot venstre eller høyre for å navigere."
+          "default": "Bruk pil mot venstre eller høyre for å navigere mellom sidene."
         },
         {
-          "label": "Beskrivelse for skjermleser",
-          "default": "Bruk piltast mot høyre eller venstre for å navigere mellom sider."
+          "label": "Beskrivelse av presentasjonsområdet (for skjermleser)",
+          "default": "Bruk piltast mot høyre eller venstre for å navigere mellom sidene."
         },
         {
-          "label": "Beskrivelse av framdriftslinje for skjermleser",
-          "default": "Vis sida"
+          "label": "Navn på framdriftslinje (for skjermleser)",
+          "default": "Velg sida som skal vises"
         },
         {
-          "label": "Tekst for oppgave som ikke er fullført",
+          "label": "Tekst for oppgaver som ikke er fullført",
           "default": "@slideName er ikke fullført."
         },
         {
@@ -254,44 +254,44 @@
           "default": "@slideName er fullført."
         },
         {
-          "label": "Tekst for sidenummerering. Variabler er @index, @total.",
+          "label": "Tekst for sidenummerering. Variabler er @index og @total",
           "default": "Side @index av @total"
         },
         {
-          "label": "Tekst for sider der alle svara er riktig",
+          "label": "Tekst for sider der alle svara er riktige",
           "default": "Alle svara på @slideName er riktige."
         },
         {
-          "label": "Tekst for sider med en eller flere feil",
+          "label": "Tekst for sider med én eller flere feil",
           "default": "Ett eller flere svar på @slideName er feil."
         },
         {
           "label": "Tekst for deling i sosiale medier",
-          "default": "Del resultater"
+          "default": "Del resultat"
         },
         {
-          "label": "Tekst for skjermleser om samla poengsum",
+          "label": "Tekst for samla poengsum (for skjermleser)",
           "default": "Du fikk til sammen @score av @maxScore poeng.",
-          "description": "Tilgjengelige variabler er @score og @maxScore."
+          "description": "Tilgjengelige variabler er @score og @maxScore"
         },
         {
-          "label": "Tekst for skjermleser om at fullskjermvisning er aktivert",
-          "default": "Åpnet i fullskjerm"
+          "label": "Tekst om at fullskjermvisning er aktivert (for skjermleser)",
+          "default": "Åpnet i fullskjermvisning"
         },
         {
-          "label": "Tekst for skjermleser om at fullskjermvisning er avslutta",
-          "default": "Avsluttet fullskjerm"
+          "label": "Tekst om at fullskjermvisning er avsluttet (for skjermleser)",
+          "default": "Fullskjermvisning er avsluttet"
         },
         {
-          "label": "Tittel på dialog om innsending av svar",
-          "default": "Send inn svar."
+          "label": "Tittel på dialogvindu for innsending av svar",
+          "default": "Send inn svar"
         },
         {
-          "label": "Tekst for dialog om innsending av svar",
+          "label": "Tekst i dialogvindu som ber bruker bekrefte innsending",
           "default": "Du er i ferd med å sende inn svara dine. Vil du fortsette?"
         },
         {
-          "label": "Knapp for å bekrefte videresending av resultat",
+          "label": "Knapp for å bekrefte innsending",
           "default": "Send inn og se resultat"
         },
         {
@@ -302,51 +302,51 @@
     },
     {
       "label": "Oppgaveinnstillinger",
-      "description": "Disse alternativene vil la deg overstyre innstillinger.",
+      "description": "Disse alternativene lar deg overstyre innstillinger.",
       "fields": [
         {
           "label": "Slå på aktiv flate",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Fjerner navigasjonskontroll for sluttbruker. Bruk \"Gå til side\" for å navigere. Oppsummering blir da ikke tilgjengelig."
         },
         {
           "label": "Skjul sammendrag",
-          "description": "Aktivering vil føre til at sammendrag siden ikke vises."
+          "description": "Aktivering vil føre til at sammendragssida ikke vises."
         },
         {
-          "label": "Overstyr «Vis svar»-knapp",
-          "description": "Dette valget avgjør om «Vis svar»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "label": "Overstyr \"Vis svar\"-knapp",
+          "description": "Dette valget avgjør om \"Vis svar\"-knappen skal vises for alle spørsmål, skjules for alle spørsmål eller konfigureres individuelt for hvert spørsmål.",
           "options": [
             {
-              "label": "Aktivert"
+              "label": "Vis knapp"
             },
             {
-              "label": "Deaktivert"
+              "label": "Skjul knapp"
             }
           ]
         },
         {
-          "label": "Overstyr «Prøv igjen»-knapp",
-          "description": "Dette valget avgjør om «Prøv igjen»-knappen vil vises for alle spørsmål, skjules for alle eller konfigureres individuelt for hvert spørsmål.",
+          "label": "Overstyr \"Prøv igjen\"-knapp",
+          "description": "Dette valget avgjør om \"Prøv igjen\"-knappen skal vises for alle spørsmål, skjules for alle spørsmål eller konfigureres individuelt for hvert spørsmål.",
           "options": [
             {
-              "label": "Aktivert"
+              "label": "Vis knapp"
             },
             {
-              "label": "Deaktivert"
+              "label": "Skjul knapp"
             }
           ]
         },
         {
-          "label": "Vis \"Vis svar\"-knapp på oppsummeringssida.",
+          "label": "Vis \"Vis svar\"-knapp på oppsummeringssida",
           "description": "Velg dette dersom bruker skal kunne se alle svara når hen kommer til oppsummeringssida."
         },
         {
           "label": "Vis \"Prøv igjen\"-knapp på oppsummeringssida",
-          "description": "Velg dette om bruker skal kunne gjøre oppgavene på nytt når hen har kommet til oppsummeringssida. Obs! Ved å oppdatere sida kan bruker gjøre oppgavene på nytt selv om denne knappen ikke vises."
+          "description": "Velg dette om bruker skal kunne gjøre oppgavene på nytt når hen kommer til oppsummeringssida. Obs! Bruker kan uansett oppdatere sida og gjøre oppgavene på nytt selv om denne knappen ikke vises."
         },
         {
-          "label": "Aktiver print-knapp",
-          "description": "Aktiverer print-knappen."
+          "label": "Vis \"Skriv ut\"-knapp",
+          "description": "Aktiverer \"Skriv ut\"-knappen."
         },
         {
           "label": "Innstillinger for sosiale medier",
@@ -364,7 +364,7 @@
                 },
                 {
                   "label": "Tekst som blir vist på Facebook",
-                  "default": "Jeg fikk @score av @maxScore poeng på denne oppgava: @currentpageurl."
+                  "default": "Jeg fikk @score av @maxScore poeng på denne oppgaven: @currentpageurl."
                 }
               ]
             },
@@ -376,23 +376,23 @@
               "fields": [
                 {
                   "label": "Tekst som blir vist på Twitter",
-                  "default": "Jeg fikk @score av @maxScore poeng på oppgava @currentpageurl."
+                  "default": "Jeg fikk @score av @maxScore poeng på denne oppgaven: @currentpageurl."
                 },
                 {
-                  "label": "Lenke som blir delt på Twitter",
+                  "label": "Lenke for å dele på Twitter",
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Emneknagger Twitter",
+                  "label": "Emneknagger for Twitter",
                   "default": "H5P, kurs, øving"
                 }
               ]
             },
             {
-              "label": "Display Google+ share icon"
+              "label": "Vis ikon for deling på Google+"
             },
             {
-              "label": "Share to Google link",
+              "label": "Lenke for å dele på Google+",
               "default": "@currentpageurl"
             }
           ]
