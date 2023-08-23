@@ -219,9 +219,9 @@ CoursePresentation.prototype.attach = function ($container) {
   }
 
   var html =
-          '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
+          '<div class="h5p-keymap-explanation hidden-but-read">' + (!this.activeSurface && this.l10n.accessibilitySlideNavigationExplanation) + '</div>' +
           '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
+          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + (!this.activeSurface && this.l10n.accessibilityCanvasLabel) + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
           '  <div class="h5p-box-wrapper">' +
