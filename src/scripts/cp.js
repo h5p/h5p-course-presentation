@@ -1083,8 +1083,8 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
   let label = element.action.metadata ? element.action.metadata.title : '';
-  if (label === '') {
-    label = (element.action.params && element.action.params.contentName) || element.action.library.split(' ')[0].split('.')[1];
+  if (label === '' || label === undefined) {
+    label = element.action?.params?.contentName || element.action?.params?.title || element.action.library.split(' ')[0].split('.')[1];
   }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
