@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktibatu Azalera Aktiboko modua",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Azken erabiltzailearen nabigazio-kontrolak kentzen ditu. Erabili Joan Diapositiba Honetara nabigatzeko. Laburpena ez dago eskuragarri modu honetan."
         },
         {
           "label": "Ezkutatu aurkibide-diapositiba",
