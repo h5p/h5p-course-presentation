@@ -242,8 +242,8 @@
           "default": "Använd pilarna vänster och höger för att byta sida."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Beskrivning av progress-bar för tillgänglighetshjälpmedel",
+          "default": "Välj sida att visa"
         },
         {
           "label": "Etikett för aktiviteter som inte är genomförda",
@@ -283,15 +283,15 @@
           "default": "Avslutat helskärmsläge"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Rubrik för bekräftelse-dialog för skicka in resultat",
+          "default": "Skicka in dina svar"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Text för bekräftelse-dialog för skicka in resultat",
+          "default": "Detta kommer skicka in dina resultat, vill du fortsätta?"
         },
         {
-          "label": "Knapp för att bekräfta inskickning av resultat.",
+          "label": "Knapp för att bekräfta inskickning av resultat",
           "default": "Skicka in och se resultat"
         },
         {
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktivera Active Surface Mode",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Tar bort navigationskontroller för slutanvändaren. Använd \"Gå till sida2 för att navigera. Sammanfattning är inte tillgänglig med denna inställning."
         },
         {
           "label": "Dölj Sammanfattningssida",
