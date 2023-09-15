@@ -188,7 +188,8 @@ const SummarySlide = (function () {
       totalMaxScore += slideScores[i].maxScore;
     }
 
-    if (!this.cp.isSolutionMode) {
+    // this.cp.ignoreResize is true when printing; do not xAPI submit on print.
+    if (!this.cp.isSolutionMode && !this.cp.ignoreResize) {
       that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
     }
     var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
