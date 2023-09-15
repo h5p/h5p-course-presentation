@@ -53,9 +53,7 @@ const Printer = (function ($) {
     });
 
     $('.h5p-summary-slide').css({
-      height: '',
-      width: '670px',
-      fontSize: Math.floor(100/ratio) + '%'
+      height: ''
     });
 
     var wrapperHeight = $wrapper.height();
