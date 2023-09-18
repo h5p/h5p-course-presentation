@@ -199,9 +199,10 @@ CoursePresentation.prototype.getCurrentState = function () {
 CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
   const tasks = this.slidesWithSolutions[index] || [];
 
+  // Disregard questions where "no answer" is the correct answer.
   return tasks
     .filter(task => isFunction(task.getAnswerGiven))
-    .some(task => task.getAnswerGiven());
+    .some(task => task.getAnswerGiven() && !H5P.isEmpty(task.getCurrentState()));
 };
 
 /**
