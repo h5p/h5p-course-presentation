@@ -163,13 +163,13 @@ CoursePresentation.prototype.constructor = CoursePresentation;
  */
 CoursePresentation.prototype.getCurrentState = function () {
   var state = this.previousState ? this.previousState : {};
-  state.progress = this.getCurrentSlideIndex();
+  state.progress = this.getCurrentSlideIndex() || null;
   if (!state.answers) {
     state.answers = [];
   }
 
   state.answered = this.elementInstances
-    .map((interaction, index) => this.slideHasAnsweredTask(index));
+    .map((interaction, index) => (this.slideHasAnsweredTask(index)) || null);
 
   // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
@@ -1148,9 +1148,9 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.on('exitFullScreen', exitFullScreen);
 
     this.showPopup({
-      popupContent: $buttonElement, 
-      $focusOnClose: $button, 
-      parentPosition: popupPosition, 
+      popupContent: $buttonElement,
+      $focusOnClose: $button,
+      parentPosition: popupPosition,
       remove: (keepInDOM = false) => {
         if (!keepInDOM) {
           $buttonElement.detach();
@@ -1159,9 +1159,9 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
         // Remove listener, we only need it for active popups
         this.off('exitFullScreen', exitFullScreen);
         closeCallback();
-      }, 
-      classes: libTypePmz, 
-      instance: instance, 
+      },
+      classes: libTypePmz,
+      instance: instance,
       keepInDOM: libTypePmz === 'h5p-interactivevideo'
     });
 
@@ -1272,14 +1272,14 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
       }
 
       addClickAndKeyboardListeners($commentButton, (event) => {
-        this.showPopup({ 
-          popupContent: element.solution, 
-          $focusOnClose: $commentButton, 
+        this.showPopup({
+          popupContent: element.solution,
+          $focusOnClose: $commentButton,
           parentPosition: parentPosition,
           updateAriaExpanded: true,
         });
         $commentButton.attr('aria-expanded', true);
-        
+
         // Prevents the wrapper from stealing the focus of screen readers
         event.stopPropagation();
       });
@@ -1304,12 +1304,12 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {boolean} [updateAriaExpanded] Set aria-expanded=false on the $focusOnClose element when closing
  */
 CoursePresentation.prototype.showPopup = function ({
-  popupContent, 
-  $focusOnClose, 
-  parentPosition = null, 
-  remove, 
-  classes = 'h5p-popup-comment-field', 
-  instance, 
+  popupContent,
+  $focusOnClose,
+  parentPosition = null,
+  remove,
+  classes = 'h5p-popup-comment-field',
+  instance,
   keepInDOM = false,
   updateAriaExpanded,
 }) {
@@ -1366,12 +1366,12 @@ CoursePresentation.prototype.showPopup = function ({
     // The popup must be created and added to the DOM
     $popup = $(
       '<div class="h5p-popup-overlay ' + classes + '">' +
-        '<div ' + 
-          'class="h5p-popup-container" ' + 
-          'role="dialog"' + 
-          'aria-modal="true" ' + 
-          'aria-live="true" ' + 
-          'aria-labelledby="popup-title-' + this.popupId + '"> ' +   
+        '<div ' +
+          'class="h5p-popup-container" ' +
+          'role="dialog"' +
+          'aria-modal="true" ' +
+          'aria-live="true" ' +
+          'aria-labelledby="popup-title-' + this.popupId + '"> ' +
           '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
           '<div class="h5p-popup-wrapper" role="document"></div>' +
         '</div>' +
