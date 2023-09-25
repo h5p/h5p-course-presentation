@@ -70,10 +70,10 @@
                 "fields": [
                   {
                     "label": "Imagen",
-                    "description": "La imagen de fondo debería tener una ratio de anchura a altura de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
+                    "description": "La imagen de fondo debería tener una proporción de ancho a alto de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
                   },
                   {
-                    "label": "Elije un color"
+                    "label": "Elegir un color"
                   }
                 ]
               }
@@ -97,10 +97,10 @@
           "fields": [
             {
               "label": "Imagen",
-              "description": "La imagen de fondo debería tener una ratio de anchura a altura de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
+              "description": "El fondo de la imagen debería tener una proporción de ancho a alto de 2:1 para evitar estiramiento. Las imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
             },
             {
-              "label": "Elije un color"
+              "label": "Elegir un color"
             }
           ]
         }
@@ -114,23 +114,23 @@
           "default": "Diapositiva"
         },
         {
-          "label": "Traducción para \"Puntuación\"",
-          "default": "Puntuación"
+          "label": "Traducción para \"Puntaje\"",
+          "default": "Puntaje"
         },
         {
-          "label": "Traducción para \"Tu Puntuación\"",
-          "default": "Tu puntuación"
+          "label": "Traducción para \"Tu Puntaje\"",
+          "default": "Tu Puntaje"
         },
         {
-          "label": "Traducción para \"Puntuación Máxima\"",
-          "default": "Puntuación Máxima"
+          "label": "Traducción para \"Puntaje Máximo\"",
+          "default": "Puntaje Máximo"
         },
         {
           "label": "Traducción para \"Total\"",
           "default": "Total"
         },
         {
-          "label": "Traducción para \"Puntuación Total\"",
+          "label": "Traducción para \"Puntaje Total\"",
           "default": "Puntuación Total"
         },
         {
@@ -190,7 +190,7 @@
           "default": "Tareas múltiples"
         },
         {
-          "label": "Texto de mensaje de puntuación",
+          "label": "Texto del mensaje de puntaje",
           "default": "Has obtenido:"
         },
         {
@@ -230,7 +230,7 @@
           "default": "Imprimir diapositiva actual"
         },
         {
-          "label": "Etiqueta para diapositivas sin título",
+          "label": "Etiqueta para diapositivas sin un título",
           "default": "Sin título"
         },
         {
@@ -267,7 +267,7 @@
         },
         {
           "label": "Etiqueta para la barra de redes sociales",
-          "default": "Compartir resultado"
+          "default": "Compartir Resultado"
         },
         {
           "label": "Anuncio de puntuación total para las tecnologías de asistencia",
@@ -301,12 +301,12 @@
       ]
     },
     {
-      "label": "Configuración del comportamiento.",
+      "label": "Configuraciones del comportamiento.",
       "description": "Estas opciones te permitirán anular los ajustes de comportamiento.",
       "fields": [
         {
           "label": "Activar el Modo de Superficie Activa",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Quita los controles de navegación para el usuario final. Use Ir a Página para navegar. El resumen no está disponible en este modo."
         },
         {
           "label": "Ocultar la Diapositiva de Resumen",
@@ -326,7 +326,7 @@
         },
         {
           "label": "Anular botón \"Intentar de nuevo\"",
-          "description": "Esta opción determina si el botón \"Intentar de nuevo\" se muestra para todas las preguntas, se desactiva para todas o se configurarpara cada pregunta individualmente.",
+          "description": "Esta opción determina si el botón \"Intentar de nuevo\" se muestra para todas las preguntas, se desactiva para todas o se configura para cada pregunta individualmente.",
           "options": [
             {
               "label": "Habilitado"
@@ -349,14 +349,14 @@
           "description": "Habilita el botón Imprimir."
         },
         {
-          "label": "Configuración de redes sociales",
+          "label": "Configuraciones de Redes Sociales",
           "description": "Estas opciones le permiten anular las configuraciones de comportamiento para redes sociales. Los valores vacíos se completan automáticamente si se proporciona un enlace, en caso contrario todos los valores se generarán.",
           "fields": [
             {
               "label": "Mostrar icono para compartir en Facebook"
             },
             {
-              "label": "Configuración para compartir en Facebook",
+              "label": "Configuraciones para compartir en Facebook",
               "fields": [
                 {
                   "label": "Enlace hacia compartir en Facebook",
@@ -372,7 +372,7 @@
               "label": "Mostrar icono para compartir en Twitter"
             },
             {
-              "label": "Configuración para compartir en Twitter",
+              "label": "Configuraciones para compartir en Twitter",
               "fields": [
                 {
                   "label": "Mensaje para compartir en Twitter",

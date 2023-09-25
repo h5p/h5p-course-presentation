@@ -44,13 +44,16 @@ const Printer = (function ($) {
     // change between landscape and portrait without us ever knowing about it.
     // More info: http://stackoverflow.com/a/11084797/2797106
     var ratio = slideWidth/670;
-
     var $slides = $('.h5p-slide');
 
     $slides.css({
       height: slideHeight/ratio + 'px',
       width: '670px',
       fontSize: Math.floor(100/ratio) + '%'
+    });
+
+    $('.h5p-summary-slide').css({
+      height: ''
     });
 
     var wrapperHeight = $wrapper.height();
