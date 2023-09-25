@@ -2056,10 +2056,10 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
  */
 CoursePresentation.prototype.resetTask = function () {
   this.summarySlideObject.toggleSolutionMode(false);
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    if (this.slidesWithSolutions[i] !== undefined) {
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
+  for (var i = 0; i < this.elementInstances.length; i++) {
+    if (this.elementInstances[i]) {
+      for (var j = 0; j < this.elementInstances[i].length; j++) {
+        var elementInstance = this.elementInstances[i][j];
         if (elementInstance.resetTask) {
           elementInstance.resetTask();
         }
