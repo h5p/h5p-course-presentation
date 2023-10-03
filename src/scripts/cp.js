@@ -2055,7 +2055,7 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
  * @public
  */
 CoursePresentation.prototype.resetTask = function () {
-  this.summarySlideObject.toggleSolutionMode(false);
+  this.summarySlideObject?.toggleSolutionMode(false);
   for (var i = 0; i < this.elementInstances.length; i++) {
     if (this.elementInstances[i]) {
       for (var j = 0; j < this.elementInstances[i].length; j++) {
@@ -2066,9 +2066,11 @@ CoursePresentation.prototype.resetTask = function () {
       }
     }
   }
-  this.navigationLine.updateProgressBar(0);
-  this.jumpToSlide(0, false);
-  this.$container.find('.h5p-popup-overlay').remove();
+  this.navigationLine?.updateProgressBar(0);
+  if (this.$container) {
+    this.jumpToSlide(0, false);
+    this.$container.find('.h5p-popup-overlay').remove();
+  }
 };
 
 /**
