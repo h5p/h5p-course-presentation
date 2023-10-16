@@ -1321,7 +1321,7 @@ CoursePresentation.prototype.showPopup = function ({
   this.popupId = this.popupId === undefined ? 0 : this.popupId + 1;
 
   /** @private */
-  var close = function (event) {
+  this.closePopup = function (event) {
     if (doNotClose) {
       // Prevent closing the popup
       doNotClose = false;
@@ -1342,7 +1342,9 @@ CoursePresentation.prototype.showPopup = function ({
         remove(keepInDOM);
       }, 100);
     }
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     $popup.addClass('h5p-animate');
     $popup.find('.h5p-popup-container').addClass('h5p-animate');
 
@@ -1496,7 +1498,7 @@ CoursePresentation.prototype.showPopup = function ({
   // Insert popup ready for use
   $popup
     .removeClass('h5p-animate')
-    .click(close)
+    .click(self.closePopup)
     .find('.h5p-popup-container')
       .removeClass('h5p-animate')
       .click(function () {
@@ -1504,7 +1506,7 @@ CoursePresentation.prototype.showPopup = function ({
       })
       .keydown(function (event) {
         if (event.which === keyCode.ESC) {
-          close(event);
+          self.closePopup(event);
         }
       })
       .find('.h5p-close-popup')
@@ -1513,7 +1515,7 @@ CoursePresentation.prototype.showPopup = function ({
   // Hide other elements from the tab order
   this.disableTabIndexes();
 
-  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => close(event));
+  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => self.closePopup(event));
 
   return $popup;
 };
@@ -2069,7 +2071,7 @@ CoursePresentation.prototype.resetTask = function () {
   this.navigationLine?.updateProgressBar(0);
   if (this.$container) {
     this.jumpToSlide(0, false);
-    this.$container.find('.h5p-popup-overlay').remove();
+    this.closePopup();
   }
 };
 
