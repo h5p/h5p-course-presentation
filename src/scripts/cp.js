@@ -1163,7 +1163,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
       },
       classes: libTypePmz,
       instance: instance,
-      keepInDOM: libTypePmz === 'h5p-interactivevideo'
+      keepInDOM: false
     });
 
     H5P.trigger(instance, 'resize');
