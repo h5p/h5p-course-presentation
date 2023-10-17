@@ -2071,7 +2071,7 @@ CoursePresentation.prototype.resetTask = function () {
   this.navigationLine?.updateProgressBar(0);
   if (this.$container) {
     this.jumpToSlide(0, false);
-    this.closePopup();
+    this.closePopup && this.closePopup();
   }
 };
 
