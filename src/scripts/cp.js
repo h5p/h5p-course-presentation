@@ -1338,9 +1338,7 @@ CoursePresentation.prototype.showPopup = function ({
 
     // Remove popup
     if (remove !== undefined) {
-      setTimeout(function () {
-        remove(keepInDOM);
-      }, 100);
+      remove(keepInDOM);
     }
     if (event) {
       event.preventDefault();
@@ -1348,14 +1346,12 @@ CoursePresentation.prototype.showPopup = function ({
     $popup.addClass('h5p-animate');
     $popup.find('.h5p-popup-container').addClass('h5p-animate');
 
-    setTimeout(function () {
-      if (keepInDOM) {
-        $popup.hide();
-      }
-      else {
-        $popup.remove();
-      }
-    }, 100);
+    if (keepInDOM) {
+      $popup.hide();
+    }
+    else {
+      $popup.remove();
+    }
   };
 
   let $popup;
@@ -2058,6 +2054,11 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
  */
 CoursePresentation.prototype.resetTask = function () {
   this.summarySlideObject?.toggleSolutionMode(false);
+  this.navigationLine?.updateProgressBar(0);
+  if (this.$container) {
+    this.jumpToSlide(0, false);
+    this.closePopup();
+  }
   for (var i = 0; i < this.elementInstances.length; i++) {
     if (this.elementInstances[i]) {
       for (var j = 0; j < this.elementInstances[i].length; j++) {
@@ -2067,11 +2068,6 @@ CoursePresentation.prototype.resetTask = function () {
         }
       }
     }
-  }
-  this.navigationLine?.updateProgressBar(0);
-  if (this.$container) {
-    this.jumpToSlide(0, false);
-    this.closePopup();
   }
 };
 
