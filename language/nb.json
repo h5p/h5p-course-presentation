@@ -44,7 +44,7 @@
                       "label": "Gå til",
                       "options": [
                         {
-                          "label": "Eksakt sidetall"
+                          "label": "Spesifikt sidetall"
                         },
                         {
                           "label": "Neste side"
@@ -55,12 +55,12 @@
                       ]
                     },
                     {
-                      "label": "Spesifisert side",
-                      "description": "Bare relevant dersom du har valgt \"Eksakt sidetall\""
+                      "label": "Spesifikt sidetall",
+                      "description": "Bare relevant dersom du har valgt \"Spesifikt sidetall\""
                     },
                     {
                       "label": "Usynlig",
-                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: Brukere som bare bruker tastatur, får problemer med å bruke elementet."
+                      "description": "Standard musepeker, ingen tittel eller tabulatorstopp. Advarsel: Brukere som er avhengige av å bruke tastatur, får problemer med å bruke elementet."
                     }
                   ]
                 }
@@ -123,7 +123,7 @@
         },
         {
           "label": "Oversettelse for \"Max Score\"",
-          "default": "Maks poengsum"
+          "default": "Maksimal poengsum"
         },
         {
           "label": "Oversettelse for \"Total\"",
@@ -131,22 +131,22 @@
         },
         {
           "label": "Oversettelse for \"Total Score\"",
-          "default": "Samlet poengsum"
+          "default": "Samla poengsum"
         },
         {
           "label": "Navn på \"Vis svar\"-knappen",
           "default": "Vis svar"
         },
         {
-          "label": "Navn på \"Prøv igjen\"-knappen",
+          "label": "Navn på \"Prøv igjen\"-knapp",
           "default": "Prøv igjen"
         },
         {
-          "label": "Navn på \"Eksporter tekst\"-knappen",
+          "label": "Navn på \"Eksporter tekst\"-knapp",
           "default": "Eksporter tekst"
         },
         {
-          "label": "Navn på \"Skjul sidemeny\"-knappen",
+          "label": "Navn på \"Skjul sidemeny\"-knapp",
           "default": "Skjul sidemeny"
         },
         {
@@ -178,7 +178,7 @@
           "default": "Siste side"
         },
         {
-          "label": "Navn på \"Avslutt fasitmodus\"-knappen",
+          "label": "Navn på \"Avslutt fasitmodus\"-knapp",
           "default": "Avslutt fasitmodus"
         },
         {
@@ -226,7 +226,7 @@
           "default": "Skriv ut alle sider"
         },
         {
-          "label": "Navn på \"Skriv ut denne sida\"-knappen",
+          "label": "Navn på \"Skriv ut denne sida\"-knapp",
           "default": "Skriv ut denne sida"
         },
         {
@@ -270,24 +270,24 @@
           "default": "Del resultat"
         },
         {
-          "label": "Tekst for samla poengsum (for skjermleser)",
+          "label": "Tekst for å annonsere samla poengsum (for skjermleser)",
           "default": "Du fikk til sammen @score av @maxScore poeng.",
           "description": "Tilgjengelige variabler er @score og @maxScore"
         },
         {
           "label": "Tekst om at fullskjermvisning er aktivert (for skjermleser)",
-          "default": "Åpnet i fullskjermvisning"
+          "default": "Åpna i fullskjermvisning"
         },
         {
           "label": "Tekst om at fullskjermvisning er avsluttet (for skjermleser)",
-          "default": "Fullskjermvisning er avsluttet"
+          "default": "Fullskjermvisning er avslutta."
         },
         {
           "label": "Tittel på dialogvindu for innsending av svar",
           "default": "Send inn svar"
         },
         {
-          "label": "Tekst i dialogvindu som ber bruker bekrefte innsending",
+          "label": "Tekst som ber bruker bekrefte innsending",
           "default": "Du er i ferd med å sende inn svara dine. Vil du fortsette?"
         },
         {
@@ -306,15 +306,15 @@
       "fields": [
         {
           "label": "Slå på aktiv flate",
-          "description": "Fjerner navigasjonskontroll for sluttbruker. Bruk \"Gå til side\" for å navigere. Oppsummering blir da ikke tilgjengelig."
+          "description": "Fjerner navigasjonskontroll for sluttbruker. Bruk \"Gå til side\" for å navigere. Oppsummering blir da ikke tilgjengelig. Obs! Dette valget kan ikke gjøres om."
         },
         {
           "label": "Skjul sammendrag",
-          "description": "Aktivering vil føre til at sammendragssida ikke vises."
+          "description": "Aktiver dersom du ikke vil at sluttsammendraget skal vises."
         },
         {
           "label": "Overstyr \"Vis svar\"-knapp",
-          "description": "Dette valget avgjør om \"Vis svar\"-knappen skal vises for alle spørsmål, skjules for alle spørsmål eller konfigureres individuelt for hvert spørsmål.",
+          "description": "Dette valget avgjør om \"Vis svar\"-knappen skal vises for alle spørsmåla, skjules for alle spørsmåla eller konfigureres individuelt for hvert spørsmål.",
           "options": [
             {
               "label": "Vis knapp"
@@ -326,7 +326,7 @@
         },
         {
           "label": "Overstyr \"Prøv igjen\"-knapp",
-          "description": "Dette valget avgjør om \"Prøv igjen\"-knappen skal vises for alle spørsmål, skjules for alle spørsmål eller konfigureres individuelt for hvert spørsmål.",
+          "description": "Dette valget avgjør om \"Prøv igjen\"-knappen skal vises for alle spørsmåla, skjules for alle spørsmåla eller konfigureres individuelt for hvert spørsmål.",
           "options": [
             {
               "label": "Vis knapp"
@@ -376,7 +376,7 @@
               "fields": [
                 {
                   "label": "Tekst som blir vist på Twitter",
-                  "default": "Jeg fikk @score av @maxScore poeng på denne oppgaven: @currentpageurl."
+                  "default": "Jeg fikk @score av @maxScore poeng på denne oppgaven: @currentpageurl"
                 },
                 {
                   "label": "Lenke for å dele på Twitter",
