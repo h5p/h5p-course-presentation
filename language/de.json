@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "\"Active Surface\"-Modus aktivieren",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Entfernt die Navigationselemente für die Nutzenden.  Verwende Go To Slide, um das Springen zu anderen Schaubildern zu ermöglichen. Die Zusammenfassung ist in diesem Modus nicht vorhanden."
         },
         {
           "label": "Zusammenfassungsfolie verbergen",
