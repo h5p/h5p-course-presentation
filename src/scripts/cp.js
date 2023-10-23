@@ -1321,7 +1321,7 @@ CoursePresentation.prototype.showPopup = function ({
   this.popupId = this.popupId === undefined ? 0 : this.popupId + 1;
 
   /** @private */
-  this.closePopup = function (event) {
+  this.closePopup = function (event, moveFocus = true) {
     if (doNotClose) {
       // Prevent closing the popup
       doNotClose = false;
@@ -1331,7 +1331,9 @@ CoursePresentation.prototype.showPopup = function ({
     // Enable focus to rest of page
     self.restoreTabIndexes();
 
-    $focusOnClose.focus();
+    if (moveFocus) {
+      $focusOnClose.focus();
+    }
     if (updateAriaExpanded) {
       $focusOnClose.attr('aria-expanded', false);
     }
@@ -2055,8 +2057,10 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
 /**
  * Reset the content for all slides.
  * @public
+ * @param {boolean} moveFocus True to move the focus to popup
+ * This prevents loss of focus if reset from within content
  */
-CoursePresentation.prototype.resetTask = function () {
+CoursePresentation.prototype.resetTask = function (moveFocus = false) {
   this.summarySlideObject?.toggleSolutionMode(false);
   for (var i = 0; i < this.elementInstances.length; i++) {
     if (this.elementInstances[i]) {
@@ -2071,7 +2075,7 @@ CoursePresentation.prototype.resetTask = function () {
   this.navigationLine?.updateProgressBar(0);
   if (this.$container) {
     this.jumpToSlide(0, false);
-    this.closePopup && this.closePopup();
+    this.closePopup && this.closePopup(undefined, moveFocus);
   }
 };
 
