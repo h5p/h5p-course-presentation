@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Ενεργοποίηση Λειτουργίας Ενεργούς Επιφάνειας",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Καταργεί τα στοιχεία ελέγχου πλοήγησης για τον τελικό χρήστη. Χρησιμοποιήστε το Go To Slide για πλοήγηση. Η σύνοψη δεν είναι διαθέσιμη σε αυτήν τη λειτουργία."
         },
         {
           "label": "Απόκρυψη διαφάνειας σύνοψης",
