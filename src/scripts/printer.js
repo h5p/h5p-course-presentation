@@ -82,7 +82,7 @@ const Printer = (function ($) {
       window.print();
 
       // Need additional timeout for iPad
-      if (window.navigator.userAgent.match(/iPad|iPod|iPhone/i)) {
+      if (/iPad|Macintosh/.test(navigator.userAgent) && 'ontouchstart' in document.documentElement) {
         setTimeout(function () {
           resetCSS();
         }, 1500);
