@@ -218,7 +218,7 @@
           "default": "Drucken"
         },
         {
-          "label": "Zugriff auf Druck-Dialog",
+          "label": "Frage an die Nutzenden im Druck-Dialog",
           "default": "Wie möchtest du diese Präsentation drucken?"
         },
         {
@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "\"Active Surface\"-Modus aktivieren",
-          "description": "Entfernt die Navigationselemente für die Nutzenden.  Verwende Go To Slide, um das Springen zu anderen Schaubildern zu ermöglichen. Die Zusammenfassung ist in diesem Modus nicht vorhanden."
+          "description": "Entfernt die Navigationselemente für die Nutzenden. Verwende Go To Slide, um das Springen zu anderen Schaubildern zu ermöglichen. Die Zusammenfassung ist in diesem Modus nicht vorhanden."
         },
         {
           "label": "Zusammenfassungsfolie verbergen",
