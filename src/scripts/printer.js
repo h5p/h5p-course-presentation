@@ -81,8 +81,8 @@ const Printer = (function ($) {
       window.focus();
       window.print();
 
-      // Need additional timeout for iPad
-      if (/iPad|Macintosh/.test(navigator.userAgent) && 'ontouchstart' in document.documentElement) {
+      // Need additional timeout for ios
+      if (/iPad|iPhone|Macintosh/.test(navigator.userAgent) && 'ontouchstart' in document.documentElement) {
         setTimeout(function () {
           resetCSS();
         }, 1500);
