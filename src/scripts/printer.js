@@ -60,21 +60,33 @@ const Printer = (function ($) {
     $slides.toggleClass('doprint', allSlides === true);
     $currentSlide.addClass('doprint');
 
-    // Need timeout for some browsers.
-    setTimeout(function () {
-      // Do the actual printing of the iframe content
-      window.print();
-
-      // Reset CSS
+    const resetCSS = function () {
       $slides.css({
         height: '',
         width: '',
         fontSize: ''
       });
-      $wrapper.css('height', wrapperHeight+'px');
+      $wrapper.css('height', wrapperHeight + 'px');
 
       // Let CP know we are finished printing
       cp.trigger('printing', {finished: true});
+    }; 
+
+    // Need timeout for some browsers.
+    setTimeout(function () {
+      // Do the actual printing of the iframe content
+      window.focus();
+      window.print();
+
+      // Need additional timeout for ios and MacOS
+      if (/iPad|iPhone|Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent)) {
+        setTimeout(function () {
+          resetCSS();
+        }, 1500);
+      }
+      else {
+        resetCSS();
+      }
     }, 500);
   };
 
