@@ -19,8 +19,9 @@ const SummarySlide = (function () {
    * Updates the provided summary slide with current values.
    *
    * @param {$} $summarySlide Summary slide that will be updated
+   * @param {Boolean} [noXAPI] If true, will not trigger xAPI events.
    */
-  SummarySlide.prototype.updateSummarySlide = function (slideNumber, noJump) {
+  SummarySlide.prototype.updateSummarySlide = function (slideNumber, noJump, noXAPI) {
     var that = this;
     // Validate update.
     var isValidUpdate = (this.cp.editor === undefined) && (this.$summarySlide !== undefined) && (slideNumber >= this.cp.slides.length - 1);
@@ -39,7 +40,7 @@ const SummarySlide = (function () {
 
     // Get scores and updated html for summary slide
     var slideScores = that.cp.getSlideScores(noJump);
-    var htmlText = that.outputScoreStats(slideScores);
+    var htmlText = that.outputScoreStats(slideScores, noXAPI);
     $(htmlText).appendTo(that.$summarySlide);
 
     if (!isExportSlide) {
@@ -146,9 +147,10 @@ const SummarySlide = (function () {
    * Gets html for summary slide.
    *
    * @param slideScores Scores for all pages
+   * @param {Boolean} [noXAPI] If true, will not trigger xAPI events.
    * @returns {string} html
    */
-  SummarySlide.prototype.outputScoreStats = function (slideScores) {
+  SummarySlide.prototype.outputScoreStats = function (slideScores, noXAPI) {
     var self = this;
     if (slideScores === undefined) {
       this.$summarySlide.addClass('h5p-summary-only-export');
@@ -189,7 +191,7 @@ const SummarySlide = (function () {
     }
 
     // this.cp.ignoreResize is true when printing; do not xAPI submit on print.
-    if (!this.cp.isSolutionMode && !this.cp.ignoreResize) {
+    if (!this.cp.isSolutionMode && !this.cp.ignoreResize && !noXAPI) {
       that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
     }
     var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
