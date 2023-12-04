@@ -163,13 +163,13 @@ CoursePresentation.prototype.constructor = CoursePresentation;
  */
 CoursePresentation.prototype.getCurrentState = function () {
   var state = this.previousState ? this.previousState : {};
-  state.progress = this.getCurrentSlideIndex();
+  state.progress = this.getCurrentSlideIndex() || null;
   if (!state.answers) {
     state.answers = [];
   }
 
   state.answered = this.elementInstances
-    .map((interaction, index) => this.slideHasAnsweredTask(index));
+    .map((interaction, index) => (this.slideHasAnsweredTask(index)) || null);
 
   // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
@@ -199,9 +199,10 @@ CoursePresentation.prototype.getCurrentState = function () {
 CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
   const tasks = this.slidesWithSolutions[index] || [];
 
+  // Disregard questions where "no answer" is the correct answer.
   return tasks
     .filter(task => isFunction(task.getAnswerGiven))
-    .some(task => task.getAnswerGiven());
+    .some(task => task.getAnswerGiven() && !H5P.isEmpty(task.getCurrentState()));
 };
 
 /**
@@ -219,9 +220,9 @@ CoursePresentation.prototype.attach = function ($container) {
   }
 
   var html =
-          '<div class="h5p-keymap-explanation hidden-but-read">' + this.l10n.accessibilitySlideNavigationExplanation + '</div>' +
+          '<div class="h5p-keymap-explanation hidden-but-read">' + (!this.activeSurface && this.l10n.accessibilitySlideNavigationExplanation) + '</div>' +
           '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + this.l10n.accessibilityCanvasLabel + '">' +
+          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + (!this.activeSurface && this.l10n.accessibilityCanvasLabel) + '">' +
           '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
           '  <div tabindex="-1"></div>' +
           '  <div class="h5p-box-wrapper">' +
@@ -267,8 +268,8 @@ CoursePresentation.prototype.attach = function ($container) {
      */
     const isFocusableElement = that.belongsToTagName(
       event.target, ['input', 'textarea', 'a', 'button'], event.currentTarget);
-    // Does the target element have a tabIndex set?
-    const hasTabIndex = (event.target.tabIndex !== -1);
+    // Does the target element (or one of its parents) have a tabIndex set?
+    const hasTabIndex = that.hasTabIndex(event.target, event.currentTarget);
     // The dialog container (if within a dialog)
     const $dialogParent = $target.closest('.h5p-popup-container');
     // Is target within a dialog
@@ -479,6 +480,29 @@ CoursePresentation.prototype.belongsToTagName = function (node, tagNames, stop) 
 
   return this.belongsToTagName(node.parentNode, tagNames, stop);
 };
+
+/**
+ * Check if element or one of its parents has tabIndex !== -1.
+ *
+ * @param {HTMLElement} element Element to check.
+ * @param {HTMLElement} [stopElement] Optional element to stop search and return false if none found.
+ * @return {boolean} True, if one of the element parents has tabIndex !== -1.
+ */
+CoursePresentation.prototype.hasTabIndex = (element, stopElement) => {
+  if (element.tabIndex !== -1) {
+    return true;
+  }
+  const parents = $(element).parents();
+  for (let key in parents) {
+    if (parents[key].tabIndex !== -1) {
+      return true;
+    }
+    if (stopElement && parents[key] === stopElement) {
+      return false;
+    }
+  }
+  return false;
+}
 
 /**
  * Removes old menu items, and create new ones from slides.
@@ -1060,8 +1084,8 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  */
 CoursePresentation.prototype.createInteractionButton = function (element, instance) {
   let label = element.action.metadata ? element.action.metadata.title : '';
-  if (label === '') {
-    label = (element.action.params && element.action.params.contentName) || element.action.library.split(' ')[0].split('.')[1];
+  if (label === '' || label === undefined) {
+    label = element.action?.params?.contentName || element.action?.params?.title || element.action.library.split(' ')[0].split('.')[1];
   }
   const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
@@ -1125,9 +1149,9 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
     this.on('exitFullScreen', exitFullScreen);
 
     this.showPopup({
-      popupContent: $buttonElement, 
-      $focusOnClose: $button, 
-      parentPosition: popupPosition, 
+      popupContent: $buttonElement,
+      $focusOnClose: $button,
+      parentPosition: popupPosition,
       remove: (keepInDOM = false) => {
         if (!keepInDOM) {
           $buttonElement.detach();
@@ -1136,9 +1160,9 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
         // Remove listener, we only need it for active popups
         this.off('exitFullScreen', exitFullScreen);
         closeCallback();
-      }, 
-      classes: libTypePmz, 
-      instance: instance, 
+      },
+      classes: libTypePmz,
+      instance: instance,
       keepInDOM: libTypePmz === 'h5p-interactivevideo'
     });
 
@@ -1249,14 +1273,14 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
       }
 
       addClickAndKeyboardListeners($commentButton, (event) => {
-        this.showPopup({ 
-          popupContent: element.solution, 
-          $focusOnClose: $commentButton, 
+        this.showPopup({
+          popupContent: element.solution,
+          $focusOnClose: $commentButton,
           parentPosition: parentPosition,
           updateAriaExpanded: true,
         });
         $commentButton.attr('aria-expanded', true);
-        
+
         // Prevents the wrapper from stealing the focus of screen readers
         event.stopPropagation();
       });
@@ -1281,12 +1305,12 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
  * @param {boolean} [updateAriaExpanded] Set aria-expanded=false on the $focusOnClose element when closing
  */
 CoursePresentation.prototype.showPopup = function ({
-  popupContent, 
-  $focusOnClose, 
-  parentPosition = null, 
-  remove, 
-  classes = 'h5p-popup-comment-field', 
-  instance, 
+  popupContent,
+  $focusOnClose,
+  parentPosition = null,
+  remove,
+  classes = 'h5p-popup-comment-field',
+  instance,
   keepInDOM = false,
   updateAriaExpanded,
 }) {
@@ -1297,7 +1321,7 @@ CoursePresentation.prototype.showPopup = function ({
   this.popupId = this.popupId === undefined ? 0 : this.popupId + 1;
 
   /** @private */
-  var close = function (event) {
+  this.closePopup = function (event, moveFocus = true) {
     if (doNotClose) {
       // Prevent closing the popup
       doNotClose = false;
@@ -1307,7 +1331,9 @@ CoursePresentation.prototype.showPopup = function ({
     // Enable focus to rest of page
     self.restoreTabIndexes();
 
-    $focusOnClose.focus();
+    if (moveFocus) {
+      $focusOnClose.focus();
+    }
     if (updateAriaExpanded) {
       $focusOnClose.attr('aria-expanded', false);
     }
@@ -1318,7 +1344,9 @@ CoursePresentation.prototype.showPopup = function ({
         remove(keepInDOM);
       }, 100);
     }
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     $popup.addClass('h5p-animate');
     $popup.find('.h5p-popup-container').addClass('h5p-animate');
 
@@ -1343,12 +1371,12 @@ CoursePresentation.prototype.showPopup = function ({
     // The popup must be created and added to the DOM
     $popup = $(
       '<div class="h5p-popup-overlay ' + classes + '">' +
-        '<div ' + 
-          'class="h5p-popup-container" ' + 
-          'role="dialog"' + 
-          'aria-modal="true" ' + 
-          'aria-live="true" ' + 
-          'aria-labelledby="popup-title-' + this.popupId + '"> ' +   
+        '<div ' +
+          'class="h5p-popup-container" ' +
+          'role="dialog"' +
+          'aria-modal="true" ' +
+          'aria-live="true" ' +
+          'aria-labelledby="popup-title-' + this.popupId + '"> ' +
           '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
           '<div class="h5p-popup-wrapper" role="document"></div>' +
         '</div>' +
@@ -1472,7 +1500,7 @@ CoursePresentation.prototype.showPopup = function ({
   // Insert popup ready for use
   $popup
     .removeClass('h5p-animate')
-    .click(close)
+    .click(self.closePopup)
     .find('.h5p-popup-container')
       .removeClass('h5p-animate')
       .click(function () {
@@ -1480,7 +1508,7 @@ CoursePresentation.prototype.showPopup = function ({
       })
       .keydown(function (event) {
         if (event.which === keyCode.ESC) {
-          close(event);
+          self.closePopup(event);
         }
       })
       .find('.h5p-close-popup')
@@ -1489,7 +1517,7 @@ CoursePresentation.prototype.showPopup = function ({
   // Hide other elements from the tab order
   this.disableTabIndexes();
 
-  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => close(event));
+  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => self.closePopup(event));
 
   return $popup;
 };
@@ -2029,22 +2057,26 @@ CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, ha
 /**
  * Reset the content for all slides.
  * @public
+ * @param {boolean} moveFocus True to move the focus to popup
+ * This prevents loss of focus if reset from within content
  */
-CoursePresentation.prototype.resetTask = function () {
-  this.summarySlideObject.toggleSolutionMode(false);
-  for (var i = 0; i < this.slidesWithSolutions.length; i++) {
-    if (this.slidesWithSolutions[i] !== undefined) {
-      for (var j = 0; j < this.slidesWithSolutions[i].length; j++) {
-        var elementInstance = this.slidesWithSolutions[i][j];
+CoursePresentation.prototype.resetTask = function (moveFocus = false) {
+  this.summarySlideObject?.toggleSolutionMode(false);
+  for (var i = 0; i < this.elementInstances.length; i++) {
+    if (this.elementInstances[i]) {
+      for (var j = 0; j < this.elementInstances[i].length; j++) {
+        var elementInstance = this.elementInstances[i][j];
         if (elementInstance.resetTask) {
           elementInstance.resetTask();
         }
       }
     }
   }
-  this.navigationLine.updateProgressBar(0);
-  this.jumpToSlide(0, false);
-  this.$container.find('.h5p-popup-overlay').remove();
+  this.navigationLine?.updateProgressBar(0);
+  if (this.$container) {
+    this.jumpToSlide(0, false);
+    this.closePopup && this.closePopup(undefined, moveFocus);
+  }
 };
 
 /**

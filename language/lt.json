@@ -306,7 +306,7 @@
       "fields": [
         {
           "label": "Aktyvuoti aktyvaus paviršiaus režimą",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Pašalina galutinio naudotojo naršymo valdiklius. Norėdami naršyti, naudokite Go To Slide. Suvestinė šiuo režimu negalima."
         },
         {
           "label": "Slėpti santraukos skaidrę",
