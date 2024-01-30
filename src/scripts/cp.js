@@ -1853,7 +1853,7 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
     this.trigger(progressedEvent);
   }
 
-  if (this.$current.hasClass('h5p-animate')) {
+  if (!this.$current || this.$current.hasClass('h5p-animate')) {
     return;
   }
 
