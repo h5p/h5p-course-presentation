@@ -73,19 +73,8 @@ export default class GoToSlide {
       title: title
     });
 
-    function findClosestCarouselElement(element) {
-      // Traverse up the DOM to find the closest parent
-      while (element && !element.matches('[aria-roledescription="carousel"]')) {
-        element = element.parentElement;
-      }
-
-      return element;
-    }
-
     addClickAndKeyboardListeners(this.$element, event => {
-      const wrapper = findClosestCarouselElement(event.target);
       this.eventDispatcher.trigger('navigate', goTo);
-      wrapper.focus();
       event.preventDefault();
     });
   }
