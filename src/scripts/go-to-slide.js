@@ -74,9 +74,7 @@ export default class GoToSlide {
     });
 
     addClickAndKeyboardListeners(this.$element, event => {
-      const wrapper = document.querySelector('[aria-roledescription="carousel"]');
       this.eventDispatcher.trigger('navigate', goTo);
-      wrapper.focus()
       event.preventDefault();
     });
   }

@@ -17,6 +17,7 @@ function Element(parameters) {
       self.instance.on('navigate', event => {
         const index = event.data;
         self.parent.parent.jumpToSlide(index);
+        self.parent.parent.focus();
       });
     }
   }
