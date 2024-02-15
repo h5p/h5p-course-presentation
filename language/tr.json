@@ -27,6 +27,9 @@
                       "label": "Buton olarak göster"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Buton boyutu",
                       "options": [
                         {

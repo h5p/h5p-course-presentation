@@ -27,6 +27,9 @@
                       "label": "버튼 보이기"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "버튼 크기",
                       "options": [
                         {

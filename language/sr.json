@@ -27,6 +27,9 @@
                       "label": "Приказ као дугме"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Величина дугмета",
                       "options": [
                         {

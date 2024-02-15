@@ -27,6 +27,9 @@
                       "label": "Товчлуур хэлбэрээр харуулах"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Товчлуурын хэмжээ",
                       "options": [
                         {

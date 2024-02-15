@@ -27,6 +27,9 @@
                       "label": "Показване като бутон"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Размер на бутона",
                       "options": [
                         {

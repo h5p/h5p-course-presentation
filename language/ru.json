@@ -27,6 +27,9 @@
                       "label": "Показать как кнопку"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Размер кнопки",
                       "options": [
                         {

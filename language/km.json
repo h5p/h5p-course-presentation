@@ -27,6 +27,9 @@
                       "label": "បង្ហាញជាប៊ូតុង"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "ទំហំប៊ូតុង",
                       "options": [
                         {

@@ -27,6 +27,9 @@
                       "label": "Vis som knapp"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Knappstørrelse",
                       "options": [
                         {

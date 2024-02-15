@@ -27,6 +27,9 @@
                       "label": "Tonen als knop"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Knopgrootte",
                       "options": [
                         {

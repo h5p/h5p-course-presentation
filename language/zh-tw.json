@@ -27,6 +27,9 @@
                       "label": "顯示為按鈕"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "按鈕尺寸",
                       "options": [
                         {

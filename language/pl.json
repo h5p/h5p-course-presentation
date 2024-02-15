@@ -27,6 +27,9 @@
                       "label": "Wyświetlaj jako przycisk"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Wielkość przycisku",
                       "options": [
                         {

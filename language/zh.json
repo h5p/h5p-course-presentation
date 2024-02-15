@@ -27,6 +27,9 @@
                       "label": "以按鈕樣式顯示"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "按鈕尺寸",
                       "options": [
                         {

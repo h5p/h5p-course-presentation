@@ -129,6 +129,13 @@
                     "optional": true
                   },
                   {
+                    "name": "buttonLabel",
+                    "type": "text",
+                    "label": "Optional button label",
+                    "importance": "medium",
+                    "optional": true
+                  },
+                  {
                     "name": "buttonSize",
                     "type": "select",
                     "label": "Button size",

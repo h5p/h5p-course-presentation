@@ -27,6 +27,9 @@
                       "label": "Tampilkan sebagai tombol"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Ukuran tombol",
                       "options": [
                         {

@@ -27,6 +27,9 @@
                       "label": "Vertoon as knoppie"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Knoppie grote",
                       "options": [
                         {

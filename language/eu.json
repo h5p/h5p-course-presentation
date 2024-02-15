@@ -27,6 +27,9 @@
                       "label": "Bistaratu botoi moduan"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Botoiaren tamaina",
                       "options": [
                         {

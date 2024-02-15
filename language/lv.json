@@ -27,6 +27,9 @@
                       "label": "Parādīt kā pogu"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Pogas izmērs",
                       "options": [
                         {

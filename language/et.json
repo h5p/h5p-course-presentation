@@ -27,6 +27,9 @@
                       "label": "Näita nupuna"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Nupu suurus",
                       "options": [
                         {

@@ -27,6 +27,9 @@
                       "label": "Prikaži kot gumb"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Velikost gumba",
                       "options": [
                         {
