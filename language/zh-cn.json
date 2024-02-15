@@ -27,6 +27,9 @@
                       "label": "显示为按钮"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "按钮大小",
                       "options": [
                         {

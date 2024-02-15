@@ -27,6 +27,9 @@
                       "label": "عرض كزر"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "حجم الزر",
                       "options": [
                         {

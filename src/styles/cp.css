@@ -446,12 +446,14 @@
   backface-visibility: hidden;
 }
 
-.h5p-course-presentation .h5p-element-button:hover {
+.h5p-course-presentation .h5p-element-button:hover,
+.h5p-course-presentation .h5p-element-button-label:hover ~ .h5p-element-button {
   box-shadow: 0 0.3em 0.25em 0 rgba(0, 0, 0, 0.5);
   background: #003fdf;
 }
 
-.h5p-course-presentation .h5p-element-button:focus {
+.h5p-course-presentation .h5p-element-button:focus,
+.h5p-course-presentation .h5p-element-button-label:focus ~ .h5p-element-button {
   outline: none;
   top: -0.167em;
   left: -0.167em;
@@ -471,6 +473,40 @@
 }
 .h5p-course-presentation .h5p-element-button.h5p-element-button-big:before {
   font-size: 0.87em;
+}
+
+.h5p-course-presentation .h5p-element-button-label {
+  background: rgba(0,0,0,.8);
+  border-radius: 0 1em 1em 0;
+  color: #fff;
+  cursor: pointer;
+  height: 2.25em;
+  left: 1.25em;
+  padding: 0 0.75em 0 1.5em;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.h5p-course-presentation .h5p-element-button-label.left {
+  border-radius: 1em 0 0 1em;
+  left: auto;
+  padding: 0 1.5em 0 0.75em;
+  right: 1.25em;
+}
+
+.h5p-course-presentation .h5p-element-button-label.small {
+  height: 1.5em;
+  line-height: 1.5em;
+}
+
+.h5p-course-presentation .h5p-element-button-label.small:not(.left) {
+  left: 1em;
+  padding: 0 0.75em 0 1em;
+}
+
+.h5p-course-presentation .h5p-element-button-label.small.left {
+  padding: 0 1em 0 0.75em;
+  right: 1em;
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button,

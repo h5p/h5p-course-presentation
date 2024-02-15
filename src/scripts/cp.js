@@ -950,8 +950,29 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
 
   if (displayAsButton) {
-    const $button = this.createInteractionButton(element, instance);
+    const [$button, labelElement] =
+      this.createInteractionButton(element, instance);
+
+    // Label in logically before button to allow sibling selector in CSS
+    if (labelElement) {
+      $elementContainer.get(0).append(labelElement);
+    }
     $button.appendTo($elementContainer);
+
+    if (labelElement) {
+      // Position label left/right depending on available space
+      window.requestAnimationFrame(() => {
+        const labelRect = labelElement.getBoundingClientRect();
+        const containerOffset = this.$container.get(0).offsetLeft;
+
+        if (
+          -containerOffset + labelRect.x + labelRect.width >
+            this.$container.get(0).offsetWidth
+        ) {
+          labelElement.classList.add('left');
+        }
+      });
+    }
   }
   else {
     const hasLibrary = element.action && element.action.library;
@@ -1079,55 +1100,96 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  *
  * @param {Object} element
  * @param {Object} instance
- *
- * @return {jQuery}
+ * @returns {[jQuery, HTMLElement|undefined]} Button element and label if set.
  */
-CoursePresentation.prototype.createInteractionButton = function (element, instance) {
-  let label = element.action.metadata ? element.action.metadata.title : '';
-  if (label === '' || label === undefined) {
-    label = element.action?.params?.contentName || element.action?.params?.title || element.action.library.split(' ')[0].split('.')[1];
-  }
-  const libTypePmz = this.getLibraryTypePmz(element.action.library);
+CoursePresentation.prototype.createInteractionButton =
+  function (element, instance) {
+    const isButtonLabelSet = typeof element.buttonLabel === 'string' &&
+      element.buttonLabel !== '';
 
-  /**
-   * Returns a function that will set [aria-expanded="false"] on the $btn element
-   *
-   * @param {jQuery} $btn
-   * @return {Function}
-   */
-  const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
+    const labelText = element.buttonLabel ??
+      element.action.metadata?.title ??
+      (
+        element.action?.params?.contentName ||
+        element.action?.params?.title ||
+        element.action?.library.split(' ')[0].split('.')[1] ||
+        ''
+      );
 
-  const $button = $('<div>', {
-    role: 'button',
-    tabindex: 0,
-    'aria-label': label,
-    'aria-popup': true,
-    'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
-  });
-
-  const $buttonElement = $('<div class="h5p-button-element"></div>');
-  instance.attach($buttonElement);
-
-  const parentPosition = libTypePmz === 'h5p-advancedtext' ? {
-    x: element.x,
-    y: element.y
-  } : null;
-  addClickAndKeyboardListeners($button, () => {
-    $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, setAriaExpandedFalse($button), parentPosition);
-  });
-
-  if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-    instance.on('controls', function () {
-      if (instance.controls.$fullscreen) {
-        instance.controls.$fullscreen.remove();
+    // Optional label for button
+    let labelElement;
+    if (isButtonLabelSet) {
+      labelElement = document.createElement('div');
+      labelElement.classList.add('h5p-element-button-label');
+      if (element.buttonSize === 'small') {
+        labelElement.classList.add('small');
       }
-    });
-  }
 
-  return $button;
-};
+      const labelElementText = document.createElement('div');
+      labelElementText.classList.add('h5p-element-button-label-text');
+      labelElementText.setAttribute('aria-hidden', true);
+      labelElementText.innerText = labelText;
+      labelElement.append(labelElementText);
+    }
+
+    const libTypePmz = this.getLibraryTypePmz(element.action.library);
+
+    // Button
+    const button = document.createElement('div');
+    button.classList.add('h5p-element-button');
+    button.classList.add(`h5p-element-button-${element.buttonSize}`);
+    button.classList.add(`${libTypePmz}-button`);
+    button.setAttribute('role', 'button');
+    button.setAttribute('tabindex', 0);
+    button.setAttribute('aria-popup', true);
+    button.setAttribute('aria-expanded', false);
+    button.setAttribute('aria-label', labelText);
+
+    const buttonElement = document.createElement('div');
+    buttonElement.classList.add('h5p-element-button-element');
+
+    instance.attach(H5P.jQuery(buttonElement));
+
+    const parentPosition = libTypePmz === 'h5p-advancedtext' ?
+      {
+        x: element.x,
+        y: element.y
+      } :
+      null;
+
+    const handleButtonInteraction = () => {
+      button.setAttribute('aria-expanded', 'true');
+      this.showInteractionPopup(
+        instance,
+        H5P.jQuery(button),
+        H5P.jQuery(buttonElement),
+        libTypePmz,
+        () => {
+          button.setAttribute('aria-expanded', 'false');
+        },
+        parentPosition
+      );
+    };
+
+    addClickAndKeyboardListeners(H5P.jQuery(button), () => {
+      handleButtonInteraction();
+    });
+
+    // Allow to show interaction popup on label click, too
+    labelElement?.addEventListener('click', () => {
+      handleButtonInteraction();
+    });
+
+    if (element.action?.library.split(' ')[0] === 'H5P.InteractiveVideo') {
+      instance.on('controls', () => {
+        if (instance.controls.$fullscreen) {
+          instance.controls.$fullscreen.remove();
+        }
+      });
+    }
+
+    return [H5P.jQuery(button), labelElement];
+  };
 
 /**
  * Shows the interaction popup on button press

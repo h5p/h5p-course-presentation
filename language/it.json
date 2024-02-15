@@ -27,6 +27,9 @@
                       "label": "Mostra come pulsante"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Dimensione del pulsante",
                       "options": [
                         {

@@ -27,6 +27,9 @@
                       "label": "ღილაკის სახით ჩვენება"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "options": [
                         {
                           "label": "პატარა"

@@ -27,6 +27,9 @@
                       "label": "Prikaži kao dugme"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Veličina dugmeta",
                       "options": [
                         {
