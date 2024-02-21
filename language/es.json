@@ -73,7 +73,8 @@
                     "description": "La imagen de fondo debería tener una proporción de ancho a alto de 2:1 para evitar su estiramiento. Las imágenes de alta resolución tendrán mejor apariencia en pantallas más grandes."
                   },
                   {
-                    "label": "Elegir un color"
+                    "label": "Elegir un color",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "El fondo de la imagen debería tener una proporción de ancho a alto de 2:1 para evitar estiramiento. Las imágenes de alta resolución se mostrarán mejor en pantallas más grandes."
             },
             {
-              "label": "Elegir un color"
+              "label": "Elegir un color",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Navegación por la presentación de diapositivas",
           "default": "Navegación por la presentación de diapositivas"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },

@@ -73,7 +73,8 @@
                     "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
                   },
                   {
-                    "label": "Välj en färg"
+                    "label": "Välj en färg",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Bildbakgrund bör ha ett 2:1 bredd-till-höjdförhållande för att inte bli utsträckta. Bilder med högre upplösning kommer att se bättre ut på större skärmar."
             },
             {
-              "label": "Välj en färg"
+              "label": "Välj en färg",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Sidnavigering",
           "default": "Sidnavigering"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },

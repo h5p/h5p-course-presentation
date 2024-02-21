@@ -73,7 +73,8 @@
                     "description": "Attēla fona platuma un augstuma attiecībai jābūt 2:1, lai izvairītos no izstiepšanas. Augstas izšķirtspējas attēli tiks labāk parādīti lielākos ekrānos."
                   },
                   {
-                    "label": "Izvēlieties krāsu"
+                    "label": "Izvēlieties krāsu",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Attēla fona platuma un augstuma attiecībai jābūt 2:1, lai izvairītos no izstiepšanas. Augstas izšķirtspējas attēli tiks labāk parādīti lielākos ekrānos."
             },
             {
-              "label": "Izvēlieties krāsu"
+              "label": "Izvēlieties krāsu",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },

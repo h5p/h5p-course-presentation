@@ -73,7 +73,8 @@
                     "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan."
                   },
                   {
-                    "label": "Hautatu kolore bat"
+                    "label": "Hautatu kolore bat",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Atzeko planoko irudiak 2:1 zabalera-altuera eralazioa izango du deformazioak saieste arren. Bereizmen handiko irudiak hobeto bistaratuko dira pantaila handietan ."
             },
             {
-              "label": "Hautatu kolere bat"
+              "label": "Hautatu kolere bat",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Diapositiba-aurkezpenaren nabigazioa",
           "default": "Diapositiba-aurkezpenaren nabigazioa"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },

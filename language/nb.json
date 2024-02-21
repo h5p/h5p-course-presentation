@@ -73,7 +73,8 @@
                     "description": "Forholdet mellom bredde og høyde på bakgrunnsbilder bør være 2 : 1 for å unngå strekking av bildet. Høyoppløselige bilder gir bedre visning på større skjermer."
                   },
                   {
-                    "label": "Velg farge"
+                    "label": "Velg farge",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Forholdet mellom bredde og høyde på bakgrunnsbilder bør være 2 : 1 for å unngå strekking av bildet. Høyoppløselige bilder gir bedre visning på større skjermer."
             },
             {
-              "label": "Velg farge"
+              "label": "Velg farge",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Sidenavigering",
           "default": "Sidenavigering"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },
