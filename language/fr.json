@@ -301,12 +301,12 @@
           "default": "Slideshow navigation"
         },
         {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
+          "label": "Texte de la boîte de dialogue de confirmation du résultat de soumission, bouton de confirmation",
+          "default": "Confirmer"
         },
         {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
+          "label": "Texte du bouton Annuler de la boîte de dialogue de confirmation du résultat de soumission",
+          "default": "Annuler"
         }
       ]
     },

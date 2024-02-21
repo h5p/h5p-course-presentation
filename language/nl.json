@@ -301,12 +301,12 @@
           "default": "Slideshow navigation"
         },
         {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
+          "label": "Tekst van het bevestigingsdialoogvenster voor het indienen van de resultaatbevestiging",
+          "default": "Bevestigen"
         },
         {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
+          "label": "Tekst van het bevestigingsdialoogvenster voor het indienen van de resultaatbevestiging",
+          "default": "Annuleren"
         }
       ]
     },
