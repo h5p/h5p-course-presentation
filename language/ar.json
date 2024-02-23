@@ -73,7 +73,8 @@
                     "description": "صورة الخلفية يجب ان تكون بنسبة 2:1 (عرض الى ارتفاع ) لتجنب التمدد ، سيتم عرض الصر عالية الدقةبشكل افضل على الشاشات الاكبر حجما."
                   },
                   {
-                    "label": "اختر لونا"
+                    "label": "اختر لونا",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "صورة الخلفية يجب ان تكون بنسبة 2:1 (عرض الى ارتفاع ) لتجنب التمدد ، سيتم عرض الصر عالية الدقةبشكل افضل على الشاشات الاكبر حجما."
             },
             {
-              "label": "اختر لونا"
+              "label": "اختر لونا",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },

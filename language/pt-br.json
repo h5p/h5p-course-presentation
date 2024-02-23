@@ -73,7 +73,8 @@
                     "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções. Imagens com alta resolução aparecerão melhor em telas maiores."
                   },
                   {
-                    "label": "Escolha uma cor"
+                    "label": "Escolha uma cor",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "A imagem de fundo deve ter uma proporção de 2:1 de largura para altura para evitar distorções. Imagens com alta resolução aparecerão melhor em telas maiores."
             },
             {
-              "label": "Escolha uma cor"
+              "label": "Escolha uma cor",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },

@@ -73,7 +73,8 @@
                     "description": "Obrázek by měl mít poměr šířky k výšce 2: 1, aby nedošlo k roztažení. Obrázky s vysokým rozlišením se budou lépe zobrazovat na větších obrazovkách."
                   },
                   {
-                    "label": "Vybrat barvu"
+                    "label": "Vybrat barvu",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Obrázek by měl mít poměr šířky k výšce 2: 1, aby nedošlo k roztažení. Obrázky s vysokým rozlišením se budou lépe zobrazovat na větších obrazovkách."
             },
             {
-              "label": "Vybrat barvu"
+              "label": "Vybrat barvu",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Navigace prezentace",
           "default": "Navigace prezentace"
+        },
+        {
+          "label": "Text of submit result confirmation dialog confirm button",
+          "default": "Confirm"
+        },
+        {
+          "label": "Text of submit result confirmation dialog cancel button",
+          "default": "Cancel"
         }
       ]
     },
