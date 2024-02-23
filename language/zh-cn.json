@@ -301,11 +301,11 @@
           "default": "幻灯片导航"
         },
         {
-          "label": "Text of submit result confirmation dialog confirm button",
+          "label": "Confirm button label",
           "default": "Confirm"
         },
         {
-          "label": "Text of submit result confirmation dialog cancel button",
+          "label": "Cancel button label",
           "default": "Cancel"
         }
       ]
