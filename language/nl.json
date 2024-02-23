@@ -301,12 +301,12 @@
           "default": "Slideshow navigation"
         },
         {
-          "label": "Tekst van het bevestigingsdialoogvenster voor het indienen van de resultaatbevestiging",
-          "default": "Bevestigen"
+          "label": "Tekst van \"Bevestig\"-knop",
+          "default": "Bevestig"
         },
         {
-          "label": "Tekst van het bevestigingsdialoogvenster voor het indienen van de resultaatbevestiging",
-          "default": "Annuleren"
+          "label": "Tekst van \"Annuleer\"-knop",
+          "default": "Annuleer"
         }
       ]
     },
