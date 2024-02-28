@@ -73,8 +73,7 @@
                     "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
                   },
                   {
-                    "label": "Sélectionnez une couleur",
-                    "default": null
+                    "label": "Sélectionnez une couleur"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. Les images en haute résolution offrent un meilleur rendu sur les grands écrans."
             },
             {
-              "label": "Sélectionnez une couleur",
-              "default": null
+              "label": "Sélectionnez une couleur"
             }
           ]
         }
