@@ -254,12 +254,12 @@
           "default": "@slideName нь дууссан харилцан үйлчлэлийг агуулж байна"
         },
         {
-          "label": "Слайд тоолуурын шошго. Хувьсагч нь @index, @total",
-          "default": "Нийт @total ээс @index слайд"
+          "default": "Нийт @total ээс @index слайд",
+          "label": "Слайд тоолуурын шошго. Хувьсагч нь @index, @total"
         },
         {
-          "label": "Зөвхөн зөв хариулт агуулсан слайдуудын шошго",
-          "default": "@slideName зөвхөн зөв хариулттай"
+          "default": "@slideName зөвхөн зөв хариулттай",
+          "label": "Зөвхөн зөв хариулт агуулсан слайдуудын шошго"
         },
         {
           "label": "Буруу хариулттай слайдуудыг шошго",
@@ -297,14 +297,6 @@
         {
           "label": "Слайд шоуны навигаци",
           "default": "Слайд шоуны навигаци"
-        },
-        {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
-        },
-        {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
         }
       ]
     },
@@ -400,8 +392,8 @@
               "label": "Google+ д хуваалцах тэмдэгтийг дэлгэцэд харуулах"
             },
             {
-              "label": "Google холбоос руу хуваалцах",
-              "default": "@currentpageurl хуудас"
+              "default": "@currentpageurl хуудас",
+              "label": "Google холбоос руу хуваалцах"
             }
           ]
         }

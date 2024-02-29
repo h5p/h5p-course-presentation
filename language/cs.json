@@ -297,14 +297,6 @@
         {
           "label": "Navigace prezentace",
           "default": "Navigace prezentace"
-        },
-        {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
-        },
-        {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
         }
       ]
     },

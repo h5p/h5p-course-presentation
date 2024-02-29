@@ -297,14 +297,6 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
-        },
-        {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
-        },
-        {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
         }
       ]
     },

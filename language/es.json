@@ -297,14 +297,6 @@
         {
           "label": "Navegación por la presentación de diapositivas",
           "default": "Navegación por la presentación de diapositivas"
-        },
-        {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
-        },
-        {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
         }
       ]
     },

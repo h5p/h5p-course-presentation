@@ -297,14 +297,6 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
-        },
-        {
-          "label": "Tekst van \"Bevestig\"-knop",
-          "default": "Bevestig"
-        },
-        {
-          "label": "Tekst van \"Annuleer\"-knop",
-          "default": "Annuleer"
         }
       ]
     },

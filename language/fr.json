@@ -297,14 +297,6 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
-        },
-        {
-          "label": "Texte du bouton de confirmation",
-          "default": "Confirmer"
-        },
-        {
-          "label": "Texte du bouton d'annulation",
-          "default": "Annuler"
         }
       ]
     },

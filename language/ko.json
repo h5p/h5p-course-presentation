@@ -297,14 +297,6 @@
         {
           "label": "슬라이드쇼 탐색",
           "default": "슬라이드쇼 탐색"
-        },
-        {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
-        },
-        {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
         }
       ]
     },

@@ -297,14 +297,6 @@
         {
           "label": "Πλοήγηση σε διαφάνειες",
           "default": "Πλοήγηση σε διαφάνειες"
-        },
-        {
-          "label": "Text of submit result confirmation dialog confirm button",
-          "default": "Confirm"
-        },
-        {
-          "label": "Text of submit result confirmation dialog cancel button",
-          "default": "Cancel"
         }
       ]
     },
