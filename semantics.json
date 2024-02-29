@@ -672,18 +672,6 @@
         "type": "text",
         "label": "Label for Slideshow navigation",
         "default": "Slideshow navigation"
-      },
-      {
-        "name": "confirmDialogConfirmLabel",
-        "type": "text",
-        "label": "Text of submit result confirmation dialog confirm button",
-        "default": "Confirm"
-      },
-      {
-        "name": "confirmDialogCancelLabel",
-        "type": "text",
-        "label": "Text of submit result confirmation dialog cancel button",
-        "default": "Cancel"
       }
     ]
   },
