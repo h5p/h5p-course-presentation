@@ -299,11 +299,11 @@
           "default": "სლაიდშოუს ნავიგაცია"
         },
         {
-          "label": "Confirm button label",
+          "label": "Text of submit result confirmation dialog confirm button",
           "default": "Confirm"
         },
         {
-          "label": "Cancel button label",
+          "label": "Text of submit result confirmation dialog cancel button",
           "default": "Cancel"
         }
       ]
