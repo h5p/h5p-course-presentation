@@ -73,7 +73,8 @@
                     "description": "A imaxe de fondo debería ter unha relación de ancho a alto de 2:1 para evitar o seu estiramento. As imaxes con resolucións altas veranse mellor en pantallas grandes."
                   },
                   {
-                    "label": "Escolle unha cor"
+                    "label": "Escolle unha cor",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "A imaxe de fondo debería ter unha relación de ancho a alto de 2:1 para evitar o seu estiramento. As imaxes con resolucións altas veranse mellor en pantallas grandes."
             },
             {
-              "label": "Escolle unha cor"
+              "label": "Escolle unha cor",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Navegación pola presentación de diapositivas",
           "default": "Navegación pola presentación de diapositivas"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

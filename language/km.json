@@ -73,7 +73,8 @@
                     "description": "រូបភាពផ្ទៃខាងក្រោយគួរមានសមាមាត្រ 2:1 ដើម្បីកុំឲ្យវាខុសទ្រង់ទ្រាយ។ រូបភាពដែលមានគុណភាពកាន់តែខ្ពស់នឹងបង្ហាញកាន់តែល្អនៅលើអេក្រង់ធំ។"
                   },
                   {
-                    "label": "រើសពណ៌"
+                    "label": "រើសពណ៌",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "រូបភាពផ្ទៃខាងក្រោយគួរមានសមាមាត្រ 2:1 ដើម្បីកុំឲ្យវាខុសទ្រង់ទ្រាយ។ រូបភាពដែលមានគុណភាពកាន់តែខ្ពស់នឹងបង្ហាញកាន់តែល្អនៅលើអេក្រង់ធំ។"
             },
             {
-              "label": "រើសពណ៌"
+              "label": "រើសពណ៌",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

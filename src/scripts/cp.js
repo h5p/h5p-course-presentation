@@ -101,6 +101,8 @@ let CoursePresentation = function (params, id, extras) {
     confirmDialogHeader: 'Submit your answers',
     confirmDialogText: 'This will submit your results, do you want to continue?',
     confirmDialogConfirmText: 'Submit and see results',
+    confirmDialogConfirmLabel: 'Confirm',
+    confirmDialogCancelLabel: 'Cancel',
     slideshowNavigationLabel: 'Slideshow navigation',
   }, params.l10n !== undefined ? params.l10n : {});
 
@@ -1981,7 +1983,8 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
     const confirmationDialog = ConfirmationDialog({
       headerText: this.l10n.confirmDialogHeader,
       dialogText: this.l10n.confirmDialogText,
-      confirmText: this.l10n.confirmDialogConfirmationText,
+      confirmText: this.l10n.confirmDialogConfirmLabel,
+      cancelText: this.l10n.confirmDialogCancelLabel,
     });
 
     confirmationDialog.on('canceled', () => {

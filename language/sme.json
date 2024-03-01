@@ -73,7 +73,8 @@
                     "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
                   },
                   {
-                    "label": "Pick a color"
+                    "label": "Pick a color",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens."
             },
             {
-              "label": "Pick a color"
+              "label": "Pick a color",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

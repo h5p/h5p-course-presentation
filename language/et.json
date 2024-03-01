@@ -73,7 +73,8 @@
                     "description": "Taustapildi mõõtude suhe peaks olema 2:1, et vältida pildi venimist. Suurtel ekraanidel paistavad kõrge resolutsiooniga pildid paremad välja.."
                   },
                   {
-                    "label": "Vali värv"
+                    "label": "Vali värv",
+                    "default": null
                   }
                 ]
               }
@@ -100,7 +101,8 @@
               "description": "Taustapildi mõõtude suhe peaks olema 2:1, et vältida pildi venimist. Suurtel ekraanidel paistavad kõrge resolutsiooniga pildid paremad välja."
             },
             {
-              "label": "Vali värv"
+              "label": "Vali värv",
+              "default": null
             }
           ]
         }
@@ -297,6 +299,14 @@
         {
           "label": "Slideshow navigation",
           "default": "Slideshow navigation"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },
