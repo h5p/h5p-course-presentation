@@ -73,8 +73,7 @@
                     "description": "Beeldagtergrond moet 'n 2:1 breedte-tot-hoogte-verhouding hê om te verhoed dat dit rek. Beelde met hoë resolusie sal beter op groter skerms vertoon word."
                   },
                   {
-                    "label": "Kies 'n kleur",
-                    "default": null
+                    "label": "Kies 'n kleur"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Beeldagtergrond moet 'n 2:1 breedte-tot-hoogte-verhouding hê om te verhoed dat dit rek. Beelde met hoë resolusie sal beter op groter skerms vertoon word."
             },
             {
-              "label": "Kies 'n kleur",
-              "default": null
+              "label": "Kies 'n kleur"
             }
           ]
         }

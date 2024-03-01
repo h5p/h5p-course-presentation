@@ -73,8 +73,7 @@
                     "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
                   },
                   {
-                    "label": "Odaberi boju",
-                    "default": null
+                    "label": "Odaberi boju"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Slika pozadine treba da bude proporcija 2:1 kako bi se izbjeglo rastezanje. Slike sa većom rezolucijom će biti bolje prikazane na većim monitorima."
             },
             {
-              "label": "Odaberi boju",
-              "default": null
+              "label": "Odaberi boju"
             }
           ]
         }

@@ -73,8 +73,7 @@
                     "description": "Mandhari nyuma ya picha inapaswa kuwa na upana wa 2: 1 kwa uwiano wa urefu ili kuepuka kunyooka. Picha za mwonekano wa juu zitaonekana vizuri kwenye skrini kubwa."
                   },
                   {
-                    "label": "Chagua rangi",
-                    "default": null
+                    "label": "Chagua rangi"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Mandhari nyuma ya picha inapaswa kuwa na upana wa 2: 1 kwa uwiano wa urefu ili kuepuka kunyooka. Picha za mwonekano wa juu zitaonekana vizuri kwenye skrini kubwa."
             },
             {
-              "label": "Chagua rangi",
-              "default": null
+              "label": "Chagua rangi"
             }
           ]
         }

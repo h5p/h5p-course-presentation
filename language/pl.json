@@ -73,8 +73,7 @@
                     "description": "Zdjęcie w tle powinno mieć proporcje 2:1 aby zapobiec rozciąganiu. Zdjęcia, które mają wysoką rozdzielczość będą lepiej wyświetlane na większych monitorach."
                   },
                   {
-                    "label": "Wybierz kolor",
-                    "default": null
+                    "label": "Wybierz kolor"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Zdjęcie w tle powinno mieć proporcje 2:1 aby zapobiec rozciąganiu. Zdjęcia, które mają wysoką rozdzielczość będą lepiej wyświetlane na większych monitorach."
             },
             {
-              "label": "Wybierz kolor",
-              "default": null
+              "label": "Wybierz kolor"
             }
           ]
         }

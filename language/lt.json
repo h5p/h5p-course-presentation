@@ -73,8 +73,7 @@
                     "description": "Fono paveikslėlio pločio ir aukščio santykis turi būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai bus geriau rodomi didesniuose ekranuose."
                   },
                   {
-                    "label": "Parinkti spalvą",
-                    "default": null
+                    "label": "Parinkti spalvą"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Fono paveikslėlio pločio ir aukščio santykis turi būti 2:1, siekiant išvengti ištempimo. Aukštos raiškos paveikslėliai bus geriau rodomi didesniuose ekranuose."
             },
             {
-              "label": "Parinkti spalvą",
-              "default": null
+              "label": "Parinkti spalvą"
             }
           ]
         }

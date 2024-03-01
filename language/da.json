@@ -73,8 +73,7 @@
                     "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
                   },
                   {
-                    "label": "Valg af farve",
-                    "default": null
+                    "label": "Valg af farve"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Baggrundsbilleder skal have forholdet bredde/højde 2:1 for at undgå at de strækkes. Billeder i høj opløsing vil vises bedst på en stor skærm."
             },
             {
-              "label": "Valg af farve",
-              "default": null
+              "label": "Valg af farve"
             }
           ]
         }

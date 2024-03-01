@@ -73,8 +73,7 @@
                     "description": "Forholdet mellom breidde og høgde på bakgrunnsbilete bør vere 2 : 1 for å unngå strekking av biletet. Høgoppløyselege bilete gir betre visning på større skjermar."
                   },
                   {
-                    "label": "Vel farge",
-                    "default": null
+                    "label": "Vel farge"
                   }
                 ]
               }
@@ -101,8 +100,7 @@
               "description": "Forholdet mellom breidde og høgde på bakgrunnsbilete bør vere 2 : 1 for å unngå strekking av biletet. Høgoppløyselege bilete gir betre visning på større skjermar."
             },
             {
-              "label": "Vel farge",
-              "default": null
+              "label": "Vel farge"
             }
           ]
         }
