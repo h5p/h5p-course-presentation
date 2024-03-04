@@ -297,6 +297,14 @@
         {
           "label": "슬라이드쇼 탐색",
           "default": "슬라이드쇼 탐색"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

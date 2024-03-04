@@ -297,6 +297,14 @@
         {
           "label": "Skaidrių demonstravimo naršymas",
           "default": "Skaidrių demonstravimo naršymas"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

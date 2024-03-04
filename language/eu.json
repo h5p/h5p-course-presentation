@@ -297,6 +297,14 @@
         {
           "label": "Diapositiba-aurkezpenaren nabigazioa",
           "default": "Diapositiba-aurkezpenaren nabigazioa"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

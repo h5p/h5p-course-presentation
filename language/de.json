@@ -297,6 +297,14 @@
         {
           "label": "Schaubild-Navigation",
           "default": "Schaubild-Navigation"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },
