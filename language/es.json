@@ -299,12 +299,12 @@
           "default": "Navegación por la presentación de diapositivas"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "Texto botôn \"Confirmar\"",
+          "default": "Confirmar"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Texto botôn \"Cancelar\"",
+          "default": "Cancelar"
         }
       ]
     },
