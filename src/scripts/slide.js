@@ -18,7 +18,7 @@ function Slide(parameters) {
    */
   self.getElement = function () {
     if (!$wrapper) {
-      $wrapper = H5P.jQuery(Slide.createHTML({...parameters, index: self.index}));
+      $wrapper = H5P.jQuery(Slide.createHTML({ ...parameters, index: self.index }));
     }
     return $wrapper;
   };
@@ -44,7 +44,7 @@ function Slide(parameters) {
       '$target': $wrapper,
       'library': 'CoursePresentation',
       'key': 'newSlide'
-    }, {'bubbles': true, 'external': true});
+    }, { 'bubbles': true, 'external': true });
   };
 }
 
