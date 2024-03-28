@@ -56,6 +56,8 @@ const NavigationLine = (function ($) {
               this.setTaskAnswered(index, isAnswered);
             }
             else if (shortVerb === 'completed') {
+              const isAnswered = this.cp.slideHasAnsweredTask(index);
+              this.setTaskAnswered(index, isAnswered);
               event.setVerb('answered');
             }
 
@@ -489,7 +491,7 @@ const NavigationLine = (function ($) {
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
     const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
-    
+
     $partTitle.html(`${answeredLabel}`);
   };
 
