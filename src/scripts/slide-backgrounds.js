@@ -15,13 +15,13 @@ export default class SlideBackground {
     // Extend defaults
     params = $.extend(true, {
       globalBackgroundSelector: {
-        fillGlobalBackground: "",
+        fillGlobalBackground: '',
         imageGlobalBackground: {}
       },
       slides: [
         {
           slideBackgroundSelector: {
-            fillSlideBackground: "",
+            fillSlideBackground: '',
             imageSlideBackground: {}
           }
         }
@@ -65,7 +65,7 @@ export default class SlideBackground {
         $updateSlides = $updateSlides.eq(index);
       }
 
-      if (fillSettings && fillSettings !== "") {
+      if (fillSettings && fillSettings !== '') {
 
         // Fill with background color
         $updateSlides.addClass('has-background')
