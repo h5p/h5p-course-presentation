@@ -1103,7 +1103,7 @@ CoursePresentation.prototype.createInteractionButton = function (element, instan
     role: 'button',
     tabindex: 0,
     'aria-label': label,
-    'aria-popup': true,
+    'aria-haspopup': 'dialog',
     'aria-expanded': false,
     'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
   });
