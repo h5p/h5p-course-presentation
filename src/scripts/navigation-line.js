@@ -419,6 +419,10 @@ const NavigationLine = (function ($) {
   NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber, solutionMode) {
     var that = this;
 
+    if (slideNumber < 0 || slideNumber > this.cp.progressbarParts.length - 1) {
+      return; // Slide number is out of bounds
+    }
+
     // Updates progress bar progress (blue line)
     var i;
     for (i = 0; i < that.cp.progressbarParts.length; i += 1) {
@@ -489,7 +493,7 @@ const NavigationLine = (function ($) {
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
     const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
-    
+
     $partTitle.html(`${answeredLabel}`);
   };
 
