@@ -1,5 +1,5 @@
 import { jQuery as $, JoubelUI } from './globals';
-import {addClickAndKeyboardListeners} from "./utils";
+import { addClickAndKeyboardListeners } from './utils';
 
 const SummarySlide = (function () {
 
@@ -46,7 +46,7 @@ const SummarySlide = (function () {
       // Get total scores and construct progress circle
       var totalScores = that.totalScores(slideScores);
       if (!isNaN(totalScores.totalPercentage)) {
-        var totalScoreBar = JoubelUI.createScoreBar(totalScores.totalMaxScore, "", "", "");
+        var totalScoreBar = JoubelUI.createScoreBar(totalScores.totalMaxScore, '', '', '');
         totalScoreBar.setScore(totalScores.totalScore);
         var $totalScore = $('.h5p-summary-total-score', that.$summarySlide);
         totalScoreBar.appendTo($totalScore);
@@ -65,19 +65,19 @@ const SummarySlide = (function () {
       }
 
       // Construct twitter share score link
-      if (that.cp.enableTwitterShare == true) {
+      if (that.cp.enableTwitterShare === true) {
         var $twitterContainer = $('.h5p-summary-twitter-message', that.$summarySlide);
         this.addTwitterScoreLinkTo($twitterContainer, totalScores);
       }
 
       // Construct facebook share score link
-      if (that.cp.enableFacebookShare == true) {
+      if (that.cp.enableFacebookShare === true) {
         var $facebookContainer = $('.h5p-summary-facebook-message', that.$summarySlide);
         this.addFacebookScoreLinkTo($facebookContainer, totalScores);
       }
 
       // Construct google share score link
-      if (that.cp.enableGoogleShare == true) {
+      if (that.cp.enableGoogleShare === true) {
         var $googleContainer = $('.h5p-summary-google-message', that.$summarySlide);
         this.addGoogleScoreLinkTo($googleContainer);
       }
@@ -173,10 +173,10 @@ const SummarySlide = (function () {
         '<tr>' +
           '<td class="h5p-td h5p-summary-task-title">' +
             '<a href="#" class="h5p-slide-link"  aria-label=" ' +
-              that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) + ' ' +
+              that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, '')) + ' ' +
               slidePercentageScore + '%' +
               '" data-slide="' +
-              slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, "")) +
+              slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, '')) +
             '</a>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
@@ -193,9 +193,9 @@ const SummarySlide = (function () {
       that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
     }
     var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
-    var twitterContainer = (that.cp.enableTwitterShare == true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>': '';
-    var facebookContainer = (that.cp.enableFacebookShare == true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>': '';
-    var googleContainer = (that.cp.enableGoogleShare == true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
+    var twitterContainer = (that.cp.enableTwitterShare === true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>' : '';
+    var facebookContainer = (that.cp.enableFacebookShare === true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>' : '';
+    var googleContainer = (that.cp.enableGoogleShare === true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
 
     var html =
       '<div class="h5p-summary-table-holder">' +
@@ -301,9 +301,9 @@ const SummarySlide = (function () {
 
     // Add query strings to the URL based on settings.
     var twitterString = 'https://twitter.com/intent/tweet?';
-    twitterString += (twitterShareStatement.length > 0) ? "text="+twitterShareStatement+"&" : "";
-    twitterString += (twitterShareUrl.length > 0) ? "url="+twitterShareUrl+"&" : "";
-    twitterString += (twitterHashtagList.length > 0) ? "hashtags="+twitterHashtagList : "";
+    twitterString += (twitterShareStatement.length > 0) ? 'text=' + twitterShareStatement + '&' : '';
+    twitterString += (twitterShareUrl.length > 0) ? 'url=' + twitterShareUrl + '&' : '';
+    twitterString += (twitterHashtagList.length > 0) ? 'hashtags=' + twitterHashtagList : '';
 
     var leftPos = (window.innerWidth / 2);
     var topPos = (window.innerHeight / 2);
@@ -342,7 +342,7 @@ const SummarySlide = (function () {
     facebookShareUrl = facebookShareUrl.replace('@currentpageurl', window.location.href);
 
     facebookShareQuote = facebookShareQuote.replace('@currentpageurl', window.location.href)
-      .replace("@percentage", scores.totalPercentage + '%')
+      .replace('@percentage', scores.totalPercentage + '%')
       .replace('@score', scores.totalScore)
       .replace('@maxScore', scores.totalMaxScore);
 
@@ -352,8 +352,8 @@ const SummarySlide = (function () {
 
     // Add query strings to the URL based on settings.
     var facebookUrl = 'https://www.facebook.com/sharer/sharer.php?';
-    facebookUrl += (facebookShareUrl.length > 0) ? "u="+facebookShareUrl+"&" : "";
-    facebookUrl += (facebookShareQuote.length > 0) ? "quote="+facebookShareQuote : '';
+    facebookUrl += (facebookShareUrl.length > 0) ? 'u=' + facebookShareUrl + '&' : '';
+    facebookUrl += (facebookShareQuote.length > 0) ? 'quote=' + facebookShareQuote : '';
 
     var popupWidth = 800;
     var popupHeight = 300;
@@ -394,8 +394,8 @@ const SummarySlide = (function () {
     googleShareUrl = encodeURIComponent(googleShareUrl);
 
     // Add query strings to the URL based on settings.
-    var googleUrl = "https://plus.google.com/share?";
-    googleUrl += (googleShareUrl.length > 0) ? "url="+googleShareUrl+"" : "";
+    var googleUrl = 'https://plus.google.com/share?';
+    googleUrl += (googleShareUrl.length > 0) ? 'url=' + googleShareUrl + '' : '';
 
     var popupWidth = 401;
     var popupHeight = 437;

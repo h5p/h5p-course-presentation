@@ -33,7 +33,7 @@ const Printer = (function ($) {
    */
   Printer.print = function (cp, $wrapper, allSlides) {
     // Let CP know we are about to print
-    cp.trigger('printing', {finished: false, allSlides: allSlides});
+    cp.trigger('printing', { finished: false, allSlides: allSlides });
 
     // Find height of a slide:
     var $currentSlide = $('.h5p-slide.h5p-current');
@@ -43,13 +43,13 @@ const Printer = (function ($) {
     // Use 670px as width when printing. We can't use 100% percent, since user can
     // change between landscape and portrait without us ever knowing about it.
     // More info: http://stackoverflow.com/a/11084797/2797106
-    var ratio = slideWidth/670;
+    var ratio = slideWidth / 670;
     var $slides = $('.h5p-slide');
 
     $slides.css({
-      height: slideHeight/ratio + 'px',
+      height: slideHeight / ratio + 'px',
       width: '670px',
-      fontSize: Math.floor(100/ratio) + '%'
+      fontSize: Math.floor(100 / ratio) + '%'
     });
 
     $('.h5p-summary-slide').css('height', '');
@@ -73,8 +73,8 @@ const Printer = (function ($) {
       $('.h5p-joubelui-score-bar-star').css('display', starDisplay);
 
       // Let CP know we are finished printing
-      cp.trigger('printing', {finished: true});
-    }; 
+      cp.trigger('printing', { finished: true });
+    };
 
     // Need timeout for some browsers.
     setTimeout(function () {

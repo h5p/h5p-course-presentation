@@ -46,8 +46,8 @@ const NavigationLine = (function ($) {
   NavigationLine.prototype.initTaskAnsweredListener = function () {
     this.cp.elementInstances.forEach((slide, index) => {
       slide
-        .filter(interaction => isFunction(interaction.on))
-        .forEach(interaction => {
+        .filter((interaction) => isFunction(interaction.on))
+        .forEach((interaction) => {
           interaction.on('xAPI', (event) => {
             const shortVerb = event.getVerb();
 
@@ -56,6 +56,8 @@ const NavigationLine = (function ($) {
               this.setTaskAnswered(index, isAnswered);
             }
             else if (shortVerb === 'completed') {
+              const isAnswered = this.cp.slideHasAnsweredTask(index);
+              this.setTaskAnswered(index, isAnswered);
               event.setVerb('answered');
             }
 
@@ -78,15 +80,15 @@ const NavigationLine = (function ($) {
 
     this.progresbarKeyboardControls = new Controls([new UIKeyboard()]);
     this.progresbarKeyboardControls.negativeTabIndexAllowed = true;
-    this.progresbarKeyboardControls.on('select', event => {
+    this.progresbarKeyboardControls.on('select', (event) => {
       that.displaySlide($(event.element).data('slideNumber'));
     });
 
     // if last element, prevent next progression
-    this.progresbarKeyboardControls.on('beforeNextElement', event => event.index !== (event.elements.length - 1));
+    this.progresbarKeyboardControls.on('beforeNextElement', (event) => event.index !== (event.elements.length - 1));
 
     // if first element, prevent previous progression
-    this.progresbarKeyboardControls.on('beforePreviousElement', event => event.index !== 0);
+    this.progresbarKeyboardControls.on('beforePreviousElement', (event) => event.index !== 0);
 
     // Remove existing progressbar
     if (this.cp.progressbarParts !== undefined && this.cp.progressbarParts) {
@@ -138,7 +140,7 @@ const NavigationLine = (function ($) {
 
       // Add hover effect if not an ipad or iphone.
       if (!isIOS) {
-        H5P.Tooltip($li.get(0), {position: 'top'});
+        H5P.Tooltip($li.get(0), { position: 'top' });
       }
 
 
@@ -257,7 +259,7 @@ const NavigationLine = (function ($) {
 
     // Toggle keywords menu
     this.cp.$keywordsButton = $('<div/>', {
-      'class': "h5p-footer-button h5p-footer-toggle-keywords",
+      'class': 'h5p-footer-button h5p-footer-toggle-keywords',
       'aria-expanded': 'false',
       'aria-label': this.cp.l10n.showKeywords,
       'role': 'button',
@@ -267,7 +269,7 @@ const NavigationLine = (function ($) {
 
     H5P.Tooltip(this.cp.$keywordsButton.get(0));
 
-    addClickAndKeyboardListeners(this.cp.$keywordsButton, event => {
+    addClickAndKeyboardListeners(this.cp.$keywordsButton, (event) => {
       if (!that.cp.presentation.keywordListAlwaysShow) {
         that.cp.toggleKeywords();
         event.stopPropagation();
@@ -297,7 +299,7 @@ const NavigationLine = (function ($) {
       'aria-disabled': 'true'
     }).appendTo($centerFooter);
 
-    new H5P.Tooltip(this.cp.$prevSlideButton.get(0), {position: 'left'});
+    new H5P.Tooltip(this.cp.$prevSlideButton.get(0), { position: 'left' });
 
     addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide(undefined, false));
 
@@ -343,7 +345,7 @@ const NavigationLine = (function ($) {
       'tabindex': '0'
     }).appendTo($centerFooter);
 
-    H5P.Tooltip(this.cp.$nextSlideButton.get(0), {position: 'right'});
+    H5P.Tooltip(this.cp.$nextSlideButton.get(0), { position: 'right' });
 
     addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide(undefined, false));
 
@@ -388,7 +390,7 @@ const NavigationLine = (function ($) {
           'tabindex': '0'
         });
 
-        H5P.Tooltip(this.cp.$fullScreenButton.get(0), {position: 'left'});
+        H5P.Tooltip(this.cp.$fullScreenButton.get(0), { position: 'left' });
 
         addClickAndKeyboardListeners(this.cp.$fullScreenButton, () => that.cp.toggleFullScreen());
 
@@ -433,11 +435,11 @@ const NavigationLine = (function ($) {
     that.progresbarKeyboardControls.setTabbableByIndex(slideNumber);
 
     that.cp.progressbarParts[slideNumber]
-      .addClass("h5p-progressbar-part-selected")
+      .addClass('h5p-progressbar-part-selected')
       .attr('aria-selected', true)
       .siblings()
-        .removeClass("h5p-progressbar-part-selected")
-        .attr('aria-selected', false);
+      .removeClass('h5p-progressbar-part-selected')
+      .attr('aria-selected', false);
 
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (part, i) {
@@ -489,7 +491,7 @@ const NavigationLine = (function ($) {
     const $part = this.cp.progressbarParts[index];
     const $partTitle = $part.find('.h5p-progressbar-part-title');
     const answeredLabel = this.answeredLabels[state].replace('@slideName', this.createSlideTitle(index));
-    
+
     $partTitle.html(`${answeredLabel}`);
   };
 
