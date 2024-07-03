@@ -14,7 +14,7 @@ function Element(parameters) {
     });
 
     if (!self.parent.parent.isEditor()) {
-      self.instance.on('navigate', event => {
+      self.instance.on('navigate', (event) => {
         const index = event.data;
         self.parent.parent.jumpToSlide(index);
         self.parent.parent.focus();
@@ -43,7 +43,7 @@ function Element(parameters) {
 
     // Override child settings
     library.params = library.params || {};
-    self.instance = H5P.newRunnable(library, self.parent.parent.contentId, undefined, true, {parent: self.parent.parent});
+    self.instance = H5P.newRunnable(library, self.parent.parent.contentId, undefined, true, { parent: self.parent.parent });
     if (self.instance.preventResize !== undefined) {
       self.instance.preventResize = true;
     }
