@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     branches:
-      - main
+      - master
     types: [opened, synchronize]  # Triggers on PR open and commits to PR
 
 jobs:
