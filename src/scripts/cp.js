@@ -1128,7 +1128,7 @@ CoursePresentation.prototype.createInteractionButton =
       const labelElementText = document.createElement('div');
       labelElementText.classList.add('h5p-element-button-label-text');
       labelElementText.setAttribute('aria-hidden', true);
-      labelElementText.innerText = labelText;
+      labelElementText.innerText = stripHTML(labelText);
       labelElement.append(labelElementText);
     }
 
