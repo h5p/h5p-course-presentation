@@ -300,6 +300,14 @@
         {
           "label": "Navigace prezentace",
           "default": "Navigace prezentace"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

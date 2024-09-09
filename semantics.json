@@ -679,6 +679,18 @@
         "type": "text",
         "label": "Label for Slideshow navigation",
         "default": "Slideshow navigation"
+      },
+      {
+        "name": "confirmDialogConfirmLabel",
+        "type": "text",
+        "label": "Confirm button label",
+        "default": "Confirm"
+      },
+      {
+        "name": "confirmDialogCancelLabel",
+        "type": "text",
+        "label": "Cancel button label",
+        "default": "Cancel"
       }
     ]
   },

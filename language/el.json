@@ -300,6 +300,14 @@
         {
           "label": "Πλοήγηση σε διαφάνειες",
           "default": "Πλοήγηση σε διαφάνειες"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

@@ -300,6 +300,14 @@
         {
           "label": "Nawigacja pokazu slajdów",
           "default": "Nawigacja pokazu slajdów"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },

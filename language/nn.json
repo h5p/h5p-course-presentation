@@ -300,6 +300,14 @@
         {
           "label": "Sidenavigering",
           "default": "Sidenavigering"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
         }
       ]
     },
