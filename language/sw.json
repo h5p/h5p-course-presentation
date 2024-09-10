@@ -27,6 +27,9 @@
                       "label": "Onyesha kama kitufe"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Ukubwa wa kitufe",
                       "options": [
                         {

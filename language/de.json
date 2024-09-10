@@ -27,6 +27,9 @@
                       "label": "Als Button anzeigen"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Buttongröße",
                       "options": [
                         {

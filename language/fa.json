@@ -27,6 +27,9 @@
                       "label": "نمایش به عنوان دکمه"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "اندازه دکمه",
                       "options": [
                         {

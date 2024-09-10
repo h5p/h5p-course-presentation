@@ -27,6 +27,9 @@
                       "label": "Zobrazit jako tlačítko"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Velikost tlačítka",
                       "options": [
                         {
