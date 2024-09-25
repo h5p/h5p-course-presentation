@@ -2,8 +2,8 @@
   "title": "Course Presentation",
   "contentType": "Library",
   "majorVersion": 1,
-  "minorVersion": 25,
-  "patchVersion": 31,
+  "minorVersion": 26,
+  "patchVersion": 2,
   "runnable": 1,
   "fullscreen": 1,
   "embedTypes": [
@@ -14,7 +14,7 @@
   "license": "MIT",
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 26
+    "minorVersion": 27
   },
   "preloadedJs": [
     {
@@ -47,7 +47,7 @@
     {
       "machineName": "H5P.CoursePresentation",
       "majorVersion": 1,
-      "minorVersion": 25
+      "minorVersion": 26
     },
     {
       "machineName": "H5PEditor.ShowWhen",
