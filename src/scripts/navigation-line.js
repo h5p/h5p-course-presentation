@@ -211,7 +211,7 @@ const NavigationLine = (function ($) {
     const hasKeyWords = slide.keywords && slide.keywords.length > 0;
 
     if (hasKeyWords) {
-      return slide.keywords[0].main;
+      return $('.h5p-keywords-wrapper li.h5p-current span.h5p-keyword-title').html();
     }
     else if (this.isSummarySlide(slideNumber)) {
       return this.cp.l10n.summary;
@@ -587,7 +587,7 @@ const NavigationLine = (function ($) {
 
     // Get current keyword
     if (currentSlide && currentSlide.keywords && currentSlide.keywords[0]) {
-      keywordString = currentSlide.keywords[0].main;
+      keywordString = $('.h5p-keywords-wrapper li.h5p-current span.h5p-keyword-title').html();
     }
 
     // Summary slide keyword
