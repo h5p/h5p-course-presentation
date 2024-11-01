@@ -241,7 +241,7 @@ CoursePresentation.prototype.attach = function ($container) {
 
   $container
     .attr('role', 'application')
-    .addClass('h5p-course-presentation')
+    .addClass('h5p-course-presentation h5p-theme')
     .html(html);
 
   this.$container = $container;
