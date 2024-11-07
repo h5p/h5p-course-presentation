@@ -302,12 +302,12 @@
           "default": "Πλοήγηση σε διαφάνειες"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "Ετικέτα κουμπιού επιβεβαίωσης",
+          "default": "Εντάξει"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Ετικέτα κουμπιού ακύρωσης",
+          "default": "Άκυρο"
         }
       ]
     },
