@@ -5,14 +5,15 @@
   display: flex;
   font-size: 0.75em;
   width: 100%;
-  height: 6.5%;
+  height: 5.5%;
   line-height: 1.88em;
 
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
 
-  background-color: #fff;
+  background-color: var(--ui-base);
+  color: var(--text-secondary);
 }
 
 /* Footer buttons */
@@ -20,7 +21,7 @@
   display: inline-block;
   background: transparent;
   border: 0;
-  color: #555;
+  color: var(--text-primary);
   cursor: pointer;
   height: 1.4em;
   width: 1.4em;
@@ -199,14 +200,14 @@
 
 .h5p-course-presentation .h5p-cp-navigation {
   width: 100%;
-  height: 3.5%;
+  height: 4.5%;
 }
 
 .h5p-course-presentation .h5p-progressbar {
   width: 100%;
   height: 100%;
   overflow: visible;
-  background: #666;
+  background-image: linear-gradient(to right, var(--secondary-cta-dark), var(--secondary-cta-light));
 
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -ms-flexbox;      /* TWEENER - IE 10 */
@@ -216,8 +217,6 @@
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
-
-  box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
@@ -249,7 +248,10 @@
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 5px 5px;
+  background-color: var(--secondary-cta-dark);
+  border-radius: 4px;
+  
 }
 
 .h5p-course-presentation .h5p-progressbar a {
@@ -258,7 +260,6 @@
   display: block;
   width: 100%;
   height: 100%;
-  padding-top: 0.1em;
 }
 
 .h5p-course-presentation .h5p-progressbar a:focus {
@@ -267,11 +268,11 @@
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show {
-  background: #0085FF;
-  background-image: -webkit-linear-gradient(top, #0085FF, #1a73d9);
+  background: var(--secondary-cta-light) !important;
+  /*background-image: -webkit-linear-gradient(top, #0085FF, #1a73d9);
   background-image: -moz-linear-gradient(top, #0085FF, #1a73d9);
   background-image: linear-gradient(to bottom, #0085FF, #1a73d9);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0085FF', endColorstr='#1a73d9', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0085FF', endColorstr='#1a73d9', GradientType=0);*/
 
   -webkit-transition: width 0.25s ease-in-out;
   -moz-transition: width 0.25s ease-in-out;
@@ -309,14 +310,14 @@
 /* --------------------------------------------------------- Progressbar with task ---------------------------- */
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task {
   display: block;
-  width: 0.45em;
-  height: 0.45em;
+  width: 0.3em;
+  height: 0.3em;
 
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
 
-  border: 2px solid #f5f5f5;
+  border: 3px solid var(--secondary-contrast-cta);
   cursor: pointer;
 
   background: transparent;

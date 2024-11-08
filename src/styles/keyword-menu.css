@@ -5,8 +5,9 @@
   right: 84.375%;
   width: 31.25%;
   height: 100%;
-  background: #fbfbfb;
-  background: rgba(251,251,251,0.9);
+  /*background: #fbfbfb;
+  background: rgba(251,251,251,0.9);*/
+  background: var(--ui-base);
   box-shadow: 0 0 0.15em 0 #d1d1d1;
   overflow: auto;
   visibility: hidden;
@@ -30,7 +31,7 @@
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"] > span {
-  color: #424242;
+  color: var(--text-primary);
   font-weight: normal;
   display: inline-block;
   text-overflow: ellipsis;
@@ -49,7 +50,7 @@
 
 .h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"] .h5p-keyword-subtitle {
   font-size: 0.6em;
-  color: #757575;
+  color: var(--text-primary);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -98,7 +99,7 @@
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > [role="menu"] > [role="menuitem"].h5p-current {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--contrast-cta-light);
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > [role="menu"] > [role="menuitem"]:hover span {

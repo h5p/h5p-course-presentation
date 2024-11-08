@@ -99,7 +99,7 @@ const SummarySlide = (function () {
     // Show solutions button
     if (this.cp.showSummarySlideSolutionButton) {
       JoubelUI.createButton({
-        'class': 'h5p-show-solutions',
+        'class': 'h5p-show-solutions h5p-theme-secondary-cta',
         html: that.cp.l10n.showSolutions,
         on: {
           click: function () {
@@ -114,7 +114,7 @@ const SummarySlide = (function () {
     // Show solutions button
     if (this.cp.showSummarySlideRetryButton) {
       JoubelUI.createButton({
-        'class': 'h5p-cp-retry-button',
+        'class': 'h5p-cp-retry-button h5p-theme-secondary-cta',
         html: that.cp.l10n.retry,
         on: {
           click: function () {
@@ -129,7 +129,7 @@ const SummarySlide = (function () {
     // Only make export button if there is an export area in CP
     if (that.cp.hasAnswerElements) {
       JoubelUI.createButton({
-        'class': 'h5p-eta-export',
+        'class': 'h5p-eta-export h5p-theme-secondary-cta',
         html: that.cp.l10n.exportAnswers,
         on: {
           click: function () {
@@ -176,7 +176,9 @@ const SummarySlide = (function () {
               that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, '')) + ' ' +
               slidePercentageScore + '%' +
               '" data-slide="' +
-              slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, '')) +
+              slideScores[i].slide + '">' +
+        '<span class="slide-number-summary-page">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + '</span>' +
+         (slideDescription.replace(/(<([^>]+)>)/ig, '')) +
             '</a>' +
           '</td>' +
           '<td class="h5p-td h5p-summary-score-bar">' +
@@ -198,13 +200,16 @@ const SummarySlide = (function () {
     var googleContainer = (that.cp.enableGoogleShare === true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
 
     var html =
-      '<div class="h5p-summary-table-holder">' +
-        '<div class="h5p-summary-table-pages">' +
+      '<div class="h5p-theme-results-banner"> '+
+      '<div class="h5p-theme-pattern"></div>'+
+      '<div class="h5p-results-title">Results</div>'+
+      '<div class="h5p-results-score">0/3 correct</div>'+
+      '</div>' +
+        '<div class="h5p-summary-table-holder h5p-results-list-container">' +
+        '<div class="h5p-results-list-heading">' +
+        '<h3>Slide</h3><h3 class="h5p-results-list-last-header">Score</h3></div>' +
+        '<div class="h5p-summary-table-pages h5p-results-list">' +
           '<table class="h5p-score-table">' +
-            '<thead><tr>' +
-              '<th class="h5p-summary-table-header slide">' + that.cp.l10n.slide + '</th>' +
-              '<th class="h5p-summary-table-header score">' + that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total.toLowerCase() + '</th>' +
-            '</tr></thead>' +
             '<tbody>' + tds + '</tbody>' +
           '</table>' +
         '</div>' +
@@ -214,9 +219,6 @@ const SummarySlide = (function () {
             facebookContainer +
             twitterContainer +
             googleContainer +
-          '</div>' +
-          '<div class="h5p-summary-total-score">' +
-            '<p>' + that.cp.l10n.totalScore + '</p>' +
           '</div>' +
         '</div>' +
       '</div>' +
