@@ -34,6 +34,12 @@
   -moz-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
 }
+.h5p-course-presentation .h5p-footer .h5p-footer-button:before, 
+.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:after,
+.h5p-footer-button .h5p-icon-menu:before{
+  scale: 0.8;
+  color: red;
+}
 
 /* Footer containers */
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted {
@@ -118,9 +124,9 @@
 /* --------------------------------------------- Footer elements ---------------------------------------- */
 
 .h5p-course-presentation .h5p-footer-toggle-keywords .h5p-icon-menu:before {
-  font-family: 'H5PFontIcons';
+  font-family: 'h5p-theme';
   font-size: 1.3em;
-  content: "\e90b";
+  content: "\e913";
   padding: 0 0 0 0.25em;
   -webkit-font-smoothing: antialiased;
 }
@@ -134,23 +140,12 @@
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title {
   vertical-align: top;
-  font-size: 0.9em;
+  font-size: 0.75em;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-left: var(--spacing-xs);
 }
 
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title:before {
-  font-family: 'h5p';
-  font-size: 0.6em;
-  content: '\e565';
-  vertical-align: top;
-  left: 3em;
-  display: inline-block;
-  margin-right: 1em;
-  -ms-transform: rotate(270deg);
-  -webkit-transform: rotate(270deg);
-  transform: rotate(270deg);
-}
 
 .h5p-course-presentation .h5p-footer [aria-expanded="true"].h5p-footer-toggle-keywords .current-slide-title:before {
   -ms-transform: rotate(90deg);
