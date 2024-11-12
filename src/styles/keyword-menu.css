@@ -9,7 +9,7 @@
   background: rgba(251,251,251,0.9);*/
   background-color: var(--ui-base) !important;
   opacity: 100;
-  box-shadow: 0 0 0.35em 0 #d1d1d1;
+  box-shadow: 0 0 0.35em 0 #0000008f;
   overflow: auto;
   visibility: hidden;
   opacity: 0;

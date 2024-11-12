@@ -292,11 +292,12 @@ const NavigationLine = (function ($) {
 
     // Previous slide
     this.cp.$prevSlideButton = $('<div/>', {
-      'class': 'h5p-footer-button h5p-footer-previous-slide',
+      'class': 'h5p-footer-previous-slide h5p-theme-nav-button',
       'aria-label': this.cp.l10n.prevSlide,
       'role': 'button',
       'tabindex': '-1',
-      'aria-disabled': 'true'
+      'aria-disabled': 'true',
+      'text': 'Previous'
     }).appendTo($centerFooter);
 
     new H5P.Tooltip(this.cp.$prevSlideButton.get(0), { position: 'left' });
@@ -304,7 +305,7 @@ const NavigationLine = (function ($) {
     addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide(undefined, false));
 
     const $slideNumbering = $('<div/>', {
-      'class': 'h5p-footer-slide-count'
+      'class': 'h5p-footer-slide-count h5p-theme-progress'
     }).appendTo($centerFooter);
 
     // Current slide count
@@ -339,10 +340,11 @@ const NavigationLine = (function ($) {
 
     // Next slide
     this.cp.$nextSlideButton = $('<div/>', {
-      'class': 'h5p-footer-button h5p-footer-next-slide',
+      'class': 'h5p-footer-next-slide h5p-theme-nav-button',
       'aria-label': this.cp.l10n.nextSlide,
       'role': 'button',
-      'tabindex': '0'
+      'tabindex': '0',
+      'text': 'Next'
     }).appendTo($centerFooter);
 
     H5P.Tooltip(this.cp.$nextSlideButton.get(0), { position: 'right' });
