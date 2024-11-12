@@ -117,6 +117,10 @@
           "default": "Skyfie"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Vertaling vir \"Telling\"",
           "default": "Telling"
         },

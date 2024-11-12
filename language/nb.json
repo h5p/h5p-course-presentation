@@ -117,6 +117,10 @@
           "default": "Side"
         },
         {
+          "label": "Overskrift for sidemenyen",
+          "default": "Sider"
+        },
+        {
           "label": "Oversettelse for \"Score\"",
           "default": "Poengsum"
         },

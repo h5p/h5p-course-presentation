@@ -117,6 +117,10 @@
           "default": "Snímek"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Překlad pro \"Skóre\"",
           "default": "Skóre"
         },

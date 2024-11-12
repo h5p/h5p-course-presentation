@@ -117,6 +117,10 @@
           "default": "ស្លាយ"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "ពាក្យប្រើសម្រាប់ \"ពិន្ទុ (Score)\"",
           "default": "ពិន្ទុ"
         },

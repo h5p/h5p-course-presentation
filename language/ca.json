@@ -117,6 +117,10 @@
           "default": "Pàgina"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Traducció de \"Qualificació\"",
           "default": "Puntuació"
         },

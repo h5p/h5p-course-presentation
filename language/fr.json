@@ -117,6 +117,10 @@
           "default": "Diapositive"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Traduction pour \"Score\"",
           "default": "Score"
         },

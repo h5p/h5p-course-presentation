@@ -117,6 +117,10 @@
           "default": "עמוד"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "תרגום של \"ניקוד\"",
           "default": "ניקוד"
         },

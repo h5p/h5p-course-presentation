@@ -117,6 +117,10 @@
           "default": "Lehekülg"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Tõlge tekstile \"Score\"",
           "default": "Punktisumma"
         },

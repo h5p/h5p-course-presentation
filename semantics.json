@@ -364,6 +364,13 @@
         "default": "Slide"
       },
       {
+        "name": "slides",
+        "type": "text",
+        "label": "Header of keywords menu",
+        "importance": "low",
+        "default": "Slides"
+      },
+      {
         "name": "score",
         "type": "text",
         "label": "Translation for \"Score\"",

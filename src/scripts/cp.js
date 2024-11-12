@@ -54,6 +54,7 @@ let CoursePresentation = function (params, id, extras) {
 
   this.l10n = $.extend({
     slide: 'Slide',
+    slides: 'Slides',
     score: 'Score',
     yourScore: 'Your score',
     maxScore: 'Max score',
@@ -390,6 +391,10 @@ CoursePresentation.prototype.attach = function ($container) {
       this.$currentKeyword = this.$keywords.children('.h5p-current');
     });
 
+    $('<p/>', {
+      'class': 'h5p-theme-navigation-header',
+      text: this.l10n.slides
+    }).appendTo(this.$keywordsWrapper);
     this.$keywords = $(this.keywordMenu.getElement()).appendTo(this.$keywordsWrapper);
     this.$currentKeyword = this.$keywords.children('.h5p-current');
 

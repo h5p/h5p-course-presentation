@@ -5,9 +5,7 @@
   right: 84.375%;
   width: 31.25%;
   height: 100%;
-  /*background: #fbfbfb;
-  background: rgba(251,251,251,0.9);*/
-  background-color: var(--ui-base) !important;
+  background-color: var(--ui-base);
   opacity: 100;
   box-shadow: 0 0 0.35em 0 #0000008f;
   overflow: auto;
