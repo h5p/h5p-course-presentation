@@ -314,7 +314,7 @@
         "importance": "low",
         "min": 0,
         "max": 100,
-        "default": 90
+        "default": 100
       },
       {
         "name": "globalBackgroundSelector",
