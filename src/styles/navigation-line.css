@@ -232,6 +232,10 @@
   -ms-user-select: none;      /* IE 10+ */
 }
 
+
+
+
+
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
   -webkit-flex: 0;
   flex: 0;
