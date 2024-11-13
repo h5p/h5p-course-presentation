@@ -117,6 +117,10 @@
           "default": "Sida"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Översättning för \"Poäng\"",
           "default": "Poäng"
         },

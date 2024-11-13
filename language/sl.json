@@ -117,6 +117,10 @@
           "default": "Stran"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Besedilo za \"Točke\"",
           "default": "Točke"
         },

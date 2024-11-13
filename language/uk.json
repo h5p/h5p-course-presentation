@@ -117,6 +117,10 @@
           "default": "Слайд"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Переклад для \"Оцінка\"",
           "default": "Оцінка"
         },

@@ -314,7 +314,7 @@
         "importance": "low",
         "min": 0,
         "max": 100,
-        "default": 90
+        "default": 100
       },
       {
         "name": "globalBackgroundSelector",
@@ -362,6 +362,13 @@
         "label": "Translation for \"Slide\"",
         "importance": "low",
         "default": "Slide"
+      },
+      {
+        "name": "slides",
+        "type": "text",
+        "label": "Header of keywords menu",
+        "importance": "low",
+        "default": "Slides"
       },
       {
         "name": "score",

@@ -117,6 +117,10 @@
           "default": "Slide"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Tradução para \"Pontuação\"",
           "default": "Pontuação"
         },

@@ -117,6 +117,10 @@
           "default": "Страна"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Превод за \"Резултат\"",
           "default": "Резултат"
         },

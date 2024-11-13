@@ -117,6 +117,10 @@
           "default": "Slaids"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "\"Rezultāts\" tulkojums",
           "default": "Rezultāts"
         },

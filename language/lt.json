@@ -117,6 +117,10 @@
           "default": "Skaidrė"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Vertimas \"Balas\"",
           "default": "Balas"
         },

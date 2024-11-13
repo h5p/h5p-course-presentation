@@ -117,6 +117,10 @@
           "default": "Slaidi"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Tafsiri ya \"Alama\"",
           "default": "Alama"
         },

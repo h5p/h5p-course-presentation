@@ -117,6 +117,10 @@
           "default": "Διαφάνεια"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Μετάφραση για \"Βαθμολογία\"",
           "default": "Βαθμολογία"
         },

@@ -117,6 +117,10 @@
           "default": "Diapositiva"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Traducción para \"Puntaje\"",
           "default": "Puntaje"
         },
