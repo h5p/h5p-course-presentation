@@ -57,16 +57,16 @@
 .h5p-course-presentation .h5p-summary-task-title {
   width: 60%;
   text-align: left;
-      font-size: var(--font-size-l);
+      font-size: var(--h5p-theme-font-size-l);
     font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--h5p-theme-spacing-xs);
   
 }
 .h5p-course-presentation .slide-number-summary-page {
-  color: var(--text-third);
-  font-size: var(--font-size-s);
+  color: var(--h5p-theme-text-third);
+  font-size: var(--h5p-theme-font-size-s);
   display: block;
 }
 
@@ -140,7 +140,7 @@
   float: left;
   font-size: 0.75em;
   padding: 0.25em 0em;
-  margin-left: var(--spacing-m);
+  margin-left: var(--h5p-theme-spacing-m);
 }
 
 .h5p-course-presentation .h5p-summary-social .h5p-show-results-text {
@@ -236,7 +236,7 @@
 .h5p-course-presentation .h5p-summary-slide .h5p-show-solutions, 
 .h5p-course-presentation .h5p-summary-slide .h5p-cp-retry-button, 
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export{
-  margin-right: var(--spacing-xs);
+  margin-right: var(--h5p-theme-spacing-xs);
 }
 
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export:before {
