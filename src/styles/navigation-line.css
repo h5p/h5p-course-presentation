@@ -6,8 +6,7 @@
   grid-template-columns: 35% 30% 35%;
   font-size: 0.8em;
   width: 100%;
-  height: 7%;
-  padding: 0.25rem;
+  height: 8%;
   box-sizing: border-box;
 
   -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -26,28 +25,40 @@
   background: transparent;
   color: var(--text-primary);
   cursor: pointer;
-  margin: 0 0.25rem;
   /* TODO: remove border */
   border: solid 0px green;
   border-radius: var(--border-radius-small);
   -webkit-transition: color 0.2s ease-in-out;
   -moz-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
+  padding: 0.5em;
+  align-items: center;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted .h5p-footer-button {
-  width: 100%
+  width: 100%;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-theme-nav-button,
 .h5p-course-presentation .h5p-footer .h5p-theme-progress{
-  scale: 0.8;
+border: solid 2px var(--contrast-cta-light);
+ 
 }
 
 .h5p-course-presentation .h5p-footer .h5p-theme-nav-button {
-  cursor: pointer;
-  margin: 0 0.25rem;
- /* padding: var(--spacing-xxs) var(--spacing-s);*/
+   background-color: var(--ui-base);
+  border: solid 2px var(--contrast-cta-light);
+  color: var(--secondary-cta-base);
+  margin: 0 5px;
+ padding: var(--spacing-xxs) var(--spacing-xs);
+  font-weight: normal;
+}
+.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:before,
+.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:after{
+  font-weight: normal;
+}
+.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:hover{
+      background-color: var(--contrast-cta-light);
 }
 
 
@@ -68,7 +79,7 @@
 
 .h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
   text-align: center;
-  display: flex;
+
   align-items: stretch;
 }
 
@@ -148,7 +159,7 @@
 }
 
 .h5p-course-presentation .h5p-footer-toggle-keywords[aria-expanded="true"] .h5p-icon-menu:before {
-  content: "\e912";
+  content: "\e916";
 }
 
 /* Footer keyword button */
@@ -162,7 +173,8 @@
   white-space: nowrap;
   margin-left: 0.5rem;
   color: var(--text-secondary);
-  line-height: normal;
+  line-height: 1;
+  font-size: 0.65em;
 }
 
 
@@ -213,13 +225,16 @@
 
 .h5p-course-presentation .h5p-theme-progress{
   padding: 0.5rem;
+  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-cp-navigation {
   position: relative;
   z-index: 1;
-  height: 3%;
-  box-shadow: 0px -5px 2px red;
+  height: 2%;
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+ box-shadow: 1px -3px 7px 0px rgb(0 0 0 / 23%);
 }
 
 .h5p-course-presentation .h5p-progressbar {
@@ -292,7 +307,7 @@
 
   background-color: var(--ui-base);
   transition: all 0.25s ease-out;
-  background: linear-gradient(to left, var(--ui-base) 50%, var(--secondary-cta-base) 50%) right;
+  background: linear-gradient(to left, color-mix(in srgb, var(--secondary-cta-base), transparent 80%) 50%, var(--secondary-cta-base) 50%) right;
   background-size: 200%;
 }
 
@@ -313,9 +328,6 @@
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.h5p-progressbar-part-show {
   background-position: left;
 
-  border-right-color: var(--secondary-cta-dark);
-  border-top-color: var(--secondary-cta-base);
-  border-bottom-color: var(--secondary-cta-base);
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show .h5p-progressbar-part-has-task{

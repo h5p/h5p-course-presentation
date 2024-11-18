@@ -99,7 +99,7 @@ const SummarySlide = (function () {
     // Show solutions button
     if (this.cp.showSummarySlideSolutionButton) {
       JoubelUI.createButton({
-        'class': 'h5p-show-solutions h5p-theme-secondary-cta',
+        'class': 'h5p-show-solutions h5p-theme-secondary-cta h5p-theme-show-results',
         html: that.cp.l10n.showSolutions,
         on: {
           click: function () {
@@ -114,7 +114,7 @@ const SummarySlide = (function () {
     // Show solutions button
     if (this.cp.showSummarySlideRetryButton) {
       JoubelUI.createButton({
-        'class': 'h5p-cp-retry-button h5p-theme-secondary-cta',
+        'class': 'h5p-cp-retry-button h5p-theme-secondary-cta h5p-theme-retry',
         html: that.cp.l10n.retry,
         on: {
           click: function () {

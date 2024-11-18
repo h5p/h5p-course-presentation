@@ -296,8 +296,8 @@ const NavigationLine = (function ($) {
       'aria-label': this.cp.l10n.prevSlide,
       'role': 'button',
       'tabindex': '-1',
-      'aria-disabled': 'true',
-      'text': 'Previous'
+      'aria-disabled': 'true'
+      /*'text': 'Previous'*/
     }).appendTo($centerFooter);
 
     new H5P.Tooltip(this.cp.$prevSlideButton.get(0), { position: 'left' });
@@ -343,8 +343,8 @@ const NavigationLine = (function ($) {
       'class': 'h5p-footer-next-slide h5p-theme-nav-button',
       'aria-label': this.cp.l10n.nextSlide,
       'role': 'button',
-      'tabindex': '0',
-      'text': 'Next'
+      'tabindex': '0'
+/*      'text': 'Next'*/
     }).appendTo($centerFooter);
 
     H5P.Tooltip(this.cp.$nextSlideButton.get(0), { position: 'right' });
