@@ -106,3 +106,16 @@ const $STRIP_HTML_HELPER = $('<div>');
  * @return {string}
  */
 export const stripHTML = (str) => $STRIP_HTML_HELPER.html(str).text().trim();
+
+/**
+ * Decode text with HTML entities to text.
+ *
+ * Beware that this does not strip HTML tags, it only decodes HTML entities.
+ * @param {string} html HTML with encoded entities.
+ * @returns {string} Decoded text.
+ */
+export const decodeHTML = (html) => {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  return div.textContent || div.innerText || '';
+};
