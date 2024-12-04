@@ -27,6 +27,9 @@
                       "label": "מוצג ככפתור"
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "גודל כפתור",
                       "options": [
                         {

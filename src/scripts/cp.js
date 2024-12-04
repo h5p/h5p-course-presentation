@@ -92,7 +92,7 @@ let CoursePresentation = function (params, id, extras) {
     containsCompleted: '@slideName contains completed interaction',
     slideCount: 'Slide @index of @total',
     accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
-    containsOnlyCorrect: "@slideName only has correct answers",
+    containsOnlyCorrect: '@slideName only has correct answers',
     containsIncorrectAnswers: '@slideName has incorrect answers',
     shareResult: 'Share Result',
     accessibilityTotalScore: 'You got @score of @maxScore points in total',
@@ -203,8 +203,8 @@ CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
 
   // Disregard questions where "no answer" is the correct answer.
   return tasks
-    .filter(task => isFunction(task.getAnswerGiven))
-    .some(task => task.getAnswerGiven() && !H5P.isEmpty(task.getCurrentState()));
+    .filter((task) => isFunction(task.getAnswerGiven))
+    .some((task) => task.getAnswerGiven() && !H5P.isEmpty(task.getCurrentState()));
 };
 
 /**
@@ -384,7 +384,7 @@ CoursePresentation.prototype.attach = function ($container) {
   if (keywordMenuConfig.length > 0 || this.isEditor()) {
     // Initialize keyword titles
     this.keywordMenu.init(keywordMenuConfig);
-    this.keywordMenu.on('select', event => this.keywordClick(event.data.index));
+    this.keywordMenu.on('select', (event) => this.keywordClick(event.data.index));
     this.keywordMenu.on('close', () => this.hideKeywords());
     this.keywordMenu.on('select', () => {
       this.$currentKeyword = this.$keywords.children('.h5p-current');
@@ -436,7 +436,7 @@ CoursePresentation.prototype.attach = function ($container) {
         appendTo: this.$wrapper
       });
 
-      H5P.Tooltip(this.$fullScreenButton.get(0), {position: 'left'});
+      H5P.Tooltip(this.$fullScreenButton.get(0), { position: 'left' });
 
       addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
     }
@@ -468,7 +468,7 @@ CoursePresentation.prototype.belongsToTagName = function (node, tagNames, stop) 
   if (typeof tagNames === 'string') {
     tagNames = [tagNames];
   }
-  tagNames = tagNames.map(tagName => tagName.toLowerCase());
+  tagNames = tagNames.map((tagName) => tagName.toLowerCase());
 
   const tagName = node.tagName.toLowerCase();
   if (tagNames.indexOf(tagName) !== -1) {
@@ -504,7 +504,7 @@ CoursePresentation.prototype.hasTabIndex = (element, stopElement) => {
     }
   }
   return false;
-}
+};
 
 /**
  * Removes old menu items, and create new ones from slides.
@@ -531,7 +531,7 @@ CoursePresentation.prototype.getKeywordMenuConfig = function () {
       subtitle: `${this.l10n.slide} ${index + 1}`,
       index
     }))
-    .filter(config => config.title !== KEYWORD_TITLE_SKIP);
+    .filter((config) => config.title !== KEYWORD_TITLE_SKIP);
 };
 
 /**
@@ -639,7 +639,7 @@ CoursePresentation.prototype.getMaxScore = function () {
 CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
   if (slideScores !== undefined && slideScores) {
     // Set feedback icons for progress bar.
-    slideScores.forEach(singleSlide => {
+    slideScores.forEach((singleSlide) => {
       const $indicator = this.progressbarParts[singleSlide.slide - 1]
         .find('.h5p-progressbar-part-has-task');
 
@@ -653,7 +653,7 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
   }
   else {
     // Remove all feedback icons.
-    this.progressbarParts.forEach(pbPart => {
+    this.progressbarParts.forEach((pbPart) => {
       pbPart.find('.h5p-progressbar-part-has-task')
         .removeClass('h5p-is-correct')
         .removeClass('h5p-is-wrong');
@@ -923,7 +923,7 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
     '$target': $slide,
     'library': 'CoursePresentation',
     'key': 'newSlide'
-  }, {'bubbles': true, 'external': true});
+  }, { 'bubbles': true, 'external': true });
 
   this.elementsAttached[index] = true;
 };
@@ -939,7 +939,7 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
  */
 CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
   const displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var buttonSizeClass = (element.buttonSize !== undefined ? "h5p-element-button-" + element.buttonSize : "");
+  var buttonSizeClass = (element.buttonSize !== undefined ? 'h5p-element-button-' + element.buttonSize : '');
   var classes = 'h5p-element' +
     (displayAsButton ? ' h5p-element-button-wrapper' : '') +
     (buttonSizeClass.length ? ' ' + buttonSizeClass : '');
@@ -956,8 +956,29 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
 
   if (displayAsButton) {
-    const $button = this.createInteractionButton(element, instance);
+    const [$button, labelElement] =
+      this.createInteractionButton(element, instance);
+
+    // Label in logically before button to allow sibling selector in CSS
+    if (labelElement) {
+      $elementContainer.get(0).append(labelElement);
+    }
     $button.appendTo($elementContainer);
+
+    if (labelElement) {
+      // Position label left/right depending on available space
+      window.requestAnimationFrame(() => {
+        const labelRect = labelElement.getBoundingClientRect();
+        const containerOffset = this.$container.get(0).offsetLeft;
+
+        if (
+          -containerOffset + labelRect.x + labelRect.width >
+            this.$container.get(0).offsetWidth
+        ) {
+          labelElement.classList.add('left');
+        }
+      });
+    }
   }
   else {
     const hasLibrary = element.action && element.action.library;
@@ -1085,55 +1106,96 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  *
  * @param {Object} element
  * @param {Object} instance
- *
- * @return {jQuery}
+ * @returns {[jQuery, HTMLElement|undefined]} Button element and label if set.
  */
-CoursePresentation.prototype.createInteractionButton = function (element, instance) {
-  let label = element.action.metadata ? element.action.metadata.title : '';
-  if (label === '' || label === undefined) {
-    label = element.action?.params?.contentName || element.action?.params?.title || element.action.library.split(' ')[0].split('.')[1];
-  }
-  const libTypePmz = this.getLibraryTypePmz(element.action.library);
+CoursePresentation.prototype.createInteractionButton =
+  function (element, instance) {
+    const isButtonLabelSet = typeof element.buttonLabel === 'string' &&
+      element.buttonLabel !== '';
 
-  /**
-   * Returns a function that will set [aria-expanded="false"] on the $btn element
-   *
-   * @param {jQuery} $btn
-   * @return {Function}
-   */
-  const setAriaExpandedFalse = $btn => () => $btn.attr('aria-expanded', 'false');
+    const labelText = element.buttonLabel ??
+      element.action.metadata?.title ??
+      (
+        element.action?.params?.contentName ||
+        element.action?.params?.title ||
+        element.action?.library.split(' ')[0].split('.')[1] ||
+        ''
+      );
 
-  const $button = $('<div>', {
-    role: 'button',
-    tabindex: 0,
-    'aria-label': label,
-    'aria-haspopup': 'dialog',
-    'aria-expanded': false,
-    'class': `h5p-element-button h5p-element-button-${element.buttonSize} ${libTypePmz}-button`
-  });
-
-  const $buttonElement = $('<div class="h5p-button-element"></div>');
-  instance.attach($buttonElement);
-
-  const parentPosition = libTypePmz === 'h5p-advancedtext' ? {
-    x: element.x,
-    y: element.y
-  } : null;
-  addClickAndKeyboardListeners($button, () => {
-    $button.attr('aria-expanded', 'true');
-    this.showInteractionPopup(instance, $button, $buttonElement, libTypePmz, setAriaExpandedFalse($button), parentPosition);
-  });
-
-  if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
-    instance.on('controls', function () {
-      if (instance.controls.$fullscreen) {
-        instance.controls.$fullscreen.remove();
+    // Optional label for button
+    let labelElement;
+    if (isButtonLabelSet) {
+      labelElement = document.createElement('div');
+      labelElement.classList.add('h5p-element-button-label');
+      if (element.buttonSize === 'small') {
+        labelElement.classList.add('small');
       }
-    });
-  }
 
-  return $button;
-};
+      const labelElementText = document.createElement('div');
+      labelElementText.classList.add('h5p-element-button-label-text');
+      labelElementText.setAttribute('aria-hidden', true);
+      labelElementText.innerText = stripHTML(labelText);
+      labelElement.append(labelElementText);
+    }
+
+    const libTypePmz = this.getLibraryTypePmz(element.action.library);
+
+    // Button
+    const button = document.createElement('div');
+    button.classList.add('h5p-element-button');
+    button.classList.add(`h5p-element-button-${element.buttonSize}`);
+    button.classList.add(`${libTypePmz}-button`);
+    button.setAttribute('role', 'button');
+    button.setAttribute('tabindex', 0);
+    button.setAttribute('aria-popup', true);
+    button.setAttribute('aria-expanded', false);
+    button.setAttribute('aria-label', labelText);
+
+    const buttonElement = document.createElement('div');
+    buttonElement.classList.add('h5p-element-button-element');
+
+    instance.attach(H5P.jQuery(buttonElement));
+
+    const parentPosition = libTypePmz === 'h5p-advancedtext' ?
+      {
+        x: element.x,
+        y: element.y
+      } :
+      null;
+
+    const handleButtonInteraction = () => {
+      button.setAttribute('aria-expanded', 'true');
+      this.showInteractionPopup(
+        instance,
+        H5P.jQuery(button),
+        H5P.jQuery(buttonElement),
+        libTypePmz,
+        () => {
+          button.setAttribute('aria-expanded', 'false');
+        },
+        parentPosition
+      );
+    };
+
+    addClickAndKeyboardListeners(H5P.jQuery(button), () => {
+      handleButtonInteraction();
+    });
+
+    // Allow to show interaction popup on label click, too
+    labelElement?.addEventListener('click', () => {
+      handleButtonInteraction();
+    });
+
+    if (element.action?.library.split(' ')[0] === 'H5P.InteractiveVideo') {
+      instance.on('controls', () => {
+        if (instance.controls.$fullscreen) {
+          instance.controls.$fullscreen.remove();
+        }
+      });
+    }
+
+    return [H5P.jQuery(button), labelElement];
+  };
 
 /**
  * Shows the interaction popup on button press
@@ -1204,7 +1266,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
  * @param {string} library
  * @return {string}
  */
-CoursePresentation.prototype.getLibraryTypePmz = library => kebabCase(library.split(' ')[0]).toLowerCase();
+CoursePresentation.prototype.getLibraryTypePmz = (library) => kebabCase(library.split(' ')[0]).toLowerCase();
 
 /**
  * Resize image inside popup dialog.
@@ -1508,22 +1570,22 @@ CoursePresentation.prototype.showPopup = function ({
     .removeClass('h5p-animate')
     .click(self.closePopup)
     .find('.h5p-popup-container')
-      .removeClass('h5p-animate')
-      .click(function () {
-        doNotClose = true;
-      })
-      .keydown(function (event) {
-        if (event.which === keyCode.ESC) {
-          self.closePopup(event);
-        }
-      })
-      .find('.h5p-close-popup')
-        .focus();
+    .removeClass('h5p-animate')
+    .click(function () {
+      doNotClose = true;
+    })
+    .keydown(function (event) {
+      if (event.which === keyCode.ESC) {
+        self.closePopup(event);
+      }
+    })
+    .find('.h5p-close-popup')
+    .focus();
 
   // Hide other elements from the tab order
   this.disableTabIndexes();
 
-  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), event => self.closePopup(event));
+  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), (event) => self.closePopup(event));
 
   return $popup;
 };
@@ -2254,7 +2316,7 @@ CoursePresentation.prototype.getCopyrights = function () {
           // Create a generic flat copyright list
           elementCopyrights = new H5P.ContentCopyrights();
           // In metadata alone there's no way of knowing what the machineName is.
-          H5P.findCopyrights(elementCopyrights, params, this.contentId, {metadata: metadata, machineName: instance.libraryInfo.machineName});
+          H5P.findCopyrights(elementCopyrights, params, this.contentId, { metadata: metadata, machineName: instance.libraryInfo.machineName });
         }
         var label = (element + 1);
         if (params.contentName !== undefined) {
@@ -2301,7 +2363,7 @@ CoursePresentation.prototype.getXAPIData = function () {
     if (child && child.getXAPIData) {
       return child.getXAPIData();
     }
-  }).filter(data => !!data);
+  }).filter((data) => !!data);
 
   return {
     statement: xAPIEvent.data.statement,

@@ -27,6 +27,9 @@
                       "label": "Κουμπί \"εμφάνιση ως\""
                     },
                     {
+                      "label": "Optional button label"
+                    },
+                    {
                       "label": "Μέγεθος κουμπιού",
                       "options": [
                         {
@@ -299,12 +302,12 @@
           "default": "Πλοήγηση σε διαφάνειες"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "Ετικέτα κουμπιού επιβεβαίωσης",
+          "default": "Εντάξει"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Ετικέτα κουμπιού ακύρωσης",
+          "default": "Άκυρο"
         }
       ]
     },

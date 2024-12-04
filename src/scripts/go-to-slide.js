@@ -73,7 +73,7 @@ export default class GoToSlide {
       'aria-label': stripHTML(decodeHTML(title))
     });
 
-    addClickAndKeyboardListeners(this.$element, event => {
+    addClickAndKeyboardListeners(this.$element, (event) => {
       this.eventDispatcher.trigger('navigate', goTo);
       event.preventDefault();
     });
