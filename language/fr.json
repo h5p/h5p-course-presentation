@@ -27,7 +27,7 @@
                       "label": "Afficher sous forme de bouton"
                     },
                     {
-                      "label": "Optional button label"
+                      "label": "Étiquette de bouton facultative"
                     },
                     {
                       "label": "La taille de bouton",
@@ -245,8 +245,8 @@
           "default": "Zone de présentation. Utilisez les flèches gauche et droite pour naviguer entre les diapositives."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Étiquette de la barre de progression pour les technologies d'assistance",
+          "default": "Choisissez la diapositive à afficher"
         },
         {
           "label": "Etiquette pour des interactions incomplètes",
@@ -317,7 +317,7 @@
       "fields": [
         {
           "label": "Activer le mode \"Surface active\"",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Supprime les contrôles de navigation pour l'utilisateur final. Utilisez Aller à la diapositive pour naviguer. Le résumé n'est pas disponible dans ce mode."
         },
         {
           "label": "Cacher le récapitulatif de fin",
