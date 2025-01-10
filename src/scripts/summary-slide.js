@@ -205,7 +205,7 @@ const SummarySlide = (function () {
       '<div class="h5p-results-title">Results</div>'+
       '<div class="h5p-results-score">0/3 correct</div>'+
       '</div>' +
-        '<div class="h5p-summary-table-holder h5p-results-list-container">' +
+        '<div class="h5p-summary-table-holder h5p-results-list-container h5p-theme-results-list-container">' +
         '<div class="h5p-results-list-heading">' +
         '<h3>Slide</h3><h3 class="h5p-results-list-last-header">Score</h3></div>' +
         '<div class="h5p-summary-table-pages h5p-results-list">' +

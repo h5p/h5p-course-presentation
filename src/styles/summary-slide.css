@@ -156,7 +156,7 @@
 }
 
 .h5p-course-presentation .h5p-td {
-  padding: 0.3em;
+  align-self: center;
 }
 
 .h5p-course-presentation .h5p-score-table tr:not(:last-child) {
@@ -229,6 +229,25 @@
   font-family: 'H5PFontAwesome4';
   content: "\f0d5";
   padding-right: 0.5em;
+}
+
+.h5p-course-presentation .h5p-summary-slide h3 {
+  padding: unset;
+  font-size: var(--h5p-theme-font-size-xl);
+  margin: var(--h5p-theme-font-size-m) 0;
+}
+.h5p-course-presentation .h5p-summary-slide .h5p-results-list-heading{
+  overflow: unset;
+}
+
+.h5p-course-presentation .h5p-score-table tr{
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+
+
+.h5p-course-presentation .h5p-summary-table-pages{
+      padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-m);
 }
 
 /* --------------------------------- Button styling ----------------------------------------------- */
