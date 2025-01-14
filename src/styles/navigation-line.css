@@ -232,8 +232,6 @@ border: solid 2px var(--h5p-theme-contrast-cta-light);
   position: relative;
   z-index: 1;
   height: 4%;
-  border-top: solid 1px white;
-  border-bottom: solid 1px white;
  /* box-shadow: 1px -3px 7px 0px rgb(0 0 0 / 23%);*/
 }
 
@@ -295,8 +293,7 @@ border: solid 2px var(--h5p-theme-contrast-cta-light);
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
   flex: 1;
   position: relative;
-  border-top: solid 1px  var(--h5p-theme-secondary-contrast-cta);
-  border-bottom: solid 1px  var(--h5p-theme-secondary-contrast-cta);
+
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part:not(:last-child) {

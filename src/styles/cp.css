@@ -1,3 +1,17 @@
+.h5p-container.h5p-course-presentation .h5p-slide, .h5p-container.h5p-course-presentation .h5p-summary-slide {
+  --h5p-theme-spacing-xl: calc(3em*0.8);
+  --h5p-theme-spacing-l: calc(2em*0.8);
+  --h5p-theme-spacing-m: calc(1.5em*0.8);
+  --h5p-theme-spacing-s: calc(1em*0.8);
+  --h5p-theme-spacing-xs: calc(0.65em*0.8);
+  --h5p-theme-spacing-xxs: calc(0.5em*0.8);
+  --h5p-theme-font-size-xxl: 1.5em;
+  --h5p-theme-font-size-xl: 1.25em;
+  --h5p-theme-font-size-l: 1.125em;
+  --h5p-theme-font-size-m: 1em;
+  --h5p-theme-font-size-s: 0.85em;
+}
+
 /* DroidSans font by Steve Matteson licensed under Apache License, version 2.0 - See DroidSans/LICENSE.txt */
 @font-face {
   font-family: 'H5PDroidSans';
@@ -33,6 +47,8 @@
 .h5p-course-presentation h5,
 .h5p-course-presentation h6,
 .h5p-course-presentation p {
+  /* TODO: check if removing this causes issues*/
+  
   line-height: 150%;
   padding: 0.5em;
 }
@@ -58,6 +74,7 @@
   margin: 0 0 0.5em;
 }
 .h5p-course-presentation p {
+  /* TODO: check if removing this is causing issues */
   font-size: 1em;
   font-weight: normal;
   line-height: 1.25em;
