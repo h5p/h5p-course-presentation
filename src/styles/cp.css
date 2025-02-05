@@ -1,4 +1,4 @@
-.h5p-container.h5p-course-presentation .h5p-slide, .h5p-container.h5p-course-presentation .h5p-summary-slide {
+.h5p-container.h5p-course-presentation .h5p-slide:not(.h5p-summary-slide) {
   --h5p-theme-spacing-xl: calc(3em*0.8);
   --h5p-theme-spacing-l: calc(2em*0.8);
   --h5p-theme-spacing-m: calc(1.5em*0.8);
@@ -51,6 +51,17 @@
   
   line-height: 150%;
   padding: 0.5em;
+}
+
+.h5p-course-presentation .h5p-element-inner.h5p-question.h5p-blanks p,
+.h5p-course-presentation .h5p-element-inner.h5p-question.h5p-single-choice-set p,
+.h5p-course-presentation .h5p-element-inner.h5p-question.h5p-multichoice p,
+.h5p-course-presentation .h5p-element-inner.h5p-question.h5p-true-false p,
+.h5p-course-presentation .h5p-element-inner.h5p-question.h5p-summary p,
+.h5p-course-presentation .h5p-element-inner.h5p-question.h5p-drag-text p,
+.h5p-course-presentation .h5p-element-inner.h5p-question.h5p-mark-the-words p
+{
+  line-height: unset;
 }
 
 .h5p-course-presentation {
