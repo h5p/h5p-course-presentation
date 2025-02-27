@@ -333,6 +333,30 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
 
         // Done
         finished(null, parameters);
+      },
+
+      /**
+       * Asynchronous content upgrade hook.
+       * Upgrades content parameters to support CP 1.27.
+       *
+       * Replace broken Twitter content with Text.
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      27: function (parameters, finished) {
+        parameters.presentation.slides.forEach(function (slide) {
+          slide.elements.forEach(function (element) {
+            if (element.action && element.action.library === 'H5P.TwitterUserFeed 1.0') {
+              element.action.library = 'H5P.AdvancedText 1.1';
+              element.action.params = {};
+              element.action.params.text = '<p>The <em>Twitter User Feed</em> H5P content type is no longer supported since the Twitter API used is no longer available</p>';
+            }
+          });
+        });
+
+        // Done
+        finished(null, parameters);
       }
     }
   };
