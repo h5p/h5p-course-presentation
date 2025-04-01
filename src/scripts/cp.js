@@ -988,7 +988,7 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     var $outerElementContainer = H5P.jQuery('<div>', {
       'class': `h5p-element-outer ${libTypePmz}-outer-element`
     }).css({
-      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ')'
+      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ' )'
     }).appendTo($elementContainer);
 
     var $innerElementContainer = H5P.jQuery('<div>', {

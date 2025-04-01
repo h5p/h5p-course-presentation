@@ -1,16 +1,58 @@
-.h5p-container.h5p-course-presentation .h5p-slide:not(.h5p-summary-slide) {
-  --h5p-theme-spacing-xl: calc(3em*0.8);
-  --h5p-theme-spacing-l: calc(2em*0.8);
-  --h5p-theme-spacing-m: calc(1.5em*0.8);
-  --h5p-theme-spacing-s: calc(1em*0.8);
-  --h5p-theme-spacing-xs: calc(0.65em*0.8);
-  --h5p-theme-spacing-xxs: calc(0.5em*0.8);
+.h5p-container.h5p-course-presentation .h5p-slide{
+  --h5p-theme-scale: 0.6;
+  --h5p-theme-spacing-xl: calc(3em*var(--h5p-theme-scale));
+  --h5p-theme-spacing-l: calc(2em*var(--h5p-theme-scale));
+  --h5p-theme-spacing-m: calc(1.5em*var(--h5p-theme-scale));
+  --h5p-theme-spacing-s: calc(1em*var(--h5p-theme-scale));
+  --h5p-theme-spacing-xs: calc(0.65em*var(--h5p-theme-scale));
+  --h5p-theme-spacing-xxs: calc(0.5em*var(--h5p-theme-scale));
   --h5p-theme-font-size-xxl: 1.5em;
   --h5p-theme-font-size-xl: 1.25em;
   --h5p-theme-font-size-l: 1.125em;
   --h5p-theme-font-size-m: 1em;
   --h5p-theme-font-size-s: 0.85em;
 }
+
+
+/*overrides popup in CP
+
+.h5p-course-presentation .h5p-popup-container h1, .h5p-course-presentation .h5p-popup-container h2, .h5p-popup-container .h5p-popup-container h3, .h5p-course-presentation .h5p-popup-container h4, .h5p-course-presentation .h5p-popup-container h5, .h5p-course-presentation .h5p-popup-container h6, .h5p-course-presentation .h5p-popup-container p, .h5p-popup-container .h5p-course-presentation p{
+  line-height: inherit;
+  font-size: inherit;
+}
+
+.h5p-course-presentation .h5p-popup-container {
+  font-size: 0.64em;
+}
+*/
+.h5p-course-presentation strong{
+  font-weight: 600;
+}
+
+
+.h5p-course-presentation .h5p-popup-container p{
+     line-height: inherit;
+}
+
+
+
+/* OVERRIDES OF INVIDIDUAL CONTENT TYPES TO MATCH INTO CP*/
+.h5p-theme.h5p-course-presentation .h5p-question-introduction{
+  font-size: var(--h5p-theme-font-size-l);
+}
+
+.h5p-course-presentation p {
+  font-weight: inherit;
+}
+
+.h5p-course-presentation .h5p-question-introduction p{
+  font-weight: 600;
+}
+
+.h5p-course-presentation .h5p-dialogcards .h5p-theme-question-description{
+  font-size: 1em;
+}
+
 
 /* DroidSans font by Steve Matteson licensed under Apache License, version 2.0 - See DroidSans/LICENSE.txt */
 @font-face {
@@ -65,10 +107,11 @@
 }
 
 .h5p-course-presentation {
-  font-family: H5PDroidSans, sans-serif;
+  font-family: var(--h5p-theme-font-name);
   color: #323232;
   line-height: 1.25;
 }
+
 
 .h5p-course-presentation h2 {
   font-size: 1.667em;
@@ -86,7 +129,7 @@
 }
 .h5p-course-presentation p {
   /* TODO: check if removing this is causing issues */
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: normal;
   line-height: 1.25em;
   padding: 0;
@@ -322,7 +365,7 @@
 }
 
 .h5p-course-presentation .h5p-popup-overlay {
-  background-color: rgba(44, 44, 44, 0.5);
+  background-color: rgba(0, 0, 0, 0.85);
   -moz-transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
   -o-transition: background-color 0.2s;
@@ -338,7 +381,7 @@
 }
 
 .h5p-course-presentation .h5p-popup-container {
-  background-color: #fff;
+  background-color: var(--h5p-theme-ui-base);
   border: none;
   box-shadow: 0 0 0.625em 0 rgba(0,0,0,.25);
   left: 5%;
@@ -351,6 +394,7 @@
   font-size: 0.75em;
   display: flex;
   flex-direction: column;
+  border-radius: var(--h5p-theme-border-radius-large);
 }
 
 .h5p-popup-overlay.h5p-popup-comment-field .h5p-popup-container,
@@ -359,6 +403,7 @@
   min-height: initial;
   min-width: 22%;
   max-width: 90%;
+  border-radius: var(--h5p-theme-border-radius-large);
 }
 
 .h5p-popup-overlay.h5p-image .h5p-popup-container,
@@ -377,6 +422,7 @@
   overflow: hidden;
   text-align: left;
   overflow-y: auto;
+  border-radius: var(--h5p-theme-border-radius-large);
 }
 .h5p-course-presentation .h5p-popup-overlay.h5p-video .h5p-popup-container .h5p-popup-wrapper {
   overflow-y: hidden;

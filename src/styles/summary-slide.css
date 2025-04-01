@@ -3,6 +3,7 @@
   background: #fff;
   text-align: center;
   color: #333;
+  font-size: 0.75em;
 }
 
 .h5p-course-presentation .h5p-summary-slide.h5p-summary-only-export {
@@ -57,16 +58,17 @@
 .h5p-course-presentation .h5p-summary-task-title {
   width: 60%;
   text-align: left;
-      font-size: var(--h5p-theme-font-size-l);
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: var(--h5p-theme-spacing-xs);
-  
+  font-size: 0.886em;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-m);
+}
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-secondary-cta{
+  padding: var(--h5p-theme-spacing-s) var(--h5p-theme-spacing-l);
 }
 .h5p-course-presentation .slide-number-summary-page {
   color: var(--h5p-theme-text-third);
-  font-size: var(--h5p-theme-font-size-s);
   display: block;
 }
 
@@ -160,7 +162,7 @@
 }
 
 .h5p-course-presentation .h5p-score-table tr:not(:last-child) {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--h5p-theme-stroke-1);
 }
 
 .h5p-course-presentation .h5p-td p {
@@ -233,9 +235,19 @@
 
 .h5p-course-presentation .h5p-summary-slide h3 {
   padding: unset;
-  font-size: var(--h5p-theme-font-size-xl);
+  font-size: 1em;
   margin: var(--h5p-theme-font-size-m) 0;
+  line-height: 1;
 }
+
+
+.h5p-course-presentation .h5p-summary-slide .h5p-results-title{
+  font-size: 1.1758em;
+}
+.h5p-course-presentation .h5p-summary-slide .h5p-results-score{
+  font-size: 1em;
+}
+
 .h5p-course-presentation .h5p-summary-slide .h5p-results-list-heading{
   overflow: unset;
 }
