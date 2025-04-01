@@ -82,14 +82,6 @@
   color: #333;
 }
 
-/* Rectangular summary score meter */
-.h5p-course-presentation .h5p-summary-score-bar {
-  position: relative;
-  overflow: hidden;
-}
-.h5p-course-presentation .h5p-td.h5p-summary-score-bar {
-  border-top-width: 2px;
-}
 .h5p-course-presentation .h5p-summary-score-meter {
   height: 0.4em;
   background: #e0e0e0;
@@ -107,31 +99,6 @@
 }
 
 /* ------------------------------- Summary table style -----------------------------------  */
-.h5p-course-presentation .h5p-summary-table-holder {
-  position: relative;
-}
-
-.h5p-course-presentation .h5p-summary-table-pages {
-  overflow: auto;
-  clear: right;
-  max-height: 86%;
-  border-bottom: 1px solid #ddd;
-}
-
-.h5p-course-presentation .h5p-score-table tbody {
-  border-top: 1px solid #ddd;
-}
-
-.h5p-course-presentation .h5p-summary-total-table {
-  width: 100%;
-  position: relative;
-}
-
-.h5p-course-presentation .h5p-summary-total-table p {
-  font-weight: bold;
-  display: inline;
-  margin-right: 1em;
-}
 
 .h5p-course-presentation .h5p-summary-total-score {
   float: right;
@@ -139,7 +106,7 @@
 }
 
 .h5p-course-presentation .h5p-summary-social {
-  float: left;
+  margin-right: auto;
   font-size: 0.75em;
   padding: 0.25em 0em;
   margin-left: var(--h5p-theme-spacing-m);
@@ -151,21 +118,7 @@
   color: #999;
 }
 
-.h5p-course-presentation .h5p-score-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0px;
-}
-
-.h5p-course-presentation .h5p-td {
-  align-self: center;
-}
-
-.h5p-course-presentation .h5p-score-table tr:not(:last-child) {
-  border-bottom: 1px solid var(--h5p-theme-stroke-1);
-}
-
-.h5p-course-presentation .h5p-td p {
+.h5p-course-presentation .h5p-theme-results-list-item p {
   font-size: 0.8em;
   font-weight: bold;
   text-align: right;
@@ -241,25 +194,11 @@
 }
 
 
-.h5p-course-presentation .h5p-summary-slide .h5p-results-title{
+.h5p-course-presentation .h5p-summary-slide .h5p-results-title {
   font-size: 1.1758em;
 }
-.h5p-course-presentation .h5p-summary-slide .h5p-results-score{
+.h5p-course-presentation .h5p-summary-slide .h5p-results-score {
   font-size: 1em;
-}
-
-.h5p-course-presentation .h5p-summary-slide .h5p-results-list-heading{
-  overflow: unset;
-}
-
-.h5p-course-presentation .h5p-score-table tr{
-  display: grid;
-  grid-template-columns: 9fr 1fr;
-}
-
-
-.h5p-course-presentation .h5p-summary-table-pages{
-      padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-m);
 }
 
 /* --------------------------------- Button styling ----------------------------------------------- */
