@@ -281,6 +281,10 @@
           "default": "@value / @max correct"
         },
         {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "社交分享栏的标签",
           "default": "分享结果"
         },

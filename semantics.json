@@ -652,6 +652,13 @@
         "default": "@value / @max correct"
       },
       {
+        "name": "amountCorrectAria",
+        "type": "text",
+        "label": "Screen reader friendly version of x/y",
+        "importance": "low",
+        "default": "@value out of @max correct"
+      },
+      {
         "name": "shareResult",
         "type": "text",
         "label": "Label for social sharing bar",

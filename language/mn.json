@@ -281,6 +281,10 @@
           "default": "@value / @max correct"
         },
         {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "Сошиал хуваалцах талбарт зориулсан шошго",
           "default": "Үр дүнг хуваалцах"
         },

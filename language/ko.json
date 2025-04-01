@@ -281,6 +281,10 @@
           "default": "@value / @max correct"
         },
         {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "소셜 공유 표시줄의 레이블",
           "default": "결과 공유하기"
         },
