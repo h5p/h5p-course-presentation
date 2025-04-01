@@ -273,6 +273,14 @@
           "default": "Shiriki Matokeo"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Tangazo la jumla ya alama kwa teknolojia ya usaidizi",
           "default": "Umepata @scorekati ya pointi @maxScore kwa jumla"
         },

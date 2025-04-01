@@ -273,6 +273,14 @@
           "default": "@slideName te respostes incorrectes"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Etiqueta per a la barra Social",
           "default": "Comparteix els resultats"
         },

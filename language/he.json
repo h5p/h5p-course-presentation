@@ -273,6 +273,14 @@
           "default": "עמוד @slideName מכיל תשובות לא נכונות"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "תווית עבור סרגל שיתוף חברתי",
           "default": "שיתוף תוצאות"
         },

@@ -273,6 +273,14 @@
           "default": "@slideName sadece yanlış yanıtları içeriyor"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Sosyal paylaşım çubuğu etiketi",
           "default": "Sonucu Paylaş"
         },

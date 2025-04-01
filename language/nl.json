@@ -273,6 +273,14 @@
           "default": "@slideName heeft onjuiste antwoorden"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Label voor het delen van sociale media",
           "default": "Deel resultaat"
         },

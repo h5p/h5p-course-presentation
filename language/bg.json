@@ -273,6 +273,14 @@
           "default": "На @slideName има неверни отговори"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Етикет за споделяне",
           "default": "Споделяне на резултата"
         },

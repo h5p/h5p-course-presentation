@@ -273,6 +273,14 @@
           "default": "@slideName sisaldab valesid vastuseid"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Sotsiaalmeedias jagamise riba silt",
           "default": "Jaga tulemust"
         },

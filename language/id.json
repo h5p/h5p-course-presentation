@@ -273,6 +273,14 @@
           "default": "@slideName hanya memiliki jawaban salah"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Label panel untuk berbagi ke media sosial",
           "default": "Bagikan Hasil"
         },

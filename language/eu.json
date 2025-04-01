@@ -273,6 +273,14 @@
           "default": "@slideName diapositibak erantzun okerrak ditu"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Partekatze sozialerako barraren etiketa",
           "default": "Partekatu emaitza"
         },

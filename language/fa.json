@@ -273,6 +273,14 @@
           "default": "@slideName پاسخ‌های غلط دارد"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "برچسب برای نوار به اشتراک گذاری در شبکه‌های اجتماعی",
           "default": "نتیجه به اشتراک گذاری"
         },

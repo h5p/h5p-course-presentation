@@ -273,6 +273,14 @@
           "default": "@slideName има нетачне одговоре"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Ознака за траку за друштвено дељење",
           "default": "Подели резултат"
         },

@@ -273,6 +273,14 @@
           "default": "Na @slideName so nepravilni odgovori"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Besedilo za vrstico deljenja razultatov",
           "default": "Deli rezultate"
         },

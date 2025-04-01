@@ -273,6 +273,14 @@
           "default": "@slideName posiada tylko niepoprawne odpowiedzi"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "Tekst dla belki udostępnienia",
           "default": "Udostępnij wynik"
         },

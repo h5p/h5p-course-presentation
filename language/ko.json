@@ -273,6 +273,14 @@
           "default": "@slideName 에 오답이 있습니다"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
           "label": "소셜 공유 표시줄의 레이블",
           "default": "결과 공유하기"
         },
