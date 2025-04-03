@@ -273,6 +273,18 @@
           "default": "ស្លាយ «@slideName» មានចម្លើយមិនត្រឹមត្រូវ។"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "ពាក្យប្រើសម្រាប់របារបណ្តាញសង្គម",
           "default": "ចែករំលែកលទ្ធផល"
         },

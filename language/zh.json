@@ -273,6 +273,18 @@
           "default": "@slideName 作答錯誤"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "社交分享欄的標籤",
           "default": "分享結果"
         },

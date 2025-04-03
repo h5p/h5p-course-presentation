@@ -273,6 +273,18 @@
           "default": "@slideName sisältää vääriä vastauksia"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "Selite sosiaalisen jakamisen palkille",
           "default": "Jaa tuloksesi sosiaaliseen mediaan"
         },

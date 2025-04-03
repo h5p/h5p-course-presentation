@@ -44,9 +44,6 @@
     border: 1px solid #ddd;
     page-break-after: always;
   }
-  .h5p-course-presentation .h5p-summary-table-holder {
-    margin-bottom: 0;
-  }
   .h5p-course-presentation .h5p-summary-footer {
     display: none;
   }
@@ -79,10 +76,6 @@
        1px 1px 0 #fff;
     position: absolute;
     top: 0;
-  }
-  /* Summary slide - avoiding scrollbars on IE */
-  .h5p-course-presentation .h5p-summary-table-pages {
-    overflow: visible;
   }
   /* Hide twitter on summary slide */
   .h5p-course-presentation .h5p-summary-twitter-message {

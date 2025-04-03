@@ -273,6 +273,18 @@
           "default": "@slideName ima netačne odgovore"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "Label for social sharing bar",
           "default": "Podijeli rezultat"
         },

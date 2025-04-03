@@ -273,6 +273,18 @@
           "default": "@slideName contém respostas incorretas"
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "Etiqueta para barra de partilha",
           "default": "Partilhar Resultado"
         },
