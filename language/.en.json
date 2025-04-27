@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -68,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -149,12 +161,12 @@
           "default": "Export text"
         },
         {
-          "label": "Hide keywords list button title",
-          "default": "Hide keywords list"
+          "label": "Hide sidebar navigation menu button title",
+          "default": "Hide sidebar navigation menu"
         },
         {
-          "label": "Show keywords list button title",
-          "default": "Show keywords list"
+          "label": "Show sidebar navigation menu button title",
+          "default": "Show sidebar navigation menu"
         },
         {
           "label": "Fullscreen label",
@@ -238,7 +250,7 @@
         },
         {
           "label": "Explanation of slide navigation for assistive technologies",
-          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected"
+          "default": "Use left and right arrow to change slide in that direction whenever canvas is selected."
         },
         {
           "label": "Canvas label for assistive technologies",
@@ -298,7 +310,7 @@
           "default": "Submit and see results"
         },
         {
-          "label": "Slideshow navigation",
+          "label": "Label for Slideshow navigation",
           "default": "Slideshow navigation"
         },
         {
@@ -325,7 +337,7 @@
         },
         {
           "label": "Override \"Show Solution\" button",
-          "description": "This option determines if the \"Show Solution\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "description": "This option determines if the \"Show Solution\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled) ",
           "options": [
             {
               "label": "Enabled"
@@ -337,7 +349,7 @@
         },
         {
           "label": "Override \"Retry\" button",
-          "description": "This option determines if the \"Retry\" button will be shown for all questions, disabled for all or configured for each question individually.",
+          "description": "This option determines if the \"Retry\" button will be configured for each question individually (default) shown for all questions (Enabled) or disabled for all questions (Disabled)",
           "options": [
             {
               "label": "Enabled"

@@ -9,6 +9,7 @@
         "name": "slides",
         "importance": "high",
         "type": "list",
+        "entity": "slide",
         "field": {
           "name": "slide",
           "importance": "high",
@@ -18,6 +19,7 @@
               "name": "elements",
               "importance": "high",
               "type": "list",
+              "entity": "element",
               "field": {
                 "name": "element",
                 "importance": "high",
@@ -206,6 +208,7 @@
               "name": "keywords",
               "importance": "low",
               "type": "list",
+              "entity": "keyword",
               "optional": true,
               "field": {
                 "name": "keyword",
@@ -223,6 +226,7 @@
                     "name": "subs",
                     "importance": "low",
                     "type": "list",
+                    "entity": "keyword",
                     "optional": true,
                     "field": {
                       "name": "keyword",
