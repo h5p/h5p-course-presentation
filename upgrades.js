@@ -46,7 +46,7 @@ H5PUpgrades['H5P.CoursePresentation'] = (function () {
           keywordListEnabled: !keywordsRemoved,
           keywordListAlwaysShow: true,
           keywordListAutoHide: false,
-          keywordListOpacity: 90
+          keywordListOpacity: 100
         };
         delete parameters.slides;
         finished(null, parameters);
