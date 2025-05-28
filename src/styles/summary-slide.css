@@ -200,6 +200,9 @@
 .h5p-course-presentation .h5p-summary-slide .h5p-results-score {
   font-size: 1em;
 }
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-results-list-heading {
+  padding: 0 var(--h5p-theme-spacing-xl);
+}
 
 /* --------------------------------- Button styling ----------------------------------------------- */
 

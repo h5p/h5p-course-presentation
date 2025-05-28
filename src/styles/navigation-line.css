@@ -97,9 +97,12 @@
 
 .h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
   text-align: center;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* ---------------------------- Footer slide information buttons ----------------------- */
