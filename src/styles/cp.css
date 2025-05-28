@@ -1035,3 +1035,8 @@
 .h5p-course-presentation .h5p-audio-recorder-view [role=status] {
   font-size: .85em;
 }
+.h5p-course-presentation .h5p-table .table{
+  padding: 0px;
+  margin: 0px;
+  line-height: 1em;
+}
