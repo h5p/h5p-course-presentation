@@ -1,0 +1,414 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Megjegyzések",
+                      "description": "A megjegyzések akkor jelennek meg, ha a felhasználó megjeleníti a javasolt változásokat minden diánál."
+                    },
+                    {
+                      "label": "Megjegyzések mindig láthatók"
+                    },
+                    {
+                      "label": "Háttér átlátszósága"
+                    },
+                    {
+                      "label": "Megjelenítés gombként"
+                    },
+                    {
+                      "label": "Opcionális gombfelirat"
+                    },
+                    {
+                      "label": "Gomb mérete",
+                      "options": [
+                        {
+                          "label": "Kicsi"
+                        },
+                        {
+                          "label": "Nagy"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Cím"
+                    },
+                    {
+                      "label": "Ugrás",
+                      "options": [
+                        {
+                          "label": "Adott sorszámú diára"
+                        },
+                        {
+                          "label": "Következő diára"
+                        },
+                        {
+                          "label": "Előző diára"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Adott sorszámú diára",
+                      "description": "Csak akkor használható, ha az 'Adott sorszámú diára' van kiválasztva"
+                    },
+                    {
+                      "label": "Nem látható",
+                      "description": "Alapértelmezett kurzus, cím és tab index nélkül. Figyelem: a fogyatékossággal elő vagy a csak billentyűzetet használó felhasználóknak így gondjai lehetnek az elem használatával."
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "label": "Kép",
+                    "description": "Háttérképnél célszerű 2:1 szélesség-magasság arányt alkalmazni, ekkor elkerülhető annak széthúzása. A nagyfelbontású képek szebben jelennek meg a nagyobb képernyőkön."
+                  },
+                  {
+                    "label": "Színválasztás"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Kulcsszólista"
+        },
+        {
+          "label": "Mindig látható"
+        },
+        {
+          "label": "Automatikus elrejtés"
+        },
+        {
+          "label": ""Átlátszóság""
+        },
+        {
+          "fields": [
+            {
+              "label": "Kép",
+              "description": "Háttérképnél célszerű 2:1 szélesség-magasság arányt alkalmazni, ekkor elkerülhető annak széthúzása. A nagyfelbontású képek szebben jelennek meg a nagyobb képernyőkön."
+            },
+            {
+              "label": "Színválasztás"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Lokalizáció",
+      "fields": [
+        {
+          "label": "\"Dia\" fordítása",
+          "default": "Dia"
+        },
+        {
+          "label": "\"Pontszám\" fordítása",
+          "default": "Pontszám"
+        },
+        {
+          "label": "\"Elért pontszám\" fordítása",
+          "default": "Elért pontszám"
+        },
+        {
+          "label": "\"Max pontszám\" fordítása",
+          "default": "Max pontszám"
+        },
+        {
+          "label": "\"Összesen\" fordítása",
+          "default": "Összesen"
+        },
+        {
+          "label": "\"Összpontszám\" fordítása",
+          "default": "Összpontszám"
+        },
+        {
+          "label": "Megoldások mutatása gomb felirata",
+          "default": "Megoldások mutatása"
+        },
+        {
+          "label": "Újrapróbálkozás gomb felirata",
+          "default": "Újra"
+        },
+        {
+          "label": "Szöveg exportálása gomb felirata",
+          "default": "Szöveg exportálása"
+        },
+        {
+          "label": "Kulcsszólistát elrejtő gomb felirata",
+          "default": "Kulcsszólista elrejtése"
+        },
+        {
+          "label": "Kulcsszólistát megjelenítő gomb felirata",
+          "default": "Kulcsszólista mutatása"
+        },
+        {
+          "label": "Teljes képernyő címke",
+          "default": "Teljes képernyő"
+        },
+        {
+          "label": "Kilépés a teljes képernyőből címke",
+          "default": "Kilépés a teljes képernyőből"
+        },
+        {
+          "label": "Előző dia",
+          "default": "Előző dia"
+        },
+        {
+          "label": "Következő dia címke",
+          "default": "Következő dia"
+        },
+        {
+          "label": "Aktuális dia címke",
+          "default": "Aktuális dia"
+        },
+        {
+          "label": "Utolsó dia címke",
+          "default": "Utolsó dia"
+        },
+        {
+          "label": "Megoldás nézet kilépés szöveg",
+          "default": "Kilépés a megoldás nézet"
+        },
+        {
+          "label": "Megoldás nézet szöveg",
+          "default": "Megoldás nézet"
+        },
+        {
+          "label": "A szöveg, ha az oldalon több feladat van",
+          "default": "Több feladat"
+        },
+        {
+          "label": "Eredmény üzenet szöveg",
+          "default": "Elért eredmény:"
+        },
+        {
+          "label": "Megosztás Facebook-on szöveg",
+          "default": "Megosztás Facebook-on"
+        },
+        {
+          "label": "Megosztás Twitter-en szöveg",
+          "default": "Megosztás Twitter-en"
+        },
+        {
+          "label": "Megosztás Google-on szöveg",
+          "default": "Megosztás Google+-on"
+        },
+        {
+          "label": "Összefoglalás dia címe",
+          "default": "Összefoglalás"
+        },
+        {
+          "label": "Megjegyzések ikon felirata",
+          "default": "Megjegyzések mutatása"
+        },
+        {
+          "label": "Nyomtatás gomb felirata",
+          "default": "Nyomtatás"
+        },
+        {
+          "label": "Nyomtatási ablak nyitószöveg",
+          "default": "Hogyan szeretné kinyomtatni a prezentációt?"
+        },
+        {
+          "label": "\"Minden dia nyomtatás\" gomb felirata",
+          "default": "Minden dia nyomtatása"
+        },
+        {
+          "label": "\"Aktuális dia nyomtatás\" gomb felirata",
+          "default": "Aktuális dia nyomtatása"
+        },
+        {
+          "label": "Cím nélküli diák felirata",
+          "default": "Cím nélküli"
+        },
+        {
+          "label": "Magyarázat a dián történő navigációról a támogató-segítő eszközöknek",
+          "default": "A jobbra vagy balra lépéshez használja a megfelelő nyilat, amikor a vászon van kijelölve"
+        },
+        {
+          "label": "Vászon felirata a támogató-segítő eszközöknek",
+          "default": "Prezentációs vászon. Használja a bal és jobb nyilakat a diák közötti navigáláshoz."
+        },
+        {
+          "label": "Haladásjelző felirata a támogató-segítő eszközöknek",
+          "default": "Válasszon megjelenítendő diát"
+        },
+        {
+          "label": "Nem befejezett interakciók felirata",
+          "default": "@slideName nem befejezett interakciót tartalmaz"
+        },
+        {
+          "label": "Befejezett interakciók felirata",
+          "default": "@slideName befejezett interakciót tartalmaz"
+        },
+        {
+          "label": "Diaszámláló felirata. A változók: @index, @total",
+          "default": "@total / @index dia"
+        },
+        {
+          "label": "Helyes válaszokat tartalmazó dia felirata",
+          "default": "@slideName csak helyes válaszokat tartalmaz"
+        },
+        {
+          "label": "Helytelen válaszokat tartalmazó dia felirata",
+          "default": "@slideName helytelen válaszokat tartalmaz"
+        },
+        {
+          "label": "Közösségi megosztási sáv felirata",
+          "default": "Eredmények megosztása"
+        },
+        {
+          "label": "Összpontszám közlési módja támogató-segítő eszközöknél",
+          "default": "Az elért pontszám @score, az összesen elérhető @maxScore pontból",
+          "description": "Elérhető változók: @score és @maxScore"
+        },
+        {
+          "label": "Teljesképernyő bekapcsolva közlési módja támogató-segítő eszközöknél",
+          "default": "Teljesképernyős mód bekapcsolva"
+        },
+        {
+          "label": "Teljesképernyő kikapcsolva közlési módja támogató-segítő eszközöknél",
+          "default": "Teljesképernyős mód kikapcsolva"
+        },
+        {
+          "label": "Válaszok leadása megerősítő ablak fejléce",
+          "default": "Válaszok leadása"
+        },
+        {
+          "label": "Eredmény leadása megerősítő ablak szövege",
+          "default": "Ezzel leadja az eredményét, biztosan folytatja?"
+        },
+        {
+          "label": "Jóváhagyó gomb az eredmények leadása megerősítő ablaknál",
+          "default": "Leadás és eredmények mutatása"
+        },
+        {
+          "label": "Diasor navigáció",
+          "default": "Diasor navigáció"
+        },
+        {
+          "label": "Elfogadás gomb felirat",
+          "default": "Elfogadás"
+        },
+        {
+          "label": "Mégse gomb felirat",
+          "default": "Mégse"
+        }
+      ]
+    },
+    {
+      "label": "Viselkedési beállítások.",
+      "description": "Ezekkel a beállításokkal felülírhatók a viselkedési beállítások.",
+      "fields": [
+        {
+          "label": "Interaktív felület mód aktiválása",
+          "description": "Elrejti a navigációs gombokat a felhasználó elől, így a navigálás a diára ugrás funkcióval működik. Az Összefoglalás oldal ilyenkor nem elérhető."
+        },
+        {
+          "label": "Összefoglalás dia elrejtése",
+          "description": "Elrejti az Összefoglalás diát."
+        },
+        {
+          "label": "\"Megoldás mutatása\" gomb felülírása",
+          "description": "Ez a beállítás megadja, hogy a \"Megoldás mutatása\" gomb minden kérdésnél egyformán látható, vagy rejtett, avagy ez kérdésenként állítható.",
+          "options": [
+            {
+              "label": "Bekapcsolva"
+            },
+            {
+              "label": "Kikapcsolva"
+            }
+          ]
+        },
+        {
+          "label": "\"Újra\" gomb felülírása",
+          "description": "Ez a beállítás megadja, hogy az \"Újra\" gomb minden kérdésnél egyformán látható, vagy rejtett, avagy ez kérdésenként állítható.",
+          "options": [
+            {
+              "label": "Bekapcsolva"
+            },
+            {
+              "label": "Kikapcsolva"
+            }
+          ]
+        },
+        {
+          "label": "\"Megoldás mutatása\" gomb megjelenítése az összefoglaló dián",
+          "description": "Bekapcsolása esetén a tanulónak lehetősége van az összes kérdés megoldásának megtekintésére, amikor elérik az összefoglaló diát"
+        },
+        {
+          "label": "\"Újra\" gomb megjelenítése az összefoglaló dián",
+          "description": "Bekapcsolása esetén a tanulónak lehetősége van az összes kérdés újrapróbálására, amikor eléri az összefoglaló diát. Ne feledjük, ezt akkor is megtehetik a tanulók az oldal újratöltésével, ha ez a gomb nem jelenik meg."
+        },
+        {
+          "label": "Nyomtatás gomb engedélyezése",
+          "description": "Engedélyezi a nyomtatás gombot."
+        },
+        {
+          "label": "Közösségi beállítások",
+          "description": "Ezekkel a beállításokkal felülírhatók a közösségi viselkedési beállítások. Az üres helyekre automatikusan kerül érték, ha megadunk egy hivatkozást, különben generálva lesz minden érték.",
+          "fields": [
+            {
+              "label": "Facebook-os megosztási ikon mutatása"
+            },
+            {
+              "label": "Facebook-os megosztás beállításai",
+              "fields": [
+                {
+                  "label": "Facebook-os megosztás hivatkozása",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Facebook-os megosztás üzenete",
+                  "default": "Az összes @maxScore pontból @score pontot értem el a @currentpageurl feladaton."
+                }
+              ]
+            },
+            {
+              "label": "Twitter-es megosztási ikon mutatása"
+            },
+            {
+              "label": "Twitter-es megosztás beállításai",
+              "fields": [
+                {
+                  "label": "Twitter-es megosztás üzenete",
+                  "default": "Az összes @maxScore pontból @score pontot értem el a @currentpageurl feladaton."
+                },
+                {
+                  "label": "Twitter-es megosztás hivatkozása",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Twitter-es megosztás hashtag-jei",
+                  "default": "h5p, kurzus"
+                }
+              ]
+            },
+            {
+              "label": "Google+-os megosztási ikon mutatása"
+            },
+            {
+              "label": "Google-ös megosztás hivatkozása",
+              "default": "@currentpageurl"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
