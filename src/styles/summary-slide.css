@@ -96,6 +96,8 @@
 .h5p-course-presentation .h5p-summary-footer {
   height: 12%;
   font-size: 0.75em;
+  display: flex;
+  justify-content: center;
 }
 
 /* ------------------------------- Summary table style -----------------------------------  */
