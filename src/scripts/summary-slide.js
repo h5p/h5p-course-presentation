@@ -1,4 +1,4 @@
-import { jQuery as $, JoubelUI } from './globals';
+import { jQuery as $, JoubelUI, Components } from './globals';
 import { addClickAndKeyboardListeners } from './utils';
 
 const SummarySlide = (function () {
@@ -98,43 +98,40 @@ const SummarySlide = (function () {
 
     // Show solutions button
     if (this.cp.showSummarySlideSolutionButton) {
-      const $showResultsButton = $(H5P.Components.Button({
+      const $showResultsButton = Components.Button({
         label: that.cp.l10n.showSolutions,
         classes: 'h5p-show-solutions h5p-theme-secondary-cta h5p-theme-show-results',
         styleType: 'secondary',
         onClick: function () {
           that.toggleSolutionMode(true);
         }
-      }));      
+      });
       $summaryFooter.append($showResultsButton);
     }
 
     // Show solutions button
     if (this.cp.showSummarySlideRetryButton) {
-      const $retryButton = $(H5P.Components.Button({
+      const $retryButton = Components.Button({
         label: that.cp.l10n.retry,
         classes: 'h5p-cp-retry-button h5p-theme-secondary-cta h5p-theme-retry',
         styleType: 'secondary',
         onClick: function () {
           that.cp.resetTask();
         }
-      }));      
+      })  
       $summaryFooter.append($retryButton);
     }
 
     // Only make export button if there is an export area in CP
     if (that.cp.hasAnswerElements) {
-      JoubelUI.createButton({
-        'class': 'h5p-eta-export h5p-theme-secondary-cta',
-        html: that.cp.l10n.exportAnswers,
-        on: {
-          click: function () {
-            H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
-            // event.preventDefault();
-          }
-        },
-        appendTo: $summaryFooter
-      });
+      const $exportButton = Components.Button({
+        label: that.cp.l10n.exportAnswers,
+        classes: 'h5p-eta-export h5p-theme-secondary-cta',
+        onClick: function () {
+          H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
+        }
+      })  
+      $summaryFooter.append($exportButton);
     }
   };
 

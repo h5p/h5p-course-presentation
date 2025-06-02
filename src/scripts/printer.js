@@ -1,4 +1,5 @@
 import { addClickAndKeyboardListeners } from './utils';
+import { Components } from './globals';
 
 const Printer = (function ($) {
   let nextPrinterDialogId = 0;
@@ -136,23 +137,25 @@ const Printer = (function ($) {
       html: texts.printIngress
     }));
 
-    H5P.JoubelUI.createButton({
-      html: texts.printAllSlides,
-      'class': 'h5p-cp-print-all-slides',
-      click: function () {
+    const $printAllButton = Components.Button({
+      label: texts.printAllSlides,
+      classes: 'h5p-cp-print-all-slides',
+      onClick: function () {
         self.close();
         callback(true);
       }
-    }).appendTo($content);
+    });      
+    $content.append($printAllButton);
 
-    H5P.JoubelUI.createButton({
-      html: texts.printCurrentSlide,
-      'class': 'h5p-cp-print-current-slide',
-      click: function () {
+    const $printCurrentButton = Components.Button({
+      label: texts.printCurrentSlide,
+      classes: 'h5p-cp-print-current-slide',
+      onClick: function () {
         self.close();
         callback(false);
       }
-    }).appendTo($content);
+    });      
+    $content.append($printCurrentButton);
 
     this.open = function () {
       setTimeout(function () {
