@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Megjegyzések",
-                      "description": "A megjegyzések akkor jelennek meg, ha a felhasználó megjeleníti a javasolt változásokat minden diánál."
+                      "description": "A megjegyzések akkor jelennek meg, ha a felhasználó megjeleníti a javasolt válaszokat minden diánál."
                     },
                     {
                       "label": "Megjegyzések mindig láthatók"
