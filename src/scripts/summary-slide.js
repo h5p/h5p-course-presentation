@@ -98,32 +98,28 @@ const SummarySlide = (function () {
 
     // Show solutions button
     if (this.cp.showSummarySlideSolutionButton) {
-      JoubelUI.createButton({
-        'class': 'h5p-show-solutions h5p-theme-secondary-cta h5p-theme-show-results',
-        html: that.cp.l10n.showSolutions,
-        on: {
-          click: function () {
-            // Enable solution mode
-            that.toggleSolutionMode(true);
-          }
-        },
-        appendTo: $summaryFooter
-      });
+      const $showResultsButton = $(H5P.Components.Button({
+        label: that.cp.l10n.showSolutions,
+        classes: 'h5p-show-solutions h5p-theme-secondary-cta h5p-theme-show-results',
+        styleType: 'secondary',
+        onClick: function () {
+          that.toggleSolutionMode(true);
+        }
+      }));      
+      $summaryFooter.append($showResultsButton);
     }
 
     // Show solutions button
     if (this.cp.showSummarySlideRetryButton) {
-      JoubelUI.createButton({
-        'class': 'h5p-cp-retry-button h5p-theme-secondary-cta h5p-theme-retry',
-        html: that.cp.l10n.retry,
-        on: {
-          click: function () {
-            that.cp.resetTask();
-            // event.preventDefault();
-          }
-        },
-        appendTo: $summaryFooter
-      });
+      const $retryButton = $(H5P.Components.Button({
+        label: that.cp.l10n.retry,
+        classes: 'h5p-cp-retry-button h5p-theme-secondary-cta h5p-theme-retry',
+        styleType: 'secondary',
+        onClick: function () {
+          that.cp.resetTask();
+        }
+      }));      
+      $summaryFooter.append($retryButton);
     }
 
     // Only make export button if there is an export area in CP
