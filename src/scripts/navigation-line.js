@@ -2,6 +2,7 @@ import Printer from './printer';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
 import { defaultValue, contains, isFunction, addClickAndKeyboardListeners, isIOS } from './utils';
+import { Components } from './globals'
 
 /**
  * Enum indicating which state a navigation bar part is in
@@ -291,14 +292,12 @@ const NavigationLine = (function ($) {
     // Center footer elements
 
     // Previous slide
-    this.cp.$prevSlideButton = $('<div/>', {
-      'class': 'h5p-footer-previous-slide h5p-theme-nav-button',
-      'aria-label': this.cp.l10n.prevSlide,
-      'role': 'button',
-      'tabindex': '-1',
-      'aria-disabled': 'true'
-      /*'text': 'Previous'*/
-    }).appendTo($centerFooter);
+    this.cp.$prevSlideButton = $(Components.Button({
+      classes: 'h5p-footer-previous-slide h5p-theme-nav-button',
+      ariaLabel: this.cp.l10n.prevSlide,
+      styleType: 'nav',
+    }));      
+    $centerFooter.append(this.cp.$prevSlideButton);
 
     new H5P.Tooltip(this.cp.$prevSlideButton.get(0), { position: 'left' });
 
@@ -339,13 +338,12 @@ const NavigationLine = (function ($) {
     }).appendTo($slideNumbering);
 
     // Next slide
-    this.cp.$nextSlideButton = $('<div/>', {
-      'class': 'h5p-footer-next-slide h5p-theme-nav-button',
-      'aria-label': this.cp.l10n.nextSlide,
-      'role': 'button',
-      'tabindex': '0'
-/*      'text': 'Next'*/
-    }).appendTo($centerFooter);
+    this.cp.$nextSlideButton = $(Components.Button({
+      classes: 'h5p-footer-next-slide h5p-theme-nav-button',
+      ariaLabel: this.cp.l10n.nextSlide,
+      styleType: 'nav',
+    }));      
+    $centerFooter.append(this.cp.$nextSlideButton);
 
     H5P.Tooltip(this.cp.$nextSlideButton.get(0), { position: 'right' });
 
