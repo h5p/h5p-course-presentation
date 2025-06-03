@@ -293,7 +293,7 @@ const NavigationLine = (function ($) {
 
     // Previous slide
     this.cp.$prevSlideButton = $(Components.Button({
-      classes: 'h5p-footer-previous-slide h5p-theme-nav-button',
+      icon: 'previous',
       ariaLabel: this.cp.l10n.prevSlide,
       styleType: 'nav',
     }));      
@@ -339,7 +339,7 @@ const NavigationLine = (function ($) {
 
     // Next slide
     this.cp.$nextSlideButton = $(Components.Button({
-      classes: 'h5p-footer-next-slide h5p-theme-nav-button',
+      icon: 'next',
       ariaLabel: this.cp.l10n.nextSlide,
       styleType: 'nav',
     }));      

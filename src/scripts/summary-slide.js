@@ -100,7 +100,7 @@ const SummarySlide = (function () {
     if (this.cp.showSummarySlideSolutionButton) {
       const $showResultsButton = Components.Button({
         label: that.cp.l10n.showSolutions,
-        classes: 'h5p-show-solutions h5p-theme-secondary-cta h5p-theme-show-results',
+        icon: 'show-results',
         styleType: 'secondary',
         onClick: function () {
           that.toggleSolutionMode(true);
@@ -113,7 +113,7 @@ const SummarySlide = (function () {
     if (this.cp.showSummarySlideRetryButton) {
       const $retryButton = Components.Button({
         label: that.cp.l10n.retry,
-        classes: 'h5p-cp-retry-button h5p-theme-secondary-cta h5p-theme-retry',
+        icon: 'retry',
         styleType: 'secondary',
         onClick: function () {
           that.cp.resetTask();
@@ -126,7 +126,7 @@ const SummarySlide = (function () {
     if (that.cp.hasAnswerElements) {
       const $exportButton = Components.Button({
         label: that.cp.l10n.exportAnswers,
-        classes: 'h5p-eta-export h5p-theme-secondary-cta',
+        classes: 'h5p-eta-export',
         onClick: function () {
           H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
         }
