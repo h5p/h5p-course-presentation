@@ -19,23 +19,22 @@
   line-height: 1;
   align-items: center;*/
   
-   display: flex;
-    font-size: 0.75em;
-    width: 100%;
-    height: 7%;
-    /* padding: 0.25em; */
-    /* box-sizing: border-box; */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    background-color: var(--h5p-theme-ui-base);
-    color: var(--h5p-theme-text-secondary);
-    line-height: 1;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-  
+  display: flex;
+  font-size: 0.75em;
+  width: 100%;
+  height: 7%;
+  /* padding: 0.25em; */
+  /* box-sizing: border-box; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  background-color: var(--h5p-theme-ui-base);
+  color: var(--h5p-theme-text-secondary);
+  line-height: 1;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 /* Footer buttons */
@@ -69,8 +68,9 @@
 }
 
 .h5p-course-presentation .h5p-footer .h5p-theme-nav-button:before,
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:after{
+.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:after {
   font-weight: normal;
+  margin: 0;
 }
 .h5p-course-presentation .h5p-footer .h5p-theme-nav-button:hover{
   background-color: var(--h5p-theme-secondary-cta-light);
@@ -81,9 +81,8 @@
 
 
 .h5p-course-presentation .h5p-footer .h5p-footer-button:before, 
-.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:after,
-.h5p-footer-button .h5p-icon-menu:before{
- padding: 0;
+.h5p-footer-button .h5p-icon-menu:before {
+  padding: 0;
 }
 .h5p-course-presentation .h5p-footer .h5p-footer-button:hover{
   background-color: var(--h5p-theme-contrast-cta-light);
@@ -106,19 +105,6 @@
 }
 
 /* ---------------------------- Footer slide information buttons ----------------------- */
-
-/* Prev slide */
-.h5p-course-presentation .h5p-footer .h5p-footer-previous-slide:before {
-  font-family: 'h5p-theme';
-  content: "\e900";
-  padding-right: 0;
-}
-
-/* Next slide */
-.h5p-course-presentation .h5p-footer .h5p-footer-next-slide:after {
-  font-family: 'h5p-theme';
-  content: "\e901";
-}
 
 /* Slide counter */
 .h5p-course-presentation .h5p-footer .h5p-footer-slide-count,

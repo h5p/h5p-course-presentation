@@ -63,6 +63,11 @@
       "machineName": "H5PEditor.CoursePresentation",
       "majorVersion": 1,
       "minorVersion": 25
+    },
+    {
+      "machineName": "H5P.Components",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ]
 }
