@@ -15,7 +15,7 @@
                     {},
                     {
                       "label": "Megjegyzések",
-                      "description": "A megjegyzések akkor jelennek meg, ha a felhasználó megjeleníti a javasolt válaszokat minden diánál."
+                      "description": "A megjegyzések akkor jelennek meg, ha a felhasználó megjeleníti a javasolt változásokat minden diánál."
                     },
                     {
                       "label": "Megjegyzések mindig láthatók"
@@ -94,7 +94,7 @@
           "label": "Automatikus elrejtés"
         },
         {
-          "label": ""Átlátszóság""
+          "label": "Átlátszóság"
         },
         {
           "fields": [
@@ -390,7 +390,7 @@
                   "default": "Az összes @maxScore pontból @score pontot értem el a @currentpageurl feladaton."
                 },
                 {
-                  "label": "Twitter-es megosztás hivatkozása",
+                  "label": "Twitter-es megosztás hivatkozása",
                   "default": "@currentpageurl"
                 },
                 {
