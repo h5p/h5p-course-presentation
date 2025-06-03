@@ -205,9 +205,9 @@
 
 /* --------------------------------- Button styling ----------------------------------------------- */
 
-.h5p-course-presentation .h5p-summary-slide .h5p-show-solutions, 
-.h5p-course-presentation .h5p-summary-slide .h5p-cp-retry-button, 
-.h5p-course-presentation .h5p-summary-slide .h5p-eta-export{
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-show-results, 
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-retry, 
+.h5p-course-presentation .h5p-summary-slide .h5p-eta-export {
   margin-right: var(--h5p-theme-spacing-xs);
 }
 
@@ -216,6 +216,3 @@
   content: "\f0f6";
   margin-right: 0.5em;
 }
-
-
-

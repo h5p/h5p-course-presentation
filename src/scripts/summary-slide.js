@@ -118,7 +118,7 @@ const SummarySlide = (function () {
         onClick: function () {
           that.cp.resetTask();
         }
-      })  
+      });
       $summaryFooter.append($retryButton);
     }
 
@@ -127,10 +127,11 @@ const SummarySlide = (function () {
       const $exportButton = Components.Button({
         label: that.cp.l10n.exportAnswers,
         classes: 'h5p-eta-export',
+        styleType: 'secondary',
         onClick: function () {
           H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
         }
-      })  
+      });
       $summaryFooter.append($exportButton);
     }
   };
