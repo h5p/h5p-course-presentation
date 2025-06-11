@@ -112,12 +112,7 @@
 .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter,
 .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
   display: inline-block;
-  min-width: fit-content;
-}
-
-/* Slide delimiter */
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter {
-  padding: 0 0.5em;
+  min-width: 23px;
 }
 
 /* ---------------------------------------------- Solution Mode ---------------------------------- */
