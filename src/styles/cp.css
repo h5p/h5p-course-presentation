@@ -1035,8 +1035,19 @@
 .h5p-course-presentation .h5p-audio-recorder-view [role=status] {
   font-size: .85em;
 }
+
+/* Audio specific styling when inisde CP */
 .h5p-course-presentation .h5p-table .table{
   padding: 0px;
   margin: 0px;
   line-height: 1em;
+}
+.h5p-course-presentation .h5p-audio-inner .h5p-audio-minimal-button{
+  padding: 0px;
+}
+.h5p-course-presentation .h5p-audio-inner{
+  background-color: transparent;
+}
+.h5p-course-presentation .h5p-audio-inner .h5p-audio-minimal-button:hover {
+  box-shadow: none;
 }
