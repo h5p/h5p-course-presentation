@@ -296,7 +296,7 @@ const NavigationLine = (function ($) {
       icon: 'previous',
       ariaLabel: this.cp.l10n.prevSlide,
       styleType: 'nav',
-    }));      
+    }));
     $centerFooter.append(this.cp.$prevSlideButton);
 
     new H5P.Tooltip(this.cp.$prevSlideButton.get(0), { position: 'left' });
@@ -342,7 +342,7 @@ const NavigationLine = (function ($) {
       icon: 'next',
       ariaLabel: this.cp.l10n.nextSlide,
       styleType: 'nav',
-    }));      
+    }));
     $centerFooter.append(this.cp.$nextSlideButton);
 
     H5P.Tooltip(this.cp.$nextSlideButton.get(0), { position: 'right' });
@@ -421,16 +421,8 @@ const NavigationLine = (function ($) {
   NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber, solutionMode) {
     var that = this;
 
-    // Updates progress bar progress (blue line)
-    var i;
-    for (i = 0; i < that.cp.progressbarParts.length; i += 1) {
-      if (slideNumber + 1 > i) {
-        that.cp.progressbarParts[i].addClass('h5p-progressbar-part-show');
-      }
-      else {
-        that.cp.progressbarParts[i].removeClass('h5p-progressbar-part-show');
-      }
-    }
+    const from = prevSlideNumber ?? 0;
+    this.animateFill(from, slideNumber);
 
     that.progresbarKeyboardControls.setTabbableByIndex(slideNumber);
 
@@ -452,6 +444,44 @@ const NavigationLine = (function ($) {
       return;
     }
   };
+
+  /**
+   * Fills navigation bar segments sequentially
+   * @param {number} fromIndex Current slide index
+   * @param {number} toIndex Index of slide that we're navigating to
+   */
+  NavigationLine.prototype.animateFill = function (fromIndex, toIndex) {
+    const parts = this.cp.progressbarParts;
+    const totalTransitionTime = 200;
+    const isForward = toIndex > fromIndex;
+
+    let animatedParts = Array.from(parts).filter((part, index) => {
+      return isForward
+        ? (index > fromIndex && index <= toIndex)
+        : (index <= fromIndex && index > toIndex);
+    });
+
+    if (!isForward) {
+      animatedParts = animatedParts.reverse();
+    }
+
+    // Divide transition speed on all parts that will transition
+    const segmentTransitionDelay = totalTransitionTime / animatedParts.length;
+    animatedParts.forEach(part => {
+      part.get(0).style.setProperty('--h5p-cp-nav-bar-fill-duration', `${segmentTransitionDelay}ms`);
+    })
+
+    animatedParts.forEach((part, idx) => {
+      setTimeout(() => {
+        if (isForward) {
+          part.addClass('h5p-progressbar-part-show');
+        }
+        else {
+          part.removeClass('h5p-progressbar-part-show');
+        }
+      }, idx * segmentTransitionDelay);
+    })
+  }
 
   /**
    * Sets a part to be answered, or un answered
