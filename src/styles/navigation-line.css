@@ -10,15 +10,15 @@
   padding: 0.25em;
   box-sizing: border-box;
 
- 
-  -moz-user-select: none;     
-  -ms-user-select: none;      
+
+  -moz-user-select: none;
+  -ms-user-select: none;
 
   background-color: var(--h5p-theme-ui-base);
   color: var(--h5p-theme-text-secondary);
   line-height: 1;
   align-items: center;*/
-  
+
   display: flex;
   font-size: 0.75em;
   width: 100%;
@@ -80,7 +80,7 @@
 }
 
 
-.h5p-course-presentation .h5p-footer .h5p-footer-button:before, 
+.h5p-course-presentation .h5p-footer .h5p-footer-button:before,
 .h5p-footer-button .h5p-icon-menu:before {
   padding: 0;
 }
@@ -292,17 +292,23 @@
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part {
-  /*margin: 5px 5px;
-  border-radius: 4px;
-  */
-  border-right: solid 1px color-mix(in srgb, var(--h5p-theme-secondary-cta-base), transparent 50%); 
+  background-color: color-mix(in srgb, var(--h5p-theme-secondary-cta-base) 20%, var(--h5p-theme-secondary-contrast-cta) 80%);
+  box-shadow: inset -1px 0 0 color-mix(in srgb, var(--h5p-theme-secondary-cta-base), transparent 50%);
 
-  background-color: var(--h5p-theme-ui-base);
-  transition: all 0.25s ease-out;
-  background: linear-gradient(to left, color-mix(in srgb, var(--h5p-theme-secondary-cta-base), transparent 80%) 50%, var(--h5p-theme-secondary-cta-base) 50%) right;
-   /* background: linear-gradient(to left, color-mix(in srgb, var(--h5p-theme-secondary-cta-base), transparent 80%) 50%, var(--h5p-theme-secondary-cta-base) 50%) right;*/
-  background-size: 200%;
-      background-color: var(--h5p-theme-secondary-contrast-cta);
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 0;
+    background: var(--h5p-theme-secondary-cta-base);
+    transition: width 0.3s ease;
+    z-index: 1;
+    box-shadow: inset -1px 0 0 var(--h5p-theme-secondary-contrast-cta);
+  }
+}
+
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-show::before {
+  width: 100%;
 }
 
 .h5p-course-presentation .h5p-progressbar a {
@@ -371,7 +377,7 @@
   background: transparent;
   margin-right: auto;
   margin-left: auto;
-  
+
 
 }
 
