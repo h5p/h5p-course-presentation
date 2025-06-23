@@ -418,11 +418,11 @@ const NavigationLine = (function ($) {
   /**
    * Updates progress bar.
    */
-  NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber, solutionMode) {
+  NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber, solutionMode, skipAnimation = false) {
     var that = this;
 
     const from = prevSlideNumber ?? 0;
-    this.animateFill(from, slideNumber);
+    this.animateFill(from, slideNumber, skipAnimation);
 
     that.progresbarKeyboardControls.setTabbableByIndex(slideNumber);
 
@@ -449,8 +449,9 @@ const NavigationLine = (function ($) {
    * Fills navigation bar segments sequentially
    * @param {number} fromIndex Current slide index
    * @param {number} toIndex Index of slide that we're navigating to
+   * @param {boolean} [skipAnimation] Opt to skip animation, useful for editor updates
    */
-  NavigationLine.prototype.animateFill = function (fromIndex, toIndex) {
+  NavigationLine.prototype.animateFill = function (fromIndex, toIndex, skipAnimation = false) {
     const parts = this.cp.progressbarParts;
     const totalTransitionTime = 200;
     const isForward = toIndex > fromIndex;
@@ -466,7 +467,10 @@ const NavigationLine = (function ($) {
     }
 
     // Divide transition speed on all parts that will transition
-    const segmentTransitionDelay = totalTransitionTime / animatedParts.length;
+    let segmentTransitionDelay = totalTransitionTime / animatedParts.length;
+    if (skipAnimation) {
+      segmentTransitionDelay = 0;
+    }
     animatedParts.forEach(part => {
       part.get(0).style.setProperty('--h5p-cp-nav-bar-fill-duration', `${segmentTransitionDelay}ms`);
     })
