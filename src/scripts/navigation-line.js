@@ -456,6 +456,24 @@ const NavigationLine = (function ($) {
     const totalTransitionTime = 200;
     const isForward = toIndex > fromIndex;
 
+    // NOTE: Immediately fill segments that are outside our animation
+    // Sometimes updating navigation is called from slide 6->6
+    // when our current slide is currently at 0. We have to handle these without
+    // animation
+    const low = Math.min(fromIndex, toIndex);
+    const high = Math.max(fromIndex, toIndex)
+    parts.forEach((part, index) => {
+      part.get(0).style.setProperty('--h5p-cp-nav-bar-fill-duration', '0ms');
+      if (index < low) {
+        part.addClass('h5p-progressbar-part-show');
+      }
+      else if (index > high) {
+        part.removeClass('h5p-progressbar-part-show');
+      }
+    });
+
+
+
     let animatedParts = Array.from(parts).filter((part, index) => {
       return isForward
         ? (index > fromIndex && index <= toIndex)
