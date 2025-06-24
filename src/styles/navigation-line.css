@@ -301,9 +301,9 @@
     inset: 0;
     width: 0;
     background: var(--h5p-theme-secondary-cta-base);
-    transition: width 0.3s ease;
     z-index: 1;
     box-shadow: inset -1px 0 0 var(--h5p-theme-secondary-contrast-cta);
+    transition: width var(--h5p-cp-nav-bar-fill-duration, 200ms) linear;
   }
 }
 
