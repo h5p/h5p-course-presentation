@@ -19,17 +19,11 @@
   "preloadedJs": [
     {
       "path": "dist/h5p-course-presentation.js"
-    },
-    {
-      "path": "@legacy/dist/h5p-course-presentation.js"
     }
   ],
   "preloadedCss": [
     {
       "path": "dist/h5p-course-presentation.css"
-    },
-    {
-      "path": "@legacy/dist/h5p-course-presentation.css"
     }
   ],
   "preloadedDependencies": [
