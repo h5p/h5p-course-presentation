@@ -1,4 +1,4 @@
-.h5p-container.h5p-course-presentation .h5p-slide{
+.h5p-container.h5p-course-presentation .h5p-slide:not(.h5p-summary-slide) {
   --h5p-theme-scale: 0.6;
   --h5p-theme-spacing-xl: calc(3em*var(--h5p-theme-scale));
   --h5p-theme-spacing-l: calc(2em*var(--h5p-theme-scale));
