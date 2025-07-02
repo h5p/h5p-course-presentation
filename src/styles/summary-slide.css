@@ -4,6 +4,7 @@
   text-align: center;
   color: #333;
   font-size: 0.75em;
+  overflow-y: auto;
 }
 
 .h5p-course-presentation .h5p-summary-slide.h5p-summary-only-export {
@@ -98,6 +99,7 @@
   font-size: 0.75em;
   display: flex;
   justify-content: center;
+  margin-bottom: var(--h5p-theme-spacing-m);
 }
 
 /* ------------------------------- Summary table style -----------------------------------  */
