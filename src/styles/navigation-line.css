@@ -265,8 +265,11 @@
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-selected.progressbar-part-summary-slide a {
   padding-top: 0;
   text-decoration: none;
-  background-color: var(--h5p-theme-main-cta-base);
+  background-color: var(--h5p-theme-secondary-contrast-cta);
+}
 
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-selected.progressbar-part-summary-slide a:after {
+  background-color: var(--h5p-theme-main-cta-base);
 }
 
 /* The summary slide icon */
@@ -278,6 +281,7 @@
   margin: 0 auto;
   text-align: center;
   text-decoration: none;
+  color: var(--h5p-theme-secondary-cta-base);
 }
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-selected.progressbar-part-summary-slide a:after{
   color: var(--h5p-theme-contrast-cta);
