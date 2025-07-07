@@ -63,11 +63,9 @@
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-m);
+  padding: 0 var(--h5p-theme-spacing-m);
 }
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-secondary-cta{
-  padding: var(--h5p-theme-spacing-s) var(--h5p-theme-spacing-l);
-}
+
 .h5p-course-presentation .slide-number-summary-page {
   color: var(--h5p-theme-text-third);
   display: block;
@@ -192,12 +190,10 @@
 
 .h5p-course-presentation .h5p-summary-slide h3 {
   padding: unset;
-  font-size: 1em;
+  font-size: var(--h5p-theme-font-size-xl);
   margin: var(--h5p-theme-font-size-m) 0;
   line-height: 1;
 }
-
-
 .h5p-course-presentation .h5p-summary-slide .h5p-results-title {
   font-size: 1.1758em;
 }
