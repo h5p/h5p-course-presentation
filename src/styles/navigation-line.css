@@ -265,10 +265,6 @@
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-selected.progressbar-part-summary-slide a {
   padding-top: 0;
   text-decoration: none;
-  background-color: var(--h5p-theme-secondary-contrast-cta);
-}
-
-.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-selected.progressbar-part-summary-slide a {
   background-color: var(--h5p-theme-main-cta-base);
 }
 
