@@ -100,10 +100,6 @@
   margin-bottom: var(--h5p-theme-spacing-m);
 }
 
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list {
-  overflow-y: hidden;
-}
-
 /* ------------------------------- Summary table style -----------------------------------  */
 
 .h5p-course-presentation .h5p-summary-total-score {
@@ -148,6 +144,10 @@
 .h5p-course-presentation .h5p-summary-table-header.score span {
   color: #999;
   padding: 0 0.1em;
+}
+
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list {
+  overflow-y: hidden;
 }
 
 /* ---------------------------- Social media styles ---------------------------------------------- */
