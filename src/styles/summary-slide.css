@@ -146,10 +146,6 @@
   padding: 0 0.1em;
 }
 
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list {
-  overflow-y: hidden;
-}
-
 .h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list-heading {
   padding-inline-end: var(--h5p-theme-spacing-m); /* Align "Score" label with question items */
 }
