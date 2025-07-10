@@ -100,6 +100,10 @@
   margin-bottom: var(--h5p-theme-spacing-m);
 }
 
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list {
+  overflow-y: hidden;
+}
+
 /* ------------------------------- Summary table style -----------------------------------  */
 
 .h5p-course-presentation .h5p-summary-total-score {
@@ -206,8 +210,8 @@
 
 /* --------------------------------- Button styling ----------------------------------------------- */
 
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-show-results, 
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-retry, 
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-show-results,
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-retry,
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export {
   margin-right: var(--h5p-theme-spacing-xs);
 }
