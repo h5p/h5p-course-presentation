@@ -13,25 +13,6 @@
   --h5p-theme-font-size-s: 0.85em;
 }
 
-/* H5P.Components.ResultScreen overrides to make it scale */
-.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-banner {
-  padding: var(--h5p-theme-spacing-xl) var(--h5p-theme-spacing-xl) calc(var(--h5p-theme-spacing-xl) * 1.2) var(--h5p-theme-spacing-xl);
-}
-
-.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list-container {
-  margin: calc(-1 * var(--h5p-theme-spacing-l)) var(--h5p-theme-spacing-xl) var(--h5p-theme-spacing-l) var(--h5p-theme-spacing-xl);
-}
-
-.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list-item,
-
-.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list-heading {
-  line-height: 1.5em;
-}
-
-.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-secondary-cta {
-  border-width: min(3px, calc(1em * 0.3));
-}
-
 /*overrides popup in CP
 
 .h5p-course-presentation .h5p-popup-container h1, .h5p-course-presentation .h5p-popup-container h2, .h5p-popup-container .h5p-popup-container h3, .h5p-course-presentation .h5p-popup-container h4, .h5p-course-presentation .h5p-popup-container h5, .h5p-course-presentation .h5p-popup-container h6, .h5p-course-presentation .h5p-popup-container p, .h5p-popup-container .h5p-course-presentation p{
