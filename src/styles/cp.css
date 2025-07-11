@@ -1,4 +1,4 @@
-.h5p-container.h5p-course-presentation .h5p-slide:not(.h5p-summary-slide) {
+.h5p-container.h5p-course-presentation {
   --h5p-theme-scale: 0.6;
   --h5p-theme-spacing-xl: calc(3em*var(--h5p-theme-scale));
   --h5p-theme-spacing-l: calc(2em*var(--h5p-theme-scale));
@@ -12,7 +12,6 @@
   --h5p-theme-font-size-m: 1em;
   --h5p-theme-font-size-s: 0.85em;
 }
-
 
 /*overrides popup in CP
 
@@ -90,7 +89,7 @@
 .h5p-course-presentation h6,
 .h5p-course-presentation p {
   /* TODO: check if removing this causes issues*/
-  
+
   line-height: 150%;
   padding: 0.5em;
 }
@@ -203,7 +202,7 @@
   background: #666666;
   box-shadow: 0 0 0.5em 0 rgba(105, 105, 105, 0.4);
 }
-/* override shadow if CP is inside Column */ 
+/* override shadow if CP is inside Column */
 .h5p-column-content.h5p-course-presentation .h5p-box-wrapper{
   box-shadow: none;
 }

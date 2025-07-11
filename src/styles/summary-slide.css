@@ -63,7 +63,7 @@
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 var(--h5p-theme-spacing-m);
+  padding-inline-end: var(--h5p-theme-spacing-m);
 }
 
 .h5p-course-presentation .slide-number-summary-page {
@@ -124,7 +124,6 @@
   font-size: 0.8em;
   font-weight: bold;
   text-align: right;
-  padding-right: 0.5em;
 }
 
 .h5p-course-presentation .h5p-summary-table-header {
@@ -204,10 +203,32 @@
   padding: 0 var(--h5p-theme-spacing-xl);
 }
 
+/* H5P.Components.ResultScreen overrides to make it scale, cmp. theme variable overrides in cp.css */
+.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-banner {
+  padding: var(--h5p-theme-spacing-xl) var(--h5p-theme-spacing-xl) calc(var(--h5p-theme-spacing-xl) * 1.2) var(--h5p-theme-spacing-xl);
+}
+
+.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list-container {
+  margin: calc(-1 * var(--h5p-theme-spacing-l)) var(--h5p-theme-spacing-xl) var(--h5p-theme-spacing-l) var(--h5p-theme-spacing-xl);
+}
+
+.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list {
+  padding-inline: var(--h5p-theme-spacing-xl);
+}
+
+.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list-item,
+.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-results-list-heading {
+  line-height: 1.5em;
+}
+
+.h5p-container.h5p-course-presentation .h5p-summary-slide .h5p-theme-result-screen .h5p-theme-secondary-cta {
+  border-width: min(3px, calc(1em * 0.3));
+}
+
 /* --------------------------------- Button styling ----------------------------------------------- */
 
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-show-results, 
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-retry, 
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-show-results,
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-retry,
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export {
   margin-right: var(--h5p-theme-spacing-xs);
 }
