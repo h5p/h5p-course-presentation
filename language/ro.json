@@ -1,0 +1,414 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "field": {
+                  "fields": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                      "label": "Comentarii",
+                      "description": "Comentariile sunt afișate atunci când utilizatorul vizualizează răspunsurile sugerate pentru toate diapozitivele."
+                    },
+                    {
+                      "label": "Afișează întotdeauna comentariile"
+                    },
+                    {
+                      "label": "Opacitate fundal"
+                    },
+                    {
+                      "label": "Afișează ca buton"
+                    },
+                    {
+                      "label": "Etichetă opțională pentru buton"
+                    },
+                    {
+                      "label": "Dimensiune buton",
+                      "options": [
+                        {
+                          "label": "Mic"
+                        },
+                        {
+                          "label": "Mare"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Titlu"
+                    },
+                    {
+                      "label": "Mergi la",
+                      "options": [
+                        {
+                          "label": "Număr specific de diapozitiv"
+                        },
+                        {
+                          "label": "Diapozitivul următor"
+                        },
+                        {
+                          "label": "Diapozitivul anterior"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Număr specific de diapozitiv",
+                      "description": "Se aplică doar atunci când este selectat 'Număr specific de diapozitiv'"
+                    },
+                    {
+                      "label": "Invizibil",
+                      "description": "Cursor implicit, fără titlu și fără index de tabulare. Avertisment: Utilizatorii cu dizabilități sau cei care folosesc doar tastatura vor avea dificultăți în utilizarea acestui element."
+                    }
+                  ]
+                }
+              },
+              {},
+              {
+                "fields": [
+                  {
+                    "label": "Imagine",
+                    "description": "Fundalul imaginii ar trebui să aibă un raport lățime/înălțime de 2:1 pentru a evita întinderea. Imaginile cu rezoluție înaltă se vor afișa mai bine pe ecrane mai mari."
+                  },
+                  {
+                    "label": "Alege o culoare"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {},
+        {
+          "label": "Listă de cuvinte cheie"
+        },
+        {
+          "label": "Afișează întotdeauna"
+        },
+        {
+          "label": "Ascunde automat"
+        },
+        {
+          "label": "Opacitate"
+        },
+        {
+          "fields": [
+            {
+              "label": "Imagine",
+              "description": "Fundalul imaginii ar trebui să aibă un raport lățime/înălțime de 2:1 pentru a evita întinderea. Imaginile cu rezoluție înaltă se vor afișa mai bine pe ecrane mai mari."
+            },
+            {
+              "label": "Alege o culoare"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Localizare",
+      "fields": [
+        {
+          "label": "Traducere pentru \"Diapozitiv\"",
+          "default": "Diapozitiv"
+        },
+        {
+          "label": "Traducere pentru \"Scor\"",
+          "default": "Scor"
+        },
+        {
+          "label": "Traducere pentru \"Scorul tău\"",
+          "default": "Scorul tău"
+        },
+        {
+          "label": "Traducere pentru \"Scor maxim\"",
+          "default": "Scor maxim"
+        },
+        {
+          "label": "Traducere pentru \"Total\"",
+          "default": "Total"
+        },
+        {
+          "label": "Traducere pentru \"Scor total\"",
+          "default": "Scor total"
+        },
+        {
+          "label": "Titlu pentru butonul de afișare a soluțiilor",
+          "default": "Afișează soluțiile"
+        },
+        {
+          "label": "Text pentru butonul de reîncercare",
+          "default": "Încearcă din nou"
+        },
+        {
+          "label": "Text pentru butonul de exportare a textului",
+          "default": "Exportă text"
+        },
+        {
+          "label": "Titlu buton ascundere listă de cuvinte cheie",
+          "default": "Ascunde lista de cuvinte cheie"
+        },
+        {
+          "label": "Titlu buton afișare listă de cuvinte cheie",
+          "default": "Afișează lista de cuvinte cheie"
+        },
+        {
+          "label": "Etichetă ecran complet",
+          "default": "Ecran complet"
+        },
+        {
+          "label": "Etichetă ieșire din ecran complet",
+          "default": "Ieși din ecran complet"
+        },
+        {
+          "label": "Etichetă diapozitiv anterior",
+          "default": "Diapozitivul anterior"
+        },
+        {
+          "label": "Etichetă diapozitiv următor",
+          "default": "Diapozitivul următor"
+        },
+        {
+          "label": "Etichetă diapozitiv curent",
+          "default": "Diapozitivul curent"
+        },
+        {
+          "label": "Etichetă ultimul diapozitiv",
+          "default": "Ultimul diapozitiv"
+        },
+        {
+          "label": "Text ieșire din modul soluție",
+          "default": "Ieși din modul soluție"
+        },
+        {
+          "label": "Text mod soluție",
+          "default": "Mod soluție"
+        },
+        {
+          "label": "Text pentru sarcini multiple pe o pagină",
+          "default": "Sarcini multiple"
+        },
+        {
+          "label": "Text mesaj scor",
+          "default": "Ai obținut:"
+        },
+        {
+          "label": "Text partajare pe Facebook",
+          "default": "Partajează pe Facebook"
+        },
+        {
+          "label": "Text partajare pe Twitter",
+          "default": "Partajează pe Twitter"
+        },
+        {
+          "label": "Text partajare pe Google",
+          "default": "Partajează pe Google+"
+        },
+        {
+          "label": "Titlu pentru diapozitivul de rezumat",
+          "default": "Rezumat"
+        },
+        {
+          "label": "Titlu pentru pictograma de comentarii",
+          "default": "Afișează comentariile"
+        },
+        {
+          "label": "Titlu pentru butonul de imprimare",
+          "default": "Imprimă"
+        },
+        {
+          "label": "Introducere dialog imprimare",
+          "default": "Cum doriți să imprimați această prezentare?"
+        },
+        {
+          "label": "Etichetă pentru butonul \"Imprimă toate diapozitivele\"",
+          "default": "Imprimă toate diapozitivele"
+        },
+        {
+          "label": "Etichetă pentru butonul \"Imprimă diapozitivul curent\"",
+          "default": "Imprimă diapozitivul curent"
+        },
+        {
+          "label": "Etichetă pentru diapozitive fără titlu",
+          "default": "Fără titlu"
+        },
+        {
+          "label": "Explicația navigării între diapozitive pentru tehnologiile de asistare",
+          "default": "Folosiți săgețile stânga și dreapta pentru a schimba diapozitivul în direcția respectivă ori de câte ori pânza este selectată"
+        },
+        {
+          "label": "Etichetă pânză pentru tehnologiile de asistare",
+          "default": "Pânza de prezentare. Folosiți săgețile stânga și dreapta pentru a naviga între diapozitive."
+        },
+        {
+          "label": "Etichetă bară de progres pentru tehnologiile de asistare",
+          "default": "Alegeți diapozitivul de afișat"
+        },
+        {
+          "label": "Etichetă pentru interacțiuni nefinalizate",
+          "default": "@slideName conține o interacțiune nefinalizată"
+        },
+        {
+          "label": "Etichetă pentru interacțiuni finalizate",
+          "default": "@slideName conține o interacțiune finalizată"
+        },
+        {
+          "label": "Etichetă pentru contorul de diapozitive. Variabilele sunt @index, @total",
+          "default": "Diapozitivul @index din @total"
+        },
+        {
+          "label": "Etichetă pentru diapozitivele care conțin doar răspunsuri corecte",
+          "default": "@slideName are doar răspunsuri corecte"
+        },
+        {
+          "label": "Etichetă pentru diapozitivele care au răspunsuri incorecte",
+          "default": "@slideName are răspunsuri incorecte"
+        },
+        {
+          "label": "Etichetă pentru bara de partajare socială",
+          "default": "Partajează rezultatul"
+        },
+        {
+          "label": "Anunț scor total pentru tehnologiile de asistare",
+          "default": "Ai obținut @score din @maxScore puncte în total",
+          "description": "Variabilele disponibile sunt @score și @maxScore"
+        },
+        {
+          "label": "Anunț intrare în ecran complet pentru tehnologiile de asistare",
+          "default": "S-a intrat în modul ecran complet"
+        },
+        {
+          "label": "Anunț ieșire din ecran complet pentru tehnologiile de asistare",
+          "default": "S-a ieșit din modul ecran complet"
+        },
+        {
+          "label": "Antetul dialogului de confirmare a trimiterii rezultatului",
+          "default": "Trimite răspunsurile tale"
+        },
+        {
+          "label": "Textul dialogului de confirmare a trimiterii rezultatului",
+          "default": "Acest lucru va trimite rezultatele tale, dorești să continui?"
+        },
+        {
+          "label": "Butonul de confirmare al dialogului de trimitere a rezultatului",
+          "default": "Trimite și vezi rezultatele"
+        },
+        {
+          "label": "Navigare prezentare",
+          "default": "Navigare prezentare"
+        },
+        {
+          "label": "Etichetă buton de confirmare",
+          "default": "Confirmă"
+        },
+        {
+          "label": "Etichetă buton de anulare",
+          "default": "Anulează"
+        }
+      ]
+    },
+    {
+      "label": "Setări de comportament.",
+      "description": "Aceste opțiuni vă vor permite să suprascrieți setările de comportament.",
+      "fields": [
+        {
+          "label": "Activează Modul Suprafață Activă",
+          "description": "Elimină controalele de navigare pentru utilizatorul final. Folosiți 'Mergi la Diapozitiv' pentru a naviga. Rezumatul nu este disponibil în acest mod."
+        },
+        {
+          "label": "Ascunde Diapozitivul de Rezumat",
+          "description": "Ascunde diapozitivul de rezumat."
+        },
+        {
+          "label": "Suprascrie butonul \"Afișează Soluția\"",
+          "description": "Această opțiune determină dacă butonul \"Afișează Soluția\" va fi afișat pentru toate întrebările, dezactivat pentru toate sau configurat individual pentru fiecare întrebare.",
+          "options": [
+            {
+              "label": "Activat"
+            },
+            {
+              "label": "Dezactivat"
+            }
+          ]
+        },
+        {
+          "label": "Suprascrie butonul \"Încearcă din nou\"",
+          "description": "Această opțiune determină dacă butonul \"Încearcă din nou\" va fi afișat pentru toate întrebările, dezactivat pentru toate sau configurat individual pentru fiecare întrebare.",
+          "options": [
+            {
+              "label": "Activat"
+            },
+            {
+              "label": "Dezactivat"
+            }
+          ]
+        },
+        {
+          "label": "Afișează butonul \"Afișează soluția\" în diapozitivul de rezumat",
+          "description": "Dacă este activat, cursantul va putea afișa soluțiile pentru toate întrebările când ajunge la diapozitivul de rezumat"
+        },
+        {
+          "label": "Afișează butonul \"Încearcă din nou\" în diapozitivul de rezumat",
+          "description": "Dacă este activat, cursantul va putea reîncerca toate întrebările când ajunge la diapozitivul de rezumat. Rețineți că prin reîmprospătarea paginii, cursanții vor putea reîncerca chiar dacă acest buton nu este afișat."
+        },
+        {
+          "label": "Activează butonul de imprimare",
+          "description": "Activează butonul de imprimare."
+        },
+        {
+          "label": "Setări Sociale",
+          "description": "Aceste opțiuni vă permit să suprascrieți setările de comportament social. Câmpurile goale vor fi completate automat dacă se furnizează un link, altfel toate valorile vor fi generate.",
+          "fields": [
+            {
+              "label": "Afișează pictograma de partajare pe Facebook"
+            },
+            {
+              "label": "Setări de partajare pe Facebook",
+              "fields": [
+                {
+                  "label": "Link de partajare pe Facebook",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Citat de partajare pe Facebook",
+                  "default": "Am obținut @score din @maxScore la o sarcină pe @currentpageurl."
+                }
+              ]
+            },
+            {
+              "label": "Afișează pictograma de partajare pe Twitter"
+            },
+            {
+              "label": "Setări de partajare pe Twitter",
+              "fields": [
+                {
+                  "label": "Declarație de partajare pe Twitter",
+                  "default": "Am obținut @score din @maxScore la o sarcină pe @currentpageurl."
+                },
+                {
+                  "label": "Link de partajare pe Twitter",
+                  "default": "@currentpageurl"
+                },
+                {
+                  "label": "Hashtag-uri de partajare pe Twitter",
+                  "default": "h5p, curs"
+                }
+              ]
+            },
+            {
+              "label": "Afișează pictograma de partajare pe Google+"
+            },
+            {
+              "label": "Link de partajare pe Google",
+              "default": "@currentpageurl"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
