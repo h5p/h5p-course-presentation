@@ -27,7 +27,7 @@
                       "label": "Prikaži kot gumb"
                     },
                     {
-                      "label": "Optional button label"
+                      "label": "Neobvezno besedilo za opis gumba"
                     },
                     {
                       "label": "Velikost gumba",
@@ -85,7 +85,7 @@
         },
         {},
         {
-          "label": "Ključne besed"
+          "label": "Ključne besede"
         },
         {
           "label": "Prikazuj ves čas"
@@ -99,8 +99,8 @@
         {
           "fields": [
             {
-              "label": "Image",
-              "description": "Slika ozadja naj bo med širino in višino v razmerju 2:1, sicer lahko prihaja do popačenja. Slike z visoko ločljivostjo se bodo na večjih zaslonih odrezale bolje."
+              "label": "Slika",
+              "description": "Slika ozadja naj bo v razmerju širine proti višini 2 : 1, sicer lahko pride do popačenja prikaza. Slike z visoko ločljivostjo se bodo na večjih zaslonih odrezale bolje."
             },
             {
               "label": "Izbor barve"
@@ -201,8 +201,8 @@
           "default": "Deli na omrežju Facebook"
         },
         {
-          "label": "Besedilo za deljenje na omrežju Twitter",
-          "default": "Deli na omrežju Twitter"
+          "label": "Besedilo za deljenje na omrežju X",
+          "default": "Deli na omrežju X"
         },
         {
           "label": "Besedilo za deljenje na omrežju Google",
@@ -222,7 +222,7 @@
         },
         {
           "label": "Pogovorno okno za tiskanje",
-          "default": "Kako naj natisnem prosojnico?"
+          "default": "Kako naj natisnem predstavitev?"
         },
         {
           "label": "Besedilo za gumb  \"Natisni vse strani\"",
@@ -241,12 +241,12 @@
           "default": "Med stranmi se premika s puščicami levo ali desno."
         },
         {
-          "label": "Oznaka osrednjega okna prosojnice za bralnike zaslona",
-          "default": "Osrednje okno prosojnice. Med stranmi se premika s puščicami levo ali desno."
+          "label": "Oznaka osrednjega okna predstavitve za bralnike zaslona",
+          "default": "Osrednje okno predstavitve. Med stranmi se premika s puščicami levo ali desno."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Oznaka indikatorja napredka za bralnike zaslona",
+          "default": "Izberi stran za prikaz"
         },
         {
           "label": "Besedilo za neopravljene aktivnosti",
@@ -269,7 +269,7 @@
           "default": "Na @slideName so nepravilni odgovori"
         },
         {
-          "label": "Besedilo za vrstico deljenja razultatov",
+          "label": "Besedilo za vrstico deljenja rezultatov",
           "default": "Deli rezultate"
         },
         {
@@ -278,36 +278,36 @@
           "description": "Spremenljivki sta @score in @maxScore"
         },
         {
-          "label": "Entered fullscreen announcement for assistive technologies",
-          "default": "Entered fullscreen"
+          "label": "Besedilo za celozaslonski način",
+          "default": "Celozaslonski način"
         },
         {
-          "label": "Exited fullscreen announcement for assistive technologies",
-          "default": "Exited fullscreen"
+          "label": "Besedilo za zaključek celozaslonskega načina",
+          "default": "Zapusti celozaslonski način"
         },
         {
-          "label": "Header of submit result confirmation dialog",
-          "default": "Submit your answers"
+          "label": "Naslov potrditvenega okna za oddajo odgovora",
+          "default": "Potrdi odgovor"
         },
         {
-          "label": "Text of submit result confirmation dialog",
-          "default": "This will submit your results, do you want to continue?"
+          "label": "Besedilo potrditvenega okna za oddajo odgovora",
+          "default": "Potrditev gumba odda odgovore. Nadaljujem?"
         },
         {
-          "label": "Confirmation button of submit result confirmation dialog",
-          "default": "Submit and see results"
+          "label": "Gumb za potrditev oddaje odgovorov",
+          "default": "Oddaj in prikaži rezultate"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Krmarjenje po predstavitvi",
+          "default": "Krmarjenje po predstavitvi"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "Besedilo gumba Potrdi",
+          "default": "Potrdi"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Besedilo gumba Prekliči",
+          "default": "Prekliči"
         }
       ]
     },
@@ -317,7 +317,7 @@
       "fields": [
         {
           "label": "Preklopi v način z aktivno površino",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Nastavitev odstrani gumbe za krmarjenje po predstavitvi, zato je med stranmi mogoč le premik s Pojdi na stran (angl. Go To Slide). Aktivnost Povzetek (angl. Summary) v tem načinu ni na voljo."
         },
         {
           "label": "Skrij stran s povzetkom rezultatov",
@@ -380,10 +380,10 @@
               ]
             },
             {
-              "label": "Prikaži ikono za deljenje na omrežju Twitter"
+              "label": "Prikaži ikono za deljenje na omrežju X"
             },
             {
-              "label": "Nastavitve za Twitter",
+              "label": "Nastavitve za omrežje X",
               "fields": [
                 {
                   "label": "Vsebina objave",
@@ -394,8 +394,8 @@
                   "default": "@currentpageurl"
                 },
                 {
-                  "label": "Ključniki/hashtags za Twitter",
-                  "default": "h5p, course"
+                  "label": "Ključniki za omrežje X",
+                  "default": "h5p, interaktivna vsebina"
                 }
               ]
             },
