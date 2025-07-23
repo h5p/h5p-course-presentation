@@ -43,9 +43,9 @@
       "minorVersion": 0
     },
     {
-      "machineName": "H5P.Components",
+      "machineName": "H5P.Question",
       "majorVersion": 1,
-      "minorVersion": 0
+      "minorVersion": 5
     }
   ],
   "editorDependencies": [
