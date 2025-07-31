@@ -472,6 +472,9 @@
 .h5p-button-element.h5p-sc-set-wrapper {
   overflow: hidden;
 }
+.h5p-course-presentation .h5p-element-inner.h5p-single-choice-set .h5p-sc-set:has(.h5p-sc-set-results.h5p-sc-current-slide) {
+  margin-inline: 0;
+}
 .h5p-course-presentation .h5p-popup-container tfoot {
   font-weight: bold;
 }
