@@ -2,39 +2,22 @@
 
 /* Footer */
 .h5p-course-presentation .h5p-footer {
-  /*display: grid;
-  grid-template-columns: 35% 30% 35%;
-  font-size: 0.75em;
-  width: 100%;
-  height: 7%;
-  padding: 0.25em;
-  box-sizing: border-box;
-
-
-  -moz-user-select: none;
-  -ms-user-select: none;
-
+  align-content: center;
+  align-items: center;
   background-color: var(--h5p-theme-ui-base);
   color: var(--h5p-theme-text-secondary);
-  line-height: 1;
-  align-items: center;*/
-
-  display: flex;
+  display: grid;
   font-size: 0.75em;
-  width: 100%;
+  grid-template-columns: 40% 1fr 40%;
   height: 7%;
-  /* padding: 0.25em; */
-  /* box-sizing: border-box; */
+  justify-content: space-between;
+  line-height: 1;
+  text-align: left;
+  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  background-color: var(--h5p-theme-ui-base);
-  color: var(--h5p-theme-text-secondary);
-  line-height: 1;
-  align-items: center;
-  align-content: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+  width: 100%;
 }
 
 /* Footer buttons */
@@ -54,7 +37,7 @@
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-left-adjusted .h5p-footer-button {
-  width: 100%;
+  max-width: 100%;
 }
 
 .h5p-course-presentation .h5p-footer .h5p-theme-nav-button{
@@ -95,25 +78,34 @@
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-center-adjusted {
-  text-align: center;
-  align-items: center;
   display: flex;
   justify-content: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
 }
 
-/* ---------------------------- Footer slide information buttons ----------------------- */
-
-/* Slide counter */
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count,
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current,
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter,
-.h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
-  display: inline-block;
-  min-width: 23px;
+.h5p-course-presentation .h5p-footer .h5p-navigation {
+  background: none;
+  box-shadow: none;
+  grid-gap: unset;
+  grid-template-columns: min-content min-content min-content;
+  justify-content: center;
+  width: 100%;
 }
+
+.h5p-course-presentation .h5p-footer .h5p-navigation .progress-container {
+  text-align: center;
+  white-space: nowrap;
+}
+
+  /* ---------------------------- Footer slide information buttons ----------------------- */
+  /* Slide counter */
+  .h5p-course-presentation .h5p-footer .h5p-footer-slide-count,
+  .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-current,
+  .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-delimiter,
+  .h5p-course-presentation .h5p-footer .h5p-footer-slide-count-max {
+    display: inline-block;
+    min-width: 23px;
+  }
 
 /* ---------------------------------------------- Solution Mode ---------------------------------- */
 
@@ -251,10 +243,6 @@
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
 }
-
-
-
-
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
   -webkit-flex: 0;
