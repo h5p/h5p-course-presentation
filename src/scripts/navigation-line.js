@@ -2,7 +2,6 @@ import Printer from './printer';
 import Controls from 'h5p-lib-controls/src/scripts/controls';
 import UIKeyboard from 'h5p-lib-controls/src/scripts/ui/keyboard';
 import { defaultValue, contains, isFunction, addClickAndKeyboardListeners, isIOS } from './utils';
-import { Components } from './globals'
 
 /**
  * Enum indicating which state a navigation bar part is in
@@ -38,7 +37,6 @@ const NavigationLine = (function ($) {
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
     this.initTaskAnsweredListener();
-    this.toggleNextAndPreviousButtonDisabled(this.cp.getCurrentSlideIndex());
   }
 
   /**
@@ -193,9 +191,6 @@ const NavigationLine = (function ($) {
       // update old progress task
       self.updateSlideTitle(oldIndex, { isCurrent: false });
 
-      // toggle next and prev buttons
-      self.toggleNextAndPreviousButtonDisabled(index);
-
       // focus on current slide
       self.cp.focus();
     });
@@ -289,65 +284,37 @@ const NavigationLine = (function ($) {
     // Update keyword for first slide.
     this.updateFooterKeyword(0);
 
-    // Center footer elements
+    this.navigation = H5P.Components.Navigation({
+      index: this.cp.getCurrentSlideIndex(),
+      navigationLength: this.cp.slides.length,
+      showDisabledButtons: true,
+      variant: '3-split',
+      progressType: 'text',
+      className: 'h5p-cp-footer-navigation',
+      texts: {
+        previousButtonAriaLabel: this.cp.l10n.prevSlide,
+        nextButtonAriaLabel: this.cp.l10n.nextSlide,
+        textualProgress: '@current / @total',
+      },
+      handlePrevious: () => {
+        this.cp.previousSlide(undefined, false);
+        return false; // Prevent Navigation's `previous` method from being called
+      },
+      handleNext: () => {
+        this.cp.nextSlide(undefined, false);
+        return false; // Prevent Navigation's `next` method from being called
+      }
+    });
+    $centerFooter.append(this.navigation);
 
-    // Previous slide
-    this.cp.$prevSlideButton = $(Components.Button({
-      icon: 'previous',
-      ariaLabel: this.cp.l10n.prevSlide,
-      styleType: 'nav',
-    }));
-    $centerFooter.append(this.cp.$prevSlideButton);
+    const progressText = this.navigation.querySelector('.progress-container.h5p-theme-progress');
 
-    new H5P.Tooltip(this.cp.$prevSlideButton.get(0), { position: 'left' });
-
-    addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide(undefined, false));
-
-    const $slideNumbering = $('<div/>', {
-      'class': 'h5p-footer-slide-count h5p-theme-progress'
-    }).appendTo($centerFooter);
-
-    // Current slide count
-    this.cp.$footerCurrentSlide = $('<div/>', {
-      'html': '1',
-      'class': 'h5p-footer-slide-count-current',
-      'title': this.cp.l10n.currentSlide,
-      'aria-hidden': 'true'
-    }).appendTo($slideNumbering);
-
-    this.cp.$footerCounter = $('<div/>', {
-      'class': 'hidden-but-read',
-      'html': this.cp.l10n.slideCount
-        .replace('@index', '1')
-        .replace('@total', this.cp.slides.length.toString())
-    }).appendTo($centerFooter);
-
-    // Count delimiter, content configurable in css
-    $('<div/>', {
-      'html': '/',
-      'class': 'h5p-footer-slide-count-delimiter',
-      'aria-hidden': 'true'
-    }).appendTo($slideNumbering);
-
-    // Max slide count
-    this.cp.$footerMaxSlide = $('<div/>', {
-      'html': this.cp.slides.length,
-      'class': 'h5p-footer-slide-count-max',
-      'title': this.cp.l10n.lastSlide,
-      'aria-hidden': 'true'
-    }).appendTo($slideNumbering);
-
-    // Next slide
-    this.cp.$nextSlideButton = $(Components.Button({
-      icon: 'next',
-      ariaLabel: this.cp.l10n.nextSlide,
-      styleType: 'nav',
-    }));
-    $centerFooter.append(this.cp.$nextSlideButton);
-
-    H5P.Tooltip(this.cp.$nextSlideButton.get(0), { position: 'right' });
-
-    addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide(undefined, false));
+    this.cp.footerCounterAria = document.createElement('div');
+    this.cp.footerCounterAria.className = 'hidden-but-read';
+    this.cp.footerCounterAria.innerHTML = this.cp.l10n.slideCount
+      .replace('@index', '1')
+      .replace('@total', this.cp.slides.length.toString());
+    progressText.insertAdjacentElement('afterend', this.cp.footerCounterAria);
 
     // *********************
     // Right footer elements
@@ -592,12 +559,11 @@ const NavigationLine = (function ($) {
    */
   NavigationLine.prototype.updateFooter = function (slideNumber) {
     // Update current slide number in footer
-    this.cp.$footerCurrentSlide.html(slideNumber + 1);
-    this.cp.$footerMaxSlide.html(this.cp.slides.length);
-
-    this.cp.$footerCounter.html(this.cp.l10n.slideCount
+    this.cp.footerCounterAria.innerHTML = this.cp.l10n.slideCount
       .replace('@index', (slideNumber + 1).toString())
-      .replace('@total', this.cp.slides.length.toString()));
+      .replace('@total', this.cp.slides.length.toString());
+
+    this.navigation.setCurrentIndex(slideNumber);
 
     // Hide exit solution mode button on summary slide
     if (this.cp.isSolutionMode && slideNumber === this.cp.slides.length - 1) {
@@ -607,25 +573,8 @@ const NavigationLine = (function ($) {
       this.cp.$footer.removeClass('summary-slide');
     }
 
-    this.toggleNextAndPreviousButtonDisabled(slideNumber);
-
     // Update keyword in footer
     this.updateFooterKeyword(slideNumber);
-  };
-
-  /**
-   * Disables previous button if on the first slide,
-   * and disables the next button if on the last slide
-   *
-   * @param {number} index
-   */
-  NavigationLine.prototype.toggleNextAndPreviousButtonDisabled = function (index) {
-    const lastSlideIndex = this.cp.slides.length - 1;
-
-    this.cp.$prevSlideButton.attr('aria-disabled', (index === 0).toString());
-    this.cp.$nextSlideButton.attr('aria-disabled', (index === lastSlideIndex).toString());
-    this.cp.$prevSlideButton.attr('tabindex', (index === 0) ? '-1' : '0');
-    this.cp.$nextSlideButton.attr('tabindex', (index === lastSlideIndex) ? '-1' : '0');
   };
 
   /**
