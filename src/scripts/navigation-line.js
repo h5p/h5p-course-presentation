@@ -400,6 +400,8 @@ const NavigationLine = (function ($) {
       .removeClass('h5p-progressbar-part-selected')
       .attr('aria-selected', false);
 
+    that.navigation.setNavigationLength(that.cp.progressbarParts.length);
+
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (part, i) {
         that.setTaskAnswered(i, false);
