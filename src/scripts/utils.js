@@ -106,3 +106,31 @@ const $STRIP_HTML_HELPER = $('<div>');
  * @return {string}
  */
 export const stripHTML = (str) => $STRIP_HTML_HELPER.html(str).text().trim();
+
+/**
+ * Checks whether a given instance is a task.
+ * @param {object} instance H5P.ContentType instance.
+ * @returns {boolean} True if the instance is a task, false otherwise.
+ */
+export const isTask = (instance) => {
+  if (typeof instance !== 'object' || instance === null) {
+    return false;
+  }
+
+  // Content type tells us right away whether it is a task - nice, but not documented and cannot be taken for granted
+  if (typeof instance.isTask === 'boolean') {
+    return instance.isTask;
+  }
+
+  // Check for showSolutions() as indicator for being a task
+  if (typeof instance.showSolutions === 'function') {
+    return true;
+  }
+
+  // Check for maxScore() > 0 as indicator for being a task
+  if (typeof instance.getMaxScore === 'function' && instance.getMaxScore() > 0) {
+    return true;
+  }
+
+  return false;
+};

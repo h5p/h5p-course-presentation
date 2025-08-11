@@ -1,4 +1,5 @@
 import GoToSlide from './go-to-slide';
+import { isTask } from  './utils.js';
 
 /**
  * @class
@@ -56,7 +57,9 @@ function Element(parameters) {
     self.parent.parent.elementInstances[self.parent.index].push(self.instance);
   }
 
-  if (self.instance.showCPComments !== undefined || self.instance.isTask || (self.instance.isTask === undefined && self.instance.showSolutions !== undefined)) {
+  const isChildInstanceTask = isTask(self.instance);
+
+  if (self.instance.showCPComments !== undefined || isChildInstanceTask) {
     // Mark slide as task in CP navigation bar
     self.instance.coursePresentationIndexOnSlide = self.parent.parent.elementInstances[self.parent.index].length - 1;
     if (self.parent.parent.slidesWithSolutions[self.parent.index] === undefined) {
@@ -77,11 +80,9 @@ function Element(parameters) {
     self.parent.parent.hasAnswerElements = true;
   }
 
-  if (!self.parent.parent.isTask && !self.parent.parent.hideSummarySlide) {
+  if (!self.parent.parent.isTask && !self.parent.parent.hideSummarySlide && isChildInstanceTask) {
     // CP is not a task by default, but it will be if one of the elements is task or have a solution
-    if (self.instance.isTask || (self.instance.isTask === undefined && self.instance.showSolutions !== undefined)) {
-      self.parent.parent.isTask = true; // (checking for showSolutions will not work for compound content types, which is why we added isTask instead.)
-    }
+    self.parent.parent.isTask = true; // (checking for showSolutions will not work for compound content types, which is why we added isTask instead.)
   }
 }
 
