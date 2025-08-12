@@ -303,11 +303,11 @@
         },
         {
           "label": "Confirm button label",
-          "default": "Confirm"
+          "default": "Stadfest"
         },
         {
           "label": "Cancel button label",
-          "default": "Cancel"
+          "default": "Avbryt"
         }
       ]
     },
