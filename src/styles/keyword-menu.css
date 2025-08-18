@@ -14,6 +14,8 @@
   -webkit-transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
   -moz-transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
   transition: visibility 0s linear 0.1s, opacity 0.1s linear, right 0.1s linear;
+  display: flex;
+  flex-flow: column;
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper.h5p-open {
@@ -84,7 +86,12 @@
   overflow: auto;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 100%;
+  flex: 1;
+  scrollbar-color: var(--h5p-theme-main-cta-base) var(--h5p-theme-contrast-cta-light);
+}
+
+.h5p-course-presentation .h5p-keywords-wrapper > [role="menu"]:hover {
+  scrollbar-color: var(--h5p-theme-main-cta-light) var(--h5p-theme-contrast-cta-light);
 }
 
 .h5p-course-presentation .h5p-keywords-wrapper > [role="menu"]::-webkit-scrollbar,
