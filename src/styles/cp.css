@@ -753,7 +753,7 @@
 
 .h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-advanced-text,
 .h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-link {
-  padding: 0;
+  padding: 0.2rem;
 }
 
 .h5p-course-presentation .h5p-element.h5p-transparent .h5p-element-inner.h5p-ct > .ct {
