@@ -383,10 +383,12 @@
 
 }
 
-.h5p-course-presentation .h5p-footer [role="button"]:focus {
-  /* todo: focus effect */
- /* outline: 2px solid #457AD1;
-  background-color: rgba(121, 171, 253, 0.2);*/
+.h5p-course-presentation .h5p-footer [role="button"]:focus,
+.h5p-course-presentation .h5p-footer .h5p-footer-button:focus,
+.h5p-course-presentation .h5p-footer [role="button"]:focus-visible,
+.h5p-course-presentation .h5p-footer .h5p-footer-button:focus-visible {
+  outline: 2px ridge var(--h5p-theme-main-cta-base);
+  outline-offset: 2px;
 }
 
 .using-mouse .h5p-course-presentation .h5p-footer .h5p-footer-button.h5p-footer-toggle-keywords:focus {
