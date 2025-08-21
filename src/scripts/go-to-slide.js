@@ -1,4 +1,4 @@
-import { addClickAndKeyboardListeners } from './utils';
+import { addClickAndKeyboardListeners, stripHTML, decodeHTML } from './utils';
 import { jQuery as $, EventDispatcher } from './globals';
 
 /**
@@ -70,7 +70,7 @@ export default class GoToSlide {
       href: '#',
       'class': classes,
       tabindex: tabindex,
-      title: title
+      'aria-label': stripHTML(decodeHTML(title))
     });
 
     addClickAndKeyboardListeners(this.$element, (event) => {

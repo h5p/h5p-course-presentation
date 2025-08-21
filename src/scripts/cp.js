@@ -908,6 +908,10 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
     return; // Already attached
   }
 
+  if (index < 0 || index > this.slides.length - 1) {
+    return; // Slide does not exist
+  }
+
   var slide = this.slides[index];
   var instances = this.elementInstances[index];
   if (slide.elements !== undefined) {
@@ -1910,6 +1914,10 @@ CoursePresentation.prototype.attachAllElements = function () {
  * @returns {Boolean} Always true.
  */
 CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) {
+  if (slideNumber < 0 || slideNumber > this.slides.length - 1) {
+    return;
+  }
+
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -2101,7 +2109,11 @@ CoursePresentation.prototype.setOverflowTabIndex = function () {
 CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = false) {
   let slideTitle = '';
 
-  if (!this.navigationLine) {
+  if (
+    !this.navigationLine ||
+    slideNumber < 0 ||
+    slideNumber >= this.slides.length - 1
+  ) {
     return slideTitle;
   }
 
