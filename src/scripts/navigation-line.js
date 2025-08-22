@@ -158,7 +158,7 @@ const NavigationLine = (function ($) {
 
       // Create task indicator if less than 60 slides and not in editor
       if (this.cp.slides.length <= 60 && slide.elements && slide.elements.length > 0) {
-        var hasTask = slidesWithSolutions[i] && slidesWithSolutions[i].length > 0;
+        var hasTask = that.cp.getSlideTasks(i).length > 0;
         var isAnswered = !!(that.cp.previousState && that.cp.previousState.answered && that.cp.previousState.answered[i]);
 
         if (hasTask) {

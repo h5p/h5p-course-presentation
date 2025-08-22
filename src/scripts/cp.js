@@ -6,6 +6,7 @@ import KeywordsMenu from './keyword-menu';
 import { jQuery as $ } from './globals';
 import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
 import Slide from './slide.js';
+import { isTask } from  './utils.js';
 import ConfirmationDialog from './confirmation-dialog';
 
 /**
@@ -203,12 +204,36 @@ CoursePresentation.prototype.getCurrentState = function () {
  * @return {boolean}
  */
 CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
-  const tasks = this.slidesWithSolutions[index] || [];
+  const tasks = this.getSlideTasks(index);
 
   // Disregard questions where "no answer" is the correct answer.
   return tasks
     .filter((task) => isFunction(task.getAnswerGiven))
-    .some((task) => task.getAnswerGiven() && !H5P.isEmpty(task.getCurrentState()));
+    .some((task) => {
+      try {
+        const answered = task.getAnswerGiven();
+        const hasStateFn = isFunction(task.getCurrentState);
+        const state = hasStateFn ? task.getCurrentState() : undefined;
+        return answered && (!hasStateFn || !H5P.isEmpty(state));
+      } catch {
+        return false;
+      }
+    });
+};
+
+/**
+ * Collects all task instances for a slide.
+ *
+ * @param {number} index
+ * @return {Array}
+ */
+CoursePresentation.prototype.getSlideTasks = function (index) {
+  const explicitTasks = this.slidesWithSolutions[index] || [];
+  const instanceTasks = (this.elementInstances && this.elementInstances[index])
+    ? this.elementInstances[index].filter(isTask)
+    : [];
+
+  return Array.from(new Set([...explicitTasks, ...instanceTasks]));
 };
 
 /**

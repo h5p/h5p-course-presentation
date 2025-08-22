@@ -41,3 +41,6 @@ jspm_packages
 *.swp
 
 @legacy
+
+# Mac
+.DS_Store
