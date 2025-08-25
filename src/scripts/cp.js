@@ -228,12 +228,11 @@ CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
  * @return {Array}
  */
 CoursePresentation.prototype.getSlideTasks = function (index) {
-  const explicitTasks = this.slidesWithSolutions[index] || [];
   const instanceTasks = (this.elementInstances && this.elementInstances[index])
     ? this.elementInstances[index].filter(isTask)
     : [];
 
-  return Array.from(new Set([...explicitTasks, ...instanceTasks]));
+  return Array.from(new Set([...instanceTasks]));
 };
 
 /**
