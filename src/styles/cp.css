@@ -1048,3 +1048,7 @@
 .h5p-course-presentation .h5p-audio-inner {
   background-color: transparent;
 }
+
+.h5p-audio-minimal-button.h5p-audio-minimal-play {
+  padding: unset;
+}
