@@ -1049,6 +1049,8 @@
   background-color: transparent;
 }
 
-.h5p-audio-minimal-button.h5p-audio-minimal-play {
+.h5p-audio-minimal-button.h5p-audio-minimal-play,
+.h5p-audio-minimal-button.h5p-audio-minimal-play-paused,
+.h5p-audio-minimal-button.h5p-audio-minimal-pause {
   padding: unset;
 }
