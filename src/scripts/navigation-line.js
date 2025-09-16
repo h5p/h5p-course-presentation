@@ -292,8 +292,10 @@ const NavigationLine = (function ($) {
       progressType: 'text',
       className: 'h5p-cp-footer-navigation',
       texts: {
-        previousButtonAriaLabel: this.cp.l10n.prevSlide,
-        nextButtonAriaLabel: this.cp.l10n.nextSlide,
+        previousButtonAria: this.cp.l10n.prevSlide,
+        previousTooltip: this.cp.l10n.prevSlide,
+        nextButtonAria: this.cp.l10n.nextSlide,
+        nextTooltip: this.cp.l10n.nextSlide,
         textualProgress: '@current / @total',
         currentTooltip: this.cp.l10n.currentSlide,
         totalTooltip: this.cp.l10n.lastSlide
