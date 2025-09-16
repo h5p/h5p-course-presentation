@@ -295,6 +295,8 @@ const NavigationLine = (function ($) {
         previousButtonAriaLabel: this.cp.l10n.prevSlide,
         nextButtonAriaLabel: this.cp.l10n.nextSlide,
         textualProgress: '@current / @total',
+        currentTooltip: this.cp.l10n.currentSlide,
+        totalTooltip: this.cp.l10n.lastSlide
       },
       handlePrevious: () => {
         this.cp.previousSlide(undefined, false);
