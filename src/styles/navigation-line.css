@@ -262,7 +262,7 @@
 /* The summary slide icon */
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a:after {
   font-family: "h5p-theme";
-  content: "\e90a";
+  content: "\e904";
   font-size: 0.5em;
   margin: 0 auto;
   text-align: center;
