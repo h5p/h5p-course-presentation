@@ -100,7 +100,7 @@ const SummarySlide = (function () {
     if (this.cp.showSummarySlideSolutionButton) {
       const $showResultsButton = Components.Button({
         label: that.cp.l10n.showSolutions,
-        icon: 'show-results',
+        icon: 'show-solutions',
         styleType: 'secondary',
         onClick: function () {
           that.toggleSolutionMode(true);
