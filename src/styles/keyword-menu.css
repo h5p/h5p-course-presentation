@@ -51,7 +51,7 @@
 }
 
 
-.h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"] > span:focus + .joubel-icon-edit {
+.h5p-course-presentation .h5p-keywords-wrapper [role="menuitem"] > span:focus-visible + .joubel-icon-edit {
   visibility: visible;
 }
 
@@ -141,7 +141,7 @@
   background-color: var(--h5p-theme-contrast-cta-light);
 }
 
-.h5p-course-presentation .h5p-keywords-wrapper > [role="menu"] > [role="menuitem"]:focus {
+.h5p-course-presentation .h5p-keywords-wrapper > [role="menu"] > [role="menuitem"]:focus-visible {
   outline: 2px solid #79abfd;
   background-color: rgba(121, 171, 253, 0.2);
   outline-offset: -2px;

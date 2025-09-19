@@ -138,7 +138,7 @@
   margin-bottom: 0;
 }
 
-.h5p-course-presentation a:focus {
+.h5p-course-presentation a:focus-visible {
   box-shadow: none;
 }
 
@@ -161,7 +161,7 @@
   -moz-box-sizing: border-box;
 }
 
-.using-mouse .h5p-course-presentation .h5p-wrapper:focus::before {
+.using-mouse .h5p-course-presentation .h5p-wrapper:focus-visible::before {
   content: " ";
   pointer-events: none;
   width: 100%;
@@ -173,7 +173,7 @@
   box-sizing: border-box;
 }
 
-.h5p-content:not(.using-mouse) .h5p-course-presentation .h5p-wrapper:focus::after {
+.h5p-content:not(.using-mouse) .h5p-course-presentation .h5p-wrapper:focus-visible::after {
   content: " ";
   pointer-events: none;
   width: 100%;
@@ -532,8 +532,8 @@
   background: #003fdf;
 }
 
-.h5p-course-presentation .h5p-element-button:focus,
-.h5p-course-presentation .h5p-element-button-label:focus ~ .h5p-element-button {
+.h5p-course-presentation .h5p-element-button:focus-visible,
+.h5p-course-presentation .h5p-element-button-label:focus-visible ~ .h5p-element-button {
   outline: none;
   top: -0.167em;
   left: -0.167em;
@@ -942,7 +942,7 @@
 .h5p-course-presentation.h5p-semi-fullscreen .h5p-toggle-full-screen:before {
   content: "\f066";
 }
-.h5p-course-presentation .h5p-toggle-full-screen:focus,
+.h5p-course-presentation .h5p-toggle-full-screen:focus-visible,
 .h5p-course-presentation .h5p-toggle-full-screen:hover {
   opacity: 0.8;
 }
