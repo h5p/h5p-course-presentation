@@ -96,6 +96,7 @@
   height: 12%;
   font-size: 0.75em;
   display: flex;
+  gap: var(--h5p-theme-spacing-s);
   justify-content: center;
   margin-bottom: var(--h5p-theme-spacing-m);
 }
