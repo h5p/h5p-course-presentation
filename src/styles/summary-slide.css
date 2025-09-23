@@ -228,12 +228,6 @@
 
 /* --------------------------------- Button styling ----------------------------------------------- */
 
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-show-results,
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-retry,
-.h5p-course-presentation .h5p-summary-slide .h5p-eta-export {
-  margin-right: var(--h5p-theme-spacing-xs);
-}
-
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export:before {
   font-family: 'H5PFontAwesome4';
   content: "\f0f6";
