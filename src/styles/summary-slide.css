@@ -96,6 +96,7 @@
   height: 12%;
   font-size: 0.75em;
   display: flex;
+  gap: var(--h5p-theme-spacing-s);
   justify-content: center;
   margin-bottom: var(--h5p-theme-spacing-m);
 }
@@ -226,12 +227,6 @@
 }
 
 /* --------------------------------- Button styling ----------------------------------------------- */
-
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-show-results,
-.h5p-course-presentation .h5p-summary-slide .h5p-theme-retry,
-.h5p-course-presentation .h5p-summary-slide .h5p-eta-export {
-  margin-right: var(--h5p-theme-spacing-xs);
-}
 
 .h5p-course-presentation .h5p-summary-slide .h5p-eta-export:before {
   font-family: 'H5PFontAwesome4';
