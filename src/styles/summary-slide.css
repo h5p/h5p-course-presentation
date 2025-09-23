@@ -121,6 +121,10 @@
   color: #999;
 }
 
+.h5p-course-presentation .h5p-theme-results-list-item {
+  padding-inline: var(--h5p-theme-spacing-m);
+}
+
 .h5p-course-presentation .h5p-theme-results-list-item p {
   font-size: 0.8em;
   font-weight: bold;
