@@ -179,7 +179,7 @@
   pointer-events: none;
   width: 100%;
   height: 100%;
-  border: 3px solid #457AD1;
+  border: 3px solid var(--h5p-theme-contrast-cta-white);
   position: absolute;
   top: 0;
   left: 0;
