@@ -24,7 +24,7 @@ $navigation-element-background-color: #0580e2;
       }
 
       &:focus-visible {
-        outline: 2px solid #457AD1;
+        outline: 2px solid var(--h5p-theme-contrast-cta-white);
         outline-offset: -2px;
       }
     }

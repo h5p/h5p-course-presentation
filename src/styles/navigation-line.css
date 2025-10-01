@@ -312,7 +312,7 @@
 }
 
 .h5p-course-presentation .h5p-progressbar a:focus-visible {
-  outline: 2px solid #457AD1;
+  outline: 2px solid var(--h5p-theme-contrast-cta-white);
   outline-offset: 1px;
 }
 
