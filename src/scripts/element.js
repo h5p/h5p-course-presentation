@@ -44,6 +44,7 @@ function Element(parameters) {
 
     // Override child settings
     library.params = library.params || {};
+    library.params.usePlaceholderImage = true;
     self.instance = H5P.newRunnable(library, self.parent.parent.contentId, undefined, true, { parent: self.parent.parent });
     if (self.instance.preventResize !== undefined) {
       self.instance.preventResize = true;
