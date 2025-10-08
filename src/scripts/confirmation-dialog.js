@@ -10,6 +10,14 @@ const ConfirmationDialog = function (options) {
   let element = confirmationDialog.getElement();
   element.classList.add('h5p-cp-confirmation-dialog');
 
+  if (H5PIntegration?.theme) {
+    element.classList.add('h5p-theme', 'h5p-content');
+
+  if (H5PIntegration.theme.density) {
+    element.classList.add(`h5p-${H5PIntegration.theme.density}`);
+  }
+ }
+
   confirmationDialog.show();
   return confirmationDialog;
 };

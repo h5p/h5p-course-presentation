@@ -998,9 +998,21 @@
 }
 
 .h5p-cp-confirmation-dialog {
+  border-radius: 0.5rem;
   transform: translateY(-50%) translateX(-50%) !important;
   top: 50% !important;
-  font-size: 1.3vw;
+  font-size: 16px;
+  line-height: 1.5em;
+  width: 100%;
+  height: auto;
+  max-height: 12rem;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.h5p-fullscreen .h5p-course-presentation .h5p-cp-confirmation-dialog.h5p-content {
+  height: unset;
 }
 
 /* Custom styles for H5P.AudioRecorder subcontent */
