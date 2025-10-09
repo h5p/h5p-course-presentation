@@ -137,7 +137,7 @@ const Printer = (function ($) {
       html: texts.printIngress
     }));
 
-    const $printCurrentButton = Components.Button({
+    const printCurrentButton = Components.Button({
       label: texts.printCurrentSlide,
       styleType: 'secondary',
       classes: 'h5p-cp-print-current-slide',
@@ -146,9 +146,9 @@ const Printer = (function ($) {
         callback(false);
       }
     });
-    $content.append($printCurrentButton);
+    $content.append(printCurrentButton);
 
-    const $printAllButton = Components.Button({
+    const printAllButton = Components.Button({
       label: texts.printAllSlides,
       classes: 'h5p-cp-print-all-slides',
       onClick: function () {
@@ -156,7 +156,7 @@ const Printer = (function ($) {
         callback(true);
       }
     });
-    $content.append($printAllButton);
+    $content.append(printAllButton);
 
     this.open = function () {
       setTimeout(function () {

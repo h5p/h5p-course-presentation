@@ -12,10 +12,6 @@ const ConfirmationDialog = function (options) {
 
   if (H5PIntegration?.theme) {
     element.classList.add('h5p-theme', 'h5p-content');
-
-  if (H5PIntegration.theme.density) {
-    element.classList.add(`h5p-${H5PIntegration.theme.density}`);
-  }
  }
 
   confirmationDialog.show();

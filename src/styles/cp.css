@@ -1015,6 +1015,43 @@
   height: unset;
 }
 
+.h5p-cp-confirmation-dialog .h5p-core-cancel-button,
+.h5p-cp-confirmation-dialog .h5p-core-button {
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
+  border: solid 3px var(--h5p-theme-main-cta-base);
+  border-radius: var(--h5p-theme-border-radius-medium);
+  line-height: 1;
+  transition: all 0.1s linear 0s;
+  display: flex;
+  align-items: center;
+  font-size: var(--h5p-theme-font-size-m);
+  font-weight: 600;
+
+  &:focus-visible {
+    outline: 2px ridge var(--h5p-theme-main-cta-base);
+    border-radius: 4px;
+    outline-offset: 2px;
+  }
+  span {
+    display: flex !important;
+  }
+}
+
+.h5p-cp-confirmation-dialog .h5p-core-button {
+  background-color: var(--h5p-theme-main-cta-base);
+  color: var(--h5p-theme-contrast-cta);
+  &:hover {
+    background-color: var(--h5p-theme-main-cta-light);
+    border-color: var(--h5p-theme-main-cta-light);
+  }
+}
+
+.h5p-cp-confirmation-dialog .h5p-core-cancel-button {
+  color: var(--h5p-theme-contrast-cta-white);
+  background-color: var(--h5p-theme-ui-base);
+  border-color: var(--h5p-theme-contrast-cta-white);
+}
+
 /* Custom styles for H5P.AudioRecorder subcontent */
 .h5p-course-presentation .h5p-audio-recorder-view .title {
   font-size: 1em;
