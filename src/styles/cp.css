@@ -1050,8 +1050,8 @@
   background-color: transparent;
 }
 
-.h5p-course-presentation .h5p-audio-outer-element .h5p-audio-minimal-button.h5p-audio-minimal-play,
-.h5p-course-presentation .h5p-audio-outer-element .h5p-audio-minimal-button.h5p-audio-minimal-play-paused,
-.h5p-course-presentation .h5p-audio-outer-element .h5p-audio-minimal-button.h5p-audio-minimal-pause {
+.h5p-course-presentation .h5p-audio-outer-element .h5p-audio-minimal-button.h5p-audio-fit-wrapper.h5p-audio-minimal-play,
+.h5p-course-presentation .h5p-audio-outer-element .h5p-audio-minimal-button.h5p-audio-fit-wrapper.h5p-audio-minimal-play-paused,
+.h5p-course-presentation .h5p-audio-outer-element .h5p-audio-minimal-button.h5p-audio-fit.wrapper.h5p-audio-minimal-pause {
   padding: unset;
 }
