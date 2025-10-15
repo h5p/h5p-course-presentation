@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "Schaubild",
           "field": {
             "fields": [
               {
+                "entity": "Element",
                 "field": {
                   "fields": [
                     {},
@@ -68,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "Schlagwort",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "Schlagwort"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {

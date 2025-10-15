@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -68,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
