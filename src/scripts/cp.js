@@ -445,7 +445,7 @@ CoursePresentation.prototype.attach = function ($container) {
   new SlideBackground(this);
 
   if (this.previousState && this.previousState.progress) {
-    this.jumpToSlide(this.previousState.progress, false, null, false, true);
+    this.jumpToSlide(this.previousState.progress, false, null, false, true, true);
   }
 };
 
@@ -1907,9 +1907,11 @@ CoursePresentation.prototype.attachAllElements = function () {
  *
  * @param {number} slideNumber The slide number to jump to.
  * @param {Boolean} [noScroll] Skip UI scrolling.
+ * @param {Boolean} [handleFocus] If true, will focus the slide number announcer.
+ * @param {Boolean} [noXAPI] If true, will not trigger xAPI events.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) {
+CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus, noXAPI) {
   var that = this;
   if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
@@ -2004,7 +2006,7 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
 
   if (that.summarySlideObject) {
     // Update summary slide if on last slide, do not jump
-    that.summarySlideObject.updateSummarySlide(slideNumber, true);
+    that.summarySlideObject.updateSummarySlide(slideNumber, true, noXAPI);
   }
 
   // Editor specific settings
@@ -2026,9 +2028,17 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @param {Function|null} [callback] Callback to execute on successfull navigation
  * @param {Boolean} [ignoreConfirmationDialog] Will not show confirmation dialog for summary slide
+ * @param {Boolean} [noXAPI] If true, will not trigger xAPI events.
  * @returns {Boolean}
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false, ignoreConfirmationDialog = false) {
+CoursePresentation.prototype.jumpToSlide = function (
+  slideNumber,
+  noScroll = false,
+  callback = null,
+  handleFocus = false,
+  ignoreConfirmationDialog = false,
+  noXAPI = false
+) {
   if (this.standalone
     && this.showSummarySlide
     && slideNumber === this.slides.length - 1
@@ -2053,14 +2063,14 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
       return false;
     });
     confirmationDialog.on('confirmed', () => {
-      this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+      this.processJumpToSlide(slideNumber, noScroll, handleFocus, noXAPI);
       if (callback) {
         callback();
       }
     });
   }
   else {
-    this.processJumpToSlide(slideNumber, noScroll, handleFocus);
+    this.processJumpToSlide(slideNumber, noScroll, handleFocus, noXAPI);
     if (callback) {
       callback();
     }
