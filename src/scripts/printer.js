@@ -54,8 +54,6 @@ const Printer = (function ($) {
     });
 
     $('.h5p-summary-slide').css('height', '');
-    const starDisplay = $('.h5p-joubelui-score-bar-star').css('display');
-    $('.h5p-joubelui-score-bar-star').css('display', 'none');
 
     var wrapperHeight = $wrapper.height();
     $wrapper.css('height', 'auto');
@@ -71,8 +69,6 @@ const Printer = (function ($) {
         fontSize: ''
       });
       $wrapper.css('height', wrapperHeight + 'px');
-      $('.h5p-joubelui-score-bar-star').css('display', starDisplay);
-
       // Let CP know we are finished printing
       cp.trigger('printing', { finished: true });
     };
