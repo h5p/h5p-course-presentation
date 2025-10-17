@@ -126,7 +126,8 @@
   margin-right: .5em;
 }
 .h5p-print-dialog .h5p-cp-print-all-slides::before {
-  content: '\f0c5';
+  content: '\f02f';
+  font-family: 'H5PFontAwesome4';
 }
 
 .h5p-cp-print-ingress {
