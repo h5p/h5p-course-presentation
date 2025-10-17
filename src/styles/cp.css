@@ -1000,57 +1000,8 @@
 .h5p-cp-confirmation-dialog {
   background-color: var(--h5p-theme-ui-base);
   border-radius: 0.5rem;
-  transform: translateY(-50%) translateX(-50%) !important;
-  top: 50% !important;
-  font-size: 16px;
-  line-height: 1.5em;
-  width: 100%;
-  height: auto;
-  max-height: 12rem;
-  -webkit-text-size-adjust: none;
-  -moz-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-.h5p-fullscreen .h5p-course-presentation .h5p-cp-confirmation-dialog.h5p-content {
-  height: unset;
-}
-
-.h5p-cp-confirmation-dialog .h5p-core-cancel-button,
-.h5p-cp-confirmation-dialog .h5p-core-button {
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s);
-  border: solid 3px var(--h5p-theme-main-cta-base);
-  border-radius: var(--h5p-theme-border-radius-medium);
-  line-height: 1;
-  transition: all 0.1s linear 0s;
-  display: flex;
-  align-items: center;
-  font-size: var(--h5p-theme-font-size-m);
-  font-weight: 600;
-
-  &:focus-visible {
-    outline: 2px ridge var(--h5p-theme-main-cta-base);
-    border-radius: 4px;
-    outline-offset: 2px;
-  }
-  span {
-    display: flex !important;
-  }
-}
-
-.h5p-cp-confirmation-dialog .h5p-core-button {
-  background-color: var(--h5p-theme-main-cta-base);
-  color: var(--h5p-theme-contrast-cta);
-  &:hover {
-    background-color: var(--h5p-theme-main-cta-light);
-    border-color: var(--h5p-theme-main-cta-light);
-  }
-}
-
-.h5p-cp-confirmation-dialog .h5p-core-cancel-button {
-  color: var(--h5p-theme-contrast-cta-white);
-  background-color: var(--h5p-theme-ui-base);
-  border-color: var(--h5p-theme-contrast-cta-white);
+  top: 50% !important; /* Override inline style set by H5P core */
+  transform: translateY(-50%) translateX(-50%);
 }
 
 /* Custom styles for H5P.AudioRecorder subcontent */
