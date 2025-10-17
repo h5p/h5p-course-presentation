@@ -165,6 +165,14 @@ CoursePresentation.prototype = Object.create(Parent.prototype);
 CoursePresentation.prototype.constructor = CoursePresentation;
 
 /**
+ * Determine whether the content uses a theme.
+ * @returns {boolean} True if the content uses a theme, else false.
+ */
+CoursePresentation.prototype.hasTheme = function () {
+  return this.$container[0].classList.contains('h5p-theme');
+};
+
+/**
  * @public
  * @return {object}
  */
@@ -2074,12 +2082,16 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
       return false;
     }
 
-    const confirmationDialog = ConfirmationDialog({
-      headerText: this.l10n.confirmDialogHeader,
-      dialogText: this.l10n.confirmDialogText,
-      confirmText: this.l10n.confirmDialogConfirmLabel,
-      cancelText: this.l10n.confirmDialogCancelLabel,
-    });
+    const confirmationDialog = ConfirmationDialog(
+      {
+        headerText: this.l10n.confirmDialogHeader,
+        dialogText: this.l10n.confirmDialogText,
+        confirmText: this.l10n.confirmDialogConfirmLabel,
+        cancelText: this.l10n.confirmDialogCancelLabel,
+        theme: this.hasTheme(),
+      },
+      this.$container[0]
+    );
 
     confirmationDialog.on('canceled', () => {
       return false;
