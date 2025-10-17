@@ -998,6 +998,7 @@
 }
 
 .h5p-cp-confirmation-dialog {
+  background-color: var(--h5p-theme-ui-base);
   border-radius: 0.5rem;
   transform: translateY(-50%) translateX(-50%) !important;
   top: 50% !important;
