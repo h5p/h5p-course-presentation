@@ -379,11 +379,13 @@ const NavigationLine = (function ($) {
 
   NavigationLine.prototype.openPrintDialog = function () {
     const $h5pWrapper = $('.h5p-wrapper');
-    const $dialog = Printer.showDialog(this.cp.l10n, $h5pWrapper, (printAllSlides) => {
-      Printer.print(this.cp, $h5pWrapper, printAllSlides);
-    });
-
-    $dialog.children('[role="dialog"]').focus();
+    Printer.showDialog(
+      this.cp.l10n,
+      (printAllSlides) => {
+        Printer.print(this.cp, $h5pWrapper, printAllSlides);
+      },
+      this.cp.contentId
+    );
   };
 
   /**

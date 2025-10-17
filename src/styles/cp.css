@@ -998,9 +998,10 @@
 }
 
 .h5p-cp-confirmation-dialog {
-  transform: translateY(-50%) translateX(-50%) !important;
-  top: 50% !important;
-  font-size: 1.3vw;
+  background-color: var(--h5p-theme-ui-base);
+  border-radius: 0.5rem;
+  top: 50% !important; /* Override inline style set by H5P core */
+  transform: translateY(-50%) translateX(-50%);
 }
 
 /* Custom styles for H5P.AudioRecorder subcontent */

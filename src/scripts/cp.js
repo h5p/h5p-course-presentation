@@ -2074,12 +2074,16 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
       return false;
     }
 
-    const confirmationDialog = ConfirmationDialog({
-      headerText: this.l10n.confirmDialogHeader,
-      dialogText: this.l10n.confirmDialogText,
-      confirmText: this.l10n.confirmDialogConfirmLabel,
-      cancelText: this.l10n.confirmDialogCancelLabel,
-    });
+    const confirmationDialog = ConfirmationDialog(
+      {
+        headerText: this.l10n.confirmDialogHeader,
+        dialogText: this.l10n.confirmDialogText,
+        confirmText: this.l10n.confirmDialogConfirmLabel,
+        cancelText: this.l10n.confirmDialogCancelLabel,
+        theme: true,
+      },
+      this.contentId,
+    );
 
     confirmationDialog.on('canceled', () => {
       return false;
