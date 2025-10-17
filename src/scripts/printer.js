@@ -1,9 +1,6 @@
-import { addClickAndKeyboardListeners } from './utils';
-import { Components } from './globals';
+import ConfirmationDialog from './confirmation-dialog';
 
 const Printer = (function ($) {
-  let nextPrinterDialogId = 0;
-
   /**
    * Printer class
    * @class Printer
@@ -96,86 +93,36 @@ const Printer = (function ($) {
   };
 
   /**
-   * Show the print dialog. Wanted to use H5P.Dialog, but it does not support getting a jQuery object as the content
-   *
+   * Show the print dialog.
    * @method showDialog
-   * @param  {object}       texts    Translated texts
-   * @param  {H5P.jQuery}   $element Dom object to insert dialog after
-   * @param  {Function}     callback Function invoked when printing is done.
+   * @param {object} texts Translated texts
+   * @param {function} callback Function invoked when printing is done.
+   * @param {number|string} contentId Content id.
    */
-  Printer.showDialog = function (texts, $element, callback) {
-    var self = this;
-    const instanceId = nextPrinterDialogId++;
-    const dialogTitleId = `h5p-cp-print-dialog-${instanceId}-title`;
-    const ingressId = `h5p-cp-print-dialog-${instanceId}-ingress`;
+  Printer.showDialog = function (texts, callback, contentId) {
+    const confirmationDialog = ConfirmationDialog(
+      {
+        headerText: texts.printTitle,
+        dialogText: texts.printIngress,
+        cancelText: texts.printCurrentSlide,
+        confirmText: texts.printAllSlides,
+        theme: true,
+        classes: ['h5p-print-dialog']
+      },
+      contentId
+    );
 
-    var $dialog = $(`<div class="h5p-popup-dialog h5p-print-dialog">
-                      <div role="dialog" aria-labelledby="${dialogTitleId}" aria-describedby="${ingressId}" tabindex="-1" class="h5p-inner">
-                        <h2 id="${dialogTitleId}">${texts.printTitle}</h2>
-                        <div class="h5p-scroll-content"></div>
-                        <div class="h5p-close" role="button" tabindex="0" title="${H5P.t('close')}">
-                      </div>
-                    </div>`)
-      .insertAfter($element)
-      .click(function () {
-        self.close();
-      })
-      // prevent propagation inside inner
-      .children('.h5p-inner')
-      .click(function () {
-        return false;
-      })
-      .end();
-
-    addClickAndKeyboardListeners($dialog.find('.h5p-close'), () => self.close());
-
-    var $content = $dialog.find('.h5p-scroll-content');
-
-    $content.append($('<div>', {
-      'class': 'h5p-cp-print-ingress',
-      id: ingressId,
-      html: texts.printIngress
-    }));
-
-    const printCurrentButton = Components.Button({
-      label: texts.printCurrentSlide,
-      styleType: 'secondary',
-      classes: 'h5p-cp-print-current-slide',
-      onClick: function () {
-        self.close();
-        callback(false);
+    confirmationDialog.on('canceled', (event) => {
+      if (event.data.wasExplicitChoice) {
+        callback(false); // The "cancel" button was clicked, here working as "print current slide"
       }
+      return false;
     });
-    $content.append(printCurrentButton);
 
-    const printAllButton = Components.Button({
-      label: texts.printAllSlides,
-      classes: 'h5p-cp-print-all-slides',
-      onClick: function () {
-        self.close();
-        callback(true);
-      }
+    confirmationDialog.on('confirmed', () => {
+      callback(true);
+      return false;
     });
-    $content.append(printAllButton);
-
-    this.open = function () {
-      setTimeout(function () {
-        $dialog.addClass('h5p-open'); // Fade in
-        // Triggering an event, in case something has to be done after dialog has been opened.
-        H5P.jQuery(self).trigger('dialog-opened', [$dialog]);
-      }, 1);
-    };
-
-    this.close = function () {
-      $dialog.removeClass('h5p-open'); // Fade out
-      setTimeout(function () {
-        $dialog.remove();
-      }, 200);
-    };
-
-    this.open();
-
-    return $dialog;
   };
 
   return Printer;

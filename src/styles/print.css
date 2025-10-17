@@ -109,37 +109,7 @@
   }
 }
 
-/* Print dialog */
-.h5p-print-dialog {
-  text-align: center;
-}
-.h5p-print-dialog .h5p-inner {
-  display: inline-block;
-  text-align: left;
-}
-.h5p-print-dialog .h5p-joubelui-button {
-  display: block;
-  margin: 1em 0 0 0;
-}
-.h5p-print-dialog .h5p-joubelui-button::before {
+.h5p-print-dialog .h5p-confirmation-dialog-buttons .h5p-theme-check::before {
+  content: '\f02f'; /* printer icon */
   font-family: 'H5PFontAwesome4';
-  margin-right: .5em;
-}
-.h5p-print-dialog .h5p-cp-print-all-slides::before {
-  content: '\f02f';
-  font-family: 'H5PFontAwesome4';
-}
-
-.h5p-cp-print-ingress {
-  grid-column: 1 / -1;
-  padding-bottom: var(--h5p-theme-spacing-m);
-}
-
-.h5p-course-presentation .h5p-print-dialog .h5p-cp-print-current-slide {
-  width: unset;
-  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-l);
-
-  .h5p-theme-label {
-    display: flex !important;
-  }
 }

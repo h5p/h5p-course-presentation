@@ -2082,7 +2082,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
         cancelText: this.l10n.confirmDialogCancelLabel,
         theme: true,
       },
-      this.$container[0]
+      this.contentId,
     );
 
     confirmationDialog.on('canceled', () => {
