@@ -51,10 +51,15 @@ const Printer = (function ($) {
     });
 
     $('.h5p-summary-slide').css('height', '');
+    $('.h5p-summary-slide').css('margin-top', '1rem');
 
-    var wrapperHeight = $wrapper.height();
-    $wrapper.css('height', 'auto');
+    const style = window.getComputedStyle($wrapper[0]);
 
+    const wrapperHeight = parseFloat(style.getPropertyValue('height'));
+    const wrapperWidth = parseFloat(style.getPropertyValue('width'));
+    const wrapperRatio = wrapperWidth / wrapperHeight; // Should always be 16/9 anyway, but just to be sure
+
+    $wrapper.css('height', (670 / wrapperRatio * ($slides.length + 1)) + 'px');
     // Let printer css know which slides to print:
     $slides.toggleClass('doprint', allSlides === true);
     $currentSlide.addClass('doprint');
