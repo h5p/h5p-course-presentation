@@ -107,6 +107,12 @@
   .h5p-course-presentation .h5p-element.h5p-video * {
     width: 0;
   }
+  .h5p-course-presentation .h5p-element-inner.h5p-single-choice-set .h5p-question-main-content {
+    height: 100%;
+  }
+  .h5p-course-presentation .h5p-element-inner.h5p-single-choice-set .h5p-question-main-content .h5p-sc-set-wrapper {
+    overflow: hidden;
+  }
 }
 
 .h5p-print-dialog .h5p-confirmation-dialog-buttons .h5p-theme-check::before {
