@@ -109,25 +109,7 @@
   }
 }
 
-/* Print dialog */
-.h5p-print-dialog {
-  text-align: center;
-}
-.h5p-print-dialog .h5p-inner {
-  display: inline-block;
-  text-align: left;
-}
-.h5p-print-dialog .h5p-joubelui-button {
-  display: block;
-  margin: 1em 0 0 0;
-}
-.h5p-print-dialog .h5p-joubelui-button::before {
+.h5p-print-dialog .h5p-confirmation-dialog-buttons .h5p-theme-check::before {
+  content: '\f02f'; /* printer icon */
   font-family: 'H5PFontAwesome4';
-  margin-right: .5em;
-}
-.h5p-print-dialog .h5p-cp-print-all-slides::before {
-  content: '\f0c5';
-}
-.h5p-print-dialog .h5p-cp-print-current-slide::before {
-  content: '\f016';
 }

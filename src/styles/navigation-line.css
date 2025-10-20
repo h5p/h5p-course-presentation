@@ -182,10 +182,11 @@
 }
 
 /* Print button and full screen button (in footer) */
-.h5p-course-presentation .h5p-footer .h5p-footer-print:before,
+.h5p-course-presentation .h5p-footer .h5p-footer-print:before {
+  font-family: 'H5PFontAwesome4';
+}
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
   font-family: 'h5p-theme';
-  content: "\e914";
 }
 .h5p-course-presentation .h5p-footer .h5p-footer-print:before {
   content: "\f02f";

@@ -94,7 +94,6 @@
 
 .h5p-course-presentation .h5p-summary-footer {
   height: 12%;
-  font-size: 0.75em;
   display: flex;
   gap: var(--h5p-theme-spacing-s);
   justify-content: center;
@@ -236,4 +235,19 @@
   font-family: 'H5PFontAwesome4';
   content: "\f0f6";
   margin-right: 0.5em;
+}
+
+.h5p-course-presentation {
+  .h5p-theme-results-title {
+    font-size: calc(var(--h5p-theme-font-size-xxl) - 6.6px);
+  }
+  .h5p-theme-results-score {
+    font-size: calc(var(--h5p-theme-font-size-xl) - 5.5px);
+  }
+  .h5p-theme-results-list-heading .heading-item {
+    font-size: calc(var(--h5p-theme-font-size-xl) - 7.5px);
+  }
+  .h5p-theme-results-question {
+    font-size: calc(var(--h5p-theme-font-size-l) - 4.9px);
+  }
 }
