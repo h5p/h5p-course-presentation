@@ -110,6 +110,18 @@
 }
 
 .h5p-print-dialog .h5p-confirmation-dialog-buttons .h5p-theme-check::before {
-  content: '\f02f'; /* printer icon */
+  content: '\f0c5'; /* icon with two pages */
   font-family: 'H5PFontAwesome4';
+}
+
+/* Override for H5P core confirmation dialog. Should be changed when Confirmation Dialog uses H5P.Component.Button */
+@container (max-width: 400px) {
+  .h5p-theme .h5p-print-dialog .h5p-confirmation-dialog-buttons button.h5p-theme-cancel {
+    justify-content: center;
+  }
+
+  .h5p-theme .h5p-print-dialog .h5p-confirmation-dialog-buttons button.h5p-theme-cancel::before {
+    content: '\f016'; /* icon with one page */
+    font-family: 'H5PFontAwesome4';
+  }
 }
