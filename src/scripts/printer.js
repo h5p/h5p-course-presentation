@@ -1,6 +1,6 @@
 import ConfirmationDialog from './confirmation-dialog';
 
-const Printer = (function ($) {
+const Printer = (function () {
   /**
    * Printer class
    * @class Printer
@@ -28,39 +28,48 @@ const Printer = (function ($) {
    * @method print
    * @static
    * @param  {H5P.CoursePresentation} cp Reference to cp instance
-   * @param  {H5P.jQuery} $wrapper  The CP dom wrapper
+   * @param  {HTMLElement} wrapper  The CP dom wrapper
    * @param  {boolean} allSlides If true, all slides are printed. If false or
    *                             undefined, the currentSlide is printed.
    */
-  Printer.print = function (cp, $wrapper, allSlides) {
+  Printer.print = function (cp, wrapper, allSlides) {
     // Let CP know we are about to print
     cp.trigger('printing', { finished: false, allSlides: allSlides });
 
     // Find height of a slide:
-    const $currentSlide = $('.h5p-slide.h5p-current');
-    const slideHeight = $currentSlide.height();
-    const slideWidth = $currentSlide.width();
+    const currentSlide = document.querySelector('.h5p-slide.h5p-current');
+    const slideHeight = currentSlide.offsetHeight;
+    const slideWidth = currentSlide.offsetWidth;
 
     // Use 670px as width when printing
     const ratio = slideWidth / 670;
-    const $slides = $('.h5p-slide');
+    const slides = document.querySelectorAll('.h5p-slide');
 
-    $slides.css({
-      height: slideHeight / ratio + 'px',
-      width: '670px',
-      fontSize: Math.floor(100 / ratio) + '%'
+    slides.forEach(slide => {
+      slide.style.height = slideHeight / ratio + 'px';
+      slide.style.width = '670px';
+      slide.style.fontSize = Math.floor(100 / ratio) + '%';
     });
 
-    $('.h5p-summary-slide').css('height', '');
-    $('.h5p-summary-slide').css('margin-top', '1rem');
+    const summarySlides = document.querySelectorAll('.h5p-summary-slide');
+    summarySlides.forEach(slide => {
+      slide.style.height = '';
+      slide.style.marginTop = '1rem';
+    });
 
-    const style = window.getComputedStyle($wrapper[0]);
+    const style = window.getComputedStyle(wrapper);
     const wrapperHeight = parseFloat(style.getPropertyValue('height'));
-    $wrapper.css('height', 'max-content');
+    wrapper.style.height = 'max-content';
 
     // Let printer css know which slides to print:
-    $slides.toggleClass('doprint', allSlides === true);
-    $currentSlide.addClass('doprint');
+    slides.forEach(slide => {
+      if (allSlides === true) {
+        slide.classList.add('doprint');
+      } else {
+        slide.classList.remove('doprint');
+      }
+    });
+    currentSlide.classList.add('doprint');
 
     /**
      * Prepare DOM for printing by hiding non-print elements.
@@ -125,7 +134,7 @@ const Printer = (function ($) {
     };
 
     // Course Presentation may be subcontent, but we only want to print the Course Presentation
-    const cpDOM = $wrapper[0].closest('.h5p-course-presentation');
+    const cpDOM = wrapper.closest('.h5p-course-presentation');
     const cleanupDOM = prepareDOMForPrinting(cpDOM);
 
     /**
@@ -206,12 +215,12 @@ const Printer = (function ($) {
     const resetCSS = () => {
       cleanupDOM();
 
-      $slides.css({
-        height: '',
-        width: '',
-        fontSize: ''
+      slides.forEach(slide => {
+        slide.style.height = '';
+        slide.style.width = '';
+        slide.style.fontSize = '';
       });
-      $wrapper.css('height', wrapperHeight + 'px');
+      wrapper.style.height = wrapperHeight + 'px';
       // Let CP know we are finished printing
       cp.trigger('printing', { finished: true });
     };
@@ -276,6 +285,6 @@ const Printer = (function ($) {
 
   return Printer;
 
-})(H5P.jQuery);
+})();
 
 export default Printer;
