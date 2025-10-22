@@ -26,8 +26,7 @@ const Printer = (function () {
   const IOS_MACOS_PRINT_DELAY_MS = 1500;
 
   /**
-   * Check if printing is supported
-   *
+   * Check if printing is supported.
    * @method supported
    * @static
    * @return {boolean} True if supported, else false.
@@ -38,14 +37,12 @@ const Printer = (function () {
   };
 
   /**
-   * Do the actual printing
-   *
+   * Do the actual printing.
    * @method print
    * @static
-   * @param  {H5P.CoursePresentation} cp Reference to cp instance
-   * @param  {HTMLElement} wrapper  The CP dom wrapper
-   * @param  {boolean} allSlides If true, all slides are printed. If false or
-   *                             undefined, the currentSlide is printed.
+   * @param  {H5P.CoursePresentation} cp Reference to cp instance.
+   * @param  {HTMLElement} wrapper The CP dom wrapper.
+   * @param  {boolean} allSlides If true, all slides are printed. Else the currentSlide is printed.
    */
   Printer.print = function (cp, wrapper, allSlides) {
     // Let CP know we are about to print
@@ -187,7 +184,9 @@ const Printer = (function () {
       return Array.from(images).filter(image => !image.complete);
     };
 
-    /* Ensures all backgrounds to be loaded (workaround for Chromium) */
+    /**
+     * Ensure all backgrounds to be loaded (workaround for Chromium).
+     */
     const waitForBackgroundsToLoad = () => {
       return new Promise((resolve) => {
         const slides = document.querySelectorAll('.h5p-slide.doprint');
@@ -220,6 +219,9 @@ const Printer = (function () {
       });
     };
 
+    /**
+     * Reset CSS changes made for printing.
+     */
     const resetCSS = () => {
       cleanupDOM();
 
@@ -262,7 +264,7 @@ const Printer = (function () {
   /**
    * Show the print dialog.
    * @method showDialog
-   * @param {object} texts Translated texts
+   * @param {object} texts Translated texts.
    * @param {function} callback Function invoked when printing is done.
    * @param {number|string} contentId Content id.
    */
