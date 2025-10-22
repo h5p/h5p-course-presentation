@@ -7,6 +7,9 @@ const Printer = (function ($) {
    */
   function Printer() {}
 
+  /** @constant {number} BACKGROUND_LOADING_TIMEOUT_MS Timeout in milliseconds to wait for background images to load. */
+  const BACKGROUND_LOADING_TIMEOUT_MS = 2000;
+
   /**
    * Check if printing is supported
    *
@@ -38,9 +41,7 @@ const Printer = (function ($) {
     var slideHeight = $currentSlide.height();
     var slideWidth = $currentSlide.width();
 
-    // Use 670px as width when printing. We can't use 100% percent, since user can
-    // change between landscape and portrait without us ever knowing about it.
-    // More info: http://stackoverflow.com/a/11084797/2797106
+    // Use 670px as width when printing
     var ratio = slideWidth / 670;
     var $slides = $('.h5p-slide');
 
@@ -54,13 +55,87 @@ const Printer = (function ($) {
     $('.h5p-summary-slide').css('margin-top', '1rem');
 
     const style = window.getComputedStyle($wrapper[0]);
-
     const wrapperHeight = parseFloat(style.getPropertyValue('height'));
     $wrapper.css('height', 'max-content');
 
     // Let printer css know which slides to print:
     $slides.toggleClass('doprint', allSlides === true);
     $currentSlide.addClass('doprint');
+
+    /**
+     * Creates an image loading promise.
+     * @param {string} src Image source URL.
+     * @returns {Promise} Promise that resolves when image loads or errors.
+     */
+    const loadImage = (src) => {
+      return new Promise((resolve) => {
+        const image = new Image();
+        const handleLoad = () => resolve();
+        image.addEventListener('load', handleLoad, { once: true });
+        image.addEventListener('error', handleLoad, { once: true });
+        image.src = src;
+      });
+    };
+
+    /**
+     * Gets background image URLs from a slide.
+     * @param {HTMLElement} slide The slide element.
+     * @returns {string[]} Array of background image URLs.
+     */
+    const getBackgroundImageUrls = (slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      const backgroundImage = computedStyle.backgroundImage;
+
+      if (!backgroundImage || backgroundImage === 'none') {
+        return [];
+      }
+
+      const urls = backgroundImage.match(/url\(['"]?([^'")]+)['"]?\)/g);
+      return urls ? urls.map(url => url.match(/url\(['"]?([^'")]+)['"]?\)/)[1]) : [];
+    };
+
+    /**
+     * Gets incomplete images from a slide.
+     * @param {HTMLElement} slide The slide element.
+     * @returns {HTMLImageElement[]} Array of incomplete images.
+     */
+    const getIncompleteImages = (slide) => {
+      const images = slide.querySelectorAll('img');
+      return Array.from(images).filter(image => !image.complete);
+    };
+
+    /* Ensures all backgrounds to be loaded (workaround for Chromium) */
+    const waitForBackgroundsToLoad = () => {
+      return new Promise((resolve) => {
+        const slides = document.querySelectorAll('.h5p-slide.doprint');
+        const imagePromises = [];
+
+        slides.forEach(slide => {
+          const backgroundUrls = getBackgroundImageUrls(slide);
+          backgroundUrls.forEach(src => {
+            imagePromises.push(loadImage(src));
+          });
+
+          const incompleteImages = getIncompleteImages(slide);
+          incompleteImages.forEach(image => {
+            imagePromises.push(loadImage(image.src));
+          });
+        });
+
+        // Set up timeout fallback
+        const timeoutPromise = new Promise((resolve) => {
+          setTimeout(() => {
+            console.warn('Background loading timeout, proceeding with print');
+            resolve();
+          }, BACKGROUND_LOADING_TIMEOUT_MS);
+        });
+
+        Promise.race([
+          Promise.all(imagePromises),
+          timeoutPromise
+        ]).then(resolve);
+      });
+    };
 
     const resetCSS = function () {
       $slides.css({
@@ -73,21 +148,28 @@ const Printer = (function ($) {
       cp.trigger('printing', { finished: true });
     };
 
-    // Need timeout for some browsers.
-    setTimeout(function () {
-      // Do the actual printing of the iframe content
-      window.focus();
-      window.print();
+    // Wait for backgrounds, then print
+    setTimeout(async function () {
+      // Wait for all background images to load
+      await waitForBackgroundsToLoad();
 
-      // Need additional timeout for ios and MacOS
-      if (/iPad|iPhone|Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent)) {
-        setTimeout(function () {
+      // Additional delay to ensure rendering
+      setTimeout(() => {
+        // Do the actual printing
+        window.focus();
+        window.print();
+
+        // Need additional timeout for ios and MacOS
+        if (/iPad|iPhone|Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent)) {
+          setTimeout(function () {
+            resetCSS();
+          }, 1500);
+        }
+        else {
           resetCSS();
-        }, 1500);
-      }
-      else {
-        resetCSS();
-      }
+        }
+      }, 100);
+
     }, 500);
   };
 
