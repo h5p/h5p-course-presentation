@@ -212,7 +212,7 @@ const Printer = (function () {
     const slideWidth = currentSlide.offsetWidth;
 
     const ratio = slideWidth / SLIDE_PRINT_WIDTH_PX;
-    const slides = document.querySelectorAll('.h5p-slide');
+    slides = document.querySelectorAll('.h5p-slide');
     slides.forEach(slide => {
       slide.style.height = `${slideHeight / ratio}px`;
       slide.style.width = `${SLIDE_PRINT_WIDTH_PX}px`;
