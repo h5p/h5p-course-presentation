@@ -56,10 +56,8 @@ const Printer = (function ($) {
     const style = window.getComputedStyle($wrapper[0]);
 
     const wrapperHeight = parseFloat(style.getPropertyValue('height'));
-    const wrapperWidth = parseFloat(style.getPropertyValue('width'));
-    const wrapperRatio = wrapperWidth / wrapperHeight; // Should always be 16/9 anyway, but just to be sure
+    $wrapper.css('height', 'max-content');
 
-    $wrapper.css('height', (670 / wrapperRatio * ($slides.length + 1)) + 'px');
     // Let printer css know which slides to print:
     $slides.toggleClass('doprint', allSlides === true);
     $currentSlide.addClass('doprint');

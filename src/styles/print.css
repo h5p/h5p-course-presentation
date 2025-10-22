@@ -38,12 +38,12 @@
     position: relative;
     -webkit-transform: none;
     transform: none;
-
-    /* Adding this border makes it work in FF 39 on Linux. I have no
-       Idea why, but please don't remove it !! */
-    border: 1px solid #ddd;
-    page-break-after: always;
   }
+
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint:nth-child(2n) {
+      break-after: always;
+  }
+
   .h5p-course-presentation .h5p-summary-footer {
     display: none;
   }
