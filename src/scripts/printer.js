@@ -11,6 +11,21 @@ const Printer = (function () {
   const BACKGROUND_LOADING_TIMEOUT_MS = 2000;
 
   /**
+    * @constant {number} SLIDE_PRINT_WIDTH_PX Width in px to use when printing slides. Value derived from experience.
+    * @see http://stackoverflow.com/a/11084797/2797106
+    */
+  const SLIDE_PRINT_WIDTH_PX = 670;
+
+  /** @constant {number} INITIAL_PRINT_DELAY_MS Initial delay before starting the print process. */
+  const INITIAL_PRINT_DELAY_MS = 500;
+
+  /** @constant {number} RENDER_DELAY_MS Additional delay to ensure rendering before printing. */
+  const RENDER_DELAY_MS = 100;
+
+  /** @constant {number} IOS_MACOS_PRINT_DELAY_MS Extra delay needed for iOS and macOS after printing. */
+  const IOS_MACOS_PRINT_DELAY_MS = 1500;
+
+  /**
    * Check if printing is supported
    *
    * @method supported
@@ -41,13 +56,12 @@ const Printer = (function () {
     const slideHeight = currentSlide.offsetHeight;
     const slideWidth = currentSlide.offsetWidth;
 
-    // Use 670px as width when printing
-    const ratio = slideWidth / 670;
+    const ratio = slideWidth / SLIDE_PRINT_WIDTH_PX;
     const slides = document.querySelectorAll('.h5p-slide');
 
     slides.forEach(slide => {
       slide.style.height = slideHeight / ratio + 'px';
-      slide.style.width = '670px';
+      slide.style.width = `${SLIDE_PRINT_WIDTH_PX}px`;
       slide.style.fontSize = Math.floor(100 / ratio) + '%';
     });
 
@@ -230,18 +244,18 @@ const Printer = (function () {
         window.focus();
         window.print();
 
-        // Need additional timeout for ios and MacOS
+        // Need additional timeout for ios and MacOS - these platforms require extra time to process the print dialog
         if (/iPad|iPhone|Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent)) {
           setTimeout(() => {
             resetCSS();
-          }, 1500);
+          }, IOS_MACOS_PRINT_DELAY_MS);
         }
         else {
           resetCSS();
         }
-      }, 100);
+      }, RENDER_DELAY_MS); // Allow browser time to render DOM changes before printing
 
-    }, 500);
+    }, INITIAL_PRINT_DELAY_MS); // Initial delay to ensure all DOM manipulations are complete
   };
 
   /**
