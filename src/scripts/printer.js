@@ -45,6 +45,8 @@ const Printer = (function () {
    * @param  {boolean} allSlides If true, all slides are printed. Else the currentSlide is printed.
    */
   Printer.print = function (cp, wrapper, allSlides) {
+    let slides, wrapperHeight, cleanupDOM;
+
     /**
      * Prepare DOM for printing by hiding non-print elements.
      * @param {HTMLElement} sourceElement The source element to clone and print.
@@ -154,7 +156,7 @@ const Printer = (function () {
      */
     const waitForBackgroundsToLoad = () => {
       return new Promise((resolve) => {
-        const slides = document.querySelectorAll('.h5p-slide.doprint');
+        slides = document.querySelectorAll('.h5p-slide.doprint');
         const imagePromises = [];
 
         slides.forEach(slide => {
@@ -218,7 +220,7 @@ const Printer = (function () {
     });
 
     const style = window.getComputedStyle(wrapper);
-    const wrapperHeight = parseFloat(style.getPropertyValue('height'));
+    wrapperHeight = parseFloat(style.getPropertyValue('height'));
     wrapper.style.height = 'max-content';
 
     // Let printer css know which slides to print:
@@ -234,7 +236,7 @@ const Printer = (function () {
 
     // Course Presentation may be subcontent, but we only want to print the Course Presentation
     const cpDOM = wrapper.closest('.h5p-course-presentation');
-    const cleanupDOM = prepareDOMForPrinting(cpDOM);
+    cleanupDOM = prepareDOMForPrinting(cpDOM);
 
     // Wait for backgrounds, then print
     setTimeout(async () => {
