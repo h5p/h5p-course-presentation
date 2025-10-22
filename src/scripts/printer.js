@@ -1,4 +1,5 @@
 import ConfirmationDialog from './confirmation-dialog';
+import { isIOS, isMacOS } from './utils';
 
 const Printer = (function () {
   /**
@@ -250,7 +251,7 @@ const Printer = (function () {
         window.print();
 
         // Need additional timeout for ios and MacOS - these platforms require extra time to process the print dialog
-        if (/iPad|iPhone|Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent)) {
+        if (isIOS || isMacOS) {
           setTimeout(() => {
             resetCSS();
           }, IOS_MACOS_PRINT_DELAY_MS);
