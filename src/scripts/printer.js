@@ -51,12 +51,6 @@ const Printer = (function () {
       slide.style.fontSize = Math.floor(100 / ratio) + '%';
     });
 
-    const summarySlides = document.querySelectorAll('.h5p-summary-slide');
-    summarySlides.forEach(slide => {
-      slide.style.height = '';
-      slide.style.marginTop = '1rem';
-    });
-
     const style = window.getComputedStyle(wrapper);
     const wrapperHeight = parseFloat(style.getPropertyValue('height'));
     wrapper.style.height = 'max-content';

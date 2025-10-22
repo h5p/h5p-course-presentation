@@ -113,6 +113,11 @@
   .h5p-course-presentation .h5p-element-inner.h5p-single-choice-set .h5p-question-main-content .h5p-sc-set-wrapper {
     overflow: hidden;
   }
+
+  .h5p-course-presentation .h5p-summary-slide {
+    height: auto !important;
+    margin-block-start: 1rem;
+  }
 }
 
 .h5p-print-dialog .h5p-confirmation-dialog-buttons .h5p-theme-check::before {
