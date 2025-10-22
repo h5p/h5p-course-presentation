@@ -175,15 +175,20 @@ const Printer = (function () {
         // Set up timeout fallback
         const timeoutPromise = new Promise((resolve) => {
           setTimeout(() => {
-            console.warn('Background loading timeout, proceeding with print');
-            resolve();
+            resolve('timeout');
           }, BACKGROUND_LOADING_TIMEOUT_MS);
         });
 
+        const imageLoadPromise = Promise.all(imagePromises).then(() => 'loaded');
         Promise.race([
-          Promise.all(imagePromises),
+          imageLoadPromise,
           timeoutPromise
-        ]).then(resolve);
+        ]).then((result) => {
+          if (result === 'timeout') {
+            console.warn('Background loading timeout, proceeding with print');
+          }
+          resolve();
+        });
       });
     };
 
