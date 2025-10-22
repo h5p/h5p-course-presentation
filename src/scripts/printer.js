@@ -37,13 +37,13 @@ const Printer = (function ($) {
     cp.trigger('printing', { finished: false, allSlides: allSlides });
 
     // Find height of a slide:
-    var $currentSlide = $('.h5p-slide.h5p-current');
-    var slideHeight = $currentSlide.height();
-    var slideWidth = $currentSlide.width();
+    const $currentSlide = $('.h5p-slide.h5p-current');
+    const slideHeight = $currentSlide.height();
+    const slideWidth = $currentSlide.width();
 
     // Use 670px as width when printing
-    var ratio = slideWidth / 670;
-    var $slides = $('.h5p-slide');
+    const ratio = slideWidth / 670;
+    const $slides = $('.h5p-slide');
 
     $slides.css({
       height: slideHeight / ratio + 'px',
@@ -203,7 +203,7 @@ const Printer = (function ($) {
       });
     };
 
-    const resetCSS = function () {
+    const resetCSS = () => {
       cleanupDOM();
 
       $slides.css({
@@ -217,7 +217,7 @@ const Printer = (function ($) {
     };
 
     // Wait for backgrounds, then print
-    setTimeout(async function () {
+    setTimeout(async () => {
       // Wait for all background images to load
       await waitForBackgroundsToLoad();
 
@@ -229,7 +229,7 @@ const Printer = (function ($) {
 
         // Need additional timeout for ios and MacOS
         if (/iPad|iPhone|Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent)) {
-          setTimeout(function () {
+          setTimeout(() => {
             resetCSS();
           }, 1500);
         }
