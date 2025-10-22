@@ -58,11 +58,10 @@ const Printer = (function () {
 
     const ratio = slideWidth / SLIDE_PRINT_WIDTH_PX;
     const slides = document.querySelectorAll('.h5p-slide');
-
     slides.forEach(slide => {
-      slide.style.height = slideHeight / ratio + 'px';
+      slide.style.height = `${slideHeight / ratio}px`;
       slide.style.width = `${SLIDE_PRINT_WIDTH_PX}px`;
-      slide.style.fontSize = Math.floor(100 / ratio) + '%';
+      slide.style.fontSize = `${Math.floor(100 / ratio)}%`;
     });
 
     const style = window.getComputedStyle(wrapper);
@@ -228,7 +227,8 @@ const Printer = (function () {
         slide.style.width = '';
         slide.style.fontSize = '';
       });
-      wrapper.style.height = wrapperHeight + 'px';
+      wrapper.style.height = `${wrapperHeight}px`;
+
       // Let CP know we are finished printing
       cp.trigger('printing', { finished: true });
     };
