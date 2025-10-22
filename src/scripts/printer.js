@@ -63,6 +63,72 @@ const Printer = (function ($) {
     $currentSlide.addClass('doprint');
 
     /**
+     * Prepare DOM for printing by hiding non-print elements.
+     * @param {HTMLElement} sourceElement The source element to clone and print.
+     * @returns {function} Cleanup function to restore original state.
+     */
+    const prepareDOMForPrinting = (sourceElement) => {
+      const printElement = cloneDOMNode(sourceElement);
+
+      const bodyChildren = Array.from(document.body.children);
+      const originalState = bodyChildren.map(child => ({
+        element: child,
+        display: child.style.display,
+      }));
+
+      bodyChildren.forEach(child => {
+        if (!printElement.contains(child)) {
+          child.style.display = 'none';
+        }
+      });
+
+      document.body.appendChild(printElement);
+
+      // Return cleanup function to restore original state
+      return () => {
+        originalState.forEach(({ element, display }) => {
+          element.style.display = display;
+        });
+
+        printElement.remove();
+      };
+    };
+
+    /**
+     * Clone a DOM node with all custom CSS properties copied recursively.
+     * @param {HTMLElement} sourceElement The element to clone.
+     * @returns {HTMLElement} The cloned element with custom properties.
+     */
+    const cloneDOMNode = (sourceElement) => {
+      const clone = sourceElement.cloneNode(true);
+
+      // Copy custom css properties recursively, not handled by cloneNode
+      const sourceStyle = window.getComputedStyle(sourceElement);
+      const targetStyle = clone.style;
+
+      for (let i = 0; i < sourceStyle.length; i++) {
+        const propertyName = sourceStyle[i];
+        if (propertyName.startsWith('--')) {
+          targetStyle.setProperty(propertyName, sourceStyle.getPropertyValue(propertyName));
+        }
+      }
+
+      const sourceChildren = sourceElement.children;
+      const targetChildren = clone.children;
+
+      for (let j = 0; j < sourceChildren.length; j++) {
+        const childClone = cloneDOMNode(sourceChildren[j]);
+        targetChildren[j].replaceWith(childClone);
+      }
+
+      return clone;
+    };
+
+    // Course Presentation may be subcontent, but we only want to print the Course Presentation
+    const cpDOM = $wrapper[0].closest('.h5p-course-presentation');
+    const cleanupDOM = prepareDOMForPrinting(cpDOM);
+
+    /**
      * Creates an image loading promise.
      * @param {string} src Image source URL.
      * @returns {Promise} Promise that resolves when image loads or errors.
@@ -138,6 +204,8 @@ const Printer = (function ($) {
     };
 
     const resetCSS = function () {
+      cleanupDOM();
+
       $slides.css({
         height: '',
         width: '',
