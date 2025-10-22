@@ -72,7 +72,8 @@ const Printer = (function () {
     slides.forEach(slide => {
       if (allSlides === true) {
         slide.classList.add('doprint');
-      } else {
+      }
+      else {
         slide.classList.remove('doprint');
       }
     });
