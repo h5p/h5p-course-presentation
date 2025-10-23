@@ -55,7 +55,46 @@ const Printer = (function () {
       style: {
         justifyContent: 'center',
       }
-    }
+    },
+    {
+      containerSelector: '.h5p-theme .h5p-question-buttons',
+      targetSelector: '.h5p-theme .h5p-theme-primary-cta .h5p-theme-label, .h5p-theme .h5p-theme-secondary-cta .h5p-theme-label, .h5p-theme .h5p-theme-nav-button .h5p-theme-label',
+      rule: 'width < 200px',
+      style: {
+        display: 'none',
+      }
+    },
+    {
+      containerSelector: '.h5p-theme .h5p-question-buttons',
+      targetSelector: '.h5p-theme-secondary-cta',
+      rule: 'width < 350px',
+      style: {
+        '--secondary-label-display': 'none',
+        '--secondary-before-width': '100%',
+        '--secondary-before-margin-right': 'unset',
+      }
+    },
+    {
+      containerSelector: '.h5p-theme .h5p-question-buttons',
+      targetSelector: '.h5p-theme .h5p-theme-primary-cta',
+      rule: 'width < 200px',
+      style: {
+        '--button-justify': 'center',
+        '--button-padding': 0,
+        '--button-height': 'var(--h5p-theme-spacing-xl)',
+        '--button-min-width': 'var(--h5p-theme-spacing-xl)',
+        '--button-text-indent': 0,
+        '--label-display': 'none',
+        '--icon-position': 'unset',
+        '--icon-opacity': 1,
+        '--icon-transform': 'translate(0, 0)',
+        '--icon-margin-right': 0,
+        '--hover-padding': 0,
+        '--hover-text-indent': 0,
+        '--hover-icon-opacity': 1,
+        '--hover-icon-transform': 'translate(0, 0)',
+      }
+    },
   ];
 
   /**
