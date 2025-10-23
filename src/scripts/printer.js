@@ -35,7 +35,13 @@ const Printer = (function () {
     }
   ];
 
-  /** @constant {object[]} NODES_FOR_SIMULATED_CONTAINER_QUERY Nodes to apply simulated container queries for when printing. */
+  /**
+   * @constant {object[]} NODES_FOR_SIMULATED_CONTAINER_QUERY Nodes to apply simulated container queries for when printing.
+   * Firefox's printing engine has trouble with translating container queries to printed output. Here we can simulate
+   * the effect of container queries by applying styles based on container sizes. Think of the object structure as:
+   * "@container `container-selector` (`rule`) { `targetSelector` { `style` } }"
+   * Not an ideal workaround, and custom CSS properties will be applied, but seem not to be evaluated.
+   */
   const NODES_FOR_SIMULATED_CONTAINER_QUERY = [
     {
       containerSelector: '.h5p-element-inner.h5p-question.h5p-blanks.h5p-theme',
