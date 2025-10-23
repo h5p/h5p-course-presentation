@@ -59,7 +59,7 @@
 .h5p-course-presentation .h5p-summary-task-title {
   width: 60%;
   text-align: left;
-  font-size: 0.886em;
+  font-size: 0.9975em;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -75,6 +75,10 @@
   color: #333;
   cursor: pointer;
   text-decoration: none;
+}
+
+.h5p-course-presentation .h5p-summary-slide .h5p-theme-results-points {
+  font-size: 0.9805em;
 }
 
 .h5p-course-presentation .h5p-summary-task-title .h5p-slide-link:visited {
