@@ -15,7 +15,7 @@
   }
   /* Make a border on bottom */
   .h5p-content {
-    border: none;
+    border-color: transparent;
     background: transparent;
   }
   .h5p-course-presentation,
