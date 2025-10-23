@@ -30,6 +30,7 @@ const Printer = (function () {
   const NODES_TO_SET_EXPICIT_DIMENSIONS_FOR = [
     {
       name: 'h5p-question-evaluation-container',
+      paddingBlock: false,
       paddingInline: false,
     }
   ];
@@ -109,8 +110,15 @@ const Printer = (function () {
       if (nodeToUseFor) {
         const size = element.getBoundingClientRect();
 
+        const style = window.getComputedStyle(element);
+
+        if (nodeToUseFor.paddingBlock === false) {
+          const paddingTop = parseFloat(style.getPropertyValue('padding-top'));
+          const paddingBottom = parseFloat(style.getPropertyValue('padding-bottom'));
+          size.height -= (paddingTop + paddingBottom);
+        }
+
         if (nodeToUseFor.paddingInline === false) {
-          const style = window.getComputedStyle(element);
           const paddingLeft = parseFloat(style.getPropertyValue('padding-left'));
           const paddingRight = parseFloat(style.getPropertyValue('padding-right'));
           size.width -= (paddingLeft + paddingRight);
