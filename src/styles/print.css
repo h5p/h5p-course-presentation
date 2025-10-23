@@ -45,6 +45,11 @@
       break-after: always;
   }
 
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint > div[role="document"] {
+    height: 100%;
+    width: 100%;
+  }
+
   .h5p-course-presentation .h5p-summary-footer {
     display: none;
   }
