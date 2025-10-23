@@ -1,5 +1,5 @@
 import ConfirmationDialog from './confirmation-dialog';
-import { convertToKebabCase, isIOS, isMacOS, matchesContainerQuery } from './utils';
+import { convertToKebabCase, isFirefox, isIOS, isMacOS, matchesContainerQuery } from './utils';
 
 const Printer = (function () {
   /**
@@ -152,7 +152,9 @@ const Printer = (function () {
           setExplicitDimensions(printElement);
 
           window.requestAnimationFrame(() => {
-            applySimulatedContainerQueries(printElement);
+            if (isFirefox) {
+              applySimulatedContainerQueries(printElement);
+            }
             resolve();
           });
         });

@@ -45,6 +45,9 @@ export const isIOS = navigator.userAgent.match(/iPad|iPod|iPhone/i) !== null;
 /** @constant {boolean} isMacOS True if the users device is a MacOS device. */
 export const isMacOS = /Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent);
 
+/** @const {boolean} isFirefox True if the browser is Firefox. */
+export const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
 /**
  * Returns true if the array contains the value
  *
