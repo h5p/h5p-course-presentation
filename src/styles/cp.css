@@ -966,9 +966,13 @@
   height: 100%;
 }
 
-/* Making the confirmation dialog popup font-size fit */
+/* Making the confirmation dialog popup font-size match CP */
+.h5p-course-presentation .h5p-confirmation-dialog-background {
+  font-size: 27.2px;
+}
+
 .h5p-course-presentation .h5p-confirmation-dialog-popup {
-  font-size: 0.85em;
+  font-size: 0.75em;
 }
 
 /* Remove option for full enable full screen in Drag Question */
