@@ -26,8 +26,13 @@ const Printer = (function () {
   /** @constant {number} IOS_MACOS_PRINT_DELAY_MS Extra delay needed for iOS and macOS after printing. */
   const IOS_MACOS_PRINT_DELAY_MS = 1500;
 
-  /** @constant {string[]} CLASSES_TO_SET_EXPICIT_DIMENSIONS_FOR Classes to set explicit dimensions for when printing. */
-  const CLASSES_TO_SET_EXPICIT_DIMENSIONS_FOR = ['h5p-question-evaluation-container'];
+  /** @constant {string[]} NODES_TO_SET_EXPICIT_DIMENSIONS_FOR Classes to set explicit dimensions for when printing. */
+  const NODES_TO_SET_EXPICIT_DIMENSIONS_FOR = [
+    {
+      name: 'h5p-question-evaluation-container',
+      paddingInline: false,
+    }
+  ];
 
   /**
    * Check if printing is supported.
@@ -94,13 +99,25 @@ const Printer = (function () {
      * Set explicit dimensions for element and all children to preserve layout during printing.
      * Needed as workaround for Firefox.
      * @param {HTMLElement} element The element to process.
-     * @param {string[]} [classesToUseFor] Class names to check for setting dimensions.
+     * @param {object[]} [nodesToUseFor] Nodes to check for setting dimensions.
+     * @param {string} nodesToUseFor[].name Class name to check for.
+     * @param {boolean} nodesToUseFor[].paddingInline Whether to include padding in width calculation.
      */
-    const setExplicitDimensions = (element, classesToUseFor = CLASSES_TO_SET_EXPICIT_DIMENSIONS_FOR) => {
-      if (classesToUseFor.some(className => element.classList.contains(className))) {
-        const rect = element.getBoundingClientRect();
-        element.style.width = `${rect.width}px`;
-        element.style.height = `${rect.height}px`;
+    const setExplicitDimensions = (element, nodesToUseFor = NODES_TO_SET_EXPICIT_DIMENSIONS_FOR) => {
+      const nodeToUseFor = nodesToUseFor.find(node => element.classList.contains(node.name));
+
+      if (nodeToUseFor) {
+        const size = element.getBoundingClientRect();
+
+        if (nodeToUseFor.paddingInline === false) {
+          const style = window.getComputedStyle(element);
+          const paddingLeft = parseFloat(style.getPropertyValue('padding-left'));
+          const paddingRight = parseFloat(style.getPropertyValue('padding-right'));
+          size.width -= (paddingLeft + paddingRight);
+        }
+
+        element.style.width = `${size.width}px`;
+        element.style.height = `${size.height}px`;
       }
 
       Array.from(element.children).forEach(child => {
