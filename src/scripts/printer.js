@@ -388,14 +388,9 @@ const Printer = (function () {
 
     // Let printer css know which slides to print:
     slides.forEach(slide => {
-      if (allSlides === true) {
-        slide.classList.add('doprint');
-      }
-      else {
-        slide.classList.remove('doprint');
-      }
+      const shouldBePrinted = allSlides === true || slide === currentSlide;
+      slide.classList.toggle('doprint', shouldBePrinted);
     });
-    currentSlide.classList.add('doprint');
 
     // Course Presentation may be subcontent, but we only want to print the Course Presentation
     const cpDOM = wrapper.closest('.h5p-course-presentation');
