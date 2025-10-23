@@ -26,6 +26,9 @@ const Printer = (function () {
   /** @constant {number} IOS_MACOS_PRINT_DELAY_MS Extra delay needed for iOS and macOS after printing. */
   const IOS_MACOS_PRINT_DELAY_MS = 1500;
 
+  /** @constant {string[]} CLASSES_TO_SET_EXPICIT_DIMENSIONS_FOR Classes to set explicit dimensions for when printing. */
+  const CLASSES_TO_SET_EXPICIT_DIMENSIONS_FOR = ['h5p-question-evaluation-container'];
+
   /**
    * Check if printing is supported.
    * @method supported
@@ -45,15 +48,15 @@ const Printer = (function () {
    * @param  {HTMLElement} wrapper The CP dom wrapper.
    * @param  {boolean} allSlides If true, all slides are printed. Else the currentSlide is printed.
    */
-  Printer.print = function (cp, wrapper, allSlides) {
+  Printer.print = async function (cp, wrapper, allSlides) {
     let slides, wrapperHeight, cleanupDOM;
 
     /**
      * Prepare DOM for printing by hiding non-print elements.
      * @param {HTMLElement} sourceElement The source element to clone and print.
-     * @returns {function} Cleanup function to restore original state.
+     * @returns {Promise<function>} Cleanup function to restore original state.
      */
-    const prepareDOMForPrinting = (sourceElement) => {
+    const prepareDOMForPrinting = async (sourceElement) => {
       const printElement = cloneDOMNode(sourceElement);
 
       const bodyChildren = Array.from(document.body.children);
@@ -70,6 +73,13 @@ const Printer = (function () {
 
       document.body.appendChild(printElement);
 
+      await new Promise(resolve => {
+        window.requestAnimationFrame(() => {
+          setExplicitDimensions(printElement);
+          resolve();
+        });
+      });
+
       // Return cleanup function to restore original state
       return () => {
         originalState.forEach(({ element, display }) => {
@@ -78,6 +88,24 @@ const Printer = (function () {
 
         printElement.remove();
       };
+    };
+
+    /**
+     * Set explicit dimensions for element and all children to preserve layout during printing.
+     * Needed as workaround for Firefox.
+     * @param {HTMLElement} element The element to process.
+     * @param {string[]} [classesToUseFor] Class names to check for setting dimensions.
+     */
+    const setExplicitDimensions = (element, classesToUseFor = CLASSES_TO_SET_EXPICIT_DIMENSIONS_FOR) => {
+      if (classesToUseFor.some(className => element.classList.contains(className))) {
+        const rect = element.getBoundingClientRect();
+        element.style.width = `${rect.width}px`;
+        element.style.height = `${rect.height}px`;
+      }
+
+      Array.from(element.children).forEach(child => {
+        setExplicitDimensions(child);
+      });
     };
 
     /**
@@ -242,7 +270,7 @@ const Printer = (function () {
 
     // Course Presentation may be subcontent, but we only want to print the Course Presentation
     const cpDOM = wrapper.closest('.h5p-course-presentation');
-    cleanupDOM = prepareDOMForPrinting(cpDOM);
+    cleanupDOM = await prepareDOMForPrinting(cpDOM);
 
     // Wait for backgrounds, then print
     setTimeout(async () => {
