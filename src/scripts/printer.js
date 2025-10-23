@@ -1,5 +1,5 @@
 import ConfirmationDialog from './confirmation-dialog';
-import { isIOS, isMacOS } from './utils';
+import { convertToKebabCase, isIOS, isMacOS, matchesContainerQuery } from './utils';
 
 const Printer = (function () {
   /**
@@ -32,6 +32,29 @@ const Printer = (function () {
       name: 'h5p-question-evaluation-container',
       paddingBlock: false,
       paddingInline: false,
+    }
+  ];
+
+  /** @constant {object[]} NODES_FOR_SIMULATED_CONTAINER_QUERY Nodes to apply simulated container queries for when printing. */
+  const NODES_FOR_SIMULATED_CONTAINER_QUERY = [
+    {
+      containerSelector: '.h5p-element-inner.h5p-question.h5p-blanks.h5p-theme',
+      targetSelector: '.h5p-question-evaluation-container.evaluation-mode',
+      rule: 'width < 350px',
+      style: {
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }
+    },
+    {
+      containerSelector: '.h5p-element-inner.h5p-question.h5p-blanks.h5p-theme',
+      targetSelector: '.h5p-theme .h5p-question-evaluation-container.evaluation-mode .h5p-question-buttons',
+      rule: 'width < 350px',
+      style: {
+        justifyContent: 'center',
+      }
     }
   ];
 
@@ -82,7 +105,11 @@ const Printer = (function () {
       await new Promise(resolve => {
         window.requestAnimationFrame(() => {
           setExplicitDimensions(printElement);
-          resolve();
+
+          window.requestAnimationFrame(() => {
+            applySimulatedContainerQueries(printElement);
+            resolve();
+          });
         });
       });
 
@@ -130,6 +157,38 @@ const Printer = (function () {
 
       Array.from(element.children).forEach(child => {
         setExplicitDimensions(child);
+      });
+    };
+
+    /**
+     * Apply simulated container queries by adjusting styles based on container sizes.
+     * @param {HTMLElement} printElement The print element to process.
+     */
+    const applySimulatedContainerQueries = (printElement) => {
+      NODES_FOR_SIMULATED_CONTAINER_QUERY.forEach((node) => {
+        const targetElements = printElement.querySelectorAll(node.targetSelector) ?? [];
+
+        targetElements.forEach((targetElement) => {
+          const containerElement = targetElement.closest(node.containerSelector);
+          if (!containerElement) {
+            return;
+          }
+
+          if (!matchesContainerQuery(containerElement, node.rule)) {
+            return;
+          }
+
+          Object.entries(node.style).forEach(([styleProp, value]) => {
+            const cssProperty = styleProp.startsWith('--') ? styleProp : convertToKebabCase(styleProp);
+
+            if (styleProp.startsWith('--')) {
+              targetElement.style.setProperty(cssProperty, value);
+            }
+            else {
+              targetElement.style[styleProp] = value;
+            }
+          });
+        });
       });
     };
 
