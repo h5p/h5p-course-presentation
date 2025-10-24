@@ -50,6 +50,20 @@
     width: 100%;
   }
 
+  .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container {
+    max-height: none;
+  }
+
+  .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container .h5p-summary-task-title {
+    width: auto;
+  }
+
+  .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container .h5p-summary-task-title .h5p-slide-link {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25em;
+  }
+
   .h5p-course-presentation .h5p-summary-footer {
     display: none;
   }
