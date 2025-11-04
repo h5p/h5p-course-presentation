@@ -55,7 +55,7 @@
   font-weight: normal;
   margin: 0;
 }
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:hover{
+.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:hover:not(:disabled):not([aria-disabled="true"]) {
   background-color: var(--h5p-theme-secondary-cta-light);
 }
 .h5p-course-presentation .h5p-footer .h5p-theme-nav-button:active{
