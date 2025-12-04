@@ -294,30 +294,6 @@
   display: inline-block;
 }
 
-.h5p-course-presentation .h5p-slide-button {
-  display: inline-block;
-  padding: 0;
-  margin: 0 0.2em;
-}
-.h5p-course-presentation .h5p-slide-button a {
-  color: #323232;
-  padding: 0.3em;
-}
-.h5p-course-presentation .h5p-slide-button.h5p-current a {
-  color: #ffffff;
-  background: #0097fd;
-  background-image: -webkit-linear-gradient(top, #0097fd, #096bcb);
-  background-image: -moz-linear-gradient(top, #0097fd, #096bcb);
-  background-image: linear-gradient(to bottom, #0097fd, #096bcb);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0097fd', endColorstr='#096bcb', GradientType=0);
-}
-.h5p-course-presentation .h5p-slide-button a:hover {
-  color: #525252;
-}
-.h5p-course-presentation .h5p-slide-button.h5p-current a:hover {
-  color: #ffffff;
-}
-
 .h5p-course-presentation .h5p-has-solutions a,
 .h5p-course-presentation .h5p-has-solutions a:hover {
   text-decoration: underline;
