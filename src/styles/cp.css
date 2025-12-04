@@ -530,7 +530,7 @@
 .h5p-course-presentation .h5p-element-button:hover,
 .h5p-course-presentation .h5p-element-button-label:hover ~ .h5p-element-button {
   box-shadow: 0 0.3em 0.25em 0 rgba(0, 0, 0, 0.5);
-  background: #003fdf;
+  background: var(--h5p-theme-main-cta-dark);
 }
 
 .h5p-course-presentation .h5p-element-button:focus-visible,
@@ -559,7 +559,7 @@
 .h5p-course-presentation .h5p-element-button-label {
   background: rgba(0,0,0,.8);
   border-radius: 0 1em 1em 0;
-  color: #fff;
+  color: var(--h5p-theme-ui-base);
   cursor: pointer;
   height: 2.25em;
   left: 1.25em;
@@ -602,8 +602,7 @@
 .h5p-course-presentation .h5p-interactivevideo-button,
 .h5p-course-presentation .h5p-multimediachoice-button,
 .h5p-course-presentation .h5p-truefalse-button {
-  background: #981d99;
-  border-color: #e489f3; /* Used by focus effect */
+  background: var(--h5p-theme-contrast-cta-white);
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button:hover,
@@ -618,7 +617,7 @@
 .h5p-course-presentation .h5p-interactivevideo-button:hover,
 .h5p-course-presentation .h5p-multimediachoice-button:hover,
 .h5p-course-presentation .h5p-truefalse-button:hover {
-  background: #661366;
+  background: var(--h5p-theme-main-cta-dark);
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button:before,
@@ -738,23 +737,18 @@
   right: -0.5em;
   top: -0.5em;
   cursor: pointer;
-  font-size: 1.33em;
-  background: white;
-  border-radius: 50%;
-  width: 1.25em;
-  height: 1.25em;
-  border: 1px solid #eee;
-  text-align: center;
+  font-size: var(--h5p-theme-font-size-s);
+  color: var(--h5p-theme-text-primary);
 }
 
 .h5p-course-presentation .h5p-close-popup:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f057";
-  color: dimgrey;
+  padding: var(--h5p-theme-spacing-s);
+  background: var(--h5p-theme-ui-base);
+  border-radius: 50%;
 }
 
 .h5p-course-presentation .h5p-close-popup:hover:before {
-  color: black;
+  background-color: var(--h5p-theme-alternative-base);
 }
 
 .h5p-course-presentation .h5p-element-inner.h5p-video, .h5p-course-presentation .h5p-element-inner.h5p-audio {
