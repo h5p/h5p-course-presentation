@@ -1619,7 +1619,7 @@ CoursePresentation.prototype.showPopup = function ({
         'aria-labelledby="popup-title-' +
         this.popupId +
         '"> ' +
-        '<div role="button" tabindex="0" class="h5p-close-popup" title="' +
+        '<div role="button" tabindex="0" class="h5p-close-popup h5p-theme-close" title="' +
         this.l10n.close +
         '"></div>' +
         '<div class="h5p-popup-wrapper" role="document"></div>' +
