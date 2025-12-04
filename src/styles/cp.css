@@ -527,7 +527,7 @@
 .h5p-course-presentation .h5p-element-button:hover,
 .h5p-course-presentation .h5p-element-button-label:hover ~ .h5p-element-button {
   box-shadow: 0 0.3em 0.25em 0 rgba(0, 0, 0, 0.5);
-  background: var(--h5p-theme-main-cta-dark);
+  background: var(--h5p-theme-main-cta-light);
 }
 
 .h5p-course-presentation .h5p-element-button:focus-visible,
