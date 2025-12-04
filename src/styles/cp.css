@@ -418,7 +418,7 @@
   .h5p-popup-container
   .h5p-popup-wrapper::-webkit-scrollbar {
   width: 0.6em;
-  background: #fff;
+  background: var(--h5p-theme-ui-base);
 }
 
 .h5p-course-presentation
@@ -506,17 +506,14 @@
   display: block;
   width: 1.5em;
   height: 1.5em;
-  background: #00f;
-  color: #fff;
+  background: var(--h5p-theme-contrast-cta-white);
+  color: var(--h5p-theme-contrast-cta);
   font-size: 1em;
   border-radius: 50%;
-  /* Border used for focus - setting default properties here*/
-  border: 0px solid #70b0ff;
   line-height: 1.5em;
   box-shadow: 0 0.15em 0.25em 0 rgba(0, 0, 0, 0.5);
   text-align: center;
   text-decoration: none;
-  background: #1d5cff;
   cursor: pointer;
 
   transition: background 0.3s, box-shadow 0.3s;
@@ -537,10 +534,8 @@
 .h5p-course-presentation
   .h5p-element-button-label:focus-visible
   ~ .h5p-element-button {
-  outline: none;
-  top: -0.167em;
-  left: -0.167em;
-  border-width: 0.167em;
+  outline: 2px solid var(--h5p-theme-contrast-cta-white);
+  outline-offset: 2px;
 }
 
 .h5p-course-presentation .h5p-element-button:before {
@@ -590,36 +585,6 @@
 .h5p-course-presentation .h5p-element-button-label.small.left {
   padding: 0 1em 0 0.75em;
   right: 1em;
-}
-
-.h5p-course-presentation .h5p-exportabletextarea-button,
-.h5p-course-presentation .h5p-blanks-button,
-.h5p-course-presentation .h5p-multichoice-button,
-.h5p-course-presentation .h5p-singlechoiceset-button,
-.h5p-course-presentation .h5p-dragtext-button,
-.h5p-course-presentation .h5p-markthewords-button,
-.h5p-course-presentation .h5p-dragquestion-button,
-.h5p-course-presentation .h5p-summary-button,
-.h5p-course-presentation .h5p-dialogcards-button,
-.h5p-course-presentation .h5p-interactivevideo-button,
-.h5p-course-presentation .h5p-multimediachoice-button,
-.h5p-course-presentation .h5p-truefalse-button {
-  background: var(--h5p-theme-contrast-cta-white);
-}
-
-.h5p-course-presentation .h5p-exportabletextarea-button:hover,
-.h5p-course-presentation .h5p-blanks-button:hover,
-.h5p-course-presentation .h5p-multichoice-button:hover,
-.h5p-course-presentation .h5p-singlechoiceset-button:hover,
-.h5p-course-presentation .h5p-dragtext-button:hover,
-.h5p-course-presentation .h5p-markthewords-button:hover,
-.h5p-course-presentation .h5p-dragquestion-button:hover,
-.h5p-course-presentation .h5p-summary-button:hover,
-.h5p-course-presentation .h5p-dialogcards-button:hover,
-.h5p-course-presentation .h5p-interactivevideo-button:hover,
-.h5p-course-presentation .h5p-multimediachoice-button:hover,
-.h5p-course-presentation .h5p-truefalse-button:hover {
-  background: var(--h5p-theme-main-cta-dark);
 }
 
 .h5p-course-presentation .h5p-exportabletextarea-button:before,
