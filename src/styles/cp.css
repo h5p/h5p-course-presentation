@@ -486,11 +486,20 @@
 }
 
 .h5p-course-presentation .h5p-element-solution {
-  display: block;
+  display: flex;
+  align-items: center;
   position: absolute;
   right: 0.5em;
   bottom: 0.1em;
   text-decoration: none;
+  width: calc(var(--h5p-theme-font-size-l) + var(--h5p-theme-spacing-s));
+  height: var(--h5p-theme-font-size-l);
+  padding-bottom: var(--h5p-theme-spacing-s);
+}
+
+.h5p-course-presentation .h5p-element-solution:focus-visible {
+  outline: 4px ridge var(--h5p-theme-contrast-cta-white);
+  border-radius: 4px;
 }
 
 .h5p-course-presentation .h5p-element-button-wrapper .h5p-element-solution {
@@ -534,8 +543,8 @@
 .h5p-course-presentation
   .h5p-element-button-label:focus-visible
   ~ .h5p-element-button {
-  outline: 2px solid var(--h5p-theme-contrast-cta-white);
-  outline-offset: 2px;
+  outline: 4px solid var(--h5p-theme-contrast-cta-white);
+  outline-offset: 4px;
 }
 
 .h5p-course-presentation .h5p-element-button:before {
@@ -720,8 +729,8 @@
 }
 
 .h5p-course-presentation .h5p-close-popup:focus-visible:before {
-  outline: 2px solid var(--h5p-theme-contrast-cta-white);
-  outline-offset: 2px;
+  outline: 4px solid var(--h5p-theme-contrast-cta-white);
+  outline-offset: 4px;
 }
 
 .h5p-course-presentation .h5p-element-inner.h5p-video,
