@@ -4,9 +4,16 @@ import NavigationLine from './navigation-line';
 import SlideBackground from './slide-backgrounds';
 import KeywordsMenu from './keyword-menu';
 import { jQuery as $ } from './globals';
-import { flattenArray, addClickAndKeyboardListeners, isFunction, kebabCase, stripHTML, keyCode } from './utils';
+import {
+  flattenArray,
+  addClickAndKeyboardListeners,
+  isFunction,
+  kebabCase,
+  stripHTML,
+  keyCode,
+} from './utils';
 import Slide from './slide.js';
-import { isTask } from  './utils.js';
+import { isTask } from './utils.js';
 import ConfirmationDialog from './confirmation-dialog';
 
 /**
@@ -46,86 +53,104 @@ let CoursePresentation = function (params, id, extras) {
   if (extras) {
     this.previousState = extras.previousState;
     this.standalone = extras.standalone;
-    this.isReportingEnabled = extras.isReportingEnabled || extras.isScoringEnabled;
+    this.isReportingEnabled =
+      extras.isReportingEnabled || extras.isScoringEnabled;
   }
 
-  this.currentSlideIndex = (this.previousState && this.previousState.progress) ? this.previousState.progress : 0;
+  this.currentSlideIndex =
+    this.previousState && this.previousState.progress
+      ? this.previousState.progress
+      : 0;
 
-  this.presentation.keywordListEnabled = (params.presentation.keywordListEnabled === undefined ? true : params.presentation.keywordListEnabled);
+  this.presentation.keywordListEnabled =
+    params.presentation.keywordListEnabled === undefined
+      ? true
+      : params.presentation.keywordListEnabled;
 
-  this.l10n = $.extend({
-    slide: 'Slide',
-    slides: 'Slides',
-    score: 'Score',
-    yourScore: 'Your score',
-    maxScore: 'Max score',
-    total: 'Total',
-    totalScore: 'Total Score',
-    showSolutions: 'Show solutions',
-    summary: 'summary',
-    retry: 'Retry',
-    exportAnswers: 'Export text',
-    close: 'Close',
-    hideKeywords: 'Hide sidebar navigation menu',
-    showKeywords: 'Show sidebar navigation menu',
-    fullscreen: 'Fullscreen',
-    exitFullscreen: 'Exit fullscreen',
-    prevSlide: 'Previous slide',
-    nextSlide: 'Next slide',
-    currentSlide: 'Current slide',
-    lastSlide: 'Last slide',
-    solutionModeTitle: 'Exit solution mode',
-    solutionModeText: 'Solution Mode',
-    summaryMultipleTaskText: 'Multiple tasks',
-    scoreMessage: 'You achieved:',
-    shareFacebook: 'Share on Facebook',
-    shareTwitter: 'Share on Twitter',
-    shareGoogle: 'Share on Google+',
-    goToSlide: 'Go to slide :num',
-    solutionsButtonTitle: 'Show comments',
-    printTitle: 'Print',
-    printIngress: 'How would you like to print this presentation?',
-    printAllSlides: 'Print all slides',
-    printCurrentSlide: 'Print current slide',
-    noTitle: 'No title',
-    accessibilitySlideNavigationExplanation: 'Use left and right arrow to change slide in that direction whenever canvas is selected.',
-    accessibilityProgressBarLabel: 'Choose slide to display',
-    containsNotCompleted: '@slideName contains not completed interaction',
-    containsCompleted: '@slideName contains completed interaction',
-    slideCount: 'Slide @index of @total',
-    accessibilityCanvasLabel: 'Presentation canvas. Use left and right arrow to move between slides.',
-    containsOnlyCorrect: '@slideName only has correct answers',
-    containsIncorrectAnswers: '@slideName has incorrect answers',
-    resultHeader: 'Result',
-    amountCorrect: '@value / @max correct',
-    amountCorrectAria: '@value out of @max correct',
-    shareResult: 'Share Result',
-    accessibilityTotalScore: 'You got @score of @maxScore points in total',
-    accessibilityEnteredFullscreen: 'Entered fullscreen',
-    accessibilityExitedFullscreen: 'Exited fullscreen',
-    confirmDialogHeader: 'Submit your answers',
-    confirmDialogText: 'This will submit your results, do you want to continue?',
-    confirmDialogConfirmText: 'Submit and see results',
-    confirmDialogConfirmLabel: 'Confirm',
-    confirmDialogCancelLabel: 'Cancel',
-    slideshowNavigationLabel: 'Slideshow navigation',
-  }, params.l10n !== undefined ? params.l10n : {});
+  this.l10n = $.extend(
+    {
+      slide: 'Slide',
+      slides: 'Slides',
+      score: 'Score',
+      yourScore: 'Your score',
+      maxScore: 'Max score',
+      total: 'Total',
+      totalScore: 'Total Score',
+      showSolutions: 'Show solutions',
+      summary: 'summary',
+      retry: 'Retry',
+      exportAnswers: 'Export text',
+      close: 'Close',
+      hideKeywords: 'Hide sidebar navigation menu',
+      showKeywords: 'Show sidebar navigation menu',
+      fullscreen: 'Fullscreen',
+      exitFullscreen: 'Exit fullscreen',
+      prevSlide: 'Previous slide',
+      nextSlide: 'Next slide',
+      currentSlide: 'Current slide',
+      lastSlide: 'Last slide',
+      solutionModeTitle: 'Exit solution mode',
+      solutionModeText: 'Solution Mode',
+      summaryMultipleTaskText: 'Multiple tasks',
+      scoreMessage: 'You achieved:',
+      shareFacebook: 'Share on Facebook',
+      shareTwitter: 'Share on Twitter',
+      shareGoogle: 'Share on Google+',
+      goToSlide: 'Go to slide :num',
+      solutionsButtonTitle: 'Show comments',
+      printTitle: 'Print',
+      printIngress: 'How would you like to print this presentation?',
+      printAllSlides: 'Print all slides',
+      printCurrentSlide: 'Print current slide',
+      noTitle: 'No title',
+      accessibilitySlideNavigationExplanation:
+        'Use left and right arrow to change slide in that direction whenever canvas is selected.',
+      accessibilityProgressBarLabel: 'Choose slide to display',
+      containsNotCompleted: '@slideName contains not completed interaction',
+      containsCompleted: '@slideName contains completed interaction',
+      slideCount: 'Slide @index of @total',
+      accessibilityCanvasLabel:
+        'Presentation canvas. Use left and right arrow to move between slides.',
+      containsOnlyCorrect: '@slideName only has correct answers',
+      containsIncorrectAnswers: '@slideName has incorrect answers',
+      resultHeader: 'Result',
+      amountCorrect: '@value / @max correct',
+      amountCorrectAria: '@value out of @max correct',
+      shareResult: 'Share Result',
+      accessibilityTotalScore: 'You got @score of @maxScore points in total',
+      accessibilityEnteredFullscreen: 'Entered fullscreen',
+      accessibilityExitedFullscreen: 'Exited fullscreen',
+      confirmDialogHeader: 'Submit your answers',
+      confirmDialogText:
+        'This will submit your results, do you want to continue?',
+      confirmDialogConfirmText: 'Submit and see results',
+      confirmDialogConfirmLabel: 'Confirm',
+      confirmDialogCancelLabel: 'Cancel',
+      slideshowNavigationLabel: 'Slideshow navigation',
+    },
+    params.l10n !== undefined ? params.l10n : {}
+  );
 
   if (!!params.override) {
     this.activeSurface = !!params.override.activeSurface;
     this.hideSummarySlide = !!params.override.hideSummarySlide;
     this.enablePrintButton = !!params.override.enablePrintButton;
-    this.showSummarySlideSolutionButton = params.override.summarySlideSolutionButton !== undefined
-      ? params.override.summarySlideSolutionButton : true;
-    this.showSummarySlideRetryButton = params.override.summarySlideRetryButton !== undefined
-      ? params.override.summarySlideRetryButton : true;
+    this.showSummarySlideSolutionButton =
+      params.override.summarySlideSolutionButton !== undefined
+        ? params.override.summarySlideSolutionButton
+        : true;
+    this.showSummarySlideRetryButton =
+      params.override.summarySlideRetryButton !== undefined
+        ? params.override.summarySlideRetryButton
+        : true;
 
     if (!!params.override.social) {
       this.enableTwitterShare = !!params.override.social.showTwitterShare;
       this.enableFacebookShare = !!params.override.social.showFacebookShare;
       this.enableGoogleShare = !!params.override.social.showGoogleShare;
 
-      this.twitterShareStatement = params.override.social.twitterShare.statement;
+      this.twitterShareStatement =
+        params.override.social.twitterShare.statement;
       this.twitterShareHashtags = params.override.social.twitterShare.hashtags;
       this.twitterShareUrl = params.override.social.twitterShare.url;
 
@@ -137,8 +162,9 @@ let CoursePresentation = function (params, id, extras) {
   }
 
   this.keywordMenu = new KeywordsMenu({
-    l10n : this.l10n,
-    currentIndex: this.previousState !== undefined ? this.previousState.progress : 0
+    l10n: this.l10n,
+    currentIndex:
+      this.previousState !== undefined ? this.previousState.progress : 0,
   });
 
   // Set override for all actions
@@ -154,8 +180,7 @@ let CoursePresentation = function (params, id, extras) {
 
     if (event.data.finished) {
       that.resize();
-    }
-    else if (event.data.allSlides) {
+    } else if (event.data.allSlides) {
       that.attachAllElements();
     }
   });
@@ -175,16 +200,23 @@ CoursePresentation.prototype.getCurrentState = function () {
     state.answers = [];
   }
 
-  state.answered = this.elementInstances
-    .map((interaction, index) => (this.slideHasAnsweredTask(index)) || null);
+  state.answered = this.elementInstances.map(
+    (interaction, index) => this.slideHasAnsweredTask(index) || null
+  );
 
   // Get answers and answered
   for (var slide = 0; slide < this.elementInstances.length; slide++) {
     if (this.elementInstances[slide]) {
-      for (var element = 0; element < this.elementInstances[slide].length; element++) {
+      for (
+        var element = 0;
+        element < this.elementInstances[slide].length;
+        element++
+      ) {
         var instance = this.elementInstances[slide][element];
-        if (instance.getCurrentState instanceof Function ||
-            typeof instance.getCurrentState === 'function') {
+        if (
+          instance.getCurrentState instanceof Function ||
+          typeof instance.getCurrentState === 'function'
+        ) {
           if (!state.answers[slide]) {
             state.answers[slide] = [];
           }
@@ -228,9 +260,10 @@ CoursePresentation.prototype.slideHasAnsweredTask = function (index) {
  * @return {Array}
  */
 CoursePresentation.prototype.getSlideTasks = function (index) {
-  const instanceTasks = (this.elementInstances && this.elementInstances[index])
-    ? this.elementInstances[index].filter(isTask)
-    : [];
+  const instanceTasks =
+    this.elementInstances && this.elementInstances[index]
+      ? this.elementInstances[index].filter(isTask)
+      : [];
 
   return Array.from(new Set([...instanceTasks]));
 };
@@ -250,22 +283,30 @@ CoursePresentation.prototype.attach = function ($container) {
   }
 
   var html =
-          '<div class="h5p-keymap-explanation hidden-but-read">' + (!this.activeSurface && this.l10n.accessibilitySlideNavigationExplanation) + '</div>' +
-          '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
-          '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + (!this.activeSurface && this.l10n.accessibilityCanvasLabel) + '">' +
-          '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
-          '  <div tabindex="-1"></div>' +
-          '  <div class="h5p-box-wrapper">' +
-          '    <div class="h5p-presentation-wrapper">' +
-          '      <div class="h5p-keywords-wrapper"></div>' +
-          '     <div class="h5p-slides-wrapper"></div>' +
-          '    </div>' +
-          '  </div>' +
-          '  <nav class="h5p-cp-navigation" aria-label="' + this.l10n.slideshowNavigationLabel + '">' +
-          '    <div class="h5p-progressbar" role="tablist" aria-label="' + this.l10n.accessibilityProgressBarLabel + '"></div>' +
-          '  </nav>' +
-          '  <div class="h5p-footer"></div>' +
-          '</div>';
+    '<div class="h5p-keymap-explanation hidden-but-read">' +
+    (!this.activeSurface && this.l10n.accessibilitySlideNavigationExplanation) +
+    '</div>' +
+    '<div class="h5p-fullscreen-announcer hidden-but-read" aria-live="polite"></div>' +
+    '<div class="h5p-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' +
+    (!this.activeSurface && this.l10n.accessibilityCanvasLabel) +
+    '">' +
+    '  <div class="h5p-current-slide-announcer hidden-but-read" aria-live="polite"></div>' +
+    '  <div tabindex="-1"></div>' +
+    '  <div class="h5p-box-wrapper">' +
+    '    <div class="h5p-presentation-wrapper">' +
+    '      <div class="h5p-keywords-wrapper"></div>' +
+    '     <div class="h5p-slides-wrapper"></div>' +
+    '    </div>' +
+    '  </div>' +
+    '  <nav class="h5p-cp-navigation" aria-label="' +
+    this.l10n.slideshowNavigationLabel +
+    '">' +
+    '    <div class="h5p-progressbar" role="tablist" aria-label="' +
+    this.l10n.accessibilityProgressBarLabel +
+    '"></div>' +
+    '  </nav>' +
+    '  <div class="h5p-footer"></div>' +
+    '</div>';
 
   $container
     .attr('role', 'application')
@@ -282,56 +323,62 @@ CoursePresentation.prototype.attach = function ($container) {
     this.$wrapper.addClass('h5p-course-presentation-active-surface');
   }
 
-  this.$wrapper.focus(function () {
-    that.initKeyEvents();
-  }).blur(function () {
-    if (that.keydown !== undefined) {
-      H5P.jQuery('body').unbind('keydown', that.keydown);
-      delete that.keydown;
-    }
-  }).click(function (event) {
-    var $target = H5P.jQuery(event.target);
-
-    /*
-     * Add focus to the wrapper so that it may capture keyboard events unless
-     * the target or one of its parents should handle focus themselves.
-     */
-    const isFocusableElement = that.belongsToTagName(
-      event.target, ['input', 'textarea', 'a', 'button'], event.currentTarget);
-    // Does the target element (or one of its parents) have a tabIndex set?
-    const hasTabIndex = that.hasTabIndex(event.target, event.currentTarget);
-    // The dialog container (if within a dialog)
-    const $dialogParent = $target.closest('.h5p-popup-container');
-    // Is target within a dialog
-    const isWithinDialog = $dialogParent.length !== 0;
-
-    if (!isFocusableElement && !hasTabIndex && !that.editor) {
-      if (!isWithinDialog) {
-        // We're not within a dialog, so we can seafely put focus on wrapper
-        that.$wrapper.focus();
+  this.$wrapper
+    .focus(function () {
+      that.initKeyEvents();
+    })
+    .blur(function () {
+      if (that.keydown !== undefined) {
+        H5P.jQuery('body').unbind('keydown', that.keydown);
+        delete that.keydown;
       }
-      else {
-        // Find the closest tabbable parent element
-        const $tabbable = $target.closest('[tabindex]');
-        // Is the parent tabbable element inside the popup?
-        if ($tabbable.closest('.h5p-popup-container').length === 1) {
-          // We'll set focus here
-          $tabbable.focus();
-        }
-        else {
-          // Fallback: set focus on close button
-          $dialogParent.find('.h5p-close-popup').focus();
+    })
+    .click(function (event) {
+      var $target = H5P.jQuery(event.target);
+
+      /*
+       * Add focus to the wrapper so that it may capture keyboard events unless
+       * the target or one of its parents should handle focus themselves.
+       */
+      const isFocusableElement = that.belongsToTagName(
+        event.target,
+        ['input', 'textarea', 'a', 'button'],
+        event.currentTarget
+      );
+      // Does the target element (or one of its parents) have a tabIndex set?
+      const hasTabIndex = that.hasTabIndex(event.target, event.currentTarget);
+      // The dialog container (if within a dialog)
+      const $dialogParent = $target.closest('.h5p-popup-container');
+      // Is target within a dialog
+      const isWithinDialog = $dialogParent.length !== 0;
+
+      if (!isFocusableElement && !hasTabIndex && !that.editor) {
+        if (!isWithinDialog) {
+          // We're not within a dialog, so we can seafely put focus on wrapper
+          that.$wrapper.focus();
+        } else {
+          // Find the closest tabbable parent element
+          const $tabbable = $target.closest('[tabindex]');
+          // Is the parent tabbable element inside the popup?
+          if ($tabbable.closest('.h5p-popup-container').length === 1) {
+            // We'll set focus here
+            $tabbable.focus();
+          } else {
+            // Fallback: set focus on close button
+            $dialogParent.find('.h5p-close-popup').focus();
+          }
         }
       }
-    }
 
-    if (that.presentation.keywordListEnabled &&
+      if (
+        that.presentation.keywordListEnabled &&
         !that.presentation.keywordListAlwaysShow &&
         that.presentation.keywordListAutoHide &&
-        !$target.is('textarea, .h5p-icon-pencil, span')) {
-      that.hideKeywords(); // Auto-hide keywords
-    }
-  });
+        !$target.is('textarea, .h5p-icon-pencil, span')
+      ) {
+        that.hideKeywords(); // Auto-hide keywords
+      }
+    });
 
   this.on('exitFullScreen', () => {
     this.$footer.removeClass('footer-full-screen');
@@ -356,14 +403,21 @@ CoursePresentation.prototype.attach = function ($container) {
   this.fontSize = 16;
 
   this.$boxWrapper = this.$wrapper.children('.h5p-box-wrapper');
-  var $presentationWrapper = this.$boxWrapper.children('.h5p-presentation-wrapper');
+  var $presentationWrapper = this.$boxWrapper.children(
+    '.h5p-presentation-wrapper'
+  );
   this.$slidesWrapper = $presentationWrapper.children('.h5p-slides-wrapper');
-  this.$keywordsWrapper = $presentationWrapper.children('.h5p-keywords-wrapper');
+  this.$keywordsWrapper = $presentationWrapper.children(
+    '.h5p-keywords-wrapper'
+  );
   this.$progressbar = this.$wrapper.find('.h5p-progressbar');
   this.$footer = this.$wrapper.children('.h5p-footer');
 
   // Determine if keywords pane should be initialized
-  this.initKeywords = (this.presentation.keywordListEnabled === undefined || this.presentation.keywordListEnabled === true || this.editor !== undefined);
+  this.initKeywords =
+    this.presentation.keywordListEnabled === undefined ||
+    this.presentation.keywordListEnabled === true ||
+    this.editor !== undefined;
   if (this.activeSurface && this.editor === undefined) {
     this.initKeywords = false;
     this.$boxWrapper.css('height', '100%');
@@ -382,23 +436,27 @@ CoursePresentation.prototype.attach = function ($container) {
   if (this.hideSummarySlide) {
     // Always hide
     this.showSummarySlide = !this.hideSummarySlide;
-  }
-  else {
+  } else {
     // Determine by checking for slides with tasks
     this.slidesWithSolutions.forEach(function (slide) {
       that.showSummarySlide = slide.length;
     });
   }
 
-  if ((this.editor === undefined) && (this.showSummarySlide || this.hasAnswerElements)) {
+  if (
+    this.editor === undefined &&
+    (this.showSummarySlide || this.hasAnswerElements)
+  ) {
     // Create the summary slide
     var summarySlideParams = {
       elements: [],
-      keywords: []
+      keywords: [],
     };
     this.slides.push(summarySlideParams);
 
-    $summarySlide = H5P.jQuery(Slide.createHTML(summarySlideParams)).appendTo(this.$slidesWrapper);
+    $summarySlide = H5P.jQuery(Slide.createHTML(summarySlideParams)).appendTo(
+      this.$slidesWrapper
+    );
     $summarySlide.addClass('h5p-summary-slide');
 
     if (this.isCurrentSlide(this.slides.length - 1)) {
@@ -412,17 +470,21 @@ CoursePresentation.prototype.attach = function ($container) {
   if (keywordMenuConfig.length > 0 || this.isEditor()) {
     // Initialize keyword titles
     this.keywordMenu.init(keywordMenuConfig);
-    this.keywordMenu.on('select', (event) => this.keywordClick(event.data.index));
+    this.keywordMenu.on('select', (event) =>
+      this.keywordClick(event.data.index)
+    );
     this.keywordMenu.on('close', () => this.hideKeywords());
     this.keywordMenu.on('select', () => {
       this.$currentKeyword = this.$keywords.children('.h5p-current');
     });
 
     $('<p/>', {
-      'class': 'h5p-theme-navigation-header',
-      text: this.l10n.slides
+      class: 'h5p-theme-navigation-header',
+      text: this.l10n.slides,
     }).appendTo(this.$keywordsWrapper);
-    this.$keywords = $(this.keywordMenu.getElement()).appendTo(this.$keywordsWrapper);
+    this.$keywords = $(this.keywordMenu.getElement()).appendTo(
+      this.$keywordsWrapper
+    );
     this.$currentKeyword = this.$keywords.children('.h5p-current');
 
     if (this.presentation.keywordListOpacity !== undefined) {
@@ -432,8 +494,7 @@ CoursePresentation.prototype.attach = function ($container) {
     if (this.presentation.keywordListAlwaysShow) {
       this.showKeywords();
     }
-  }
-  else {
+  } else {
     // Remove keyword titles completely
     this.$keywordsWrapper.remove();
 
@@ -454,23 +515,24 @@ CoursePresentation.prototype.attach = function ($container) {
     }
 
     this.summarySlideObject = new SummarySlide(this, $summarySlide);
-  }
-  else {
+  } else {
     this.$progressbar.add(this.$footer).remove();
 
     if (H5P.fullscreenSupported) {
       // Create full screen button
       this.$fullScreenButton = H5P.jQuery('<div/>', {
-        'class': 'h5p-toggle-full-screen',
+        class: 'h5p-toggle-full-screen',
         'aria-label': this.l10n.fullscreen,
         role: 'button',
         tabindex: 0,
-        appendTo: this.$wrapper
+        appendTo: this.$wrapper,
       });
 
       H5P.Tooltip(this.$fullScreenButton.get(0), { position: 'left' });
 
-      addClickAndKeyboardListeners(this.$fullScreenButton, () => that.toggleFullScreen());
+      addClickAndKeyboardListeners(this.$fullScreenButton, () =>
+        that.toggleFullScreen()
+      );
     }
   }
 
@@ -489,7 +551,11 @@ CoursePresentation.prototype.attach = function ($container) {
  * @param {HTMLElement} [stop] Optional node to stop. Defaults to body node.
  * @return {boolean} True, if node belongs to a node with one of the tag names.
  */
-CoursePresentation.prototype.belongsToTagName = function (node, tagNames, stop) {
+CoursePresentation.prototype.belongsToTagName = function (
+  node,
+  tagNames,
+  stop
+) {
   if (!node) {
     return false;
   }
@@ -550,7 +616,6 @@ CoursePresentation.prototype.updateKeywordMenuFromSlides = function () {
   return $(this.keywordMenu.init(config));
 };
 
-
 /**
  * Creates a keyword menu config based on the slides parameters
  *
@@ -561,7 +626,7 @@ CoursePresentation.prototype.getKeywordMenuConfig = function () {
     .map((slide, index) => ({
       title: this.createSlideTitle(slide),
       subtitle: `${this.l10n.slide} ${index + 1}`,
-      index
+      index,
     }))
     .filter((config) => config.title !== KEYWORD_TITLE_SKIP);
 };
@@ -572,8 +637,12 @@ CoursePresentation.prototype.getKeywordMenuConfig = function () {
  * @return {string|null}
  */
 CoursePresentation.prototype.createSlideTitle = function (slide) {
-  const fallbackTitleForEditor = this.isEditor() ? this.l10n.noTitle : KEYWORD_TITLE_SKIP;
-  return this.hasKeywords(slide) ? slide.keywords[0].main : fallbackTitleForEditor;
+  const fallbackTitleForEditor = this.isEditor()
+    ? this.l10n.noTitle
+    : KEYWORD_TITLE_SKIP;
+  return this.hasKeywords(slide)
+    ? slide.keywords[0].main
+    : fallbackTitleForEditor;
 };
 
 /**
@@ -595,7 +664,6 @@ CoursePresentation.prototype.hasKeywords = function (slide) {
   return slide.keywords !== undefined && slide.keywords.length > 0;
 };
 
-
 /**
  * Create slides
  * Slides are directly attached to the slides wrapper.
@@ -605,7 +673,7 @@ CoursePresentation.prototype.hasKeywords = function (slide) {
 CoursePresentation.prototype.createSlides = function () {
   var self = this;
   for (let i = 0; i < self.children.length; i++) {
-    const isCurrentSlide = (i === self.currentSlideIndex);
+    const isCurrentSlide = i === self.currentSlideIndex;
 
     // Create and append DOM Elements
     self.children[i].getElement().appendTo(self.$slidesWrapper);
@@ -629,9 +697,9 @@ CoursePresentation.prototype.createSlides = function () {
  */
 CoursePresentation.prototype.hasScoreData = function (obj) {
   return (
-    (typeof obj !== typeof undefined) &&
-    (typeof obj.getScore === 'function') &&
-    (typeof obj.getMaxScore === 'function')
+    typeof obj !== typeof undefined &&
+    typeof obj.getScore === 'function' &&
+    typeof obj.getMaxScore === 'function'
   );
 };
 
@@ -672,8 +740,9 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
   if (slideScores !== undefined && slideScores) {
     // Set feedback icons for progress bar.
     slideScores.forEach((singleSlide) => {
-      const $indicator = this.progressbarParts[singleSlide.slide - 1]
-        .find('.h5p-progressbar-part-has-task');
+      const $indicator = this.progressbarParts[singleSlide.slide - 1].find(
+        '.h5p-progressbar-part-has-task'
+      );
 
       if ($indicator.hasClass('h5p-answered')) {
         const isCorrect = singleSlide.score >= singleSlide.maxScore;
@@ -682,11 +751,11 @@ CoursePresentation.prototype.setProgressBarFeedback = function (slideScores) {
         this.navigationLine.updateSlideTitle(singleSlide.slide - 1);
       }
     });
-  }
-  else {
+  } else {
     // Remove all feedback icons.
     this.progressbarParts.forEach((pbPart) => {
-      pbPart.find('.h5p-progressbar-part-has-task')
+      pbPart
+        .find('.h5p-progressbar-part-has-task')
         .removeClass('h5p-is-correct')
         .removeClass('h5p-is-wrong');
     });
@@ -743,8 +812,13 @@ CoursePresentation.prototype.showKeywords = function () {
  */
 CoursePresentation.prototype.setKeywordsOpacity = function (value) {
   if (this.$keywordsWrapper.css('background-color') !== '') {
-    const [red, green, blue] = this.$keywordsWrapper.css('background-color').match(/\d+/g);
-    this.$keywordsWrapper.css('background-color', `rgba(${red}, ${green}, ${blue}, ${value / 100})`);
+    const [red, green, blue] = this.$keywordsWrapper
+      .css('background-color')
+      .match(/\d+/g);
+    this.$keywordsWrapper.css(
+      'background-color',
+      `rgba(${red}, ${green}, ${blue}, ${value / 100})`
+    );
   }
 };
 
@@ -784,7 +858,9 @@ CoursePresentation.prototype.fitCT = function () {
  * @returns {undefined}
  */
 CoursePresentation.prototype.resize = function () {
-  var fullscreenOn = this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen');
+  var fullscreenOn =
+    this.$container.hasClass('h5p-fullscreen') ||
+    this.$container.hasClass('h5p-semi-fullscreen');
 
   if (this.ignoreResize) {
     return; // When printing.
@@ -823,7 +899,12 @@ CoursePresentation.prototype.resize = function () {
     var slideElements = this.slides[this.$current.index()].elements;
     for (var i = 0; i < instances.length; i++) {
       var instance = instances[i];
-      if ((instance.preventResize === undefined || instance.preventResize === false) && instance.$ !== undefined && !slideElements[i].displayAsButton) {
+      if (
+        (instance.preventResize === undefined ||
+          instance.preventResize === false) &&
+        instance.$ !== undefined &&
+        !slideElements[i].displayAsButton
+      ) {
         H5P.trigger(instance, 'resize');
       }
     }
@@ -836,31 +917,35 @@ CoursePresentation.prototype.resize = function () {
  * Enter/exit full screen mode.
  */
 CoursePresentation.prototype.toggleFullScreen = function () {
-  if (H5P.isFullscreen || this.$container.hasClass('h5p-fullscreen') || this.$container.hasClass('h5p-semi-fullscreen')) {
+  if (
+    H5P.isFullscreen ||
+    this.$container.hasClass('h5p-fullscreen') ||
+    this.$container.hasClass('h5p-semi-fullscreen')
+  ) {
     // Cancel fullscreen
-    if (H5P.exitFullScreen !== undefined && H5P.fullScreenBrowserPrefix !== undefined) {
+    if (
+      H5P.exitFullScreen !== undefined &&
+      H5P.fullScreenBrowserPrefix !== undefined
+    ) {
       H5P.exitFullScreen();
-    }
-    else {
+    } else {
       // Use old system
       if (H5P.fullScreenBrowserPrefix === undefined) {
         // Click button to disable fullscreen
         H5P.jQuery('.h5p-disable-fullscreen').click();
-      }
-      else {
+      } else {
         if (H5P.fullScreenBrowserPrefix === '') {
           window.top.document.exitFullScreen();
-        }
-        else if (H5P.fullScreenBrowserPrefix === 'ms') {
+        } else if (H5P.fullScreenBrowserPrefix === 'ms') {
           window.top.document.msExitFullscreen();
-        }
-        else {
-          window.top.document[H5P.fullScreenBrowserPrefix + 'CancelFullScreen']();
+        } else {
+          window.top.document[
+            H5P.fullScreenBrowserPrefix + 'CancelFullScreen'
+          ]();
         }
       }
     }
-  }
-  else {
+  } else {
     // Rescale footer buttons
     this.$footer.addClass('footer-full-screen');
 
@@ -894,10 +979,12 @@ CoursePresentation.prototype.keywordClick = function (index) {
 };
 
 CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
-  return this.presentation.keywordListEnabled &&
+  return (
+    this.presentation.keywordListEnabled &&
     !this.presentation.keywordListAlwaysShow &&
     this.presentation.keywordListAutoHide &&
-    this.editor === undefined;
+    this.editor === undefined
+  );
 };
 
 /**
@@ -908,7 +995,7 @@ CoursePresentation.prototype.shouldHideKeywordsAfterSelect = function () {
 CoursePresentation.prototype.setElementsOverride = function (override) {
   // Create default object
   this.elementsOverride = {
-    params: {}
+    params: {},
   };
 
   if (override) {
@@ -918,13 +1005,13 @@ CoursePresentation.prototype.setElementsOverride = function (override) {
     if (override.showSolutionButton) {
       // Override show solutions button
       this.elementsOverride.params.behaviour.enableSolutionsButton =
-          (override.showSolutionButton === 'on' ? true : false);
+        override.showSolutionButton === 'on' ? true : false;
     }
 
     if (override.retryButton) {
       // Override retry button
       this.elementsOverride.params.behaviour.enableRetry =
-          (override.retryButton === 'on' ? true : false);
+        override.retryButton === 'on' ? true : false;
     }
   }
 };
@@ -947,11 +1034,15 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
       this.attachElement(slide.elements[i], instances[i], $slide, index);
     }
   }
-  this.trigger('domChanged', {
-    '$target': $slide,
-    'library': 'CoursePresentation',
-    'key': 'newSlide'
-  }, { 'bubbles': true, 'external': true });
+  this.trigger(
+    'domChanged',
+    {
+      $target: $slide,
+      library: 'CoursePresentation',
+      key: 'newSlide',
+    },
+    { bubbles: true, external: true }
+  );
 
   this.elementsAttached[index] = true;
 };
@@ -965,27 +1056,42 @@ CoursePresentation.prototype.attachElements = function ($slide, index) {
  * @param {Number} index
  * @returns {jQuery}
  */
-CoursePresentation.prototype.attachElement = function (element, instance, $slide, index) {
-  const displayAsButton = (element.displayAsButton !== undefined && element.displayAsButton);
-  var buttonSizeClass = (element.buttonSize !== undefined ? 'h5p-element-button-' + element.buttonSize : '');
-  var classes = 'h5p-element' +
+CoursePresentation.prototype.attachElement = function (
+  element,
+  instance,
+  $slide,
+  index
+) {
+  const displayAsButton =
+    element.displayAsButton !== undefined && element.displayAsButton;
+  var buttonSizeClass =
+    element.buttonSize !== undefined
+      ? 'h5p-element-button-' + element.buttonSize
+      : '';
+  var classes =
+    'h5p-element' +
     (displayAsButton ? ' h5p-element-button-wrapper' : '') +
     (buttonSizeClass.length ? ' ' + buttonSizeClass : '');
   var $elementContainer = H5P.jQuery('<div>', {
-    'class': classes,
-  }).css({
-    left: element.x + '%',
-    top: element.y + '%',
-    width: element.width + '%',
-    height: element.height + '%'
-  }).appendTo($slide.children('[role="document"]').first());
+    class: classes,
+  })
+    .css({
+      left: element.x + '%',
+      top: element.y + '%',
+      width: element.width + '%',
+      height: element.height + '%',
+    })
+    .appendTo($slide.children('[role="document"]').first());
 
-  const isTransparent = element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
+  const isTransparent =
+    element.backgroundOpacity === undefined || element.backgroundOpacity === 0;
   $elementContainer.toggleClass('h5p-transparent', isTransparent);
 
   if (displayAsButton) {
-    const [$button, labelElement] =
-      this.createInteractionButton(element, instance);
+    const [$button, labelElement] = this.createInteractionButton(
+      element,
+      instance
+    );
 
     // Label in logically before button to allow sibling selector in CSS
     if (labelElement) {
@@ -1001,25 +1107,33 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 
         if (
           -containerOffset + labelRect.x + labelRect.width >
-            this.$container.get(0).offsetWidth
+          this.$container.get(0).offsetWidth
         ) {
           labelElement.classList.add('left');
         }
       });
     }
-  }
-  else {
+  } else {
     const hasLibrary = element.action && element.action.library;
-    const libTypePmz = hasLibrary ? this.getLibraryTypePmz(element.action.library) : 'other';
+    const libTypePmz = hasLibrary
+      ? this.getLibraryTypePmz(element.action.library)
+      : 'other';
 
     var $outerElementContainer = H5P.jQuery('<div>', {
-      'class': `h5p-element-outer ${libTypePmz}-outer-element`
-    }).css({
-      background: 'rgba(255,255,255,' + (element.backgroundOpacity === undefined ? 0 : element.backgroundOpacity / 100) + ' )'
-    }).appendTo($elementContainer);
+      class: `h5p-element-outer ${libTypePmz}-outer-element`,
+    })
+      .css({
+        background:
+          'rgba(255,255,255,' +
+          (element.backgroundOpacity === undefined
+            ? 0
+            : element.backgroundOpacity / 100) +
+          ' )',
+      })
+      .appendTo($elementContainer);
 
     var $innerElementContainer = H5P.jQuery('<div>', {
-      'class': 'h5p-element-inner'
+      class: 'h5p-element-inner',
     }).appendTo($outerElementContainer);
 
     // H5P.Shape sets it's own size when line in selected
@@ -1030,7 +1144,10 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
     });
 
     instance.attach($innerElementContainer);
-    if (element.action !== undefined && element.action.library.substr(0, 20) === 'H5P.InteractiveVideo') {
+    if (
+      element.action !== undefined &&
+      element.action.library.substr(0, 20) === 'H5P.InteractiveVideo'
+    ) {
       var handleIV = function () {
         instance.$container.addClass('h5p-fullscreen');
         if (instance.controls.$fullscreen) {
@@ -1039,15 +1156,13 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
         instance.hasFullScreen = true;
         if (instance.controls.$play.hasClass('h5p-pause')) {
           instance.$controls.addClass('h5p-autohide');
-        }
-        else {
+        } else {
           instance.enableAutoHide();
         }
       };
       if (instance.controls !== undefined) {
         handleIV();
-      }
-      else {
+      } else {
         instance.on('controls', handleIV);
       }
     }
@@ -1059,15 +1174,15 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
   if (this.editor !== undefined) {
     // If we're in the H5P editor, allow it to manipulate the elementInstances
     this.editor.processElement(element, $elementContainer, index, instance);
-  }
-  else {
+  } else {
     if (element.solution) {
       this.addElementSolutionButton(element, instance, $elementContainer);
     }
 
     /* When in view mode, we need to know if there are any answer elements,
      * so that we can display the export answers button on the last slide */
-    this.hasAnswerElements = this.hasAnswerElements || instance.exportAnswers !== undefined;
+    this.hasAnswerElements =
+      this.hasAnswerElements || instance.exportAnswers !== undefined;
   }
 
   return $elementContainer;
@@ -1079,30 +1194,36 @@ CoursePresentation.prototype.attachElement = function (element, instance, $slide
 CoursePresentation.prototype.disableTabIndexes = function () {
   var $popupContainer = this.$container.find('.h5p-popup-container');
 
-  this.$tabbables = this.$container.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
-    var $tabbable = $(this);
-    var insideContainer = $.contains($popupContainer.get(0), $tabbable.get(0));
+  this.$tabbables = this.$container
+    .find(
+      'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]'
+    )
+    .filter(function () {
+      var $tabbable = $(this);
+      var insideContainer = $.contains(
+        $popupContainer.get(0),
+        $tabbable.get(0)
+      );
 
-    // tabIndex has already been modified, keep it in the set.
-    if ($tabbable.data('tabindex')) {
-      return true;
-    }
+      // tabIndex has already been modified, keep it in the set.
+      if ($tabbable.data('tabindex')) {
+        return true;
+      }
 
-    if (!insideContainer) {
-      // Store current tabindex, so we can set it back when dialog closes
-      var tabIndex = $tabbable.attr('tabindex');
-      $tabbable.data('tabindex', tabIndex);
+      if (!insideContainer) {
+        // Store current tabindex, so we can set it back when dialog closes
+        var tabIndex = $tabbable.attr('tabindex');
+        $tabbable.data('tabindex', tabIndex);
 
-      // Make it non tabbable
-      $tabbable.attr('tabindex', '-1');
-      return true;
-    }
+        // Make it non tabbable
+        $tabbable.attr('tabindex', '-1');
+        return true;
+      }
 
-    // If element is part of dialog wrapper, just ignore it
-    return false;
-  });
+      // If element is part of dialog wrapper, just ignore it
+      return false;
+    });
 };
-
 
 /**
  * Re-enables tab indexes after a popup container is closed
@@ -1117,12 +1238,10 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
       if ($element.hasClass('ui-slider-handle')) {
         $element.attr('tabindex', 0);
         $element.removeData('tabindex');
-      }
-      else if (tabindex !== undefined) {
+      } else if (tabindex !== undefined) {
         $element.attr('tabindex', tabindex);
         $element.removeData('tabindex');
-      }
-      else {
+      } else {
         $element.removeAttr('tabindex');
       }
     });
@@ -1136,94 +1255,96 @@ CoursePresentation.prototype.restoreTabIndexes = function () {
  * @param {Object} instance
  * @returns {[jQuery, HTMLElement|undefined]} Button element and label if set.
  */
-CoursePresentation.prototype.createInteractionButton =
-  function (element, instance) {
-    const isButtonLabelSet = typeof element.buttonLabel === 'string' &&
-      element.buttonLabel !== '';
+CoursePresentation.prototype.createInteractionButton = function (
+  element,
+  instance
+) {
+  const isButtonLabelSet =
+    typeof element.buttonLabel === 'string' && element.buttonLabel !== '';
 
-    const labelText = element.buttonLabel ??
-      element.action.metadata?.title ??
-      (
-        element.action?.params?.contentName ||
-        element.action?.params?.title ||
-        element.action?.library.split(' ')[0].split('.')[1] ||
-        ''
-      );
+  const labelText =
+    element.buttonLabel ??
+    element.action.metadata?.title ??
+    (element.action?.params?.contentName ||
+      element.action?.params?.title ||
+      element.action?.library.split(' ')[0].split('.')[1] ||
+      '');
 
-    // Optional label for button
-    let labelElement;
-    if (isButtonLabelSet) {
-      labelElement = document.createElement('div');
-      labelElement.classList.add('h5p-element-button-label');
-      if (element.buttonSize === 'small') {
-        labelElement.classList.add('small');
-      }
-
-      const labelElementText = document.createElement('div');
-      labelElementText.classList.add('h5p-element-button-label-text');
-      labelElementText.setAttribute('aria-hidden', true);
-      labelElementText.innerText = stripHTML(labelText);
-      labelElement.append(labelElementText);
+  // Optional label for button
+  let labelElement;
+  if (isButtonLabelSet) {
+    labelElement = document.createElement('div');
+    labelElement.classList.add('h5p-element-button-label');
+    if (element.buttonSize === 'small') {
+      labelElement.classList.add('small');
     }
 
-    const libTypePmz = this.getLibraryTypePmz(element.action.library);
+    const labelElementText = document.createElement('div');
+    labelElementText.classList.add('h5p-element-button-label-text');
+    labelElementText.setAttribute('aria-hidden', true);
+    labelElementText.innerText = stripHTML(labelText);
+    labelElement.append(labelElementText);
+  }
 
-    // Button
-    const button = document.createElement('div');
-    button.classList.add('h5p-element-button');
-    button.classList.add(`h5p-element-button-${element.buttonSize}`);
-    button.classList.add(`${libTypePmz}-button`);
-    button.setAttribute('role', 'button');
-    button.setAttribute('tabindex', 0);
-    button.setAttribute('aria-popup', true);
-    button.setAttribute('aria-expanded', false);
-    button.setAttribute('aria-label', labelText);
+  const libTypePmz = this.getLibraryTypePmz(element.action.library);
 
-    const buttonElement = document.createElement('div');
-    buttonElement.classList.add('h5p-element-button-element');
+  // Button
+  const button = document.createElement('div');
+  button.classList.add('h5p-element-button');
+  button.classList.add(`h5p-element-button-${element.buttonSize}`);
+  button.classList.add(`${libTypePmz}-button`);
+  button.setAttribute('role', 'button');
+  button.setAttribute('tabindex', 0);
+  button.setAttribute('aria-popup', true);
+  button.setAttribute('aria-expanded', false);
+  button.setAttribute('aria-label', labelText);
 
-    instance.attach(H5P.jQuery(buttonElement));
+  const buttonElement = document.createElement('div');
+  buttonElement.classList.add('h5p-element-button-element');
 
-    const parentPosition = libTypePmz === 'h5p-advancedtext' ?
-      {
-        x: element.x,
-        y: element.y
-      } :
-      null;
+  instance.attach(H5P.jQuery(buttonElement));
 
-    const handleButtonInteraction = () => {
-      button.setAttribute('aria-expanded', 'true');
-      this.showInteractionPopup(
-        instance,
-        H5P.jQuery(button),
-        H5P.jQuery(buttonElement),
-        libTypePmz,
-        () => {
-          button.setAttribute('aria-expanded', 'false');
-        },
-        parentPosition
-      );
-    };
-
-    addClickAndKeyboardListeners(H5P.jQuery(button), () => {
-      handleButtonInteraction();
-    });
-
-    // Allow to show interaction popup on label click, too
-    labelElement?.addEventListener('click', () => {
-      handleButtonInteraction();
-    });
-
-    if (element.action?.library.split(' ')[0] === 'H5P.InteractiveVideo') {
-      instance.on('controls', () => {
-        if (instance.controls.$fullscreen) {
-          instance.controls.$fullscreen.remove();
+  const parentPosition =
+    libTypePmz === 'h5p-advancedtext'
+      ? {
+          x: element.x,
+          y: element.y,
         }
-      });
-    }
+      : null;
 
-    return [H5P.jQuery(button), labelElement];
+  const handleButtonInteraction = () => {
+    button.setAttribute('aria-expanded', 'true');
+    this.showInteractionPopup(
+      instance,
+      H5P.jQuery(button),
+      H5P.jQuery(buttonElement),
+      libTypePmz,
+      () => {
+        button.setAttribute('aria-expanded', 'false');
+      },
+      parentPosition
+    );
   };
+
+  addClickAndKeyboardListeners(H5P.jQuery(button), () => {
+    handleButtonInteraction();
+  });
+
+  // Allow to show interaction popup on label click, too
+  labelElement?.addEventListener('click', () => {
+    handleButtonInteraction();
+  });
+
+  if (element.action?.library.split(' ')[0] === 'H5P.InteractiveVideo') {
+    instance.on('controls', () => {
+      if (instance.controls.$fullscreen) {
+        instance.controls.$fullscreen.remove();
+      }
+    });
+  }
+
+  return [H5P.jQuery(button), labelElement];
+};
 
 /**
  * Shows the interaction popup on button press
@@ -1233,8 +1354,14 @@ CoursePresentation.prototype.createInteractionButton =
  * @param {function} closeCallback
  * @param {Object} [popupPosition] X and Y position of popup
  */
-CoursePresentation.prototype.showInteractionPopup = function (instance, $button, $buttonElement, libTypePmz, closeCallback, popupPosition = null) {
-
+CoursePresentation.prototype.showInteractionPopup = function (
+  instance,
+  $button,
+  $buttonElement,
+  libTypePmz,
+  closeCallback,
+  popupPosition = null
+) {
   // Handle exit fullscreen
   const exitFullScreen = () => {
     instance.trigger('resize');
@@ -1259,7 +1386,7 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
       },
       classes: libTypePmz,
       instance: instance,
-      keepInDOM: libTypePmz === 'h5p-interactivevideo'
+      keepInDOM: libTypePmz === 'h5p-interactivevideo',
     });
 
     H5P.trigger(instance, 'resize');
@@ -1271,18 +1398,22 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
 
     // Focus directly on content when popup is opened
     setTimeout(() => {
-      var $tabbables = $buttonElement.find(':input').add($buttonElement.find('[tabindex]'));
+      var $tabbables = $buttonElement
+        .find(':input')
+        .add($buttonElement.find('[tabindex]'));
       if ($tabbables.length) {
         $tabbables[0].focus();
-      }
-      else {
+      } else {
         $buttonElement.attr('tabindex', 0);
         $buttonElement.focus();
       }
     }, 200);
 
     // start activity
-    if (isFunction(instance.setActivityStarted) && isFunction(instance.getScore)) {
+    if (
+      isFunction(instance.setActivityStarted) &&
+      isFunction(instance.getScore)
+    ) {
       instance.setActivityStarted();
     }
   }
@@ -1294,7 +1425,8 @@ CoursePresentation.prototype.showInteractionPopup = function (instance, $button,
  * @param {string} library
  * @return {string}
  */
-CoursePresentation.prototype.getLibraryTypePmz = (library) => kebabCase(library.split(' ')[0]).toLowerCase();
+CoursePresentation.prototype.getLibraryTypePmz = (library) =>
+  kebabCase(library.split(' ')[0]).toLowerCase();
 
 /**
  * Resize image inside popup dialog.
@@ -1319,11 +1451,11 @@ CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
       return;
     }
 
-    var ratio = (width / height);
+    var ratio = width / height;
     height = 18.5 * fontSize;
     $wrapper.css({
       width: height * ratio,
-      height: height
+      height: height,
     });
   };
 
@@ -1332,8 +1464,7 @@ CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
     $img.one('load', function () {
       resize(this.width, this.height);
     });
-  }
-  else {
+  } else {
     // Image already loaded, resize!
     resize($img.width(), $img.height());
   }
@@ -1346,22 +1477,32 @@ CoursePresentation.prototype.resizePopupImage = function ($wrapper) {
  * @param {Object} elementInstance Instance of the element.
  * @param {jQuery} $elementContainer Wrapper for the element.
  */
-CoursePresentation.prototype.addElementSolutionButton = function (element, elementInstance, $elementContainer) {
+CoursePresentation.prototype.addElementSolutionButton = function (
+  element,
+  elementInstance,
+  $elementContainer
+) {
   elementInstance.showCPComments = () => {
-    if ($elementContainer.children('.h5p-element-solution').length === 0 && stripHTML(element.solution).length > 0) {
+    if (
+      $elementContainer.children('.h5p-element-solution').length === 0 &&
+      stripHTML(element.solution).length > 0
+    ) {
       const $commentButton = $('<div/>', {
         role: 'button',
         tabindex: 0,
         title: this.l10n.solutionsButtonTitle,
         'aria-haspopup': 'dialog',
         'aria-expanded': false,
-        'class': 'h5p-element-solution'
-      }).append('<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>')
+        class: 'h5p-element-solution',
+      })
+        .append(
+          '<span class="joubel-icon-comment-normal"><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-question"></span></span>'
+        )
         .appendTo($elementContainer);
 
       const parentPosition = {
         x: element.x,
-        y: element.y
+        y: element.y,
       };
       if (!element.displayAsButton) {
         parentPosition.x += element.width - 4;
@@ -1383,7 +1524,10 @@ CoursePresentation.prototype.addElementSolutionButton = function (element, eleme
     }
   };
 
-  if (element.alwaysDisplayComments !== undefined && element.alwaysDisplayComments) {
+  if (
+    element.alwaysDisplayComments !== undefined &&
+    element.alwaysDisplayComments
+  ) {
     elementInstance.showCPComments();
   }
 };
@@ -1410,7 +1554,6 @@ CoursePresentation.prototype.showPopup = function ({
   keepInDOM = false,
   updateAriaExpanded,
 }) {
-
   var self = this;
   var doNotClose;
   // Give the popup elements unique ids
@@ -1449,8 +1592,7 @@ CoursePresentation.prototype.showPopup = function ({
     setTimeout(function () {
       if (keepInDOM) {
         $popup.hide();
-      }
-      else {
+      } else {
         $popup.remove();
       }
     }, 100);
@@ -1466,38 +1608,39 @@ CoursePresentation.prototype.showPopup = function ({
   if ($popup === undefined) {
     // The popup must be created and added to the DOM
     $popup = $(
-      '<div class="h5p-popup-overlay ' + classes + '">' +
+      '<div class="h5p-popup-overlay ' +
+        classes +
+        '">' +
         '<div ' +
-          'class="h5p-popup-container" ' +
-          'role="dialog"' +
-          'aria-modal="true" ' +
-          'aria-live="true" ' +
-          'aria-labelledby="popup-title-' + this.popupId + '"> ' +
-          '<div role="button" tabindex="0" class="h5p-close-popup" title="' + this.l10n.close + '"></div>' +
-          '<div class="h5p-popup-wrapper" role="document"></div>' +
+        'class="h5p-popup-container" ' +
+        'role="dialog"' +
+        'aria-modal="true" ' +
+        'aria-live="true" ' +
+        'aria-labelledby="popup-title-' +
+        this.popupId +
+        '"> ' +
+        '<div role="button" tabindex="0" class="h5p-close-popup h5p-theme-close" title="' +
+        this.l10n.close +
+        '"></div>' +
+        '<div class="h5p-popup-wrapper" role="document"></div>' +
         '</div>' +
-      '</div>'
+        '</div>'
     );
 
     const $popupWrapper = $popup.find('.h5p-popup-wrapper');
     if (popupContent instanceof H5P.jQuery) {
       $popupWrapper.append(popupContent);
-    }
-    else {
+    } else {
       $popupWrapper.html(popupContent);
     }
 
     // Make sure the content is read by screen readers
     let idList = '';
-    $popupWrapper
-      .children()
-      .each((index, child) => {
-        child.setAttribute('id', 'popup-content-' + this.popupId + '-' + index);
-        idList += 'popup-content-' + this.popupId + '-' + index + ' ';
-      });
-    $popup
-      .find('.h5p-popup-container')
-      .attr('aria-describedby', idList);
+    $popupWrapper.children().each((index, child) => {
+      child.setAttribute('id', 'popup-content-' + this.popupId + '-' + index);
+      idList += 'popup-content-' + this.popupId + '-' + index + ' ';
+    });
+    $popup.find('.h5p-popup-container').attr('aria-describedby', idList);
 
     if (instance && instance.subContentId) {
       // Keep a reference to this popup
@@ -1532,7 +1675,10 @@ CoursePresentation.prototype.showPopup = function ({
 
     // Only resize boxes that are disproportionally wide
     const heightThreshold = 45;
-    if (widthPercentage > heightPercentage && heightPercentage < heightThreshold) {
+    if (
+      widthPercentage > heightPercentage &&
+      heightPercentage < heightThreshold
+    ) {
       // Make the popup quadratic
       widthPercentage = Math.sqrt(widthPercentage * heightPercentage);
       $popupContainer.css({
@@ -1546,17 +1692,16 @@ CoursePresentation.prototype.showPopup = function ({
     // Width percentage is capped at min 22 and max 90% in css
     if (widthPercentage > 90) {
       widthPercentage = 90;
-    }
-    else if (widthPercentage < 22) {
+    } else if (widthPercentage < 22) {
       widthPercentage = 22;
     }
 
-    const overflowRightSideThreshold = 100 - widthPercentage - widthPaddingPercentage;
+    const overflowRightSideThreshold =
+      100 - widthPercentage - widthPaddingPercentage;
     let leftPos = parentPosition.x;
     if (parentPosition.x > overflowRightSideThreshold) {
       leftPos = overflowRightSideThreshold;
-    }
-    else if (parentPosition.x < widthPaddingPercentage) {
+    } else if (parentPosition.x < widthPaddingPercentage) {
       leftPos = widthPaddingPercentage;
     }
 
@@ -1566,8 +1711,7 @@ CoursePresentation.prototype.showPopup = function ({
     let topPos = parentPosition.y;
     if (parentPosition.y > topPosThreshold) {
       topPos = topPosThreshold;
-    }
-    else if (parentPosition.y < heightPadding) {
+    } else if (parentPosition.y < heightPadding) {
       topPos = heightPadding;
     }
 
@@ -1581,15 +1725,16 @@ CoursePresentation.prototype.showPopup = function ({
 
   resizePopup($popup, $popupContainer, parentPosition);
   $popup.addClass('h5p-animate');
-  $popupContainer.css({
-    'visibility': '',
-  }).addClass('h5p-animate');
+  $popupContainer
+    .css({
+      visibility: '',
+    })
+    .addClass('h5p-animate');
 
   if ($popup.parent().length === 0) {
     // Having no parent means the popup has not yet been added to the DOM
     $popup.prependTo(this.$wrapper);
-  }
-  else {
+  } else {
     $popup.show();
   }
 
@@ -1613,7 +1758,9 @@ CoursePresentation.prototype.showPopup = function ({
   // Hide other elements from the tab order
   this.disableTabIndexes();
 
-  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), (event) => self.closePopup(event));
+  addClickAndKeyboardListeners($popup.find('.h5p-close-popup'), (event) =>
+    self.closePopup(event)
+  );
 
   return $popup;
 };
@@ -1627,10 +1774,11 @@ CoursePresentation.prototype.showPopup = function ({
  *  false otherwise
  */
 CoursePresentation.prototype.checkForSolutions = function (elementInstance) {
-  return (elementInstance.showSolutions !== undefined ||
-          elementInstance.showCPComments !== undefined);
+  return (
+    elementInstance.showSolutions !== undefined ||
+    elementInstance.showCPComments !== undefined
+  );
 };
-
 
 /**
  * Initialize key press events.
@@ -1651,13 +1799,19 @@ CoursePresentation.prototype.initKeyEvents = function () {
     }
 
     // Left
-    if ((event.keyCode === 37 || event.keyCode === 33) && that.previousSlide(undefined, false)) {
+    if (
+      (event.keyCode === 37 || event.keyCode === 33) &&
+      that.previousSlide(undefined, false)
+    ) {
       event.preventDefault();
       wait = true;
     }
 
     // Right
-    else if ((event.keyCode === 39 || event.keyCode === 34) && that.nextSlide(undefined, false)) {
+    else if (
+      (event.keyCode === 39 || event.keyCode === 34) &&
+      that.nextSlide(undefined, false)
+    ) {
       event.preventDefault();
       wait = true;
     }
@@ -1696,77 +1850,83 @@ CoursePresentation.prototype.initTouchEvents = function () {
       '-webkit-transform': value,
       '-moz-transform': value,
       '-ms-transform': value,
-      'transform': value
+      transform: value,
     };
   };
   var reset = transform('');
 
-  this.$slidesWrapper.bind('touchstart', function (event) {
-    isTouchJump = false;
-    // Set start positions
-    lastX = startX = event.originalEvent.touches[0].pageX;
-    startY = event.originalEvent.touches[0].pageY;
-    const slideWidth = that.$slidesWrapper.width();
+  this.$slidesWrapper
+    .bind('touchstart', function (event) {
+      isTouchJump = false;
+      // Set start positions
+      lastX = startX = event.originalEvent.touches[0].pageX;
+      startY = event.originalEvent.touches[0].pageY;
+      const slideWidth = that.$slidesWrapper.width();
 
-    // Set classes for slide movement and remember how much they move
-    prevX = (that.currentSlideIndex === 0 ? 0 : - slideWidth);
-    nextX = (that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth);
+      // Set classes for slide movement and remember how much they move
+      prevX = that.currentSlideIndex === 0 ? 0 : -slideWidth;
+      nextX = that.currentSlideIndex + 1 >= that.slides.length ? 0 : slideWidth;
 
-    // containerWidth = H5P.jQuery(this).width();
-    // startTime = new Date().getTime();
+      // containerWidth = H5P.jQuery(this).width();
+      // startTime = new Date().getTime();
 
-    scroll = null;
-    touchStarted = true;
+      scroll = null;
+      touchStarted = true;
+    })
+    .bind('touchmove', function (event) {
+      var touches = event.originalEvent.touches;
 
-  }).bind('touchmove', function (event) {
-    var touches = event.originalEvent.touches;
+      if (touchStarted) {
+        that.$current.prev().addClass('h5p-touch-move');
+        that.$current.next().addClass('h5p-touch-move');
+        touchStarted = false;
+      }
 
-    if (touchStarted) {
-      that.$current.prev().addClass('h5p-touch-move');
-      that.$current.next().addClass('h5p-touch-move');
-      touchStarted = false;
-    }
+      // Determine horizontal movement
+      lastX = touches[0].pageX;
+      var movedX = startX - lastX;
 
-    // Determine horizontal movement
-    lastX = touches[0].pageX;
-    var movedX = startX - lastX;
+      if (scroll === null) {
+        // Detemine if we're scrolling horizontally or changing slide
+        scroll =
+          Math.abs(startY - event.originalEvent.touches[0].pageY) >
+          Math.abs(movedX);
+      }
+      if (touches.length !== 1 || scroll) {
+        // Do nothing if we're scrolling, zooming etc.
+        return;
+      }
 
-    if (scroll === null) {
-      // Detemine if we're scrolling horizontally or changing slide
-      scroll = Math.abs(startY - event.originalEvent.touches[0].pageY) > Math.abs(movedX);
-    }
-    if (touches.length !== 1 || scroll) {
-      // Do nothing if we're scrolling, zooming etc.
-      return;
-    }
+      // Disable horizontal scrolling when changing slide
+      event.preventDefault();
 
-    // Disable horizontal scrolling when changing slide
-    event.preventDefault();
-
-    // Create popup longer time than navigateTimer has passed
-    if (!isTouchJump) {
-      /*currentTime = new Date().getTime();
+      // Create popup longer time than navigateTimer has passed
+      if (!isTouchJump) {
+        /*currentTime = new Date().getTime();
       var timeLapsed = currentTime - startTime;
       if (timeLapsed > navigateTimer) {
         isTouchJump = true;
       }*/
 
-      // Fast swipe to next slide
-      if (movedX < 0) {
-        // Move previous slide
-        that.$current.prev().css(transform('translateX(' + (prevX - movedX) + 'px'));
-      }
-      else {
-        // Move next slide
-        that.$current.next().css(transform('translateX(' + (nextX - movedX) + 'px)'));
-      }
+        // Fast swipe to next slide
+        if (movedX < 0) {
+          // Move previous slide
+          that.$current
+            .prev()
+            .css(transform('translateX(' + (prevX - movedX) + 'px'));
+        } else {
+          // Move next slide
+          that.$current
+            .next()
+            .css(transform('translateX(' + (nextX - movedX) + 'px)'));
+        }
 
-      // Move current slide
-      that.$current.css(transform('translateX(' + (-movedX) + 'px)'));
-    }
-    // TODO: Jumping over multiple slides disabled until redesigned.
+        // Move current slide
+        that.$current.css(transform('translateX(' + -movedX + 'px)'));
+      }
+      // TODO: Jumping over multiple slides disabled until redesigned.
 
-    /* else {
+      /* else {
       that.$current.css(reset);
       // Update slider popup.
       nextSlide = parseInt(that.currentSlideIndex + (movedX / pixelsPerSlide), 10);
@@ -1778,24 +1938,27 @@ CoursePresentation.prototype.initTouchEvents = function () {
       // Create popup at initial touch point
       that.updateTouchPopup(that.$slidesWrapper, nextSlide, startX, startY);
     }*/
-
-  }).bind('touchend', function () {
-    if (!scroll) {
-      /*if (isTouchJump) {
+    })
+    .bind('touchend', function () {
+      if (!scroll) {
+        /*if (isTouchJump) {
         that.jumpToSlide(nextSlide);
         that.updateTouchPopup();
         return;
       }*/
 
-      // If we're not scrolling detemine if we're changing slide
-      var moved = startX - lastX;
-      if (moved > that.swipeThreshold && that.nextSlide(undefined, false) || moved < -that.swipeThreshold && that.previousSlide(undefined, false)) {
-        return;
+        // If we're not scrolling detemine if we're changing slide
+        var moved = startX - lastX;
+        if (
+          (moved > that.swipeThreshold && that.nextSlide(undefined, false)) ||
+          (moved < -that.swipeThreshold && that.previousSlide(undefined, false))
+        ) {
+          return;
+        }
       }
-    }
-    // Reset.
-    that.$slidesWrapper.children().css(reset).removeClass('h5p-touch-move');
-  });
+      // Reset.
+      that.$slidesWrapper.children().css(reset).removeClass('h5p-touch-move');
+    });
 };
 
 /**
@@ -1805,7 +1968,12 @@ CoursePresentation.prototype.initTouchEvents = function () {
  * @param xPos
  * @param yPos
  */
-CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumber, xPos, yPos) {
+CoursePresentation.prototype.updateTouchPopup = function (
+  $container,
+  slideNumber,
+  xPos,
+  yPos
+) {
   // Remove popup on no arguments
   if (arguments.length <= 0) {
     if (this.touchPopup !== undefined) {
@@ -1834,10 +2002,9 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
 
   if (this.touchPopup === undefined) {
     this.touchPopup = H5P.jQuery('<div/>', {
-      'class': 'h5p-touch-popup'
+      class: 'h5p-touch-popup',
     }).insertAfter($container);
-  }
-  else {
+  } else {
     this.touchPopup.insertAfter($container);
   }
 
@@ -1851,8 +2018,8 @@ CoursePresentation.prototype.updateTouchPopup = function ($container, slideNumbe
 
   this.touchPopup.css({
     'max-width': $container.width() - xPos,
-    'left': xPos,
-    'top': yPos
+    left: xPos,
+    top: yPos,
   });
   this.touchPopup.html(keyword);
 };
@@ -1871,8 +2038,7 @@ CoursePresentation.prototype.previousSlide = function (noScroll, old = true) {
 
   if (old) {
     return this.processJumpToSlide($prev.index(), noScroll, false);
-  }
-  else {
+  } else {
     return this.jumpToSlide($prev.index(), noScroll, null, false);
   }
 };
@@ -1891,8 +2057,7 @@ CoursePresentation.prototype.nextSlide = function (noScroll, old = true) {
 
   if (old) {
     return this.processJumpToSlide($next.index(), noScroll, false);
-  }
-  else {
+  } else {
     return this.jumpToSlide($next.index(), noScroll, null, false);
   }
 };
@@ -1941,11 +2106,18 @@ CoursePresentation.prototype.attachAllElements = function () {
  * @param {Boolean} [noScroll] Skip UI scrolling.
  * @returns {Boolean} Always true.
  */
-CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScroll, handleFocus) {
+CoursePresentation.prototype.processJumpToSlide = function (
+  slideNumber,
+  noScroll,
+  handleFocus
+) {
   var that = this;
-  if (this.editor === undefined && this.contentId) { // Content ID avoids crash when previewing in editor before saving
+  if (this.editor === undefined && this.contentId) {
+    // Content ID avoids crash when previewing in editor before saving
     var progressedEvent = this.createXAPIEventTemplate('progressed');
-    progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = slideNumber + 1;
+    progressedEvent.data.statement.object.definition.extensions[
+      'http://id.tincanapi.com/extension/ending-point'
+    ] = slideNumber + 1;
     this.trigger(progressedEvent);
   }
 
@@ -1976,12 +2148,15 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
   setTimeout(function () {
     // Play animations
     $old.removeClass('h5p-current');
-    $slides.css({
-      '-webkit-transform': '',
-      '-moz-transform': '',
-      '-ms-transform': '',
-      'transform': ''
-    }).removeClass('h5p-touch-move').removeClass('h5p-previous');
+    $slides
+      .css({
+        '-webkit-transform': '',
+        '-moz-transform': '',
+        '-ms-transform': '',
+        transform: '',
+      })
+      .removeClass('h5p-touch-move')
+      .removeClass('h5p-previous');
     $prevs.addClass('h5p-previous');
     that.$current.addClass('h5p-current');
 
@@ -2001,7 +2176,11 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
     var instanceParams = that.slides[that.currentSlideIndex].elements;
     if (instances !== undefined) {
       for (var i = 0; i < instances.length; i++) {
-        if (!instanceParams[i].displayAsButton && typeof instances[i].setActivityStarted === 'function' && typeof instances[i].getScore === 'function') {
+        if (
+          !instanceParams[i].displayAsButton &&
+          typeof instances[i].setActivityStarted === 'function' &&
+          typeof instances[i].getScore === 'function'
+        ) {
           instances[i].setActivityStarted();
         }
       }
@@ -2019,13 +2198,20 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
   }
 
   // Show keywords if they should always show
-  if (that.presentation.keywordListEnabled && that.presentation.keywordListAlwaysShow) {
+  if (
+    that.presentation.keywordListEnabled &&
+    that.presentation.keywordListAlwaysShow
+  ) {
     that.showKeywords();
   }
 
   if (that.navigationLine) {
     // Update progress bar
-    that.navigationLine.updateProgressBar(slideNumber, previousSlideIndex, this.isSolutionMode);
+    that.navigationLine.updateProgressBar(
+      slideNumber,
+      previousSlideIndex,
+      this.isSolutionMode
+    );
 
     // Update footer
     that.navigationLine.updateFooter(slideNumber);
@@ -2060,15 +2246,21 @@ CoursePresentation.prototype.processJumpToSlide = function (slideNumber, noScrol
  * @param {Boolean} [ignoreConfirmationDialog] Will not show confirmation dialog for summary slide
  * @returns {Boolean}
  */
-CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = false, callback = null, handleFocus = false, ignoreConfirmationDialog = false) {
-  if (this.standalone
-    && this.showSummarySlide
-    && slideNumber === this.slides.length - 1
-    && !this.isSolutionMode
-    && this.isReportingEnabled
-    && !ignoreConfirmationDialog
+CoursePresentation.prototype.jumpToSlide = function (
+  slideNumber,
+  noScroll = false,
+  callback = null,
+  handleFocus = false,
+  ignoreConfirmationDialog = false
+) {
+  if (
+    this.standalone &&
+    this.showSummarySlide &&
+    slideNumber === this.slides.length - 1 &&
+    !this.isSolutionMode &&
+    this.isReportingEnabled &&
+    !ignoreConfirmationDialog
   ) {
-
     // Currently in the summary slide
     if (this.currentSlideIndex === this.slides.length - 1) {
       return false;
@@ -2082,7 +2274,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
         cancelText: this.l10n.confirmDialogCancelLabel,
         theme: true,
       },
-      this.contentId,
+      this.contentId
     );
 
     confirmationDialog.on('canceled', () => {
@@ -2094,8 +2286,7 @@ CoursePresentation.prototype.jumpToSlide = function (slideNumber, noScroll = fal
         callback();
       }
     });
-  }
-  else {
+  } else {
     this.processJumpToSlide(slideNumber, noScroll, handleFocus);
     if (callback) {
       callback();
@@ -2112,7 +2303,7 @@ CoursePresentation.prototype.setOverflowTabIndex = function () {
     return;
   }
 
-  this.$current.find('.h5p-element-inner').each( function () {
+  this.$current.find('.h5p-element-inner').each(function () {
     const $inner = $(this);
 
     // Currently, this rule is for tables only
@@ -2123,7 +2314,11 @@ CoursePresentation.prototype.setOverflowTabIndex = function () {
 
     // Add tabindex if there's an overflow (scrollbar depending on CSS)
     const outerHeight = $inner.closest('.h5p-element-outer').innerHeight();
-    if (innerHeight !== undefined && outerHeight !== null && innerHeight > outerHeight) {
+    if (
+      innerHeight !== undefined &&
+      outerHeight !== null &&
+      innerHeight > outerHeight
+    ) {
       $inner.attr('tabindex', 0);
     }
   });
@@ -2134,7 +2329,10 @@ CoursePresentation.prototype.setOverflowTabIndex = function () {
  * @param {number} slideNumber Index of slide that should have its' title announced
  * @param {boolean} [handleFocus=false] Moves focus to the top of the slide
  */
-CoursePresentation.prototype.setSlideNumberAnnouncer = function (slideNumber, handleFocus = false) {
+CoursePresentation.prototype.setSlideNumberAnnouncer = function (
+  slideNumber,
+  handleFocus = false
+) {
   let slideTitle = '';
 
   if (!this.navigationLine) {
@@ -2224,13 +2422,16 @@ CoursePresentation.prototype.showSolutions = function () {
         indexes: indexes,
         slide: (i + 1),
         score: slideScore,
-        maxScore: slideMaxScore
+        maxScore: slideMaxScore,
       });
     }
     // Show comments of non graded contents
     if (this.showCommentsAfterSolution[i]) {
       for (let j = 0; j < this.showCommentsAfterSolution[i].length; j++) {
-        if (typeof this.showCommentsAfterSolution[i][j].showCPComments === 'function') {
+        if (
+          typeof this.showCommentsAfterSolution[i][j].showCPComments ===
+          'function'
+        ) {
           this.showCommentsAfterSolution[i][j].showCPComments();
         }
       }
@@ -2275,7 +2476,7 @@ CoursePresentation.prototype.getSlideScores = function (noJump) {
         indexes: indexes,
         slide: (i + 1),
         score: slideScore,
-        maxScore: slideMaxScore
+        maxScore: slideMaxScore,
       });
     }
   }
@@ -2294,13 +2495,24 @@ CoursePresentation.prototype.getCopyrights = function () {
   var elementCopyrights;
 
   // Check for a common background image shared by all slides
-  if (this.presentation && this.presentation.globalBackgroundSelector &&
-      this.presentation.globalBackgroundSelector.imageGlobalBackground) {
-
+  if (
+    this.presentation &&
+    this.presentation.globalBackgroundSelector &&
+    this.presentation.globalBackgroundSelector.imageGlobalBackground
+  ) {
     // Add image copyrights to the presentation scope
-    var globalBackgroundImageParams = this.presentation.globalBackgroundSelector.imageGlobalBackground;
-    var globalBackgroundImageCopyright = new H5P.MediaCopyright(globalBackgroundImageParams.copyright);
-    globalBackgroundImageCopyright.setThumbnail(new H5P.Thumbnail(H5P.getPath(globalBackgroundImageParams.path, this.contentId), globalBackgroundImageParams.width, globalBackgroundImageParams.height));
+    var globalBackgroundImageParams =
+      this.presentation.globalBackgroundSelector.imageGlobalBackground;
+    var globalBackgroundImageCopyright = new H5P.MediaCopyright(
+      globalBackgroundImageParams.copyright
+    );
+    globalBackgroundImageCopyright.setThumbnail(
+      new H5P.Thumbnail(
+        H5P.getPath(globalBackgroundImageParams.path, this.contentId),
+        globalBackgroundImageParams.width,
+        globalBackgroundImageParams.height
+      )
+    );
     info.addMedia(globalBackgroundImageCopyright);
   }
 
@@ -2309,19 +2521,34 @@ CoursePresentation.prototype.getCopyrights = function () {
     slideInfo.setLabel(this.l10n.slide + ' ' + (slide + 1));
 
     // Check for a slide specific background image
-    if (this.slides[slide] && this.slides[slide].slideBackgroundSelector &&
-        this.slides[slide].slideBackgroundSelector.imageSlideBackground) {
-
+    if (
+      this.slides[slide] &&
+      this.slides[slide].slideBackgroundSelector &&
+      this.slides[slide].slideBackgroundSelector.imageSlideBackground
+    ) {
       // Add image copyrights to the slide scope
-      var slideBackgroundImageParams = this.slides[slide].slideBackgroundSelector.imageSlideBackground;
-      var slideBackgroundImageCopyright = new H5P.MediaCopyright(slideBackgroundImageParams.copyright);
-      slideBackgroundImageCopyright.setThumbnail(new H5P.Thumbnail(H5P.getPath(slideBackgroundImageParams.path, this.contentId), slideBackgroundImageParams.width, slideBackgroundImageParams.height));
+      var slideBackgroundImageParams =
+        this.slides[slide].slideBackgroundSelector.imageSlideBackground;
+      var slideBackgroundImageCopyright = new H5P.MediaCopyright(
+        slideBackgroundImageParams.copyright
+      );
+      slideBackgroundImageCopyright.setThumbnail(
+        new H5P.Thumbnail(
+          H5P.getPath(slideBackgroundImageParams.path, this.contentId),
+          slideBackgroundImageParams.width,
+          slideBackgroundImageParams.height
+        )
+      );
       slideInfo.addMedia(slideBackgroundImageCopyright);
     }
 
     // If the slide has elements, add the ones with copyright info to this slides copyright
     if (this.elementInstances[slide] !== undefined) {
-      for (var element = 0; element < this.elementInstances[slide].length; element++) {
+      for (
+        var element = 0;
+        element < this.elementInstances[slide].length;
+        element++
+      ) {
         var instance = this.elementInstances[slide][element];
 
         if (!this.slides[slide].elements[element].action) {
@@ -2340,16 +2567,17 @@ CoursePresentation.prototype.getCopyrights = function () {
           // Create a generic flat copyright list
           elementCopyrights = new H5P.ContentCopyrights();
           // In metadata alone there's no way of knowing what the machineName is.
-          H5P.findCopyrights(elementCopyrights, params, this.contentId, { metadata: metadata, machineName: instance.libraryInfo.machineName });
+          H5P.findCopyrights(elementCopyrights, params, this.contentId, {
+            metadata: metadata,
+            machineName: instance.libraryInfo.machineName,
+          });
         }
         var label = (element + 1);
         if (params.contentName !== undefined) {
           label += ': ' + params.contentName;
-        }
-        else if (instance.getTitle !== undefined) {
+        } else if (instance.getTitle !== undefined) {
           label += ': ' + instance.getTitle();
-        }
-        else if (params.l10n && params.l10n.name) {
+        } else if (params.l10n && params.l10n.name) {
           label += ': ' + params.l10n.name;
         }
         elementCopyrights.setLabel(label);
@@ -2373,25 +2601,30 @@ CoursePresentation.prototype.getXAPIData = function () {
   var xAPIEvent = this.createXAPIEventTemplate('answered');
 
   // Extend definition
-  var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
+  var definition = xAPIEvent.getVerifiedStatementValue([
+    'object',
+    'definition',
+  ]);
   H5P.jQuery.extend(definition, {
     interactionType: 'compound',
-    type: 'http://adlnet.gov/expapi/activities/cmi.interaction'
+    type: 'http://adlnet.gov/expapi/activities/cmi.interaction',
   });
 
   var score = this.getScore();
   var maxScore = this.getMaxScore();
   xAPIEvent.setScoredResult(score, maxScore, this, true, score === maxScore);
 
-  var childrenXAPIData = flattenArray(this.slidesWithSolutions).map((child) => {
-    if (child && child.getXAPIData) {
-      return child.getXAPIData();
-    }
-  }).filter((data) => !!data);
+  var childrenXAPIData = flattenArray(this.slidesWithSolutions)
+    .map((child) => {
+      if (child && child.getXAPIData) {
+        return child.getXAPIData();
+      }
+    })
+    .filter((data) => !!data);
 
   return {
     statement: xAPIEvent.data.statement,
-    children: childrenXAPIData
+    children: childrenXAPIData,
   };
 };
 
@@ -2406,7 +2639,7 @@ CoursePresentation.prototype.getContext = function () {
   const slide = (self.currentSlideIndex + 1);
   return {
     type: 'slide',
-    value: slide
+    value: slide,
   };
 };
 
