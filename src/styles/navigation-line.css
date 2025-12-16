@@ -341,11 +341,7 @@
   background: var(--h5p-theme-main-contrast-cta);
 }
 
-/* -------------------------------------- Footer hover effects ---------------------------------- */
-
-.h5p-course-presentation .h5p-footer [role="button"]:hover {
-
-}
+/* -------------------------------------- Footer focus-visible effects ---------------------------------- */
 
 .h5p-course-presentation .h5p-footer [role="button"]:focus-visible,
 .h5p-course-presentation .h5p-footer .h5p-footer-button:focus-visible {
