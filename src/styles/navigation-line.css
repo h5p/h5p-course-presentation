@@ -44,24 +44,9 @@
   font-size: 0.75em;
   padding: 0.5em;
   border-radius: 50%;
-  background-color: var(--h5p-theme-secondary-cta-base);
-  color: var(--h5p-theme-secondary-contrast-cta);
   margin: 0 5px;
   font-weight: normal;
 }
-
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:before,
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:after {
-  font-weight: normal;
-  margin: 0;
-}
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:hover:not(:disabled):not([aria-disabled="true"]) {
-  background-color: var(--h5p-theme-secondary-cta-light);
-}
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:active{
-  background-color: var(--h5p-theme-secondary-cta-dark);
-}
-
 
 .h5p-course-presentation .h5p-footer .h5p-footer-button:before,
 .h5p-footer-button .h5p-icon-menu:before {
