@@ -14,9 +14,6 @@
   line-height: 1;
   text-align: left;
   user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   width: 100%;
 }
 
@@ -29,8 +26,6 @@
   /* TODO: remove border */
   border: solid 0px green;
   border-radius: var(--h5p-theme-border-radius-small);
-  -webkit-transition: color 0.2s ease-in-out;
-  -moz-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
   padding: 0.5em;
   align-items: center;
@@ -44,27 +39,12 @@
   font-size: 0.75em;
   padding: 0.5em;
   border-radius: 50%;
-  background-color: var(--h5p-theme-secondary-cta-base);
-  color: var(--h5p-theme-secondary-contrast-cta);
   margin: 0 5px;
   font-weight: normal;
 }
 
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:before,
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:after {
-  font-weight: normal;
-  margin: 0;
-}
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:hover:not(:disabled):not([aria-disabled="true"]) {
-  background-color: var(--h5p-theme-secondary-cta-light);
-}
-.h5p-course-presentation .h5p-footer .h5p-theme-nav-button:active{
-  background-color: var(--h5p-theme-secondary-cta-dark);
-}
-
-
-.h5p-course-presentation .h5p-footer .h5p-footer-button:before,
-.h5p-footer-button .h5p-icon-menu:before {
+.h5p-course-presentation .h5p-footer .h5p-footer-button::before,
+.h5p-footer-button .h5p-icon-menu::before {
   padding: 0;
 }
 .h5p-course-presentation .h5p-footer .h5p-footer-button:hover{
@@ -146,19 +126,14 @@
 
 /* --------------------------------------------- Footer elements ---------------------------------------- */
 
-.h5p-course-presentation .h5p-footer-toggle-keywords .h5p-icon-menu:before {
+.h5p-course-presentation .h5p-footer-toggle-keywords .h5p-icon-menu::before {
   font-family: 'h5p-theme';
   content: "\e913";
   -webkit-font-smoothing: antialiased;
 }
 
-.h5p-course-presentation .h5p-footer-toggle-keywords[aria-expanded="true"] .h5p-icon-menu:before {
+.h5p-course-presentation .h5p-footer-toggle-keywords[aria-expanded="true"] .h5p-icon-menu::before {
   content: "\e916";
-}
-
-/* Footer keyword button */
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords {
-
 }
 
 .h5p-course-presentation .h5p-footer .h5p-footer-toggle-keywords .current-slide-title {
@@ -175,23 +150,21 @@
   display: none;
 }
 
-.h5p-course-presentation .h5p-footer [aria-expanded="true"].h5p-footer-toggle-keywords .current-slide-title:before {
-  -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
+.h5p-course-presentation .h5p-footer [aria-expanded="true"].h5p-footer-toggle-keywords .current-slide-title::before {
   transform: rotate(90deg);
 }
 
 /* Print button and full screen button (in footer) */
-.h5p-course-presentation .h5p-footer .h5p-footer-print:before {
+.h5p-course-presentation .h5p-footer .h5p-footer-print::before {
   font-family: 'H5PFontAwesome4';
 }
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen::before {
   font-family: 'h5p-theme';
 }
-.h5p-course-presentation .h5p-footer .h5p-footer-print:before {
+.h5p-course-presentation .h5p-footer .h5p-footer-print::before {
   content: "\f02f";
 }
-.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen:before {
+.h5p-course-presentation .h5p-footer .h5p-footer-toggle-full-screen::before {
   content: "\e915";
 }
 
@@ -207,8 +180,8 @@
   display: none;
 }
 
-.h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before,
-.h5p-course-presentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-toggle-full-screen:before {
+.h5p-course-presentation.h5p-fullscreen .h5p-footer .h5p-footer-toggle-full-screen::before,
+.h5p-course-presentation.h5p-semi-fullscreen .h5p-footer .h5p-footer-toggle-full-screen::before {
   content: "\e914";
 }
 
@@ -237,19 +210,11 @@
   height: 100%;
   overflow: visible;
   background: var(--h5p-theme-ui-base);
-
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
+  display: flex;             
+  user-select: none;  
 }
 
 .h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide {
-  -webkit-flex: 0;
   flex: 0;
   min-width: 2.2em;
 }
@@ -261,7 +226,7 @@
 }
 
 /* The summary slide icon */
-.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a:after {
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part.progressbar-part-summary-slide a::after {
   font-family: "h5p-theme";
   content: "\e904";
   font-size: 0.5em;
@@ -269,7 +234,7 @@
   text-align: center;
   color: var(--h5p-theme-secondary-cta-base);
 }
-.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-selected.progressbar-part-summary-slide a:after{
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part-selected.progressbar-part-summary-slide a::after{
   color: var(--h5p-theme-contrast-cta);
 }
 
@@ -327,7 +292,7 @@
 }
 
 /* -------------------------------------- Feedback for progress bar ------------------------------------- */
-.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task:after {
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task::after {
   position: absolute;
   bottom: 105%;
   left: 50%;
@@ -341,13 +306,13 @@
   font-size: 0.6em;
 }
 
-.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-correct:after {
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-correct::after {
   content: "\f00c";
   color: #6aa81b;
   background-color: #d1e2ce;
 }
 
-.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-wrong:after {
+.h5p-course-presentation .h5p-progressbar .h5p-progressbar-part .h5p-progressbar-part-has-task.h5p-is-wrong::after {
   content: "\f00d";
   color: #c33f62;
   background-color: #e6ced1;
@@ -358,14 +323,9 @@
   display: block;
   width: 0.3em;
   height: 0.3em;
-
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
-
   border: 2px solid var(--h5p-theme-secondary-cta-base);
   cursor: pointer;
-
   background: transparent;
   margin-right: auto;
   margin-left: auto;
@@ -381,11 +341,7 @@
   background: var(--h5p-theme-main-contrast-cta);
 }
 
-/* -------------------------------------- Footer hover effects ---------------------------------- */
-
-.h5p-course-presentation .h5p-footer [role="button"]:hover {
-
-}
+/* -------------------------------------- Footer focus-visible effects ---------------------------------- */
 
 .h5p-course-presentation .h5p-footer [role="button"]:focus-visible,
 .h5p-course-presentation .h5p-footer .h5p-footer-button:focus-visible {
@@ -400,8 +356,8 @@
 .h5p-course-presentation .h5p-footer [aria-disabled="true"].h5p-footer-button {
   visibility: hidden;
 }
-.h5p-course-presentation .h5p-footer [aria-disabled="true"].h5p-footer-button:before,
-.h5p-course-presentation .h5p-footer [aria-disabled="true"].h5p-footer-button:after {
+.h5p-course-presentation .h5p-footer [aria-disabled="true"].h5p-footer-button::before,
+.h5p-course-presentation .h5p-footer [aria-disabled="true"].h5p-footer-button::after {
   color: #999;
 }
 
