@@ -973,6 +973,10 @@
 .h5p-course-presentation .h5p-dragquestion-editor .field-name-enableFullScreen {
   display: none;
 }
+/* Adjust handle width for draggable elements inside CP */
+.h5p-course-presentation .h5p-draggable.h5p-draggable--has-handle:not(.h5p-draggable-correct):not(.h5p-draggable-wrong) {
+  --handle-width: calc(var(--h5p-theme-spacing-m)); 
+}
 
 .h5p-course-presentation .hidden-but-read {
   border: 0;
