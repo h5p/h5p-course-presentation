@@ -297,7 +297,7 @@
           "default": "@value out of @max correct"
         },
         {
-          "label": "Besedilo za vrstico deljenja razultatov",
+          "label": "Besedilo za vrstico deljenja rezultatov",
           "default": "Deli rezultate"
         },
         {
