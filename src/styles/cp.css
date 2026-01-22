@@ -515,7 +515,7 @@
   display: block;
   width: 1.5em;
   height: 1.5em;
-  background: var(--h5p-theme-contrast-cta-white);
+  background: var(--h5p-theme-main-cta-base);
   color: var(--h5p-theme-contrast-cta);
   font-size: 1em;
   border-radius: 50%;
