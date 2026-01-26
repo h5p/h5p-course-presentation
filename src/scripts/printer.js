@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ConfirmationDialog from './confirmation-dialog';
 import { convertToKebabCase, isFirefox, isIOS, isMacOS, matchesContainerQuery } from './utils';
 
@@ -64,7 +65,7 @@ const Printer = (function () {
     },
     {
       containerSelector: '.h5p-theme .h5p-question-buttons',
-      targetSelector: '.h5p-theme .h5p-theme-primary-cta .h5p-theme-label, .h5p-theme .h5p-theme-secondary-cta .h5p-theme-label, .h5p-theme .h5p-theme-nav-button .h5p-theme-label',
+      targetSelector: '.h5p-theme-button .h5p-theme-primary-cta .h5p-theme-label, .h5p-theme-button .h5p-theme-secondary-cta .h5p-theme-label, .h5p-theme-button .h5p-theme-nav-button .h5p-theme-label',
       rule: 'width < 200px',
       style: {
         display: 'none',
@@ -82,7 +83,7 @@ const Printer = (function () {
     },
     {
       containerSelector: '.h5p-theme .h5p-question-buttons',
-      targetSelector: '.h5p-theme .h5p-theme-primary-cta',
+      targetSelector: '.h5p-theme-button .h5p-theme-primary-cta',
       rule: 'width < 200px',
       style: {
         '--button-justify': 'center',
