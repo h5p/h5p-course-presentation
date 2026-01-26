@@ -66,9 +66,20 @@
                       "description": "Cursor implicit, fără titlu și fără index de tabulare. Avertisment: Utilizatorii cu dizabilități sau cei care folosesc doar tastatura vor avea dificultăți în utilizarea acestui element."
                     }
                   ]
+                },
+                "entity": "Element"
+              },
+              {
+                "entity": "Cuvânt cheie",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "Cuvânt cheie"
+                    }
+                  ]
                 }
               },
-              {},
               {
                 "fields": [
                   {
@@ -81,7 +92,8 @@
                 ]
               }
             ]
-          }
+          },
+          "entity": "Diapozitiv"
         },
         {},
         {

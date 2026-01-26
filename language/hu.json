@@ -66,9 +66,20 @@
                       "description": "Alapértelmezett kurzus, cím és tab index nélkül. Figyelem: a fogyatékossággal elő vagy a csak billentyűzetet használó felhasználóknak így gondjai lehetnek az elem használatával."
                     }
                   ]
+                },
+                "entity": "Elem"
+              },
+              {
+                "entity": "Kulcsszó",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "Kulcsszó"
+                    }
+                  ]
                 }
               },
-              {},
               {
                 "fields": [
                   {
@@ -81,7 +92,8 @@
                 ]
               }
             ]
-          }
+          },
+          "entity": "Dia"
         },
         {},
         {
