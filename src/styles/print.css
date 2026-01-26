@@ -37,7 +37,6 @@
     display: inline-flex;
     flex-flow: column nowrap;
     position: relative;
-    -webkit-transform: none;
     transform: none;
   }
 
