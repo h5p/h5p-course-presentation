@@ -304,10 +304,10 @@ const Printer = (function () {
      */
     const waitForBackgroundsToLoad = () => {
       return new Promise((resolve) => {
-        slides = document.querySelectorAll('.h5p-slide.doprint');
+        let printSlides = document.querySelectorAll('.h5p-slide.doprint');
         const imagePromises = [];
 
-        slides.forEach(slide => {
+        printSlides.forEach(slide => {
           const backgroundUrls = getBackgroundImageUrls(slide);
           backgroundUrls.forEach(src => {
             imagePromises.push(loadImage(src));
