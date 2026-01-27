@@ -65,15 +65,15 @@ const Printer = (function () {
     },
     {
       containerSelector: '.h5p-theme .h5p-question-buttons',
-      targetSelector: '.h5p-theme-button .h5p-theme-primary-cta .h5p-theme-label, .h5p-theme-button .h5p-theme-secondary-cta .h5p-theme-label, .h5p-theme-button .h5p-theme-nav-button .h5p-theme-label',
-      rule: 'width < 200px',
+      targetSelector: '.h5p-theme-nav-button',
+      rule: 'width < 700px',
       style: {
          '--label-display': 'none',
       }
     },
     {
       containerSelector: '.h5p-theme .h5p-question-buttons',
-      targetSelector: '.h5p-theme-button .h5p-theme-secondary-cta',
+      targetSelector: '.h5p-theme-secondary-cta',
       rule: 'width < 350px',
       style: {
         '--label-display': 'none',
@@ -81,11 +81,11 @@ const Printer = (function () {
     },
     {
       containerSelector: '.h5p-theme .h5p-question-buttons',
-      targetSelector: '.h5p-theme-button .h5p-theme-primary-cta',
+      targetSelector: '.h5p-theme-primary-cta',
       rule: 'width < 250px',
       style: {     
         '--label-display': 'none',
-        '--is-icon-only': 1,
+        '--is-icon-only': '1',
         '--icon-position': 'unset',
       }
     },
