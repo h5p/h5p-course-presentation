@@ -78,6 +78,12 @@
   .h5p-course-presentation .h5p-element-button-wrapper {
     display: none;
   }
+
+   /* Reset button icon positioning to prevent empty spacing */
+  .h5p-course-presentation .h5p-theme-primary-cta::before {
+    opacity: 1;
+    transform: none;
+  }
   /* Drag and drop question */
   .h5p-course-presentation .h5p-dragquestion > .h5p-inner {
     width: 100%;
