@@ -34,8 +34,7 @@
   }
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint {
     border: 1px solid #ddd;
-    display: inline-flex;
-    flex-flow: column nowrap;
+    display: block;
     position: relative;
     transform: none;
   }
