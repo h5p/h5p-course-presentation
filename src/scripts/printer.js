@@ -343,14 +343,14 @@ const Printer = (function () {
      * Reset CSS changes made for printing.
      */
     const resetCSS = () => {
-      cleanupDOM();
+      // cleanupDOM();
 
-      slides.forEach(slide => {
-        slide.style.height = '';
-        slide.style.width = '';
-        slide.style.fontSize = '';
-      });
-      wrapper.style.height = `${wrapperHeight}px`;
+      // slides.forEach(slide => {
+      //   slide.style.height = '';
+      //   slide.style.width = '';
+      //   slide.style.fontSize = '';
+      // });
+      // wrapper.style.height = `${wrapperHeight}px`;
 
       // Let CP know we are finished printing
       cp.trigger('printing', { finished: true });
@@ -361,20 +361,22 @@ const Printer = (function () {
     
     // Find height of a slide:
     const currentSlide = document.querySelector('.h5p-slide.h5p-current');
-    const slideHeight = currentSlide.offsetHeight;
-    const slideWidth = currentSlide.offsetWidth;
+    // const slideHeight = currentSlide.offsetHeight;
+    // const slideWidth = currentSlide.offsetWidth;
 
-    const ratio = slideWidth / SLIDE_PRINT_WIDTH_PX;
+    // const ratio = slideWidth / SLIDE_PRINT_WIDTH_PX;
     slides = document.querySelectorAll('.h5p-slide');
-    slides.forEach(slide => {
-      slide.style.height = `${slideHeight / ratio}px`;
-      slide.style.width = `${SLIDE_PRINT_WIDTH_PX}px`;
-      slide.style.fontSize = `${Math.floor(100 / ratio)}%`;
-    });
+    // slides.forEach(slide => {
+    //   slide.style.height = `${slideHeight / ratio}px`;
+    //   slide.style.width = `${SLIDE_PRINT_WIDTH_PX}px`;
+    //   slide.style.fontSize = `${Math.floor(100 / ratio)}%`;
+    // });
+    // console.log('Printing at ratio:', ratio, slideHeight / ratio, SLIDE_PRINT_WIDTH_PX, Math.floor(100 / ratio));
 
-    const style = window.getComputedStyle(wrapper);
-    wrapperHeight = parseFloat(style.getPropertyValue('height'));
-    wrapper.style.height = 'max-content';
+
+    // const style = window.getComputedStyle(wrapper);
+    // wrapperHeight = parseFloat(style.getPropertyValue('height'));
+    // wrapper.style.height = 'max-content';
 
     // Let printer css know which slides to print:
     slides.forEach(slide => {
@@ -384,7 +386,7 @@ const Printer = (function () {
 
     // Course Presentation may be subcontent, but we only want to print the Course Presentation
     const cpDOM = wrapper.closest('.h5p-course-presentation');
-    cleanupDOM = await prepareDOMForPrinting(cpDOM);
+    // cleanupDOM = await prepareDOMForPrinting(cpDOM);
 
     // Wait for backgrounds, then print
     setTimeout(async () => {

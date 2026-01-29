@@ -2,7 +2,9 @@
   @page {
     size: portrait;
   }
-
+.h5p-theme * {
+    container-type: normal !important;
+  }
   /* Hide navigationbar - physical sheets does not support touch yet */
   .h5p-content .h5p-actions,
   /* Hide progressbar */
@@ -10,7 +12,9 @@
   /* Hide footer */
   .h5p-course-presentation .h5p-footer,
   /* Hide keywords */
-  .h5p-course-presentation .h5p-keywords-wrapper {
+  .h5p-course-presentation .h5p-keywords-wrapper,
+  /* Hide summary footer */
+  .h5p-course-presentation .h5p-summary-footer {
     display:none;
   }
   /* Make a border on bottom */
@@ -18,16 +22,24 @@
     border-color: transparent;
     background: transparent;
   }
-  .h5p-course-presentation,
+
+  .h5p-course-presentation .h5p-theme-secondary-cta {
+    --label-display: none;
+  }
+
+  .h5p-course-presentation .h5p-theme-secondary-cta {
+    --label-display: none;
+  }
+  
+  .h5p-course-presentation .h5p-wrapper,
   .h5p-course-presentation .h5p-box-wrapper,
-  .h5p-course-presentation .h5p-presentation-wrapper {
-    background: transparent;
-  }
-  /* Show slides on print */
+  .h5p-course-presentation .h5p-presentation-wrapper,
   .h5p-course-presentation .h5p-slides-wrapper {
-    height: 100%;
+    height: auto !important;
+    overflow: visible !important;
     background: transparent;
   }
+
   /* Slide setup - only slides with doprint class is printed */
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide {
     display: none;
@@ -36,20 +48,36 @@
     border: 1px solid #ddd;
     display: block;
     position: relative;
-    transform: none;
+    transform: none ;
+    /*
+     * Important: slide contents are largely absolutely positioned.
+     * If the slide itself has auto height, it can collapse to ~0 in print,
+     * which results in a blank PDF. Using aspect-ratio gives it a real height.
+     */
+    width: 670px;
+    aspect-ratio: 16 / 9;
+    font-size: 0.70em !important;
+    line-height: 1 !important;
+    break-inside: avoid;
+    margin: 0 auto 1em auto;
+    padding: 1em;
+
   }
 
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint:nth-child(2n) {
       break-after: always;
   }
 
-  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint > div[role="document"] {
-    height: 100%;
-    width: 100%;
+  /* Summary slide: allow full height so the results list isn't constrained by the slide aspect ratio. */
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint.h5p-summary-slide {
+    aspect-ratio: auto;
+    height: auto;
   }
 
   .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container {
     max-height: none;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container .h5p-summary-task-title {
@@ -62,9 +90,6 @@
     gap: 0.25em;
   }
 
-  .h5p-course-presentation .h5p-summary-footer {
-    display: none;
-  }
   .h5p-course-presentation .h5p-slide .h5p-element {
     overflow: visible;
   }
@@ -77,12 +102,6 @@
   /* Hiding buttons */
   .h5p-course-presentation .h5p-element-button-wrapper {
     display: none;
-  }
-
-   /* Reset button icon positioning to prevent empty spacing */
-  .h5p-course-presentation .h5p-theme-primary-cta::before {
-    opacity: 1;
-    transform: none;
   }
   /* Drag and drop question */
   .h5p-course-presentation .h5p-dragquestion > .h5p-inner {
