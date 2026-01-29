@@ -34,10 +34,8 @@
   }
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint {
     border: 1px solid #ddd;
-    display: inline-flex;
-    flex-flow: column nowrap;
+    display: block;
     position: relative;
-    -webkit-transform: none;
     transform: none;
   }
 
@@ -73,12 +71,18 @@
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide:last-child {
     page-break-after: auto;
   }
-  /******************************************/
+  /******************************************/ 
   /* Special handling of elements on slides */
   /******************************************/
   /* Hiding buttons */
   .h5p-course-presentation .h5p-element-button-wrapper {
     display: none;
+  }
+
+   /* Reset button icon positioning to prevent empty spacing */
+  .h5p-course-presentation .h5p-theme-primary-cta::before {
+    opacity: 1;
+    transform: none;
   }
   /* Drag and drop question */
   .h5p-course-presentation .h5p-dragquestion > .h5p-inner {

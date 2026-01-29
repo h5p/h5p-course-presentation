@@ -230,20 +230,11 @@
   left: 0;
   z-index: 1;
   display: none;
-  -webkit-transform: translateX(100%) translate3d(100%, 0, 0);
-  -moz-transform: translateX(100%) translate3d(100%, 0, 0);
-  -ms-transform: translateX(100%) translate3d(100%, 0, 0);
-  transform: translateX(100%) translate3d(100%, 0, 0);
-
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  transform: translateX(100%);
 }
 
 .h5p-course-presentation .h5p-slide.h5p-animate {
   display: block;
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  -moz-transition: -moz-transform 0.25s ease-in-out;
-  -ms-transition: -ms-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
 }
 .h5p-course-presentation .h5p-slide.h5p-touch-move {
@@ -251,16 +242,10 @@
 }
 .h5p-course-presentation .h5p-current {
   display: block;
-  -webkit-transform: translateX(0) translateZ(0);
-  -moz-transform: translateX(0) translateZ(0);
-  -ms-transform: translateX(0) translateZ(0);
-  transform: translateX(0) translateZ(0);
+  transform: translateX(0);
   z-index: 2;
 }
 .h5p-course-presentation .h5p-previous {
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
   transform: translateX(-100%);
 }
 
@@ -344,17 +329,11 @@
 
 .h5p-course-presentation .h5p-popup-overlay {
   background-color: rgba(0, 0, 0, 0.85);
-  -moz-transition: background-color 0.2s;
-  -webkit-transition: background-color 0.2s;
-  -o-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 
 .h5p-course-presentation .h5p-popup-overlay.h5p-animate {
   background-color: transparent;
-  -moz-transition: background-color 0.2s;
-  -webkit-transition: background-color 0.2s;
-  -o-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 
@@ -525,11 +504,6 @@
   cursor: pointer;
 
   transition: background 0.3s, box-shadow 0.3s;
-
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .h5p-course-presentation .h5p-element-button:hover,
