@@ -314,11 +314,11 @@
           "default": "Sidenavigering"
         },
         {
-          "label": "Confirm button label",
+          "label":  "Stadfest-knapp",
           "default": "Stadfest"
         },
         {
-          "label": "Cancel button label",
+          "label": "Avbryt-knapp",
           "default": "Avbryt"
         }
       ]
