@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -25,6 +27,9 @@
                     },
                     {
                       "label": "버튼 보이기"
+                    },
+                    {
+                      "label": "Optional button label"
                     },
                     {
                       "label": "버튼 크기",
@@ -65,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -112,6 +127,10 @@
         {
           "label": "\"Slide\"의 번역",
           "default": "슬라이드"
+        },
+        {
+          "label": "Header of keywords menu",
+          "default": "Slides"
         },
         {
           "label": "\"Score\"의 번역",
@@ -264,6 +283,18 @@
         {
           "label": "오답이 있는 슬라이드의 레이블",
           "default": "@slideName 에 오답이 있습니다"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "소셜 공유 표시줄의 레이블",

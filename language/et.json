@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -25,6 +27,9 @@
                     },
                     {
                       "label": "Näita nupuna"
+                    },
+                    {
+                      "label": "Optional button label"
                     },
                     {
                       "label": "Nupu suurus",
@@ -65,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -112,6 +127,10 @@
         {
           "label": "Tõlge tekstile \"Slide\"",
           "default": "Lehekülg"
+        },
+        {
+          "label": "Header of keywords menu",
+          "default": "Slides"
         },
         {
           "label": "Tõlge tekstile \"Score\"",
@@ -264,6 +283,18 @@
         {
           "label": "Valesid vastuseid sisaldavate lehekülgede silt",
           "default": "@slideName sisaldab valesid vastuseid"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Sotsiaalmeedias jagamise riba silt",

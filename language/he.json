@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -25,6 +27,9 @@
                     },
                     {
                       "label": "מוצג ככפתור"
+                    },
+                    {
+                      "label": "Optional button label"
                     },
                     {
                       "label": "גודל כפתור",
@@ -65,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -112,6 +127,10 @@
         {
           "label": "תרגום עבור \"עמוד\"",
           "default": "עמוד"
+        },
+        {
+          "label": "Header of keywords menu",
+          "default": "Slides"
         },
         {
           "label": "תרגום של \"ניקוד\"",
@@ -264,6 +283,18 @@
         {
           "label": "תווית עבור עמוד עם תשובות לא נכונות",
           "default": "עמוד @slideName מכיל תשובות לא נכונות"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "תווית עבור סרגל שיתוף חברתי",

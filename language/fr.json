@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -25,6 +27,9 @@
                     },
                     {
                       "label": "Afficher sous forme de bouton"
+                    },
+                    {
+                      "label": "Étiquette de bouton facultative"
                     },
                     {
                       "label": "La taille de bouton",
@@ -65,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -112,6 +127,10 @@
         {
           "label": "Traduction pour \"Diapositive\"",
           "default": "Diapositive"
+        },
+        {
+          "label": "Header of keywords menu",
+          "default": "Slides"
         },
         {
           "label": "Traduction pour \"Score\"",
@@ -242,8 +261,8 @@
           "default": "Zone de présentation. Utilisez les flèches gauche et droite pour naviguer entre les diapositives."
         },
         {
-          "label": "Progressbar label for assistive technologies",
-          "default": "Choose slide to display"
+          "label": "Étiquette de la barre de progression pour les technologies d'assistance",
+          "default": "Choisissez la diapositive à afficher"
         },
         {
           "label": "Etiquette pour des interactions incomplètes",
@@ -264,6 +283,18 @@
         {
           "label": "Étiquette pour les diapositives qui ont des réponses incorrectes",
           "default": "@slideName contient des réponses incorrectes"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Etiquette pour le panneau Partager sur les réseaux sociaux",
@@ -314,7 +345,7 @@
       "fields": [
         {
           "label": "Activer le mode \"Surface active\"",
-          "description": "Removes navigation controls for the end user. Use Go To Slide to navigate. Summary is not available in this mode."
+          "description": "Supprime les contrôles de navigation pour l'utilisateur final. Utilisez Aller à la diapositive pour naviguer. Le résumé n'est pas disponible dans ce mode."
         },
         {
           "label": "Cacher le récapitulatif de fin",

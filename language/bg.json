@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -25,6 +27,9 @@
                     },
                     {
                       "label": "Показване като бутон"
+                    },
+                    {
+                      "label": "Optional button label"
                     },
                     {
                       "label": "Размер на бутона",
@@ -65,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -112,6 +127,10 @@
         {
           "label": "Превод за \"Слайд\"",
           "default": "Слайд"
+        },
+        {
+          "label": "Header of keywords menu",
+          "default": "Slides"
         },
         {
           "label": "Превод за \"Точки\"",
@@ -264,6 +283,18 @@
         {
           "label": "Етикет за слайдовете, на които има неточно изпълнени упражнения",
           "default": "На @slideName има неверни отговори"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Етикет за споделяне",

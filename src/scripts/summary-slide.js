@@ -1,4 +1,4 @@
-import { jQuery as $, JoubelUI } from './globals';
+import { jQuery as $, JoubelUI, Components } from './globals';
 import { addClickAndKeyboardListeners } from './utils';
 
 const SummarySlide = (function () {
@@ -39,8 +39,8 @@ const SummarySlide = (function () {
 
     // Get scores and updated html for summary slide
     var slideScores = that.cp.getSlideScores(noJump);
-    var htmlText = that.outputScoreStats(slideScores);
-    $(htmlText).appendTo(that.$summarySlide);
+    var resultScreen = that.outputScoreStats(slideScores);
+    that.$summarySlide[0].appendChild(resultScreen);
 
     if (!isExportSlide) {
       // Get total scores and construct progress circle
@@ -83,7 +83,7 @@ const SummarySlide = (function () {
       }
 
       // Update slide links
-      var links = that.$summarySlide.find('.h5p-td > .h5p-slide-link');
+      var links = that.$summarySlide.find('.h5p-slide-link');
       links.each(function () {
         var slideLink = $(this);
         slideLink.click(function (event) {
@@ -98,47 +98,41 @@ const SummarySlide = (function () {
 
     // Show solutions button
     if (this.cp.showSummarySlideSolutionButton) {
-      JoubelUI.createButton({
-        'class': 'h5p-show-solutions',
-        html: that.cp.l10n.showSolutions,
-        on: {
-          click: function () {
-            // Enable solution mode
-            that.toggleSolutionMode(true);
-          }
-        },
-        appendTo: $summaryFooter
+      const $showResultsButton = Components.Button({
+        label: that.cp.l10n.showSolutions,
+        icon: 'show-solutions',
+        styleType: 'secondary',
+        onClick: function () {
+          that.toggleSolutionMode(true);
+        }
       });
+      $summaryFooter.append($showResultsButton);
     }
 
     // Show solutions button
     if (this.cp.showSummarySlideRetryButton) {
-      JoubelUI.createButton({
-        'class': 'h5p-cp-retry-button',
-        html: that.cp.l10n.retry,
-        on: {
-          click: function () {
-            that.cp.resetTask();
-            // event.preventDefault();
-          }
-        },
-        appendTo: $summaryFooter
+      const $retryButton = Components.Button({
+        label: that.cp.l10n.retry,
+        icon: 'retry',
+        styleType: 'secondary',
+        onClick: function () {
+          that.cp.resetTask();
+        }
       });
+      $summaryFooter.append($retryButton);
     }
 
     // Only make export button if there is an export area in CP
     if (that.cp.hasAnswerElements) {
-      JoubelUI.createButton({
-        'class': 'h5p-eta-export',
-        html: that.cp.l10n.exportAnswers,
-        on: {
-          click: function () {
-            H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
-            // event.preventDefault();
-          }
-        },
-        appendTo: $summaryFooter
+      const $exportButton = Components.Button({
+        label: that.cp.l10n.exportAnswers,
+        classes: 'h5p-eta-export',
+        styleType: 'secondary',
+        onClick: function () {
+          H5P.ExportableTextArea.Exporter.run(that.cp.slides, that.cp.elementInstances);
+        }
       });
+      $summaryFooter.append($exportButton);
     }
   };
 
@@ -146,7 +140,7 @@ const SummarySlide = (function () {
    * Gets html for summary slide.
    *
    * @param slideScores Scores for all pages
-   * @returns {string} html
+   * @returns {HTMLElement} The summary slide element
    */
   SummarySlide.prototype.outputScoreStats = function (slideScores) {
     var self = this;
@@ -154,76 +148,66 @@ const SummarySlide = (function () {
       this.$summarySlide.addClass('h5p-summary-only-export');
       return '<div class="h5p-summary-footer"></div>';
     }
-    var that = this;
     var totalScore = 0;
     var totalMaxScore = 0;
-    var tds = ''; // For saving the main table rows
-    var i;
-    var slidePercentageScore = 0;
-    var slideDescription = '';
-    for (i = 0; i < slideScores.length; i += 1) {
-      slideDescription = self.getSlideDescription(slideScores[i]);
+    const questions = [];
 
-      // Get percentage score for slide
-      slidePercentageScore = Math.round((slideScores[i].score / slideScores[i].maxScore) * 100);
-      if (isNaN(slidePercentageScore)) {
-        slidePercentageScore = 0;
-      }
-      tds +=
-        '<tr>' +
-          '<td class="h5p-td h5p-summary-task-title">' +
-            '<a href="#" class="h5p-slide-link"  aria-label=" ' +
-              that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, '')) + ' ' +
-              slidePercentageScore + '%' +
-              '" data-slide="' +
-              slideScores[i].slide + '">' + that.cp.l10n.slide + ' ' + slideScores[i].slide + ': ' + (slideDescription.replace(/(<([^>]+)>)/ig, '')) +
-            '</a>' +
-          '</td>' +
-          '<td class="h5p-td h5p-summary-score-bar">' +
-            '<p class="hidden-but-read">' + slidePercentageScore + '%' + '</p>' +
-            '<p>' + slideScores[i].score + '<span>/</span>' + slideScores[i].maxScore + '</p>' +
-          '</td>' +
-        '</tr>';
+    for (let i = 0; i < slideScores.length; i += 1) {
+      const slideDescription = self.getSlideDescription(slideScores[i]);
+
       totalScore += slideScores[i].score;
       totalMaxScore += slideScores[i].maxScore;
+
+      const ariaLabel = this.cp.l10n.amountCorrectAria
+        .replace('@value', slideScores[i].score)
+        .replace('@max', slideScores[i].maxScore);
+
+      questions.push({
+        title:
+          '<div class="h5p-summary-task-title">' +
+            `<a href="#" class="h5p-slide-link" data-slide="${slideScores[i].slide}">` +
+              `<span class="slide-number-summary-page">${this.cp.l10n.slide} ${slideScores[i].slide}</span>` +
+              slideDescription.replace(/(<([^>]+)>)/ig, '') +
+            '</a>' +
+          '</div>',
+        points: `<p aria-label="${ariaLabel}">${slideScores[i].score} <span>/</span> ${slideScores[i].maxScore}</p>`,
+      });
     }
+
+    const resultScreen = H5P.Components.ResultScreen({
+      header: this.cp.l10n.resultHeader,
+      scoreHeader: this.cp.l10n.amountCorrect
+        .replace('@value', totalScore)
+        .replace('@max', totalMaxScore),
+      questionGroups: [{
+        listHeaders: [this.cp.l10n.slide, this.cp.l10n.score],
+        questions: questions,
+      }],
+    });
 
     // this.cp.ignoreResize is true when printing; do not xAPI submit on print.
     if (!this.cp.isSolutionMode && !this.cp.ignoreResize) {
-      that.cp.triggerXAPICompleted(totalScore, totalMaxScore);
+      this.cp.triggerXAPICompleted(totalScore, totalMaxScore);
     }
-    var shareResultContainer = (that.cp.enableTwitterShare || that.cp.enableFacebookShare || that.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + that.cp.l10n.shareResult + '</span>' : '';
-    var twitterContainer = (that.cp.enableTwitterShare === true) ? '<span class="h5p-summary-twitter-message" aria-label="' + that.cp.l10n.shareTwitter + '"></span>' : '';
-    var facebookContainer = (that.cp.enableFacebookShare === true) ? '<span class="h5p-summary-facebook-message" aria-label="' + that.cp.l10n.shareFacebook + '"></span>' : '';
-    var googleContainer = (that.cp.enableGoogleShare === true) ? '<span class="h5p-summary-google-message" aria-label="' + that.cp.l10n.shareGoogle + '"></span>' : '';
 
-    var html =
-      '<div class="h5p-summary-table-holder">' +
-        '<div class="h5p-summary-table-pages">' +
-          '<table class="h5p-score-table">' +
-            '<thead><tr>' +
-              '<th class="h5p-summary-table-header slide">' + that.cp.l10n.slide + '</th>' +
-              '<th class="h5p-summary-table-header score">' + that.cp.l10n.score + '<span>/</span>' + that.cp.l10n.total.toLowerCase() + '</th>' +
-            '</tr></thead>' +
-            '<tbody>' + tds + '</tbody>' +
-          '</table>' +
-        '</div>' +
-        '<div class="h5p-summary-total-table">' +
-          '<div class="h5p-summary-social">' +
-            shareResultContainer +
-            facebookContainer +
-            twitterContainer +
-            googleContainer +
-          '</div>' +
-          '<div class="h5p-summary-total-score">' +
-            '<p>' + that.cp.l10n.totalScore + '</p>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="h5p-summary-footer">' +
-      '</div>';
+    var shareResultContainer = (this.cp.enableTwitterShare || this.cp.enableFacebookShare || this.cp.enableGoogleShare) ? '<span class="h5p-show-results-text">' + this.cp.l10n.shareResult + '</span>' : '';
+    var twitterContainer = (this.cp.enableTwitterShare === true) ? '<span class="h5p-summary-twitter-message" aria-label="' + this.cp.l10n.shareTwitter + '"></span>' : '';
+    var facebookContainer = (this.cp.enableFacebookShare === true) ? '<span class="h5p-summary-facebook-message" aria-label="' + this.cp.l10n.shareFacebook + '"></span>' : '';
+    var googleContainer = (this.cp.enableGoogleShare === true) ? '<span class="h5p-summary-google-message" aria-label="' + this.cp.l10n.shareGoogle + '"></span>' : '';
 
-    return html;
+    const socialContainer = document.createElement('div');
+    socialContainer.classList.add('h5p-summary-social');
+    socialContainer.innerHTML = shareResultContainer +
+      facebookContainer +
+      twitterContainer +
+      googleContainer;
+    resultScreen.querySelector('.h5p-theme-results-list-container').appendChild(socialContainer);
+
+    const footer = document.createElement('div');
+    footer.classList.add('h5p-summary-footer');
+    resultScreen.append(footer);
+
+    return resultScreen;
   };
 
   SummarySlide.prototype.getSlideDescription = function (slideScoresSlide) {

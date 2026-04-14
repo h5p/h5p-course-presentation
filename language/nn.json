@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -25,6 +27,9 @@
                     },
                     {
                       "label": "Vis som knapp"
+                    },
+                    {
+                      "label": "Optional button label"
                     },
                     {
                       "label": "Knappstorleik",
@@ -65,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -112,6 +127,10 @@
         {
           "label": "Omsetting for \"Slide\"",
           "default": "Side"
+        },
+        {
+          "label": "Header of keywords menu",
+          "default": "Slides"
         },
         {
           "label": "Omsetting for \"Score\"",
@@ -266,6 +285,18 @@
           "default": "Eitt eller fleire svar på @slideName er feil."
         },
         {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
+        },
+        {
           "label": "Tekst for deling i sosiale medium",
           "default": "Del resultat"
         },
@@ -300,11 +331,11 @@
         },
         {
           "label": "Confirm button label",
-          "default": "Confirm"
+          "default": "Stadfest"
         },
         {
           "label": "Cancel button label",
-          "default": "Cancel"
+          "default": "Avbryt"
         }
       ]
     },

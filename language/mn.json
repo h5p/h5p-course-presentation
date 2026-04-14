@@ -3,9 +3,11 @@
     {
       "fields": [
         {
+          "entity": "slide",
           "field": {
             "fields": [
               {
+                "entity": "element",
                 "field": {
                   "fields": [
                     {},
@@ -25,6 +27,9 @@
                     },
                     {
                       "label": "Товчлуур хэлбэрээр харуулах"
+                    },
+                    {
+                      "label": "Optional button label"
                     },
                     {
                       "label": "Товчлуурын хэмжээ",
@@ -65,7 +70,17 @@
                   ]
                 }
               },
-              {},
+              {
+                "entity": "keyword",
+                "field": {
+                  "fields": [
+                    {},
+                    {
+                      "entity": "keyword"
+                    }
+                  ]
+                }
+              },
               {
                 "fields": [
                   {
@@ -112,6 +127,10 @@
         {
           "label": "\"Слайд\"-ын орчуулга",
           "default": "Слайд"
+        },
+        {
+          "label": "Header of keywords menu",
+          "default": "Slides"
         },
         {
           "label": "\"Оноо\"-ны орчуулга",
@@ -264,6 +283,18 @@
         {
           "label": "Буруу хариулттай слайдуудыг шошго",
           "default": "@slideName буруу хариулттай байна"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Сошиал хуваалцах талбарт зориулсан шошго",

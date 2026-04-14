@@ -9,6 +9,7 @@
         "name": "slides",
         "importance": "high",
         "type": "list",
+        "entity": "slide",
         "field": {
           "name": "slide",
           "importance": "high",
@@ -18,6 +19,7 @@
               "name": "elements",
               "importance": "high",
               "type": "list",
+              "entity": "element",
               "field": {
                 "name": "element",
                 "importance": "high",
@@ -64,7 +66,7 @@
                       "H5P.SingleChoiceSet 1.11",
                       "H5P.MultiChoice 1.16",
                       "H5P.TrueFalse 1.8",
-                      "H5P.DragQuestion 1.14",
+                      "H5P.DragQuestion 1.15",
                       "H5P.Summary 1.10",
                       "H5P.DragText 1.10",
                       "H5P.MarkTheWords 1.11",
@@ -72,7 +74,7 @@
                       "H5P.ContinuousText 1.2",
                       "H5P.ExportableTextArea 1.3",
                       "H5P.Table 1.2",
-                      "H5P.InteractiveVideo 1.27",
+                      "H5P.InteractiveVideo 1.28",
                       "H5P.TwitterUserFeed 1.0",
                       "H5P.AudioRecorder 1.0",
                       "H5P.MultiMediaChoice 0.3"
@@ -126,6 +128,13 @@
                     "label": "Display as button",
                     "importance": "medium",
                     "default": false,
+                    "optional": true
+                  },
+                  {
+                    "name": "buttonLabel",
+                    "type": "text",
+                    "label": "Optional button label",
+                    "importance": "medium",
                     "optional": true
                   },
                   {
@@ -199,6 +208,7 @@
               "name": "keywords",
               "importance": "low",
               "type": "list",
+              "entity": "keyword",
               "optional": true,
               "field": {
                 "name": "keyword",
@@ -216,6 +226,7 @@
                     "name": "subs",
                     "importance": "low",
                     "type": "list",
+                    "entity": "keyword",
                     "optional": true,
                     "field": {
                       "name": "keyword",
@@ -307,7 +318,7 @@
         "importance": "low",
         "min": 0,
         "max": 100,
-        "default": 90
+        "default": 100
       },
       {
         "name": "globalBackgroundSelector",
@@ -355,6 +366,13 @@
         "label": "Translation for \"Slide\"",
         "importance": "low",
         "default": "Slide"
+      },
+      {
+        "name": "slides",
+        "type": "text",
+        "label": "Header of keywords menu",
+        "importance": "low",
+        "default": "Slides"
       },
       {
         "name": "score",
@@ -622,6 +640,27 @@
         "label": "Label for slides that has incorrect answers",
         "importance": "low",
         "default": "@slideName has incorrect answers"
+      },
+      {
+        "name": "resultHeader",
+        "type": "text",
+        "label": "Header for result screen",
+        "importance": "low",
+        "default": "Results"
+      },
+      {
+        "name": "amountCorrect",
+        "type": "text",
+        "label": "Amount of correct tasks",
+        "importance": "low",
+        "default": "@value / @max correct"
+      },
+      {
+        "name": "amountCorrectAria",
+        "type": "text",
+        "label": "Screen reader friendly version of x/y",
+        "importance": "low",
+        "default": "@value out of @max correct"
       },
       {
         "name": "shareResult",
