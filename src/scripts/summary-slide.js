@@ -40,7 +40,7 @@ const SummarySlide = (function () {
     // Get scores and updated html for summary slide
     var slideScores = that.cp.getSlideScores(noJump);
     var resultScreen = that.outputScoreStats(slideScores);
-    that.$summarySlide[0].appendChild(resultScreen);
+    that.$summarySlide.append(resultScreen);
 
     if (!isExportSlide) {
       // Get total scores and construct progress circle
