@@ -129,6 +129,10 @@
           "default": "Slaidi"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Tafsiri ya \"Alama\"",
           "default": "Alama"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Lebo ya upau wa kushiriki kijamii",
           "default": "Shiriki Matokeo"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Tangazo la jumla ya alama kwa teknolojia ya usaidizi",

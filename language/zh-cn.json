@@ -129,6 +129,10 @@
           "default": "幻灯片"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "\"Score\"的翻译",
           "default": "分数"
         },
@@ -279,6 +283,18 @@
         {
           "label": "有错误答案的幻灯片贴上标签",
           "default": "@slideName的答案不正确"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "社交分享栏的标签",

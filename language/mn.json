@@ -129,6 +129,10 @@
           "default": "Слайд"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "\"Оноо\"-ны орчуулга",
           "default": "Оноо"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Буруу хариулттай слайдуудыг шошго",
           "default": "@slideName буруу хариулттай байна"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Сошиал хуваалцах талбарт зориулсан шошго",

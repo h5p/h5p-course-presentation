@@ -39,3 +39,8 @@ jspm_packages
 .node_repl_history
 
 *.swp
+
+@legacy
+
+# Mac
+.DS_Store

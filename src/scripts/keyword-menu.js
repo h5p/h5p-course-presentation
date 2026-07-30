@@ -143,7 +143,7 @@ export default class KeywordMenu {
    * @param {KeywordMenuItemConfig} config
    */
   applyConfigToMenuItemElement(element, config) {
-    element.innerHTML = `<div class="h5p-keyword-subtitle">${config.subtitle}</div><span class="h5p-keyword-title">${config.title}</span>`;
+    element.innerHTML = `<div class="h5p-keyword-subtitle">${config.index+1}</div><span class="h5p-keyword-title">${config.title}</span>`;
     element.dataset.index = config.index;
   }
 

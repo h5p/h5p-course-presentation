@@ -129,6 +129,10 @@
           "default": "Slide"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Traduzione per \"Punteggio\"",
           "default": "Punteggio"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Etichetta per slide con risposte sbagliate",
           "default": "@slideName contiene risposte sbagliate"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Etichetta per la barra di condivisione social",

@@ -129,6 +129,10 @@
           "default": "Diapositiva"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Traducción para \"Puntaje\"",
           "default": "Puntaje"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Etiqueta para diapositivas que contienen respuestas incorrectas",
           "default": "@slideName contiene respuestas incorrectas"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Etiqueta para la barra de redes sociales",

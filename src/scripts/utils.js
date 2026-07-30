@@ -42,6 +42,12 @@ export const isIPad = navigator.userAgent.match(/iPad/i) !== null;
  */
 export const isIOS = navigator.userAgent.match(/iPad|iPod|iPhone/i) !== null;
 
+/** @constant {boolean} isMacOS True if the users device is a MacOS device. */
+export const isMacOS = /Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent);
+
+/** @const {boolean} isFirefox True if the browser is Firefox. */
+export const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
 /**
  * Returns true if the array contains the value
  *
@@ -106,3 +112,100 @@ const $STRIP_HTML_HELPER = $('<div>');
  * @return {string}
  */
 export const stripHTML = (str) => $STRIP_HTML_HELPER.html(str).text().trim();
+
+/**
+ * Checks whether a given instance is a task.
+ * @param {object} instance H5P.ContentType instance.
+ * @returns {boolean} True if the instance is a task, false otherwise.
+ */
+export const isTask = (instance) => {
+  if (typeof instance !== 'object' || instance === null) {
+    return false;
+  }
+
+  // Content type tells us right away whether it is a task - nice, but not documented and cannot be taken for granted
+  if (typeof instance.isTask === 'boolean') {
+    return instance.isTask;
+  }
+
+  // Check for showSolutions() as indicator for being a task
+  if (typeof instance.showSolutions === 'function') {
+    return true;
+  }
+
+  // Check for maxScore() > 0 as indicator for being a task
+  if (typeof instance.getMaxScore === 'function' && instance.getMaxScore() > 0) {
+    return true;
+  }
+
+  return false;
+};
+
+/**
+ * Simplified parser for container query rules.
+ * Accepts width and height rules with px units only.
+ * @param {string} rule Container query rule as string.
+ * @returns {object} Property, operator and pixel value of the rule.
+ * @throws {Error} When the rule is invalid.
+ */
+export const parseContainerQueryRule = (rule) => {
+  if (typeof rule !== 'string') {
+    throw new Error(`Invalid container query rule: ${rule}`);
+  }
+
+  const queryRegex = /(width|height)\s*(<=|>=|<|>|=)\s*(\d*(\.\d)?)(px)?/;
+
+  const matches = rule.match(queryRegex);
+  if (!matches) {
+    throw new Error(`Invalid container query rule: ${rule}`);
+  }
+
+  return {
+    property: matches[1],
+    operator: matches[2],
+    value: parseFloat(matches[3])
+  };
+};
+
+/**
+ * Determine if an element matches a container query rule.
+ * @param {HTMLElement} element Element to test.
+ * @param {string} rule Container query rule as string.
+ * @returns {boolean} True if the element matches the rule, false otherwise.
+ */
+export const matchesContainerQuery = (element, rule) => {
+  let property, operator, value;
+
+  try {
+    ({ property, operator, value } = parseContainerQueryRule(rule));
+  }
+  catch (error) {
+    console.error(error);
+    return false;
+  }
+
+  const elementStyle = getComputedStyle(element);
+  const elementValue = parseFloat(elementStyle[property]);
+
+  switch (operator) {
+    case '<':
+      return elementValue < value;
+    case '<=':
+      return elementValue <= value;
+    case '>':
+      return elementValue > value;
+    case '>=':
+      return elementValue >= value;
+    case '=':
+      return elementValue === value;
+    default:
+      return false;
+  }
+};
+
+/**
+ * Convert a string to kebab-case.
+ * @param {string} input The input string.
+ * @returns {string} The kebab-case version of the input string.
+ */
+export const convertToKebabCase = (input) => input.replace(/([A-Z])/g, '-$1').toLowerCase();

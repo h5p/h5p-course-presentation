@@ -129,6 +129,10 @@
           "default": "Diapositiba"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "\"Score\"rako itzulpena",
           "default": "Puntuazioa"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Erantzun okerrak dituzten diapositiben etiketa",
           "default": "@slideName diapositibak erantzun okerrak ditu"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Partekatze sozialerako barraren etiketa",

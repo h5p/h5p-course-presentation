@@ -129,6 +129,10 @@
           "default": "Dia"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Vertaling voor \"Score\"",
           "default": "Score"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Label voor dia's met onjuiste antwoorden",
           "default": "@slideName heeft onjuiste antwoorden"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Label voor het delen van sociale media",

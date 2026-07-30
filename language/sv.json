@@ -129,6 +129,10 @@
           "default": "Sida"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Översättning för \"Poäng\"",
           "default": "Poäng"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Etikett för sidor som har felaktiga svar",
           "default": "@slideName har felaktiga svar"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Etikett för socialt delande",

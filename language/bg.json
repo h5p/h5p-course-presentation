@@ -129,6 +129,10 @@
           "default": "Слайд"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Превод за \"Точки\"",
           "default": "Точки"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Етикет за слайдовете, на които има неточно изпълнени упражнения",
           "default": "На @slideName има неверни отговори"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Етикет за споделяне",

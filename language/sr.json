@@ -129,6 +129,10 @@
           "default": "Страна"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Превод за \"Резултат\"",
           "default": "Резултат"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Ознака за слајдове са нетачним одговорима",
           "default": "@slideName има нетачне одговоре"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Ознака за траку за друштвено дељење",

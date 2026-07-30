@@ -129,6 +129,10 @@
           "default": "Folie"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Beschriftung für \"Punktzahl\"",
           "default": "Punktzahl"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Beschriftung für Folien, die falsche Antworten enthalten",
           "default": "@slideName enthält falsche Antworten"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Beschriftung für den Social-Sharing-Balken",

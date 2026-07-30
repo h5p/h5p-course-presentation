@@ -129,6 +129,10 @@
           "default": "Διαφάνεια"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Μετάφραση για \"Βαθμολογία\"",
           "default": "Βαθμολογία"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Ετικέτα για διαφάνεια που περιέχει λάθος απαντήσεις",
           "default": "Η διαφάνεια @slideName έχει λάθος απαντήσεις"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Ετικέτα κουμπιών κοινοποίησης στα μέσα κοινωνικής δικτύωσης",

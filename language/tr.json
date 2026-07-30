@@ -129,6 +129,10 @@
           "default": "Slayt"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "\"Score\" çevirisi",
           "default": "Puan"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Sadece yanlış cevap içeren slaytlar için etiket",
           "default": "@slideName sadece yanlış yanıtları içeriyor"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Sosyal paylaşım çubuğu etiketi",

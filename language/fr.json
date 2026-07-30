@@ -129,6 +129,10 @@
           "default": "Diapositive"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Traduction pour \"Score\"",
           "default": "Score"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Étiquette pour les diapositives qui ont des réponses incorrectes",
           "default": "@slideName contient des réponses incorrectes"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Etiquette pour le panneau Partager sur les réseaux sociaux",

@@ -129,6 +129,10 @@
           "default": "Slide"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "الترجمة من اجل \" النتيجة\"",
           "default": "Score"
         },
@@ -279,6 +283,18 @@
         {
           "label": "تسمية الشرائح التي تحتوي على إجابات غير صحيحة",
           "default": "@slideName has incorrect answers"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "تسمية لشريط المشاركة الاجتماعية",

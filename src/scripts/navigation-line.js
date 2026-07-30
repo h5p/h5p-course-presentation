@@ -37,7 +37,6 @@ const NavigationLine = (function ($) {
     this.initProgressbar(this.cp.slidesWithSolutions);
     this.initFooter();
     this.initTaskAnsweredListener();
-    this.toggleNextAndPreviousButtonDisabled(this.cp.getCurrentSlideIndex());
   }
 
   /**
@@ -159,7 +158,7 @@ const NavigationLine = (function ($) {
 
       // Create task indicator if less than 60 slides and not in editor
       if (this.cp.slides.length <= 60 && slide.elements && slide.elements.length > 0) {
-        var hasTask = slidesWithSolutions[i] && slidesWithSolutions[i].length > 0;
+        var hasTask = that.cp.getSlideTasks(i).length > 0;
         var isAnswered = !!(that.cp.previousState && that.cp.previousState.answered && that.cp.previousState.answered[i]);
 
         if (hasTask) {
@@ -191,9 +190,6 @@ const NavigationLine = (function ($) {
 
       // update old progress task
       self.updateSlideTitle(oldIndex, { isCurrent: false });
-
-      // toggle next and prev buttons
-      self.toggleNextAndPreviousButtonDisabled(index);
 
       // focus on current slide
       self.cp.focus();
@@ -288,66 +284,41 @@ const NavigationLine = (function ($) {
     // Update keyword for first slide.
     this.updateFooterKeyword(0);
 
-    // Center footer elements
+    this.navigation = H5P.Components.Navigation({
+      index: this.cp.getCurrentSlideIndex(),
+      navigationLength: this.cp.slides.length,
+      showDisabledButtons: true,
+      variant: '3-split',
+      progressType: 'text',
+      className: 'h5p-cp-footer-navigation',
+      texts: {
+        previousButtonAria: this.cp.l10n.prevSlide,
+        previousTooltip: this.cp.l10n.prevSlide,
+        nextButtonAria: this.cp.l10n.nextSlide,
+        nextTooltip: this.cp.l10n.nextSlide,
+        textualProgress: '@current / @total',
+        currentTooltip: this.cp.l10n.currentSlide,
+        totalTooltip: this.cp.l10n.lastSlide
+      },
+      handlePrevious: () => {
+        this.cp.previousSlide(undefined, false);
+        return false; // Prevent Navigation's `previous` method from being called
+      },
+      handleNext: () => {
+        this.cp.nextSlide(undefined, false);
+        return false; // Prevent Navigation's `next` method from being called
+      }
+    });
+    $centerFooter.append(this.navigation);
 
-    // Previous slide
-    this.cp.$prevSlideButton = $('<div/>', {
-      'class': 'h5p-footer-button h5p-footer-previous-slide',
-      'aria-label': this.cp.l10n.prevSlide,
-      'role': 'button',
-      'tabindex': '-1',
-      'aria-disabled': 'true'
-    }).appendTo($centerFooter);
+    const progressText = this.navigation.querySelector('.progress-container.h5p-theme-progress');
 
-    new H5P.Tooltip(this.cp.$prevSlideButton.get(0), { position: 'left' });
-
-    addClickAndKeyboardListeners(this.cp.$prevSlideButton, () => this.cp.previousSlide(undefined, false));
-
-    const $slideNumbering = $('<div/>', {
-      'class': 'h5p-footer-slide-count'
-    }).appendTo($centerFooter);
-
-    // Current slide count
-    this.cp.$footerCurrentSlide = $('<div/>', {
-      'html': '1',
-      'class': 'h5p-footer-slide-count-current',
-      'title': this.cp.l10n.currentSlide,
-      'aria-hidden': 'true'
-    }).appendTo($slideNumbering);
-
-    this.cp.$footerCounter = $('<div/>', {
-      'class': 'hidden-but-read',
-      'html': this.cp.l10n.slideCount
-        .replace('@index', '1')
-        .replace('@total', this.cp.slides.length.toString())
-    }).appendTo($centerFooter);
-
-    // Count delimiter, content configurable in css
-    $('<div/>', {
-      'html': '/',
-      'class': 'h5p-footer-slide-count-delimiter',
-      'aria-hidden': 'true'
-    }).appendTo($slideNumbering);
-
-    // Max slide count
-    this.cp.$footerMaxSlide = $('<div/>', {
-      'html': this.cp.slides.length,
-      'class': 'h5p-footer-slide-count-max',
-      'title': this.cp.l10n.lastSlide,
-      'aria-hidden': 'true'
-    }).appendTo($slideNumbering);
-
-    // Next slide
-    this.cp.$nextSlideButton = $('<div/>', {
-      'class': 'h5p-footer-button h5p-footer-next-slide',
-      'aria-label': this.cp.l10n.nextSlide,
-      'role': 'button',
-      'tabindex': '0'
-    }).appendTo($centerFooter);
-
-    H5P.Tooltip(this.cp.$nextSlideButton.get(0), { position: 'right' });
-
-    addClickAndKeyboardListeners(this.cp.$nextSlideButton, () => this.cp.nextSlide(undefined, false));
+    this.cp.footerCounterAria = document.createElement('div');
+    this.cp.footerCounterAria.className = 'hidden-but-read';
+    this.cp.footerCounterAria.innerHTML = this.cp.l10n.slideCount
+      .replace('@index', '1')
+      .replace('@total', this.cp.slides.length.toString());
+    progressText.insertAdjacentElement('afterend', this.cp.footerCounterAria);
 
     // *********************
     // Right footer elements
@@ -407,30 +378,24 @@ const NavigationLine = (function ($) {
 
 
   NavigationLine.prototype.openPrintDialog = function () {
-    const $h5pWrapper = $('.h5p-wrapper');
-    const $dialog = Printer.showDialog(this.cp.l10n, $h5pWrapper, (printAllSlides) => {
-      Printer.print(this.cp, $h5pWrapper, printAllSlides);
-    });
-
-    $dialog.children('[role="dialog"]').focus();
+    const h5pWrapper = $('.h5p-wrapper')[0];
+    Printer.showDialog(
+      this.cp.l10n,
+      (printAllSlides) => {
+        Printer.print(this.cp, h5pWrapper, printAllSlides);
+      },
+      this.cp.contentId
+    );
   };
 
   /**
    * Updates progress bar.
    */
-  NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber, solutionMode) {
+  NavigationLine.prototype.updateProgressBar = function (slideNumber, prevSlideNumber, solutionMode, skipAnimation = false) {
     var that = this;
 
-    // Updates progress bar progress (blue line)
-    var i;
-    for (i = 0; i < that.cp.progressbarParts.length; i += 1) {
-      if (slideNumber + 1 > i) {
-        that.cp.progressbarParts[i].addClass('h5p-progressbar-part-show');
-      }
-      else {
-        that.cp.progressbarParts[i].removeClass('h5p-progressbar-part-show');
-      }
-    }
+    const from = prevSlideNumber ?? 0;
+    this.animateFill(from, slideNumber, skipAnimation);
 
     that.progresbarKeyboardControls.setTabbableByIndex(slideNumber);
 
@@ -440,6 +405,8 @@ const NavigationLine = (function ($) {
       .siblings()
       .removeClass('h5p-progressbar-part-selected')
       .attr('aria-selected', false);
+
+    that.navigation.setNavigationLength(that.cp.progressbarParts.length);
 
     if (prevSlideNumber === undefined) {
       that.cp.progressbarParts.forEach(function (part, i) {
@@ -452,6 +419,66 @@ const NavigationLine = (function ($) {
       return;
     }
   };
+
+  /**
+   * Fills navigation bar segments sequentially
+   * @param {number} fromIndex Current slide index
+   * @param {number} toIndex Index of slide that we're navigating to
+   * @param {boolean} [skipAnimation] Opt to skip animation, useful for editor updates
+   */
+  NavigationLine.prototype.animateFill = function (fromIndex, toIndex, skipAnimation = false) {
+    const parts = this.cp.progressbarParts;
+    const totalTransitionTime = 200;
+    const isForward = toIndex > fromIndex;
+
+    // NOTE: Immediately fill segments that are outside our animation
+    // Sometimes updating navigation is called from slide 6->6
+    // when our current slide is currently at 0. We have to handle these without
+    // animation
+    const low = Math.min(fromIndex, toIndex);
+    const high = Math.max(fromIndex, toIndex)
+    parts.forEach((part, index) => {
+      part.get(0).style.setProperty('--h5p-cp-nav-bar-fill-duration', '0ms');
+      if (index < low) {
+        part.addClass('h5p-progressbar-part-show');
+      }
+      else if (index > high) {
+        part.removeClass('h5p-progressbar-part-show');
+      }
+    });
+
+
+
+    let animatedParts = Array.from(parts).filter((part, index) => {
+      return isForward
+        ? (index > fromIndex && index <= toIndex)
+        : (index <= fromIndex && index > toIndex);
+    });
+
+    if (!isForward) {
+      animatedParts = animatedParts.reverse();
+    }
+
+    // Divide transition speed on all parts that will transition
+    let segmentTransitionDelay = totalTransitionTime / animatedParts.length;
+    if (skipAnimation) {
+      segmentTransitionDelay = 0;
+    }
+    animatedParts.forEach(part => {
+      part.get(0).style.setProperty('--h5p-cp-nav-bar-fill-duration', `${segmentTransitionDelay}ms`);
+    })
+
+    animatedParts.forEach((part, idx) => {
+      setTimeout(() => {
+        if (isForward) {
+          part.addClass('h5p-progressbar-part-show');
+        }
+        else {
+          part.removeClass('h5p-progressbar-part-show');
+        }
+      }, idx * segmentTransitionDelay);
+    })
+  }
 
   /**
    * Sets a part to be answered, or un answered
@@ -540,12 +567,11 @@ const NavigationLine = (function ($) {
    */
   NavigationLine.prototype.updateFooter = function (slideNumber) {
     // Update current slide number in footer
-    this.cp.$footerCurrentSlide.html(slideNumber + 1);
-    this.cp.$footerMaxSlide.html(this.cp.slides.length);
-
-    this.cp.$footerCounter.html(this.cp.l10n.slideCount
+    this.cp.footerCounterAria.innerHTML = this.cp.l10n.slideCount
       .replace('@index', (slideNumber + 1).toString())
-      .replace('@total', this.cp.slides.length.toString()));
+      .replace('@total', this.cp.slides.length.toString());
+
+    this.navigation.setCurrentIndex(slideNumber);
 
     // Hide exit solution mode button on summary slide
     if (this.cp.isSolutionMode && slideNumber === this.cp.slides.length - 1) {
@@ -555,25 +581,8 @@ const NavigationLine = (function ($) {
       this.cp.$footer.removeClass('summary-slide');
     }
 
-    this.toggleNextAndPreviousButtonDisabled(slideNumber);
-
     // Update keyword in footer
     this.updateFooterKeyword(slideNumber);
-  };
-
-  /**
-   * Disables previous button if on the first slide,
-   * and disables the next button if on the last slide
-   *
-   * @param {number} index
-   */
-  NavigationLine.prototype.toggleNextAndPreviousButtonDisabled = function (index) {
-    const lastSlideIndex = this.cp.slides.length - 1;
-
-    this.cp.$prevSlideButton.attr('aria-disabled', (index === 0).toString());
-    this.cp.$nextSlideButton.attr('aria-disabled', (index === lastSlideIndex).toString());
-    this.cp.$prevSlideButton.attr('tabindex', (index === 0) ? '-1' : '0');
-    this.cp.$nextSlideButton.attr('tabindex', (index === lastSlideIndex) ? '-1' : '0');
   };
 
   /**

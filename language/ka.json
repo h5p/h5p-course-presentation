@@ -129,6 +129,10 @@
           "default": "სლაიდი"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "\"ქულის\" თარგმანი",
           "default": "ქულა"
         },
@@ -279,6 +283,18 @@
         {
           "label": "წარწერა სლაიდებისთვის, რომლებსაც აქვთ არასწორი პასუხები",
           "default": "@slideName აქვს არასწორი პასუხები"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "წარწერა სოციალური გაზიარების ნიშნულისთვის",

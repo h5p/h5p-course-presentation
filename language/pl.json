@@ -129,6 +129,10 @@
           "default": "Slajd"
         },
         {
+          "label": "Header of keywords menu",
+          "default": "Slides"
+        },
+        {
           "label": "Tłumaczenie dla \"Wynik\"",
           "default": "Wynik"
         },
@@ -279,6 +283,18 @@
         {
           "label": "Tekst dla slajdów, które posiadają niepoprawną odpowiedź",
           "default": "@slideName posiada tylko niepoprawne odpowiedzi"
+        },
+        {
+          "label": "Header for result screen",
+          "default": "Results"
+        },
+        {
+          "label": "Amount of correct tasks",
+          "default": "@value / @max correct"
+        },
+        {
+          "label": "Screen reader friendly version of x/y",
+          "default": "@value out of @max correct"
         },
         {
           "label": "Tekst dla belki udostępnienia",
