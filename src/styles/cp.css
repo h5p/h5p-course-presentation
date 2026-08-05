@@ -780,6 +780,7 @@
 }
 
 .h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text {
+  height: 100%;
   outline: none;
   padding: 0.375em 0.5em;
 }
