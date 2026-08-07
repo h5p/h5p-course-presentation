@@ -755,7 +755,7 @@
 
 .h5p-course-presentation
   .h5p-element
-  .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
+  .h5p-element-inner:not(.h5p-link) {
   position: absolute;
   top: 0;
   left: 0;
