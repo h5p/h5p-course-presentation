@@ -1040,3 +1040,8 @@
   .h5p-audio-minimal-button.h5p-audio-fit-wrapper.h5p-audio-minimal-pause {
   padding: unset;
 }
+/* Prevent vertical scrollbars on MathJax content. */
+.h5p-course-presentation mjx-container {
+  display: inline-block;
+  overflow-y: hidden;
+}
