@@ -1041,7 +1041,7 @@
   padding: unset;
 }
 /* Prevent vertical scrollbars on MathJax content. */
-.h5p-course-presentation mjx-container {
+.h5p-course-presentation .h5p-advanced-text mjx-container {
   display: inline-block;
   overflow-y: hidden;
 }
