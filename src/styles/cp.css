@@ -487,6 +487,10 @@
   z-index: 2;
 }
 
+.h5p-course-presentation .h5p-element:has(> .h5p-element-solution) .h5p-audio-wrapper.h5p-audio-controls .h5p-audio {
+  width: calc(100% - var(--h5p-theme-font-size-l) - var(--h5p-theme-spacing-s) - 1em);
+}
+
 .h5p-course-presentation .h5p-element-button {
   text-decoration: none;
   position: absolute;
