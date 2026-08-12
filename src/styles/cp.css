@@ -721,7 +721,9 @@
   overflow-y: hidden;
 }
 
-.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
+.h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text),
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text:has(mjx-container) /* Prevent vertical scrollbars on MathJax content. */
+  {
   position: absolute;
   top: 0;
   left: 0;
@@ -960,9 +962,4 @@
 
 .h5p-course-presentation .h5p-audio-recorder-view [role=status] {
   font-size: .85em;
-}
-/* Prevent vertical scrollbars on MathJax content. */
-.h5p-course-presentation .h5p-advanced-text mjx-container {
-  display: inline-block;
-  overflow-y: hidden;
 }
