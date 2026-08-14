@@ -759,7 +759,11 @@
 
 .h5p-course-presentation
   .h5p-element
-  .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
+  .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text),
+.h5p-course-presentation
+    .h5p-element
+    .h5p-element-inner.h5p-advanced-text:has(mjx-container) /* Prevent unnecessary scrollbars on MathJax content while allowing overflow when needed. */
+  {
   position: absolute;
   top: 0;
   left: 0;
@@ -1044,4 +1048,9 @@
   .h5p-audio-outer-element
   .h5p-audio-minimal-button.h5p-audio-fit-wrapper.h5p-audio-minimal-pause {
   padding: unset;
+}
+/* Prevent vertical scrollbars on MathJax content. */
+.h5p-course-presentation .h5p-advanced-text mjx-container {
+  display: inline-block;
+  overflow-y: hidden;
 }
