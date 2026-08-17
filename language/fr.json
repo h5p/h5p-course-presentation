@@ -303,7 +303,7 @@
         {
           "label": "Annonce de score total pour les technologies d'accessibilité",
           "default": "Vous avez obtenu @score sur @maxScore points au total",
-          "description": "Available variables are @score and @maxScore"
+          "description": "Les variables disponibles sont @score et @maxScore"
         },
         {
           "label": "Annonce d'activation du mode plein-écran pour les technologies d'accessibilité",
@@ -326,8 +326,8 @@
           "default": "Envoyer et voir les résultats"
         },
         {
-          "label": "Slideshow navigation",
-          "default": "Slideshow navigation"
+          "label": "Navigation du diaporama",
+          "default": "Navigation du diaporama"
         },
         {
           "label": "Texte du bouton de confirmation",
