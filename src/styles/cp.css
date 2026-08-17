@@ -731,7 +731,10 @@
   height: 100%;
   padding: 0;
 }
-
+.h5p-course-presentation .h5p-element .h5p-element-inner.h5p-advanced-text:has(mjx-container) /* Prevent unnecessary scrollbars on MathJax content */
+{
+  overflow: visible;
+}
 .h5p-course-presentation .h5p-element .h5p-element-inner:not(.h5p-interactive-video) {
   overflow: hidden;
   overflow-y: auto;
