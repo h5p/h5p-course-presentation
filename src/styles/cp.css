@@ -770,9 +770,12 @@
 
 .h5p-course-presentation
     .h5p-element
-    .h5p-element-inner.h5p-advanced-text:has(mjx-container) /* Prevent unnecessary scrollbars on MathJax content */
+    .h5p-element-inner.h5p-advanced-text:has(mjx-container),
+.h5p-course-presentation
+    .h5p-popup-wrapper
+    .h5p-element-button-element.h5p-advanced-text:has(mjx-container) /* Prevent unnecessary scrollbars on MathJax content inside CP */
 {
-  overflow: visible;
+  overflow: clip;
 }
 
 .h5p-course-presentation
