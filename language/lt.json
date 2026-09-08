@@ -282,7 +282,7 @@
         },
         {
           "label": "Etiketė skaidrėms, kuriose yra tik neteisingi atsakymai",
-          "default": "@slideName turi neteisingas atsakymas"
+          "default": "@slideName turi neteisingus atsakymus"
         },
         {
           "label": "Rezultatų ekrano antraštė",
