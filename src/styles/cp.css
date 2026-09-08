@@ -487,6 +487,10 @@
   z-index: 2;
 }
 
+.h5p-course-presentation .h5p-element:has(> .h5p-element-solution) .h5p-audio-wrapper.h5p-audio-controls .h5p-audio {
+  width: calc(100% - var(--h5p-theme-font-size-l) - var(--h5p-theme-spacing-s) - 1em);
+}
+
 .h5p-course-presentation .h5p-element-button {
   text-decoration: none;
   position: absolute;
@@ -755,13 +759,23 @@
 
 .h5p-course-presentation
   .h5p-element
-  .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text) {
+  .h5p-element-inner:not(.h5p-link):not(.h5p-advanced-text)  {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   padding: 0;
+}
+
+.h5p-course-presentation
+    .h5p-element
+    .h5p-element-inner.h5p-advanced-text:has(mjx-container),
+.h5p-course-presentation
+    .h5p-popup-wrapper
+    .h5p-element-button-element.h5p-advanced-text:has(mjx-container) /* Prevent unnecessary scrollbars on MathJax content inside CP */
+{
+  overflow: clip;
 }
 
 .h5p-course-presentation
