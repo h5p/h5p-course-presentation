@@ -282,19 +282,19 @@
         },
         {
           "label": "Etiketė skaidrėms, kuriose yra tik neteisingi atsakymai",
-          "default": "@slideName turi neteisingus atsakymus"
+          "default": "@slideName turi neteisingas atsakymas"
         },
         {
-          "label": "Header for result screen",
-          "default": "Results"
+          "label": "Rezultatų ekrano antraštė",
+          "default": "Resultatai"
         },
         {
-          "label": "Amount of correct tasks",
-          "default": "@value / @max correct"
+          "label": "Teisingų užduočių skaičius",
+          "default": "@value / @max teisinga"
         },
         {
-          "label": "Screen reader friendly version of x/y",
-          "default": "@value out of @max correct"
+          "label": "Ekrano skaitytuvui pritaikyta x/y versija",
+          "default": "@value iš @max teisinga"
         },
         {
           "label": "Etiketė socialinio bendrinimo juostai",
@@ -330,17 +330,17 @@
           "default": "Skaidrių demonstravimo naršymas"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "Patvirtinimo mygtuko žymė",
+          "default": "Patvirtinti"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Atšaukti mygtuko žymė",
+          "default": "Atšaukti"
         }
       ]
     },
     {
-      "label": "Veikimo nustatymai.",
+      "label": "Veikimo nustatymai",
       "description": "Šios parinktys leis keisti veikimo nustatymus.",
       "fields": [
         {
