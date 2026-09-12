@@ -330,12 +330,12 @@
           "default": "Sidnavigering"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "Knapp för att bekräfta inskickning av resultat",
+          "default": "Bekräfta"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Knapp för att avbryta",
+          "default": "Avbryt"
         }
       ]
     },
