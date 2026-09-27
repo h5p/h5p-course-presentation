@@ -35,7 +35,13 @@ module.exports = {
           },
           { loader: "css-loader" },
           {
-            loader: "sass-loader"
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                // Avoids a BOM per stylesheet, which breaks the next rule once bundled
+                charset: false
+              }
+            }
           }
         ]
       },

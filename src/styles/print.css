@@ -15,7 +15,7 @@
   }
   /* Make a border on bottom */
   .h5p-content {
-    border: none;
+    border-color: transparent;
     background: transparent;
   }
   .h5p-course-presentation,
@@ -33,20 +33,35 @@
     display: none;
   }
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint {
-    display: inline-flex;
-    flex-flow: column nowrap;
-    position: relative;
-    -webkit-transform: none;
-    transform: none;
-
-    /* Adding this border makes it work in FF 39 on Linux. I have no
-       Idea why, but please don't remove it !! */
     border: 1px solid #ddd;
-    page-break-after: always;
+    display: block;
+    position: relative;
+    transform: none;
   }
-  .h5p-course-presentation .h5p-summary-table-holder {
-    margin-bottom: 0;
+
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint:nth-child(2n) {
+      break-after: always;
   }
+
+  .h5p-course-presentation .h5p-slides-wrapper .h5p-slide.doprint > div[role="document"] {
+    height: 100%;
+    width: 100%;
+  }
+
+  .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container {
+    max-height: none;
+  }
+
+  .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container .h5p-summary-task-title {
+    width: auto;
+  }
+
+  .h5p-course-presentation .h5p-slide.h5p-summary-slide .h5p-theme-results-list-container .h5p-summary-task-title .h5p-slide-link {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25em;
+  }
+
   .h5p-course-presentation .h5p-summary-footer {
     display: none;
   }
@@ -56,12 +71,18 @@
   .h5p-course-presentation .h5p-slides-wrapper .h5p-slide:last-child {
     page-break-after: auto;
   }
-  /******************************************/
+  /******************************************/ 
   /* Special handling of elements on slides */
   /******************************************/
   /* Hiding buttons */
   .h5p-course-presentation .h5p-element-button-wrapper {
     display: none;
+  }
+
+   /* Reset button icon positioning to prevent empty spacing */
+  .h5p-course-presentation .h5p-theme-primary-cta::before {
+    opacity: 1;
+    transform: none;
   }
   /* Drag and drop question */
   .h5p-course-presentation .h5p-dragquestion > .h5p-inner {
@@ -79,10 +100,6 @@
        1px 1px 0 #fff;
     position: absolute;
     top: 0;
-  }
-  /* Summary slide - avoiding scrollbars on IE */
-  .h5p-course-presentation .h5p-summary-table-pages {
-    overflow: visible;
   }
   /* Hide twitter on summary slide */
   .h5p-course-presentation .h5p-summary-twitter-message {
@@ -114,27 +131,32 @@
   .h5p-course-presentation .h5p-element.h5p-video * {
     width: 0;
   }
+  .h5p-course-presentation .h5p-element-inner.h5p-single-choice-set .h5p-question-main-content {
+    height: 100%;
+  }
+  .h5p-course-presentation .h5p-element-inner.h5p-single-choice-set .h5p-question-main-content .h5p-sc-set-wrapper {
+    overflow: hidden;
+  }
+
+  .h5p-course-presentation .h5p-summary-slide {
+    height: auto !important;
+    margin-block-start: 1rem;
+  }
 }
 
-/* Print dialog */
-.h5p-print-dialog {
-  text-align: center;
-}
-.h5p-print-dialog .h5p-inner {
-  display: inline-block;
-  text-align: left;
-}
-.h5p-print-dialog .h5p-joubelui-button {
-  display: block;
-  margin: 1em 0 0 0;
-}
-.h5p-print-dialog .h5p-joubelui-button::before {
+.h5p-print-dialog .h5p-confirmation-dialog-buttons .h5p-theme-check::before {
+  content: '\f0c5'; /* icon with two pages */
   font-family: 'H5PFontAwesome4';
-  margin-right: .5em;
 }
-.h5p-print-dialog .h5p-cp-print-all-slides::before {
-  content: '\f0c5';
-}
-.h5p-print-dialog .h5p-cp-print-current-slide::before {
-  content: '\f016';
+
+/* Override for H5P core confirmation dialog. Should be changed when Confirmation Dialog uses H5P.Component.Button */
+@container (max-width: 400px) {
+  .h5p-theme .h5p-print-dialog .h5p-confirmation-dialog-buttons button.h5p-theme-cancel {
+    justify-content: center;
+  }
+
+  .h5p-theme .h5p-print-dialog .h5p-confirmation-dialog-buttons button.h5p-theme-cancel::before {
+    content: '\f016'; /* icon with one page */
+    font-family: 'H5PFontAwesome4';
+  }
 }
