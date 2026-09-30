@@ -1062,6 +1062,7 @@ CoursePresentation.prototype.attachElement = function (
   $slide,
   index
 ) {
+  const self = this;
   const displayAsButton =
     element.displayAsButton !== undefined && element.displayAsButton;
   var buttonSizeClass =
@@ -1147,7 +1148,7 @@ CoursePresentation.prototype.attachElement = function (
 
     const isH5PVideo = element.action?.library?.startsWith('H5P.Video ');
 
-    if (isH5PVideo && element.action.params.playback.autoplay === true) {
+    if (!this.isEditor() && isH5PVideo && element.action.params?.playback?.autoplay === true) {
       const playVideo = () => instance.play();
 
       if (instance.isLoaded()) {
@@ -1173,7 +1174,7 @@ CoursePresentation.prototype.attachElement = function (
         } else {
           instance.enableAutoHide();
         }
-        if (element.action.params.override.autoplay) {
+        if (!self.isEditor() && element.action.params?.override?.autoplay) {
           instance.video.play();
         }
       };
