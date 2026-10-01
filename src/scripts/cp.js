@@ -1062,6 +1062,7 @@ CoursePresentation.prototype.attachElement = function (
   $slide,
   index
 ) {
+  const self = this;
   const displayAsButton =
     element.displayAsButton !== undefined && element.displayAsButton;
   var buttonSizeClass =
@@ -1145,9 +1146,9 @@ CoursePresentation.prototype.attachElement = function (
 
     instance.attach($innerElementContainer);
 
-    const isH5PVideo = element.action?.library?.startsWith('H5P.Video');
+    const isH5PVideo = element.action?.library?.startsWith('H5P.Video ');
 
-    if (isH5PVideo && element.action.params.playback.autoplay === true) {
+    if (!this.isEditor() && isH5PVideo && element.action.params?.playback?.autoplay === true) {
       const playVideo = () => instance.play();
 
       if (instance.isLoaded()) {
@@ -1160,7 +1161,7 @@ CoursePresentation.prototype.attachElement = function (
 
     if (
       element.action !== undefined &&
-      element.action.library.substr(0, 20) === 'H5P.InteractiveVideo'
+      element.action.library.startsWith('H5P.InteractiveVideo ')
     ) {
       var handleIV = function () {
         instance.$container.addClass('h5p-fullscreen');
@@ -1173,7 +1174,7 @@ CoursePresentation.prototype.attachElement = function (
         } else {
           instance.enableAutoHide();
         }
-        if (element.action.params.override.autoplay) {
+        if (!self.isEditor() && element.action.params?.override?.autoplay) {
           instance.video.play();
         }
       };
