@@ -1,14 +1,24 @@
 name: CI
 
+concurrency:
+  group: ct-e2e-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   pull_request:
     branches:
       - master
-    types: [opened, synchronize]  # Triggers on PR open and commits to PR
+    types: [opened, synchronize] # Triggers on PR open and commits to PR
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE*'
+      - '.gitignore'
 
 jobs:
   ci:
     uses: h5p/h5p-ci-workflows/.github/workflows/h5p-ci-workflow.yml@master
     with:
       run-translations: true
+      run-e2e: true
+    secrets: inherit
