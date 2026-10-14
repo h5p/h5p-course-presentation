@@ -1,4 +1,4 @@
-import { addClickAndKeyboardListeners } from './utils';
+import { addClickAndKeyboardListeners, stripHTML } from './utils';
 import { jQuery as $, EventDispatcher } from './globals';
 
 /**
@@ -70,7 +70,7 @@ export default class GoToSlide {
       href: '#',
       'class': classes,
       tabindex: tabindex,
-      title: title
+      'aria-label': stripHTML(title),
     });
 
     addClickAndKeyboardListeners(this.$element, (event) => {
@@ -87,6 +87,10 @@ export default class GoToSlide {
    */
   attach($container) {
     $container.html('').addClass('h5p-go-to-slide').append(this.$element);
+
+    window.requestAnimationFrame(() => {
+      H5P.Tooltip(this.$element.get(0), { position: 'bottom' });
+    });
   }
 
   /**
