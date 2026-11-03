@@ -1149,8 +1149,17 @@ CoursePresentation.prototype.attachElement = function (
     const isH5PVideo = element.action?.library?.startsWith('H5P.Video ');
 
     if (!this.isEditor() && isH5PVideo && element.action.params?.playback?.autoplay === true) {
-      const playVideo = () => instance.play();
+      const playVideo = () => {
+        if (!this.isCurrentSlide(index) || !instance.isLoaded()) {
+          return;
+        }
 
+        this.off('changedSlide', playVideo);
+        instance.play();
+      };
+
+      // Neighboring slides are attached before they are shown.
+      this.on('changedSlide', playVideo);
       if (instance.isLoaded()) {
         playVideo();
       }
