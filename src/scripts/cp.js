@@ -1062,7 +1062,6 @@ CoursePresentation.prototype.attachElement = function (
   $slide,
   index
 ) {
-  const self = this;
   const displayAsButton =
     element.displayAsButton !== undefined && element.displayAsButton;
   var buttonSizeClass =
@@ -1144,25 +1143,49 @@ CoursePresentation.prototype.attachElement = function (
       }
     });
 
-    instance.attach($innerElementContainer);
+    const isH5PInteractiveVideo = element.action?.library?.startsWith('H5P.InteractiveVideo ');
+    const autoplayInteractiveVideo = !this.isEditor() && isH5PInteractiveVideo &&
+      element.action.params?.override?.autoplay === true;
+
+    // Interactive Video passes this flag to its child video during attach.
+    if (autoplayInteractiveVideo) {
+      instance.params.override.autoplay = false;
+    }
+    try {
+      instance.attach($innerElementContainer);
+    }
+    finally {
+      if (autoplayInteractiveVideo) {
+        instance.params.override.autoplay = true;
+      }
+    }
+
+    const playWhenCurrentSlide = (play, isReady) => {
+      const playIfCurrent = () => {
+        if (!this.isCurrentSlide(index) || !isReady()) {
+          return;
+        }
+
+        this.off('changedSlide', playIfCurrent);
+        play();
+      };
+
+      this.on('changedSlide', playIfCurrent);
+      playIfCurrent();
+      return playIfCurrent;
+    };
 
     const isH5PVideo = element.action?.library?.startsWith('H5P.Video ');
 
     if (!this.isEditor() && isH5PVideo && element.action.params?.playback?.autoplay === true) {
-      const playVideo = () => instance.play();
-
-      if (instance.isLoaded()) {
-        playVideo();
-      }
-      else {
+      // Neighboring slides are attached before they are shown.
+      const playVideo = playWhenCurrentSlide(() => instance.play(), () => instance.isLoaded());
+      if (!instance.isLoaded()) {
         instance.on('loaded', playVideo);
       }
     }
 
-    if (
-      element.action !== undefined &&
-      element.action.library.startsWith('H5P.InteractiveVideo ')
-    ) {
+    if (isH5PInteractiveVideo) {
       var handleIV = function () {
         instance.$container.addClass('h5p-fullscreen');
         if (instance.controls.$fullscreen) {
@@ -1174,8 +1197,8 @@ CoursePresentation.prototype.attachElement = function (
         } else {
           instance.enableAutoHide();
         }
-        if (!self.isEditor() && element.action.params?.override?.autoplay) {
-          instance.video.play();
+        if (autoplayInteractiveVideo) {
+          playWhenCurrentSlide(() => instance.video.play(), () => true);
         }
       };
       if (instance.controls !== undefined) {
