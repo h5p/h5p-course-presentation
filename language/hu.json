@@ -3,11 +3,11 @@
     {
       "fields": [
         {
-          "entity": "slide",
+          "entity": "dia",
           "field": {
             "fields": [
               {
-                "entity": "element",
+                "entity": "elem",
                 "field": {
                   "fields": [
                     {},
@@ -17,7 +17,7 @@
                     {},
                     {
                       "label": "Megjegyzések",
-                      "description": "A megjegyzések akkor jelennek meg, ha a felhasználó megjeleníti a javasolt változásokat minden diánál."
+                      "description": "A megjegyzések akkor jelennek meg, ha a felhasználó megjeleníti a javasolt válaszokat minden diánál."
                     },
                     {
                       "label": "Megjegyzések mindig láthatók"
@@ -65,18 +65,18 @@
                     },
                     {
                       "label": "Nem látható",
-                      "description": "Alapértelmezett kurzus, cím és tab index nélkül. Figyelem: a fogyatékossággal elő vagy a csak billentyűzetet használó felhasználóknak így gondjai lehetnek az elem használatával."
+                      "description": "Alapértelmezett kurzor, cím és tab index nélkül. Figyelem: a fogyatékossággal élő vagy a csak billentyűzetet használó felhasználóknak így gondjai lehetnek az elem használatával!"
                     }
                   ]
                 }
               },
               {
-                "entity": "keyword",
+                "entity": "kulcsszó",
                 "field": {
                   "fields": [
                     {},
                     {
-                      "entity": "keyword"
+                      "entity": "kulcsszó"
                     }
                   ]
                 }
@@ -85,7 +85,7 @@
                 "fields": [
                   {
                     "label": "Kép",
-                    "description": "Háttérképnél célszerű 2:1 szélesség-magasság arányt alkalmazni, ekkor elkerülhető annak széthúzása. A nagyfelbontású képek szebben jelennek meg a nagyobb képernyőkön."
+                    "description": "Háttérképnél célszerű 2:1 szélesség-magasság arányt alkalmazni, ekkor elkerülhető annak széthúzása. A nagy felbontású képek szebben jelennek meg a nagyobb képernyőkön."
                   },
                   {
                     "label": "Színválasztás"
@@ -112,7 +112,7 @@
           "fields": [
             {
               "label": "Kép",
-              "description": "Háttérképnél célszerű 2:1 szélesség-magasság arányt alkalmazni, ekkor elkerülhető annak széthúzása. A nagyfelbontású képek szebben jelennek meg a nagyobb képernyőkön."
+              "description": "Háttérképnél célszerű 2:1 szélesség-magasság arányt alkalmazni, ekkor elkerülhető annak széthúzása. A nagy felbontású képek szebben jelennek meg a nagyobb képernyőkön."
             },
             {
               "label": "Színválasztás"
@@ -129,8 +129,8 @@
           "default": "Dia"
         },
         {
-          "label": "Header of keywords menu",
-          "default": "Slides"
+          "label": "Kulcsszómenü címe",
+          "default": "Diák"
         },
         {
           "label": "\"Pontszám\" fordítása",
@@ -165,12 +165,12 @@
           "default": "Szöveg exportálása"
         },
         {
-          "label": "Kulcsszólistát elrejtő gomb felirata",
-          "default": "Kulcsszólista elrejtése"
+          "label": "Oldalsó navigációs menüt elrejtő gomb felirata",
+          "default": "Oldalsó navigációs menü elrejtése"
         },
         {
-          "label": "Kulcsszólistát megjelenítő gomb felirata",
-          "default": "Kulcsszólista mutatása"
+          "label": "Oldalsó navigációs menüt megjelenítő gomb felirata",
+          "default": "Oldalsó navigációs menü megjelenítése"
         },
         {
           "label": "Teljes képernyő címke",
@@ -198,7 +198,7 @@
         },
         {
           "label": "Megoldás nézet kilépés szöveg",
-          "default": "Kilépés a megoldás nézet"
+          "default": "Kilépés a megoldás nézetből"
         },
         {
           "label": "Megoldás nézet szöveg",
@@ -274,7 +274,7 @@
         },
         {
           "label": "Diaszámláló felirata. A változók: @index, @total",
-          "default": "@total / @index dia"
+          "default": "@index. dia (ennyiből: @total)"
         },
         {
           "label": "Helyes válaszokat tartalmazó dia felirata",
@@ -285,16 +285,16 @@
           "default": "@slideName helytelen válaszokat tartalmaz"
         },
         {
-          "label": "Header for result screen",
-          "default": "Results"
+          "label": "Eredményképernyő címe",
+          "default": "Eredmények"
         },
         {
-          "label": "Amount of correct tasks",
-          "default": "@value / @max correct"
+          "label": "Helyesen megoldott feladatok száma",
+          "default": "Helyes: @value / @max"
         },
         {
-          "label": "Screen reader friendly version of x/y",
-          "default": "@value out of @max correct"
+          "label": "X/y képernyőolvasóhoz igazított változata",
+          "default": "Összesen @max feladatból helyesen megoldva: @value."
         },
         {
           "label": "Közösségi megosztási sáv felirata",
@@ -302,7 +302,7 @@
         },
         {
           "label": "Összpontszám közlési módja támogató-segítő eszközöknél",
-          "default": "Az elért pontszám @score, az összesen elérhető @maxScore pontból",
+          "default": "Összesen @score pontot ért el a megszerezhető @maxScore pontból.",
           "description": "Elérhető változók: @score és @maxScore"
         },
         {
@@ -319,7 +319,7 @@
         },
         {
           "label": "Eredmény leadása megerősítő ablak szövege",
-          "default": "Ezzel leadja az eredményét, biztosan folytatja?"
+          "default": "Ezzel leadja az eredményét. Biztosan folytatja?"
         },
         {
           "label": "Jóváhagyó gomb az eredmények leadása megerősítő ablaknál",
@@ -330,8 +330,8 @@
           "default": "Diasor navigáció"
         },
         {
-          "label": "Elfogadás gomb felirat",
-          "default": "Elfogadás"
+          "label": "Megerősítés gomb felirat",
+          "default": "Megerősítés"
         },
         {
           "label": "Mégse gomb felirat",
@@ -376,12 +376,12 @@
           ]
         },
         {
-          "label": "\"Megoldás mutatása\" gomb megjelenítése az összefoglaló dián",
-          "description": "Bekapcsolása esetén a tanulónak lehetősége van az összes kérdés megoldásának megtekintésére, amikor elérik az összefoglaló diát"
+          "label": "\"Megoldás mutatása\" gomb megjelenítése az összefoglalás dián",
+          "description": "Bekapcsolása esetén a tanulónak lehetősége van az összes kérdés megoldásának megtekintésére, amikor eléri az összefoglalás diát"
         },
         {
-          "label": "\"Újra\" gomb megjelenítése az összefoglaló dián",
-          "description": "Bekapcsolása esetén a tanulónak lehetősége van az összes kérdés újrapróbálására, amikor eléri az összefoglaló diát. Ne feledjük, ezt akkor is megtehetik a tanulók az oldal újratöltésével, ha ez a gomb nem jelenik meg."
+          "label": "\"Újra\" gomb megjelenítése az összefoglalás dián",
+          "description": "Bekapcsolása esetén a tanulónak lehetősége van az összes kérdés újrapróbálására, amikor eléri az összefoglalás diát. Ne feledjük, ezt akkor is megteheti az oldal újratöltésével, ha ez a gomb nem jelenik meg."
         },
         {
           "label": "Nyomtatás gomb engedélyezése",
@@ -389,7 +389,7 @@
         },
         {
           "label": "Közösségi beállítások",
-          "description": "Ezekkel a beállításokkal felülírhatók a közösségi viselkedési beállítások. Az üres helyekre automatikusan kerül érték, ha megadunk egy hivatkozást, különben generálva lesz minden érték.",
+          "description": "Ezekkel a beállításokkal felülírhatók a közösségi viselkedési beállítások. Hivatkozás megadása esetén az üres helyekre automatikusan kerül érték, egyébként minden értéket a rendszer hoz létre.",
           "fields": [
             {
               "label": "Facebook-os megosztási ikon mutatása"
@@ -403,7 +403,7 @@
                 },
                 {
                   "label": "Facebook-os megosztás üzenete",
-                  "default": "Az összes @maxScore pontból @score pontot értem el a @currentpageurl feladaton."
+                  "default": "@score pontot értem el a megszerezhető @maxScore pontból ebben a feladatban: @currentpageurl."
                 }
               ]
             },
@@ -415,7 +415,7 @@
               "fields": [
                 {
                   "label": "Twitter-es megosztás üzenete",
-                  "default": "Az összes @maxScore pontból @score pontot értem el a @currentpageurl feladaton."
+                  "default": "@score pontot értem el a megszerezhető @maxScore pontból ebben a feladatban: @currentpageurl."
                 },
                 {
                   "label": "Twitter-es megosztás hivatkozása",
